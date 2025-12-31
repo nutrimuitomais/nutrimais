@@ -1,108 +1,27 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: Arial, Helvetica, sans-serif;
+body { 
+  font-family: Arial, sans-serif; 
+  background-color: #f4f4f4; 
+  margin: 0; 
+  padding: 0;
 }
 
-body {
-    background: #ffffff;
-    color: #1a1a1a;
+.container { 
+  max-width: 600px; 
+  margin: 50px auto; 
+  background: #fff; 
+  padding: 20px; 
+  border-radius: 8px; 
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
 }
 
-.header {
-    width: 100%;
-    padding: 20px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background: #ffffff;
-    border-bottom: 2px solid #00a86b;
-}
+.step { display: none; }
+.step.active { display: block; }
 
-.logo {
-    height: 60px;
-}
+label { display: block; margin-top: 10px; }
+input, textarea { width: 100%; padding: 8px; margin-top: 5px; border-radius: 4px; border: 1px solid #ccc; }
 
-.btn-login, .btn-primary {
-    text-decoration: none;
-    padding: 12px 22px;
-    background: #00a86b;
-    color: #ffffff;
-    border-radius: 8px;
-    font-weight: bold;
-}
+.buttons { margin-top: 20px; display: flex; justify-content: space-between; }
+button { padding: 10px 20px; border: none; border-radius: 5px; background-color: #007BFF; color: #fff; cursor: pointer; }
+button:hover { background-color: #0056b3; }
 
-.btn-primary {
-    font-size: 18px;
-    margin-top: 20px;
-    display: inline-block;
-}
-
-.hero {
-    text-align: center;
-    margin-top: 80px;
-}
-
-.hero h1 {
-    font-size: 26px;
-    font-weight: bold;
-    margin-bottom: 10px;
-    color: #00a86b;
-}
-
-.hero p {
-    font-size: 18px;
-    margin-bottom: 30px;
-}
-
-.footer {
-    text-align: center;
-    margin-top: 60px;
-    padding: 20px;
-    font-size: 14px;
-}
-.plans {
-    padding: 20px;
-    text-align: center;
-}
-
-.plan-card {
-    background: #ffffff;
-    border: 2px solid #00a86b;
-    border-radius: 12px;
-    padding: 20px;
-    margin: 20px auto;
-    width: 90%;
-    max-width: 450px;
-}
-
-.plan-card h3 {
-    color: #00a86b;
-    font-size: 22px;
-    margin-bottom: 10px;
-}
-
-.plan-card ul {
-    list-style: none;
-    text-align: left;
-    margin-top: 15px;
-    font-size: 15px;
-}
-
-.plan-card ul li {
-    margin-bottom: 8px;
-}
-
-.price {
-    font-size: 18px;
-    margin: 10px 0;
-}
-
-.gold {
-    border-color: #d4a017;
-}
-
-.gold h3 {
-    color: #d4a017;
-}
+#resumo { background: #f9f9f9; padding: 10px; border-radius: 5px; margin-top: 10px; }
