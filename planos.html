@@ -3,94 +3,102 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Nutrimais - Escolha seu Plano</title>
+<title>Planos | Nutrimais</title>
 <style>
     body {
         font-family: Arial, sans-serif;
-        background: #ffffff;
+        background: #fff;
         margin: 0;
         padding: 0;
+        color: #333;
     }
     header {
         background: #1dbf73;
-        padding: 16px;
+        padding: 20px;
         text-align: center;
         color: #fff;
-        font-size: 22px;
+        font-size: 24px;
         font-weight: bold;
     }
     .container {
         width: 90%;
-        max-width: 500px;
-        margin: 30px auto;
-    }
-    .step-title {
-        font-size: 20px;
-        margin-bottom: 18px;
-        color: #1dbf73;
-        font-weight: bold;
-        text-align: center;
+        max-width: 450px;
+        margin: 20px auto;
     }
     .card {
-        background: #fff;
+        border: 2px solid #1dbf73;
         border-radius: 14px;
         padding: 20px;
         margin-bottom: 20px;
-        border: 2px solid #e6e6e6;
-        box-shadow: 0 3px 15px rgba(0,0,0,0.06);
+        text-align: center;
+        background: #f9f9f9;
     }
     .card h2 {
-        font-size: 20px;
-        color: #222;
-        margin-bottom: 8px;
+        font-size: 22px;
+        margin-bottom: 5px;
+        color: #1dbf73;
     }
     .price {
         font-size: 26px;
         font-weight: bold;
+        margin: 10px 0;
         color: #1dbf73;
-        margin-bottom: 10px;
+    }
+    .old-price {
+        text-decoration: line-through;
+        color: #888;
+        font-size: 14px;
+        margin-bottom: 5px;
     }
     ul {
-        font-size: 15px;
-        margin-bottom: 15px;
+        list-style: none;
+        padding: 0;
+        margin: 0 0 15px;
+        text-align: left;
     }
     ul li {
-        margin: 6px 0;
+        margin: 8px 0;
+        font-size: 15px;
+        display: flex;
+        align-items: center;
     }
     .btn {
         background: #1dbf73;
-        width: 100%;
-        display: inline-block;
-        text-align: center;
-        padding: 12px;
-        border-radius: 8px;
         color: #fff;
-        font-size: 17px;
-        font-weight: bold;
+        padding: 14px;
+        width: 100%;
+        display: block;
+        text-align: center;
+        border-radius: 10px;
+        font-size: 18px;
         text-decoration: none;
-        cursor: pointer;
-        transition: .3s;
+        font-weight: bold;
+        margin-top: 10px;
     }
     .btn:hover {
-        background: #17a765;
+        background: #159a5c;
+    }
+    .footer {
+        text-align: center;
+        margin: 25px;
+        font-size: 14px;
     }
 </style>
 </head>
 <body>
 
-<header>Nutrimais</header>
+<header>NUTRIMAIS</header>
 
 <div class="container">
-
-    <div class="step-title">Etapa 2 de 3 — Escolha seu Plano</div>
 
     <!-- Plano Dieta -->
     <div class="card">
         <h2>Plano Dieta</h2>
-        <div class="price">R$ 14,99/mês</div>
+        <div class="old-price">De R$ 59,99</div>
+        <div class="price">R$ 14,99 / mensal</div>
         <ul>
             <li>Dieta completa personalizada</li>
-            <li>Gramatura de todos alimentos</li>
+            <li>Gramatura de todos os alimentos</li>
             <li>Suporte via WhatsApp e e-mail</li>
             <li>Planejamento mensal</li>
         </ul>
@@ -100,12 +108,13 @@
     <!-- Plano Dieta + Treino -->
     <div class="card">
         <h2>Dieta + Treino</h2>
-        <div class="price">R$ 19,99/mês</div>
+        <div class="old-price">De R$ 79,99</div>
+        <div class="price">R$ 19,99 / mensal</div>
         <ul>
             <li>Dieta personalizada + gramatura</li>
             <li>Plano completo de treino</li>
-            <li>Suporte WhatsApp e e-mail</li>
             <li>Sugestões de receitas</li>
+            <li>Suporte via WhatsApp e e-mail</li>
         </ul>
         <a class="btn" href="https://mpago.la/1BG6Yz">Contratar Agora</a>
     </div>
@@ -113,15 +122,20 @@
     <!-- Plano Ouro -->
     <div class="card">
         <h2>Plano Ouro</h2>
-        <div class="price">R$ 29,99/mês</div>
+        <div class="old-price">De R$ 94,99</div>
+        <div class="price">R$ 29,99 / mensal</div>
         <ul>
             <li>Tudo do Dieta + Treino</li>
-            <li>Consulta Nutri 1x ao mês</li>
-            <li>Ajuste mensal da dieta</li>
+            <li>Consulta Nutricional 1x ao mês</li>
+            <li>Ajuste da dieta no mês</li>
         </ul>
         <a class="btn" href="https://mpago.la/347fXz5">Contratar Agora</a>
     </div>
 
+</div>
+
+<div class="footer">
+    © 2025 Nutrimais — Todos os direitos reservados
 </div>
 
 </body>
