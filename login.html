@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nutrimais - Login</title>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<style>
+    body { font-family: Arial, sans-serif; background: #fff; margin: 0; padding: 0; }
+    header { background: #1dbf73; padding: 16px; color: #fff; text-align: center; font-size: 22px; font-weight: bold; }
+    .container { width: 90%; max-width: 400px; margin: 40px auto; }
+    label { font-size: 14px; font-weight: bold; margin-top: 10px; display: block; }
+    input { width: 100%; padding: 12px; font-size: 16px; margin-top: 4px; border-radius: 6px; border: 1px solid #ccc; }
+    .btn { background: #1dbf73; border: none; width: 100%; padding: 14px; border-radius: 8px; color: #fff; cursor: pointer; margin-top: 15px; font-size: 18px; }
+    .btn:hover { background: #16995d; }
+    .link { margin-top: 15px; font-size: 14px; text-align: center; }
+    .link a { color: #1dbf73; font-weight: bold; cursor: pointer; }
+    .msg { color: red; font-size: 14px; text-align: center; margin-top: 10px; }
+</style>
+</head>
+<body>
+
+<header>Nutrimais</header>
+
+<div class="container">
+
+    <h3>Entrar ou Criar Conta</h3>
+
+    <label>E-mail:</label>
+    <input type="email" id="email">
+
+    <label>Senha:</label>
+    <input type="password" id="senha">
+
+    <button class="btn" onclick="entrar()">Entrar</button>
+    <button class="btn" onclick="criarConta()">Criar Conta</button>
+
+    <div id="alerta" class="msg"></div>
+
+</div>
+
+<script>
+const supabase = supabase.createClient(
+    "https://yrtrchjouogknpgemdxq.supabase.co",
+    "sb_publishable_HuQECSLz0_GF18EMWVcaUQ_GiadVwPU"
+);
+
+async function entrar() {
+    let email = document.getElementById('email').value;
+    let senha = document.getElementById('senha').value;
+
+    const { error } = await supabase.auth.signInWithPassword({ email, password: senha });
+
+    if (error) {
+        document.getElementById('alerta').innerText = "Usuário ou senha inválidos!";
+    } else {
+        window.location.href = "dashboard.html";
+    }
+}
+
+async function criarConta() {
+    let email = document.getElementById('email').value;
+    let senha = document.getElementById('senha').value;
+
+    const { error } = await supabase.auth.signUp({ email, password: senha });
+
+    if (error) {
+        document.getElementById('alerta').innerText = "Erro ao criar conta!";
+    } else {
+        alert("Conta criada com sucesso! Faça login agora.");
+    }
+}
+</script>
+
+</body>
+</html>
