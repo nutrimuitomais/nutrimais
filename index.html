@@ -1,32 +1,72 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nutrimais — Dietas e Treinos Personalizados</title>
-    <link rel="stylesheet" href="css/style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Formulário Fluxo</title>
+<link rel="stylesheet" href="style.css">
 </head>
-
 <body>
+<div class="container">
+  <h2>Cadastro</h2>
 
-    <header class="header">
-        <img src="assets/logo.png" alt="Nutrimais" class="logo">
-        <nav>
-            <a href="login.html" class="btn-login">Entrar</a>
-        </nav>
-    </header>
+  <!-- Passo 1: Informações Básicas -->
+  <div class="step active" id="step1">
+    <h3>Passo 1: Informações Básicas</h3>
+    <label>Nome:</label>
+    <input type="text" id="nome" required>
+    <label>Telefone:</label>
+    <input type="text" id="telefone" required>
+    <label>E-mail:</label>
+    <input type="email" id="email" required>
+    <div class="buttons">
+      <span></span>
+      <button onclick="nextStep(1)">Próximo</button>
+    </div>
+  </div>
 
-    <section class="hero">
-        <h1>Dieta e Treino totalmente personalizados</h1>
-        <p>Café da Manhã • Almoço • Café da Tarde • Jantar</p>
+  <!-- Passo 2: Formulário Detalhado (todos os campos antigos) -->
+  <div class="step" id="step2">
+    <h3>Passo 2: Formulário Detalhado</h3>
+    <!-- Exemplo de campos antigos -->
+    <label>Idade:</label>
+    <input type="number" id="idade">
+    <label>Endereço:</label>
+    <input type="text" id="endereco">
+    <label>Observações:</label>
+    <textarea id="observacoes"></textarea>
+    <!-- Continue adicionando os outros campos que você já tinha -->
+    <div class="buttons">
+      <button onclick="prevStep(2)">Voltar</button>
+      <button onclick="nextStep(2)">Próximo</button>
+    </div>
+  </div>
 
-        <a href="plans.html" class="btn-primary">Montar minha Dieta</a>
-    </section>
+  <!-- Passo 3: Escolha do Plano -->
+  <div class="step" id="step3">
+    <h3>Passo 3: Escolha do Plano</h3>
+    <!-- Exemplo de planos -->
+    <label><input type="radio" name="plano" value="Básico"> Plano Básico</label>
+    <label><input type="radio" name="plano" value="Intermediário"> Plano Intermediário</label>
+    <label><input type="radio" name="plano" value="Premium"> Plano Premium</label>
+    <div class="buttons">
+      <button onclick="prevStep(3)">Voltar</button>
+      <button onclick="nextStep(3)">Próximo</button>
+    </div>
+  </div>
 
-    <footer class="footer">
-        <p>© 2025 Nutrimais — Todos os direitos reservados</p>
-        <a href="https://wa.me/5527992987642" target="_blank">Contato pelo WhatsApp</a>
-    </footer>
+  <!-- Passo 4: Confirmação -->
+  <div class="step" id="step4">
+    <h3>Passo 4: Confirmação</h3>
+    <p>Confira seus dados e finalize o cadastro:</p>
+    <div id="resumo"></div>
+    <div class="buttons">
+      <button onclick="prevStep(4)">Voltar</button>
+      <button onclick="finalizar()">Finalizar</button>
+    </div>
+  </div>
+</div>
 
+<script src="scripts.js"></script>
 </body>
 </html>
