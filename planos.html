@@ -1,142 +1,68 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Planos | Nutrimais</title>
-<style>
-    body {
-        font-family: Arial, sans-serif;
-        background: #fff;
-        margin: 0;
-        padding: 0;
-        color: #333;
-    }
-    header {
-        background: #1dbf73;
-        padding: 20px;
-        text-align: center;
-        color: #fff;
-        font-size: 24px;
-        font-weight: bold;
-    }
-    .container {
-        width: 90%;
-        max-width: 450px;
-        margin: 20px auto;
-    }
-    .card {
-        border: 2px solid #1dbf73;
-        border-radius: 14px;
-        padding: 20px;
-        margin-bottom: 20px;
-        text-align: center;
-        background: #f9f9f9;
-    }
-    .card h2 {
-        font-size: 22px;
-        margin-bottom: 5px;
-        color: #1dbf73;
-    }
-    .price {
-        font-size: 26px;
-        font-weight: bold;
-        margin: 10px 0;
-        color: #1dbf73;
-    }
-    .old-price {
-        text-decoration: line-through;
-        color: #888;
-        font-size: 14px;
-        margin-bottom: 5px;
-    }
-    ul {
-        list-style: none;
-        padding: 0;
-        margin: 0 0 15px;
-        text-align: left;
-    }
-    ul li {
-        margin: 8px 0;
-        font-size: 15px;
-        display: flex;
-        align-items: center;
-    }
-    .btn {
-        background: #1dbf73;
-        color: #fff;
-        padding: 14px;
-        width: 100%;
-        display: block;
-        text-align: center;
-        border-radius: 10px;
-        font-size: 18px;
-        text-decoration: none;
-        font-weight: bold;
-        margin-top: 10px;
-    }
-    .btn:hover {
-        background: #159a5c;
-    }
-    .footer {
-        text-align: center;
-        margin: 25px;
-        font-size: 14px;
-    }
-</style>
+  <meta charset="UTF-8">
+  <title>Escolha seus alimentos</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/estilo.css">
 </head>
 <body>
 
-<header>NUTRIMAIS</header>
-
 <div class="container">
+  <h1>Monte sua dieta</h1>
+  <p>Escolha os alimentos que deseja consumir</p>
 
-    <!-- Plano Dieta -->
-    <div class="card">
-        <h2>Plano Dieta</h2>
-        <div class="old-price">De R$ 59,99</div>
-        <div class="price">R$ 14,99 / mensal</div>
-        <ul>
-            <li>Dieta completa personalizada</li>
-            <li>Gramatura de todos os alimentos</li>
-            <li>Suporte via WhatsApp e e-mail</li>
-            <li>Planejamento mensal</li>
-        </ul>
-        <a class="btn" href="https://mpago.la/2pB8iB3">Contratar Agora</a>
-    </div>
+  <!-- CAFÉ DA MANHÃ -->
+  <h2>Café da Manhã</h2>
+  <div class="box">
+    <label><input type="checkbox" value="Ovos"> Ovos</label>
+    <label><input type="checkbox" value="Pão integral"> Pão integral</label>
+    <label><input type="checkbox" value="Frutas"> Frutas</label>
+    <label><input type="checkbox" value="Café"> Café</label>
+  </div>
 
-    <!-- Plano Dieta + Treino -->
-    <div class="card">
-        <h2>Dieta + Treino</h2>
-        <div class="old-price">De R$ 79,99</div>
-        <div class="price">R$ 19,99 / mensal</div>
-        <ul>
-            <li>Dieta personalizada + gramatura</li>
-            <li>Plano completo de treino</li>
-            <li>Sugestões de receitas</li>
-            <li>Suporte via WhatsApp e e-mail</li>
-        </ul>
-        <a class="btn" href="https://mpago.la/1BG6Yz">Contratar Agora</a>
-    </div>
+  <!-- ALMOÇO -->
+  <h2>Almoço</h2>
+  <div class="box">
+    <label><input type="checkbox" value="Arroz"> Arroz</label>
+    <label><input type="checkbox" value="Feijão"> Feijão</label>
+    <label><input type="checkbox" value="Frango grelhado"> Frango grelhado</label>
+    <label><input type="checkbox" value="Salada"> Salada</label>
+  </div>
 
-    <!-- Plano Ouro -->
-    <div class="card">
-        <h2>Plano Ouro</h2>
-        <div class="old-price">De R$ 94,99</div>
-        <div class="price">R$ 29,99 / mensal</div>
-        <ul>
-            <li>Tudo do Dieta + Treino</li>
-            <li>Consulta Nutricional 1x ao mês</li>
-            <li>Ajuste da dieta no mês</li>
-        </ul>
-        <a class="btn" href="https://mpago.la/347fXz5">Contratar Agora</a>
-    </div>
+  <!-- CAFÉ DA TARDE -->
+  <h2>Café da Tarde</h2>
+  <div class="box">
+    <label><input type="checkbox" value="Pão + Frango"> Pão + Frango</label>
+    <label><input type="checkbox" value="Pão + Ovo"> Pão + Ovo</label>
+    <label><input type="checkbox" value="Tapioca"> Tapioca</label>
+    <label><input type="checkbox" value="Whey"> Whey (1 scoop)</label>
+    <label><input type="checkbox" value="Banana"> Banana</label>
+    <label><input type="checkbox" value="Maçã"> Maçã</label>
+  </div>
+
+  <!-- JANTA -->
+  <h2>Janta</h2>
+  <div class="box">
+    <label><input type="checkbox" value="Arroz"> Arroz</label>
+    <label><input type="checkbox" value="Feijão preto"> Feijão preto</label>
+    <label><input type="checkbox" value="Frango grelhado"> Frango grelhado</label>
+    <label><input type="checkbox" value="Peixe"> Peixe</label>
+    <label><input type="checkbox" value="Legumes cozidos"> Legumes cozidos</label>
+  </div>
+
+  <!-- DOCE -->
+  <h2>Doce (opcional)</h2>
+  <div class="box">
+    <label><input type="checkbox" value="Chocolate"> Chocolate</label>
+    <label><input type="checkbox" value="Doce de leite"> Doce de leite</label>
+    <label><input type="checkbox" value="Brigadeiro"> Brigadeiro</label>
+  </div>
+
+  <button onclick="salvarAlimentos()" class="btn">Seguinte</button>
 
 </div>
 
-<div class="footer">
-    © 2025 Nutrimais — Todos os direitos reservados
-</div>
-
+<script src="js/foods.js"></script>
 </body>
 </html>
