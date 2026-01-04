@@ -22,19 +22,24 @@ function calcularCalorias(peso, altura, idade, sexo, objetivo) {
   return Math.round(basal);
 }
 
-document.getElementById('formDados').onsubmit = e => {
+document.getElementById('formDados').onsubmit = function (e) {
   e.preventDefault();
 
-  const peso = +peso.value;
-  const altura = +altura.value;
-  const idade = +idade.value;
-  const objetivo = objetivoSelect.value;
+  const peso = +document.getElementById('peso').value;
+  const altura = +document.getElementById('altura').value;
+  const idade = +document.getElementById('idade').value;
+  const objetivo = document.getElementById('objetivo').value;
 
   const calorias = calcularCalorias(peso, altura, idade, sexoSelecionado, objetivo);
 
   localStorage.setItem('dadosUsuario', JSON.stringify({
-    peso, altura, idade, sexo: sexoSelecionado, objetivo, calorias
+    peso,
+    altura,
+    idade,
+    sexo: sexoSelecionado,
+    objetivo,
+    calorias
   }));
 
-  window.location.href = 'plans.html';
+  window.location.href = 'dieta.html';
 };
