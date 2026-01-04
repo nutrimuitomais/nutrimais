@@ -12,11 +12,13 @@
     <h1>Vamos começar</h1>
     <p>Preencha seus dados para montar sua dieta</p>
 
+    <!-- FORM CORRETO -->
     <form id="formDados">
-  <!-- campos -->
-  <button type="submit">Continuar</button>
-</form>
-      
+
+      <input type="number" id="peso" placeholder="Peso (kg)" required>
+      <input type="number" id="altura" placeholder="Altura (cm)" required>
+      <input type="number" id="idade" placeholder="Idade" required>
+
       <select id="objetivo" required>
         <option value="">Objetivo</option>
         <option value="Emagrecimento">Emagrecimento</option>
@@ -24,23 +26,19 @@
         <option value="Manutenção">Manutenção</option>
       </select>
 
-      <select id="calorias" required>
-        <option value="">Calorias diárias</option>
-        <option value="1800">1800 kcal</option>
-        <option value="2000">2000 kcal</option>
-        <option value="2200">2200 kcal</option>
-      </select>
-
+      <!-- sexo -->
       <div class="sexo">
         <button type="button" data-sexo="Masculino" class="sexo-btn">Masculino</button>
         <button type="button" data-sexo="Feminino" class="sexo-btn">Feminino</button>
       </div>
 
+      <!-- botão único -->
       <button type="submit" class="btn">Continuar</button>
 
     </form>
   </div>
 
+  <!-- JS SEMPRE NO FINAL -->
   <script src="js/form.js"></script>
 </body>
 </html>
