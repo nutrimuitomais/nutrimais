@@ -1,19 +1,59 @@
-<button onclick="finalizarDieta()">Seguinte</button>
-<h3>Café da manhã</h3>
-<button onclick="selecionarAlimento('cafeManha', 'Ovos')">Ovos</button>
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Escolha seus alimentos</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/estilo.css">
+</head>
+<body>
 
-<h3>Almoço</h3>
-<button onclick="selecionarAlimento('almoco', 'Arroz')">Arroz</button>
+<div class="container">
+  <h1>Monte sua dieta</h1>
+  <p>Selecione os alimentos de cada refeição</p>
 
-<h3>Café da tarde</h3>
-<button onclick="selecionarAlimento('cafeTarde', 'Pão + frango')">Pão + frango</button>
+  <!-- CAFÉ DA MANHÃ -->
+  <h2>Café da manhã</h2>
+  <div class="grid">
+    <div class="card" onclick="selecionarCard(this,'cafeManha','Ovos')">Ovos</div>
+    <div class="card" onclick="selecionarCard(this,'cafeManha','Pão')">Pão</div>
+    <div class="card" onclick="selecionarCard(this,'cafeManha','Frutas')">Frutas</div>
+  </div>
 
-<h3>Janta</h3>
-<button onclick="selecionarAlimento('janta', 'Frango grelhado')">Frango grelhado</button>
+  <!-- ALMOÇO -->
+  <h2>Almoço</h2>
+  <div class="grid">
+    <div class="card" onclick="selecionarCard(this,'almoco','Arroz')">Arroz</div>
+    <div class="card" onclick="selecionarCard(this,'almoco','Feijão')">Feijão</div>
+    <div class="card" onclick="selecionarCard(this,'almoco','Frango grelhado')">Frango grelhado</div>
+  </div>
 
-<h3>Doce</h3>
-<button onclick="selecionarAlimento('doce', 'Chocolate')">Chocolate</button>
-<label>
-  <input type="checkbox" onclick="selecionarAlimento('cafeManha', 'Ovos')">
-  Ovos
-</label>
+  <!-- CAFÉ DA TARDE -->
+  <h2>Café da tarde</h2>
+  <div class="grid">
+    <div class="card" onclick="selecionarCard(this,'cafeTarde','Pão + frango')">Pão + frango</div>
+    <div class="card" onclick="selecionarCard(this,'cafeTarde','Tapioca')">Tapioca</div>
+    <div class="card" onclick="selecionarCard(this,'cafeTarde','Whey')">Whey</div>
+  </div>
+
+  <!-- JANTA -->
+  <h2>Janta</h2>
+  <div class="grid">
+    <div class="card" onclick="selecionarCard(this,'janta','Frango')">Frango</div>
+    <div class="card" onclick="selecionarCard(this,'janta','Peixe')">Peixe</div>
+    <div class="card" onclick="selecionarCard(this,'janta','Salada')">Salada</div>
+  </div>
+
+  <!-- DOCE -->
+  <h2>Doce (opcional)</h2>
+  <div class="grid">
+    <div class="card" onclick="selecionarCard(this,'doce','Chocolate')">Chocolate</div>
+    <div class="card" onclick="selecionarCard(this,'doce','Brigadeiro')">Brigadeiro</div>
+  </div>
+
+  <button id="btnSeguinte" onclick="finalizarDieta()" disabled>Seguinte</button>
+</div>
+
+<script src="js/dieta.js"></script>
+</body>
+</html>
