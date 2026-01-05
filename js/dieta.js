@@ -16,7 +16,6 @@ function selecionarAlimento(refeicao, alimento, elemento) {
   }
 }
 
-
 function finalizarDieta() {
   localStorage.setItem('dietaEscolhida', JSON.stringify(dieta));
   alert('🎉 Meus parabéns, sua dieta está quase pronta!');
