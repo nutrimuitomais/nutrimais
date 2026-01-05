@@ -179,3 +179,35 @@ button:disabled {
   justify-content: center;
   text-align: center;
 }
+.grid-alimentos {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
+  gap: 12px;
+  margin-bottom: 25px;
+}
+
+.card {
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 12px 8px;
+  text-align: center;
+  cursor: pointer;
+  border: 2px solid transparent;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+  transition: all 0.2s ease;
+  font-size: 14px;
+}
+
+.card span {
+  display: block;
+  margin-top: 6px;
+}
+
+.card:hover {
+  transform: scale(1.05);
+}
+
+.card.ativo {
+  border-color: #2ecc71;
+  background: #eafaf1;
+}
