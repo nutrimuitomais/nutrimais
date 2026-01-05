@@ -7,21 +7,21 @@ const dieta = {
 };
 
 function selecionarAlimento(refeicao, alimento) {
-  const index = dieta[refeicao].indexOf(alimento);
-
-  if (index > -1) {
-    dieta[refeicao].splice(index, 1);
-  } else {
+  if (!dieta[refeicao].includes(alimento)) {
     dieta[refeicao].push(alimento);
+    event.target.classList.add('ativo');
+  } else {
+    dieta[refeicao] = dieta[refeicao].filter(a => a !== alimento);
+    event.target.classList.remove('ativo');
   }
-
-  event.currentTarget.classList.toggle('ativo');
 }
 
 function finalizarDieta() {
-  localStorage.setItem('dietaUsuario', JSON.stringify(dieta));
-  window.location.href = 'portal.html';
+  localStorage.setItem('dietaEscolhida', JSON.stringify(dieta));
+  alert('🎉 Meus parabéns, sua dieta está quase pronta!');
+  window.location.href = 'planos.html';
 }
+
 function dietaValida() {
   return (
     dieta.cafeManha.length > 0 &&
