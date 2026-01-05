@@ -1,74 +1,152 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <title>Escolha seus alimentos</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="css/estilo.css">
+<meta charset="UTF-8">
+<title>Escolha seus alimentos</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="css/estilo.css">
 </head>
+
 <body>
 
 <div class="container">
   <h1>Monte sua dieta</h1>
-  <p>Escolha os alimentos que mais combinam com seu dia a dia</p>
+  <p>Escolha os alimentos que você costuma consumir</p>
 
-  <!-- CAFÉ DA MANHÃ -->
-  <h2>Café da manhã</h2>
-  <div class="grid-alimentos">
-    <div class="card" onclick="selecionarAlimento('cafeManha','Ovos', this)">🥚 Ovos</div>
-    <div class="card" onclick="selecionarAlimento('cafeManha','Pão integral', this)">🍞 Pão integral</div>
-    <div class="card" onclick="selecionarAlimento('cafeManha','Cuscuz', this)">🌽 Cuscuz</div>
-    <div class="card" onclick="selecionarAlimento('cafeManha','Tapioca', this)">🥞 Tapioca</div>
-    <div class="card" onclick="selecionarAlimento('cafeManha','Queijo', this)">🧀 Queijo</div>
-    <div class="card" onclick="selecionarAlimento('cafeManha','Frutas', this)">🍎 Frutas</div>
+  <!-- TEMPLATE REFEIÇÃO -->
+  <div class="refeicao">
+
+    <h2>Café da manhã</h2>
+    <div class="grid-alimentos" id="cafeManha">
+      <div class="card" data-grupo="cafeManha">Ovos</div>
+      <div class="card" data-grupo="cafeManha">Pão integral</div>
+      <div class="card" data-grupo="cafeManha">Cuscuz</div>
+      <div class="card" data-grupo="cafeManha">Tapioca</div>
+      <div class="card" data-grupo="cafeManha">Queijo</div>
+      <div class="card" data-grupo="cafeManha">Iogurte</div>
+      <div class="card" data-grupo="cafeManha">Leite</div>
+      <div class="card" data-grupo="cafeManha">Aveia</div>
+      <div class="card" data-grupo="cafeManha">Frutas</div>
+      <div class="card" data-grupo="cafeManha">Whey</div>
+    </div>
+
+    <div class="add-alimento">
+      <input type="text" placeholder="Adicionar outro alimento">
+      <button onclick="adicionarAlimento(this,'cafeManha')">+</button>
+    </div>
+
   </div>
 
-  <!-- ALMOÇO -->
-  <h2>Almoço</h2>
-  <div class="grid-alimentos">
-    <div class="card" onclick="selecionarAlimento('almoco','Arroz', this)">🍚 Arroz</div>
-    <div class="card" onclick="selecionarAlimento('almoco','Feijão', this)">🫘 Feijão</div>
-    <div class="card" onclick="selecionarAlimento('almoco','Frango grelhado', this)">🍗 Frango grelhado</div>
-    <div class="card" onclick="selecionarAlimento('almoco','Carne grelhada', this)">🥩 Carne grelhada</div>
-    <div class="card" onclick="selecionarAlimento('almoco','Peixe', this)">🐟 Peixe</div>
-    <div class="card" onclick="selecionarAlimento('almoco','Salada', this)">🥗 Salada</div>
+  <div class="refeicao">
+    <h2>Almoço</h2>
+    <div class="grid-alimentos" id="almoco">
+      <div class="card" data-grupo="almoco">Arroz</div>
+      <div class="card" data-grupo="almoco">Feijão</div>
+      <div class="card" data-grupo="almoco">Frango grelhado</div>
+      <div class="card" data-grupo="almoco">Carne bovina</div>
+      <div class="card" data-grupo="almoco">Peixe</div>
+      <div class="card" data-grupo="almoco">Ovos</div>
+      <div class="card" data-grupo="almoco">Macarrão</div>
+      <div class="card" data-grupo="almoco">Batata</div>
+      <div class="card" data-grupo="almoco">Salada</div>
+      <div class="card" data-grupo="almoco">Legumes</div>
+    </div>
+
+    <div class="add-alimento">
+      <input type="text" placeholder="Adicionar outro alimento">
+      <button onclick="adicionarAlimento(this,'almoco')">+</button>
+    </div>
   </div>
 
-  <!-- CAFÉ DA TARDE -->
-  <h2>Café da tarde</h2>
-  <div class="grid-alimentos">
-    <div class="card" onclick="selecionarAlimento('cafeTarde','Pão + frango', this)">🍞🍗 Pão + frango</div>
-    <div class="card" onclick="selecionarAlimento('cafeTarde','Pão + ovo', this)">🍞🥚 Pão + ovo</div>
-    <div class="card" onclick="selecionarAlimento('cafeTarde','Tapioca de frango', this)">🥞🍗 Tapioca frango</div>
-    <div class="card" onclick="selecionarAlimento('cafeTarde','Cuscuz + ovo', this)">🌽🥚 Cuscuz + ovo</div>
-    <div class="card" onclick="selecionarAlimento('cafeTarde','Pão de queijo', this)">🧀 Pão de queijo</div>
-    <div class="card" onclick="selecionarAlimento('cafeTarde','Whey 1 scoop', this)">🥤 Whey</div>
+  <div class="refeicao">
+    <h2>Café da tarde</h2>
+    <div class="grid-alimentos" id="cafeTarde">
+      <div class="card" data-grupo="cafeTarde">Pão integral</div>
+      <div class="card" data-grupo="cafeTarde">Ovos</div>
+      <div class="card" data-grupo="cafeTarde">Frango</div>
+      <div class="card" data-grupo="cafeTarde">Tapioca</div>
+      <div class="card" data-grupo="cafeTarde">Cuscuz</div>
+      <div class="card" data-grupo="cafeTarde">Queijo</div>
+      <div class="card" data-grupo="cafeTarde">Iogurte</div>
+      <div class="card" data-grupo="cafeTarde">Whey</div>
+      <div class="card" data-grupo="cafeTarde">Castanhas</div>
+      <div class="card" data-grupo="cafeTarde">Frutas</div>
+    </div>
+
+    <div class="add-alimento">
+      <input type="text" placeholder="Adicionar outro alimento">
+      <button onclick="adicionarAlimento(this,'cafeTarde')">+</button>
+    </div>
   </div>
 
-  <!-- JANTA -->
-  <h2>Janta</h2>
-  <div class="grid-alimentos">
-    <div class="card" onclick="selecionarAlimento('janta','Batata doce', this)">🍠 Batata doce</div>
-    <div class="card" onclick="selecionarAlimento('janta','Macarrão', this)">🍝 Macarrão</div>
-    <div class="card" onclick="selecionarAlimento('janta','Frango cozido', this)">🍗 Frango cozido</div>
-    <div class="card" onclick="selecionarAlimento('janta','Patinho', this)">🥩 Patinho</div>
-    <div class="card" onclick="selecionarAlimento('janta','Atum', this)">🐟 Atum</div>
-    <div class="card" onclick="selecionarAlimento('janta','Legumes', this)">🥕 Legumes</div>
+  <div class="refeicao">
+    <h2>Janta</h2>
+    <div class="grid-alimentos" id="janta">
+      <div class="card" data-grupo="janta">Frango</div>
+      <div class="card" data-grupo="janta">Carne magra</div>
+      <div class="card" data-grupo="janta">Peixe</div>
+      <div class="card" data-grupo="janta">Ovos</div>
+      <div class="card" data-grupo="janta">Batata doce</div>
+      <div class="card" data-grupo="janta">Arroz</div>
+      <div class="card" data-grupo="janta">Legumes</div>
+      <div class="card" data-grupo="janta">Salada</div>
+      <div class="card" data-grupo="janta">Macarrão</div>
+      <div class="card" data-grupo="janta">Atum</div>
+    </div>
+
+    <div class="add-alimento">
+      <input type="text" placeholder="Adicionar outro alimento">
+      <button onclick="adicionarAlimento(this,'janta')">+</button>
+    </div>
   </div>
 
-  <!-- DOCE -->
-  <h2>Doce</h2>
-  <div class="grid-alimentos">
-    <div class="card" onclick="selecionarAlimento('doce','Chocolate', this)">🍫 Chocolate</div>
-    <div class="card" onclick="selecionarAlimento('doce','Doce de leite', this)">🍮 Doce de leite</div>
-    <div class="card" onclick="selecionarAlimento('doce','Doce de coco', this)">🥥 Doce de coco</div>
-    <div class="card" onclick="selecionarAlimento('doce','Brigadeiro', this)">🍬 Brigadeiro</div>
-  </div>
-
-  <!-- BOTÃO FINAL -->
-  <button class="btn" onclick="finalizarDieta()">Ver dieta completa</button>
+  <button class="btn" id="btnFinalizar">Ver dieta completa</button>
 </div>
 
-<script src="js/dieta.js"></script>
+<script>
+const dieta = {
+  cafeManha: [],
+  almoco: [],
+  cafeTarde: [],
+  janta: []
+};
+
+document.addEventListener('click', e => {
+  if (e.target.classList.contains('card')) {
+    const grupo = e.target.dataset.grupo;
+    const valor = e.target.innerText;
+
+    e.target.classList.toggle('ativo');
+
+    if (dieta[grupo].includes(valor)) {
+      dieta[grupo] = dieta[grupo].filter(i => i !== valor);
+    } else {
+      dieta[grupo].push({
+        nome: valor,
+        macros: { proteina: 25, carbo: 25, gordura: 10 } // base equilibrada
+      });
+    }
+  }
+});
+
+function adicionarAlimento(btn, grupo) {
+  const input = btn.previousElementSibling;
+  if (!input.value.trim()) return;
+
+  const card = document.createElement('div');
+  card.className = 'card';
+  card.dataset.grupo = grupo;
+  card.innerText = input.value;
+
+  document.getElementById(grupo).appendChild(card);
+  input.value = '';
+}
+
+document.getElementById('btnFinalizar').onclick = () => {
+  localStorage.setItem('dietaSelecionada', JSON.stringify(dieta));
+  window.location.href = 'resultado.html';
+};
+</script>
+
 </body>
 </html>
