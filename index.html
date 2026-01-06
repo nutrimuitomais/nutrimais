@@ -2,28 +2,37 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
-  <title>NutriMais - Início</title>
+  <title>Nutri+</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="css/estilo.css">
 </head>
 <body>
 
-  <div class="container">
-    <img src="img/logo.png" alt="NutriMais" class="logo">
+<div class="container inicio">
 
-    <h1>Bem-vindo(a)</h1>
-    <p>Escolha como deseja continuar</p>
+  <!-- LOGO -->
+  <img src="img/logo.png" alt="Nutri+" class="logo anim-logo">
 
-    <div class="card" onclick="window.location.href='form.html'">
-      <h2>Sou novo por aqui</h2>
-      <p>Montar minha dieta personalizada</p>
-    </div>
+  <!-- TEXTO PRINCIPAL -->
+  <h1>Bem-vindo à Nutri+</h1>
 
-    <div class="card" onclick="window.location.href='login.html'">
-      <h2>Já sou cliente</h2>
-      <p>Acessar meu portal</p>
-    </div>
+  <p class="sub centralizado">
+    Escolha como deseja continuar
+  </p>
+
+  <!-- AÇÕES -->
+  <div class="acoes">
+    <a href="dados.html" class="btn btn-outline">
+      Sou novo na Nutri+
+    </a>
+
+    <a href="portal.html" class="btn">
+      Já sou cliente da Nutri+  
+      <span class="mini">Acessar minha dieta</span>
+    </a>
   </div>
+
+</div>
 
 </body>
 </html>
