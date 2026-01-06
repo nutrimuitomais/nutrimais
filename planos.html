@@ -2,26 +2,96 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
-  <title>Dieta quase pronta</title>
+  <title>Escolha seu plano</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="css/estilo.css">
 </head>
 <body>
 
 <div class="container">
-  <h1>🎉 Parabéns!</h1>
+  <h1>Escolha seu plano</h1>
+  <p class="sub">Desbloqueie sua dieta completa e acesso exclusivo</p>
 
-  <p>
-    Sua dieta está quase pronta para o seu objetivo.
-    <br><br>
-    Agora vamos para a melhor escolha para sua mudança
-    <strong>começar hoje ainda</strong>.
-  </p>
+  <div class="planos">
 
-  <button class="btn" onclick="window.location.href='planos.html'">
-    Escolher meu plano
-  </button>
+    <!-- PLANO DIETA -->
+    <div class="plano destaque">
+      <span class="tag">Mais escolhido</span>
+      <h2>Plano Dieta</h2>
+      <p class="preco-antigo">De R$ 59,99</p>
+      <p class="preco">R$ 12,99</p>
+      <ul>
+        <li>Cronograma mensal completo</li>
+        <li>Gramatura dos alimentos</li>
+        <li>Suporte por e-mail e WhatsApp</li>
+      </ul>
+      <button onclick="selecionarPlano('Plano Dieta',12.99,0)">Escolher plano</button>
+    </div>
+
+    <!-- PLANO PRO -->
+    <div class="plano">
+      <span class="tag azul">Mais vendido</span>
+      <h2>Plano Dieta Pro (Treino)</h2>
+      <p class="preco-antigo">De R$ 69,99</p>
+      <p class="preco">R$ 18,99</p>
+      <ul>
+        <li>Gramatura dos alimentos</li>
+        <li>Cronograma mensal completo</li>
+        <li>Receitas personalizadas</li>
+        <li>Plano de treino completo</li>
+        <li>Suporte por e-mail e WhatsApp</li>
+      </ul>
+      <button onclick="selecionarPlano('Plano Dieta Pro',18.99,0)">Escolher plano</button>
+    </div>
+
+    <!-- PLANO PREMIUM -->
+    <div class="plano recomendado">
+      <span class="tag verde">Mais recomendado</span>
+      <h2>Plano Dieta Premium</h2>
+      <p class="preco-antigo">De R$ 89,99</p>
+      <p class="preco">R$ 29,99</p>
+      <ul>
+        <li>Gramatura dos alimentos</li>
+        <li>Cronograma mensal completo</li>
+        <li>Receitas personalizadas</li>
+        <li>Plano de treino completo</li>
+        <li>Ajuste de dieta</li>
+        <li>1 consulta com nutricionista</li>
+      </ul>
+      <button onclick="selecionarPlano('Plano Premium',29.99,1)">Escolher plano</button>
+    </div>
+
+    <!-- PLANO OURO -->
+    <div class="plano">
+      <h2>Plano Dieta Ouro</h2>
+      <p class="preco-antigo">De R$ 109,99</p>
+      <p class="preco">R$ 59,99</p>
+      <ul>
+        <li>2 consultas com nutricionista</li>
+        <li>Acompanhamento de progresso</li>
+        <li>Ajuste de dieta 2x ao mês</li>
+        <li>Treino ajustado por personal</li>
+        <li>Suporte premium</li>
+      </ul>
+      <button onclick="selecionarPlano('Plano Ouro',59.99,2)">Escolher plano</button>
+    </div>
+
+  </div>
 </div>
+
+<script>
+function selecionarPlano(nome, preco, consultas) {
+  const plano = {
+    nome,
+    preco,
+    consultas,
+    dataInicio: new Date().toISOString()
+  };
+
+  localStorage.setItem("planoEscolhido", JSON.stringify(plano));
+  window.location.href = "pagamento.html";
+}
+</script>
 
 </body>
 </html>
