@@ -236,3 +236,16 @@ body {
   margin: 0 auto;
   padding: 0 16px;
 }
+/* CENTRALIZAR APENAS TEXTO DOS CAMPOS */
+.campo {
+  text-align: center;
+}
+
+.campo label {
+  text-align: center;
+}
+
+.campo input,
+.campo select {
+  text-align: center;
+}
