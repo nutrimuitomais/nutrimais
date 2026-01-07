@@ -203,3 +203,19 @@ body {
   margin-top: 32px;
   box-shadow: 0 12px 30px rgba(29,185,84,0.4);
 }
+/* BARRA DE PROGRESSO */
+.progresso {
+  width: 100%;
+  height: 6px;
+  background: #eeeeee;
+  border-radius: 10px;
+  margin-bottom: 24px;
+  overflow: hidden;
+}
+
+.progresso-barra {
+  width: 75%; /* quase completo */
+  height: 100%;
+  background: var(--verde-logo);
+  border-radius: 10px;
+}
