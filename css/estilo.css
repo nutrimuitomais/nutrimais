@@ -107,7 +107,7 @@ body {
 .container {
   max-width: 420px;
   margin: 0 auto;
-  padding: 100px 20px 80px;
+  padding: 40px 20px 80px;
 }
 
 /* CAMPOS ESTILO CARD FLUTUANTE */
@@ -176,30 +176,7 @@ body {
   box-shadow: 0 12px 30px rgba(29, 185, 84, 0.4);
   z-index: 10;
 }
-/* TOPO FIXO */
-.topo-fixo {
-  position: fixed;
-  top: 0;
-  width: 100%;
-  background: #ffffff;
-  padding: 14px 16px;
-  text-align: center;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-  z-index: 20;
-}
 
-.topo-fixo h2 {
-  font-size: 16px;
-  font-weight: 700;
-  color: #111;
-}
-
-.topo-fixo span {
-  display: block;
-  font-size: 12px;
-  color: #777;
-  margin-top: 2px;
-}
 /* BLOCO INTRO */
 .bloco-intro {
   text-align: center;
