@@ -211,3 +211,18 @@ body {
   margin-bottom: 12px;
   opacity: 0.6;
 }
+/* BOTÃO GRANDE CONTINUAR */
+.botao-grande {
+  display: block;
+  width: 100%;
+  background: var(--verde-logo);
+  color: #ffffff;
+  text-align: center;
+  padding: 20px;
+  border-radius: 22px;
+  font-size: 20px;
+  font-weight: 800;
+  text-decoration: none;
+  margin-top: 32px;
+  box-shadow: 0 12px 30px rgba(29,185,84,0.4);
+}
