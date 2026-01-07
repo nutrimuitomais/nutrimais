@@ -25,10 +25,10 @@ document.addEventListener('DOMContentLoaded', () => {
     campo.addEventListener('input', validarCampos);
   });
 
-  botao.addEventListener('click', () => {
-    if (!botao.disabled) {
-      window.location.href = 'alimentos.html';
-    }
-  });
+ botao.addEventListener('click', () => {
+  if (!botao.disabled) {
+    window.location.href = 'alimentos.html';
+  }
+});
 
 });
