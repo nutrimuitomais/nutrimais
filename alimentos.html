@@ -1,1 +1,140 @@
-ds
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Escolha seus alimentos</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/estilo.css">
+</head>
+<body>
+
+<div class="container">
+  <h1 class="titulo-central">Monte sua dieta</h1>
+  <p class="subtitulo-central">Selecione os alimentos que deseja ter na sua dieta</p>
+
+  <!-- CAFÉ DA MANHÃ -->
+  <section>
+    <h2 class="titulo-refeicao">Café da manhã</h2>
+    <div class="grid" id="cafeManha"></div>
+    <div class="add-box">
+      <input placeholder="Adicionar alimento">
+      <button onclick="adicionar(this,'cafeManha')">+</button>
+    </div>
+  </section>
+
+  <!-- ALMOÇO -->
+  <section>
+    <h2 class="titulo-refeicao">Almoço</h2>
+    <div class="grid" id="almoco"></div>
+    <div class="add-box">
+      <input placeholder="Adicionar alimento">
+      <button onclick="adicionar(this,'almoco')">+</button>
+    </div>
+  </section>
+
+  <!-- CAFÉ DA TARDE -->
+  <section>
+    <h2 class="titulo-refeicao">Café da tarde</h2>
+    <div class="grid" id="cafeTarde"></div>
+    <div class="add-box">
+      <input placeholder="Adicionar alimento">
+      <button onclick="adicionar(this,'cafeTarde')">+</button>
+    </div>
+  </section>
+
+  <!-- JANTA -->
+  <section>
+    <h2 class="titulo-refeicao">Janta</h2>
+    <div class="grid" id="janta"></div>
+    <div class="add-box">
+      <input placeholder="Adicionar alimento">
+      <button onclick="adicionar(this,'janta')">+</button>
+    </div>
+  </section>
+
+  <!-- Extra / Acompanhamento -->
+  <section>
+    <h2 class="titulo-refeicao">Extra</h2>
+    <div class="grid" id="extra"></div>
+    <div class="add-box">
+      <input placeholder="Adicionar alimento">
+      <button onclick="adicionar(this,'extra')">+</button>
+    </div>
+  </section>
+
+  <!-- Consegue com facilidade -->
+  <section>
+    <h2 class="titulo-refeicao">facilidade</h2>
+    <div class="grid" id="facilidade"></div>
+    <div class="add-box">
+      <input placeholder="Adicionar alimento">
+      <button onclick="adicionar(this,'facilidade')">+</button>
+    </div>
+  </section>
+
+  <button class="btn" onclick="finalizar()">Ver dieta completa</button>
+</div>
+
+<script>
+const base = {
+  cafeManha: ["🥚 Ovos","🍞 Pão integral","🥞 Tapioca","🌽 Cuscuz","🧀 Queijo","🥣 Aveia","🍌 Banana","🍎 Frutas","🥛 Leite","🥤 Whey"],
+  almoco: ["🍚 Arroz","🫘 Feijão","🍗 Frango","🥩 Carne","🐟 Peixe","🥔 Batata","🍝 Macarrão","🥗 Salada","🥕 Legumes","🍳 Ovos"],
+  cafeTarde: ["🍞 Pão","🥚 Ovo","🍗 Frango","🥞 Tapioca","🌽 Cuscuz","🧀 Queijo","🥣 Iogurte","🥤 Whey","🥜 Castanhas","🍎 Frutas"],
+  janta: ["🍗 Frango","🥩 Carne magra","🐟 Peixe","🍳 Ovos","🍠 Batata doce","🍚 Arroz","🥗 Salada","🥕 Legumes","🍝 Macarrão","🐟 Atum"],
+  extra: ["🍫 Brigadeiro","🥄 Doce de leite","🥜 Pasta de amendoim"],
+  facilidade: ["🥬 Verduras","🍎 Frutas","💊 Suplementos"]
+};
+
+const dieta = {
+  cafeManha: [],
+  almoco: [],
+  cafeTarde: [],
+  janta: [],
+  extra: [],
+  facilidade: []
+};
+
+// montar cards
+Object.keys(base).forEach(ref => {
+  const box = document.getElementById(ref);
+  base[ref].forEach(nome => {
+    const c = document.createElement("div");
+    c.className = "card";
+    c.innerText = nome;
+    c.onclick = () => toggle(ref, nome, c);
+    box.appendChild(c);
+  });
+});
+
+function toggle(ref, nome, el){
+  const idx = dieta[ref].findIndex(i => i.nome === nome);
+  if(idx >= 0){
+    dieta[ref].splice(idx,1);
+    el.classList.remove("ativo");
+  } else {
+    dieta[ref].push({nome, macros:{proteina:25,carbo:30,gordura:10}});
+    el.classList.add("ativo");
+  }
+}
+
+function adicionar(btn, ref){
+  const input = btn.previousElementSibling;
+  if(!input.value.trim()) return;
+  const nome = "🍽️ " + input.value;
+  const card = document.createElement("div");
+  card.className = "card ativo";
+  card.innerText = nome;
+  card.onclick = () => toggle(ref, nome, card);
+  document.getElementById(ref).appendChild(card);
+  dieta[ref].push({nome, macros:{proteina:20,carbo:30,gordura:10}});
+  input.value = "";
+}
+
+function finalizar(){
+  localStorage.setItem("dietaSelecionada", JSON.stringify(dieta));
+  location.href = "resultado.html";
+}
+</script>
+
+</body>
+</html>
