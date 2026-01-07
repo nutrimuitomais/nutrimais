@@ -328,3 +328,20 @@ body {
 .add-box button:hover {
   background-color: #27ae60;
 }
+.titulo-central {
+  text-align: center;
+  margin-bottom: 6px;
+}
+
+.subtitulo-central {
+  text-align: center;
+  font-size: 14px;
+  color: #666;
+  margin-bottom: 24px;
+}
+
+.titulo-refeicao {
+  text-align: center;
+  font-size: 17px;
+  margin-bottom: 12px;
+}
