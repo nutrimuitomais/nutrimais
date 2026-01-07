@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Resumo da sua dieta</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/estilo.css">
+</head>
+<body>
+
+<div class="container-inicio">
+
+  <h1 class="titulo-principal">
+    Sua dieta foi criada com base no seu perfil
+  </h1>
+
+  <p class="subtitulo">
+    Nutrição inteligente, personalizada para você
+  </p>
+
+  <!-- CARD RESUMO -->
+  <div class="card-resumo">
+
+    <p><strong>Objetivo:</strong> <span id="objetivo"></span></p>
+    <p><strong>Calorias diárias:</strong> <span id="calorias"></span> kcal</p>
+
+    <hr>
+
+    <p class="texto-bloqueado">
+      Distribuição de macronutrientes calculada com precisão nutricional
+    </p>
+
+    <div class="blur-box">
+      Proteínas • Carboidratos • Gorduras
+    </div>
+
+    <p class="aviso">
+      🔒 Valores completos disponíveis após a liberação do plano
+    </p>
+
+  </div>
+
+  <!-- CTA -->
+  <a href="planos.html" class="card-opcao destaque">
+    Desbloquear minha dieta completa
+  </a>
+
+</div>
+
+<script>
+  const dados = JSON.parse(localStorage.getItem("dadosUsuario"));
+
+  document.getElementById("objetivo").innerText = dados.objetivo;
+  document.getElementById("calorias").innerText = dados.calorias;
+</script>
+
+</body>
+</html>
