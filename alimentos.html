@@ -34,4 +34,158 @@
 
   /* BOTÃO ADICIONAR ALIMENTO */
   .add-box { display:flex; justify-content:center; margin-bottom:24px; gap:6px; }
-  .add-box input { padding:6px 10px; font-size:13px; border-radius:8px; border:1px solid #ccc; outline:
+  .add-box input { padding:6px 10px; font-size:13px; border-radius:8px; border:1px solid #ccc; outline:none; flex:1; text-align:center; }
+  .add-box button { background:var(--verde-logo); color:#fff; border:none; border-radius:8px; padding:6px 12px; font-size:14px; cursor:pointer; transition:0.2s; }
+  .add-box button:hover { transform:scale(1.05); opacity:0.85; }
+
+  /* BOTÃO FINAL */
+  .btn-ver-dieta { display:block; width:100%; max-width:320px; margin:24px auto; padding:14px; background:var(--verde-logo); color:#fff; font-size:17px; font-weight:700; text-align:center; border-radius:40px; box-shadow:0 12px 30px rgba(29,185,84,0.4); cursor:pointer; transition:0.2s; }
+  .btn-ver-dieta:hover { transform:scale(1.03); opacity:0.9; }
+
+  /* LINHA E SÍMBOLO SUAVE DE DIETA */
+  .linha-simbolo-wrapper { display:flex; align-items:center; justify-content:center; gap:8px; margin-bottom:24px; }
+  .linha-simbolo-wrapper .linha { flex:1; height:2px; background-color:#e0e0e0; border-radius:1px; }
+  .linha-simbolo-wrapper .simbolo-dieta { font-size:24px; color:var(--verde-logo); opacity:0.3; }
+</style>
+</head>
+<body>
+
+<div class="container">
+  <!-- LINHA E SÍMBOLO -->
+  <div class="linha-simbolo-wrapper">
+    <span class="linha"></span>
+    <span class="simbolo-dieta">🥗</span>
+    <span class="linha"></span>
+  </div>
+
+  <div class="titulo-central-wrapper">
+    <span class="icone-dieta">🥗</span>
+    <h1 class="titulo-central">Monte sua dieta</h1>
+    <p class="subtitulo-central">Selecione os alimentos que deseja ter na sua dieta</p>
+  </div>
+
+  <!-- BARRA DE PROGRESSO -->
+  <div class="progresso">
+    <div class="progresso-barra" id="barraProgresso"></div>
+  </div>
+
+  <!-- CAFÉ DA MANHÃ -->
+  <section>
+    <h2 class="titulo-refeicao">Café da manhã</h2>
+    <div class="grid" id="cafeManha"></div>
+    <div class="add-box">
+      <input placeholder="Adicionar alimento">
+      <button onclick="adicionar(this,'cafeManha')">+</button>
+    </div>
+  </section>
+
+  <!-- ALMOÇO -->
+  <section>
+    <h2 class="titulo-refeicao">Almoço</h2>
+    <div class="grid" id="almoco"></div>
+    <div class="add-box">
+      <input placeholder="Adicionar alimento">
+      <button onclick="adicionar(this,'almoco')">+</button>
+    </div>
+  </section>
+
+  <!-- CAFÉ DA TARDE -->
+  <section>
+    <h2 class="titulo-refeicao">Café da tarde</h2>
+    <div class="grid" id="cafeTarde"></div>
+    <div class="add-box">
+      <input placeholder="Adicionar alimento">
+      <button onclick="adicionar(this,'cafeTarde')">+</button>
+    </div>
+  </section>
+
+  <!-- JANTA -->
+  <section>
+    <h2 class="titulo-refeicao">Janta</h2>
+    <div class="grid" id="janta"></div>
+    <div class="add-box">
+      <input placeholder="Adicionar alimento">
+      <button onclick="adicionar(this,'janta')">+</button>
+    </div>
+  </section>
+
+  <!-- EXTRA -->
+  <section>
+    <h2 class="titulo-refeicao">Extra</h2>
+    <div class="grid" id="extra"></div>
+    <div class="add-box">
+      <input placeholder="Adicionar alimento">
+      <button onclick="adicionar(this,'extra')">+</button>
+    </div>
+  </section>
+
+  <!-- FACILIDADE -->
+  <section>
+    <h2 class="titulo-refeicao">Facilidade</h2>
+    <div class="grid" id="facilidade"></div>
+    <div class="add-box">
+      <input placeholder="Adicionar alimento">
+      <button onclick="adicionar(this,'facilidade')">+</button>
+    </div>
+  </section>
+
+  <!-- BOTÃO FINAL -->
+  <button class="btn-ver-dieta" onclick="finalizar()">Ver minha dieta agora</button>
+</div>
+
+<script>
+const base = {
+  cafeManha: ["🥚 Ovos","🍞 Pão integral","🥞 Tapioca","🌽 Cuscuz","🧀 Queijo","🥣 Aveia","🍌 Banana","🍎 Frutas","🥛 Leite","🥤 Whey"],
+  almoco: ["🍚 Arroz","🫘 Feijão","🍗 Frango","🥩 Carne","🐟 Peixe","🥔 Batata","🍝 Macarrão","🥗 Salada","🥕 Legumes","🍳 Ovos"],
+  cafeTarde: ["🍞 Pão","🥚 Ovo","🍗 Frango","🥞 Tapioca","🌽 Cuscuz","🧀 Queijo","🥣 Iogurte","🥤 Whey","🥜 Castanhas","🍎 Frutas"],
+  janta: ["🍗 Frango","🥩 Carne magra","🐟 Peixe","🍳 Ovos","🍠 Batata doce","🍚 Arroz","🥗 Salada","🥕 Legumes","🍝 Macarrão","🐟 Atum"],
+  extra: ["🍫 Brigadeiro","🥄 Doce de leite","🥜 Pasta de amendoim"],
+  facilidade: ["🥬 Verduras","🍎 Frutas","💊 Suplementos"]
+};
+
+const dieta = { cafeManha: [], almoco: [], cafeTarde: [], janta: [], extra: [], facilidade: [] };
+
+// Montar cards
+Object.keys(base).forEach(ref => {
+  const box = document.getElementById(ref);
+  base[ref].forEach(nome => {
+    const c = document.createElement("div");
+    c.className = "card";
+    c.innerText = nome;
+    c.onclick = () => toggle(ref,nome,c);
+    box.appendChild(c);
+  });
+});
+
+function toggle(ref,nome,el){
+  const idx = dieta[ref].findIndex(i=>i.nome===nome);
+  if(idx>=0){ dieta[ref].splice(idx,1); el.classList.remove("ativo"); }
+  else { dieta[ref].push({nome,macros:{proteina:25,carbo:30,gordura:10}}); el.classList.add("ativo"); }
+}
+
+function adicionar(btn,ref){
+  const input = btn.previousElementSibling;
+  if(!input.value.trim()) return;
+  const nome = "🍽️ "+input.value;
+  const card = document.createElement("div");
+  card.className = "card ativo";
+  card.innerText = nome;
+  card.onclick = ()=>toggle(ref,nome,card);
+  document.getElementById(ref).appendChild(card);
+  dieta[ref].push({nome,macros:{proteina:20,carbo:30,gordura:10}});
+  input.value="";
+}
+
+function finalizar(){ 
+  localStorage.setItem("dietaSelecionada",JSON.stringify(dieta));
+  location.href="resultado.html";
+}
+
+// BARRA DE PROGRESSO POR ETAPA (PÁGINA)
+const paginaAtual = 2;  // exemplo: página 2 de 6
+const totalPaginas = 6;
+const perc = (paginaAtual / totalPaginas) * 100;
+document.getElementById('barraProgresso').style.width = perc + '%';
+</script>
+</body>
+</html>
