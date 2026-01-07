@@ -274,3 +274,46 @@ body {
 .campo-whatsapp select:focus {
   border-bottom: 2px solid var(--verde-logo);
 }
+/* GRID DE CARDS DE ALIMENTOS */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 3 cards por linha */
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+/* CARD INDIVIDUAL */
+.card {
+  background-color: #ffffff;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  padding: 12px 8px;
+  font-size: 14px;
+  text-align: center;
+  cursor: pointer;
+  user-select: none;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  transition: all 0.2s ease;
+}
+
+/* HOVER */
+.card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+  border-color: var(--verde-logo);
+}
+
+/* CARD SELECIONADO */
+.card.ativo {
+  background-color: var(--verde-logo);
+  color: #ffffff;
+  border-color: var(--verde-logo);
+}
+
+/* CENTRALIZAR TITULOS DAS REFEIÇÕES */
+.titulo-refeicao {
+  text-align: center;
+  margin-bottom: 12px;
+  font-size: 18px;
+  font-weight: 600;
+}
