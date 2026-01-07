@@ -363,9 +363,9 @@ body {
 }
 
 .icone-dieta-topo {
-  font-size: 32px; /* símbolo maior */
+  font-size: 50px; /* símbolo maior */
   margin-bottom: 12px;
-  opacity: 0.6; /* mais visível, ainda suave */
+  opacity: 0.8; /* mais visível, ainda suave */
 }
 
 /* Título e subtítulo centralizados (mantendo estilo anterior) */
