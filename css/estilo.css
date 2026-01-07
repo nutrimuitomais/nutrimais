@@ -362,10 +362,11 @@ body {
   border-radius: 1px;
 }
 
-.linha-simbolo-wrapper .simbolo-dieta {
-  font-size: 24px;     /* MESMO TAMANHO da página anterior */
+.icone-dieta-topo {
+  font-size: 64px; /* símbolo maior */
+  margin-bottom: 12px;
   color: var(--verde-logo);
-  opacity: 0.3;        /* suave */
+  opacity: 0.35; /* mais visível, ainda suave */
 }
 
 /* Título e subtítulo centralizados (mantendo estilo anterior) */
