@@ -92,3 +92,20 @@ body {
     font-size: 14px;
   }
 }
+/* VARIÁVEL DE COR PRINCIPAL (VERDE DA LOGO) */
+:root {
+  --verde-logo: #1db954; /* ajuste aqui se quiser outro tom */
+}
+
+/* CARD DESTAQUE – SOU NOVO NA NUTRI+ */
+.card-opcao.destaque {
+  background: var(--verde-logo);
+  border: none;
+  box-shadow: 0 10px 28px rgba(29, 185, 84, 0.35);
+}
+
+/* TEXTOS DO CARD VERDE */
+.card-opcao.destaque .titulo-opcao,
+.card-opcao.destaque .descricao-opcao {
+  color: #ffffff;
+}
