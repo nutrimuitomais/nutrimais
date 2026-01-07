@@ -274,3 +274,31 @@ body {
 .campo-whatsapp select:focus {
   border-bottom: 2px solid var(--verde-logo);
 }
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 3 por linha */
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.card {
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 10px 6px;
+  font-size: 13px;
+  text-align: center;
+  cursor: pointer;
+  user-select: none;
+  transition: all 0.2s ease;
+}
+
+.card:hover {
+  border-color: #2ecc71;
+}
+
+.card.ativo {
+  background-color: #2ecc71;
+  color: #fff;
+  border-color: #2ecc71;
+}
