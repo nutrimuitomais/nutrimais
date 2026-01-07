@@ -365,7 +365,7 @@ body {
 .icone-dieta-topo {
   font-size: 54px;
   margin-bottom: 4px;   /* ↓ diminui o espaço */
-  margin-top: -16px;    /* ↑ sobe o ícone */
+  margin-top: -25px;    /* ↑ sobe o ícone */
   color: var(--verde-logo);
   opacity: 0.35;
 }
@@ -405,4 +405,18 @@ body {
   background: var(--verde-logo);
   border-radius: 6px;
   transition: width 0.4s ease;
+}
+/* CARD GRANDE DA REFEIÇÃO */
+.bloco-refeicao {
+  background: #ffffff;
+  border: 1px solid #e5e5e5;
+  border-radius: 18px;
+  padding: 20px 16px;
+  margin-bottom: 28px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.06);
+}
+
+/* TÍTULO DENTRO DO CARD */
+.bloco-refeicao .titulo-refeicao {
+  margin-bottom: 16px;
 }
