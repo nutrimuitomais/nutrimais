@@ -92,3 +92,54 @@ body {
     font-size: 14px;
   }
 }
+.titulo-principal {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #111;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.subtitulo {
+  font-size: 1.1rem;
+  text-align: center;
+  color: #555;
+  margin-bottom: 30px;
+}
+
+.card-resumo {
+  background: #fff;
+  border-radius: 18px;
+  padding: 25px;
+  width: 100%;
+  max-width: 420px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+  margin-bottom: 30px;
+}
+
+.card-resumo p {
+  font-size: 1rem;
+  margin: 10px 0;
+  color: #222;
+}
+
+.texto-bloqueado {
+  font-weight: 600;
+  margin-top: 15px;
+}
+
+.blur-box {
+  background: #f2f2f2;
+  border-radius: 12px;
+  padding: 15px;
+  margin: 15px 0;
+  text-align: center;
+  filter: blur(3px);
+  user-select: none;
+}
+
+.aviso {
+  font-size: 0.85rem;
+  color: #777;
+  text-align: center;
+}
