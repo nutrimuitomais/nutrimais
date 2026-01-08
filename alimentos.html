@@ -146,7 +146,7 @@ const base = {
   cafeTarde: ["🍞 Pão","☕ Café s/ Açucar","🥚 Ovo+Pão","🍗 Sanduiche+Frango","🥞 Tapioca","🌽 Cuscuz","🧀 Queijo","🥣 Iogurte","🥤 Whey","🥜 Castanhas","🍎 Maça"],
   janta: ["🍗 Frango","🥩 Carne Corpo","🥩 Carne Bovina","🥩 Moela","🐟 Peixe","🍳 Ovos","🍠 Batata doce","🍚 Arroz","🥚 Omelete","🥗 Salada","🥕 Legumes","🍝 Macarrão","🐟 Atum"],
   extra: ["🍫 Brigadeiro","🥄 Doce de leite","🥜 Pasta de amendoim"],
-  Facilidade: ["🥬 Verduras","🍎 Frutas","💊 Suplementos"]
+  Facilidade: ["🥬 Verduras","🍎 Frutas","💊 Suplementos","🥕 Legumes"],
 };
 
 const dieta = { cafeManha: [], almoco: [], cafeTarde: [], janta: [], extra: [], facilidade: [] };
@@ -188,8 +188,8 @@ function finalizar(){
 }
 
 // BARRA DE PROGRESSO POR ETAPA (PÁGINA)
-const paginaAtual = 2;  // exemplo: página 2 de 6
-const totalPaginas = 6;
+const paginaAtual = 2;  // exemplo: página 2 de 4
+const totalPaginas = 4;
 const perc = (paginaAtual / totalPaginas) * 100;
 document.getElementById('barraProgresso').style.width = perc + '%';
 </script>
