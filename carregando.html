@@ -3,11 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <title>Carregando sua dieta</title>
-  <link rel="stylesheet" href="../css/carregando.css">
+
+  <!-- CSS CORRETO -->
+  <link rel="stylesheet" href="carregando.css">
 </head>
 <body>
 
-  <!-- BARRA DE PROGRESSO -->
+  <!-- BARRA -->
   <div class="barra-container">
     <div class="barra-progresso" id="barraProgresso"></div>
   </div>
@@ -15,17 +17,15 @@
   <div class="container">
 
     <!-- LOADING -->
-    <div id="loading" class="loading">
+    <div id="loading">
       <h1>Carregando sua dieta<span class="dots">...</span></h1>
     </div>
 
     <!-- RESUMO -->
-    <div id="resumo" class="resumo hidden">
-
+    <div id="resumo" class="hidden">
       <div class="card-resumo">
 
-        <!-- LOGO -->
-        <img src="../img/logo-nutrimais.png" alt="Nutri+" class="logo-resumo">
+        <img src="logo-nutrimais.png" class="logo-resumo">
 
         <h2>Resumo da sua dieta</h2>
 
@@ -46,9 +46,9 @@
 
       </div>
     </div>
-
   </div>
 
-  <script src="../js/carregando.js"></script>
+  <!-- JS CORRETO -->
+  <script src="carregando.js"></script>
 </body>
 </html>
