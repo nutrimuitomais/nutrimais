@@ -188,17 +188,10 @@ function finalizar(){
 }
 
 // BARRA DE PROGRESSO POR ETAPA (PÁGINA)
-...
-<script>
-  function definirProgresso(porcentagem) {
-    const barra = document.getElementById("barraProgresso");
-    if (barra) {
-      barra.style.width = porcentagem + "%";
-    }
-  }
-
-  // Página 4 de 4 (alimentos)
-  definirProgresso(90);
+const paginaAtual = 2;  // exemplo: página 2 de 6
+const totalPaginas = 6;
+const perc = (paginaAtual / totalPaginas) * 100;
+document.getElementById('barraProgresso').style.width = perc + '%';
 </script>
 </body>
 </html>
