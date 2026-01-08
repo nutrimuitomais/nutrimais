@@ -1,15 +1,12 @@
 document.addEventListener("DOMContentLoaded", () => {
 
-  // ===== BARRA DE PROGRESSO (85%) =====
+  // ===== BARRA DE PROGRESSO =====
   const barra = document.getElementById("barraProgresso");
-  if (barra) {
-    barra.style.width = "85%";
-  }
+  if (barra) barra.style.width = "85%";
 
   // ===== ANIMAÇÃO DOS PONTOS =====
   const dots = document.getElementById("dots");
   let count = 0;
-
   setInterval(() => {
     count = (count + 1) % 4;
     dots.textContent = ".".repeat(count);
@@ -25,29 +22,34 @@ document.addEventListener("DOMContentLoaded", () => {
 
 function carregarResumo() {
 
-  // ===== DADOS DO USUÁRIO =====
-  const dadosUsuario = JSON.parse(localStorage.getItem("dadosUsuario")) || {};
-  const objetivoUsuario = localStorage.getItem("objetivoSelecionado") || "";
-  const dietaSelecionada = JSON.parse(localStorage.getItem("dietaSelecionada")) || {};
+  // ===== TENTA PEGAR DADOS (TODAS AS VARIAÇÕES) =====
+  const dadosUsuario =
+    JSON.parse(localStorage.getItem("dadosUsuario")) ||
+    JSON.parse(localStorage.getItem("dadosFormulario")) ||
+    {};
 
-  // ===== MONTA TEXTO DE DADOS =====
+  const objetivoUsuario =
+    localStorage.getItem("objetivoSelecionado") ||
+    localStorage.getItem("objetivo") ||
+    "";
+
+  const dietaSelecionada =
+    JSON.parse(localStorage.getItem("dietaSelecionada")) ||
+    JSON.parse(localStorage.getItem("alimentosSelecionados")) ||
+    {};
+
+  // ===== DADOS =====
   const dadosTexto = `
-    Nome: ${dadosUsuario.nome || "-"} |
-    Idade: ${dadosUsuario.idade || "-"} anos |
-    Peso: ${dadosUsuario.peso || "-"} kg |
-    Altura: ${dadosUsuario.altura || "-"} cm
+    Peso: ${dadosUsuario.peso || "-"} |
+    Altura: ${dadosUsuario.altura || "-"} |
+    Idade: ${dadosUsuario.idade || "-"}
   `;
 
-  const dadosEl = document.getElementById("dadosUsuario");
-  if (dadosEl) {
-    dadosEl.innerText = dadosTexto;
-  }
+  document.getElementById("dadosUsuario").innerText = dadosTexto;
 
   // ===== OBJETIVO =====
-  const objetivoEl = document.getElementById("objetivoUsuario");
-  if (objetivoEl) {
-    objetivoEl.innerText = objetivoUsuario || "-";
-  }
+  document.getElementById("objetivoUsuario").innerText =
+    objetivoUsuario || "-";
 
   // ===== ALIMENTOS =====
   const lista = document.getElementById("listaAlimentos");
@@ -55,13 +57,10 @@ function carregarResumo() {
 
   let temAlimentos = false;
 
-  Object.keys(dietaSelecionada).forEach(refeicao => {
-    const itens = dietaSelecionada[refeicao];
-
-    if (Array.isArray(itens) && itens.length > 0) {
-      temAlimentos = true;
-
-      itens.forEach(item => {
+  Object.values(dietaSelecionada).forEach(refeicao => {
+    if (Array.isArray(refeicao)) {
+      refeicao.forEach(item => {
+        temAlimentos = true;
         const li = document.createElement("li");
         li.innerText = item.nome || item;
         lista.appendChild(li);
@@ -76,7 +75,6 @@ function carregarResumo() {
   }
 }
 
-// ===== BOTÃO =====
 function irParaPlanos() {
   window.location.href = "planos.html";
 }
