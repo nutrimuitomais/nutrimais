@@ -421,20 +421,3 @@ body {
 .bloco-refeicao .titulo-refeicao {
   margin-bottom: 16px;
 }
-@media (max-width: 480px) {
-
-  .grid {
-    grid-template-columns: repeat(2, 1fr); /* 2 colunas no celular */
-    gap: 12px;
-  }
-
-  .card {
-    width: 100%;          /* ocupa a coluna inteira */
-    font-size: 13px;
-    padding: 10px 6px;
-  }
-
-  .bloco-refeicao {
-    padding: 18px 14px;
-  }
-}
