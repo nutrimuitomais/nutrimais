@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Carregando sua dieta</title>
+  <link rel="stylesheet" href="../css/carregando.css">
+</head>
+<body>
+
+  <!-- BARRA DE PROGRESSO -->
+  <div class="barra-container">
+    <div class="barra-progresso" id="barraProgresso"></div>
+  </div>
+
+  <div class="container">
+
+    <!-- LOADING -->
+    <div id="loading" class="loading">
+      <h1>Carregando sua dieta<span class="dots">...</span></h1>
+    </div>
+
+    <!-- RESUMO -->
+    <div id="resumo" class="resumo hidden">
+
+      <div class="card-resumo">
+
+        <!-- LOGO -->
+        <img src="../img/logo-nutrimais.png" alt="Nutri+" class="logo-resumo">
+
+        <h2>Resumo da sua dieta</h2>
+
+        <p><strong>Dados:</strong></p>
+        <p id="dadosUsuario"></p>
+
+        <p class="objetivo">
+          <strong>Objetivo:</strong>
+          <span id="objetivoUsuario"></span>
+        </p>
+
+        <p><strong>Alimentos selecionados:</strong></p>
+        <ul id="listaAlimentos"></ul>
+
+        <button class="btn-principal" onclick="irParaPlanos()">
+          Gerar Dieta
+        </button>
+
+      </div>
+    </div>
+
+  </div>
+
+  <script src="../js/carregando.js"></script>
+</body>
+</html>
