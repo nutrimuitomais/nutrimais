@@ -178,8 +178,9 @@ body {
 }
 
 .icone-medidas {
-  font-size: 32px;
+  font-size: 45px;
   margin-bottom: 12px;
+  margin-bottom: 10px;   /* ↓ diminui o espaço */
   opacity: 0.6;
 }
 /* BOTÃO GRANDE CONTINUAR */
@@ -367,7 +368,7 @@ body {
   margin-bottom: 4px;   /* ↓ diminui o espaço */
   margin-top: -35px;    /* ↑ sobe o ícone */
   color: var(--verde-logo);
-  opacity: 0.35;
+  opacity: 0.6;
 }
 
 /* Título e subtítulo centralizados (mantendo estilo anterior) */
