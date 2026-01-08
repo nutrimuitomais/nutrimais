@@ -6,63 +6,23 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="carregando.css">
 </head>
+
 <body>
 
   <!-- BARRA DE PROGRESSO -->
   <div class="barra-container">
     <div class="barra-progresso" id="barraProgresso"></div>
   </div>
-  <script>
-  // ====== COLETA DE DADOS ======
-  const dadosUsuario = JSON.parse(localStorage.getItem("dadosUsuario")) || {};
-  const objetivoUsuario = localStorage.getItem("objetivoSelecionado") || "";
-  const dietaSelecionada = JSON.parse(localStorage.getItem("dietaSelecionada")) || {};
 
-  // ====== NOME NO RESUMO ======
-  const nomeSpan = document.getElementById("nomeUsuario");
-  if (nomeSpan && dadosUsuario.nome) {
-    nomeSpan.innerText = dadosUsuario.nome;
-  }
-
-  // ====== DADOS PESSOAIS ======
-  const dadosDiv = document.getElementById("dadosResumo");
-  if (dadosDiv) {
-    dadosDiv.innerHTML = `
-      <p><strong>Idade:</strong> ${dadosUsuario.idade || "-"} anos</p>
-      <p><strong>Peso:</strong> ${dadosUsuario.peso || "-"} kg</p>
-      <p><strong>Altura:</strong> ${dadosUsuario.altura || "-"} cm</p>
-    `;
-  }
-
-  // ====== ALIMENTOS SELECIONADOS ======
-  const alimentosDiv = document.getElementById("alimentosResumo");
-  if (alimentosDiv) {
-    let html = "";
-
-    Object.keys(dietaSelecionada).forEach(refeicao => {
-      if (dietaSelecionada[refeicao].length > 0) {
-        html += `<p><strong>${refeicao}:</strong></p><ul>`;
-        dietaSelecionada[refeicao].forEach(item => {
-          html += `<li>${item.nome}</li>`;
-        });
-        html += `</ul>`;
-      }
-    });
-
-    alimentosDiv.innerHTML = html || "<p>Nenhum alimento selecionado.</p>";
-  }
-</script>
-
-
-  <!-- LOADING CENTRAL -->
+  <!-- CENTRAL DE CARREGAMENTO -->
   <div class="loading-container" id="loading">
     <h1>
-      Carregando sua dieta<span id="dots">...</span>
+      Carregando sua dieta <span id="dots">...</span>
     </h1>
   </div>
 
   <!-- RESUMO -->
-  <div class="resumo hidden" id="resumo">
+  <div class="resumo oculto" id="resumo">
     <div class="card-resumo">
 
       <img src="logo-nutrimais.png" class="logo-resumo" alt="Nutri+">
@@ -72,21 +32,59 @@
       <p>Olá, <strong><span id="nomeUsuario"></span></strong> 👋</p>
 
       <h3>Dados:</h3>
-<div id="dadosResumo"></div>
+      <div id="dadosResumo"></div>
 
-<h3>Alimentos selecionados:</h3>
-<div id="alimentosResumo"></div>
+      <h3>Alimentos selecionados:</h3>
+      <div id="alimentosResumo"></div>
 
-</div> <!-- FIM DO CARD DE RESUMO -->
+    </div>
 
-<button class="btn-principal" onclick="irParaPlanos()">
-  Gerar Dieta
-</button>
+    <button class="btn-principal" onclick="irParaPlanos()">
+      Gerar Dieta
+    </button>
+  </div>
 
-</div>
-</div>
+  <!-- SCRIPT -->
+  <script>
+    // ===== COLETA DE DADOS =====
+    const dadosUsuario = JSON.parse(localStorage.getItem("dadosUsuario")) || {};
+    const dietaSelecionada = JSON.parse(localStorage.getItem("dietaSelecionada")) || {};
 
-<script src="carregando.js"></script>
+    // ===== NOME =====
+    const nomeSpan = document.getElementById("nomeUsuario");
+    if (nomeSpan && dadosUsuario.nome) {
+      nomeSpan.innerText = dadosUsuario.nome;
+    }
+
+    // ===== DADOS PESSOAIS =====
+    const dadosDiv = document.getElementById("dadosResumo");
+    if (dadosDiv) {
+      dadosDiv.innerHTML = `
+        <p><strong>Idade:</strong> ${dadosUsuario.idade || "-"} anos</p>
+        <p><strong>Peso:</strong> ${dadosUsuario.peso || "-"} kg</p>
+        <p><strong>Altura:</strong> ${dadosUsuario.altura || "-"} cm</p>
+      `;
+    }
+
+    // ===== ALIMENTOS =====
+    const alimentosDiv = document.getElementById("alimentosResumo");
+    if (alimentosDiv) {
+      let html = "";
+
+      Object.keys(dietaSelecionada).forEach(refeicao => {
+        if (dietaSelecionada[refeicao]?.length) {
+          html += `<p><strong>${refeicao}:</strong></p><ul>`;
+          dietaSelecionada[refeicao].forEach(item => {
+            html += `<li>${item.nome}</li>`;
+          });
+          html += "</ul>";
+        }
+      });
+
+      alimentosDiv.innerHTML = html || "<p>Nenhum alimento selecionado.</p>";
+    }
+  </script>
+
+  <script src="carregando.js"></script>
 </body>
 </html>
-
