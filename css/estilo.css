@@ -365,7 +365,7 @@ body {
 .icone-dieta-topo {
   font-size: 54px;
   margin-bottom: 4px;   /* ↓ diminui o espaço */
-  margin-top: -25px;    /* ↑ sobe o ícone */
+  margin-top: -35px;    /* ↑ sobe o ícone */
   color: var(--verde-logo);
   opacity: 0.35;
 }
