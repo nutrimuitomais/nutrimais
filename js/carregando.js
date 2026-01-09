@@ -15,29 +15,47 @@ setTimeout(() => {
 }, 10000);
 
 // Dados simulados (depois conecta no localStorage)
-function carregarResumo() {
-  document.getElementById("dadosUsuario").innerText =
-    "Peso: 80kg | Altura: 1,75m | Idade: 25";
+document.addEventListener("DOMContentLoaded", () => {
+  const dadosUsuario = JSON.parse(localStorage.getItem("dadosUsuario"));
+  const objetivo = localStorage.getItem("objetivoSelecionado");
+  const dieta = JSON.parse(localStorage.getItem("dietaSelecionada"));
 
-  document.getElementById("objetivoUsuario").innerText =
-    "Emagrecimento";
+  // Segurança básica
+  if (!dadosUsuario || !objetivo || !dieta) {
+    console.error("Dados incompletos no localStorage");
+    return;
+  }
 
-  const alimentos = [
-    "Arroz",
-    "Frango",
-    "Ovos",
-    "Banana"
-  ];
+  // === DADOS DO USUÁRIO ===
+  const dadosEl = document.getElementById("dadosUsuario");
+  if (dadosEl) {
+    dadosEl.innerHTML = `
+      Peso: ${dadosUsuario.peso}kg | 
+      Altura: ${dadosUsuario.altura}m | 
+      Idade: ${dadosUsuario.idade}
+    `;
+  }
 
-  const lista = document.getElementById("listaAlimentos");
-  lista.innerHTML = "";
+  // === OBJETIVO ===
+  const objetivoEl = document.getElementById("objetivoUsuario");
+  if (objetivoEl) {
+    objetivoEl.textContent = objetivo;
+  }
 
-  alimentos.forEach(item => {
-    const li = document.createElement("li");
-    li.innerText = item;
-    lista.appendChild(li);
-  });
-}
+  // === LISTA DE ALIMENTOS ===
+  const listaEl = document.getElementById("listaAlimentos");
+  if (listaEl) {
+    listaEl.innerHTML = "";
+
+    Object.values(dieta).forEach(refeicao => {
+      refeicao.forEach(alimento => {
+        const li = document.createElement("li");
+        li.textContent = alimento;
+        listaEl.appendChild(li);
+      });
+    });
+  }
+});
 
 // Redireciona para planos
 function irParaPlanos() {
