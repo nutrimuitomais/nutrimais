@@ -2,10 +2,17 @@ const inputs = document.querySelectorAll("input, select");
 const btn = document.getElementById("btnContinuar");
 
 function validar() {
-  btn.disabled = [...inputs].some(i => !i.value);
+  const tudoPreenchido = [...inputs].every(i => i.value.trim() !== "");
+  btn.disabled = !tudoPreenchido;
 }
 
-inputs.forEach(i => i.addEventListener("input", validar));
+inputs.forEach(i => {
+  i.addEventListener("input", validarCampos);
+  i.addEventListener("change", validarCampos);
+});
+
+// força validação ao carregar a página
+document.addEventListener("DOMContentLoaded", validarCampos);
 
 btn.addEventListener("click", () => {
   const dadosUsuario = {
