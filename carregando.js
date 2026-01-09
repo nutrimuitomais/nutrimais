@@ -81,7 +81,7 @@ function irParaPlanos() {
 }
 const titulo = document.querySelector(".card-resumo h2");
 if (titulo) {
-  titulo.innerText = "Tudo pronto, confirme e gere a dieta!";
+  titulo.innerText = ""Tudo pronto, confirme e gere a dieta!"";
 }
 if (dadosUsuario && dadosUsuario.peso && dadosUsuario.altura) {
   const peso = Number(dadosUsuario.peso);
