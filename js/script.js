@@ -1,34 +1,25 @@
-document.addEventListener('DOMContentLoaded', () => {
+const inputs = document.querySelectorAll("input, select");
+const btn = document.getElementById("btnContinuar");
 
-  const campos = document.querySelectorAll('input, select');
-  const botao = document.getElementById('btnContinuar');
+function validar() {
+  btn.disabled = [...inputs].some(i => !i.value);
+}
 
-  function validarCampos() {
-    let valido = true;
+inputs.forEach(i => i.addEventListener("input", validar));
 
-    campos.forEach(campo => {
-      if (campo.value.trim() === '') {
-        valido = false;
-      }
-    });
+btn.addEventListener("click", () => {
+  const dadosUsuario = {
+    nome: document.querySelector('input[placeholder="Digite seu nome"]').value,
+    idade: document.querySelector('input[placeholder="Ex: 25"]').value,
+    peso: document.querySelector('input[placeholder="Ex: 70"]').value,
+    altura: document.querySelector('input[placeholder="Ex: 175"]').value,
+    sexo: document.querySelectorAll("select")[0].value
+  };
 
-    if (valido) {
-      botao.disabled = false;
-      botao.classList.add('ativo');
-    } else {
-      botao.disabled = true;
-      botao.classList.remove('ativo');
-    }
-  }
+  const objetivoSelecionado = document.querySelectorAll("select")[1].value;
 
-  campos.forEach(campo => {
-    campo.addEventListener('input', validarCampos);
-  });
+  localStorage.setItem("dadosUsuario", JSON.stringify(dadosUsuario));
+  localStorage.setItem("objetivoSelecionado", objetivoSelecionado);
 
- botao.addEventListener('click', () => {
-  if (!botao.disabled) {
-    window.location.href = 'alimentos.html';
-  }
-});
-
+  window.location.href = "alimentos.html";
 });
