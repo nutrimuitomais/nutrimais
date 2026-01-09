@@ -2,78 +2,141 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
-  <title>Escolha seu plano</title>
+  <title>Escolha seu plano - Nutri+</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="css/estilo.css">
 </head>
-<body>
+<body class="fundo-planos">
 
-<div class="container">
-  <h1>Escolha seu plano</h1>
-  <p class="sub">Desbloqueie sua dieta completa e acesso exclusivo</p>
+<div class="container-planos">
 
-  <div class="planos">
+  <img src="img/logo-logo.png" alt="Nutri+" class="logo-planos">
 
-    <!-- PLANO DIETA -->
-    <div class="plano destaque">
-      <span class="tag">Mais escolhido</span>
-      <h2>Plano Dieta</h2>
-      <p class="preco-antigo">De R$ 59,99</p>
-      <p class="preco">R$ 12,99</p>
+  <h1 class="titulo-planos">Escolha o plano ideal para você</h1>
+  <p class="sub-planos">Desbloqueie sua dieta completa e acompanhamento personalizado</p>
+
+  <div class="grid-planos">
+
+    <!-- PLANO 1 -->
+    <div class="card-plano destaque">
+      <span class="tag verde">Plano mais escolhido</span>
+      <h2>Plano Nutri Digital</h2>
+
+      <p class="preco-antigo">de R$ 29,99</p>
+      <p class="preco">R$ 9,99</p>
+      <p class="mensal">Planejamento mensal</p>
+
       <ul>
-        <li>Cronograma mensal completo</li>
-        <li>Gramatura dos alimentos</li>
-        <li>Suporte por e-mail e WhatsApp</li>
+        <li>⭐ Cronograma mensal completo</li>
+        <li>⭐ Gramatura dos alimentos</li>
+        <li>⭐ Horários adaptados</li>
+        <li>⭐ Suporte 24h via WhatsApp</li>
+        <li>⭐ Gera PDF</li>
+        <li>⭐ Acompanhamento via Aplicativo (Celular)</li>
       </ul>
-      <button onclick="selecionarPlano('Plano Dieta',12.99,0)">Escolher plano</button>
+
+      <button class="botao-principal flutuante"
+        onclick="selecionarPlano('Plano Nutri Digital',9.99,0)">
+        Escolher plano
+      </button>
     </div>
 
-    <!-- PLANO PRO -->
-    <div class="plano">
-      <span class="tag azul">Mais vendido</span>
-      <h2>Plano Dieta Pro (Treino)</h2>
-      <p class="preco-antigo">De R$ 69,99</p>
-      <p class="preco">R$ 18,99</p>
+    <!-- PLANO 2 -->
+    <div class="card-plano">
+      <span class="tag">Plano mais vendido</span>
+      <h2>Plano Nutri Digital + Treino</h2>
+
+      <p class="preco-antigo">de R$ 39,99</p>
+      <p class="preco">R$ 19,99</p>
+      <p class="mensal">Planejamento mensal</p>
+
       <ul>
-        <li>Gramatura dos alimentos</li>
-        <li>Cronograma mensal completo</li>
-        <li>Receitas personalizadas</li>
-        <li>Plano de treino completo</li>
-        <li>Suporte por e-mail e WhatsApp</li>
+        <li>⭐ Dieta + Treino</li>
+        <li>⭐ Gramatura + Cronograma</li>
+        <li>⭐ Treino personalizado</li>
+        <li>⭐ Suporte semanal 5h/dia</li>
+        <li>⭐ Ideias de receitas</li>
+        <li>⭐ Gera PDF</li>
+        <li>⭐ Acompanhamento via Aplicativo (Celular)</li>
       </ul>
-      <button onclick="selecionarPlano('Plano Dieta Pro',18.99,0)">Escolher plano</button>
+
+      <button class="botao-principal flutuante"
+        onclick="selecionarPlano('Plano Nutri Digital + Treino',19.99,0)">
+        Escolher plano
+      </button>
     </div>
 
-    <!-- PLANO PREMIUM -->
-    <div class="plano recomendado">
-      <span class="tag verde">Mais recomendado</span>
-      <h2>Plano Dieta Premium</h2>
-      <p class="preco-antigo">De R$ 89,99</p>
-      <p class="preco">R$ 29,99</p>
+    <!-- PLANO 3 -->
+    <div class="card-plano">
+      <span class="tag">Plano mais vendido</span>
+      <h2>Plano Nutri Pro Treino</h2>
+
+      <p class="preco-antigo">de R$ 49,99</p>
+      <p class="preco">R$ 39,99</p>
+      <p class="mensal">Planejamento mensal</p>
+
       <ul>
-        <li>Gramatura dos alimentos</li>
-        <li>Cronograma mensal completo</li>
-        <li>Receitas personalizadas</li>
-        <li>Plano de treino completo</li>
-        <li>Ajuste de dieta</li>
-        <li>1 consulta com nutricionista</li>
+        <li>⭐ Treino personalizado</li>
+        <li>⭐ 1x Consulta com Personal</li>
+        <li>⭐ 1x Ajuste de treino</li>
+        <li>⭐ Suporte quinzenal 8h/dia</li>
+        <li>⭐ Ideias de receitas</li>
+        <li>⭐ Dieta Digital</li>
+        <li>⭐ Gera PDF</li>
+        <li>⭐ Acompanhamento via Aplicativo (Celular)</li>
       </ul>
-      <button onclick="selecionarPlano('Plano Premium',29.99,1)">Escolher plano</button>
+
+      <button class="botao-principal flutuante"
+        onclick="selecionarPlano('Plano Nutri Pro',39.99,0)">
+        Escolher plano
+      </button>
     </div>
 
-    <!-- PLANO OURO -->
-    <div class="plano">
-      <h2>Plano Dieta Ouro</h2>
-      <p class="preco-antigo">De R$ 109,99</p>
-      <p class="preco">R$ 59,99</p>
+    <!-- PLANO 4 -->
+    <div class="card-plano recomendado">
+      <span class="tag verde">Plano mais recomendado</span>
+      <h2>Plano Nutri Premium</h2>
+
+      <p class="preco-antigo">de R$ 69,99</p>
+      <p class="preco">R$ 49,99</p>
+      <p class="mensal">Planejamento mensal</p>
+
       <ul>
-        <li>2 consultas com nutricionista</li>
-        <li>Acompanhamento de progresso</li>
-        <li>Ajuste de dieta 2x ao mês</li>
-        <li>Treino ajustado por personal</li>
-        <li>Suporte premium</li>
+        <li>⭐ 1x Consulta com Nutricionista</li>
+        <li>⭐ 1x Ajuste de dieta especializado</li>
+        <li>⭐ Suporte mensal 10h/dia</li>
+        <li>⭐ WhatsApp + Email</li>
+        <li>⭐ Ideias de receitas</li>
+        <li>⭐ Cronograma de Treino</li>
       </ul>
-      <button onclick="selecionarPlano('Plano Ouro',59.99,2)">Escolher plano</button>
+
+      <button class="botao-principal flutuante"
+        onclick="selecionarPlano('Plano Nutri Premium',49.99,1)">
+        Escolher plano
+      </button>
+    </div>
+
+    <!-- PLANO 5 -->
+    <div class="card-plano">
+      <span class="tag">Plano profissional</span>
+      <h2>Plano Nutri+ Profissional</h2>
+
+      <p class="preco-antigo">de R$ 109,99</p>
+      <p class="preco">R$ 89,99</p>
+      <p class="mensal">Planejamento mensal</p>
+
+      <ul>
+        <li>⭐ Consulta 1x Nutricionista + Personal</li>
+        <li>⭐ Ajuste de dieta e treino</li>
+        <li>⭐ Suporte 12h/dia</li>
+        <li>⭐ WhatsApp + Email</li>
+        <li>⭐ Acompanhamento via Aplicativo (Celular)</li>
+      </ul>
+
+      <button class="botao-principal flutuante"
+        onclick="selecionarPlano('Plano Nutri+ Profissional',89.99,2)">
+        Escolher plano
+      </button>
     </div>
 
   </div>
