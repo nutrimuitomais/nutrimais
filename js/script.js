@@ -1,26 +1,24 @@
 const inputs = document.querySelectorAll("input, select");
 const btn = document.getElementById("btnContinuar");
 
-function validar() {
+function validarCampos() {
   const tudoPreenchido = [...inputs].every(i => i.value.trim() !== "");
   btn.disabled = !tudoPreenchido;
 }
-  if (tudoPreenchido) {
-    btn.classList.add("ativo");
-  } else {
-    btn.classList.remove("ativo");
-  }
-}
 
+// escuta mudanças
 inputs.forEach(i => {
   i.addEventListener("input", validarCampos);
   i.addEventListener("change", validarCampos);
 });
 
-// força validação ao carregar a página
+// valida ao carregar
 document.addEventListener("DOMContentLoaded", validarCampos);
 
+// clique do botão
 btn.addEventListener("click", () => {
+  if (btn.disabled) return;
+
   const dadosUsuario = {
     nome: document.querySelector('input[placeholder="Digite seu nome"]').value,
     idade: document.querySelector('input[placeholder="Ex: 25"]').value,
