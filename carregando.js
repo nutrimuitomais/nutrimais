@@ -83,3 +83,23 @@ const titulo = document.querySelector(".card-resumo h2");
 if (titulo) {
   titulo.innerText = "Tudo pronto, confirme e gere a dieta!";
 }
+if (dadosUsuario && dadosUsuario.peso && dadosUsuario.altura) {
+  const peso = Number(dadosUsuario.peso);
+  const alturaM = Number(dadosUsuario.altura) / 100;
+
+  const imc = peso / (alturaM * alturaM);
+  let status = "";
+
+  if (imc < 18.5) status = "abaixo do peso ideal";
+  else if (imc < 25) status = "no peso ideal";
+  else status = "acima do peso ideal";
+
+  const info = document.createElement("p");
+  info.style.marginTop = "6px";
+  info.style.fontSize = "14px";
+  info.style.color = "#555";
+  info.innerText = `Temos suas medidas e você está ${status}. Vamos à sua dieta completa abaixo.`;
+
+  const dadosEl = document.getElementById("dadosUsuario");
+  if (dadosEl) dadosEl.after(info);
+}
