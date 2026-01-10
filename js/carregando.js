@@ -17,49 +17,66 @@ setTimeout(() => {
 // Dados simulados (depois conecta no localStorage)
 document.addEventListener("DOMContentLoaded", () => {
 
-  const dadosUsuario = JSON.parse(localStorage.getItem("dadosUsuario")) || {};
-  const objetivoUsuario = localStorage.getItem("objetivoSelecionado") || "";
-  const dietaSelecionada = JSON.parse(localStorage.getItem("dietaSelecionada")) || {};
+  // ===== ELEMENTOS =====
+  const loading = document.getElementById("loading");
+  const resumo = document.getElementById("resumo");
 
-  // ===== NOME =====
   const nomeSpan = document.getElementById("nomeUsuario");
-  if (nomeSpan && dadosUsuario.nome) {
-    nomeSpan.innerText = dadosUsuario.nome;
-  }
-
-  // ===== DADOS =====
   const dadosDiv = document.getElementById("dadosResumo");
-  if (dadosDiv) {
-    dadosDiv.innerHTML = `
-      <p><strong>Idade:</strong> ${dadosUsuario.idade} anos</p>
-      <p><strong>Peso:</strong> ${dadosUsuario.peso} kg</p>
-      <p><strong>Altura:</strong> ${dadosUsuario.altura} cm</p>
-    `;
+  const alimentosDiv = document.getElementById("alimentosResumo");
+
+  // ===== DADOS DO STORAGE =====
+  const dadosUsuario = JSON.parse(localStorage.getItem("dadosUsuario"));
+  const dietaSelecionada = JSON.parse(localStorage.getItem("dietaSelecionada"));
+
+  console.log("dadosUsuario:", dadosUsuario);
+  console.log("dietaSelecionada:", dietaSelecionada);
+
+  // ===== SEGURANÇA =====
+  if (!dadosUsuario || !dietaSelecionada) {
+    console.error("Dados não encontrados no localStorage");
+    return;
   }
 
-  // === OBJETIVO ===
-  const objetivoEl = document.getElementById("objetivoUsuario");
-  if (objetivoEl) {
-    objetivoEl.textContent = objetivo;
-  }
+  // ===== SIMULA LOADING =====
+  setTimeout(() => {
+    loading.style.display = "none";
+    resumo.classList.remove("hidden");
+
+    // ===== NOME =====
+    if (nomeSpan) {
+      nomeSpan.textContent = dadosUsuario.nome || "";
+    }
+
+    // ===== DADOS =====
+    if (dadosDiv) {
+      dadosDiv.innerHTML = `
+        <p><strong>Idade:</strong> ${dadosUsuario.idade} anos</p>
+        <p><strong>Peso:</strong> ${dadosUsuario.peso} kg</p>
+        <p><strong>Altura:</strong> ${dadosUsuario.altura} cm</p>
+      `;
+    }
 
     // ===== ALIMENTOS =====
-  const alimentosDiv = document.getElementById("alimentosResumo");
-  if (alimentosDiv) {
-    let html = "";
+    if (alimentosDiv) {
+      let html = "";
 
-    Object.keys(dietaSelecionada).forEach(refeicao => {
-      if (dietaSelecionada[refeicao].length > 0) {
-        html += `<p><strong>${refeicao}:</strong></p><ul>`;
-        dietaSelecionada[refeicao].forEach(item => {
-          html += `<li>${item}</li>`; // item É STRING
-        });
-        html += `</ul>`;
-      }
-    });
+      Object.keys(dietaSelecionada).forEach(refeicao => {
+        if (dietaSelecionada[refeicao].length > 0) {
+          html += `<p><strong>${refeicao}:</strong></p><ul>`;
+          dietaSelecionada[refeicao].forEach(item => {
+            html += `<li>${item}</li>`;
+          });
+          html += `</ul>`;
+        }
+      });
 
-    alimentosDiv.innerHTML = html || "<p>Nenhum alimento selecionado.</p>";
-  }
+      alimentosDiv.innerHTML = html || "<p>Nenhum alimento selecionado.</p>";
+    }
+
+  }, 1800); // tempo do loading
+
+});
 
 });
 // Redireciona para planos
