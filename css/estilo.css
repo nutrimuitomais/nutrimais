@@ -601,9 +601,21 @@ body {
 
 /* Imagem de fundo para todo o site */
 body {
+    position: relative;  /* necessário para o pseudo-elemento */
+    margin: 0;           /* remove margens padrão */
+}
+
+body::before {
+    content: "";
+    position: fixed;                  /* fica fixo na tela */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
     background-image: url('img/logofo.png'); /* caminho da sua imagem */
-    background-size: cover;      /* cobre toda a tela */
-    background-position: center; /* centraliza a imagem */
-    background-repeat: no-repeat;/* não repete */
-    background-attachment: fixed; /* imagem fixa ao rolar a página */
+    background-size: cover;           /* cobre toda a tela */
+    background-position: center;      /* centraliza */
+    background-repeat: no-repeat;     /* não repete */
+    opacity: 0.3;                     /* controla a transparência */
+    z-index: -1;                       /* fica atrás de todo conteúdo */
 }
