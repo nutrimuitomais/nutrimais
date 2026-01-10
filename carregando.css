@@ -4,21 +4,24 @@ body {
   background: #f5f7fa;
 }
 
-/* BARRA */
-.barra-container {
-  width: 100%;
-  height: 8px;
-  background: #e6ece8;
-  border-radius: 20px;
-  overflow: hidden;
+/* BARRA DE PROGRESSO */
+. progresso {
+  largura :  100 % ;
+  altura :  6 px ;
+  fundo :  #eaeaea ;​
+  raio-da-borda :  6 px ;
+  posição : fixa;
+  topo :  0 ;
+  esquerda :  0 ;
+  Índice z :  20 ;
 }
 
-.barra-progresso {
-  height: 100%;
-  width: 0%;
-  background: linear-gradient(90deg, #1e8f5a, #2ecc71);
-  border-radius: 20px;
-  transition: width 0.6s ease;
+. progresso-barra {
+  altura :  100 % ;
+  largura :  90 % ; /* ex: 33% se para a 1ª etapa, ajuste dinamicamente no JS */
+  plano de fundo :  var ( --verde-logo );
+  raio-da-borda :  6 px ;
+  transição : largura 0,4 s facilidade;
 }
 
 /* LOADING CENTRALIZADO */
