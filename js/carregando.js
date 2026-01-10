@@ -48,16 +48,19 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // ===== TEXTO PRINCIPAL (SEM NEGRITO / SEM DUPLICAR OLÁ) =====
     nomeSpan.innerHTML = `
-      Olá, <strong>${nome}</strong> 👋<br>
-      <span class="texto-avaliacao">
-        De acordo com suas informações de medidas que nos foram passadas,
-        foi observado que você está
-        <span style="color:${corClassificacao}; font-weight:600;">
-          ${classificacao}
-        </span>.
-        Estamos aqui para lhe auxiliar!
-      </span>
-    `;
+  <span>
+    Olá, ${nome} 👋
+  </span><br>
+  <span class="texto-avaliacao" style="font-weight:400;">
+    De acordo com suas informações de medidas que nos foram passadas,
+    foi observado que você está
+    <span style="color:${corClassificacao}; font-weight:600;">
+      ${classificacao}
+    </span>.
+    Estamos aqui para lhe auxiliar!
+  </span>
+`;
+;
 
     // ===== DADOS EM LINHA =====
     linhaDados.textContent = `${idade} Anos | ${peso} kg | ${alturaCm} cm`;
