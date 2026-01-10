@@ -42,16 +42,23 @@ body {
 }
 
 /* CARDS / BOTÕES */
+/* CARDS / BOTÕES */
 .card-opcao {
   width: 100%;
-  background: #ffffff;
+  background: #1e3a2f; /* verde escuro de fundo */
   border-radius: 18px;
   padding: 22px 18px;
   margin-bottom: 18px;
   text-decoration: none;
-  border: 1px solid #e5e5e5;
-  box-shadow: 0 6px 18px rgba(0,0,0,0.06);
-  transition: transform 0.2s ease;
+  border: 1px solid #3c6e4f; /* verde mais claro para borda */
+  box-shadow: 0 6px 18px rgba(60, 110, 79, 0.3); /* sombra verde suave */
+  color: #e0f7e9; /* texto branco esverdeado */
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card-opcao:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 24px rgba(60, 110, 79, 0.5); /* sombra maior ao passar o mouse */
 }
 
 .card-opcao:hover {
