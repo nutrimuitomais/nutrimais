@@ -1,70 +1,49 @@
-// ===== BARRA DE PROGRESSO =====
-document.addEventListener("DOMContentLoaded", () => {
+// PROGRESSO
+document.getElementById("barraProgresso").style.width = "90%";
 
-  const barra = document.getElementById("barraProgresso");
-  if (barra) barra.style.width = "88%";
+document.addEventListener("DOMContentLoaded", () => {
 
   const loading = document.getElementById("loading");
   const resumo = document.getElementById("resumo");
 
   const nomeSpan = document.getElementById("nomeUsuario");
-  const dadosDiv = document.getElementById("dadosResumo");
+  const linhaDados = document.getElementById("linhaDados");
+  const objetivoDiv = document.getElementById("objetivoResumo");
   const alimentosDiv = document.getElementById("alimentosResumo");
 
-  // ===== DADOS DO LOCALSTORAGE =====
-  const dadosUsuario = JSON.parse(localStorage.getItem("dadosUsuario"));
-  const dietaSelecionada = JSON.parse(localStorage.getItem("dietaSelecionada"));
+  const dadosUsuario = JSON.parse(localStorage.getItem("dadosUsuario")) || {};
+  const dietaSelecionada = JSON.parse(localStorage.getItem("dietaSelecionada")) || {};
+  const objetivoUsuario = localStorage.getItem("objetivoSelecionado") || "";
 
-  console.log("dadosUsuario:", dadosUsuario);
-  console.log("dietaSelecionada:", dietaSelecionada);
-
-  if (!dadosUsuario || !dietaSelecionada) {
-    console.error("Dados não encontrados no localStorage");
-    return;
-  }
-
-  // ===== SIMULA CARREGAMENTO =====
+  // SIMULA LOADING
   setTimeout(() => {
+    loading.style.display = "none";
+    resumo.classList.remove("hidden");
 
-    if (loading) loading.style.display = "none";
-    if (resumo) resumo.classList.remove("hidden");
+    // NOME
+    nomeSpan.textContent = dadosUsuario.nome || "Usuário";
 
-    // ===== NOME =====
-    if (nomeSpan) {
-      nomeSpan.textContent = dadosUsuario.nome || "";
-    }
+    // DADOS EM LINHA
+    linhaDados.textContent = `${dadosUsuario.idade} Anos | ${dadosUsuario.peso} kg | ${dadosUsuario.altura} cm`;
 
-    // ===== DADOS =====
-    if (dadosDiv) {
-      dadosDiv.innerHTML = `
-        <p><strong>Idade:</strong> ${dadosUsuario.idade || "-"} anos</p>
-        <p><strong>Peso:</strong> ${dadosUsuario.peso || "-"} kg</p>
-        <p><strong>Altura:</strong> ${dadosUsuario.altura || "-"} cm</p>
-      `;
-    }
+    // OBJETIVO EM DESTAQUE
+    objetivoDiv.textContent = `Objetivo: ${objetivoUsuario}`;
 
-    // ===== ALIMENTOS =====
-    if (alimentosDiv) {
-      let html = "";
+    // ALIMENTOS (TODOS JUNTOS, SEM CAFÉ / ALMOÇO ETC)
+    let alimentos = [];
 
-      Object.keys(dietaSelecionada).forEach(refeicao => {
-        if (Array.isArray(dietaSelecionada[refeicao]) && dietaSelecionada[refeicao].length > 0) {
-          html += `<p><strong>${refeicao}:</strong></p><ul>`;
-          dietaSelecionada[refeicao].forEach(item => {
-            html += `<li>${item}</li>`;
-          });
-          html += `</ul>`;
-        }
-      });
+    Object.values(dietaSelecionada).forEach(lista => {
+      lista.forEach(item => alimentos.push(item));
+    });
 
-      alimentosDiv.innerHTML = html || "<p>Nenhum alimento selecionado.</p>";
-    }
+    alimentosDiv.innerHTML = alimentos.length
+      ? `<p>${alimentos.join(" • ")}</p>`
+      : "<p>Nenhum alimento selecionado.</p>";
 
-  }, 1800);
+  }, 1500);
 });
 
-// ===== BOTÃO FINAL =====
+// BOTÃO
 function irParaPlanos() {
   window.location.href = "planos.html";
 }
-
