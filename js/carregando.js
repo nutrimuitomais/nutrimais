@@ -16,23 +16,24 @@ setTimeout(() => {
 
 // Dados simulados (depois conecta no localStorage)
 document.addEventListener("DOMContentLoaded", () => {
-  const dadosUsuario = JSON.parse(localStorage.getItem("dadosUsuario"));
-  const objetivo = localStorage.getItem("objetivoSelecionado");
-  const dieta = JSON.parse(localStorage.getItem("dietaSelecionada"));
 
-  // Segurança básica
-  if (!dadosUsuario || !objetivo || !dieta) {
-    console.error("Dados incompletos no localStorage");
-    return;
+  const dadosUsuario = JSON.parse(localStorage.getItem("dadosUsuario")) || {};
+  const objetivoUsuario = localStorage.getItem("objetivoSelecionado") || "";
+  const dietaSelecionada = JSON.parse(localStorage.getItem("dietaSelecionada")) || {};
+
+  // ===== NOME =====
+  const nomeSpan = document.getElementById("nomeUsuario");
+  if (nomeSpan && dadosUsuario.nome) {
+    nomeSpan.innerText = dadosUsuario.nome;
   }
 
-  // === DADOS DO USUÁRIO ===
-  const dadosEl = document.getElementById("dadosUsuario");
-  if (dadosEl) {
-    dadosEl.innerHTML = `
-      Peso: ${dadosUsuario.peso}kg | 
-      Altura: ${dadosUsuario.altura}m | 
-      Idade: ${dadosUsuario.idade}
+  // ===== DADOS =====
+  const dadosDiv = document.getElementById("dadosResumo");
+  if (dadosDiv) {
+    dadosDiv.innerHTML = `
+      <p><strong>Idade:</strong> ${dadosUsuario.idade} anos</p>
+      <p><strong>Peso:</strong> ${dadosUsuario.peso} kg</p>
+      <p><strong>Altura:</strong> ${dadosUsuario.altura} cm</p>
     `;
   }
 
@@ -42,21 +43,25 @@ document.addEventListener("DOMContentLoaded", () => {
     objetivoEl.textContent = objetivo;
   }
 
-  // === LISTA DE ALIMENTOS ===
-  const listaEl = document.getElementById("listaAlimentos");
-  if (listaEl) {
-    listaEl.innerHTML = "";
+    // ===== ALIMENTOS =====
+  const alimentosDiv = document.getElementById("alimentosResumo");
+  if (alimentosDiv) {
+    let html = "";
 
-    Object.values(dieta).forEach(refeicao => {
-      refeicao.forEach(alimento => {
-        const li = document.createElement("li");
-        li.textContent = alimento;
-        listaEl.appendChild(li);
-      });
+    Object.keys(dietaSelecionada).forEach(refeicao => {
+      if (dietaSelecionada[refeicao].length > 0) {
+        html += `<p><strong>${refeicao}:</strong></p><ul>`;
+        dietaSelecionada[refeicao].forEach(item => {
+          html += `<li>${item}</li>`; // item É STRING
+        });
+        html += `</ul>`;
+      }
     });
-  }
-});
 
+    alimentosDiv.innerHTML = html || "<p>Nenhum alimento selecionado.</p>";
+  }
+
+});
 // Redireciona para planos
 function irParaPlanos() {
   window.location.href = "planos.html";
