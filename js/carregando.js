@@ -46,20 +46,18 @@ document.addEventListener("DOMContentLoaded", () => {
     const caloriasBase = (10 * peso) + (6.25 * alturaCm) - (5 * idade) + 5;
     const caloriasIdeais = Math.round(caloriasBase);
 
-    // ===== TEXTO PRINCIPAL (SEM NEGRITO / SEM DUPLICAR OLÁ) =====
+    // ===== TEXTO PRINCIPAL (CORRETO) =====
     nomeSpan.innerHTML = `
-  <span>
-    nomeSpan.innerHTML = `
-  Olá, ${nome} 👋<br>
-  <span class="texto-avaliacao" style="font-weight:400;">
-    De acordo com suas informações de medidas que nos foram passadas,
-    foi observado que você está
-    <span style="color:${corClassificacao}; font-weight:600;">
-      ${classificacao}
-    </span>,
-    estamos aqui para lhe auxiliar!
-  </span>
-`;
+      Olá, ${nome} 👋<br>
+      <span class="texto-avaliacao" style="font-weight:400;">
+        De acordo com suas informações de medidas que nos foram passadas,
+        foi observado que você está
+        <span style="color:${corClassificacao}; font-weight:600;">
+          ${classificacao}
+        </span>,
+        estamos aqui para lhe auxiliar!
+      </span>
+    `;
 
     // ===== DADOS EM LINHA =====
     linhaDados.textContent = `${idade} Anos | ${peso} kg | ${alturaCm} cm`;
