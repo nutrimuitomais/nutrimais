@@ -12,6 +12,47 @@
   <div class="barra-container">
     <div class="barra-progresso" id="barraProgresso"></div>
   </div>
+  <script>
+  // ====== COLETA DE DADOS ======
+  const dadosUsuario = JSON.parse(localStorage.getItem("dadosUsuario")) || {};
+  const objetivoUsuario = localStorage.getItem("objetivoSelecionado") || "";
+  const dietaSelecionada = JSON.parse(localStorage.getItem("dietaSelecionada")) || {};
+
+  // ====== NOME NO RESUMO ======
+  const nomeSpan = document.getElementById("nomeUsuario");
+  if (nomeSpan && dadosUsuario.nome) {
+    nomeSpan.innerText = dadosUsuario.nome;
+  }
+
+  // ====== DADOS PESSOAIS ======
+  const dadosDiv = document.getElementById("dadosResumo");
+  if (dadosDiv) {
+    dadosDiv.innerHTML = `
+      <p><strong>Idade:</strong> ${dadosUsuario.idade || "-"} anos</p>
+      <p><strong>Peso:</strong> ${dadosUsuario.peso || "-"} kg</p>
+      <p><strong>Altura:</strong> ${dadosUsuario.altura || "-"} cm</p>
+    `;
+  }
+
+  // ====== ALIMENTOS SELECIONADOS ======
+  const alimentosDiv = document.getElementById("alimentosResumo");
+  if (alimentosDiv) {
+    let html = "";
+
+    Object.keys(dietaSelecionada).forEach(refeicao => {
+      if (dietaSelecionada[refeicao].length > 0) {
+        html += `<p><strong>${refeicao}:</strong></p><ul>`;
+        dietaSelecionada[refeicao].forEach(item => {
+          html += `<li>${item.nome}</li>`;
+        });
+        html += `</ul>`;
+      }
+    });
+
+    alimentosDiv.innerHTML = html || "<p>Nenhum alimento selecionado.</p>";
+  }
+</script>
+
 
   <!-- LOADING CENTRAL -->
   <div class="loading-container" id="loading">
@@ -28,24 +69,24 @@
 
       <h2>Resumo da sua dieta</h2>
 
-      <p><strong>Dados:</strong></p>
-      <p id="dadosUsuario"></p>
+      <p>Olá, <strong><span id="nomeUsuario"></span></strong> 👋</p>
 
-      <p class="objetivo">
-        <strong>Objetivo:</strong>
-        <span id="objetivoUsuario"></span>
-      </p>
+      <h3>Dados:</h3>
+<div id="dadosResumo"></div>
 
-      <p><strong>Alimentos selecionados:</strong></p>
-      <ul id="listaAlimentos"></ul>
+<h3>Alimentos selecionados:</h3>
+<div id="alimentosResumo"></div>
 
-      <button class="btn-principal" onclick="irParaPlanos()">
-        Gerar Dieta
-      </button>
+</div> <!-- FIM DO CARD DE RESUMO -->
 
-    </div>
-  </div>
+<button class="btn-principal" onclick="irParaPlanos()">
+  Gerar Dieta
+</button>
 
-  <script src="carregando.js"></script>
+</div>
+</div>
+
+<script src="carregando.js"></script>
 </body>
 </html>
+
