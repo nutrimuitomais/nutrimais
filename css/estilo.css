@@ -580,3 +580,12 @@ body {
   margin-bottom: 20px;
   text-align: center;
 }
+.objetivo-box {
+  margin: 12px 0;
+  padding: 8px 14px;
+  background: #e7f6ee;
+  color: #1b7a4a;
+  font-weight: 600;
+  border-radius: 12px;
+  text-align: center;
+}
