@@ -587,13 +587,15 @@ body {
 }
 
 body {
-    background: linear-gradient(-45deg, #a8d5a2, #cce8c9, #ffffff, #e6f4e6);
+    background: linear-gradient(-45deg, #cce8c9, #e6f4e6, #ffffff, #dff7df);
     background-size: 400% 400%;
-    animation: gradientBG 20s ease infinite;
+    animation: gradientFlex 25s ease infinite;
 }
 
-@keyframes gradientBG {
-    0% {background-position: 0% 50%;}
-    50% {background-position: 100% 50%;}
-    100% {background-position: 0% 50%;}
+@keyframes gradientFlex {
+    0% { background-position: 0% 50%; }
+    25% { background-position: 50% 60%; }
+    50% { background-position: 100% 50%; }
+    75% { background-position: 50% 40%; }
+    100% { background-position: 0% 50%; }
 }
