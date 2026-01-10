@@ -15,35 +15,60 @@ document.addEventListener("DOMContentLoaded", () => {
   const dietaSelecionada = JSON.parse(localStorage.getItem("dietaSelecionada")) || {};
   const objetivoUsuario = localStorage.getItem("objetivoSelecionado") || "";
 
-  // SIMULA LOADING
-  setTimeout(() => {
-    loading.style.display = "none";
-    resumo.classList.remove("hidden");
+// SIMULA LOADING
+setTimeout(() => {
+  loading.style.display = "none";
+  resumo.classList.remove("hidden");
 
-    // NOME
-    nomeSpan.textContent = dadosUsuario.nome || "Usuário";
+  const nome = dadosUsuario.nome || "Usuário";
+  const idade = Number(dadosUsuario.idade);
+  const peso = Number(dadosUsuario.peso);
+  const alturaCm = Number(dadosUsuario.altura);
+  const alturaM = alturaCm / 100;
 
-    // DADOS EM LINHA
-    linhaDados.textContent = `${dadosUsuario.idade} Anos | ${dadosUsuario.peso} kg | ${dadosUsuario.altura} cm`;
+  // ===== IMC =====
+  const imc = peso / (alturaM * alturaM);
 
-    // OBJETIVO EM DESTAQUE (COM CLASSE VISUAL)
-    objetivoDiv.textContent = objetivoUsuario;
-    objetivoDiv.classList.add("objetivo-destaque");
+  let classificacao = "";
+  if (imc < 18.5) classificacao = "abaixo do peso";
+  else if (imc < 25) classificacao = "no peso ideal";
+  else classificacao = "acima do peso";
 
-    // ALIMENTOS (TODOS JUNTOS, SEM SUBTÍTULOS)
-    let alimentos = [];
+  // ===== CALORIAS (fórmula Mifflin-St Jeor simplificada) =====
+  const caloriasBase = (10 * peso) + (6.25 * alturaCm) - (5 * idade) + 5;
+  const caloriasIdeais = Math.round(caloriasBase);
 
-    Object.values(dietaSelecionada).forEach(lista => {
-      lista.forEach(item => alimentos.push(item));
-    });
+  // ===== TEXTO DINÂMICO =====
+  nomeSpan.innerHTML = `
+    Olá, <strong>${nome}</strong> 👋<br>
+    <span class="texto-avaliacao">
+      De acordo com suas informações de medidas que nos foram passadas,
+      foi observado que você está <strong>${classificacao}</strong>.
+      Estamos aqui para lhe auxiliar!
+    </span>
+  `;
 
-    alimentosDiv.innerHTML = alimentos.length
-      ? `<p>${alimentos.join(" • ")}</p>`
-      : "<p>Nenhum alimento selecionado.</p>";
+  // ===== DADOS EM LINHA =====
+  linhaDados.textContent = `${idade} Anos | ${peso} kg | ${alturaCm} cm`;
 
-  }, 1500);
-});
+  // ===== OBJETIVO EM DESTAQUE =====
+  objetivoDiv.innerHTML = `
+    <strong>Objetivo:</strong> ${objetivoUsuario}<br>
+    <small>Calorias ideais estimadas: ${caloriasIdeais} kcal/dia</small>
+  `;
 
+  // ===== ALIMENTOS (SEM SUBDIVISÕES) =====
+  let alimentos = [];
+
+  Object.values(dietaSelecionada).forEach(lista => {
+    lista.forEach(item => alimentos.push(item));
+  });
+
+  alimentosDiv.innerHTML = alimentos.length
+    ? `<p>${alimentos.join(" • ")}</p>`
+    : "<p>Nenhum alimento selecionado.</p>";
+
+}, 1500);
 // BOTÃO
 function irParaPlanos() {
   window.location.href = "planos.html";
