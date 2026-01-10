@@ -50,54 +50,6 @@ body {
   transform: scale(1.02);
 }
 
-/* CARD IA – gradiente animado interno */
-.card-ia {
-  position: relative;
-  background: linear-gradient(
-    120deg,
-    #7efca6,
-    #a6f7c1,
-    #5de0b2,
-    #7efca6
-  );
-  background-size: 300% 300%;
-  animation: gradienteIA 6s ease infinite;
-  border: none;
-  box-shadow:
-    0 0 12px rgba(126, 252, 166, 0.6),
-    0 0 24px rgba(166, 247, 193, 0.4);
-  overflow: hidden;
-}
-
-/* brilho interno suave */
-.card-ia::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(
-    circle at top left,
-    rgba(255,255,255,0.35),
-    transparent 60%
-  );
-  pointer-events: none;
-}
-
-/* mantém o texto legível */
-.card-ia .titulo-opcao,
-.card-ia .descricao-opcao {
-  position: relative;
-  z-index: 1;
-  color: #0f2d1f;
-}
-
-/* animação do gradiente */
-@keyframes gradienteIA {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
-}
-
-
 /* Página 2 BOTÃO GRANDE CONTINUAR – DESTAQUE */
 .botao-principal {
   width: 100%;
@@ -164,12 +116,56 @@ body {
   --verde-logo: #1db954; /* ajuste aqui se quiser outro tom */
 }
 
-/* Página 1 CARD DESTAQUE – SOU NOVO NA NUTRI+ */
+/* Página 1 CARD DESTAQUE – SOU NOVO NA NUTRI+ (IA GRADIENTE ANIMADO) */
 .card-opcao.destaque {
-  background: #3a5a30; /* verde-mata */
+  position: relative;
+  background: linear-gradient(
+    120deg,
+    #7efca6,
+    #a6f7c1,
+    #5de0b2,
+    #7efca6
+  );
+  background-size: 300% 300%;
+  animation: gradienteIA 6s ease infinite;
+
   border: none;
-  box-shadow: 0 10px 28px rgba(58, 90, 48, 0.35); /* sombra verde suave */
-  color: #ffffff; /* texto branco para contraste */
+  border-radius: 18px;
+
+  box-shadow:
+    0 0 12px rgba(126, 252, 166, 0.6),
+    0 0 26px rgba(166, 247, 193, 0.45);
+
+  color: #0f2d1f;
+  overflow: hidden;
+}
+
+/* brilho interno estilo IA */
+.card-opcao.destaque::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    circle at top left,
+    rgba(255, 255, 255, 0.35),
+    transparent 60%
+  );
+  pointer-events: none;
+}
+
+/* garante texto acima do brilho */
+.card-opcao.destaque .titulo-opcao,
+.card-opcao.destaque .descricao-opcao {
+  position: relative;
+  z-index: 1;
+  color: #0f2d1f;
+}
+
+/* animação do gradiente */
+@keyframes gradienteIA {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
 }
 
 /* Container da onda */
