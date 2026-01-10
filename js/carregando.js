@@ -1,6 +1,5 @@
-// ===== PROGRESSO =====
-const barra = document.getElementById("barraProgresso");
-if (barra) barra.style.width = "90%";
+// PROGRESSO
+document.getElementById("barraProgresso").style.width = "90%";
 
 document.addEventListener("DOMContentLoaded", () => {
 
@@ -16,74 +15,78 @@ document.addEventListener("DOMContentLoaded", () => {
   const dietaSelecionada = JSON.parse(localStorage.getItem("dietaSelecionada")) || {};
   const objetivoUsuario = localStorage.getItem("objetivoSelecionado") || "";
 
-  // ===== SIMULA LOADING =====
   setTimeout(() => {
-    if (loading) loading.style.display = "none";
-    if (resumo) resumo.classList.remove("hidden");
+    loading.style.display = "none";
+    resumo.classList.remove("hidden");
 
     const nome = dadosUsuario.nome || "Usuário";
-    const idade = Number(dadosUsuario.idade) || 0;
-    const peso = Number(dadosUsuario.peso) || 0;
-    const alturaCm = Number(dadosUsuario.altura) || 0;
+    const idade = Number(dadosUsuario.idade);
+    const peso = Number(dadosUsuario.peso);
+    const alturaCm = Number(dadosUsuario.altura);
     const alturaM = alturaCm / 100;
 
     // ===== IMC =====
-    let classificacao = "indefinido";
-    if (peso > 0 && alturaM > 0) {
-      const imc = peso / (alturaM * alturaM);
-      if (imc < 18.5) classificacao = "abaixo do peso";
-      else if (imc < 25) classificacao = "no peso ideal";
-      else classificacao = "acima do peso";
+    const imc = peso / (alturaM * alturaM);
+
+    let classificacao = "";
+    let corClassificacao = "";
+
+    if (imc < 18.5) {
+      classificacao = "abaixo do peso";
+      corClassificacao = "#2d8cff"; // azul
+    } else if (imc < 25) {
+      classificacao = "no peso ideal";
+      corClassificacao = "#1e8f5a"; // verde
+    } else {
+      classificacao = "acima do peso";
+      corClassificacao = "#e74c3c"; // vermelho
     }
 
-    // ===== CALORIAS (Mifflin-St Jeor) =====
+    // ===== CALORIAS =====
     const caloriasBase = (10 * peso) + (6.25 * alturaCm) - (5 * idade) + 5;
-    const caloriasIdeais = caloriasBase > 0 ? Math.round(caloriasBase) : "-";
+    const caloriasIdeais = Math.round(caloriasBase);
 
-    // ===== TEXTO DO NOME =====
-    if (nomeSpan) {
-      nomeSpan.innerHTML = `
-        Olá, <strong>${nome}</strong> 👋<br>
-        <span class="texto-avaliacao">
-          De acordo com suas informações de medidas que nos foram passadas,
-          foi observado que você está <strong>${classificacao}</strong>.
-          Estamos aqui para lhe auxiliar!
-        </span>
-      `;
-    }
+    // ===== TEXTO PRINCIPAL (SEM NEGRITO / SEM DUPLICAR OLÁ) =====
+    nomeSpan.innerHTML = `
+      Olá, <strong>${nome}</strong> 👋<br>
+      <span class="texto-avaliacao">
+        De acordo com suas informações de medidas que nos foram passadas,
+        foi observado que você está
+        <span style="color:${corClassificacao}; font-weight:600;">
+          ${classificacao}
+        </span>.
+        Estamos aqui para lhe auxiliar!
+      </span>
+    `;
 
     // ===== DADOS EM LINHA =====
-    if (linhaDados) {
-      linhaDados.textContent = `${idade} Anos | ${peso} kg | ${alturaCm} cm`;
-    }
+    linhaDados.textContent = `${idade} Anos | ${peso} kg | ${alturaCm} cm`;
 
-    // ===== OBJETIVO EM DESTAQUE =====
+    // ===== OBJETIVO + CALORIAS (NO MESMO DESTAQUE) =====
     objetivoDiv.innerHTML = `
-  <div class="objetivo-destaque">
-    Objetivo: ${objetivoUsuario}
-  </div>
-  <small>Calorias ideais estimadas: ${caloriasIdeais} kcal/dia</small>
-`;
+      <div class="objetivo-destaque">
+        Objetivo: ${objetivoUsuario}<br>
+        <span style="font-weight:500; font-size:14px;">
+          Calorias ideais estimadas: ${caloriasIdeais} kcal/dia
+        </span>
+      </div>
+    `;
 
-    // ===== ALIMENTOS (TODOS JUNTOS) =====
+    // ===== ALIMENTOS (SEM SUBDIVISÕES) =====
     let alimentos = [];
 
     Object.values(dietaSelecionada).forEach(lista => {
-      if (Array.isArray(lista)) {
-        lista.forEach(item => alimentos.push(item));
-      }
+      lista.forEach(item => alimentos.push(item));
     });
 
-    if (alimentosDiv) {
-      alimentosDiv.innerHTML = alimentos.length
-        ? `<p>${alimentos.join(" • ")}</p>`
-        : "<p>Nenhum alimento selecionado.</p>";
-    }
+    alimentosDiv.innerHTML = alimentos.length
+      ? `<p>${alimentos.join(" • ")}</p>`
+      : "<p>Nenhum alimento selecionado.</p>";
 
   }, 1500);
 });
 
-// ===== BOTÃO =====
+// BOTÃO
 function irParaPlanos() {
   window.location.href = "planos.html";
 }
