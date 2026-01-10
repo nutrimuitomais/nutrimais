@@ -1,3 +1,4 @@
+/* RESET GLOBAL */
 * {
   margin: 0;
   padding: 0;
@@ -5,396 +6,72 @@
   font-family: 'Segoe UI', Arial, sans-serif;
 }
 
+:root {
+  --verde-logo: #1db954;
+}
+
 body {
-  background: #ffffff; /* FUNDO BRANCO */
+  background: #ffffff;
   min-height: 100vh;
 }
 
-/* CONTAINER CENTRAL */
-.container-inicio {
+/* ======================
+   CONTAINERS
+====================== */
+.container-inicio,
+.container {
   max-width: 420px;
   margin: 0 auto;
-  padding: 50px 20px 60px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  padding: 50px 20px 80px;
   text-align: center;
 }
 
-/* LOGO CENTRALIZADA E ESTÁTICA */
+.container-planos {
+  max-width: 1200px;
+  margin: auto;
+  padding: 40px 20px;
+  text-align: center;
+}
+
+/* ======================
+   LOGOS
+====================== */
 .logo {
   width: 180px;
   margin-bottom: 32px;
 }
 
-/* TÍTULOS */
-.titulo-principal {
-  font-size: 28px;
-  font-weight: 800;
-  color: #111111; /* TEXTO ESCURO */
-  margin-bottom: 12px;
-}
-
-.subtitulo {
-  font-size: 16px;
-  color: #444444; /* CINZA ESCURO */
-  margin-bottom: 36px;
-}
-
-/* CARDS / BOTÕES */
-.card-opcao {
-  width: 100%;
-  background: #ffffff;
-  border-radius: 18px;
-  padding: 22px 18px;
-  margin-bottom: 18px;
-  text-decoration: none;
-  border: 1px solid #e5e5e5;
-  box-shadow: 0 6px 18px rgba(0,0,0,0.06);
-  transition: transform 0.2s ease;
-}
-
-.card-opcao:hover {
-  transform: scale(1.02);
-}
-
-/* TEXTOS DOS BOTÕES */
-.titulo-opcao {
-  display: block;
-  font-size: 20px;
-  font-weight: 700;
-  color: #111111; /* TEXTO ESCURO */
-  margin-bottom: 6px;
-}
-
-.descricao-opcao {
-  font-size: 15px;
-  color: #555555;
-}
-
-/* RESPONSIVO */
-@media (max-width: 480px) {
-  .titulo-principal {
-    font-size: 26px;
-  }
-
-  .titulo-opcao {
-    font-size: 19px;
-  }
-
-  .descricao-opcao {
-    font-size: 14px;
-  }
-}
-/* VARIÁVEL DE COR PRINCIPAL (VERDE DA LOGO) */
-:root {
-  --verde-logo: #1db954; /* ajuste aqui se quiser outro tom */
-}
-
-/* CARD DESTAQUE – SOU NOVO NA NUTRI+ */
-.card-opcao.destaque {
-  background: var(--verde-logo);
-  border: none;
-  box-shadow: 0 10px 28px rgba(29, 185, 84, 0.35);
-}
-
-/* TEXTOS DO CARD VERDE */
-.card-opcao.destaque .titulo-opcao,
-.card-opcao.destaque .descricao-opcao {
-  color: #ffffff;
-}
-/* CONTAINER DAS PÁGINAS INTERNAS */
-.container {
-  max-width: 420px;
-  margin: 0 auto;
-  padding: 40px 20px 80px;
-}
-
-/* TEXTO DO LABEL */
-.campo label {
-  display: block;
-  font-size: 13px;
-  color: #666;
-  margin-bottom: 6px;
-}
-
-/* INPUTS */
-.campo input,
-.campo select {
-  width: 100%;
-  border: none;
-  font-size: 17px;
-  font-weight: 600;
-  color: #111;
-  outline: none;
-  background: transparent;
-}
-
-}
-/* TÍTULO NAS PÁGINAS INTERNAS */
-.container .titulo-principal {
-  text-align: center;
-  margin-bottom: 8px;
-}
-
-.container .subtitulo {
-  text-align: center;
-  margin-bottom: 32px;
-}
-
-/* EFEITO DE FOCO (UX PREMIUM) */
-.campo:focus-within {
-  border-color: var(--verde-logo);
-  box-shadow: 0 0 0 2px rgba(29, 185, 84, 0.15);
-}
-
-/* PLACEHOLDER MAIS SUAVE */
-.campo input::placeholder {
-  color: #999;
-  font-weight: 400;
-}
-
-/* BOTÃO FLUTUANTE CONTINUAR */
-.botao-continuar {
-  position: fixed;
-  bottom: 20px;
-  left: 50%;
-  transform: translateX(-50%);
-  background: var(--verde-logo);
-  color: #ffffff;
-  padding: 16px 36px;
-  border-radius: 40px;
-  font-size: 17px;
-  font-weight: 700;
-  text-decoration: none;
-  box-shadow: 0 12px 30px rgba(29, 185, 84, 0.4);
-  z-index: 10;
-}
-
-/* BLOCO INTRO */
-.bloco-intro {
-  text-align: center;
-  margin-bottom: 32px;
-}
-
-.icone-medidas {
-  font-size: 45px;
-  margin-bottom: 12px;
-  margin-top: 12px;
-  margin-bottom: 10px;   /* ↓ diminui o espaço */
-  opacity: 0.6;
-}
-/* BOTÃO GRANDE CONTINUAR */
-.botao-principal {
-  width: 100%;
-  max-width: 320px;
-  margin: 32px auto;
-  padding: 14px;
-  background-color: #2ecc71;
-  color: #fff;
-  font-size: 16px;
-  border: none;
-  border-radius: 6px;
-  display: block;
-  cursor: not-allowed;
-  opacity: 0.5;
-}
-
-.botao-principal.ativo {
-  cursor: pointer;
-  opacity: 1;
-}
-
-/* BARRA DE PROGRESSO */
-.progresso {
-  width: 100%;
-  height: 6px;
-  background: #eaeaea;
-  border-radius: 6px;
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 20;
-}
-
-.progresso-barra {
-  height: 100%;
-  width: 33%; /* ex: 33% se for a 1ª etapa, ajustar dinamicamente no JS */
-  background: var(--verde-logo);
-  border-radius: 6px;
-  transition: width 0.4s ease;
-}
-
-/* BOTÃO FINAL ESTILO HOME */
-.botao-final {
-  margin-top: 36px;
-  text-align: center;
-}
-.form-wrapper {
-  max-width: 420px;
-  margin: 0 auto;
-  padding: 0 16px;
-}
-/* CENTRALIZAR APENAS TEXTO DOS CAMPOS */
-.campo {
-  text-align: center;
-}
-
-.campo label {
-  text-align: center;
-}
-
-.campo input,
-.campo select {
-  text-align: center;
-}
-/* ===== CAMPOS MODELO WHATSAPP ===== */
-.campo-whatsapp {
-  background: transparent;
-  border: none;
-  border-bottom: 1.5px solid #dcdcdc;
-  padding: 10px 0;
-  margin-bottom: 24px;
-}
-
-.campo-whatsapp label {
-  display: block;
-  font-size: 13px;
-  color: #777;
-  margin-bottom: 4px;
-}
-
-.campo-whatsapp input,
-.campo-whatsapp select {
-  width: 100%;
-  border: none;
-  background: transparent;
-  font-size: 17px;
-  font-weight: 600;
-  color: #111;
-  padding: 6px 0;
-  outline: none;
-}
-
-.campo-whatsapp input:focus,
-.campo-whatsapp select:focus {
-  border-bottom: 2px solid var(--verde-logo);
-}
-/* GRID DE CARDS DE ALIMENTOS */
-.grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr); /* 3 cards por linha */
-  gap: 12px;
+.logo-planos {
+  width: 120px;
   margin-bottom: 20px;
 }
 
-/* CARD INDIVIDUAL */
-.card {
-  background-color: #ffffff;
-  border: 1px solid #ddd;
-  border-radius: 12px;
-  padding: 12px 8px;
-  font-size: 14px;
-  text-align: center;
-  cursor: pointer;
-  user-select: none;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-  transition: all 0.2s ease;
-}
-
-/* HOVER */
-.card:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 18px rgba(0,0,0,0.12);
-  border-color: var(--verde-logo);
-}
-
-/* CARD SELECIONADO */
-.card.ativo {
-  background-color: var(--verde-logo);
-  color: #ffffff;
-  border-color: var(--verde-logo);
-}
-
-/* CENTRALIZAR TITULOS DAS REFEIÇÕES */
-.titulo-refeicao {
-  text-align: center;
-  margin-bottom: 12px;
-  font-size: 18px;
-  font-weight: 600;
-}
-/* CENTRALIZAR TÍTULO E SUBTÍTULO DA PÁGINA DE ALIMENTOS */
-.titulo-central, .subtitulo-central {
-  text-align: center;
-  margin-bottom: 16px; /* ajuste se quiser mais espaçamento */
-  font-weight: 600; /* mantém parecido com páginas internas */
-}
-
-/* BARRA DE PROGRESSO NA PÁGINA DE ALIMENTOS */
-.progresso-alimentos {
-  width: 100%;
-  height: 6px;
-  background: #eaeaea;
-  border-radius: 6px;
-  margin: 24px 0;
-}
-
-.progresso-barra-alimentos {
-  height: 100%;
-  background: var(--verde-logo);
-  border-radius: 6px;
-  transition: width 0.4s ease;
-  width: 0%; /* pode ser animada via JS quando necessário */
-}
-  /* ==============================
-   Regra com símbolo suave de dieta
-   ============================== */
-.progresso-barra {
-  height: 100%;
-  width: 33%; /* ex: 33% se for a 1ª etapa, ajustar dinamicamente no JS */
-  background: var(--verde-logo);
-  border-radius: 6px;
-  transition: width 0.4s ease;
-}
-
-.linha-simbolo-wrapper .linha {
-  flex: 1;
-  height: 2px;
-  background-color: #e0e0e0; /* linha suave */
-  border-radius: 1px;
-}
-
-.icone-dieta-topo {
-  font-size: 54px;
-  margin-bottom: 4px;   /* ↓ diminui o espaço */
-  margin-top: -35px;    /* ↑ sobe o ícone */
-  color: var(--verde-logo);
-  opacity: 0.6;
-}
-
-/* Título e subtítulo centralizados (mantendo estilo anterior) */
+/* ======================
+   TÍTULOS
+====================== */
+.titulo-principal,
 .titulo-central {
-  text-align: center;
   font-size: 28px;
   font-weight: 800;
-  color: #111111;
+  color: #111;
   margin-bottom: 12px;
 }
 
+.subtitulo,
 .subtitulo-central {
-  text-align: center;
   font-size: 16px;
-  color: #444444;
+  color: #444;
   margin-bottom: 36px;
 }
 
-/* Barra de progresso no topo (mesmo estilo da página anterior) */
+/* ======================
+   BARRA DE PROGRESSO (ÚNICA)
+====================== */
 .progresso {
   width: 100%;
   height: 6px;
   background: #eaeaea;
   border-radius: 6px;
-  margin-bottom: 24px;
   position: fixed;
   top: 0;
   left: 0;
@@ -408,54 +85,154 @@ body {
   border-radius: 6px;
   transition: width 0.4s ease;
 }
-/* CARD GRANDE DA REFEIÇÃO */
-.bloco-refeicao {
-  background: #ffffff;
-  border: 1px solid #e5e5e5;
+
+/* ======================
+   CARDS
+====================== */
+.card-opcao,
+.card-dados,
+.card-resumo {
+  background: #fff;
   border-radius: 18px;
-  padding: 20px 16px;
-  margin-bottom: 28px;
-  box-shadow: 0 6px 20px rgba(0,0,0,0.06);
+  padding: 22px 18px;
+  border: 1px solid #e5e5e5;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.06);
 }
 
-/* TÍTULO DENTRO DO CARD */
-.bloco-refeicao .titulo-refeicao {
-  margin-bottom: 16px;
-}
-/* ===============================
-   BARRA DE PROGRESSO – PADRÃO GLOBAL
-   (igual à página anterior)
-   =============================== */
-
-.progresso {
-  width: 100%;
-  height: 6px;
-  background: #eaeaea;
-  border-radius: 6px;
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 20;
+.card-opcao {
+  margin-bottom: 18px;
+  text-decoration: none;
+  transition: transform .2s ease;
 }
 
-.progresso-barra {
-  height: 100%;
-  width: 80%; /* NÃO MEXER – etapa atual */
+.card-opcao:hover {
+  transform: scale(1.02);
+}
+
+.card-opcao.destaque {
   background: var(--verde-logo);
+  border: none;
+  box-shadow: 0 10px 28px rgba(29,185,84,.35);
+}
+
+.card-opcao.destaque * {
+  color: #fff;
+}
+
+/* ======================
+   CAMPOS (WHATSAPP STYLE)
+====================== */
+.form-wrapper {
+  max-width: 420px;
+  margin: 0 auto;
+  padding: 0 16px;
+}
+
+.campo-whatsapp {
+  border-bottom: 1.5px solid #dcdcdc;
+  padding: 10px 0;
+  margin-bottom: 24px;
+}
+
+.campo-whatsapp label {
+  font-size: 13px;
+  color: #777;
+}
+
+.campo-whatsapp input,
+.campo-whatsapp select {
+  width: 100%;
+  border: none;
+  background: transparent;
+  font-size: 17px;
+  font-weight: 600;
+  color: #111;
+  text-align: center;
+  outline: none;
+}
+
+.campo-whatsapp input::placeholder {
+  color: #999;
+}
+
+/* ======================
+   BOTÕES
+====================== */
+.botao-principal {
+  width: 100%;
+  max-width: 320px;
+  margin: 24px auto 0;
+  padding: 14px;
+  background: #2ecc71;
+  color: #fff;
+  font-size: 16px;
+  border: none;
   border-radius: 6px;
-  transition: width 0.4s ease;
-}
-.card-dados {
-  border-radius: 16px;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
-  overflow: hidden;
+  display: block;
+  cursor: pointer;
 }
 
-/* ===== Página de Planos ===== */
+/* ======================
+   GRID ALIMENTOS
+====================== */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin-bottom: 20px;
+}
 
-/* ===== FUNDO ANIMADO ===== */
+.card {
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  padding: 12px 8px;
+  font-size: 14px;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0,0,0,.08);
+  transition: .2s;
+}
+
+.card:hover {
+  transform: translateY(-2px);
+  border-color: var(--verde-logo);
+}
+
+.card.ativo {
+  background: var(--verde-logo);
+  color: #fff;
+}
+
+/* ======================
+   RESUMO
+====================== */
+.nome-usuario {
+  font-size: 18px;
+  margin-top: 8px;
+}
+
+.linha-dados {
+  font-size: 14px;
+  color: #555;
+  margin: 6px 0 12px;
+}
+
+/* OBJETIVO (ÚNICO E CORRETO) */
+.objetivo-box {
+  margin: 12px 0;
+  padding: 10px;
+  background: #e7f6ee;
+  color: #1b7a4a;
+  font-weight: 600;
+  border-radius: 12px;
+  text-align: center;
+}
+
+/* ======================
+   PLANOS
+====================== */
 .fundo-planos {
-  background: linear-gradient(120deg, #ffffff, #e7f6ee, #ffffff);
+  background: linear-gradient(120deg, #fff, #e7f6ee, #fff);
   background-size: 300% 300%;
   animation: bgMove 12s ease infinite;
 }
@@ -466,27 +243,12 @@ body {
   100% { background-position: 0% 50%; }
 }
 
-/* ===== LAYOUT ===== */
-.container-planos {
-  max-width: 1200px;
-  margin: auto;
-  padding: 40px 20px;
-  text-align: center;
-}
-
-.logo-planos {
-  width: 120px;
-  margin-bottom: 20px;
-}
-
 .grid-planos {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(280px,1fr));
   gap: 30px;
-  margin-top: 40px;
 }
 
-/* ===== CARD ===== */
 .card-plano {
   background: #6f7c78;
   color: #fff;
@@ -496,96 +258,7 @@ body {
   box-shadow: 0 10px 30px rgba(0,0,0,.15);
 }
 
-.card-plano.recomendado {
-  background: #7b6a44;
-}
-
-.card-plano.destaque {
-  background: #4f6b56;
-}
-
 .card-plano h2 {
   font-size: 26px;
   margin: 20px 0;
-}
-
-/* ===== TAG ===== */
-.tag {
-  position: absolute;
-  top: 16px;
-  left: 50%;
-  transform: translateX(-50%);
-  background: #444;
-  color: #fff;
-  padding: 6px 14px;
-  border-radius: 999px;
-  font-size: 12px;
-}
-
-.tag.verde {
-  background: #6fd18c;
-  color: #114b2d;
-}
-
-/* ===== PREÇO ===== */
-.preco-antigo {
-  text-decoration: line-through;
-  opacity: .7;
-}
-
-.preco {
-  font-size: 48px;
-  font-weight: bold;
-}
-
-.mensal {
-  font-size: 14px;
-  opacity: .9;
-}
-
-/* ===== LISTA ===== */
-.card-plano ul {
-  text-align: left;
-  margin-top: 20px;
-}
-
-.card-plano li {
-  margin-bottom: 8px;
-}
-
-/* ===== BOTÃO ===== */
-.flutuante {
-  position: absolute;
-  bottom: 20px;
-  left: 50%;
-  transform: translateX(-50%);
-}
-.nome-usuario {
-  margin-top: 10px;
-  font-size: 16px;
-}
-
-.linha-dados {
-  margin: 6px 0 14px;
-  font-size: 14px;
-  color: #555;
-}
-
-.objetivo-box {
-  background: #e7f6ee;
-  color: #1db954;
-  font-weight: 700;
-  padding: 10px;
-  border-radius: 12px;
-  margin-bottom: 20px;
-  text-align: center;
-}
-.objetivo-box {
-  margin: 12px 0;
-  padding: 8px 14px;
-  background: #e7f6ee;
-  color: #1b7a4a;
-  font-weight: 600;
-  border-radius: 12px;
-  text-align: center;
 }
