@@ -8,40 +8,45 @@
 </head>
 <body>
 
-  <!-- BARRA DE PROGRESSO -->
-  <div class="barra-container">
-    <div class="barra-progresso" id="barraProgresso"></div>
+<!-- BARRA DE PROGRESSO -->
+<div class="barra-container">
+  <div class="barra-progresso" id="barraProgresso"></div>
+</div>
+
+<!-- LOADING -->
+<div class="loading-container" id="loading">
+  <h1>Carregando sua dieta<span id="dots">...</span></h1>
+</div>
+
+<!-- RESUMO -->
+<div class="resumo hidden" id="resumo">
+  <div class="card-resumo">
+
+    <img src="logo-nutrimais.png" class="logo-resumo" alt="Nutri+">
+
+    <h2>Confirme sua dieta:</h2>
+
+    <!-- NOME -->
+    <p class="nome-usuario">Olá, <strong id="nomeUsuario"></strong> 👋</p>
+
+    <!-- DADOS EM LINHA -->
+    <p class="linha-dados" id="linhaDados"></p>
+
+    <!-- OBJETIVO -->
+    <div id="objetivoResumo" class="objetivo-box"></div>
+
+    <!-- ALIMENTOS (SEM SUBTÍTULOS) -->
+    <h3>Alimentos selecionados:</h3>
+    <div id="alimentosResumo"></div>
+
+    <!-- BOTÃO DENTRO DO CARD -->
+    <button class="btn-principal" onclick="irParaPlanos()">
+      Gerar dieta
+    </button>
+
   </div>
+</div>
 
-  <!-- LOADING CENTRAL -->
-  <div class="loading-container" id="loading">
-    <h1>Carregando sua dieta<span id="dots">...</span></h1>
-  </div>
-
-  <!-- RESUMO -->
-  <div class="resumo hidden" id="resumo">
-    <div class="card-resumo">
-
-      <img src="logo-nutrimais.png" class="logo-resumo" alt="Nutri+">
-
-      <h2>Confirme sua dieta:</h2>
-
-      <p>Olá, <strong><span id="nomeUsuario"></span></strong> 👋</p>
-
-      <p id="dadosResumo"></p>
-
-      <div id="objetivoResumo" class="objetivo-box"></div>
-
-      <h3>Alimentos selecionados:</h3>
-      <div id="alimentosResumo"></div>
-
-      <button class="btn-principal" onclick="irParaPlanos()">
-        Gerar dieta
-      </button>
-
-    </div>
-  </div>
-
-  <script src="js/carregando.js"></script>
+<script src="js/carregando.js"></script>
 </body>
 </html>
