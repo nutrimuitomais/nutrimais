@@ -61,15 +61,16 @@ body {
   margin: 0 auto 12px;
 }
 
-/* OBJETIVO */
-.objetivo {
-  background: #e6f8ee;
-  padding: 10px;
-  border-radius: 12px;
-  color: #1e8f5a;
+.objetivo-destaque {
+  display: inline-block;
+  padding: 8px 18px;
+  background-color: #dff5ea; /* verde claro */
+  color: #1e8f5a; /* verde da logo */
+  border-radius: 999px; /* redondo tipo botão */
   font-weight: 600;
   margin: 12px 0;
 }
+
 
 /* BOTÃO */
 .btn-principal {
