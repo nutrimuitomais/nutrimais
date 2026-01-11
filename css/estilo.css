@@ -32,38 +32,22 @@
 /* BOTÕES / CARDS – ESTÉTICA IA PREMIUM */
 .card-opcao {
   width: 100%;
-  background: rgba(255, 255, 255, 0.65);
+  background: #ffffff;
   border-radius: 18px;
-  padding: 22px 20px;
+  padding: 26px 20px;
   margin-bottom: 18px;
   text-decoration: none;
-
-  border: 1px solid rgba(120, 200, 160, 0.35);
-
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-
-  box-shadow:
-    0 8px 22px rgba(0, 0, 0, 0.06),
-    inset 0 0 0 rgba(255,255,255,0);
-
-  transition:
-    transform 0.35s ease,
-    box-shadow 0.35s ease,
-    background 0.35s ease,
-    border 0.35s ease;
+  border: 1px solid #e6e6e6;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.06);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform .25s ease, box-shadow .25s ease;
 }
 
 .card-opcao:hover {
-  transform: translateY(-4px) scale(1.01);
-
-  background: rgba(255, 255, 255, 0.78);
-
-  border: 1px solid rgba(90, 180, 140, 0.6);
-
-  box-shadow:
-    0 14px 34px rgba(0, 0, 0, 0.10),
-    0 0 18px rgba(140, 220, 180, 0.25);
+  transform: translateY(-2px);
+  box-shadow: 0 12px 32px rgba(0,0,0,0.08);
 }
 
 @keyframes linhaIA {
@@ -106,8 +90,11 @@
 
 /* Página 2 - TEXTOS DOS BOTÕES */
 .descricao-opcao {
-  font-size: 15px;
-  color: #555555;
+  font-size: 1.18rem;
+  font-weight: 600;
+  color: #1f2937;
+  text-align: center;
+  letter-spacing: 0.2px;
 }
 
 /* Página 2 - RESPONSIVO */
