@@ -561,43 +561,7 @@ body::after {
     0 10px 26px rgba(0,0,0,0.07);
 }
 
-/* ===== PÁGINA 2 – CARD PRINCIPAL ===== */
-.card-formulario {
-  background: rgba(255, 255, 255, 0.92);
-  border-radius: 22px;
-  padding: 26px 22px 30px;
-  box-shadow: 0 12px 32px rgba(0,0,0,0.08);
-  backdrop-filter: blur(6px);
-  max-width: 420px;
-  margin: 0 auto 40px;
-}
  /* ===== Página 2 GRUPO DE OPÇÕES (Calorias / Alergia / Histórico) ===== */
-.grupo-opcoes {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 8px;
-  margin-top: 6px;
-  margin-bottom: 12px;
-}
-
-.grupo-opcoes button {
-  padding: 8px 14px;
-  border-radius: 999px;
-  border: 1px solid #dcdcdc;
-  background: #ffffff;
-  font-size: 14px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.2s ease;
-}
-
-.grupo-opcoes button:hover,
-.grupo-opcoes button.ativo {
-  background: var(--verde-logo);
-  color: #ffffff;
-  border-color: var(--verde-logo);
-}
 
 .card-formulario input[type="text"] {
   margin-top: 8px;
@@ -629,51 +593,56 @@ body::after {
   box-shadow: 0 12px 32px rgba(0,0,0,0.08);
 }
 
-/* INPUTS LIMPOS */
-.input-clean {
-  width: 100%;
-  padding: 14px 16px;
-  border-radius: 14px;
-  border: 1px solid #e3e3e3;
-  font-size: 0.95rem;
-  outline: none;
+/* ===== CAMPOS EXPANSÍVEIS – MESMO VISUAL DOS INPUTS ===== */
+
+.campo-expansivel {
+  border-bottom: 1.5px solid #dcdcdc;
+  padding: 10px 0;
+  margin-bottom: 18px;
 }
 
-.input-clean:focus {
-  border-color: #2ecc71;
-}
-
-/* OPÇÕES EXPANSÍVEIS */
-.opcao {
-  width: 100%;
-}
-
-.opcao-toggle {
-  width: 100%;
-  padding: 14px;
-  border-radius: 14px;
-  border: 1px solid #e3e3e3;
-  background: #f8f8f8;
+/* Área clicável (igual input) */
+.campo-trigger {
+  font-size: 17px;
   font-weight: 600;
+  color: #111;
+  text-align: center;
   cursor: pointer;
+  padding: 6px 0;
 }
 
-.opcao-body {
-  display: none;
-  margin-top: 10px;
-  gap: 10px;
-  flex-direction: column;
-}
-
-.opcao.active .opcao-body {
-  display: flex;
-}
-
-.opcao-conteudo {
+/* Conteúdo escondido */
+.campo-conteudo {
   display: none;
   margin-top: 12px;
 }
 
-.opcao-expandivel.ativa .opcao-conteudo {
+/* Abre quando ativo */
+.campo-expansivel.ativo .campo-conteudo {
+  display: block;
+}
+
+/* Inputs internos */
+.campo-conteudo select,
+.campo-conteudo input {
+  width: 100%;
+  border: none;
+  border-bottom: 1.5px solid #e0e0e0;
+  background: transparent;
+  font-size: 16px;
+  font-weight: 600;
+  text-align: center;
+  padding: 8px 0;
+  outline: none;
+  margin-top: 12px;
+}
+
+/* Campo extra começa escondido */
+.input-extra {
+  display: none;
+}
+
+/* Mostra quando necessário */
+.input-extra.ativo {
   display: block;
 }
