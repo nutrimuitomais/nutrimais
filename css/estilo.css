@@ -111,6 +111,7 @@ body {
     font-size: 14px;
   }
 }
+
 /* VARIÁVEL DE COR PRINCIPAL (VERDE DA LOGO) */
 :root {
   --verde-logo: #1db954; /* ajuste aqui se quiser outro tom */
@@ -149,7 +150,6 @@ body {
   color: #5a5a5a;
 }
 
-
 /* Container da onda */
 .fundo-onda {
   position: relative;
@@ -166,11 +166,15 @@ body {
   height: 100%;
 }
 
-/* TEXTOS DO CARD VERDE */
-.card-opcao.destaque .titulo-opcao,
-.card-opcao.destaque .descricao-opcao {
-  color: #ffffff;
+/* TEXTOS DO CARD DESTAQUE (corrigido para fundo branco) */
+.card-opcao.destaque .titulo-opcao {
+  color: #1a1a1a;
 }
+
+.card-opcao.destaque .descricao-opcao {
+  color: #555555;
+}
+
 /* CONTAINER DAS PÁGINAS INTERNAS */
 .container {
   max-width: 420px;
