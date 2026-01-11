@@ -668,3 +668,12 @@ body::after {
 .opcao.active .opcao-body {
   display: flex;
 }
+
+.opcao-conteudo {
+  display: none;
+  margin-top: 12px;
+}
+
+.opcao-expandivel.ativa .opcao-conteudo {
+  display: block;
+}
