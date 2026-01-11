@@ -18,62 +18,27 @@
  
 <div class="card-formulario">
  
-  <div class="campo-whatsapp">
+  <div class="campo-simples">
     <label>Nome</label>
     <input type="text" placeholder="Digite seu nome">
   </div>
 
-  <div class="campo-whatsapp">
+  <div class="campo-simples">
     <label>Idade</label>
     <input type="number" placeholder="Ex: 25">
   </div>
 
-  <div class="campo-whatsapp">
+  <div class="campo-simples">
     <label>Peso (kg)</label>
     <input type="number" placeholder="Ex: 70">
   </div>
 
-  <div class="campo-whatsapp">
+  <div class="campo-simples">
     <label>Altura (cm)</label>
     <input type="number" placeholder="Ex: 175">
   </div>
 
- <div class="campo">
-  <label>Calorias</label>
-
-  <div class="grupo-opcoes">
-    <button type="button">1600 kcal</button>
-    <button type="button">1800 kcal</button>
-    <button type="button">2000 kcal</button>
-    <button type="button">2200 kcal</button>
-    <button type="button">Não sei dizer</button>
-  </div>
-</div>
-
- <div class="campo">
-  <label>Alergia</label>
-
-  <div class="grupo-opcoes">
-    <button type="button">Não possuo</button>
-    <button type="button">Sim, possuo</button>
-  </div>
-
-  <input type="text" placeholder="Descreva a alergia (se houver)">
-</div>
-
- <div class="campo">
-  <label>Histórico de Doença</label>
-
-  <div class="grupo-opcoes">
-    <button type="button">Não possuo</button>
-    <button type="button">Pessoal</button>
-    <button type="button">Familiar</button>
-  </div>
-
-  <input type="text" placeholder="Descreva (se aplicável)">
-</div>
-
-  <div class="campo-whatsapp">
+   <div class="campo-simples">
     <label>Sexo</label>
     <select>
       <option>Selecione</option>
@@ -82,7 +47,7 @@
     </select>
   </div>
 
-  <div class="campo-whatsapp">
+  <div class="campo-simples">
       <label>Objetivo</label>
       <select>
         <option value="">Selecione</option>
@@ -95,6 +60,51 @@
         <option>Saúde e Bem-Estar Geral</option>
       </select>
     </div>
+
+ <div class="opcao-expandivel">
+  <button type="button" class="opcao-botao">
+    Calorias
+  </button>
+
+  <div class="opcao-conteudo">
+    <select>
+      <option>1600 kcal</option>
+      <option>1800 kcal</option>
+      <option>2000 kcal</option>
+      <option>2200 kcal</option>
+      <option>Não sei dizer</option>
+    </select>
+  </div>
+</div>
+
+ <div class="opcao-expandivel">
+  <button type="button" class="opcao-botao">
+    Alergia
+  </button>
+
+  <div class="opcao-conteudo">
+    <select>
+      <option>Não possuo</option>
+      <option>Sim, possuo</option>
+    </select>
+    <input type="text" placeholder="Descreva a alergia (se houver)">
+  </div>
+</div>
+
+ <div class="opcao-expandivel">
+  <button type="button" class="opcao-botao">
+    Histórico de Doença
+  </button>
+
+  <div class="opcao-conteudo">
+    <select>
+      <option>Não possuo</option>
+      <option>Sim, pessoal</option>
+      <option>Sim, familiar</option>
+    </select>
+    <input type="text" placeholder="Descreva (se necessário)">
+  </div>
+</div>
  
   <button id="btnContinuar" class="botao-principal" disabled> Continuar
        </button>
