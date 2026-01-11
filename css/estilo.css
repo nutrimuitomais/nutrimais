@@ -615,3 +615,56 @@ body::after {
 .card-formulario * {
   text-align: center;
 }
+
+/* CARD FORMULÁRIO */
+.card-formulario {
+  max-width: 420px;
+  margin: 0 auto 60px;
+  background: rgba(255,255,255,0.96);
+  border-radius: 20px;
+  padding: 28px 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  box-shadow: 0 12px 32px rgba(0,0,0,0.08);
+}
+
+/* INPUTS LIMPOS */
+.input-clean {
+  width: 100%;
+  padding: 14px 16px;
+  border-radius: 14px;
+  border: 1px solid #e3e3e3;
+  font-size: 0.95rem;
+  outline: none;
+}
+
+.input-clean:focus {
+  border-color: #2ecc71;
+}
+
+/* OPÇÕES EXPANSÍVEIS */
+.opcao {
+  width: 100%;
+}
+
+.opcao-toggle {
+  width: 100%;
+  padding: 14px;
+  border-radius: 14px;
+  border: 1px solid #e3e3e3;
+  background: #f8f8f8;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.opcao-body {
+  display: none;
+  margin-top: 10px;
+  gap: 10px;
+  flex-direction: column;
+}
+
+.opcao.active .opcao-body {
+  display: flex;
+}
