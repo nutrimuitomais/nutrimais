@@ -55,9 +55,16 @@
   100% { background-position: 200%; }
 }
 
-/* Página 1 Texto tamanho */
+/* Página 1 Texto tamanho Desktop */
 .card-opcao.destaque .descricao-opcao {
   font-size: 1.3rem; /* ajuste fino aqui */
+}
+
+/* Página 1 Texto tamanho - MOBILE */
+@media (max-width: 480px) {
+  .card-opcao.destaque .descricao-opcao {
+    font-size: 1.18rem;
+  }
 }
 
 /* Página 2 BOTÃO GRANDE CONTINUAR – DESTAQUE */
