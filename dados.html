@@ -1,4 +1,4 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
@@ -8,103 +8,79 @@
 </head>
 <body>
 
-    <div class="bloco-intro">
-  <div class="icone-medidas">📏</div>
-  <h1 class="titulo-principal">Medidas Corporais</h1>
-  <p class="subtitulo">
-    Informe suas medidas aqui embaixo corretamente para darmos início
-  </p>
-</div>
- 
-<div class="card-formulario">
- 
-  <div class="campo-simples">
-    <input type="text" placeholder="Seu nome">
+  <div class="bloco-intro">
+    <div class="icone-medidas">📏</div>
+    <h1 class="titulo-principal">Medidas Corporais</h1>
+    <p class="subtitulo">
+      Informe seus dados para personalizarmos sua dieta
+    </p>
   </div>
 
-  <div class="campo-simples">
-    <input type="number" placeholder="Sua idade">
-  </div>
+  <div class="card-formulario">
 
-  <div class="campo-simples">
-    <input type="number" placeholder="Peso (kg)">
-  </div>
+    <input class="input-clean" type="text" placeholder="Seu nome">
+    <input class="input-clean" type="number" placeholder="Sua idade">
+    <input class="input-clean" type="number" placeholder="Peso (kg)">
+    <input class="input-clean" type="number" placeholder="Altura (cm)">
 
-  <div class="campo-simples">
-    <input type="number" placeholder="Altura (cm)">
-  </div>
-
-   <div class="campo-simples">
-    <label>Sexo</label>
-    <select>
-      <option>Selecione</option>
+    <select class="input-clean">
+      <option value="">Sexo</option>
       <option>Masculino</option>
       <option>Feminino</option>
     </select>
-  </div>
 
-  <div class="campo-simples">
-      <select>
-        <option value="">Obejtivo</option>
-        <option>Emagrecimento (Perda de Gordura Corporal)</option>
-        <option>Ganhar Massa Muscular (Hipertrofia)</option>
-        <option>Ganhar Massa Seca + Hipertrofia</option>
-        <option>Ganhar Massa Seca + Emagrecimento (Recomposição Corporal)</option>
-        <option>Manutenção (Apenas manter o Peso)</option>
-        <option>Melhora da Performance</option>
-        <option>Saúde e Bem-Estar Geral</option>
-      </select>
+    <select class="input-clean">
+      <option value="">Objetivo</option>
+      <option>Emagrecimento</option>
+      <option>Hipertrofia</option>
+      <option>Recomposição Corporal</option>
+      <option>Manutenção</option>
+      <option>Saúde e Bem-estar</option>
+    </select>
+
+    <!-- CALORIAS -->
+    <div class="opcao">
+      <button type="button" class="opcao-toggle">Calorias</button>
+      <div class="opcao-body">
+        <select class="input-clean">
+          <option>1600 kcal</option>
+          <option>1800 kcal</option>
+          <option>2000 kcal</option>
+          <option>2200 kcal</option>
+          <option>Não sei informar</option>
+        </select>
+      </div>
     </div>
 
- <div class="opcao-expandivel">
-  <button type="button" class="opcao-botao">
-    Calorias
-  </button>
+    <!-- ALERGIA -->
+    <div class="opcao">
+      <button type="button" class="opcao-toggle">Alergia</button>
+      <div class="opcao-body">
+        <select class="input-clean">
+          <option>Não possuo</option>
+          <option>Sim, possuo</option>
+        </select>
+        <input class="input-clean" type="text" placeholder="Qual alergia? (se houver)">
+      </div>
+    </div>
 
-  <div class="opcao-conteudo">
-    <select>
-      <option>1600 kcal</option>
-      <option>1800 kcal</option>
-      <option>2000 kcal</option>
-      <option>2200 kcal</option>
-      <option>Não sei dizer</option>
-    </select>
-  </div>
-</div>
+    <!-- HISTÓRICO -->
+    <div class="opcao">
+      <button type="button" class="opcao-toggle">Histórico de Doença</button>
+      <div class="opcao-body">
+        <select class="input-clean">
+          <option>Não possuo</option>
+          <option>Pessoal</option>
+          <option>Familiar</option>
+        </select>
+        <input class="input-clean" type="text" placeholder="Descreva (opcional)">
+      </div>
+    </div>
 
- <div class="opcao-expandivel">
-  <button type="button" class="opcao-botao">
-    Alergia
-  </button>
+    <button class="botao-principal">Continuar</button>
 
-  <div class="opcao-conteudo">
-    <select>
-      <option>Não possuo</option>
-      <option>Sim, possuo</option>
-    </select>
-    <input type="text" placeholder="Descreva a alergia (se houver)">
-  </div>
-</div>
-
- <div class="opcao-expandivel">
-  <button type="button" class="opcao-botao">
-    Histórico de Doença
-  </button>
-
-  <div class="opcao-conteudo">
-    <select>
-      <option>Não possuo</option>
-      <option>Sim, pessoal</option>
-      <option>Sim, familiar</option>
-    </select>
-    <input type="text" placeholder="Descreva (se necessário)">
-  </div>
-</div>
- 
-  <button id="btnContinuar" class="botao-principal" disabled> Continuar
-       </button>
   </div>
 
-<script src="js/dados.js"></script>
+  <script src="js/dados.js"></script>
 </body>
 </html>
