@@ -55,4 +55,64 @@
 
     <!-- CALORIAS -->
     <div class="campo-expansivel">
-      <div class="campo-trigger">
+      <div class="campo-trigger">Calorias</div>
+      <div class="campo-conteudo">
+        <select id="calorias">
+          <option value="">Selecione</option>
+          <option>1600 kcal</option>
+          <option>1800 kcal</option>
+          <option>2000 kcal</option>
+          <option>2200 kcal</option>
+          <option>Não sei dizer</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- ALERGIA -->
+    <div class="campo-expansivel">
+      <div class="campo-trigger">Alergia</div>
+      <div class="campo-conteudo">
+        <select id="alergia">
+          <option value="">Selecione</option>
+          <option value="nao">Não possuo</option>
+          <option value="sim">Sim, possuo</option>
+        </select>
+
+        <input
+          type="text"
+          id="alergiaDescricao"
+          class="input-extra"
+          placeholder="Descreva a alergia"
+        >
+      </div>
+    </div>
+
+    <!-- HISTÓRICO -->
+    <div class="campo-expansivel">
+      <div class="campo-trigger">Histórico de Doença</div>
+      <div class="campo-conteudo">
+        <select id="historico">
+          <option value="">Selecione</option>
+          <option value="nao">Não possuo</option>
+          <option value="pessoal">Sim, pessoal</option>
+          <option value="familiar">Sim, familiar</option>
+        </select>
+
+        <input
+          type="text"
+          id="historicoDescricao"
+          class="input-extra"
+          placeholder="Descreva (se necessário)"
+        >
+      </div>
+    </div>
+
+    <button id="btnContinuar" class="botao-principal" disabled>
+      Continuar
+    </button>
+
+  </div>
+
+  <script src="js/dados.js"></script>
+</body>
+</html>
