@@ -28,23 +28,6 @@
   margin-bottom: 36px;
 }
 
-/* CARDS / BOTÕES */
-.card-opcao {
-  width: 100%;
-  background: #ffffff;
-  border-radius: 18px;
-  padding: 22px 18px;
-  margin-bottom: 18px;
-  text-decoration: none;
-  border: 1px solid #e5e5e5;
-  box-shadow: 0 6px 18px rgba(0,0,0,0.06);
-  transition: transform 0.2s ease;
-}
-
-.card-opcao:hover {
-  transform: scale(1.02);
-}
-
 /* Página 2 BOTÃO GRANDE CONTINUAR – DESTAQUE */
 .botao-principal {
   width: 100%;
@@ -124,8 +107,8 @@
 
   border: 1px solid rgba(120, 200, 160, 0.35);
 
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
 
   box-shadow:
     0 8px 22px rgba(0, 0, 0, 0.06),
@@ -655,7 +638,7 @@ body::after {
 body::before {
   background:
     radial-gradient(55% 70% at 25% 30%, rgba(180, 245, 210, 1) 0%, transparent 45%),
-    radial-gradient(55% 70% at 80% 25%, rgbargba(214, 233, 255, 0.7) 0%, transparent 55%),
+    radial-gradient(55% 70% at 80% 25%, rgba(214, 233, 255, 0.7) 0%, transparent 55%),
     radial-gradient(65% 80% at 55% 80%, rgba(233, 221, 255, 0.95) 0%, transparent 60%);
   animation: fundoIA1 12s infinite;
 }
