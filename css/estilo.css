@@ -801,7 +801,7 @@ body::after {
 
 /* ESPAÇAMENTO ENTRE CAMPOS */
 .campo-whatsapp + .campo-whatsapp {
-  margin-top: 10px;
+  margin-top: 5px;
 }
 
 @media (max-width: 480px) {
