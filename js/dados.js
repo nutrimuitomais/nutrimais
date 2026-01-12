@@ -1,27 +1,36 @@
 document.addEventListener("DOMContentLoaded", () => {
 
-  /* ===============================
-     SUBSTITUI TEXTO DO BOTÃO
-     =============================== */
+  const btn = document.getElementById("btnContinuar");
 
-  document.querySelectorAll(".opcao").forEach(opcao => {
-    const botao = opcao.querySelector(".opcao-toggle");
-    const select = opcao.querySelector("select");
-    const extra = opcao.querySelector("input");
+  // Abrir / fechar campos expansíveis
+  document.querySelectorAll(".campo-trigger").forEach(trigger => {
+    trigger.addEventListener("click", () => {
+      const bloco = trigger.closest(".campo-expansivel");
+      bloco.classList.toggle("ativo");
+    });
+  });
 
-    // Quando escolher uma opção
+  // Substituir texto do botão e controlar campos extras
+  document.querySelectorAll(".campo-expansivel").forEach(bloco => {
+    const trigger = bloco.querySelector(".campo-trigger");
+    const select = bloco.querySelector("select");
+    const extra = bloco.querySelector(".input-extra");
+    const textoPadrao = trigger.dataset.default;
+
     select.addEventListener("change", () => {
       const valor = select.value;
 
-      // Troca o texto do botão
-      botao.textContent = valor;
+      if (valor) {
+        trigger.textContent = select.options[select.selectedIndex].text;
+      } else {
+        trigger.textContent = textoPadrao;
+      }
 
-      // Alergia / Histórico → mostra campo extra só se for "Sim"
       if (extra) {
-        if (valor.toLowerCase().includes("sim")) {
-          extra.style.display = "block";
+        if (valor.includes("sim")) {
+          extra.classList.add("ativo");
         } else {
-          extra.style.display = "none";
+          extra.classList.remove("ativo");
           extra.value = "";
         }
       }
@@ -30,18 +39,16 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  /* ===============================
-     VALIDAÇÃO SEM INTERFERIR VISUAL
-     =============================== */
-
-  const btn = document.getElementById("btnContinuar");
-
   function validarCampos() {
-    const campos = document.querySelectorAll(
-      'input:not([style*="display: none"]), select'
+    const camposVisiveis = document.querySelectorAll(
+      'input:not(.input-extra), select'
     );
 
-    const ok = [...campos].every(c => c.value && c.value.trim() !== "");
+    const extrasAtivos = document.querySelectorAll(".input-extra.ativo");
+
+    const todos = [...camposVisiveis, ...extrasAtivos];
+
+    const ok = todos.every(c => c.value && c.value.trim() !== "");
     btn.disabled = !ok;
   }
 
@@ -49,5 +56,4 @@ document.addEventListener("DOMContentLoaded", () => {
   document.addEventListener("change", validarCampos);
 
   validarCampos();
-
 });
