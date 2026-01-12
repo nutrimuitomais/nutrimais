@@ -62,3 +62,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
   validarCampos();
 });
+
+btn.addEventListener("click", () => {
+  if (btn.disabled) return;
+
+  window.location.href = "alimentos.html";
+});
