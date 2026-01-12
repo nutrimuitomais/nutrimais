@@ -561,14 +561,6 @@ body::after {
     0 10px 26px rgba(0,0,0,0.07);
 }
 
- /* ===== Página 2 GRUPO DE OPÇÕES (Calorias / Alergia / Histórico) ===== */
-
-.card-formulario input[type="text"] {
-  margin-top: 8px;
-  padding: 6px 0;
-  border-bottom: 1.5px solid #dcdcdc;
-}
-
 /* Página 2 - Ajuste do botão Continuar dentro do card */
 .card-formulario .botao-principal {
   margin-top: 24px;
@@ -586,7 +578,7 @@ body::after {
   margin: 0 auto 60px;
   background: rgba(255,255,255,0.96);
   border-radius: 20px;
-  padding: 28px 22px;
+  padding: 24px 16px;
   display: flex;
   flex-direction: column;
   gap: 14px;
