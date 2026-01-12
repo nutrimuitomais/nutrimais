@@ -513,15 +513,15 @@ body::after {
 
 /* Animações orgânicas MAIS perceptíveis */
 @keyframes fundoIA1 {
-  0%   { transform: translate(0%, 0%) scale(1.05); }
-  50%  { transform: translate(-10%, -8%) scale(1.18); }
-  100% { transform: translate(8%, 6%) scale(1.08); }
+  0%   { transform: translate(0%, 0%) scale(1.1); }
+  50%  { transform: translate(-14%, -12%) scale(1.35); }
+  100% { transform: translate(12%, 10%) scale(1.15); }
 }
 
 @keyframes fundoIA2 {
-  0%   { transform: translate(0%, 0%) scale(1.1); }
-  50%  { transform: translate(10%, -6%) scale(1.25); }
-  100% { transform: translate(-8%, 8%) scale(1.12); }
+  0%   { transform: translate(0%, 0%) scale(1.15); }
+  50%  { transform: translate(14%, -10%) scale(1.45); }
+  100% { transform: translate(-12%, 12%) scale(1.2); }
 }
 
 /* CONTEÚDO */
@@ -647,4 +647,87 @@ body::after {
 .campo-conteudo select,
 .campo-conteudo input {
   border-bottom: none;
+}
+
+/* ===== CARD FORM IA PREMIUM ===== */
+
+.card-formulario {
+  max-width: 380px; /* ↓ laterais menores */
+  margin: 0 auto 80px;
+  padding: 26px 22px;
+  border-radius: 22px;
+  background: rgba(255,255,255,0.78);
+  backdrop-filter: blur(18px);
+  box-shadow:
+    0 20px 40px rgba(0,0,0,0.12),
+    inset 0 0 0 1px rgba(255,255,255,0.4);
+}
+
+/* CAMPOS ESTILO IA */
+.campo-whatsapp {
+  background: rgba(255,255,255,0.65);
+  border-radius: 14px;
+  padding: 14px 16px;
+  border: 1px solid rgba(0,0,0,0.08);
+  box-shadow: 0 6px 16px rgba(0,0,0,0.06);
+  transition: all 0.25s ease;
+}
+
+.campo-whatsapp:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 10px 24px rgba(0,0,0,0.08);
+}
+
+.campo-whatsapp input,
+.campo-whatsapp select {
+  border: none;
+  background: transparent;
+  font-size: 16px;
+  font-weight: 600;
+  text-align: center;
+  color: #111;
+}
+
+/* PLACEHOLDER */
+.campo-whatsapp input::placeholder {
+  color: #6b7280;
+  font-weight: 500;
+}
+
+/* BOTÃO IA ANIMADO */
+.botao-principal {
+  margin-top: 28px;
+  border-radius: 999px;
+  background: linear-gradient(
+    120deg,
+    #1db954,
+    #38ef7d,
+    #1db954
+  );
+  background-size: 200% 200%;
+  animation: gradienteIA 4s ease infinite;
+  box-shadow: 0 14px 36px rgba(29,185,84,0.45);
+}
+
+@keyframes gradienteIA {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.botao-principal:disabled {
+  opacity: 0.4;
+  animation: none;
+  box-shadow: none;
+}
+
+/* TÍTULO */
+.titulo-principal {
+  font-size: 28px;
+  font-weight: 800;
+}
+
+.subtitulo {
+  font-size: 15px;
+  opacity: 0.8;
 }
