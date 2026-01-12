@@ -11,115 +11,94 @@
   <div class="bloco-intro">
     <div class="icone-medidas">📏</div>
     <h1 class="titulo-principal">Medidas Corporais</h1>
-    <p class="subtitulo">Para começar, informe suas medidas corretamente:</p>
+    <p class="subtitulo">Informe suas medidas corretamente</p>
   </div>
 
 <div class="card-formulario">
 
   <div class="card-header">
     <h2>Medidas Corporais</h2>
-    <p>Preencha como uma ficha clínica</p>
+    <p>Informe suas medidas para começar</p>
   </div>
 
-  <!-- NOME -->
-  <div class="campo-expansivel">
-    <div class="campo-trigger">Nome</div>
-    <div class="campo-conteudo">
-      <input type="text" id="nome">
-    </div>
+  <div class="campo">
+    <input type="text" id="nome" placeholder="Nome">
   </div>
 
-  <!-- IDADE -->
-  <div class="campo-expansivel">
-    <div class="campo-trigger">Idade</div>
-    <div class="campo-conteudo">
-      <input type="number" id="idade">
-    </div>
+  <div class="campo">
+    <input type="number" id="idade" placeholder="Idade">
   </div>
 
-  <!-- PESO -->
-  <div class="campo-expansivel">
-    <div class="campo-trigger">Peso (kg)</div>
-    <div class="campo-conteudo">
-      <input type="number" id="peso">
-    </div>
+  <div class="campo">
+    <input type="number" id="peso" placeholder="Peso (kg)">
   </div>
 
-  <!-- ALTURA -->
-  <div class="campo-expansivel">
-    <div class="campo-trigger">Altura (cm)</div>
-    <div class="campo-conteudo">
-      <input type="number" id="altura">
-    </div>
+  <div class="campo">
+    <input type="number" id="altura" placeholder="Altura (cm)">
   </div>
 
-  <!-- OBJETIVO -->
-  <div class="campo-expansivel">
-    <div class="campo-trigger">Objetivo</div>
-    <div class="campo-conteudo">
-      <select id="objetivo">
-        <option>Emagrecimento (Perda de Gordura Corporal)</option>
-        <option>Ganhar Massa Muscular (Hipertrofia)</option>
-        <option>Ganhar Massa Seca + Hipertrofia</option>
-        <option>Ganhar Massa Seca + Emagrecimento (Recomposição Corporal)</option>
-        <option>Manutenção</option>
-        <option>Melhora da Performance</option>
-        <option>Saúde e Bem-Estar Geral</option>
-      </select>
-    </div>
+  <div class="campo">
+    <select id="objetivo">
+      <option value="" disabled selected>Objetivo</option>
+      <option>Emagrecimento (Perda de Gordura Corporal)</option>
+      <option>Ganhar Massa Muscular (Hipertrofia)</option>
+      <option>Ganhar Massa Seca + Hipertrofia</option>
+      <option>Ganhar Massa Seca + Emagrecimento (Recomposição Corporal)</option>
+      <option>Manutenção</option>
+      <option>Melhora da Performance</option>
+      <option>Saúde e Bem-Estar Geral</option>
+    </select>
   </div>
 
-  <!-- CALORIAS -->
-  <div class="campo-expansivel">
-    <div class="campo-trigger">Calorias</div>
-    <div class="campo-conteudo">
-      <select id="calorias">
-        <option>1400 kcal</option>
-        <option>1600 kcal</option>
-        <option>1800 kcal</option>
-        <option>2000 kcal</option>
-        <option>2200 kcal</option>
-        <option>2400 kcal</option>
-        <option>Não sei dizer</option>
-      </select>
-    </div>
+  <div class="campo">
+    <select id="calorias">
+      <option value="" disabled selected>Calorias</option>
+      <option>1400 kcal</option>
+      <option>1600 kcal</option>
+      <option>1800 kcal</option>
+      <option>2000 kcal</option>
+      <option>2200 kcal</option>
+      <option>2400 kcal</option>
+      <option>Não sei dizer</option>
+    </select>
   </div>
 
-  <!-- SEXO -->
-  <div class="campo-expansivel ativo">
-    <div class="campo-trigger">Sexo</div>
-    <div class="campo-conteudo">
-      <div class="sexo-toggle">
-        <button type="button" class="sexo ativo" data-value="Masculino">Masculino</button>
-        <button type="button" class="sexo" data-value="Feminino">Feminino</button>
-      </div>
-      <input type="hidden" id="sexo" value="Masculino">
-    </div>
+  <div class="sexo-toggle">
+    <button type="button" class="sexo ativo" data-value="Masculino">Masculino</button>
+    <button type="button" class="sexo" data-value="Feminino">Feminino</button>
   </div>
 
-  <!-- ALERGIA -->
-  <div class="campo-expansivel">
-    <div class="campo-trigger">Alergia</div>
-    <div class="campo-conteudo">
-      <select id="alergia">
-        <option value="nao">Não possuo</option>
-        <option value="sim">Sim, possuo</option>
-      </select>
-      <input type="text" id="alergiaDescricao" class="input-extra">
-    </div>
+  <input type="hidden" id="sexo" value="Masculino">
+
+  <div class="campo">
+    <select id="alergia">
+      <option value="" disabled selected>Alergia</option>
+      <option value="nao">Não possuo</option>
+      <option value="sim">Sim, possuo</option>
+    </select>
+
+    <input
+      type="text"
+      id="alergiaDescricao"
+      class="input-extra"
+      placeholder="Descreva a alergia"
+    >
   </div>
 
-  <!-- HISTÓRICO -->
-  <div class="campo-expansivel">
-    <div class="campo-trigger">Histórico de Doença</div>
-    <div class="campo-conteudo">
-      <select id="historico">
-        <option value="nao">Não possuo</option>
-        <option value="pessoal">Sim, pessoal</option>
-        <option value="familiar">Sim, familiar</option>
-      </select>
-      <input type="text" id="historicoDescricao" class="input-extra">
-    </div>
+  <div class="campo">
+    <select id="historico">
+      <option value="" disabled selected>Histórico de Doença</option>
+      <option value="nao">Não possuo</option>
+      <option value="pessoal">Sim, pessoal</option>
+      <option value="familiar">Sim, familiar</option>
+    </select>
+
+    <input
+      type="text"
+      id="historicoDescricao"
+      class="input-extra"
+      placeholder="Descreva o histórico"
+    >
   </div>
 
   <button id="btnContinuar" class="botao-principal" disabled>
