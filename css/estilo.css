@@ -236,15 +236,6 @@
   text-align: center;
 }
 
-/* ===== CAMPOS MODELO WHATSAPP ===== */
-.campo-whatsapp {
-  background: transparent;
-  border: none;
-  border-bottom: 1.5px solid #dcdcdc;
-  padding: 8px 0;
-  margin-bottom: 18px;
-}
-
 .campo-whatsapp label {
   display: block;
   font-size: 13px;
@@ -566,25 +557,6 @@ body::after {
   margin-top: 24px;
 }
 
-/* Página 2 – centralização total */
-.card-formulario,
-.card-formulario * {
-  text-align: center;
-}
-
-/* CARD FORMULÁRIO */
-.card-formulario {
-  max-width: 420px;
-  margin: 0 auto 60px;
-  background: rgba(255,255,255,0.96);
-  border-radius: 20px;
-  padding: 24px 16px;
-  display: flex;
-  flex-direction: column;
-  gap: 14px;
-  box-shadow: 0 12px 32px rgba(0,0,0,0.08);
-}
-
 /* ===== CAMPOS EXPANSÍVEIS – MESMO VISUAL DOS INPUTS ===== */
 
 .campo-expansivel {
@@ -647,30 +619,6 @@ body::after {
 .campo-conteudo select,
 .campo-conteudo input {
   border-bottom: none;
-}
-
-/* ===== CARD FORM IA PREMIUM ===== */
-
-.card-formulario {
-  max-width: 380px; /* ↓ laterais menores */
-  margin: 0 auto 80px;
-  padding: 26px 22px;
-  border-radius: 22px;
-  background: rgba(255,255,255,0.78);
-  backdrop-filter: blur(18px);
-  box-shadow:
-    0 20px 40px rgba(0,0,0,0.12),
-    inset 0 0 0 1px rgba(255,255,255,0.4);
-}
-
-/* CAMPOS ESTILO IA */
-.campo-whatsapp {
-  background: rgba(255,255,255,0.65);
-  border-radius: 14px;
-  padding: 14px 16px;
-  border: 1px solid rgba(0,0,0,0.08);
-  box-shadow: 0 6px 16px rgba(0,0,0,0.06);
-  transition: all 0.25s ease;
 }
 
 .campo-whatsapp:hover {
@@ -749,7 +697,6 @@ body::after {
   border-radius: 12px;
   padding: 12px 12px;
   border: 1px solid #e5e7eb;
-  box-shadow: none;
   transition: border 0.2s ease, background 0.2s ease;
 }
 
@@ -802,7 +749,7 @@ body::after {
 /* ESPAÇAMENTO ENTRE CAMPOS */
 .campo-whatsapp + .campo-whatsapp,
 .campo-expansivel + .campo-expansivel {
-  margin-top: 2px; /* antes estava maior */
+  margin-top: 0px; /* antes estava maior */
 }
 
 /* ===== CORREÇÃO DEFINITIVA DE CENTRALIZAÇÃO (MOBILE E DESKTOP) ===== */
@@ -820,69 +767,11 @@ body::after {
     padding: 16px 12px;
   }
 
-  .campo-whatsapp,
-  .campo-expansivel {
-    padding-left: 0;
-    padding-right: 0;
-  }
-}
-
-/* Wrapper dos campos */
-.campo-whatsapp,
-.campo-expansivel {
-  width: 100%;
-  margin-left: auto;
-  margin-right: auto;
-}
-
 /* Inputs, selects e triggers realmente centralizados */
 .campo-whatsapp input,
 .campo-whatsapp select,
 .campo-expansivel select,
-.campo-expansivel .campo-trigger {
-  display: block;
+.campo-trigger {
   width: 100%;
-  margin-left: auto;
-  margin-right: auto;
   text-align: center;
-}
-
-/* ===== CORREÇÃO DEFINITIVA – TEXTO FORA DA CAIXA (MOBILE) ===== */
-@media (max-width: 480px) {
-
-  /* Remove qualquer flex interno que esteja quebrando */
-  .campo-expansivel,
-  .campo-whatsapp {
-    display: block !important;
-  }
-
-  /* O "botão" visual (texto clicável) */
-  .campo-trigger {
-    width: 100%;
-    display: block !important;
-    text-align: center !important;
-    padding: 14px 12px;
-    box-sizing: border-box;
-  }
-
-  /* Select */
-  .campo-whatsapp select,
-  .campo-expansivel select {
-    width: 100%;
-    display: block;
-    text-align: center !important;
-    text-align-last: center !important;
-    padding: 14px 12px;
-    box-sizing: border-box;
-  }
-
-  /* Input */
-  .campo-whatsapp input,
-  .campo-expansivel input {
-    width: 100%;
-    display: block;
-    text-align: center !important;
-    padding: 14px 12px;
-    box-sizing: border-box;
-  }
 }
