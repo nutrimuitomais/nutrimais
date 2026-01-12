@@ -742,3 +742,26 @@ body::after {
     margin: 0 12px;
   }
 }
+
+@media (max-width: 480px) {
+
+  /* Centraliza visualmente do OBJETIVO para baixo */
+  #objetivo,
+  #calorias,
+  .sexo-toggle,
+  #alergia,
+  #historico,
+  #btnContinuar {
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+  }
+
+  /* Garante selects centralizados */
+  #objetivo,
+  #calorias,
+  #alergia,
+  #historico {
+    text-align-last: center;
+  }
+}
