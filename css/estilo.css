@@ -766,3 +766,96 @@ body::after {
 .input-extra.ativo {
   display: block;
 }
+
+/* CARD PRINCIPAL */
+.card-formulario {
+  max-width: 420px;
+  margin: 0 auto;
+  background: #ffffff;
+  border-radius: 22px;
+  padding: 22px 18px 26px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+}
+
+/* HEADER */
+.card-header {
+  text-align: center;
+  margin-bottom: 18px;
+}
+
+.card-header h2 {
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+
+.card-header p {
+  font-size: 14px;
+  color: #666;
+}
+
+/* CAMPOS */
+.campo {
+  margin-bottom: 12px;
+}
+
+.campo input,
+.campo select {
+  width: 100%;
+  height: 52px;
+  border-radius: 12px;
+  border: 1px solid #ddd;
+  background: #fafafa;
+  font-size: 16px;
+  padding: 0 14px;
+  text-align: center;
+  outline: none;
+}
+
+/* SELECT SETA */
+.campo select {
+  appearance: none;
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath fill='%23999' d='M1 1l5 5 5-5'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 14px center;
+}
+
+/* SEXO */
+.sexo-toggle {
+  display: flex;
+  gap: 10px;
+  margin: 16px 0;
+}
+
+.sexo {
+  flex: 1;
+  height: 46px;
+  border-radius: 10px;
+  border: 1px solid #ddd;
+  background: #fff;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.sexo.ativo {
+  border-color: #1fa463;
+  background: #eaf7f0;
+  color: #1fa463;
+}
+
+/* CAMPOS CONDICIONAIS */
+.input-extra {
+  display: none;
+  margin-top: 10px;
+}
+
+.input-extra.ativo {
+  display: block;
+}
+
+/* MOBILE */
+@media (max-width: 480px) {
+  .card-formulario {
+    margin: 0 12px;
+  }
+}
