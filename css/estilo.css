@@ -800,8 +800,9 @@ body::after {
 }
 
 /* ESPAÇAMENTO ENTRE CAMPOS */
-.campo-whatsapp + .campo-whatsapp {
-  margin-top: 2px;
+.campo-whatsapp + .campo-whatsapp,
+.campo-expansivel + .campo-expansivel {
+  margin-top: 2px; /* antes estava maior */
 }
 
 /* ===== CORREÇÃO DEFINITIVA DE CENTRALIZAÇÃO (MOBILE E DESKTOP) ===== */
@@ -845,3 +846,18 @@ body::after {
   margin-right: auto;
   text-align: center;
 }
+
+/* ===== AJUSTE VISUAL MOBILE – ANAMNESE ===== */
+
+@media (max-width: 480px) {
+
+  /* Texto centralizado (sensação correta) */
+  .campo-whatsapp input,
+  .campo-whatsapp select,
+  .campo-expansivel .campo-trigger,
+  .campo-expansivel select {
+    text-align: center;
+  }
+
+}
+
