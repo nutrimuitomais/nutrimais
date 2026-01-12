@@ -1,26 +1,37 @@
 document.addEventListener("DOMContentLoaded", () => {
-  const btn = document.getElementById("btnContinuar");
 
+  // SEXO
+  document.querySelectorAll(".sexo").forEach(btn => {
+    btn.addEventListener("click", () => {
+      document.querySelectorAll(".sexo").forEach(b => b.classList.remove("ativo"));
+      btn.classList.add("ativo");
+      document.getElementById("sexo").value = btn.dataset.value;
+      validarCampos();
+    });
+  });
+
+  const btnContinuar = document.getElementById("btnContinuar");
   const alergia = document.getElementById("alergia");
   const alergiaDesc = document.getElementById("alergiaDescricao");
-
   const historico = document.getElementById("historico");
   const historicoDesc = document.getElementById("historicoDescricao");
 
   function validarCampos() {
     const camposPrincipais = document.querySelectorAll(
-  '.campo input:not(.input-extra), .campo select'
-);
+      ".campo input:not(.input-extra), .campo select"
+    );
 
     const extrasAtivos = document.querySelectorAll(".input-extra.ativo");
 
     const todos = [...camposPrincipais, ...extrasAtivos];
 
-    btn.disabled = !todos.every(c => c.value && c.value.trim() !== "");
+    btnContinuar.disabled = !todos.every(
+      campo => campo.value && campo.value.trim() !== ""
+    );
   }
 
-  alergia.addEventListener("change", () => {
-    if (alergia.value === "sim") {
+  alergia.addEventListener("change", e => {
+    if (e.target.value === "sim") {
       alergiaDesc.classList.add("ativo");
     } else {
       alergiaDesc.classList.remove("ativo");
@@ -29,8 +40,8 @@ document.addEventListener("DOMContentLoaded", () => {
     validarCampos();
   });
 
-  historico.addEventListener("change", () => {
-    if (historico.value !== "nao") {
+  historico.addEventListener("change", e => {
+    if (e.target.value !== "nao") {
       historicoDesc.classList.add("ativo");
     } else {
       historicoDesc.classList.remove("ativo");
@@ -43,12 +54,4 @@ document.addEventListener("DOMContentLoaded", () => {
   document.addEventListener("change", validarCampos);
 
   validarCampos();
-
-  document.querySelectorAll(".sexo").forEach(btn => {
-  btn.addEventListener("click", () => {
-    document.querySelectorAll(".sexo").forEach(b => b.classList.remove("ativo"));
-    btn.classList.add("ativo");
-    document.getElementById("sexo").value = btn.dataset.value;
-    validarCampos();
-  });
 });
