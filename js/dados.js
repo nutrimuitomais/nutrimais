@@ -8,13 +8,13 @@ document.addEventListener("DOMContentLoaded", () => {
   const historicoDesc = document.getElementById("historicoDescricao");
 
   function validarCampos() {
-    const campos = document.querySelectorAll(
-      'input:not(.input-extra), select'
+    const camposPrincipais = document.querySelectorAll(
+      '.campo-clinico input:not(.input-extra), .campo-clinico select'
     );
 
     const extrasAtivos = document.querySelectorAll(".input-extra.ativo");
 
-    const todos = [...campos, ...extrasAtivos];
+    const todos = [...camposPrincipais, ...extrasAtivos];
 
     btn.disabled = !todos.every(c => c.value && c.value.trim() !== "");
   }
