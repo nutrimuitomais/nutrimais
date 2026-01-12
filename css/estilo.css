@@ -860,4 +860,26 @@ body::after {
   }
 
 }
+/* ===== CENTRALIZA TEXTO DOS BOTÕES NO MOBILE ===== */
+@media (max-width: 480px) {
+
+  /* Texto dos campos tipo botão */
+  .campo-expansivel .campo-trigger {
+    text-align: center !important;
+    justify-content: center !important;
+  }
+
+  /* Selects */
+  .campo-whatsapp select,
+  .campo-expansivel select {
+    text-align: center !important;
+    text-align-last: center !important;
+  }
+
+  /* Inputs */
+  .campo-whatsapp input,
+  .campo-expansivel input {
+    text-align: center !important;
+  }
+}
 
