@@ -16,39 +16,30 @@
 
 <div class="card-formulario">
 
-  <div class="campo-card">
-    <label>Nome</label>
-    <input type="text" id="nome" placeholder="Digite seu nome">
+  <div class="card-header">
+    <h2>Medidas Corporais</h2>
+    <p>Informe suas medidas para começar</p>
   </div>
 
-  <div class="campo-card">
-    <label>Idade</label>
-    <input type="number" id="idade" placeholder="Ex: 21">
+  <div class="campo">
+    <input type="text" id="nome" placeholder="Nome">
   </div>
 
-  <div class="campo-card">
-    <label>Peso (kg)</label>
-    <input type="number" id="peso" placeholder="Ex: 80">
+  <div class="campo">
+    <input type="number" id="idade" placeholder="Idade">
   </div>
 
-  <div class="campo-card">
-    <label>Altura (cm)</label>
-    <input type="number" id="altura" placeholder="Ex: 180">
+  <div class="campo">
+    <input type="number" id="peso" placeholder="Peso (kg)">
   </div>
 
-  <div class="campo-card">
-    <label>Sexo</label>
-    <select id="sexo">
-      <option value="" disabled selected>Selecione</option>
-      <option>Masculino</option>
-      <option>Feminino</option>
-    </select>
+  <div class="campo">
+    <input type="number" id="altura" placeholder="Altura (cm)">
   </div>
 
-  <div class="campo-card">
-    <label>Objetivo</label>
+  <div class="campo">
     <select id="objetivo">
-      <option value="" disabled selected>Selecione</option>
+      <option value="" disabled selected>Objetivo</option>
       <option>Emagrecimento (Perda de Gordura Corporal)</option>
       <option>Ganhar Massa Muscular (Hipertrofia)</option>
       <option>Ganhar Massa Seca + Hipertrofia</option>
@@ -59,10 +50,9 @@
     </select>
   </div>
 
-  <div class="campo-card">
-    <label>Calorias</label>
+  <div class="campo">
     <select id="calorias">
-      <option value="" disabled selected>Selecione</option>
+      <option value="" disabled selected>Calorias</option>
       <option>1400 kcal</option>
       <option>1600 kcal</option>
       <option>1800 kcal</option>
@@ -73,10 +63,16 @@
     </select>
   </div>
 
-  <div class="campo-card">
-    <label>Alergia</label>
+  <div class="sexo-toggle">
+    <button type="button" class="sexo ativo" data-value="Masculino">Masculino</button>
+    <button type="button" class="sexo" data-value="Feminino">Feminino</button>
+  </div>
+
+  <input type="hidden" id="sexo" value="Masculino">
+
+  <div class="campo">
     <select id="alergia">
-      <option value="" disabled selected>Selecione</option>
+      <option value="" disabled selected>Alergia</option>
       <option value="nao">Não possuo</option>
       <option value="sim">Sim, possuo</option>
     </select>
@@ -89,10 +85,9 @@
     >
   </div>
 
-  <div class="campo-card">
-    <label>Histórico de Doença</label>
+  <div class="campo">
     <select id="historico">
-      <option value="" disabled selected>Selecione</option>
+      <option value="" disabled selected>Histórico de Doença</option>
       <option value="nao">Não possuo</option>
       <option value="pessoal">Sim, pessoal</option>
       <option value="familiar">Sim, familiar</option>
@@ -102,12 +97,12 @@
       type="text"
       id="historicoDescricao"
       class="input-extra"
-      placeholder="Descreva (se necessário)"
+      placeholder="Descreva o histórico"
     >
   </div>
 
   <button id="btnContinuar" class="botao-principal" disabled>
-    Continuar
+    Continuar →
   </button>
 
 </div>
