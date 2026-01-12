@@ -216,50 +216,6 @@
   opacity: 1;
 }
 
-/* BOTÃO FINAL ESTILO HOME */
-.botao-final {
-  margin-top: 36px;
-  text-align: center;
-}
-
-/* CENTRALIZAR APENAS TEXTO DOS CAMPOS */
-.campo {
-  text-align: center;
-}
-
-.campo label {
-  text-align: center;
-}
-
-.campo input,
-.campo select {
-  text-align: center;
-}
-
-.campo-whatsapp label {
-  display: block;
-  font-size: 13px;
-  color: #777;
-  margin-bottom: 4px;
-}
-
-.campo-whatsapp input,
-.campo-whatsapp select {
-  width: 100%;
-  border: none;
-  background: transparent;
-  font-size: 17px;
-  font-weight: 600;
-  color: #111;
-  padding: 6px 0;
-  outline: none;
-}
-
-.campo-whatsapp input:focus,
-.campo-whatsapp select:focus {
-  border-bottom: 2px solid var(--verde-logo);
-}
-
 /* Página 3 - GRID DE CARDS DE ALIMENTOS */
 .grid {
   display: grid;
@@ -651,4 +607,60 @@ body::after {
 .subtitulo {
   font-size: 15px;
   opacity: 0.8;
+}
+
+/* ===== CARD DE FORMULÁRIO CLÍNICO ===== */
+.card-formulario {
+  width: 100%;
+  max-width: 440px; /* um pouco mais largo */
+  margin: 0 auto;
+  background: #ffffff;
+  border-radius: 22px;
+  padding: 26px 22px 30px;
+  box-shadow: 0 10px 28px rgba(0,0,0,0.08);
+  border: 1px solid #e6e6e6;
+}
+
+/* ===== CAMPO CLÍNICO ===== */
+.campo-clinico {
+  margin-bottom: 14px;
+  text-align: left;
+}
+
+/* Label estilo nutricionista */
+.campo-clinico label {
+  display: block;
+  font-size: 13px;
+  font-weight: 600;
+  color: #555;
+  margin-bottom: 6px;
+}
+
+/* Inputs e selects */
+.campo-clinico input,
+.campo-clinico select {
+  width: 100%;
+  padding: 14px 14px;
+  font-size: 16px;
+  font-weight: 600;
+  border-radius: 12px;
+  border: 1.5px solid #e0e0e0;
+  background: #f9f9f9;
+  color: #111;
+  outline: none;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* Placeholder mais clínico */
+.campo-clinico input::placeholder {
+  color: #aaa;
+  font-weight: 400;
+}
+
+/* Foco */
+.campo-clinico input:focus,
+.campo-clinico select:focus {
+  border-color: var(--verde-logo);
+  box-shadow: 0 0 0 3px rgba(29,185,84,0.15);
+  background: #ffffff;
 }
