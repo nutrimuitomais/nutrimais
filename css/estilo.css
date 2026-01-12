@@ -664,3 +664,33 @@ body::after {
   box-shadow: 0 0 0 3px rgba(29,185,84,0.15);
   background: #ffffff;
 }
+
+/* ===== REFLEXO IA NOS BOTÕES DA HOME ===== */
+/* Aplica somente a animação, mantendo cores atuais */
+
+.card-opcao {
+  position: relative;
+  overflow: hidden;
+}
+
+/* Camada de reflexo animado */
+.card-opcao::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    120deg,
+    rgba(255,255,255,0.08),
+    rgba(255,255,255,0.22),
+    rgba(255,255,255,0.08)
+  );
+  background-size: 200% 200%;
+  animation: gradienteIA 4s ease infinite;
+  pointer-events: none;
+}
+
+/* Mantém o conteúdo acima do reflexo */
+.card-opcao * {
+  position: relative;
+  z-index: 1;
+}
