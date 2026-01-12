@@ -238,19 +238,28 @@
   transition: all 0.2s ease;
 }
 
-/* Página 3 - Cor quando seleciona os Alimentos */
-.card:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 18px rgba(0,0,0,0.12);
-  border-color: var(--verde-logo);
+/* Gradiente animado para card selecionado */
+.card.ativo {
+  color: #ffffff; /* texto branco */
+  border: 1px solid transparent;
+  background: linear-gradient(
+    120deg,
+    #1db954,
+    #38ef7d,
+    #1db954
+  );
+  background-size: 200% 200%;
+  animation: gradienteIA 4s ease infinite;
+  box-shadow: 0 8px 22px rgba(29,185,84,0.35);
 }
 
-/* CARD SELECIONADO */
-.card.ativo {
-  background-color: var(--verde-logo);
-  color: #ffffff;
-  border-color: var(--verde-logo);
+/* Reaproveitando animação que já existe */
+@keyframes gradienteIA {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
 }
+
 
 /* CENTRALIZAR TITULOS DAS REFEIÇÕES */
 .titulo-refeicao {
