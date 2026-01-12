@@ -1,27 +1,54 @@
 document.addEventListener("DOMContentLoaded", () => {
+  const btn = document.getElementById("btnContinuar");
 
-  document.querySelectorAll(".campo-trigger").forEach(trigger => {
-    trigger.addEventListener("click", () => {
-      trigger.parentElement.classList.toggle("ativo");
-    });
+  const alergia = document.getElementById("alergia");
+  const alergiaDesc = document.getElementById("alergiaDescricao");
+
+  const historico = document.getElementById("historico");
+  const historicoDesc = document.getElementById("historicoDescricao");
+
+  function validarCampos() {
+    const camposPrincipais = document.querySelectorAll(
+      '.campo-clinico input:not(.input-extra), .campo-clinico select'
+    );
+
+    const extrasAtivos = document.querySelectorAll(".input-extra.ativo");
+
+    const todos = [...camposPrincipais, ...extrasAtivos];
+
+    btn.disabled = !todos.every(c => c.value && c.value.trim() !== "");
+  }
+
+  alergia.addEventListener("change", () => {
+    if (alergia.value === "sim") {
+      alergiaDesc.classList.add("ativo");
+    } else {
+      alergiaDesc.classList.remove("ativo");
+      alergiaDesc.value = "";
+    }
+    validarCampos();
   });
 
-  document.getElementById("alergia").addEventListener("change", e => {
-    document.getElementById("alergiaDescricao")
-      .classList.toggle("ativo", e.target.value === "sim");
+  historico.addEventListener("change", () => {
+    if (historico.value !== "nao") {
+      historicoDesc.classList.add("ativo");
+    } else {
+      historicoDesc.classList.remove("ativo");
+      historicoDesc.value = "";
+    }
+    validarCampos();
   });
 
-  document.getElementById("historico").addEventListener("change", e => {
-    document.getElementById("historicoDescricao")
-      .classList.toggle("ativo", e.target.value !== "nao");
-  });
+  document.addEventListener("input", validarCampos);
+  document.addEventListener("change", validarCampos);
+
+  validarCampos();
 
   document.querySelectorAll(".sexo").forEach(btn => {
-    btn.addEventListener("click", () => {
-      document.querySelectorAll(".sexo").forEach(b => b.classList.remove("ativo"));
-      btn.classList.add("ativo");
-      document.getElementById("sexo").value = btn.dataset.value;
-    });
+  btn.addEventListener("click", () => {
+    document.querySelectorAll(".sexo").forEach(b => b.classList.remove("ativo"));
+    btn.classList.add("ativo");
+    document.getElementById("sexo").value = btn.dataset.value;
+    validarCampos();
   });
-
 });
