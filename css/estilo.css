@@ -285,11 +285,13 @@
 
 /* CARD GRANDE DA REFEIÇÃO */
 .bloco-refeicao {
+  width: 100%;
+  max-width: 420px;  /* mesma largura do card da página 2 */
+  margin: 0 auto 28px; /* centraliza e mantém espaçamento inferior */
+  padding: 22px 18px;  /* mesma margem interna do card da página 2 */
+  border-radius: 18px;
   background: #ffffff;
   border: 1px solid #e5e5e5;
-  border-radius: 18px;
-  padding: 20px 16px;
-  margin-bottom: 28px;
   box-shadow: 0 6px 20px rgba(0,0,0,0.06);
 }
 
