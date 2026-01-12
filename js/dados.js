@@ -1,8 +1,7 @@
 document.addEventListener("DOMContentLoaded", () => {
-
   const btn = document.getElementById("btnContinuar");
 
-  // Abrir / fechar campos expansíveis
+  // Abrir / fechar campos
   document.querySelectorAll(".campo-trigger").forEach(trigger => {
     trigger.addEventListener("click", () => {
       const bloco = trigger.closest(".campo-expansivel");
@@ -10,7 +9,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  // Substituir texto do botão e controlar campos extras
+  // Lógica de substituição e campos extras
   document.querySelectorAll(".campo-expansivel").forEach(bloco => {
     const trigger = bloco.querySelector(".campo-trigger");
     const select = bloco.querySelector("select");
@@ -18,16 +17,18 @@ document.addEventListener("DOMContentLoaded", () => {
     const textoPadrao = trigger.dataset.default;
 
     select.addEventListener("change", () => {
+      const option = select.options[select.selectedIndex];
       const valor = select.value;
 
       if (valor) {
-        trigger.textContent = select.options[select.selectedIndex].text;
+        trigger.textContent = option.text;
+        bloco.classList.remove("ativo");
       } else {
         trigger.textContent = textoPadrao;
       }
 
       if (extra) {
-        if (valor.includes("sim")) {
+        if (valor === "sim" || valor === "pessoal" || valor === "familiar") {
           extra.classList.add("ativo");
         } else {
           extra.classList.remove("ativo");
@@ -40,13 +41,17 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   function validarCampos() {
-    const camposVisiveis = document.querySelectorAll(
-      'input:not(.input-extra), select'
+    const camposBase = document.querySelectorAll(
+      '.campo-whatsapp input, .campo-whatsapp select'
+    );
+
+    const selects = document.querySelectorAll(
+      '.campo-expansivel select'
     );
 
     const extrasAtivos = document.querySelectorAll(".input-extra.ativo");
 
-    const todos = [...camposVisiveis, ...extrasAtivos];
+    const todos = [...camposBase, ...selects, ...extrasAtivos];
 
     const ok = todos.every(c => c.value && c.value.trim() !== "");
     btn.disabled = !ok;
