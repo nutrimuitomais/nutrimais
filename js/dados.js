@@ -54,4 +54,12 @@ document.addEventListener("DOMContentLoaded", () => {
   document.addEventListener("change", validarCampos);
 
   validarCampos();
+  
+  // 🔹 NOVO: Clique do botão “Continuar” para ir para alimentos
+  btnContinuar.addEventListener("click", () => {
+    if (!btnContinuar.disabled) {
+      window.location.href = "alimentos.html";
+    }
+  });
+
 });
