@@ -761,10 +761,9 @@ body::after {
   }
 }
 
-/* =========================================
-   PÁGINA 4 – ANÁLISE NUTRICIONAL INICIADA
-   (ISOLADO / PROFISSIONAL / SEM QUEBRAS)
-   ========================================= */
+/* ===============================
+   PÁGINA 4 – CONFIRMAÇÃO PROFISSIONAL
+   =============================== */
 
 .pagina4{
   min-height:100vh;
@@ -773,85 +772,65 @@ body::after {
   justify-content:center;
 }
 
-/* CONTAINER PRINCIPAL */
 .pagina4 .p4-container{
   max-width:420px;
   width:100%;
-  padding:44px 22px 34px;
+  padding:42px 22px;
   text-align:center;
 }
 
-/* STATUS / VERIFICADO (AZUL – COMO PEDIDO) */
+/* STATUS */
 .pagina4 .p4-status{
   width:64px;
   height:64px;
   margin:0 auto 22px;
   border-radius:50%;
-  background:#3b82f6; /* AZUL RESTAURADO */
+  background:#e8f7ef;
   display:flex;
   align-items:center;
   justify-content:center;
 }
 
 .pagina4 .p4-check{
-  font-size:30px;
-  line-height:1;
-  color:#ffffff; /* check branco */
+  font-size:28px;
+  color:#1db954;
 }
 
-/* TÍTULO */
+/* TEXTOS */
 .pagina4 .p4-titulo{
   font-size:20px;
   font-weight:600;
-  color:#111;
   margin-bottom:14px;
 }
 
-/* TEXTO PRINCIPAL */
 .pagina4 .p4-texto{
   font-size:14px;
-  line-height:1.65;
-  color:#333;
+  line-height:1.6;
   margin-bottom:14px;
 }
 
-/* TEXTO SECUNDÁRIO */
 .pagina4 .p4-texto-sec{
   font-size:13.5px;
-  line-height:1.55;
+  line-height:1.5;
   color:#555;
   margin-bottom:22px;
 }
 
-/* BLOCO DE INFORMAÇÕES */
+/* ALERTAS */
 .pagina4 .p4-alertas{
   text-align:left;
-  background:#f7f9fb;
-  border-radius:14px;
-  padding:16px 18px;
   font-size:12.5px;
-  line-height:1.55;
-  color:#333;
-  margin-bottom:28px;
-}
-
-.pagina4 .p4-alertas strong{
-  display:block;
-  margin-bottom:6px;
-  font-weight:600;
+  background:#f7f9fb;
+  border-radius:12px;
+  padding:14px 16px;
+  margin-bottom:26px;
 }
 
 .pagina4 .p4-alertas ul{
   padding-left:18px;
-  margin:6px 0 0;
+  margin-top:8px;
 }
 
 .pagina4 .p4-alertas li{
   margin-bottom:6px;
-}
-
-/* BOTÃO
-   NÃO ALTERADO – REAPROVEITA O DA PÁGINA 2 */
-.pagina4 .btn-principal{
-  width:100%;
 }
