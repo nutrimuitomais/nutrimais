@@ -1,18 +1,8 @@
-document.addEventListener('DOMContentLoaded', function () {
+document.addEventListener('DOMContentLoaded', () => {
+  const btn = document.getElementById('p4Continuar');
+  if (!btn) return;
 
-  const btnContinuar = document.getElementById('p4Continuar');
-
-  if (!btnContinuar) return;
-
-  btnContinuar.addEventListener('click', function () {
-
-    // evita clique duplo
-    btnContinuar.disabled = true;
-    btnContinuar.classList.add('desativado');
-
-    // redireciona para pagamento
+  btn.addEventListener('click', () => {
     window.location.href = 'pagamento.html';
-
   });
-
 });
