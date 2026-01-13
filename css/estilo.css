@@ -763,7 +763,7 @@ body::after {
 
 /* =========================================
    PÁGINA 4 – ANÁLISE NUTRICIONAL INICIADA
-   (TOTALMENTE ISOLADO / SEM QUEBRAS)
+   (ISOLADO / PROFISSIONAL / SEM QUEBRAS)
    ========================================= */
 
 .pagina4{
@@ -781,13 +781,13 @@ body::after {
   text-align:center;
 }
 
-/* STATUS / VERIFICADO */
+/* STATUS / VERIFICADO (AZUL – COMO PEDIDO) */
 .pagina4 .p4-status{
   width:64px;
   height:64px;
   margin:0 auto 22px;
   border-radius:50%;
-  background:#e9f7ef;
+  background:#3b82f6; /* AZUL RESTAURADO */
   display:flex;
   align-items:center;
   justify-content:center;
@@ -796,6 +796,7 @@ body::after {
 .pagina4 .p4-check{
   font-size:30px;
   line-height:1;
+  color:#ffffff; /* check branco */
 }
 
 /* TÍTULO */
@@ -850,8 +851,7 @@ body::after {
 }
 
 /* BOTÃO
-   ⚠️ NÃO DEFINIMOS ESTILO
-   Reaproveita EXATAMENTE o botão da Página 2 */
+   NÃO ALTERADO – REAPROVEITA O DA PÁGINA 2 */
 .pagina4 .btn-principal{
   width:100%;
 }
