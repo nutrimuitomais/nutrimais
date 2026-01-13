@@ -826,12 +826,25 @@ body::after {
 /* BOTÃO
    ⚠️ NÃO ESTILIZADO
    Reaproveita 100% o botão da Página 2 */
-.pagina4 .p4-btn{
-  width:100%;
-}
+document.addEventListener('DOMContentLoaded', function () {
 
-/* ESTADO DESATIVADO (JS) */
-.pagina4 .p4-btn.desativado{
-  opacity:0.7;
-  cursor:not-allowed;
-}
+  const btnContinuar = document.getElementById('p4Continuar');
+  if (!btnContinuar) return;
+
+  // começa desativado
+  btnContinuar.disabled = true;
+  btnContinuar.classList.add('desativado');
+
+  // libera após 7 segundos
+  setTimeout(() => {
+    btnContinuar.disabled = false;
+    btnContinuar.classList.remove('desativado');
+  }, 7000);
+
+  // clique leva para pagamento
+  btnContinuar.addEventListener('click', function () {
+    if (btnContinuar.disabled) return;
+    window.location.href = 'pagamento.html';
+  });
+
+});
