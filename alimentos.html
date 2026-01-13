@@ -2,7 +2,7 @@
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
-<title>Escolha seus alimentos</title>
+<title>Escolha sua Dieta</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet" href="css/estilo.css">
 <style>
@@ -51,9 +51,9 @@
   <div class="titulo-central-wrapper">
   <div class="icone-dieta-topo">🥗</div>
 
-  <h1 class="titulo-central">Escolher Alimentos</h1>
+  <h1 class="titulo-central">Gerando Dieta </h1>
   <p class="subtitulo-central">
-    Escolha 5 Carboidratos, 3 Proteinas e 1 Gordura:
+    Escolha os alimentos da sua Dieta:
   </p>
 
   <div class="regua"></div>
@@ -139,15 +139,15 @@
 
 <script>
 const base = {
-  cafeManha: ["Carboidrato: 🥣 Aveia","Proteinas: 🥓 Bacon","Carboidrato: 🥖 Baguete","Gorduras: 🍯  Mel","Proteinas: 🥚 Ovos","Proteinas: 🍗 Frango","Carboidrato: 🥞 Tapioca","Carboidrato: 🌽 Cuscuz","Proteinas: 🧀 Queijo","Carboidrato: 🍞 Pão","Proteinas: 🥚 Omelete","Gorduras: 🥛 Leite","Gorduras: 🍨 Iogurte","☕ Café","Carboidrato: 🥔 Batata Doce"],
-  almoco: ["🍚 Arroz","🍤 Camarão","🌾 Feijão","🍗 Frango","🥩 Carne Corpo","🥩 Carne Bovina","🥩 Moela","🐟 Peixe","🥔 Batata Inglesa","🍝 Macarrão","🥬 Folhas Verdes","🥕 Legumes","🥦 Brócolis","🍳 Ovos","🥚 Omelete","🥔 Batata Doce","🐟 Atum","Suco de Laranja"],
-  cafeTarde: ["🍞 Pão","🥖 Baguete","🥑 Abacate","🥞 Tapioca","🌽 Cuscuz","🧀 Queijo","🥣 Iogurte","Requeijão","🥜 Castanhas","🍎 Maça","🥭 Manga","🍉 Melancia"],
-  janta: ["🍗 Frango","🍚 Arroz","🌾 Feijão","🥩 Carne Corpo","🥩 Carne Bovina","🥩 Moela","🐟 Peixe","🍳 Ovos","🍠 Batata doce","🍚 Arroz","🥚 Omelete","🥗 Salada","🥕 Legumes","🍝 Macarrão","🐟 Atum"],
-  Sobremesa: ["🍫 Brigadeiro","🥄 Doce de leite","🥜 Pasta de amendoim","🍮Gelatina","🍧 Sorvete","🥟 Biscoito"],
-  Suplementos: ["🥤 Whey","🥤 Creatina","🥤 Glutamina","🥤 Pré-Treino","🥤 Multivitaminico","🥤 Ômega 3"],
+  cafeManha: ["Carboidrato: 🥣 Aveia","Proteinas: 🥓 Bacon","Carboidrato: 🥖 Baguete","Gorduras: 🍯  Mel","Proteinas: 🥚 Ovos","Proteinas: 🍗 Frango","Carboidrato: 🥞 Tapioca","Carboidrato: 🌽 Cuscuz","Proteinas: 🧀 Queijo","Carboidrato: 🍞 Pão","Proteinas: 🥚 Omelete","Gorduras: 🥛 Leite","Gorduras: 🍨 Iogurte","Extra: ☕ Café","Carboidrato: 🥔 Batata Doce"],
+  almoco: ["Carboidrato: 🍚 Arroz","Gordura: 🥜 Castanhas","Proteinas: 🍤 Camarão","Carboidrato: 🌾 Feijão","Proteinas: 🍗 Frango","Gordura: 🥑 Abacate","Proteinas: 🥩 Carne Bovina","Proteinas: 🥩 Moela","Proteinas: 🐟 Peixe","Carboidrato: 🥔 Batata Inglesa","Carboidrato: 🍝 Macarrão","Extra: 🥬 Folhas","Extra: 🥦 Brócolis","Proteinas: 🍳 Ovos","Carboidrato: 🥔 Batata Doce","Proteinas: 🐟 Atum","Suco de Laranja"],
+  cafeTarde: ["Carboidrato: 🍞 Pão Frances","Carboidrato: 🥖 Baguete","Proteinas: 🍗 Frango","Carboidrato: 🥞 Tapioca","Carboidrato: 🌽 Cuscuz","Proteinas: 🧀 Queijo","Proteinas: 🥚 Omelete","Proteinas: 🥚 Ovos","Proteinas: 🥣 Iogurte","Gordura: Requeijão","Gordura: 🥜 Castanhas","Extra: 🍎 Maça","Extra: 🥭 Manga","Extra: 🍉 Melancia"],
+  janta: ["Proteinas: 🍗 Frango","Carboidrato: 🍚 Arroz","Carboidrato: 🌾 Feijão","Proteinas: 🥩 Carne Bovina","Proteinas: 🥩 Moela","Proteinas: 🐟 Peixe","Carboidrato: 🍠 Batata doce","Proteinas: 🥚 Omelete","Extra: 🥗 Salada","Carboidrato: 🍝 Macarrão","Carboidrato: 🥔 Batata Inglesa","Proteinas: 🐟 Atum"],
+  sobremesa: ["🍫 Brigadeiro","🥄 Doce de leite","🥜 Pasta de amendoim","🍮Gelatina","🍧 Sorvete","🥟 Biscoito"],
+  suplementos: ["🥤 Whey","🥤 Creatina","🥤 Glutamina","🥤 Pré-Treino","🥤 Multivitaminico","🥤 Ômega 3"],
 };
 
-const dieta = { cafeManha: [], almoco: [], cafeTarde: [], janta: [], extra: [], Suplementos: [] };
+const dieta = { cafeManha: [], almoco: [], cafeTarde: [], janta: [], sobremesa: [], suplementos: [] };
 
 // Montar cards
 Object.keys(base).forEach(ref => {
