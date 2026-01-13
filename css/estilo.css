@@ -762,7 +762,8 @@ body::after {
 }
 
 /* ===============================
-   PÁGINA 4 – CONFIRMAÇÃO PROFISSIONAL
+   PÁGINA 4 – CONFIRMAÇÃO FINAL
+   (TOTALMENTE ESCOPADO)
    =============================== */
 
 .pagina4{
@@ -772,65 +773,76 @@ body::after {
   justify-content:center;
 }
 
+/* CONTAINER */
 .pagina4 .p4-container{
   max-width:420px;
   width:100%;
-  padding:42px 22px;
+  padding:40px 20px 30px;
   text-align:center;
 }
 
-/* STATUS */
-.pagina4 .p4-status{
-  width:64px;
-  height:64px;
-  margin:0 auto 22px;
+/* ÍCONE CHECK */
+.pagina4 .p4-icon-check{
+  width:70px;
+  height:70px;
+  margin:0 auto 20px;
+  background:#3b82f6;
   border-radius:50%;
-  background:#e8f7ef;
   display:flex;
   align-items:center;
   justify-content:center;
 }
 
-.pagina4 .p4-check{
-  font-size:28px;
-  color:#1db954;
+.pagina4 .p4-icon-check svg{
+  width:38px;
+  height:38px;
+  fill:#ffffff;
 }
 
-/* TEXTOS */
+/* TÍTULO */
 .pagina4 .p4-titulo{
   font-size:20px;
   font-weight:600;
-  margin-bottom:14px;
+  margin-bottom:12px;
 }
 
+/* TEXTO */
 .pagina4 .p4-texto{
   font-size:14px;
-  line-height:1.6;
-  margin-bottom:14px;
+  line-height:1.5;
+  margin-bottom:26px;
 }
 
-.pagina4 .p4-texto-sec{
-  font-size:13.5px;
-  line-height:1.5;
-  color:#555;
-  margin-bottom:22px;
+/* SILHUETAS */
+.pagina4 .p4-silhuetas{
+  display:flex;
+  justify-content:center;
+  gap:22px;
+  margin-bottom:26px;
+}
+
+.pagina4 .p4-silhuetas img{
+  width:90px;
+  opacity:0.7;
 }
 
 /* ALERTAS */
 .pagina4 .p4-alertas{
-  text-align:left;
   font-size:12.5px;
-  background:#f7f9fb;
-  border-radius:12px;
-  padding:14px 16px;
+  line-height:1.5;
   margin-bottom:26px;
 }
 
-.pagina4 .p4-alertas ul{
-  padding-left:18px;
-  margin-top:8px;
+/* BOTÃO (REAPROVEITA PADRÃO EXISTENTE) */
+.pagina4 .p4-btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  width:100%;
+  text-decoration:none;
 }
 
-.pagina4 .p4-alertas li{
-  margin-bottom:6px;
+.pagina4 .p4-btn.desativado{
+  opacity:0.7;
+  cursor:not-allowed;
 }
