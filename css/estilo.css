@@ -761,10 +761,10 @@ body::after {
   }
 }
 
-/* ===============================
-   PÁGINA 4 – CONFIRMAÇÃO FINAL
-   (TOTALMENTE ESCOPADO)
-   =============================== */
+/* =========================================
+   PÁGINA 4 – ANÁLISE NUTRICIONAL INICIADA
+   (TOTALMENTE ISOLADO / SEM QUEBRAS)
+   ========================================= */
 
 .pagina4{
   min-height:100vh;
@@ -773,76 +773,85 @@ body::after {
   justify-content:center;
 }
 
-/* CONTAINER */
+/* CONTAINER PRINCIPAL */
 .pagina4 .p4-container{
   max-width:420px;
   width:100%;
-  padding:40px 20px 30px;
+  padding:44px 22px 34px;
   text-align:center;
 }
 
-/* ÍCONE CHECK */
-.pagina4 .p4-icon-check{
-  width:70px;
-  height:70px;
-  margin:0 auto 20px;
-  background:#3b82f6;
+/* STATUS / VERIFICADO */
+.pagina4 .p4-status{
+  width:64px;
+  height:64px;
+  margin:0 auto 22px;
   border-radius:50%;
+  background:#e9f7ef;
   display:flex;
   align-items:center;
   justify-content:center;
 }
 
-.pagina4 .p4-icon-check svg{
-  width:38px;
-  height:38px;
-  fill:#ffffff;
+.pagina4 .p4-check{
+  font-size:30px;
+  line-height:1;
 }
 
 /* TÍTULO */
 .pagina4 .p4-titulo{
   font-size:20px;
   font-weight:600;
-  margin-bottom:12px;
+  color:#111;
+  margin-bottom:14px;
 }
 
-/* TEXTO */
+/* TEXTO PRINCIPAL */
 .pagina4 .p4-texto{
   font-size:14px;
-  line-height:1.5;
-  margin-bottom:26px;
+  line-height:1.65;
+  color:#333;
+  margin-bottom:14px;
 }
 
-/* SILHUETAS */
-.pagina4 .p4-silhuetas{
-  display:flex;
-  justify-content:center;
-  gap:22px;
-  margin-bottom:26px;
+/* TEXTO SECUNDÁRIO */
+.pagina4 .p4-texto-sec{
+  font-size:13.5px;
+  line-height:1.55;
+  color:#555;
+  margin-bottom:22px;
 }
 
-.pagina4 .p4-silhuetas img{
-  width:90px;
-  opacity:0.7;
-}
-
-/* ALERTAS */
+/* BLOCO DE INFORMAÇÕES */
 .pagina4 .p4-alertas{
+  text-align:left;
+  background:#f7f9fb;
+  border-radius:14px;
+  padding:16px 18px;
   font-size:12.5px;
-  line-height:1.5;
-  margin-bottom:26px;
+  line-height:1.55;
+  color:#333;
+  margin-bottom:28px;
 }
 
-/* BOTÃO (REAPROVEITA PADRÃO EXISTENTE) */
-.pagina4 .p4-btn{
-  display:inline-flex;
-  align-items:center;
-  justify-content:center;
+.pagina4 .p4-alertas strong{
+  display:block;
+  margin-bottom:6px;
+  font-weight:600;
+}
+
+.pagina4 .p4-alertas ul{
+  padding-left:18px;
+  margin:6px 0 0;
+}
+
+.pagina4 .p4-alertas li{
+  margin-bottom:6px;
+}
+
+/* BOTÃO
+   ⚠️ NÃO DEFINIMOS ESTILO
+   Reaproveita EXATAMENTE o botão da Página 2 */
+.pagina4 .btn-principal{
   width:100%;
-  text-decoration:none;
-}
-
-.pagina4 .p4-btn.desativado{
-  opacity:0.7;
-  cursor:not-allowed;
 }
