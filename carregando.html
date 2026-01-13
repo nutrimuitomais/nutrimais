@@ -2,7 +2,7 @@
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
-<title>Análise iniciada</title>
+<title>Envio concluído</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet" href="css/estilo.css">
 </head>
@@ -11,35 +11,35 @@
 
   <div class="p4-container">
 
-    <div class="p4-status">
-      <span class="p4-check">✔</span>
+    <div class="p4-icon-check">
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M9 16.2l-3.5-3.5L4 14.2 9 19l12-12-1.5-1.5z"/>
+      </svg>
     </div>
 
-    <h1 class="p4-titulo">Análise nutricional iniciada</h1>
+    <h1 class="p4-titulo">Dados enviados ao Nutricionista de Plantão</h1>
 
     <p class="p4-texto">
-      Recebemos suas informações com sucesso. Elas já foram encaminhadas para
-      análise nutricional personalizada, considerando seu objetivo, perfil corporal
-      e preferências alimentares.
+      Suas medidas e seus alimentos escolhidos foram enviados para um nutricionista
+      de plantão, onde ele vai analisar e ajustar sua dieta de acordo com seu
+      <strong>OBJETIVO</strong>.
     </p>
 
-    <p class="p4-texto-sec">
-      Em instantes você poderá prosseguir para a finalização e liberação do seu
-      plano alimentar personalizado.
-    </p>
-
-    <div class="p4-alertas">
-      <strong>Informações importantes</strong>
-      <ul>
-        <li>Não solicitamos códigos por e-mail ou mensagens.</li>
-        <li>Guarde seu comprovante de pagamento.</li>
-        <li>O acesso ao App Nutri+ e o plano alimentar em PDF serão enviados após a confirmação.</li>
-      </ul>
+    <div class="p4-silhuetas">
+      <img src="img/silhueta-feminina.png" alt="Silhueta feminina">
+      <img src="img/silhueta-masculina.png" alt="Silhueta masculina">
     </div>
 
-    <!-- BOTÃO REAL DA PÁGINA 2 -->
-    <button class="btn-principal" id="p4Continuar">
-      Continuar
+    <div class="p4-alertas">
+      <strong>Alertas:</strong><br>
+      Não pedimos código por e-mail nem por WhatsApp.<br>
+      Gere sempre o comprovante de pagamento em casos de erros.<br>
+      Seus dados, acesso ao App Nutri+ e PDF da dieta serão enviados por e-mail após o pagamento.
+    </div>
+
+    <!-- botão com JS -->
+    <button class="btn-continuar p4-btn" id="p4Continuar">
+      Continuar →
     </button>
 
   </div>
