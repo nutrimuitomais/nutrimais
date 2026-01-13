@@ -1,52 +1,47 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <title>Carregando sua dieta</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="carregando.css">
+<meta charset="UTF-8">
+<title>Envio concluído</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="css/estilo.css">
 </head>
-<body>
 
-<!-- BARRA DE PROGRESSO -->
-<div class="barra-container">
-  <div class="barra-progresso" id="barraProgresso"></div>
-</div>
+<body class="pagina4">
 
-<!-- LOADING -->
-<div class="loading-container" id="loading">
-  <h1>Carregando sua dieta<span id="dots">...</span></h1>
-</div>
+  <div class="p4-container">
 
-<!-- RESUMO -->
-<div class="resumo hidden" id="resumo">
-  <div class="card-resumo">
+    <div class="p4-icon-check">
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M9 16.2l-3.5-3.5L4 14.2 9 19l12-12-1.5-1.5z"/>
+      </svg>
+    </div>
 
-    <img src="logo-nutrimais.png" class="logo-resumo" alt="Nutri+">
+    <h1 class="p4-titulo">Dados enviados ao Nutricionista de Plantão</h1>
 
-    <h2>Confirme sua dieta:</h2>
+    <p class="p4-texto">
+      Suas medidas e seus alimentos escolhidos foram enviados para um nutricionista
+      de plantão, onde ele vai analisar e ajustar sua dieta de acordo com seu
+      <strong>OBJETIVO</strong>.
+    </p>
 
-    <!-- NOME -->
-    <p class="nome-usuario" <strong id="nomeUsuario"></p>
+    <div class="p4-silhuetas">
+      <img src="img/silhueta-feminina.png" alt="Silhueta feminina">
+      <img src="img/silhueta-masculina.png" alt="Silhueta masculina">
+    </div>
 
-    <!-- DADOS EM LINHA -->
-    <p class="linha-dados" id="linhaDados"></p>
+    <div class="p4-alertas">
+      <strong>Alertas:</strong><br>
+      Não pedimos código por e-mail nem por WhatsApp.<br>
+      Gere sempre o comprovante de pagamento em casos de erros.<br>
+      Seus dados, acesso ao App Nutri+ e PDF da dieta serão enviados por e-mail após o pagamento.
+    </div>
 
-    <!-- OBJETIVO -->
-    <div id="objetivoResumo" class="objetivo-box"></div>
-
-    <!-- ALIMENTOS (SEM SUBTÍTULOS) -->
-    <h3>Alimentos selecionados:</h3>
-    <div id="alimentosResumo"></div>
-
-    <!-- BOTÃO DENTRO DO CARD -->
-    <button class="btn-principal" onclick="irParaPlanos()">
-      Gerar dieta
-    </button>
+    <a href="pagamento.html" class="btn-continuar p4-btn">
+      Continuar →
+    </a>
 
   </div>
-</div>
 
-<script src="js/carregando.js"></script>
 </body>
 </html>
