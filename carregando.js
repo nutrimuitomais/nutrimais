@@ -1,67 +1,18 @@
-// ===== PROGRESSO =====
-const barra = document.getElementById("barraProgresso");
-if (barra) barra.style.width = "88%";
+document.addEventListener('DOMContentLoaded', function () {
 
-// ===== ELEMENTOS =====
-const loading = document.getElementById("loading");
-const resumo = document.getElementById("resumo");
+  const btnContinuar = document.getElementById('p4Continuar');
 
-const nomeSpan = document.getElementById("nomeUsuario");
-const dadosDiv = document.getElementById("dadosResumo");
-const alimentosDiv = document.getElementById("alimentosResumo");
-const objetivoDIV = document.getElementById("objetivoResumo");
+  if (!btnContinuar) return;
 
-// ===== DADOS =====
-const dadosUsuario = JSON.parse(localStorage.getItem("dadosUsuario"));
-const dietaSelecionada = JSON.parse(localStorage.getItem("dietaSelecionada"));
-const objetivoSelecionado = localStorage.getItem("objetivoSelecionado");
+  btnContinuar.addEventListener('click', function () {
 
-// ===== SEGURANÇA =====
-if (!dadosUsuario || !dietaSelecionada) {
-  console.error("Dados ausentes no localStorage");
-}
+    // evita clique duplo
+    btnContinuar.disabled = true;
+    btnContinuar.classList.add('desativado');
 
-// ===== LOADING =====
-setTimeout(() => {
-  loading.style.display = "none";
-  resumo.classList.remove("hidden");
+    // redireciona para pagamento
+    window.location.href = 'pagamento.html';
 
-  // ===== NOME =====
-  if (nomeSpan) {
-    nomeSpan.textContent = dadosUsuario.nome || "";
-  }
-
-  // ===== DADOS EM LINHA =====
-  if (dadosDiv) {
-    dadosDiv.innerHTML = `
-      ${dadosUsuario.idade} anos | 
-      ${dadosUsuario.peso}kg | 
-      ${dadosUsuario.altura}cm
-    `;
-  }
-
-  // ===== OBJETIVO =====
-  /* DESTAQUE VISUAL DO OBJETIVO (estilo botão/pill) */
-if (objetivoDiv && objetivo) {
-  objetivodiv.textContent = objetivo;
-}
-
-  // ===== ALIMENTOS (TUDO JUNTO) =====
-  let alimentos = [];
-
-  Object.values(dietaSelecionada).forEach(lista => {
-    if (Array.isArray(lista)) {
-      lista.forEach(item => alimentos.push(item));
-    }
   });
 
-  alimentosDiv.innerHTML = alimentos.length
-    ? `<ul>${alimentos.map(a => `<li>${a}</li>`).join("")}</ul>`
-    : "<p>Nenhum alimento selecionado.</p>";
-
-}, 1800);
-
-// ===== BOTÃO =====
-function irParaPlanos() {
-  window.location.href = "planos.html";
-}
+});
