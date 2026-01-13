@@ -1,8 +1,18 @@
-document.addEventListener('DOMContentLoaded', () => {
-  const btn = document.getElementById('p4Continuar');
-  if (!btn) return;
+document.addEventListener('DOMContentLoaded', function () {
 
-  btn.addEventListener('click', () => {
+  const btnContinuar = document.getElementById('p4Continuar');
+
+  if (!btnContinuar) return;
+
+  btnContinuar.addEventListener('click', function () {
+
+    // evita clique duplo
+    btnContinuar.disabled = true;
+    btnContinuar.classList.add('desativado');
+
+    // redireciona para pagamento
     window.location.href = 'pagamento.html';
+
   });
+
 });
