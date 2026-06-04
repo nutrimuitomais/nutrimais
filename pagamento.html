@@ -14,7 +14,15 @@
 
   <div class="checkout">
     <h2 id="planoNome"></h2>
-    <p class="valor">Total: <strong id="planoPreco"></strong></p>
+    <p class="valor">
+  Valor original:
+  <strong id="planoPreco"></strong>
+</p>
+
+<p class="valor-final">
+  Total:
+  <strong id="valorFinal"></strong>
+</p>
 
     <div class="metodos">
       <label>
@@ -30,7 +38,23 @@
         Cartão de Débito
       </label>
     </div>
+<div class="cupom-box">
 
+  <label for="cupom">Cupom de desconto</label>
+
+  <input
+    type="text"
+    id="cupom"
+    placeholder="Digite seu cupom"
+  >
+
+  <button type="button" onclick="aplicarCupom()">
+    Aplicar cupom
+  </button>
+
+  <p id="descontoAplicado"></p>
+
+</div>
     <div class="aviso">
       Ambiente seguro • Pagamento protegido
     </div>
@@ -46,21 +70,112 @@ if (!plano) {
   window.location.href = "planos.html";
 }
 
+let descontoAtual = 0;
+
 document.getElementById("planoNome").innerText = plano.nome;
-document.getElementById("planoPreco").innerText = "R$ " + plano.preco.toFixed(2);
+
+document.getElementById("planoPreco").innerText =
+"R$ " + plano.preco.toFixed(2);
+
+document.getElementById("valorFinal").innerText =
+"R$ " + plano.preco.toFixed(2);
+
+function aplicarCupom(){
+
+  const codigo =
+  document.getElementById("cupom")
+  .value
+  .toUpperCase()
+  .trim();
+
+  let desconto = 0;
+
+  if(plano.nome === "Nutri Digital"){
+    if(["NUTRI2","NUTRI3","NUTRI4"].includes(codigo)){
+      desconto = cupons[codigo];
+    }
+  }
+
+  if(plano.nome === "Max Nutri"){
+    if(["MAX5","MAX6","MAX7","MAX8"].includes(codigo)){
+      desconto = cupons[codigo];
+    }
+  }
+
+  if(plano.nome === "Super Nutri"){
+    if(["SUPER8","SUPER9","SUPER10"].includes(codigo)){
+      desconto = cupons[codigo];
+    }
+  }
+
+  descontoAtual = desconto;
+
+  const valorFinal =
+  plano.preco - descontoAtual;
+
+  if(desconto > 0){
+
+    document.getElementById(
+      "descontoAplicado"
+    ).innerText =
+    `Cupom aplicado: -R$ ${desconto.toFixed(2)}`;
+
+  } else {
+
+    document.getElementById(
+      "descontoAplicado"
+    ).innerText =
+    "Cupom inválido para este plano.";
+
+  }
+
+  document.getElementById(
+    "valorFinal"
+  ).innerText =
+  "R$ " + valorFinal.toFixed(2);
+
+}
 
 function confirmarPagamento() {
+
+  localStorage.setItem(
+    "pagamentoAprovado",
+    "true"
+  );
+
   const acesso = {
     ativo: true,
     inicio: new Date().toISOString(),
-    fim: new Date(Date.now() + 31*24*60*60*1000).toISOString(),
-    consultasRestantes: plano.consultas
+    fim: new Date(
+      Date.now() + 31*24*60*60*1000
+    ).toISOString()
   };
 
-  localStorage.setItem("acessoUsuario", JSON.stringify(acesso));
-  window.location.href = "portal.html";
+  localStorage.setItem(
+    "acessoUsuario",
+    JSON.stringify(acesso)
+  );
+
+  window.location.href = "anamnese.html";
+
 }
 </script>
+<script>
+const cupons = {
+  NUTRI2: 2,
+  NUTRI3: 3,
+  NUTRI4: 4,
 
+  MAX5: 5,
+  MAX6: 6,
+  MAX7: 7,
+  MAX8: 8,
+
+  SUPER8: 8,
+  SUPER9: 9,
+  SUPER10: 10
+};
+</script>
+  
 </body>
 </html>
