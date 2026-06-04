@@ -954,3 +954,17 @@ body::after {
 .card-plano.destaque{
   transform:scale(1.05);
 }
+.economia{
+  display:block;
+  margin-top:8px;
+  font-size:14px;
+  font-weight:700;
+  color:#6fd18c;
+}
+
+.mensal{
+  margin-top:8px;
+  font-size:14px;
+  font-weight:600;
+  color:#ffffff;
+}
