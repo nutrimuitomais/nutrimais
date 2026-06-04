@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // redireciona para pagamento
   btn.addEventListener('click', () => {
     if (btn.disabled) return;
-    window.location.assign('pagamento.html');
+    window.location.assign('planos.html');
   });
 
 });
