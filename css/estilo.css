@@ -872,7 +872,10 @@ body::after {
 }
 
 .valor{
-  color:#22c55e;
+  color:#ffffff;
+  font-size:72px;
+  font-weight:800;
+  line-height:1;
 }
 
 .card-plano:hover{
@@ -910,4 +913,25 @@ body::after {
 #descontoAplicado{
   margin-top:10px;
   font-weight:600;
+}
+.tipo-plano{
+  display:flex;
+  justify-content:center;
+  gap:10px;
+  margin:12px 0;
+}
+
+.tipo-btn{
+  border:none;
+  padding:8px 18px;
+  border-radius:20px;
+  cursor:pointer;
+  font-weight:600;
+  background:#2a2a2a;
+  color:#fff;
+}
+
+.tipo-btn.ativo{
+  background:#ffffff;
+  color:#111;
 }
