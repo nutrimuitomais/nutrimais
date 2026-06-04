@@ -139,13 +139,13 @@
 
 <script>
 function selecionarPlano(nome, preco, consultas) {
-  const plano = {
-    nome,
-    preco,
-    consultas,
-    dataInicio: new Date().toISOString()
-  };
-
+const plano = {
+  nome,
+  preco,
+  tipo: "mensal", // ou anual
+  consultas,
+  dataInicio: new Date().toISOString()
+};
   localStorage.setItem("planoEscolhido", JSON.stringify(plano));
   window.location.href = "pagamento.html";
 }
