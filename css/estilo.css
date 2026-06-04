@@ -814,3 +814,68 @@ body::after {
   color:#333;
   margin-bottom:26px;
 }
+
+/* PLANOS NOVO */
+.preco-box{
+  display:flex;
+  justify-content:center;
+  align-items:flex-start;
+  margin:15px 0;
+}
+
+.moeda{
+  font-size:24px;
+  font-weight:700;
+  margin-top:10px;
+}
+
+.valor{
+  font-size:58px;
+  font-weight:800;
+  line-height:1;
+}
+
+.centavos{
+  font-size:24px;
+  font-weight:700;
+  margin-top:10px;
+}
+
+.tipo-plano{
+  display:flex;
+  justify-content:center;
+  gap:10px;
+  margin:10px 0;
+}
+
+.tipo-plano span{
+  padding:6px 14px;
+  border-radius:20px;
+  background:#f2f2f2;
+  font-size:13px;
+}
+
+.tipo-plano .ativo{
+  background:#22c55e;
+  color:white;
+  font-weight:700;
+}
+
+.premium{
+  background:#f59e0b;
+  color:white;
+}
+
+.preco-antigo{
+  text-decoration:line-through;
+  opacity:.7;
+}
+
+.valor{
+  color:#22c55e;
+}
+
+.card-plano:hover{
+  transform:translateY(-6px);
+  transition:.3s;
+}
