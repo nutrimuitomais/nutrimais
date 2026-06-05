@@ -410,7 +410,8 @@ JSON.parse(
 localStorage.getItem("planoEscolhido")
 );
 
-    console.log(plano);
+console.log("PLANO COMPLETO:", plano);
+console.log("ESTILO:", plano.estilo);
 
 const hero =
 document.querySelector(".hero-pagamento");
@@ -423,6 +424,7 @@ if(plano.estilo === "digital"){
 if(plano.estilo === "max"){
   hero.style.background =
   "linear-gradient(120deg,#2f6f5f,#4fa08a,#2f6f5f)";
+  hero.style.backgroundSize = "200% 200%";
 }
 
 if(plano.estilo === "super"){
