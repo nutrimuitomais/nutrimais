@@ -1050,131 +1050,184 @@ body::after {
   box-shadow:0 15px 40px rgba(0,0,0,.08);
 }
 
-/* PAGAMENTO PREMIUM */
+/* =========================
+   PAGAMENTO PREMIUM NUTRI+
+========================= */
 
 .checkout-modern{
-max-width:500px;
-margin:auto;
-padding:40px 25px;
+  max-width:540px;
+  margin:40px auto;
+  padding:0 20px;
 }
 
 .topo-checkout{
-text-align:center;
-margin-bottom:40px;
+  text-align:center;
+  margin-bottom:30px;
 }
 
 .topo-checkout h1{
-font-size:32px;
-margin:0;
-color:#fff;
+  font-size:32px;
+  color:#1f2937;
+  margin-bottom:8px;
 }
 
 .topo-checkout p{
-color:#9aa5a1;
+  color:#6b7280;
 }
 
-.plano-selecionado{
-text-align:center;
-margin-bottom:15px;
+.resumo-pagamento{
+  background:#ffffff;
+  border-radius:24px;
+  padding:30px;
+  box-shadow:0 10px 40px rgba(0,0,0,.08);
+  margin-bottom:20px;
 }
 
-#planoNome{
-font-size:22px;
-font-weight:700;
-color:#fff;
-}
-
-#tipoPlano{
-color:#b0b0b0;
-margin-top:5px;
+.plano-badge{
+  display:inline-block;
+  padding:8px 16px;
+  border-radius:999px;
+  background:#ecfdf5;
+  color:#16a34a;
+  font-weight:700;
+  margin-bottom:20px;
 }
 
 .valor-principal{
-text-align:center;
-font-size:64px;
-font-weight:800;
-color:#fff;
-margin-bottom:35px;
+  font-size:64px;
+  font-weight:800;
+  color:#111827;
+  text-align:center;
+  line-height:1;
+}
+
+.valor-principal .moeda{
+  font-size:28px;
+  vertical-align:top;
+}
+
+.texto-total{
+  text-align:center;
+  color:#6b7280;
+  margin-top:8px;
+  font-size:15px;
 }
 
 .metodos-pagamento{
-display:flex;
-gap:10px;
-margin-bottom:30px;
+  display:flex;
+  gap:12px;
+  margin-top:25px;
 }
 
 .metodo{
-flex:1;
-border:none;
-padding:15px;
-border-radius:14px;
-cursor:pointer;
-background:#202a28;
-color:white;
+  flex:1;
+  padding:14px;
+  border-radius:14px;
+  border:2px solid #e5e7eb;
+  background:#fff;
+  cursor:pointer;
+  text-align:center;
+  font-weight:600;
+  transition:.25s;
+}
+
+.metodo:hover{
+  border-color:#22c55e;
 }
 
 .metodo.ativo{
-background:#4CAF50;
+  background:#22c55e;
+  color:#fff;
+  border-color:#22c55e;
 }
 
-.pix-box{
-display:flex;
-flex-direction:column;
-gap:15px;
+.area-pagamento{
+  margin-top:20px;
+  background:#f9fafb;
+  border-radius:18px;
+  padding:20px;
 }
 
-.qr-fake{
-height:220px;
-border-radius:20px;
-background:white;
-display:flex;
-align-items:center;
-justify-content:center;
-font-weight:700;
+.qrcode{
+  width:220px;
+  height:220px;
+  background:#fff;
+  border-radius:16px;
+  margin:0 auto 15px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border:1px solid #e5e7eb;
 }
 
-textarea{
-width:100%;
-height:90px;
-border:none;
-padding:15px;
-border-radius:12px;
-resize:none;
+.codigo-pix{
+  width:100%;
+  padding:12px;
+  border-radius:12px;
+  border:1px solid #d1d5db;
+  font-size:13px;
+}
+
+.form-cartao input{
+  width:100%;
+  height:52px;
+  border:1px solid #d1d5db;
+  border-radius:12px;
+  padding:0 15px;
+  margin-bottom:12px;
+  font-size:15px;
+}
+
+.linha-cartao{
+  display:flex;
+  gap:10px;
 }
 
 .cupom-box{
-margin-top:25px;
+  margin-top:20px;
 }
 
 .cupom-box input{
-width:100%;
-padding:15px;
-border-radius:12px;
-margin-bottom:10px;
+  width:100%;
+  height:52px;
+  border-radius:12px;
+  border:1px solid #d1d5db;
+  padding:0 15px;
 }
 
 .cupom-box button{
-width:100%;
-padding:15px;
-border:none;
-border-radius:12px;
-background:#4CAF50;
-color:white;
+  width:100%;
+  margin-top:10px;
+  height:52px;
+  border:none;
+  border-radius:12px;
+  background:#111827;
+  color:#fff;
+  font-weight:700;
+  cursor:pointer;
 }
 
 .btn-finalizar{
-width:100%;
-padding:18px;
-margin-top:25px;
-border:none;
-border-radius:16px;
-font-size:18px;
-font-weight:700;
-background:linear-gradient(
-90deg,
-#4CAF50,
-#67d46f
-);
-color:white;
-cursor:pointer;
+  width:100%;
+  height:60px;
+  border:none;
+  border-radius:16px;
+  margin-top:25px;
+  font-size:18px;
+  font-weight:700;
+  color:#fff;
+  cursor:pointer;
+  background:linear-gradient(
+    135deg,
+    #22c55e,
+    #16a34a
+  );
+  box-shadow:0 10px 25px rgba(34,197,94,.35);
+}
+
+.aviso{
+  text-align:center;
+  margin-top:18px;
+  color:#6b7280;
+  font-size:14px;
 }
