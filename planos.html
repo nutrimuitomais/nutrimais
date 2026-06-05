@@ -35,7 +35,9 @@ Anual
 </button>
 </div>
 
-    <p class="preco-antigo">De R$ 39,99</p>
+    <p class="preco-antigo" id="antigoNutri">
+  De R$ 39,99
+</p>
 
     <div class="preco-box">
       <span class="moeda">R$</span>
@@ -85,7 +87,9 @@ Anual
   </button>
 </div>
 
-<p class="preco-antigo">De R$ 69,99</p>
+<p class="preco-antigo" id="antigoMax">
+  De R$ 69,99
+</p>
 
     <div class="preco-box">
       <span class="moeda">R$</span>
@@ -134,7 +138,9 @@ Anual
 </button>
 </div>
 
-    <p class="preco-antigo">De R$ 129,99</p>
+    <p class="preco-antigo" id="antigoSuper">
+  De R$ 129,99
+</p>
 
     <div class="preco-box">
       <span class="moeda">R$</span>
@@ -201,7 +207,24 @@ function alterarPreco(card, valor, botao){
   cardPai.querySelector('.valor').innerText = inteiro;
   cardPai.querySelector('.centavos').innerText = ',' + centavos;
 
-  tipoPlano = valor > 100 ? "anual" : "mensal";
+  const anual = valor > 100;
+
+  if(card === 'nutri'){
+    document.getElementById('antigoNutri').innerText =
+      anual ? 'De R$ 239,88' : 'De R$ 39,99';
+  }
+
+  if(card === 'max'){
+    document.getElementById('antigoMax').innerText =
+      anual ? 'De R$ 599,88' : 'De R$ 69,99';
+  }
+
+  if(card === 'super'){
+    document.getElementById('antigoSuper').innerText =
+      anual ? 'De R$ 1.079,88' : 'De R$ 129,99';
+  }
+
+  tipoPlano = anual ? 'anual' : 'mensal';
 
   cardPai.dataset.preco = valor;
   cardPai.dataset.tipo = tipoPlano;
