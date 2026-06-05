@@ -226,14 +226,14 @@ function selecionarPlano(nome, precoPadrao, consultas){
   const tipo =
     card.dataset.tipo || "mensal";
 
-  let estilo = "digital";
+let estilo = "digital";
 
-  if(nome.includes("Max")){
-    estilo = "max";
-  }
-  else if(nome.includes("Super")){
-    estilo = "super";
-  }
+if(nome.includes("Max")){
+  estilo = "max";
+}
+else if(nome.includes("Super")){
+  estilo = "super";
+}
 
   const plano = {
     nome,
