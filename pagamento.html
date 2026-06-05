@@ -87,7 +87,7 @@ color:#fff;
 }
 
 .checkout{
-max-width:1100px;
+max-width:1200px;
 margin:auto;
 padding:0 10px;
 }
@@ -108,7 +108,7 @@ margin-bottom:35px;
 
 .card{
 width:100%;
-max-width:950px;
+max-width:none;
 margin:auto;
 background:rgba(255,255,255,.72);
 backdrop-filter:blur(20px);
@@ -314,6 +314,13 @@ Plano Selecionado
 <div class="preco">
 R$ <span id="valorPlano"></span>
 </div>
+    
+    <div class="resumo-plano">
+✓ Acesso imediato ao aplicativo<br>
+✓ Plano alimentar personalizado<br>
+✓ Atualizações periódicas<br>
+✓ Cancelamento simples
+</div>
 
 <div id="economia" class="economia"></div>
 
@@ -435,6 +442,19 @@ window.location.href="planos.html";
 
 document.getElementById("nomePlano")
 .innerText = plano.nome;
+    const tag = document.querySelector(".hero-tag");
+
+if(plano.nome.includes("Digital")){
+tag.innerText = "Ideal para começar";
+}
+
+if(plano.nome.includes("Max")){
+tag.innerText = "Mais escolhido";
+}
+
+if(plano.nome.includes("Super")){
+tag.innerText = "Melhor custo-benefício";
+}
 
 document.getElementById("tipoPlano")
 .innerText =
