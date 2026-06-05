@@ -234,6 +234,9 @@ function selecionarPlano(nome, precoPadrao, consultas){
 
   const card = event.target.closest('.card-plano');
 
+  console.log(card.dataset.preco);
+  console.log(card.dataset.tipo);
+
   const preco =
     Number(card.dataset.preco || precoPadrao);
 
