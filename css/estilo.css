@@ -1054,222 +1054,225 @@ body::after {
    PAGAMENTO PREMIUM NUTRI+
 ========================= */
 
-.checkout-modern{
-  max-width:540px;
-  margin:40px auto;
-  padding:0 20px;
+body{
+margin:0;
+font-family:'Segoe UI',sans-serif;
+background:linear-gradient(
+135deg,
+#f7fff9,
+#e8fff0,
+#dff9ea
+);
+min-height:100vh;
 }
 
-.topo-checkout{
-  text-align:center;
-  margin-bottom:30px;
+.checkout-page{
+max-width:900px;
+margin:40px auto;
+padding:20px;
 }
 
-.topo-checkout h1{
-  font-size:32px;
-  color:#1f2937;
-  margin-bottom:8px;
+.titulo-pagamento{
+text-align:center;
+font-size:38px;
+font-weight:800;
+color:#1c1c1c;
+margin-bottom:10px;
 }
 
-.topo-checkout p{
-  color:#6b7280;
+.sub-pagamento{
+text-align:center;
+color:#666;
+font-size:16px;
+margin-bottom:35px;
 }
 
-.resumo-pagamento{
-  background:#ffffff;
-  border-radius:24px;
-  padding:30px;
-  box-shadow:0 10px 40px rgba(0,0,0,.08);
-  margin-bottom:20px;
+.resumo{
+background:#fff;
+border-radius:25px;
+padding:30px;
+box-shadow:0 15px 40px rgba(0,0,0,.08);
+border:1px solid rgba(29,185,84,.15);
+margin-bottom:25px;
 }
 
-.plano-badge{
-  display:inline-block;
-  padding:8px 16px;
-  border-radius:999px;
-  background:#ecfdf5;
-  color:#16a34a;
-  font-weight:700;
-  margin-bottom:20px;
+.badge-plano{
+display:inline-block;
+padding:10px 18px;
+border-radius:999px;
+background:#e8fff0;
+color:#18a34a;
+font-weight:700;
+margin-bottom:15px;
 }
 
-.valor-principal{
-  font-size:64px;
-  font-weight:800;
-  color:#111827;
-  text-align:center;
-  line-height:1;
+.preco{
+font-size:58px;
+font-weight:800;
+color:#1db954;
+line-height:1;
 }
 
-.valor-principal .moeda{
-  font-size:28px;
-  vertical-align:top;
+.total{
+margin-top:12px;
+font-size:22px;
+font-weight:700;
+color:#111;
 }
 
-.texto-total{
-  text-align:center;
-  color:#6b7280;
-  margin-top:8px;
-  font-size:15px;
-}
-
-.metodos-pagamento{
-  display:flex;
-  gap:12px;
-  margin-top:25px;
+.metodos{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:12px;
+margin-bottom:25px;
 }
 
 .metodo{
-  flex:1;
-  padding:14px;
-  border-radius:14px;
-  border:2px solid #e5e7eb;
-  background:#fff;
-  cursor:pointer;
-  text-align:center;
-  font-weight:600;
-  transition:.25s;
+background:white;
+border:2px solid #e8e8e8;
+border-radius:18px;
+padding:18px;
+cursor:pointer;
+font-weight:700;
+text-align:center;
+transition:.3s;
 }
 
 .metodo:hover{
-  border-color:#22c55e;
+transform:translateY(-3px);
 }
 
 .metodo.ativo{
-  background:#22c55e;
-  color:#fff;
-  border-color:#22c55e;
+background:#1db954;
+color:white;
+border-color:#1db954;
 }
 
 .area-pagamento{
-  margin-top:20px;
-  background:#f9fafb;
-  border-radius:18px;
-  padding:20px;
+background:white;
+border-radius:25px;
+padding:30px;
+box-shadow:0 15px 40px rgba(0,0,0,.08);
+border:1px solid rgba(29,185,84,.15);
+}
+
+.pix-area,
+.cartao-area{
+display:none;
+}
+
+.pix-area.ativo,
+.cartao-area.ativo{
+display:block;
 }
 
 .qrcode{
-  width:220px;
-  height:220px;
-  background:#fff;
-  border-radius:16px;
-  margin:0 auto 15px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  border:1px solid #e5e7eb;
+width:280px;
+height:280px;
+margin:20px auto;
+background:#fff;
+border:3px dashed #1db954;
+border-radius:20px;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:18px;
+font-weight:700;
+color:#1db954;
 }
 
-.codigo-pix{
-  width:100%;
-  padding:12px;
-  border-radius:12px;
-  border:1px solid #d1d5db;
-  font-size:13px;
+.pix-code{
+width:100%;
+padding:14px;
+border:1px solid #ddd;
+border-radius:14px;
+background:#f8f8f8;
 }
 
-.form-cartao input{
-  width:100%;
-  height:52px;
-  border:1px solid #d1d5db;
-  border-radius:12px;
-  padding:0 15px;
-  margin-bottom:12px;
-  font-size:15px;
+input{
+width:100%;
+padding:15px;
+border:1px solid #ddd;
+border-radius:14px;
+margin-bottom:12px;
+font-size:15px;
+box-sizing:border-box;
 }
 
-.linha-cartao{
-  display:flex;
-  gap:10px;
+input:focus{
+outline:none;
+border-color:#1db954;
+}
+
+.linha{
+display:flex;
+gap:12px;
 }
 
 .cupom-box{
-  margin-top:20px;
-}
-
-.cupom-box input{
-  width:100%;
-  height:52px;
-  border-radius:12px;
-  border:1px solid #d1d5db;
-  padding:0 15px;
+margin-top:25px;
 }
 
 .cupom-box button{
-  width:100%;
-  margin-top:10px;
-  height:52px;
-  border:none;
-  border-radius:12px;
-  background:#111827;
-  color:#fff;
-  font-weight:700;
-  cursor:pointer;
-}
-
-.btn-finalizar{
-  width:100%;
-  height:60px;
-  border:none;
-  border-radius:16px;
-  margin-top:25px;
-  font-size:18px;
-  font-weight:700;
-  color:#fff;
-  cursor:pointer;
-  background:linear-gradient(
-    135deg,
-    #22c55e,
-    #16a34a
-  );
-  box-shadow:0 10px 25px rgba(34,197,94,.35);
-}
-
-.aviso{
-  text-align:center;
-  margin-top:18px;
-  color:#6b7280;
-  font-size:14px;
-}
-.pix-modal{
-position:fixed;
-top:0;
-left:0;
-width:100%;
-height:100%;
-background:rgba(0,0,0,.95);
-display:none;
-align-items:center;
-justify-content:center;
-z-index:9999;
-}
-
-.pix-modal.ativo{
-display:flex;
-}
-
-.pix-container{
-background:white;
-padding:30px;
-border-radius:25px;
-text-align:center;
-width:90%;
-max-width:450px;
-}
-
-.pix-container img{
-width:300px;
-max-width:100%;
-}
-
-.btn-voltar{
-margin-top:20px;
 width:100%;
 padding:15px;
 border:none;
-border-radius:12px;
-background:#14532d;
+border-radius:14px;
+background:#111;
 color:white;
 font-weight:700;
 cursor:pointer;
+}
+
+.btn-finalizar{
+width:100%;
+padding:18px;
+margin-top:25px;
+border:none;
+border-radius:16px;
+background:linear-gradient(
+135deg,
+#1db954,
+#15a848
+);
+color:white;
+font-size:18px;
+font-weight:800;
+cursor:pointer;
+}
+
+.btn-finalizar:hover{
+opacity:.95;
+}
+
+#descontoAplicado{
+margin-top:10px;
+font-weight:700;
+color:#1db954;
+}
+
+.economia-box{
+margin-top:15px;
+padding:15px;
+background:#e8fff0;
+border-radius:15px;
+font-weight:700;
+color:#159447;
+text-align:center;
+}
+
+@media(max-width:768px){
+
+.metodos{
+grid-template-columns:1fr;
+}
+
+.preco{
+font-size:46px;
+}
+
+.qrcode{
+width:220px;
+height:220px;
+}
 }
