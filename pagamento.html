@@ -18,38 +18,24 @@
   Seu acesso será liberado imediatamente após a confirmação.
 </p>
 
-<div class="resumo-plano">
+<div class="badge-plano" id="planoNome"></div>
 
-  <div class="badge-plano" id="planoNome"></div>
+<p class="preco-antigo-pagamento" id="precoOriginal">
+  De R$ 69,99
+</p>
 
-  <div class="preco-box-pagamento">
-    <span id="planoPreco"></span>
-  </div>
-
-  <div id="descontoAplicado"></div>
-
-  <div class="total-final">
-    Total:
-    <strong id="valorFinal"></strong>
-  </div>
-
+<div class="preco-principal">
+  <span class="moeda">R$</span>
+  <span id="valorPrincipal">49,99</span>
 </div>
 
-    <div class="metodo ativo">
-  ⚡ PIX
+<div class="total-pagamento">
+  Total
+  <strong id="valorFinal"></strong>
 </div>
 
-<div class="metodo">
-  💳 Crédito
-</div>
-
-<div class="metodo">
-  💳 Débito
-</div>
-  
 <div class="cupom-box">
-
-  <label for="cupom">Cupom promocional</label>
+  <label>Cupom promocional</label>
 
   <input
     type="text"
@@ -57,20 +43,42 @@
     placeholder="Digite seu cupom"
   >
 
-  <button type="button" onclick="aplicarCupom()">
+  <button
+    type="button"
+    onclick="aplicarCupom()"
+  >
     Aplicar cupom
   </button>
 
   <p id="descontoAplicado"></p>
+</div>
+
+<div class="metodos">
+
+  <div class="metodo ativo">
+    ⚡ PIX
+  </div>
+
+  <div class="metodo">
+    💳 Cartão de Crédito
+  </div>
+
+  <div class="metodo">
+    💳 Cartão de Débito
+  </div>
 
 </div>
-    <div class="aviso">
-      🔒 Transação protegida
 
-      Seus dados são criptografados e processados em ambiente seguro.
-    </div>
+<div class="aviso">
+  🔒 Pagamento seguro • Ambiente protegido
+</div>
 
-    <button class="btn" onclick="confirmarPagamento()">Liberar meu acesso</button>
+<button
+  class="btn-finalizar"
+  onclick="confirmarPagamento()"
+>
+  Liberar meu acesso
+</button>
   </div>
 </div>
 
