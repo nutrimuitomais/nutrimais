@@ -340,7 +340,13 @@
 
 /* ===== CARD ===== */
 .card-plano {
-  background: #6f7c78;
+  
+background:
+linear-gradient(
+180deg,
+#64756f 0%,
+#4e5c57 100%
+);
   color: #fff;
   border-radius: 24px;
   padding: 30px 24px 140px;
@@ -961,4 +967,30 @@ body::after {
   font-size:14px;
   font-weight:600;
   color:#ffffff;
+}
+.card-plano{
+  border:1px solid rgba(255,255,255,.15);
+  box-shadow:
+    0 15px 40px rgba(0,0,0,.25),
+    inset 0 1px 0 rgba(255,255,255,.08);
+}
+.card-plano.destaque{
+  transform:scale(1.04);
+  border:2px solid #22c55e;
+  box-shadow:
+    0 0 30px rgba(34,197,94,.35),
+    0 15px 40px rgba(0,0,0,.25);
+}
+.selo-economia{
+  display:inline-block;
+  background:#22c55e;
+  color:#fff;
+  padding:6px 12px;
+  border-radius:999px;
+  font-size:12px;
+  font-weight:700;
+  margin-top:10px;
+}
+.card-plano.recomendado{
+  border: 1px solid rgba(255,255,255,0.15);
 }
