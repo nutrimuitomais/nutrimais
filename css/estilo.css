@@ -1085,10 +1085,10 @@ margin-bottom:15px;
 }
 
 .hero-pagamento .preco{
-font-size:76px;
+font-size:92px;
 font-weight:900;
 color:#fff;
-margin:10px 0;
+line-height:1;
 }
 
 .hero-pagamento .economia{
@@ -1138,4 +1138,21 @@ margin-top:15px;
   font-weight:700;
   cursor:pointer;
   margin-top:20px;
+}
+.selo-extra{
+position:absolute;
+top:20px;
+right:-35px;
+
+background:#22c55e;
+color:#fff;
+
+padding:8px 40px;
+
+font-size:12px;
+font-weight:700;
+
+transform:rotate(35deg);
+
+box-shadow:0 8px 20px rgba(34,197,94,.35);
 }
