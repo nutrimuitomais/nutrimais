@@ -413,16 +413,19 @@ localStorage.getItem("planoEscolhido")
 const hero =
 document.querySelector(".hero-pagamento");
 
-if(plano.nome.includes("Digital")){
-hero.classList.add("hero-digital");
+if(plano.estilo === "digital"){
+  hero.style.background =
+  "linear-gradient(120deg,#4f6b56,#5f7d66,#4f6b56)";
 }
 
-if(plano.nome.includes("Max")){
-hero.classList.add("hero-max");
+if(plano.estilo === "max"){
+  hero.style.background =
+  "linear-gradient(120deg,#2f6f5f,#4fa08a,#2f6f5f)";
 }
 
-if(plano.nome.includes("Super")){
-hero.classList.add("hero-super");
+if(plano.estilo === "super"){
+  hero.style.background =
+  "linear-gradient(120deg,#6b5b95,#8b7cc8,#6b5b95)";
 }
 
 console.log(plano.estilo);
