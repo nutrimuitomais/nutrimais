@@ -1156,3 +1156,33 @@ transform:rotate(35deg);
 
 box-shadow:0 8px 20px rgba(34,197,94,.35);
 }
+
+.hero-digital{
+background:
+linear-gradient(
+120deg,
+#64756f,
+#4e5c57,
+#64756f
+);
+}
+
+.hero-max{
+background:
+linear-gradient(
+120deg,
+#4f6b56,
+#688f73,
+#4f6b56
+);
+}
+
+.hero-super{
+background:
+linear-gradient(
+120deg,
+#7b6a44,
+#a58b5b,
+#7b6a44
+);
+}
