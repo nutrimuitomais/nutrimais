@@ -331,15 +331,15 @@ R$ <span id="valorPlano"></span>
 
 <div class="metodos">
     <div class="metodo ativo" onclick="trocarMetodo('pix',this)">
-        PIX
+    ❖ PIX
     </div>
 
     <div class="metodo" onclick="trocarMetodo('credito',this)">
-        💳 Crédito
+    💳 Crédito
     </div>
 
     <div class="metodo" onclick="trocarMetodo('debito',this)">
-       💳 Débito
+    💳 Débito
     </div>
 </div>
 
@@ -409,6 +409,7 @@ const plano =
 JSON.parse(
 localStorage.getItem("planoEscolhido")
 );
+    console.log(plano);
 
 if(!plano){
 window.location.href="planos.html";
