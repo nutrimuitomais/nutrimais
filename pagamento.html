@@ -14,7 +14,7 @@ font-family:Arial,sans-serif;
 }
 
 body{
-background:linear-gradient(135deg,#0f172a,#1e293b);
+background:transparent;
 min-height:100vh;
 padding:30px;
 color:#fff;
@@ -170,6 +170,51 @@ font-weight:700;
 margin-top:20px;
 text-align:center;
 opacity:.8;
+}
+    body{
+background:transparent;
+min-height:100vh;
+padding:30px;
+color:#fff;
+}
+
+body::before,
+body::after{
+content:"";
+position:fixed;
+inset:-40%;
+z-index:-1;
+animation-timing-function:ease-in-out;
+animation-iteration-count:infinite;
+animation-direction:alternate;
+filter:blur(45px);
+}
+
+body::before{
+background:
+radial-gradient(55% 70% at 25% 30%, rgba(180,245,210,1) 0%, transparent 45%),
+radial-gradient(55% 70% at 80% 25%, rgba(214,233,255,.7) 0%, transparent 55%),
+radial-gradient(65% 80% at 55% 80%, rgba(233,221,255,.95) 0%, transparent 60%);
+animation:fundoIA1 9s infinite;
+}
+
+body::after{
+background:
+radial-gradient(85% 95% at 70% 65%, rgba(170,240,205,1) 0%, transparent 50%),
+radial-gradient(80% 95% at 30% 75%, rgba(220,215,255,.85) 0%, transparent 60%);
+animation:fundoIA2 10s infinite;
+}
+
+@keyframes fundoIA1{
+0%{transform:translate(0%,0%) scale(1.1);}
+50%{transform:translate(-14%,-12%) scale(1.35);}
+100%{transform:translate(12%,10%) scale(1.15);}
+}
+
+@keyframes fundoIA2{
+0%{transform:translate(0%,0%) scale(1.15);}
+50%{transform:translate(14%,-10%) scale(1.45);}
+100%{transform:translate(-12%,12%) scale(1.2);}
 }
 </style>
 </head>
@@ -333,16 +378,16 @@ el.classList.add("ativo");
 
 document
 .getElementById("pixArea")
-.classList.remove("ativo");
+.classList.remove("ativo-area");
 
 document
 .getElementById("cartaoArea")
-.classList.remove("ativo");
+.classList.remove("ativo-area");
 
 if(tipo === "pix"){
 document
 .getElementById("pixArea")
-.classList.add("ativo");
+.classList.add("ativo-area");
 }else{
 document
 .getElementById("cartaoArea")
