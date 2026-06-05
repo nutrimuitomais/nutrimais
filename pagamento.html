@@ -1,223 +1,393 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <title>Pagamento</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="css/estilo.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pagamento</title>
+<link rel="stylesheet" href="css/estilo.css">
+
+<style>
+
+.checkout-page{
+max-width:700px;
+margin:40px auto;
+padding:20px;
+}
+
+.titulo-pagamento{
+text-align:center;
+font-size:34px;
+font-weight:800;
+color:#111;
+margin-bottom:10px;
+}
+
+.sub-pagamento{
+text-align:center;
+color:#666;
+margin-bottom:40px;
+}
+
+.resumo{
+background:#fff;
+border-radius:20px;
+padding:25px;
+box-shadow:0 10px 30px rgba(0,0,0,.08);
+margin-bottom:25px;
+}
+
+.badge-plano{
+display:inline-block;
+padding:8px 16px;
+border-radius:999px;
+background:#eaf7f0;
+color:#1db954;
+font-weight:700;
+margin-bottom:15px;
+}
+
+.preco{
+font-size:52px;
+font-weight:800;
+color:#111;
+}
+
+.total{
+margin-top:15px;
+font-size:22px;
+font-weight:700;
+color:#1db954;
+}
+
+.metodos{
+display:flex;
+gap:10px;
+margin-bottom:20px;
+}
+
+.metodo{
+flex:1;
+padding:15px;
+border-radius:14px;
+border:1px solid #ddd;
+cursor:pointer;
+text-align:center;
+font-weight:600;
+background:#fff;
+}
+
+.metodo.ativo{
+background:#1db954;
+color:white;
+border-color:#1db954;
+}
+
+.area-pagamento{
+background:#fff;
+border-radius:20px;
+padding:25px;
+box-shadow:0 10px 30px rgba(0,0,0,.08);
+}
+
+.pix-area,
+.cartao-area{
+display:none;
+}
+
+.pix-area.ativo,
+.cartao-area.ativo{
+display:block;
+}
+
+.qrcode{
+width:220px;
+height:220px;
+margin:20px auto;
+background:#f3f3f3;
+border-radius:15px;
+display:flex;
+align-items:center;
+justify-content:center;
+font-weight:700;
+}
+
+.pix-code{
+width:100%;
+padding:12px;
+border:1px solid #ddd;
+border-radius:10px;
+margin-top:15px;
+}
+
+input{
+width:100%;
+padding:14px;
+margin-bottom:12px;
+border:1px solid #ddd;
+border-radius:12px;
+}
+
+.linha{
+display:flex;
+gap:10px;
+}
+
+.cupom-box{
+margin-top:20px;
+}
+
+.cupom-box button,
+.btn-finalizar{
+width:100%;
+padding:15px;
+border:none;
+border-radius:14px;
+font-weight:700;
+cursor:pointer;
+}
+
+.cupom-box button{
+background:#111;
+color:white;
+margin-top:10px;
+}
+
+.btn-finalizar{
+margin-top:25px;
+background:#1db954;
+color:white;
+font-size:17px;
+}
+
+#descontoAplicado{
+margin-top:10px;
+font-weight:600;
+color:#1db954;
+}
+
+</style>
 </head>
 <body>
 
-<div class="container">
-<div class="checkout-card">
-  <h1 class="titulo-pagamento">
-  Finalize sua assinatura
+<div class="checkout-page">
+
+<h1 class="titulo-pagamento">
+Finalize sua assinatura
 </h1>
 
 <p class="sub-pagamento">
-  Seu acesso será liberado imediatamente após a confirmação.
+Pagamento seguro e liberação imediata do acesso.
 </p>
 
-<div class="badge-plano" id="planoNome"></div>
+<div class="resumo">
 
-<p class="preco-antigo-pagamento" id="precoOriginal">
-  De R$ 69,99
-</p>
+<div id="planoNome" class="badge-plano"></div>
 
-<div class="preco-principal">
-  <span class="moeda">R$</span>
-  <span id="valorPrincipal">49,99</span>
+<div class="preco">
+R$ <span id="valorPrincipal"></span>
 </div>
 
-<div class="total-pagamento">
-  Total
-  <strong id="valorFinal"></strong>
+<div class="total">
+Total: <span id="valorFinal"></span>
 </div>
 
 <div class="cupom-box">
-  <label>Cupom promocional</label>
+<input
+type="text"
+id="cupom"
+placeholder="Cupom promocional">
 
-  <input
-    type="text"
-    id="cupom"
-    placeholder="Digite seu cupom"
-  >
+<button onclick="aplicarCupom()">
+Aplicar cupom
+</button>
 
-  <button
-    type="button"
-    onclick="aplicarCupom()"
-  >
-    Aplicar cupom
-  </button>
+<p id="descontoAplicado"></p>
+</div>
 
-  <p id="descontoAplicado"></p>
 </div>
 
 <div class="metodos">
 
-  <div class="metodo ativo">
-    ⚡ PIX
-  </div>
+<div class="metodo ativo"
+onclick="trocarMetodo('pix',this)">
+⚡ PIX
+</div>
 
-  <div class="metodo">
-    💳 Cartão de Crédito
-  </div>
+<div class="metodo"
+onclick="trocarMetodo('credito',this)">
+💳 Crédito
+</div>
 
-  <div class="metodo">
-    💳 Cartão de Débito
-  </div>
+<div class="metodo"
+onclick="trocarMetodo('debito',this)">
+💳 Débito
+</div>
 
 </div>
 
-<div class="aviso">
-  🔒 Pagamento seguro • Ambiente protegido
+<div class="area-pagamento">
+
+<div id="pixArea" class="pix-area ativo">
+
+<div class="qrcode">
+QR CODE PIX
+</div>
+
+<input
+class="pix-code"
+readonly
+value="00020126580014BR.GOV.BCB.PIX123456789987654321">
+
+</div>
+
+<div id="cartaoArea" class="cartao-area">
+
+<input
+type="text"
+placeholder="Nome completo">
+
+<input
+type="text"
+placeholder="Número do cartão">
+
+<div class="linha">
+
+<input
+type="text"
+placeholder="MM/AA">
+
+<input
+type="text"
+placeholder="CVV">
+
+</div>
+
 </div>
 
 <button
-  class="btn-finalizar"
-  onclick="confirmarPagamento()"
->
-  Liberar meu acesso
+class="btn-finalizar"
+onclick="confirmarPagamento()">
+Liberar meu acesso
 </button>
-  </div>
+
+</div>
+
 </div>
 
 <script>
-const plano = JSON.parse(localStorage.getItem("planoEscolhido"));
 
-if (!plano) {
-  window.location.href = "planos.html";
+const plano =
+JSON.parse(
+localStorage.getItem("planoEscolhido")
+);
+
+if(!plano){
+window.location.href =
+"planos.html";
 }
 
 let descontoAtual = 0;
 
-document.getElementById("planoNome").innerText =
-plano.nome;
+document.getElementById(
+"planoNome"
+).innerText = plano.nome;
 
-document.getElementById("valorPrincipal").innerText =
+document.getElementById(
+"valorPrincipal"
+).innerText =
 plano.preco.toFixed(2);
 
-document.getElementById("valorFinal").innerText =
+document.getElementById(
+"valorFinal"
+).innerText =
 "R$ " + plano.preco.toFixed(2);
 
-if(plano.nome === "Nutri Digital"){
-  document.getElementById("precoOriginal").innerText =
-  plano.tipo === "anual"
-  ? "De R$ 239,88 por R$ 199,99"
-  : "De R$ 39,99";
+function trocarMetodo(tipo,el){
+
+document
+.querySelectorAll(".metodo")
+.forEach(item=>{
+item.classList.remove("ativo");
+});
+
+el.classList.add("ativo");
+
+document
+.getElementById("pixArea")
+.classList.remove("ativo");
+
+document
+.getElementById("cartaoArea")
+.classList.remove("ativo");
+
+if(tipo==="pix"){
+document
+.getElementById("pixArea")
+.classList.add("ativo");
+}else{
+document
+.getElementById("cartaoArea")
+.classList.add("ativo");
 }
 
-if(plano.nome === "Max Nutri"){
-  document.getElementById("precoOriginal").innerText =
-  plano.tipo === "anual"
-  ? "De R$ 599,88 por R$ 459,99"
-  : "De R$ 69,99";
 }
 
-if(plano.nome === "Super Nutri"){
-  document.getElementById("precoOriginal").innerText =
-  plano.tipo === "anual"
-  ? "De R$ 1.079,88 por R$ 799,99"
-  : "De R$ 129,99";
-}
+const cupons = {
+NUTRI2:2,
+NUTRI3:3,
+NUTRI4:4,
+MAX5:5,
+MAX6:6,
+MAX7:7,
+MAX8:8,
+SUPER8:8,
+SUPER9:9,
+SUPER10:10
+};
 
 function aplicarCupom(){
 
-  const codigo =
-  document.getElementById("cupom")
-  .value
-  .toUpperCase()
-  .trim();
+const codigo =
+document
+.getElementById("cupom")
+.value
+.toUpperCase()
+.trim();
 
-  let desconto = 0;
+const desconto =
+cupons[codigo] || 0;
 
-  if(plano.nome === "Nutri Digital"){
-    if(["NUTRI2","NUTRI3","NUTRI4"].includes(codigo)){
-      desconto = cupons[codigo];
-    }
-  }
+const valorFinal =
+plano.preco - desconto;
 
-  if(plano.nome === "Max Nutri"){
-    if(["MAX5","MAX6","MAX7","MAX8"].includes(codigo)){
-      desconto = cupons[codigo];
-    }
-  }
+document
+.getElementById("valorFinal")
+.innerText =
+"R$ " +
+valorFinal.toFixed(2);
 
-  if(plano.nome === "Super Nutri"){
-    if(["SUPER8","SUPER9","SUPER10"].includes(codigo)){
-      desconto = cupons[codigo];
-    }
-  }
-
-  descontoAtual = desconto;
-
-  const valorFinal =
-  plano.preco - descontoAtual;
-
-  if(desconto > 0){
-
-    document.getElementById(
-      "descontoAplicado"
-    ).innerText =
-    `Cupom aplicado: -R$ ${desconto.toFixed(2)}`;
-
-  } else {
-
-    document.getElementById(
-      "descontoAplicado"
-    ).innerText =
-    "Cupom inválido para este plano.";
-
-  }
-
-  document.getElementById(
-    "valorFinal"
-  ).innerText =
-  "R$ " + valorFinal.toFixed(2);
+document
+.getElementById("descontoAplicado")
+.innerText =
+desconto > 0
+? `Desconto aplicado: R$ ${desconto.toFixed(2)}`
+: "Cupom inválido";
 
 }
 
-function confirmarPagamento() {
+function confirmarPagamento(){
 
-  localStorage.setItem(
-    "pagamentoAprovado",
-    "true"
-  );
+localStorage.setItem(
+"pagamentoAprovado",
+"true"
+);
 
-  const acesso = {
-    ativo: true,
-    inicio: new Date().toISOString(),
-    fim: new Date(
-      Date.now() + 31*24*60*60*1000
-    ).toISOString()
-  };
-
-  localStorage.setItem(
-    "acessoUsuario",
-    JSON.stringify(acesso)
-  );
-
-  window.location.href = "anamnese.html";
+window.location.href =
+"anamnese.html";
 
 }
-</script>
-<script>
-const cupons = {
-  NUTRI2: 2,
-  NUTRI3: 3,
-  NUTRI4: 4,
 
-  MAX5: 5,
-  MAX6: 6,
-  MAX7: 7,
-  MAX8: 8,
-
-  SUPER8: 8,
-  SUPER9: 9,
-  SUPER10: 10
-};
 </script>
-  </div>
-</div>
+
 </body>
 </html>
