@@ -343,10 +343,8 @@
   background: #6f7c78;
   color: #fff;
   border-radius: 24px;
-  padding: 30px 24px;
+  padding: 30px 24px 90px;
   position: relative;
-  display: flex;
-  flex-direction: column;
 }
 
 .card-plano.recomendado {
@@ -408,14 +406,14 @@
 
 /* ===== BOTÃO ===== */
 .flutuante {
-  position: relative;
-  margin-top: 20px;
-  left: auto;
-  right: auto;
-  bottom: auto;
-  width: 100%;
-  max-width: 320px;
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  right: 20px;
+  width: auto;
+  max-width: none;
 }
+
 .nome-usuario {
   margin-top: 10px;
   font-size: 16px;
