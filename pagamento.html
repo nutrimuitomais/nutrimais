@@ -410,6 +410,8 @@ JSON.parse(
 localStorage.getItem("planoEscolhido")
 );
 
+    console.log(plano);
+
 const hero =
 document.querySelector(".hero-pagamento");
 
@@ -427,8 +429,6 @@ if(plano.estilo === "super"){
   hero.style.background =
   "linear-gradient(120deg,#6b5b95,#8b7cc8,#6b5b95)";
 }
-
-console.log(plano.estilo);
 
 if(!plano){
 window.location.href="planos.html";
