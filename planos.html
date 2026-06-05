@@ -6,6 +6,65 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="css/estilo.css">
 </head>
+  <script>
+
+let tipoPlano = "mensal";
+
+function alterarPreco(plano, preco, botao){
+
+  const grupo = botao.parentElement;
+
+  grupo.querySelectorAll(".tipo-btn").forEach(btn=>{
+    btn.classList.remove("ativo");
+  });
+
+  botao.classList.add("ativo");
+
+  let valorId;
+  let centavosId;
+
+  if(plano === "nutri"){
+    valorId = "valorNutri";
+    centavosId = "centavosNutri";
+  }
+
+  if(plano === "max"){
+    valorId = "valorMax";
+    centavosId = "centavosMax";
+  }
+
+  if(plano === "super"){
+    valorId = "valorSuper";
+    centavosId = "centavosSuper";
+  }
+
+  const partes = preco.toFixed(2).split(".");
+
+  document.getElementById(valorId).innerText = partes[0];
+  document.getElementById(centavosId).innerText = "," + partes[1];
+
+  tipoPlano = preco > 100 ? "anual" : "mensal";
+}
+
+function selecionarPlano(nome, preco, consultas){
+
+  const plano = {
+    nome,
+    preco,
+    tipo: tipoPlano,
+    consultas,
+    dataInicio: new Date().toISOString()
+  };
+
+  localStorage.setItem(
+    "planoEscolhido",
+    JSON.stringify(plano)
+  );
+
+  window.location.href = "pagamento.html";
+}
+
+</script>
 <body class="fundo-planos">
 
 <div class="container-planos">
@@ -123,12 +182,12 @@ Anual
 
     <div class="tipo-plano">
   <button class="tipo-btn ativo"
-onclick="alterarPreco('nutri',89.99,this)">
+onclick="alterarPreco('super',89.99,this)">
 Mensal
 </button>
 
 <button class="tipo-btn"
-onclick="alterarPreco('nutri',799.99,this)">
+onclick="alterarPreco('super',799.99,this)">
 Anual
 </button>
 </div>
