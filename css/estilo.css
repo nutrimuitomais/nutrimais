@@ -396,8 +396,10 @@
 
 /* ===== LISTA ===== */
 .card-plano ul {
-  text-align: left;
+  text-align: lift;
   margin-top: 20px;
+  list-style: none;
+  padding-left: 0;
 }
 
 .card-plano li {
@@ -951,14 +953,7 @@ body::after {
   transform:translateY(-8px);
 }
 .card-plano.destaque{
-  transform:scale(1.05);
-}
-.economia{
-  display:block;
-  margin-top:8px;
-  font-size:14px;
-  font-weight:700;
-  color:#6fd18c;
+  transform:none;
 }
 
 .mensal{
