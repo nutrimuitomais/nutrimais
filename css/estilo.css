@@ -994,3 +994,30 @@ body::after {
 .card-plano.recomendado{
   border: 1px solid rgba(255,255,255,0.15);
 }
+.card-plano.recomendado{
+  border:2px solid #f59e0b;
+  box-shadow:
+    0 0 0 1px rgba(245,158,11,.4),
+    0 15px 35px rgba(245,158,11,.25);
+}
+.selo-economia{
+  display:inline-block;
+  margin-top:12px;
+  padding:8px 14px;
+  border-radius:999px;
+  background:rgba(255,255,255,.15);
+  border:1px solid rgba(255,255,255,.25);
+  color:#fff;
+  font-size:13px;
+  font-weight:700;
+}
+.aviso-seguro{
+  margin-top:18px;
+  padding:10px 14px;
+  border-radius:12px;
+  background:#f8fafc;
+  border:1px solid #e5e7eb;
+  color:#475569;
+  font-size:13px;
+  font-weight:600;
+}
