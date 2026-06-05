@@ -1097,3 +1097,45 @@ border:none;
 color:#fff;
 margin-top:15px;
 }
+/* MÉTODOS DE PAGAMENTO */
+.metodos{
+  display:flex;
+  gap:12px;
+  margin:25px 0;
+}
+
+.metodo{
+  flex:1;
+  padding:14px;
+  text-align:center;
+  border-radius:14px;
+  background:#f4f4f4;
+  border:1px solid #e5e5e5;
+  cursor:pointer;
+  font-weight:600;
+  transition:.2s;
+}
+
+.metodo.ativo{
+  background:#1db954;
+  color:#fff;
+  border-color:#1db954;
+}
+
+.pix-area,
+.cartao-area{
+  margin-top:20px;
+}
+
+.btn-pagamento{
+  width:100%;
+  padding:16px;
+  border:none;
+  border-radius:14px;
+  background:#1db954;
+  color:#fff;
+  font-size:17px;
+  font-weight:700;
+  cursor:pointer;
+  margin-top:20px;
+}
