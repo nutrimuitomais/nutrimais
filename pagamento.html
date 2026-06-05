@@ -409,7 +409,23 @@ const plano =
 JSON.parse(
 localStorage.getItem("planoEscolhido")
 );
-    console.log(plano);
+
+const hero =
+document.querySelector(".hero-pagamento");
+
+if(plano.nome.includes("Digital")){
+hero.classList.add("hero-digital");
+}
+
+if(plano.nome.includes("Max")){
+hero.classList.add("hero-max");
+}
+
+if(plano.nome.includes("Super")){
+hero.classList.add("hero-super");
+}
+
+console.log(plano);
 
 if(!plano){
 window.location.href="planos.html";
