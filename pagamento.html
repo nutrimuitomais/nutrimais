@@ -9,38 +9,46 @@
 <body>
 
 <div class="container">
-  <h1>Pagamento</h1>
-  <p class="sub">Finalize para liberar seu acesso</p>
+  <h1 class="titulo-pagamento">
+  Finalize sua assinatura
+</h1>
 
-  <div class="checkout">
-    <h2 id="planoNome"></h2>
-    <p class="valor">
-  Valor original:
-  <strong id="planoPreco"></strong>
+<p class="sub-pagamento">
+  Seu acesso será liberado imediatamente após a confirmação.
 </p>
 
-<p class="valor-final">
-  Total:
-  <strong id="valorFinal"></strong>
-</p>
+<div class="resumo-plano">
 
-    <div class="metodos">
-      <label>
-        <input type="radio" name="pagamento" checked>
-        PIX
-      </label>
-      <label>
-        <input type="radio" name="pagamento">
-        Cartão de Crédito
-      </label>
-      <label>
-        <input type="radio" name="pagamento">
-        Cartão de Débito
-      </label>
-    </div>
+  <div class="badge-plano" id="planoNome"></div>
+
+  <div class="preco-box-pagamento">
+    <span id="planoPreco"></span>
+  </div>
+
+  <div id="descontoAplicado"></div>
+
+  <div class="total-final">
+    Total:
+    <strong id="valorFinal"></strong>
+  </div>
+
+</div>
+
+    <div class="metodo ativo">
+  ⚡ PIX
+</div>
+
+<div class="metodo">
+  💳 Crédito
+</div>
+
+<div class="metodo">
+  💳 Débito
+</div>
+  
 <div class="cupom-box">
 
-  <label for="cupom">Cupom de desconto</label>
+  <label for="cupom">Cupom promocional</label>
 
   <input
     type="text"
@@ -56,10 +64,12 @@
 
 </div>
     <div class="aviso">
-      Ambiente seguro • Pagamento protegido
+      🔒 Transação protegida
+
+      Seus dados são criptografados e processados em ambiente seguro.
     </div>
 
-    <button class="btn" onclick="confirmarPagamento()">Confirmar pagamento</button>
+    <button class="btn" onclick="confirmarPagamento()">Liberar meu acesso</button>
   </div>
 </div>
 
