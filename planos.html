@@ -176,15 +176,21 @@ Anual
 
 <script>
 function selecionarPlano(nome, preco, consultas) {
+let estilo = "digital";
+
+if(nome.includes("Max")){
+  estilo = "max";
+}
+else if(nome.includes("Super")){
+  estilo = "super";
+}
+
 const plano = {
   nome,
   preco,
   tipo,
   consultas,
-  estilo:
-    nome.includes("Digital") ? "digital" :
-    nome.includes("Max") ? "max" :
-    "super",
+  estilo,
   dataInicio: new Date().toISOString()
 };
   localStorage.setItem("planoEscolhido", JSON.stringify(plano));
