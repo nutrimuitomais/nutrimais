@@ -1002,14 +1002,13 @@ body::after {
 }
 .selo-economia{
   display:inline-block;
-  margin-top:12px;
+  margin:12px 0;
   padding:8px 14px;
   border-radius:999px;
-  background:rgba(255,255,255,.15);
-  border:1px solid rgba(255,255,255,.25);
-  color:#fff;
   font-size:13px;
   font-weight:700;
+  color:#22c55e;
+  border:1px solid rgba(34,197,94,.25);
 }
 .aviso-seguro{
   margin-top:18px;
