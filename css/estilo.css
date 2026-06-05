@@ -1180,3 +1180,17 @@ linear-gradient(
 #7b6a44
 );
 }
+@media(max-width:768px){
+
+.card{
+width:100%;
+max-width:100%;
+padding:28px;
+}
+
+.hero-pagamento{
+padding:40px 22px;
+min-height:240px;
+}
+
+}
