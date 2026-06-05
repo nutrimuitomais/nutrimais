@@ -174,30 +174,6 @@ Anual
 </div>
 </div>
 
-<script>
-function selecionarPlano(nome, preco, consultas) {
-let estilo = "digital";
-
-if(nome.includes("Max")){
-  estilo = "max";
-}
-else if(nome.includes("Super")){
-  estilo = "super";
-}
-
-const plano = {
-  nome,
-  preco,
-  tipo,
-  consultas,
-  estilo,
-  dataInicio: new Date().toISOString()
-};
-  localStorage.setItem("planoEscolhido", JSON.stringify(plano));
-  window.location.href = "pagamento.html";
-}
-</script>
-
     <script>
 
 let tipoPlano = "mensal";
@@ -244,20 +220,27 @@ function selecionarPlano(nome, precoPadrao, consultas){
 
   const card = event.target.closest('.card-plano');
 
-  console.log(card.dataset.preco);
-  console.log(card.dataset.tipo);
-
   const preco =
     Number(card.dataset.preco || precoPadrao);
 
   const tipo =
     card.dataset.tipo || "mensal";
 
+  let estilo = "digital";
+
+  if(nome.includes("Max")){
+    estilo = "max";
+  }
+  else if(nome.includes("Super")){
+    estilo = "super";
+  }
+
   const plano = {
     nome,
     preco,
     tipo,
     consultas,
+    estilo,
     dataInicio: new Date().toISOString()
   };
 
