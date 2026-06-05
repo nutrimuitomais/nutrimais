@@ -61,10 +61,10 @@ margin-bottom:15px;
 }
 
 .hero-pagamento .preco{
-font-size:76px;
+font-size:92px;
 font-weight:900;
 color:#fff;
-margin:10px 0;
+line-height:1;
 }
 
 .hero-pagamento .economia{
@@ -97,18 +97,23 @@ text-align:center;
 font-size:42px;
 font-weight:800;
 margin-bottom:10px;
+color:#1f2937;
 }
 
 .subtitulo{
 text-align:center;
-opacity:.8;
+color:#6b7280;
 margin-bottom:35px;
 }
 
 .card{
 max-width:650px;
 margin:auto;
-background:#ffffff;
+background:
+rgba(255,255,255,.72);
+
+backdrop-filter:blur(20px);
+-webkit-backdrop-filter:blur(20px);
 border-radius:28px;
 padding:40px;
 box-shadow:0 20px 50px rgba(0,0,0,.12);
@@ -188,7 +193,7 @@ display:block;
 
 .qrcode{
 height:220px;
-background:#fff;
+background:#f8fafc;
 border-radius:20px;
 display:flex;
 align-items:center;
@@ -330,18 +335,18 @@ R$ <span id="valorPlano"></span>
     </div>
 
     <div class="metodo" onclick="trocarMetodo('credito',this)">
-        Crédito
+        💳 Crédito
     </div>
 
     <div class="metodo" onclick="trocarMetodo('debito',this)">
-        Débito
+       💳 Débito
     </div>
 </div>
 
 <div id="pixArea" class="pix-area ativo-area">
 
 <div class="qrcode">
-QR CODE PIX
+QR Code será gerado após integração
 </div>
 
 <input
@@ -471,10 +476,10 @@ document
 .getElementById("pixArea")
 .classList.add("ativo-area");
 }else{
+    
 document
 .getElementById("cartaoArea")
-.classList.add("ativo");
-}
+.classList.add("ativo-area");
 
 }
 
@@ -540,45 +545,6 @@ window.location.href =
 "anamnese.html";
 
 }
-function abrirPix(){
-
-document
-.getElementById("pixModal")
-.classList.add("ativo");
-
-}
-
-function fecharPix(){
-
-document
-.getElementById("pixModal")
-.classList.remove("ativo");
-
-}
 </script>
-<div id="pixModal" class="pix-modal">
-
-  <div class="pix-container">
-
-    <h2>Pagamento via PIX</h2>
-
-    <img
-      id="qrCodePix"
-      src="img/qrcode-pix.png"
-      alt="QR Code PIX">
-
-    <p>
-      Escaneie o QR Code para concluir o pagamento.
-    </p>
-
-    <button
-      class="btn-voltar"
-      onclick="fecharPix()">
-      Voltar
-    </button>
-
-  </div>
-
-</div>
 </body>
 </html>
