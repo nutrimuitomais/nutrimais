@@ -91,13 +91,35 @@ if (!plano) {
 
 let descontoAtual = 0;
 
-document.getElementById("planoNome").innerText = plano.nome;
+document.getElementById("planoNome").innerText =
+plano.nome;
 
-document.getElementById("planoPreco").innerText =
-"R$ " + plano.preco.toFixed(2);
+document.getElementById("valorPrincipal").innerText =
+plano.preco.toFixed(2);
 
 document.getElementById("valorFinal").innerText =
 "R$ " + plano.preco.toFixed(2);
+
+if(plano.nome === "Nutri Digital"){
+  document.getElementById("precoOriginal").innerText =
+  plano.tipo === "anual"
+  ? "De R$ 239,88 por R$ 199,99"
+  : "De R$ 39,99";
+}
+
+if(plano.nome === "Max Nutri"){
+  document.getElementById("precoOriginal").innerText =
+  plano.tipo === "anual"
+  ? "De R$ 599,88 por R$ 459,99"
+  : "De R$ 69,99";
+}
+
+if(plano.nome === "Super Nutri"){
+  document.getElementById("precoOriginal").innerText =
+  plano.tipo === "anual"
+  ? "De R$ 1.079,88 por R$ 799,99"
+  : "De R$ 129,99";
+}
 
 function aplicarCupom(){
 
