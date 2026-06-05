@@ -325,31 +325,31 @@ economia.innerText =
 
 }
 
-function trocarMetodo(tipo,el){
+function trocarMetodo(tipo, el){
 
-document
-.querySelectorAll(".metodo")
-.forEach(item =>
-item.classList.remove("ativo"));
+document.querySelectorAll(".metodo")
+.forEach(item=>{
+item.classList.remove("ativo");
+});
 
 el.classList.add("ativo");
 
 document
 .getElementById("pixArea")
-.classList.remove("ativo-area");
+.classList.remove("ativo");
 
 document
 .getElementById("cartaoArea")
-.classList.remove("ativo-area");
+.classList.remove("ativo");
 
-if(tipo==="pix"){
+if(tipo === "pix"){
 document
 .getElementById("pixArea")
-.classList.add("ativo-area");
+.classList.add("ativo");
 }else{
 document
 .getElementById("cartaoArea")
-.classList.add("ativo-area");
+.classList.add("ativo");
 }
 
 }
