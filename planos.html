@@ -6,65 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="css/estilo.css">
 </head>
-  <script>
 
-let tipoPlano = "mensal";
-
-function alterarPreco(plano, preco, botao){
-
-  const grupo = botao.parentElement;
-
-  grupo.querySelectorAll(".tipo-btn").forEach(btn=>{
-    btn.classList.remove("ativo");
-  });
-
-  botao.classList.add("ativo");
-
-  let valorId;
-  let centavosId;
-
-  if(plano === "nutri"){
-    valorId = "valorNutri";
-    centavosId = "centavosNutri";
-  }
-
-  if(plano === "max"){
-    valorId = "valorMax";
-    centavosId = "centavosMax";
-  }
-
-  if(plano === "super"){
-    valorId = "valorSuper";
-    centavosId = "centavosSuper";
-  }
-
-  const partes = preco.toFixed(2).split(".");
-
-  document.getElementById(valorId).innerText = partes[0];
-  document.getElementById(centavosId).innerText = "," + partes[1];
-
-  tipoPlano = preco > 100 ? "anual" : "mensal";
-}
-
-function selecionarPlano(nome, preco, consultas){
-
-  const plano = {
-    nome,
-    preco,
-    tipo: tipoPlano,
-    consultas,
-    dataInicio: new Date().toISOString()
-  };
-
-  localStorage.setItem(
-    "planoEscolhido",
-    JSON.stringify(plano)
-  );
-
-  window.location.href = "pagamento.html";
-}
-
-</script>
 <body class="fundo-planos">
 
 <div class="container-planos">
@@ -240,5 +182,57 @@ const plano = {
 }
 </script>
 
+    <script>
+
+let tipoPlano = "mensal";
+
+function alterarPreco(card, valor, botao){
+
+  const cardPai = botao.closest('.card-plano');
+
+  cardPai.querySelectorAll('.tipo-btn')
+    .forEach(btn => btn.classList.remove('ativo'));
+
+  botao.classList.add('ativo');
+
+  const inteiro = Math.floor(valor);
+  const centavos = String(valor.toFixed(2)).split('.')[1];
+
+  cardPai.querySelector('.valor').innerText = inteiro;
+  cardPai.querySelector('.centavos').innerText = ',' + centavos;
+
+  tipoPlano = valor > 100 ? "anual" : "mensal";
+
+  cardPai.dataset.preco = valor;
+  cardPai.dataset.tipo = tipoPlano;
+}
+
+function selecionarPlano(nome, precoPadrao, consultas){
+
+  const card = event.target.closest('.card-plano');
+
+  const preco =
+    Number(card.dataset.preco || precoPadrao);
+
+  const tipo =
+    card.dataset.tipo || "mensal";
+
+  const plano = {
+    nome,
+    preco,
+    tipo,
+    consultas,
+    dataInicio: new Date().toISOString()
+  };
+
+  localStorage.setItem(
+    "planoEscolhido",
+    JSON.stringify(plano)
+  );
+
+  window.location.href = "pagamento.html";
+}
+
+</script>
 </body>
 </html>
