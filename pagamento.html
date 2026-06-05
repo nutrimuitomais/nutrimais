@@ -405,13 +405,15 @@ Liberar meu acesso
 
 <script>
 
-const plano =
-JSON.parse(
-localStorage.getItem("planoEscolhido")
-);
-
-console.log("PLANO COMPLETO:", plano);
+    console.log("PLANO COMPLETO:", plano);
 console.log("ESTILO:", plano.estilo);
+        
+const plano =
+JSON.parse(localStorage.getItem("planoEscolhido"));
+
+    if(!plano){
+  window.location.href="planos.html";
+}
 
 const hero =
 document.querySelector(".hero-pagamento");
