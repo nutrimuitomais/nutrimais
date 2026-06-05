@@ -3,90 +3,105 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Pagamento</title>
-<link rel="stylesheet" href="css/estilo.css">
+<title>Pagamento - Nutri+</title>
 
 <style>
-
-.checkout-page{
-max-width:700px;
-margin:40px auto;
-padding:20px;
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,sans-serif;
 }
 
-.titulo-pagamento{
+body{
+background:linear-gradient(135deg,#0f172a,#1e293b);
+min-height:100vh;
+padding:30px;
+color:#fff;
+}
+
+.checkout{
+max-width:850px;
+margin:auto;
+}
+
+.titulo{
 text-align:center;
-font-size:34px;
+font-size:42px;
 font-weight:800;
-color:#111;
 margin-bottom:10px;
 }
 
-.sub-pagamento{
+.subtitulo{
 text-align:center;
-color:#666;
-margin-bottom:40px;
+opacity:.8;
+margin-bottom:35px;
 }
 
-.resumo{
-background:#fff;
-border-radius:20px;
-padding:25px;
-box-shadow:0 10px 30px rgba(0,0,0,.08);
-margin-bottom:25px;
+.card{
+background:rgba(255,255,255,.08);
+backdrop-filter:blur(12px);
+border:1px solid rgba(255,255,255,.15);
+border-radius:24px;
+padding:30px;
 }
 
-.badge-plano{
+.tag{
 display:inline-block;
 padding:8px 16px;
 border-radius:999px;
-background:#eaf7f0;
-color:#1db954;
+background:#1db954;
+font-weight:700;
+margin-bottom:20px;
+}
+
+.plano{
+font-size:30px;
+font-weight:800;
+margin-bottom:10px;
+}
+
+.tipo{
+color:#6fd18c;
 font-weight:700;
 margin-bottom:15px;
 }
 
 .preco{
-font-size:52px;
-font-weight:800;
-color:#111;
+font-size:60px;
+font-weight:900;
+margin-bottom:10px;
 }
 
-.total{
-margin-top:15px;
-font-size:22px;
+.economia{
+background:rgba(111,209,140,.15);
+border:1px solid rgba(111,209,140,.4);
+padding:12px;
+border-radius:14px;
+color:#6fd18c;
 font-weight:700;
-color:#1db954;
+margin-bottom:25px;
 }
 
 .metodos{
 display:flex;
 gap:10px;
-margin-bottom:20px;
+margin-bottom:25px;
 }
 
 .metodo{
 flex:1;
 padding:15px;
-border-radius:14px;
-border:1px solid #ddd;
-cursor:pointer;
 text-align:center;
-font-weight:600;
-background:#fff;
+border-radius:14px;
+cursor:pointer;
+border:1px solid rgba(255,255,255,.15);
+background:rgba(255,255,255,.05);
 }
 
 .metodo.ativo{
 background:#1db954;
-color:white;
 border-color:#1db954;
-}
-
-.area-pagamento{
-background:#fff;
-border-radius:20px;
-padding:25px;
-box-shadow:0 10px 30px rgba(0,0,0,.08);
 }
 
 .pix-area,
@@ -94,37 +109,29 @@ box-shadow:0 10px 30px rgba(0,0,0,.08);
 display:none;
 }
 
-.pix-area.ativo,
-.cartao-area.ativo{
+.ativo-area{
 display:block;
 }
 
 .qrcode{
-width:220px;
 height:220px;
-margin:20px auto;
-background:#f3f3f3;
-border-radius:15px;
+background:#fff;
+border-radius:20px;
 display:flex;
 align-items:center;
 justify-content:center;
-font-weight:700;
+color:#000;
+font-weight:800;
+margin-bottom:15px;
 }
 
-.pix-code{
-width:100%;
-padding:12px;
-border:1px solid #ddd;
-border-radius:10px;
-margin-top:15px;
-}
-
+.pix-code,
 input{
 width:100%;
-padding:14px;
-margin-bottom:12px;
-border:1px solid #ddd;
+padding:15px;
+border:none;
 border-radius:12px;
+margin-bottom:12px;
 }
 
 .linha{
@@ -132,79 +139,63 @@ display:flex;
 gap:10px;
 }
 
-.cupom-box{
+.cupom{
 margin-top:20px;
 }
 
-.cupom-box button,
-.btn-finalizar{
+.btn{
 width:100%;
-padding:15px;
+padding:16px;
 border:none;
 border-radius:14px;
-font-weight:700;
+background:#1db954;
+color:#fff;
+font-size:17px;
+font-weight:800;
 cursor:pointer;
 }
 
-.cupom-box button{
-background:#111;
-color:white;
+.btn-cupom{
+background:#111827;
+margin-bottom:10px;
+}
+
+.desconto{
 margin-top:10px;
+color:#6fd18c;
+font-weight:700;
 }
 
-.btn-finalizar{
-margin-top:25px;
-background:#1db954;
-color:white;
-font-size:17px;
+.seguro{
+margin-top:20px;
+text-align:center;
+opacity:.8;
 }
-
-#descontoAplicado{
-margin-top:10px;
-font-weight:600;
-color:#1db954;
-}
-
 </style>
 </head>
+
 <body>
 
-<div class="checkout-page">
+<div class="checkout">
 
-<h1 class="titulo-pagamento">
-Finalize sua assinatura
-</h1>
-
-<p class="sub-pagamento">
-Pagamento seguro e liberação imediata do acesso.
+<h1 class="titulo">Finalize sua assinatura</h1>
+<p class="subtitulo">
+Pagamento seguro e liberação imediata.
 </p>
 
-<div class="resumo">
+<div class="card">
 
-<div id="planoNome" class="badge-plano"></div>
+<span class="tag">Plano Selecionado</span>
+
+<div id="nomePlano" class="plano"></div>
+
+<div id="tipoPlano" class="tipo"></div>
 
 <div class="preco">
-R$ <span id="valorPrincipal"></span>
+R$ <span id="valorPlano"></span>
 </div>
 
-<div class="total">
-Total: <span id="valorFinal"></span>
-</div>
-
-<div class="cupom-box">
-<input
-type="text"
-id="cupom"
-placeholder="Cupom promocional">
-
-<button onclick="aplicarCupom()">
-Aplicar cupom
-</button>
-
-<p id="descontoAplicado"></p>
-</div>
-
-</div>
+<div id="economia" class="economia"></div>
 
 <div class="metodos">
 
@@ -214,20 +205,13 @@ onclick="trocarMetodo('pix',this)">
 </div>
 
 <div class="metodo"
-onclick="trocarMetodo('credito',this)">
-💳 Crédito
-</div>
-
-<div class="metodo"
-onclick="trocarMetodo('debito',this)">
-💳 Débito
+onclick="trocarMetodo('cartao',this)">
+💳 Cartão
 </div>
 
 </div>
 
-<div class="area-pagamento">
-
-<div id="pixArea" class="pix-area ativo">
+<div id="pixArea" class="pix-area ativo-area">
 
 <div class="qrcode">
 QR CODE PIX
@@ -242,33 +226,46 @@ value="00020126580014BR.GOV.BCB.PIX123456789987654321">
 
 <div id="cartaoArea" class="cartao-area">
 
-<input
-type="text"
-placeholder="Nome completo">
+<input type="text" placeholder="Nome completo">
 
-<input
-type="text"
-placeholder="Número do cartão">
+<input type="text" placeholder="Número do cartão">
 
 <div class="linha">
 
-<input
-type="text"
-placeholder="MM/AA">
+<input type="text" placeholder="MM/AA">
 
-<input
-type="text"
-placeholder="CVV">
+<input type="text" placeholder="CVV">
 
 </div>
+
+</div>
+
+<div class="cupom">
+
+<input
+type="text"
+id="cupom"
+placeholder="Cupom promocional">
+
+<button
+class="btn btn-cupom"
+onclick="aplicarCupom()">
+Aplicar cupom
+</button>
+
+<div id="msgCupom" class="desconto"></div>
 
 </div>
 
 <button
-class="btn-finalizar"
+class="btn"
 onclick="confirmarPagamento()">
 Liberar meu acesso
 </button>
+
+<div class="seguro">
+🔒 Pagamento seguro • Cancelamento simples
+</div>
 
 </div>
 
@@ -282,52 +279,74 @@ localStorage.getItem("planoEscolhido")
 );
 
 if(!plano){
-window.location.href =
-"planos.html";
+window.location.href="planos.html";
 }
 
-let descontoAtual = 0;
+document.getElementById("nomePlano")
+.innerText = plano.nome;
 
-document.getElementById(
-"planoNome"
-).innerText = plano.nome;
+document.getElementById("tipoPlano")
+.innerText =
+plano.tipo === "anual"
+? "Assinatura anual"
+: "Assinatura mensal";
 
-document.getElementById(
-"valorPrincipal"
-).innerText =
+document.getElementById("valorPlano")
+.innerText =
 plano.preco.toFixed(2);
 
-document.getElementById(
-"valorFinal"
-).innerText =
-"R$ " + plano.preco.toFixed(2);
+const economia =
+document.getElementById("economia");
+
+if(plano.tipo === "anual"){
+
+if(plano.nome.includes("Digital")){
+economia.innerText =
+"🎉 Você economizou 17% escolhendo o plano anual";
+}
+
+else if(plano.nome.includes("Max")){
+economia.innerText =
+"🎁 Você ganhou 1 mês grátis";
+}
+
+else{
+economia.innerText =
+"🎁 Você ganhou 2 meses grátis";
+}
+
+}else{
+
+economia.innerText =
+"Plano mensal selecionado";
+
+}
 
 function trocarMetodo(tipo,el){
 
 document
 .querySelectorAll(".metodo")
-.forEach(item=>{
-item.classList.remove("ativo");
-});
+.forEach(item =>
+item.classList.remove("ativo"));
 
 el.classList.add("ativo");
 
 document
 .getElementById("pixArea")
-.classList.remove("ativo");
+.classList.remove("ativo-area");
 
 document
 .getElementById("cartaoArea")
-.classList.remove("ativo");
+.classList.remove("ativo-area");
 
 if(tipo==="pix"){
 document
 .getElementById("pixArea")
-.classList.add("ativo");
+.classList.add("ativo-area");
 }else{
 document
 .getElementById("cartaoArea")
-.classList.add("ativo");
+.classList.add("ativo-area");
 }
 
 }
@@ -357,21 +376,29 @@ document
 const desconto =
 cupons[codigo] || 0;
 
-const valorFinal =
+if(desconto){
+
+const novoValor =
 plano.preco - desconto;
 
 document
-.getElementById("valorFinal")
+.getElementById("valorPlano")
 .innerText =
-"R$ " +
-valorFinal.toFixed(2);
+novoValor.toFixed(2);
 
 document
-.getElementById("descontoAplicado")
+.getElementById("msgCupom")
 .innerText =
-desconto > 0
-? `Desconto aplicado: R$ ${desconto.toFixed(2)}`
-: "Cupom inválido";
+`Desconto aplicado: R$ ${desconto.toFixed(2)}`;
+
+}else{
+
+document
+.getElementById("msgCupom")
+.innerText =
+"Cupom inválido";
+
+}
 
 }
 
