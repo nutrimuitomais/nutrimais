@@ -1052,93 +1052,129 @@ body::after {
 
 /* PAGAMENTO PREMIUM */
 
-.checkout-card{
-  background: transparent;
-  border: none;
-  box-shadow: none;
-  max-width: 650px;
-  margin: auto;
-  text-align: center;
+.checkout-modern{
+max-width:500px;
+margin:auto;
+padding:40px 25px;
 }
 
-.badge-plano{
-  display: inline-block;
-  padding: 8px 18px;
-  border-radius: 999px;
-  background: rgba(255,255,255,0.08);
-  border: 1px solid rgba(255,255,255,0.12);
-  color: #d4af37;
-  font-weight: 700;
-  margin-bottom: 20px;
+.topo-checkout{
+text-align:center;
+margin-bottom:40px;
 }
 
-.preco-antigo-pagamento{
-  color: rgba(255,255,255,0.5);
-  text-decoration: line-through;
-  font-size: 18px;
-  margin-bottom: 5px;
+.topo-checkout h1{
+font-size:32px;
+margin:0;
+color:#fff;
 }
 
-.preco-principal{
-  font-size: 72px;
-  font-weight: 800;
-  line-height: 1;
-  color: #fff;
-  margin-bottom: 15px;
+.topo-checkout p{
+color:#9aa5a1;
 }
 
-.preco-principal .moeda{
-  font-size: 28px;
-  vertical-align: top;
+.plano-selecionado{
+text-align:center;
+margin-bottom:15px;
 }
 
-.total-pagamento{
-  font-size: 18px;
-  color: rgba(255,255,255,0.7);
-  margin-bottom: 30px;
+#planoNome{
+font-size:22px;
+font-weight:700;
+color:#fff;
 }
 
-.total-pagamento strong{
-  display: block;
-  color: #fff;
-  font-size: 34px;
-  margin-top: 5px;
+#tipoPlano{
+color:#b0b0b0;
+margin-top:5px;
 }
 
-.metodos{
-  display: flex;
-  gap: 12px;
-  justify-content: center;
-  margin: 30px 0;
-  flex-wrap: wrap;
+.valor-principal{
+text-align:center;
+font-size:64px;
+font-weight:800;
+color:#fff;
+margin-bottom:35px;
+}
+
+.metodos-pagamento{
+display:flex;
+gap:10px;
+margin-bottom:30px;
 }
 
 .metodo{
-  padding: 14px 22px;
-  border-radius: 14px;
-  background: rgba(255,255,255,0.05);
-  border: 1px solid rgba(255,255,255,0.08);
-  cursor: pointer;
+flex:1;
+border:none;
+padding:15px;
+border-radius:14px;
+cursor:pointer;
+background:#202a28;
+color:white;
 }
 
 .metodo.ativo{
-  border-color: #d4af37;
-  background: rgba(212,175,55,0.15);
+background:#4CAF50;
+}
+
+.pix-box{
+display:flex;
+flex-direction:column;
+gap:15px;
+}
+
+.qr-fake{
+height:220px;
+border-radius:20px;
+background:white;
+display:flex;
+align-items:center;
+justify-content:center;
+font-weight:700;
+}
+
+textarea{
+width:100%;
+height:90px;
+border:none;
+padding:15px;
+border-radius:12px;
+resize:none;
 }
 
 .cupom-box{
-  margin: 30px auto;
-  max-width: 450px;
+margin-top:25px;
 }
 
-.aviso{
-  margin-top: 25px;
-  color: rgba(255,255,255,0.65);
-  font-size: 14px;
+.cupom-box input{
+width:100%;
+padding:15px;
+border-radius:12px;
+margin-bottom:10px;
+}
+
+.cupom-box button{
+width:100%;
+padding:15px;
+border:none;
+border-radius:12px;
+background:#4CAF50;
+color:white;
 }
 
 .btn-finalizar{
-  margin-top: 30px;
-  width: 100%;
-  max-width: 450px;
+width:100%;
+padding:18px;
+margin-top:25px;
+border:none;
+border-radius:16px;
+font-size:18px;
+font-weight:700;
+background:linear-gradient(
+90deg,
+#4CAF50,
+#67d46f
+);
+color:white;
+cursor:pointer;
 }
