@@ -1049,3 +1049,136 @@ body::after {
   backdrop-filter:blur(12px);
   box-shadow:0 15px 40px rgba(0,0,0,.08);
 }
+
+/* PAGAMENTO */
+
+.checkout-card{
+  max-width:420px;
+  margin:0 auto;
+  padding:30px 24px;
+  text-align:center;
+}
+
+.titulo-pagamento{
+  font-size:28px;
+  font-weight:800;
+  margin-bottom:8px;
+}
+
+.sub-pagamento{
+  color:#666;
+  font-size:14px;
+  margin-bottom:24px;
+}
+
+.badge-plano{
+  display:inline-block;
+  padding:8px 18px;
+  border-radius:999px;
+  background:#1db954;
+  color:white;
+  font-weight:700;
+  margin-bottom:18px;
+}
+
+.preco-antigo-pagamento{
+  text-decoration:line-through;
+  opacity:.6;
+  font-size:18px;
+}
+
+.preco-principal{
+  margin:12px 0;
+}
+
+.preco-principal .moeda{
+  font-size:28px;
+  font-weight:700;
+}
+
+#valorPrincipal{
+  font-size:72px;
+  font-weight:900;
+  color:#1db954;
+  line-height:1;
+}
+
+.total-pagamento{
+  margin-top:10px;
+  font-size:18px;
+}
+
+.total-pagamento strong{
+  display:block;
+  margin-top:4px;
+  font-size:30px;
+}
+
+.metodos{
+  margin-top:24px;
+}
+
+.metodo{
+  padding:14px;
+  margin-bottom:10px;
+  border-radius:14px;
+  background:rgba(255,255,255,.65);
+  border:1px solid rgba(0,0,0,.08);
+  cursor:pointer;
+}
+
+.metodo.ativo{
+  border:2px solid #1db954;
+}
+
+.cupom-box{
+  margin-top:24px;
+}
+
+.cupom-box input{
+  width:100%;
+  padding:14px;
+  border-radius:12px;
+  border:1px solid #ddd;
+  margin-top:8px;
+}
+
+.cupom-box button{
+  width:100%;
+  margin-top:10px;
+  padding:14px;
+  border:none;
+  border-radius:12px;
+  background:#1db954;
+  color:white;
+  font-weight:700;
+  cursor:pointer;
+}
+
+.aviso{
+  margin-top:22px;
+  font-size:13px;
+  color:#666;
+}
+
+.btn-finalizar{
+  width:100%;
+  margin-top:20px;
+  padding:16px;
+  border:none;
+  border-radius:999px;
+  font-size:17px;
+  font-weight:700;
+  color:white;
+  cursor:pointer;
+
+  background:linear-gradient(
+    120deg,
+    #1db954,
+    #38ef7d,
+    #1db954
+  );
+
+  background-size:200% 200%;
+  animation:gradienteIA 4s ease infinite;
+}
