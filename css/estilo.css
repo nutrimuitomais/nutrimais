@@ -965,8 +965,8 @@ body::after {
 .mensal{
   margin-top:8px;
   font-size:14px;
-  font-weight:600;
-  color:#ffffff;
+  font-weight:700;
+  color:#6fd18c;
 }
 .card-plano{
   border:1px solid rgba(255,255,255,.15);
@@ -1015,9 +1015,29 @@ body::after {
   margin-top:18px;
   padding:10px 14px;
   border-radius:12px;
-  background:#f8fafc;
-  border:1px solid #e5e7eb;
-  color:#475569;
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.15);
+  color:#ffffff;
+  font-size:14px;
+  font-weight:600;
+  backdrop-filter: blur(8px);
+}
+.card-plano.recomendado{
+  border:2px solid #d4af37;
+  box-shadow:0 0 25px rgba(212,175,55,.25);
+}
+.selo-economia{
+  display:inline-block;
+  margin-top:10px;
+  padding:6px 12px;
+
+  background: transparent;
+
+  border:1px solid rgba(255,255,255,.35);
+
+  color:#ffffff;
   font-size:13px;
   font-weight:600;
+
+  border-radius:999px;
 }
