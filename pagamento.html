@@ -405,14 +405,25 @@ Liberar meu acesso
 
 <script>
 
-    console.log("PLANO COMPLETO:", plano);
-console.log("ESTILO:", plano.estilo);
-        
 const plano =
 JSON.parse(localStorage.getItem("planoEscolhido"));
 
+console.log("PLANO COMPLETO:", plano);
+console.log("ESTILO:", plano?.estilo);
+
+
+if(!plano){
+  alert("Nenhum plano encontrado");
+  window.location.href = "planos.html";
+}
+
+
 const hero = document.querySelector(".hero-pagamento");
 
+if(hero && plano){
+
+}
+    
 if(plano.estilo === "digital"){
   hero.style.background =
   "linear-gradient(120deg,#4f6b56,#5f7d66,#4f6b56)";
