@@ -1110,14 +1110,22 @@ white-space:nowrap;
 /* MÉTODOS DE PAGAMENTO */
 .metodo{
   flex:1;
-  padding:12px;
-  font-size:13px;
-  font-weight:700;
-  border-radius:14px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  padding:14px 10px;
+
   background:#f8fafc;
   border:1px solid #e5e7eb;
+  border-radius:14px;
+
   color:#444;
-  text-align:center;
+  font-size:13px;
+  font-weight:700;
+
+  box-shadow:0 4px 12px rgba(0,0,0,.06);
+  cursor:pointer;
 }
 
 .metodo.ativo{
