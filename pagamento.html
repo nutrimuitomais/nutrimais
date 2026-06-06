@@ -38,15 +38,13 @@ box-shadow:
 }
 
 .hero-tag{
-display:inline-block;
-padding:14px 30px;
-border-radius:999px;
-background:rgba(255,184,0,.25);
-border:1px solid rgba(255,214,102,.35);
+padding:12px 26px;
+background:#f5a30a;
 color:#fff;
-font-size:16px;
+font-size:15px;
 font-weight:700;
-margin-bottom:25px;
+border:none;
+border-radius:999px;
 }
 
 .hero-pagamento .plano{
@@ -110,13 +108,12 @@ margin-bottom:35px;
 
 .card{
 width:100%;
-max-width:none;
+max-width:680px;
 margin:auto;
-background:rgba(255,255,255,.72);
-backdrop-filter:blur(20px);
--webkit-backdrop-filter:blur(20px);
-border-radius:28px;
-padding:45px;
+background:rgba(255,255,255,.78);
+padding:30px 18px;
+border-radius:32px;
+}
 box-shadow:0 20px 50px rgba(0,0,0,.12);
 color:#111;
 }
@@ -423,13 +420,15 @@ if(hero && plano){
 }
     
 if(plano.estilo === "digital"){
-  hero.style.background =
-  "linear-gradient(120deg,#4f6b56,#6d8a73,#4f6b56)";
+hero.style.background =
+"linear-gradient(120deg,#64756f,#7c8b86,#64756f)";
+hero.style.backgroundSize = "200% 200%";
 }
 
 if(plano.estilo === "max"){
-  hero.style.background =
-  "linear-gradient(120deg,#198754,#28a745,#198754)";
+hero.style.background =
+"linear-gradient(120deg,#4f6b56,#688f73,#4f6b56)";
+hero.style.backgroundSize = "200% 200%";
 }
 
 if(plano.estilo === "super"){
