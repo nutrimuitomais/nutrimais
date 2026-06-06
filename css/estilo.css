@@ -1116,15 +1116,22 @@ white-space:nowrap;
 
 .metodo{
   flex:1;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:8px;
+
   padding:14px;
-  text-align:center;
+  font-size:14px;
+  font-weight:700;
+
   border-radius:14px;
-  background:#f4f4f4;
-  border:1px solid #e5e5e5;
+  background:#f8fafc;
+  border:1px solid #e5e7eb;
+  color:#444;
   cursor:pointer;
-  font-weight:600;
-  transition:.2s;
-}
+}.metodo{
+
 
 .metodo.ativo{
   background:#1db954;
@@ -1229,4 +1236,11 @@ margin-top:25px;
 .hero-pagamento li{
 margin-bottom:12px;
 font-size:22px;
+}
+
+#bandeiraCartao{
+  margin-bottom:12px;
+  font-size:14px;
+  font-weight:700;
+  color:#4f6b56;
 }
