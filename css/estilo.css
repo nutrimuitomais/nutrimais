@@ -1101,6 +1101,10 @@ font-size:48px;
 font-weight:900;
 color:#fff;
 line-height:1;
+display:flex;
+align-items:flex-end;
+gap:6px;
+white-space:nowrap;
 }
 
 /* MÉTODOS DE PAGAMENTO */
@@ -1194,23 +1198,26 @@ linear-gradient(
 }
 
 @media(max-width:768px){
-.hero-pagamento{
-padding:30px 18px;
-}
-}
 
 .checkout{
-max-width:1600px;
-margin:auto;
-width:98%;
+width:100%;
+padding:0;
 }
 
 .card{
-width:95%;
-max-width:900px;
-margin:auto;
-padding:50px 35px;
-border-radius:32px;
+width:100%;
+max-width:none;
+margin:0;
+padding:28px 22px 35px;
+border-radius:28px;
+}
+
+.hero-pagamento{
+padding:32px 22px;
+width:100%;
+min-height:auto;
+}
+
 }
 
 .hero-pagamento ul{
