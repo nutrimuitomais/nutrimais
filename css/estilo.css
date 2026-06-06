@@ -1109,24 +1109,21 @@ white-space:nowrap;
 
 /* MÉTODOS DE PAGAMENTO */
 .metodo{
-flex:1;
-padding:12px;
-font-size:13px;
-font-weight:700;
-border-radius:14px;
-background:#ffffff;
-border:1px solid #e5e7eb;
-color:#444;
-box-shadow:0 4px 12px rgba(0,0,0,.08);
-text-align:center;
-transition:.2s;
+  flex:1;
+  padding:12px;
+  font-size:13px;
+  font-weight:700;
+  border-radius:14px;
+  background:#f8fafc;
+  border:1px solid #e5e7eb;
+  color:#444;
+  text-align:center;
 }
 
 .metodo.ativo{
-background:#1db954;
-color:#fff;
-border-color:#1db954;
-box-shadow:0 8px 20px rgba(29,185,84,.25);
+  background:#1db954;
+  color:#fff;
+  border-color:#1db954;
 }
 
 .pix-area,
