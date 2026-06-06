@@ -159,17 +159,6 @@ gap:12px;
 margin:30px 0;
 }
 
-.metodo{
-flex:1;
-padding:12px;
-font-size:13px;
-font-weight:700;
-border-radius:14px;
-background:#f8fafc;
-border:1px solid #e5e7eb;
-color:#444;
-}
-
 .metodo.ativo{
 background:#1db954;
 border-color:#1db954;
@@ -305,7 +294,7 @@ Pagamento seguro e liberação imediata.
 <div class="hero-pagamento">
 
 <div class="hero-tag">
-Melhor custo-benefício
+Custo-benefício
 </div>
 
 <div id="nomePlano" class="plano"></div>
@@ -318,7 +307,7 @@ R$ <span id="valorPlano"></span>
     
     <div class="resumo-plano">
 ✓ Acesso imediato ao aplicativo<br>
-✓ Melhor custo beneficio atual<br>
+✓ APP com melhor custo-beneficio<br>
 ✓ Plano completo e personalizado<br>
 </div>
 
@@ -355,15 +344,30 @@ value="00020126580014BR.GOV.BCB.PIX123456789987654321">
 
 <div id="cartaoArea" class="cartao-area">
 
-<input type="text" placeholder="Nome completo">
+<input
+id="nomeCompleto"
+type="text"
+placeholder="Nome completo">
 
-<input type="text" placeholder="Número do cartão">
+<input
+id="numeroCartao"
+type="text"
+maxlength="19"
+placeholder="Número do cartão">
 
+<div id="bandeiraCartao"></div>
 <div class="linha">
 
-<input type="text" placeholder="MM/AA">
+<input
+id="validade"
+type="text"
+maxlength="5"
+placeholder="MM/AA">
 
-<input type="text" placeholder="CVV">
+<input
+type="text"
+placeholder="CVV"
+maxlength="3">
 
 </div>
 
@@ -513,15 +517,29 @@ document
 .getElementById("cartaoArea")
 .classList.remove("ativo-area");
 
+const nomeInput =
+document.getElementById("nomeCompleto");
+
 if(tipo === "pix"){
+
 document
 .getElementById("pixArea")
 .classList.add("ativo-area");
-}else{
-    
+
+}
+
+else{
+
 document
 .getElementById("cartaoArea")
 .classList.add("ativo-area");
+
+}
+
+if(tipo === "debito"){
+nomeInput.style.display = "none";
+}else{
+nomeInput.style.display = "block";
 }
 
 }
@@ -591,3 +609,46 @@ window.location.href =
 </script>
 </body>
 </html>
+
+<input
+id="validade"
+type="text"
+maxlength="5"
+placeholder="MM/AA">
+
+const cartao =
+document.getElementById("numeroCartao");
+
+const bandeira =
+document.getElementById("bandeiraCartao");
+
+cartao.addEventListener("input", function(){
+
+let valor =
+this.value.replace(/\D/g,'');
+
+valor =
+valor.substring(0,16);
+
+this.value = valor;
+
+if(valor.startsWith("4")){
+bandeira.innerText = "Visa";
+}
+else if(
+valor.startsWith("51") ||
+valor.startsWith("52") ||
+valor.startsWith("53") ||
+valor.startsWith("54") ||
+valor.startsWith("55")
+){
+bandeira.innerText = "Mastercard";
+}
+else if(valor.startsWith("34") || valor.startsWith("37")){
+bandeira.innerText = "American Express";
+}
+else{
+bandeira.innerText = "";
+}
+
+});
