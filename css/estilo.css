@@ -1081,6 +1081,7 @@ color:#fff;
   border-radius:999px;
 
   margin-bottom:15px;
+  backdrop-filter:blur(8px);
 }
 
 .hero-pagamento .plano{
