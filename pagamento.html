@@ -7,11 +7,6 @@
 
 <style>
     /* HERO PAGAMENTO */
-.metodos{
-  display:flex;
-  gap:12px;
-  margin:30px 0;
-}
   
 .hero-pagamento{
 position:relative;
@@ -159,7 +154,7 @@ margin-bottom:15px;
 display:none;
 }
 
-.metodo.ativo{
+..ativo{
 background:#1db954;
 border-color:#1db954;
 color:#fff;
@@ -315,12 +310,12 @@ R$ <span id="valorPlano"></span>
 
 </div>
 
-<div class="metodos">
-    <div class="metodo ativo" onclick="trocarMetodo('pix',this)">
+<div class="s">
+    <div class=" ativo" onclick="trocar('pix',this)">
     ❖ PIX
     </div>
 
-    <div class="metodo" onclick="trocarMetodo('credito',this)">
+    <div class="" onclick="trocarMetodo('credito',this)">
     💳 Crédito
     </div>
 
@@ -557,6 +552,12 @@ SUPER9:9,
 SUPER10:10
 };
 
+.metodos{
+  display:flex;
+  gap:12px;
+  margin:30px 0;
+}
+    
 function aplicarCupom(){
 
 const codigo =
@@ -606,9 +607,6 @@ window.location.href =
 "anamnese.html";
 
 }
-</script>
-</body>
-</html>
 
 <input
 id="validade"
@@ -652,3 +650,7 @@ bandeira.innerText = "";
 }
 
 });
+
+</script>
+</body>
+</html>
