@@ -1197,9 +1197,9 @@ border-radius:32px;
 }
 
 .hero-pagamento{
-padding:55px 40px;
-border-radius:32px;
+padding:55px 25px;
 width:100%;
+min-height:720px;
 }
 
 }
