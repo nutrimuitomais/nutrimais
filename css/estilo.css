@@ -1191,3 +1191,22 @@ width:100%;
 }
 
 }
+.hero-tag{
+display:inline-block;
+padding:12px 30px;
+border-radius:999px;
+background:#f5a30a;
+color:#fff;
+font-size:15px;
+font-weight:700;
+margin-bottom:25px;
+}
+
+.hero-pagamento ul{
+margin-top:25px;
+}
+
+.hero-pagamento li{
+margin-bottom:12px;
+font-size:22px;
+}
