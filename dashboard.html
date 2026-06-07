@@ -1,385 +1,148 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Nutri+</title>
-<link rel="stylesheet" href="css/dashboard.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>.Diet Nutri+</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
-
 <body>
 
-<header class="topo">
-
-<div class="logo-area">
-<img src="img/logo.png" class="logo">
-</div>
-
-<div class="perfil-area">
-
-<img
-src="img/avatar.png"
-class="avatar"
-onclick="toggleMenu()">
-
-<div
-id="menuPerfil"
-class="menu-perfil">
-
-<a href="#">Meu Perfil</a>
-<a href="#">Minha Dieta</a>
-<a href="#">Evolução</a>
-<a href="#">Consulta Nutricionista</a>
-
-<a href="#">
-Treino Personalizado
-<span class="tag-max">
-MAX
-</span>
-</a>
-
-<a href="#">
-IA Nutricional
-<span class="tag-super">
-SUPER
-</span>
-</a>
-
-<a href="#">
-Relatórios Avançados
-<span class="tag-super">
-SUPER
-</span>
-</a>
-
-<a href="#">Configurações</a>
-<a href="#" onclick="sair()">
-Sair
-</a>
-
-</div>
-
-</div>
-
-</header>
-
-<main>
-
-<!-- HERO -->
-
-<section class="hero">
-
-<div>
-
-<h1 id="nomeUsuario">
-Olá, Paciente 👋
-</h1>
-
-<p>
-Seu plano nutricional está ativo
-</p>
-
-<div id="badgePlano">
-Plano Digital
-</div>
-
-</div>
-
-<div class="hero-kcal">
-
-<div class="circulo">
-
-<div class="circulo-interno">
-
-<h2>1760</h2>
-
-<span>de 2200 kcal</span>
-
-</div>
-
-</div>
-
-</div>
-
-</section>
-
-<!-- MACROS -->
-
-<section class="macros">
-
-<div class="macro">
-
-<h3>Proteínas</h3>
-
-<div class="barra">
-<div
-class="fill proteina">
-</div>
-</div>
-
-<p>120g / 150g</p>
-
-</div>
-
-<div class="macro">
-
-<h3>Carboidratos</h3>
-
-<div class="barra">
-<div
-class="fill carbo">
-</div>
-</div>
-
-<p>180g / 220g</p>
-
-</div>
-
-<div class="macro">
-
-<h3>Gorduras</h3>
-
-<div class="barra">
-<div
-class="fill gordura">
-</div>
-</div>
-
-<p>45g / 60g</p>
-
-</div>
-
-</section>
-
-<!-- EVOLUÇÃO -->
-
-<section class="evolucao">
-
-<div class="titulo-bloco">
-📈 Evolução Física
-</div>
-
-<div class="pesos">
-
-<div>
-<span>Inicial</span>
-<h2>92kg</h2>
-</div>
-
-<div>
-<span>Atual</span>
-<h2>88kg</h2>
-</div>
-
-<div>
-<span>Meta</span>
-<h2>84kg</h2>
-</div>
-
-</div>
-
-<div class="barra-evolucao">
-
-<div
-class="barra-evolucao-fill">
-</div>
-
-</div>
-
-<div class="percentual">
-70% da meta concluída
-</div>
-
-</section>
-
-<!-- DIETA -->
-
-<section class="dieta">
-
-<h2>
-🍽️ Plano Alimentar de Hoje
-</h2>
-
-<div class="refeicao">
-
-<div class="refeicao-topo">
-<h3>Café da Manhã</h3>
-<span>420 kcal</span>
-</div>
-
-<p>
-Ovos mexidos + Banana + Café sem açúcar
-</p>
-
-<div class="macros-refeicao">
-<span>🥩 28g proteína</span>
-<span>🍞 38g carbo</span>
-<span>🥑 12g gordura</span>
-</div>
-
-<div class="acoes-refeicao">
-<button>Ver Receita</button>
-<button>Trocar Refeição</button>
-</div>
-
-</div>
-
-<div class="refeicao">
-
-<div class="refeicao-topo">
-<h3>Lanche da Manhã</h3>
-<span>240 kcal</span>
-</div>
-
-<p>
-Iogurte natural + Castanhas
-</p>
-
-<div class="macros-refeicao">
-<span>🥩 15g proteína</span>
-<span>🍞 12g carbo</span>
-<span>🥑 10g gordura</span>
-</div>
-
-<div class="acoes-refeicao">
-<button>Ver Receita</button>
-<button>Trocar Refeição</button>
-</div>
-
-</div>
-
-<div class="refeicao">
-
-<div class="refeicao-topo">
-<h3>Almoço</h3>
-<span>680 kcal</span>
-</div>
-
-<p>
-Arroz + Feijão + Frango + Salada
-</p>
-
-<div class="macros-refeicao">
-<span>🥩 52g proteína</span>
-<span>🍞 65g carbo</span>
-<span>🥑 18g gordura</span>
-</div>
-
-<div class="acoes-refeicao">
-<button>Ver Receita</button>
-<button>Trocar Refeição</button>
-</div>
-
-</div>
-
-<div class="refeicao">
-
-<div class="refeicao-topo">
-<h3>Lanche da Tarde</h3>
-<span>260 kcal</span>
-</div>
-
-<p>
-Sanduíche integral + fruta
-</p>
-
-<div class="macros-refeicao">
-<span>🥩 18g proteína</span>
-<span>🍞 28g carbo</span>
-<span>🥑 7g gordura</span>
-</div>
-
-<div class="acoes-refeicao">
-<button>Ver Receita</button>
-<button>Trocar Refeição</button>
-</div>
-
-</div>
-
-<div class="refeicao">
-
-<div class="refeicao-topo">
-<h3>Jantar</h3>
-<span>520 kcal</span>
-</div>
-
-<p>
-Peixe grelhado + legumes
-</p>
-
-<div class="macros-refeicao">
-<span>🥩 42g proteína</span>
-<span>🍞 22g carbo</span>
-<span>🥑 14g gordura</span>
-</div>
-
-<div class="acoes-refeicao">
-<button>Ver Receita</button>
-<button>Trocar Refeição</button>
-</div>
-
-</div>
-
-</section>
-
-  <!-- TREINO MAX -->
-
-  <div class="premium-card">
-    <h2>🏋️ Treino Personalizado</h2>
-
-    <p>
-      Receba um treino completo baseado no seu objetivo.
-    </p>
-
-    <div class="tag-max">
-      MAX
+    <div class="dashboard-container">
+        
+        <aside class="sidebar">
+            <div class="logo">.Diet</div>
+            <nav class="nav-menu">
+                <a href="#" class="active"><div class="icon-box"><i class="fa-solid fa-house"></i></div></a>
+                <a href="#"><i class="fa-solid fa-calendar-days"></i></a>
+                <a href="#"><i class="fa-solid fa-chart-line"></i></a>
+                <a href="#"><i class="fa-solid fa-utensils"></i></a>
+                <a href="#"><i class="fa-solid fa-comment-dots"></i></a>
+                <a href="#"><i class="fa-solid fa-gear"></i></a>
+            </nav>
+            <div class="logout">
+                <a href="#" onclick="sair()"><i class="fa-solid fa-right-from-bracket"></i></a>
+            </div>
+        </aside>
+
+        <main class="main-content">
+            
+            <header class="header">
+                <div class="welcome">
+                    <h1>Olá, <span id="nomeUsuario">Paciente</span><span class="leaf">🌿</span></h1>
+                    <p>Vamos começar a viver de forma saudável a partir de agora.</p>
+                </div>
+                <div class="header-right">
+                    <div class="search-bar">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                        <input type="text" placeholder="Buscar...">
+                    </div>
+                    <span id="badgePlano" class="badge">Carregando plano...</span>
+                </div>
+            </header>
+
+            <div class="dashboard-grid">
+                
+                <div class="card banner-card">
+                    <div class="banner-info">
+                        <span class="tag-desafio">O Desafio de Peso 🔥</span>
+                        <h2 id="percentualPeso">0% concluído</h2>
+                        <p>Progresso estimado com base no seu objetivo planejado.</p>
+                        <div class="weight-row">
+                            <div class="weight-item"><span>Inicial</span><strong id="vPesoInicial">--kg</strong></div>
+                            <div class="weight-arrow"><i class="fa-solid fa-arrow-right-long"></i></div>
+                            <div class="weight-item"><span>Atual</span><strong id="vPesoAtual">--kg</strong></div>
+                            <div class="weight-arrow"><i class="fa-solid fa-arrow-right-long"></i></div>
+                            <div class="weight-item"><span>Meta</span><strong id="vPesoMeta">--kg</strong></div>
+                        </div>
+                    </div>
+                    <div class="banner-image">
+                        <img src="https://i.imgur.com/gK2fK8b.png" alt="Halteres" class="floating-img">
+                    </div>
+                </div>
+
+                <div class="card activity-card">
+                    <div class="card-header-compact">
+                        <h3>Atividade Diária</h3>
+                        <span class="kcal-total"><strong id="txtGastoKcal">625</strong> <small>Kcal</small></span>
+                    </div>
+                    <div class="chart-container">
+                        <canvas id="activityChart"></canvas>
+                    </div>
+                    <div class="time-stamp">19:00pm</div>
+                </div>
+
+                <div class="card calories-budget-card">
+                    <h3>Orçamento de Calorias</h3>
+                    <div class="circle-box">
+                        <div class="circulo" id="circuloCalorico">
+                            <div class="circulo-interno">
+                                <h2 id="txtCaloriasConsumidas">0</h2>
+                                <span id="txtMetaCalorias">de 2200 kcal</span>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="circle-footer">Ajuste automático atualizado</p>
+                </div>
+
+                <div class="card macros-card">
+                    <h3>Recapitulativo de Macronutrientes</h3>
+                    
+                    <div class="macro-row">
+                        <div class="macro-badge p-bg">Carboidratos</div>
+                        <div class="macro-progress-wrapper">
+                            <div class="barra"><div class="fill carbo" id="barraCarbo"></div></div>
+                            <span id="txtCarbo">0g / 0g</span>
+                        </div>
+                    </div>
+
+                    <div class="macro-row">
+                        <div class="macro-badge pro-bg">Proteínas</div>
+                        <div class="macro-progress-wrapper">
+                            <div class="barra"><div class="fill proteina" id="barraProteina"></div></div>
+                            <span id="txtProteina">0g / 0g</span>
+                        </div>
+                    </div>
+
+                    <div class="macro-row">
+                        <div class="macro-badge g-bg">Gorduras</div>
+                        <div class="macro-progress-wrapper">
+                            <div class="barra"><div class="fill gordura" id="barraGordura"></div></div>
+                            <span id="txtGordura">0g / 0g</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card dieta-card">
+                    <h3>Dieta de Hoje & Check-in</h3>
+                    <div class="meals-list" id="listaRefeicoes">
+                        </div>
+                </div>
+
+                <div class="card premium-card somente-max">
+                    <div class="premium-header">
+                        <span class="badge-premium-tag max-color">Treino Personalizado</span>
+                        <span class="tag-status-plan">MAX</span>
+                    </div>
+                    <p>Receba um treino completo estruturado para o seu biotipo.</p>
+                    <button class="btn-premium">Acessar Treinos</button>
+                </div>
+
+                <div class="card premium-card somente-super">
+                    <div class="premium-header">
+                        <span class="badge-premium-tag super-color">IA Nutri+ Coach</span>
+                        <span class="tag-status-plan">SUPER</span>
+                    </div>
+                    <p>Ajuste preditivo automático da sua dieta toda semana.</p>
+                    <button class="btn-premium">Ativar Assistente</button>
+                </div>
+
+            </div>
+        </main>
     </div>
-  </div>
 
-  <!-- CONSULTA -->
-
-  <div class="premium-card">
-    <h2>👨‍⚕️ Consulta Nutricionista</h2>
-
-    <p class="preco-antigo">
-      R$ 559,99
-    </p>
-
-    <h3 class="preco-novo">
-      R$ 289,99
-    </h3>
-
-    <button class="btn-consulta">
-      Agendar Consulta
-    </button>
-  </div>
-
-  <!-- CHAT -->
-
-  <div class="premium-card">
-    <h2>💬 Suporte por Chat</h2>
-
-    <p>
-      Converse diretamente com nossa equipe.
-    </p>
-
-    <button class="btn-chat">
-      Abrir Chat
-    </button>
-  </div>
-
-  <!-- SUPER -->
-
-  <div class="premium-card">
-    <h2>🧠 IA Nutri+</h2>
-
-    <p>
-      Ajuste automático da dieta toda semana.
-    </p>
-
-    <div class="tag-super">
-      SUPER
-    </div>
-  </div>
-
-</section>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
