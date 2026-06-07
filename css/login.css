@@ -106,3 +106,23 @@ body::after{
   50%{transform:translate(14%,-10%) scale(1.45);}
   100%{transform:translate(-12%,12%) scale(1.2);}
 }
+
+.btn-google{
+width:100%;
+padding:16px;
+margin-top:12px;
+border:1px solid #ddd;
+border-radius:14px;
+background:#fff;
+display:flex;
+align-items:center;
+justify-content:center;
+gap:10px;
+font-weight:600;
+cursor:pointer;
+}
+
+.btn-google img{
+width:22px;
+height:22px;
+}
