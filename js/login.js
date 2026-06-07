@@ -8,7 +8,7 @@ function fazerLogin() {
     senha === "978612"
   ) {
     alert("Login realizado com sucesso!");
-    window.location.href = "anamnese.html";
+    window.location.href = "dashboard.html";
     return;
   }
 
