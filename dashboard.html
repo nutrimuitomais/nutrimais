@@ -4,17 +4,435 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>.Diet Nutri+</title>
-    <link rel="stylesheet" href="style.css">
+    <!-- Font Awesome para os ícones -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --bg-app: #f4f7f6;
+            --bg-card: #ffffff;
+            --sidebar-dark: #192024;
+            --text-primary: #111827;
+            --text-secondary: #6b7280;
+            
+            --pastel-green: #d1ebd2;
+            --neon-blue: #a3e9df;
+            --macro-carbo: #3b82f6;
+            --macro-protein: #10b981;
+            --macro-fat: #f59e0b;
+            
+            --border-smooth: #f1f5f9;
+            --radius-card: 24px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-app);
+            color: var(--text-primary);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .dashboard-container {
+            display: flex;
+            width: 100%;
+            max-width: 1300px;
+            height: 850px;
+            background: #ffffff;
+            border-radius: 32px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.04);
+            overflow: hidden;
+        }
+
+        .sidebar {
+            width: 80px;
+            background-color: var(--sidebar-dark);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+            padding: 30px 0;
+            flex-shrink: 0;
+        }
+
+        .sidebar .logo {
+            color: #ffffff;
+            font-weight: 700;
+            font-size: 1.1rem;
+            letter-spacing: -1px;
+        }
+
+        .nav-menu {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .nav-menu a {
+            color: #4b5563;
+            font-size: 1.25rem;
+            width: 44px;
+            height: 44px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 14px;
+            transition: all 0.25s ease;
+            text-decoration: none;
+        }
+
+        .nav-menu a.active, .nav-menu a:hover {
+            color: var(--text-primary);
+            background-color: #d1ebd2;
+        }
+
+        .logout a {
+            color: #ef4444;
+            font-size: 1.25rem;
+        }
+
+        .main-content {
+            flex: 1;
+            padding: 35px;
+            overflow-y: auto;
+            background-color: #fbfcfb;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+
+        .header h1 {
+            font-size: 1.6rem;
+            font-weight: 700;
+        }
+
+        .header p {
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+            margin-top: 2px;
+        }
+
+        .header-right {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .search-bar {
+            background: #f3f4f6;
+            padding: 8px 16px;
+            border-radius: 50px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .search-bar input {
+            border: none;
+            background: transparent;
+            outline: none;
+            font-size: 0.85rem;
+        }
+
+        .badge {
+            padding: 6px 14px;
+            border-radius: 50px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+        .plano-digital { background: #e0f2fe; color: #0369a1; }
+        .plano-max { background: #f1f5f9; color: #475569; border: 1px solid #cbd5e1; }
+        .plano-super { background: #fef3c7; color: #b45309; }
+
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .card {
+            background: var(--bg-card);
+            border-radius: var(--radius-card);
+            padding: 24px;
+            border: 1px solid var(--border-smooth);
+        }
+
+        .banner-card {
+            grid-column: span 2;
+            background: linear-gradient(135deg, #cce7cb 0%, #e3f4e2 100%);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .tag-desafio {
+            background: rgba(255, 255, 255, 0.45);
+            padding: 4px 10px;
+            border-radius: 50px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+
+        .banner-card h2 {
+            font-size: 1.8rem;
+            margin: 10px 0 4px 0;
+        }
+
+        .banner-card p {
+            color: #4b5563;
+            font-size: 0.8rem;
+        }
+
+        .weight-row {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .weight-item {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .weight-item span {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            color: #6b7280;
+        }
+
+        .weight-item strong {
+            font-size: 1.1rem;
+        }
+
+        .weight-arrow { color: #6b7280; font-size: 0.9rem; }
+
+        .activity-card {
+            background: var(--sidebar-dark);
+            color: #ffffff;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .card-header-compact {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .activity-card h3 { color: #9ca3af; font-size: 0.9rem; font-weight: 500; }
+        .kcal-total { font-size: 1.4rem; font-weight: 700; }
+        .kcal-total small { font-size: 0.8rem; color: #9ca3af; font-weight: 400; }
+
+        .chart-container {
+            height: 110px;
+            margin-top: 15px;
+            position: relative;
+        }
+
+        .time-stamp {
+            text-align: right;
+            font-size: 0.7rem;
+            color: #6b7280;
+            margin-top: 5px;
+        }
+
+        .calories-budget-card {
+            grid-row: span 2;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+            text-align: center;
+        }
+
+        .calories-budget-card h3 { font-size: 1rem; width: 100%; text-align: left; }
+
+        .circle-box {
+            margin: 20px 0;
+        }
+
+        .circulo {
+            width: 190px;
+            height: 190px;
+            border-radius: 50%;
+            background: conic-gradient(var(--macro-protein) 0%, #f1f5f9 0%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.4s ease;
+        }
+
+        .circulo-interno {
+            width: 145px;
+            height: 145px;
+            background: #ffffff;
+            border-radius: 50%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.02);
+        }
+
+        .circulo-interno h2 { font-size: 2.2rem; font-weight: 800; color: var(--text-primary); }
+        .circulo-interno span { color: var(--text-secondary); font-size: 0.75rem; margin-top: 2px; }
+        .circle-footer { font-size: 0.75rem; color: var(--text-secondary); }
+
+        .macros-card h3 { font-size: 1rem; margin-bottom: 15px; }
+        .macro-row {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 15px;
+        }
+
+        .macro-badge {
+            width: 95px;
+            padding: 4px 8px;
+            border-radius: 8px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            text-align: center;
+        }
+        .p-bg { background: #e0f2fe; color: #0284c7; }
+        .pro-bg { background: #d1f5ea; color: #059669; }
+        .g-bg { background: #fef3c7; color: #d97706; }
+
+        .macro-progress-wrapper {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .barra {
+            width: 100%;
+            height: 8px;
+            background: #f1f5f9;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .fill {
+            height: 100%;
+            width: 0%;
+            border-radius: 10px;
+            transition: width 0.4s ease;
+        }
+        .carbo { background-color: var(--macro-carbo); }
+        .proteina { background-color: var(--macro-protein); }
+        .gordura { background-color: var(--macro-fat); }
+
+        .macro-progress-wrapper span {
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+        }
+
+        .dieta-card { grid-column: span 2; }
+        .dieta-card h3 { font-size: 1rem; margin-bottom: 15px; }
+        .meals-list { display: flex; flex-direction: column; gap: 10px; }
+
+        .refeicao-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 20px;
+            background: #fbfcfb;
+            border: 1px solid #f1f5f9;
+            border-radius: 16px;
+            transition: all 0.2s ease;
+        }
+
+        .refeicao-item.concluida {
+            background: #f0fdf4;
+            border-color: #bbf7d0;
+        }
+
+        .ref-left { display: flex; align-items: center; gap: 15px; }
+
+        .btn-check {
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            border: 2px solid #cbd5e1;
+            background: #fff;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s;
+        }
+
+        .refeicao-item.concluida .btn-check {
+            background: var(--macro-protein);
+            border-color: var(--macro-protein);
+            color: white;
+        }
+
+        .ref-details h4 { font-size: 0.9rem; font-weight: 600; }
+        .ref-details p { font-size: 0.75rem; color: var(--text-secondary); margin-top: 1px; }
+        .ref-right { text-align: right; }
+        .ref-kcal { font-size: 0.85rem; font-weight: 700; color: var(--text-primary); }
+
+        .premium-card {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: opacity 0.3s ease;
+        }
+
+        .premium-header { display: flex; justify-content: space-between; align-items: center; }
+        .badge-premium-tag { font-size: 0.75rem; font-weight: 600; padding: 4px 8px; border-radius: 6px; }
+        .max-color { background: #f1f5f9; color: #334155; }
+        .super-color { background: #fffbeb; color: #b45309; }
+        .tag-status-plan { font-size: 0.65rem; font-weight: 800; color: #9ca3af; }
+
+        .premium-card p { font-size: 0.8rem; color: var(--text-secondary); margin: 8px 0; }
+        .btn-premium {
+            width: 100%;
+            padding: 10px;
+            border: none;
+            background: #f3f4f6;
+            color: var(--text-primary);
+            font-weight: 600;
+            font-size: 0.8rem;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+
+        .lock-message {
+            font-size: 0.7rem !important;
+            color: #ef4444 !important;
+            font-weight: 600;
+            margin-top: 4px;
+        }
+    </style>
 </head>
 <body>
 
     <div class="dashboard-container">
         
+        <!-- SIDEBAR -->
         <aside class="sidebar">
             <div class="logo">.Diet</div>
             <nav class="nav-menu">
-                <a href="#" class="active"><div class="icon-box"><i class="fa-solid fa-house"></i></div></a>
+                <a href="#" class="active"><i class="fa-solid fa-house"></i></a>
                 <a href="#"><i class="fa-solid fa-calendar-days"></i></a>
                 <a href="#"><i class="fa-solid fa-chart-line"></i></a>
                 <a href="#"><i class="fa-solid fa-utensils"></i></a>
@@ -26,11 +444,12 @@
             </div>
         </aside>
 
+        <!-- CONTEÚDO PRINCIPAL -->
         <main class="main-content">
             
             <header class="header">
                 <div class="welcome">
-                    <h1>Olá, <span id="nomeUsuario">Paciente</span><span class="leaf">🌿</span></h1>
+                    <h1>Olá, <span id="nomeUsuario">Paciente</span> 🌱</h1>
                     <p>Vamos começar a viver de forma saudável a partir de agora.</p>
                 </div>
                 <div class="header-right">
@@ -44,6 +463,7 @@
 
             <div class="dashboard-grid">
                 
+                <!-- CARD DESAFIO -->
                 <div class="card banner-card">
                     <div class="banner-info">
                         <span class="tag-desafio">O Desafio de Peso 🔥</span>
@@ -57,11 +477,9 @@
                             <div class="weight-item"><span>Meta</span><strong id="vPesoMeta">--kg</strong></div>
                         </div>
                     </div>
-                    <div class="banner-image">
-                        <img src="https://i.imgur.com/gK2fK8b.png" alt="Halteres" class="floating-img">
-                    </div>
                 </div>
 
+                <!-- CARD ATIVIDADE (GRÁFICO) -->
                 <div class="card activity-card">
                     <div class="card-header-compact">
                         <h3>Atividade Diária</h3>
@@ -73,6 +491,7 @@
                     <div class="time-stamp">19:00pm</div>
                 </div>
 
+                <!-- CARD ORÇAMENTO DE CALORIAS -->
                 <div class="card calories-budget-card">
                     <h3>Orçamento de Calorias</h3>
                     <div class="circle-box">
@@ -86,8 +505,9 @@
                     <p class="circle-footer">Ajuste automático atualizado</p>
                 </div>
 
+                <!-- CARD RECAP MACROS -->
                 <div class="card macros-card">
-                    <h3>Recapitulativo de Macronutrientes</h3>
+                    <h3>Recapitulativo</h3>
                     
                     <div class="macro-row">
                         <div class="macro-badge p-bg">Carboidratos</div>
@@ -114,12 +534,13 @@
                     </div>
                 </div>
 
+                <!-- CARD DIETA + CHECK-IN -->
                 <div class="card dieta-card">
                     <h3>Dieta de Hoje & Check-in</h3>
-                    <div class="meals-list" id="listaRefeicoes">
-                        </div>
+                    <div class="meals-list" id="listaRefeicoes"></div>
                 </div>
 
+                <!-- RECURSOS PREMIUM -->
                 <div class="card premium-card somente-max">
                     <div class="premium-header">
                         <span class="badge-premium-tag max-color">Treino Personalizado</span>
@@ -142,7 +563,166 @@
         </main>
     </div>
 
+    <!-- Bibliotecas de Scripts Externos -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script src="app.js"></script>
+    
+    <script>
+        // 1. CARREGAMENTO DOS DADOS DO LOCALSTORAGE (COM FALLBACK DE SEGURANÇA)
+        const usuario = JSON.parse(localStorage.getItem("nutri_usuario")) || {
+            email: "Paciente VIP",
+            plano: "Super"
+        };
+
+        document.getElementById("nomeUsuario").innerText = usuario.email.split('@')[0] || "Paciente";
+
+        // 2. SISTEMA DE PLANOS E BLOQUEIOS
+        const badgePlano = document.getElementById("badgePlano");
+        const plano = (usuario.plano || "Digital").toUpperCase();
+
+        if (plano.includes("SUPER")) {
+            badgePlano.innerText = "Plano Super";
+            badgePlano.className = "badge plano-super";
+        } else if (plano.includes("MAX")) {
+            badgePlano.innerText = "Plano Max";
+            badgePlano.className = "badge plano-max";
+        } else {
+            badgePlano.innerText = "Plano Digital";
+            badgePlano.className = "badge plano-digital";
+        }
+
+        document.querySelectorAll(".somente-max").forEach(item => {
+            if (!plano.includes("MAX") && !plano.includes("SUPER")) {
+                item.style.opacity = ".4";
+                item.style.pointerEvents = "none";
+                item.innerHTML += "<p class='lock-message'>🔒 Disponível apenas no Plano MAX</p>";
+            }
+        });
+
+        document.querySelectorAll(".somente-super").forEach(item => {
+            if (!plano.includes("SUPER")) {
+                item.style.opacity = ".4";
+                item.style.pointerEvents = "none";
+                item.innerHTML += "<p class='lock-message'>🔒 Disponível apenas no Plano SUPER</p>";
+            }
+        });
+
+        // 3. EVOLUÇÃO DE PESO
+        const pesoInicial = 92;
+        const pesoAtual = 88;
+        const pesoMeta = 84;
+
+        const totalPerder = pesoInicial - pesoMeta;
+        const perdido = pesoInicial - pesoAtual;
+        const progressoPeso = (perdido / totalPerder) * 100;
+
+        document.getElementById("percentualPeso").innerText = Math.round(progressoPeso) + "% concluído";
+        document.getElementById("vPesoInicial").innerText = pesoInicial + "kg";
+        document.getElementById("vPesoAtual").innerText = pesoAtual + "kg";
+        document.getElementById("vPesoMeta").innerText = pesoMeta + "kg";
+
+        // 4. METAS E REFEIÇÕES DO CHECK-IN
+        const metasDieta = { calorias: 2200, carbo: 220, proteina: 150, gordura: 60 };
+
+        const refeicoesDados = [
+            { id: 0, nome: "Café da Manhã", desc: "Ovos mexidos + banana + café", kcal: 340, carbo: 30, prot: 25, gord: 12, concluida: true },
+            { id: 1, nome: "Lanche da Manhã", desc: "Iogurte natural + castanhas", kcal: 210, carbo: 15, prot: 10, gord: 11, concluida: true },
+            { id: 2, nome: "Almoço", desc: "Arroz, feijão, frango e salada", kcal: 650, carbo: 75, prot: 50, gord: 14, concluida: true },
+            { id: 3, nome: "Lanche da Tarde", desc: "Sanduíche integral + fruta", kcal: 260, carbo: 35, prot: 15, gord: 5, concluida: false },
+            { id: 4, nome: "Jantar", desc: "Peixe grelhado + legumes", kcal: 300, carbo: 25, prot: 35, gord: 3, concluida: false }
+        ];
+
+        function calcularEAtualizarDashboard() {
+            let acumulado = { kcal: 0, carbo: 0, prot: 0, gord: 0 };
+
+            refeicoesDados.forEach(ref => {
+                if (ref.concluida) {
+                    acumulado.kcal += ref.kcal;
+                    acumulado.carbo += ref.carbo;
+                    acumulado.prot += ref.prot;
+                    acumulado.gord += ref.gord;
+                }
+            });
+
+            document.getElementById("txtCaloriasConsumidas").innerText = acumulado.kcal;
+            document.getElementById("txtMetaCalorias").innerText = `de ${metasDieta.calorias} kcal`;
+            
+            document.getElementById("txtCarbo").innerText = `${acumulado.carbo}g / ${metasDieta.carbo}g`;
+            document.getElementById("txtProteina").innerText = `${acumulado.prot}g / ${metasDieta.proteina}g`;
+            document.getElementById("txtGordura").innerText = `${acumulado.gord}g / ${metasDieta.gordura}g`;
+
+            document.getElementById("barraCarbo").style.width = Math.min((acumulado.carbo / metasDieta.carbo) * 100, 100) + "%";
+            document.getElementById("barraProteina").style.width = Math.min((acumulado.prot / metasDieta.proteina) * 100, 100) + "%";
+            document.getElementById("barraGordura").style.width = Math.min((acumulado.gord / metasDieta.gordura) * 100, 100) + "%";
+
+            const pctCalorias = Math.min((acumulado.kcal / metasDieta.calorias) * 100, 100);
+            document.getElementById("circuloCalorico").style.background = `conic-gradient(#10b981 ${pctCalorias}%, #f1f5f9 ${pctCalorias}% 100%)`;
+        }
+
+        function alternarRefeicao(id) {
+            refeicoesDados[id].concluida = !refeicoesDados[id].concluida;
+            renderizarListaRefeicoes();
+            calcularEAtualizarDashboard();
+        }
+
+        function renderizarListaRefeicoes() {
+            const container = document.getElementById("listaRefeicoes");
+            container.innerHTML = "";
+
+            refeicoesDados.forEach(ref => {
+                const item = document.createElement("div");
+                item.className = `refeicao-item ${ref.concluida ? 'concluida' : ''}`;
+                item.innerHTML = `
+                    <div class="ref-left">
+                        <div class="btn-check" onclick="alternarRefeicao(${ref.id})">
+                            ${ref.concluida ? '<i class="fa-solid fa-check" style="font-size:0.65rem;"></i>' : ''}
+                        </div>
+                        <div class="ref-details">
+                            <h4>${ref.nome}</h4>
+                            <p>${ref.desc}</p>
+                        </div>
+                    </div>
+                    <div class="ref-right">
+                        <span class="ref-kcal">${ref.kcal} Kcal</span>
+                    </div>
+                `;
+                container.appendChild(item);
+            });
+        }
+
+        // 5. INICIALIZADOR DO GRÁFICO DE ATIVIDADE SEGUNDO IMAGEM 1
+        const ctx = document.getElementById('activityChart').getContext('2d');
+        new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: ['S', 'T', 'Q', 'Q', 'S', 'S', 'D'],
+                datasets: [{
+                    data: [420, 510, 490, 625, 560, 410, 480],
+                    borderColor: '#a3e9df', 
+                    borderWidth: 3,
+                    tension: 0.4, 
+                    pointRadius: 3,
+                    pointBackgroundColor: '#ffffff',
+                    fill: false
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: { legend: { display: false } },
+                scales: {
+                    x: { grid: { display: false }, ticks: { color: '#9ca3af', font: { size: 10 } } },
+                    y: { display: false }
+                }
+            }
+        });
+
+        function sair() {
+            localStorage.removeItem("nutri_usuario");
+            window.location.href = "login.html";
+        }
+
+        renderizarListaRefeicoes();
+        calcularEAtualizarDashboard();
+    </script>
 </body>
 </html>
