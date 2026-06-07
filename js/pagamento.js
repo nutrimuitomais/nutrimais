@@ -10,17 +10,17 @@ if(!plano){
 
 const hero = document.querySelector(".hero-pagamento");
 
-if(plano.estilo === "MAIS"){
+if(plano.estilo === "digital"){
   hero.style.background =
   "linear-gradient(120deg,#64756f,#7c8b86,#64756f)";
 }
 
-if(plano.estilo === "MAX"){
+if(plano.estilo === "max"){
   hero.style.background =
   "linear-gradient(120deg,#4f6b56,#688f73,#4f6b56)";
 }
 
-if(plano.estilo === "SUPER"){
+if(plano.estilo === "super"){
   hero.style.background =
   "linear-gradient(120deg,#8b7750,#a58b5b,#8b7750)";
 }
@@ -29,18 +29,8 @@ hero.style.backgroundSize = "200% 200%";
 
 /* DADOS DO PLANO */
 
-const nomePlano =
-document.getElementById("nomePlano");
-
-nomePlano.innerText = plano.nome;
-
-if(plano.nome.includes("Max")){
-nomePlano.classList.add("plano-max");
-}
-
-if(plano.nome.includes("Super")){
-nomePlano.classList.add("plano-super");
-}
+document.getElementById("nomePlano").innerText =
+plano.nome;
 
 document.getElementById("tipoPlano").innerText =
 plano.tipo === "anual"
@@ -54,7 +44,7 @@ plano.preco.toFixed(2);
 
 const tag = document.querySelector(".hero-tag");
 
-if(plano.nome.includes("MAIS")){
+if(plano.nome.includes("Digital")){
   tag.innerText = "Ideal para começar";
 }
 
@@ -73,7 +63,7 @@ document.getElementById("economia");
 
 if(plano.tipo === "anual"){
 
-  if(plano.nome.includes("MAIS")){
+  if(plano.nome.includes("Digital")){
     economia.innerText =
     "🎉 Economize 17% no plano anual";
   }
