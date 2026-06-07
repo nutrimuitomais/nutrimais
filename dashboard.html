@@ -4,122 +4,366 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Dashboard - Nutri+</title>
-
 <link rel="stylesheet" href="css/dashboard.css">
 </head>
-
 <body>
 
 <header class="topo">
 
-<img
-src="img/logo.png"
-class="logo"
-alt="Nutri+">
+  <div class="logo-area">
+    <img src="img/logo.png" class="logo">
+  </div>
 
-<div class="perfil-area">
+  <div class="perfil-area">
 
-<img
-src="img/avatar.png"
-class="avatar"
-onclick="toggleMenu()">
+    <img
+      src="img/avatar.png"
+      class="avatar"
+      onclick="toggleMenu()">
 
-<div
-id="menuPerfil"
-class="menu-perfil">
+    <div
+      id="menuPerfil"
+      class="menu-perfil">
 
-<a href="#">Meu Perfil</a>
+      <a href="#">Meu Perfil</a>
 
-<a href="#">Faturas do meu Plano</a>
+      <a href="#">Minha Dieta</a>
 
-<a href="#">Evolução</a>
+      <a href="#">Evolução</a>
 
-<a href="#">Minha Dieta</a>
+      <a href="#">Objetivo</a>
 
-<a href="#">Meu Objetivo</a>
+      <a href="#">
+        Treino Personalizado
+        <span class="tag-max">MAX</span>
+      </a>
 
-<a href="#">Configurações</a>
+      <a href="#">
+        Lista de Compras
+        <span class="tag-max">MAX</span>
+      </a>
 
-<a href="login.html">Sair</a>
+      <a href="#">
+        Diário Alimentar
+        <span class="tag-max">MAX</span>
+      </a>
 
-</div>
+      <a href="#">
+        IA Nutricional
+        <span class="tag-super">SUPER</span>
+      </a>
 
-</div>
+      <a href="#">
+        Consulta Nutricional
+        <span class="tag-super">SUPER</span>
+      </a>
+
+      <a href="#">
+        Relatórios PDF
+        <span class="tag-super">SUPER</span>
+      </a>
+
+      <a href="#">Faturas</a>
+
+      <a href="#">Suporte</a>
+
+      <a href="#">Configurações</a>
+
+      <a href="login.html">Sair</a>
+
+    </div>
+
+  </div>
 
 </header>
 
 <main>
 
-<div class="card-boas-vindas">
-  
-<div class="dieta-card">
+<!-- HERO -->
+
+<section class="hero-dashboard">
+
+  <div class="hero-esquerda">
+
+    <h1>
+      Bem-vindo ao Nutri+
+    </h1>
+
+    <p id="nomeUsuario">
+      Paciente
+    </p>
+
+    <div id="badgePlano"
+         class="badge-plano">
+      Plano Digital
+    </div>
+
+  </div>
+
+  <div class="hero-direita">
+
+    <h3>Meta Calórica</h3>
+
+    <div class="barra-calorias">
+
+      <div
+        class="barra-calorias-fill"
+        id="barraCalorias">
+      </div>
+
+    </div>
+
+    <div class="calorias-texto">
+      1760 / 2200 kcal
+    </div>
+
+  </div>
+
+</section>
+
+<!-- MACROS -->
+
+<section class="macros">
+
+  <div class="macro-card">
+
+    <h3>Proteínas</h3>
+
+    <div class="macro-barra">
+      <div class="macro-fill proteina"></div>
+    </div>
+
+    <p>120g / 150g</p>
+
+  </div>
+
+  <div class="macro-card">
+
+    <h3>Carboidratos</h3>
+
+    <div class="macro-barra">
+      <div class="macro-fill carbo"></div>
+    </div>
+
+    <p>180g / 220g</p>
+
+  </div>
+
+  <div class="macro-card">
+
+    <h3>Gorduras</h3>
+
+    <div class="macro-barra">
+      <div class="macro-fill gordura"></div>
+    </div>
+
+    <p>45g / 60g</p>
+
+  </div>
+
+</section>
+
+<!-- PROGRESSO -->
+
+<section class="progresso-card">
+
+  <h2>📈 Evolução</h2>
+
+  <p>Peso Inicial: 92kg</p>
+
+  <p>Peso Atual: 88kg</p>
+
+  <div class="barra-progresso">
+
+    <div
+      class="barra-progresso-fill">
+    </div>
+
+  </div>
+
+  <p>70% da meta concluída</p>
+
+  <strong>Meta: 84kg</strong>
+
+</section>
+
+<!-- DIETA -->
+
+<section class="dieta-card">
+
   <h2>🍽️ Minha Dieta de Hoje</h2>
 
   <div class="refeicao">
+
     <h3>Café da Manhã</h3>
-    <p>Carregando...</p>
+
+    <p>Carregando dieta...</p>
+
   </div>
 
   <div class="refeicao">
+
     <h3>Lanche da Manhã</h3>
-    <p>Carregando...</p>
+
+    <p>Carregando dieta...</p>
+
   </div>
 
   <div class="refeicao">
+
     <h3>Almoço</h3>
-    <p>Carregando...</p>
+
+    <p>Carregando dieta...</p>
+
   </div>
 
   <div class="refeicao">
+
     <h3>Lanche da Tarde</h3>
-    <p>Carregando...</p>
+
+    <p>Carregando dieta...</p>
+
   </div>
 
   <div class="refeicao">
+
     <h3>Jantar</h3>
-    <p>Carregando...</p>
+
+    <p>Carregando dieta...</p>
+
   </div>
-</div>
-  
-<h1>
-Bem-vindo ao Nutri+
-</h1>
 
-<p id="nomeUsuario">
-Paciente
-</p>
+</section>
 
-</div>
+<!-- TREINO -->
 
-<div class="grid-cards">
+<section class="treino-card">
 
-<div class="info-card">
-<h3>Plano Atual</h3>
-<p id="planoAtual">
-Carregando...
-</p>
-</div>
+  <h2>🏋️ Treino Personalizado</h2>
 
-<div class="info-card">
-<h3>Objetivo</h3>
-<p id="objetivoAtual">
-Carregando...
-</p>
-</div>
+  <p>
 
-<div class="info-card">
-<h3>Status</h3>
-<p>
-Plano Ativo
-</p>
-</div>
+    Disponível para clientes MAX e SUPER.
 
-</div>
+  </p>
 
-<button
-class="btn-plano">
-Alterar Plano
-</button>
+  <button class="btn-upgrade">
+
+    Desbloquear Treino
+
+  </button>
+
+</section>
+
+<!-- CONSULTA -->
+
+<section class="consulta-card">
+
+  <h2>👨‍⚕️ Consulta com Nutricionista</h2>
+
+  <p class="preco-antigo">
+
+    R$ 559,99
+
+  </p>
+
+  <h1>
+
+    R$ 289,99
+
+  </h1>
+
+  <p>
+
+    Consulta individual completa.
+
+  </p>
+
+  <button class="btn-consulta">
+
+    Agendar Consulta
+
+  </button>
+
+</section>
+
+<!-- SUPORTE -->
+
+<section class="suporte-card">
+
+  <h2>💬 Suporte Nutri+</h2>
+
+  <p>
+
+    Tempo médio de resposta:
+    5 minutos.
+
+  </p>
+
+  <button class="btn-chat">
+
+    Abrir Chat
+
+  </button>
+
+</section>
+
+<!-- NOTÍCIAS / UPSELL -->
+
+<section class="news-card">
+
+  <h2>🚀 Recursos Premium</h2>
+
+  <div class="news-item">
+
+    <h3>
+
+      Quer um treino completo?
+
+    </h3>
+
+    <p>
+
+      Atualize para MAX e receba
+      treinos personalizados.
+
+    </p>
+
+  </div>
+
+  <div class="news-item">
+
+    <h3>
+
+      IA Nutricional
+
+    </h3>
+
+    <p>
+
+      Exclusiva do plano SUPER.
+
+    </p>
+
+  </div>
+
+  <div class="news-item">
+
+    <h3>
+
+      Consulta Nutricional
+
+    </h3>
+
+    <p>
+
+      Disponível para usuários SUPER.
+
+    </p>
+
+  </div>
+
+</section>
 
 </main>
 
