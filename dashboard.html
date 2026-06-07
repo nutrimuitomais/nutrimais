@@ -1,529 +1,589 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nutri+ | Painel Premium</title>
-    
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <style>
-        /* ==========================================================================
-           1. VARIÁVEIS DE CORES E CONFIGURAÇÕES
-           ========================================================================== */
-        :root {
-            --bg-main: #F6F8F7;
-            --bg-sidebar: #0B0E11;
-            --bg-card: #FFFFFF;
-            --text-main: #1A1F26;
-            --text-muted: #64748B;
-            --border-color: #E2E8F0;
-            
-            --brand-green: #1DB954;       
-            --neon-green: #00FFCC;        
-            
-            --carb-color: #3B82F6;
-            --protein-color: #EF4444;
-            --fat-color: #F59E0B;
-            
-            --radius-lg: 24px;
-            --radius-md: 16px;
-            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            --shadow: 0 15px 40px rgba(0, 0, 0, 0.03);
-        }
+<title>NUTRI+ Dashboard</title>
 
-        body.dark-mode {
-            --bg-main: #0B0E11;
-            --bg-sidebar: #050709;
-            --bg-card: #13181E;
-            --text-main: #F8FAFC;
-            --text-muted: #94A3B8;
-            --border-color: #1E293B;
-            --shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
-        }
+<link rel="stylesheet" href="dashboard.css">
 
-        /* ==========================================================================
-           2. RESETS E ESTRUTURA BASE (GRID DE 2 COLUNAS CONFORME A REFERÊNCIA)
-           ========================================================================== */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Inter', sans-serif;
-            -webkit-font-smoothing: antialiased;
-        }
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-        body {
-            background-color: var(--bg-main);
-            color: var(--text-main);
-            transition: var(--transition);
-        }
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 
-        .dashboard-container {
-            display: flex;
-            min-height: 100vh;
-        }
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 
-        /* BARRA LATERAL (SIDEBAR) */
-        .sidebar {
-            width: 100px;
-            background-color: var(--bg-sidebar);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            padding: 30px 0;
-            position: fixed;
-            height: 100vh;
-            border-right: 1px solid rgba(255, 255, 255, 0.05);
-        }
-
-        .logo-area {
-            color: #FFFFFF;
-            font-size: 20px;
-            font-weight: 800;
-            margin-bottom: 50px;
-        }
-        .logo-area span { color: var(--brand-green); }
-
-        .nav-menu {
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-            flex-grow: 1;
-        }
-
-        .nav-item {
-            width: 54px;
-            height: 54px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #8E9AA8;
-            text-decoration: none;
-            border-radius: var(--radius-md);
-            font-size: 20px;
-            transition: var(--transition);
-        }
-
-        .nav-item:hover, .nav-item.active {
-            color: #FFFFFF;
-            background-color: rgba(255, 255, 255, 0.08);
-        }
-
-        .nav-item.active {
-            background: linear-gradient(135deg, #FFDE6A, #BFF484);
-            color: #0B0E11;
-        }
-
-        /* ÁREA DE CONTEÚDO DA PÁGINA */
-        .main-content {
-            flex-grow: 1;
-            margin-left: 100px;
-            padding: 40px;
-            max-width: 1300px;
-            width: calc(100% - 100px);
-        }
-
-        /* TOPO (HEADER) */
-        .header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 35px;
-        }
-
-        .header-left h1 { font-size: 32px; font-weight: 700; letter-spacing: -0.8px; }
-        .header-left p { color: var(--text-muted); font-size: 15px; margin-top: 4px; }
-
-        .header-right { display: flex; align-items: center; gap: 15px; }
-        
-        .search-bar {
-            position: relative;
-            background-color: var(--bg-card);
-            border-radius: var(--radius-md);
-            padding: 0 15px;
-            display: flex;
-            align-items: center;
-            border: 1px solid var(--border-color);
-            box-shadow: var(--shadow);
-        }
-        .search-bar input {
-            border: none; background: transparent; height: 48px; width: 240px;
-            color: var(--text-main); font-size: 14px; outline: none; margin-left: 10px;
-        }
-
-        .icon-btn {
-            width: 48px; height: 48px; background-color: var(--bg-card);
-            border-radius: var(--radius-md); display: flex; align-items: center;
-            justify-content: center; border: 1px solid var(--border-color); cursor: pointer; box-shadow: var(--shadow);
-        }
-
-        /* SELETOR INTERATIVO DE PLANOS */
-        .plan-simulator-bar {
-            background: var(--bg-card);
-            border: 1px dashed var(--brand-green);
-            padding: 15px 25px;
-            border-radius: var(--radius-md);
-            margin-bottom: 30px;
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            box-shadow: var(--shadow);
-        }
-        .plan-simulator-bar button {
-            background: var(--bg-main); border: 1px solid var(--border-color);
-            padding: 10px 18px; border-radius: 10px; cursor: pointer;
-            font-weight: 600; color: var(--text-main); transition: var(--transition);
-        }
-        .plan-simulator-bar button.active-btn {
-            background-color: var(--brand-green); color: white; border-color: var(--brand-green);
-        }
-
-        /* ESTRUTURA DA GRID DE COLUNAS (.DIET) */
-        .layout-grid {
-            display: grid;
-            grid-template-columns: 2fr 1fr;
-            gap: 30px;
-        }
-
-        .left-column {
-            display: flex;
-            flex-direction: column;
-            gap: 30px;
-        }
-
-        .right-column {
-            display: flex;
-            flex-direction: column;
-            gap: 30px;
-        }
-
-        /* CARDS */
-        .card {
-            background-color: var(--bg-card);
-            border-radius: var(--radius-lg);
-            padding: 30px;
-            box-shadow: var(--shadow);
-            border: 1px solid var(--border-color);
-            position: relative;
-            overflow: hidden;
-        }
-
-        /* ==========================================================================
-           3. ESTILOS ESPECÍFICOS DOS CARDS (ORDENADOS CONFORME SOLICITADO)
-           ========================================================================== */
-        
-        /* CARD: DESAFIO 5 DIAS (VERDE) */
-        .challenge-card {
-            background-color: #E6F9F3;
-            border: none;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            min-height: 180px;
-        }
-        body.dark-mode .challenge-card { background-color: #122C24; }
-        .challenge-tag { background: #FFFFFF; padding: 6px 14px; border-radius: 20px; font-size: 12px; font-weight: 600; display: inline-block; margin-bottom: 12px; }
-        body.dark-mode .challenge-tag { background: var(--bg-card); }
-        .challenge-info h2 { font-size: 28px; font-weight: 700; letter-spacing: -0.5px; }
-        .round-action-btn { width: 50px; height: 50px; border-radius: 50%; background: #FFFFFF; border: none; font-size: 20px; cursor: pointer; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
-        body.dark-mode .round-action-btn { background: var(--bg-card); color: white; }
-
-        /* CARD: ATIVIDADE DIÁRIA (ESCURO) */
-        .activity-card {
-            background-color: #1A1F26;
-            color: #FFFFFF;
-            border: none;
-        }
-        .activity-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 20px; }
-        .activity-header h3 { font-size: 18px; font-weight: 600; color: #E2E8F0; }
-        .activity-header strong { font-size: 14px; color: #94A3B8; }
-        .chart-mock-svg {
-            height: 120px;
-            background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 100' preserveAspectRatio='none'%3E%3Cpath d='M0,75 Q40,85 80,45 T160,55 T240,25 T300,40' fill='none' stroke='%2300FFCC' stroke-width='4'/%3E%3Cpath d='M0,60 Q50,30 100,65 T200,45 T300,55' fill='none' stroke='%233B82F6' stroke-width='2' stroke-dasharray='4'/%3E%3C/svg%3E") no-repeat center center;
-            background-size: 100% 100%;
-            position: relative;
-        }
-        .chart-popover { position: absolute; top: 15px; right: 25%; background: #FFFFFF; color: #0B0E11; padding: 6px 12px; border-radius: 10px; font-size: 12px; font-weight: 700; text-align: center; }
-
-        /* CARD: RESUMO DIÁRIO (MACROS) */
-        .macro-row-container { display: flex; flex-direction: column; gap: 20px; margin-top: 15px; }
-        .macro-item-box { display: flex; align-items: center; gap: 15px; }
-        .macro-pill { width: 55px; height: 38px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 700; color: white; }
-        .macro-grow { flex-grow: 1; }
-        .macro-text-split { display: flex; justify-content: space-between; font-size: 14px; font-weight: 600; margin-bottom: 6px; }
-        .macro-text-split span:last-child { color: var(--text-muted); }
-        .progress-bar-track { height: 6px; background-color: var(--border-color); border-radius: 10px; overflow: hidden; }
-        .progress-bar-fill { height: 100%; border-radius: 10px; }
-
-        /* CARD: CALORIAS DIÁRIAS (REFEIÇÕES) */
-        .meal-stack { display: flex; flex-direction: column; gap: 12px; margin-top: 15px; }
-        .meal-row { padding: 20px; border-radius: var(--radius-md); display: flex; justify-content: space-between; align-items: center; }
-        .meal-blue { background-color: rgba(59, 130, 246, 0.05); }
-        .meal-green { background-color: rgba(29, 185, 84, 0.05); }
-        .meal-info h4 { font-size: 16px; font-weight: 700; }
-        .meal-info p { font-size: 13px; color: var(--text-muted); margin-top: 2px; }
-        .meal-right { display: flex; align-items: center; gap: 15px; }
-        .meal-right strong { font-size: 15px; }
-
-        /* CARD: CALENDÁRIO SIMPLIFICADO */
-        .calendar-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; }
-        .calendar-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 8px; text-align: center; font-size: 12px; }
-        .day-name { font-weight: 600; color: var(--text-muted); }
-        .day-num { padding: 8px 0; border-radius: 8px; cursor: pointer; font-weight: 500; }
-        .day-num.active-day { background-color: var(--bg-sidebar); color: #FFFFFF; font-weight: 700; }
-        body.dark-mode .day-num.active-day { background-color: var(--brand-green); color: #000; }
-
-        /* CARD: ORÇAMENTO DE CALORIAS (CIRCULAR) */
-        .budget-container { display: flex; flex-direction: column; align-items: center; padding: 10px 0; }
-        .circle-wrapper { position: relative; width: 150px; height: 150px; margin: 15px 0; }
-        .circle-svg { transform: rotate(-90deg); }
-        .circle-center-content { position: absolute; top: 0; left: 0; width: 100%; height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; }
-        .circle-center-content strong { font-size: 20px; font-weight: 700; }
-        .circle-center-content span { font-size: 12px; color: var(--text-muted); }
-
-        /* CARD: ÁGUA (BANNER IMAGEM/COR) */
-        .water-card { background: linear-gradient(135deg, #1E293B, #0F172A); color: white; display: flex; justify-content: space-between; align-items: center; border: none; }
-        .water-progress-ring { width: 50px; height: 50px; border-radius: 50%; border: 4px solid rgba(255,255,255,0.1); display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 700; border-top-color: var(--neon-green); }
-
-        /* ==========================================================================
-           4. SISTEMA DE TRAVAS INTELIGENTES DE PLANO (SOBREPOSIÇÃO)
-           ========================================================================== */
-        .lock-overlay {
-            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(255, 255, 255, 0.8); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
-            display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 12px;
-            padding: 20px; text-align: center; opacity: 0; visibility: hidden; z-index: 20; transition: var(--transition);
-        }
-        body.dark-mode .lock-overlay { background: rgba(19, 24, 30, 0.9); }
-        
-        /* Classe aplicada via JS para bloquear o card */
-        .card.card-bloqueado .lock-overlay { opacity: 1; visibility: visible; }
-        
-        .lock-text { font-size: 14px; font-weight: 700; color: var(--text-main); }
-        .lock-btn { background-color: var(--bg-sidebar); color: white; border: none; padding: 10px 16px; border-radius: 10px; font-size: 12px; font-weight: 600; cursor: pointer; }
-        body.dark-mode .lock-btn { background-color: var(--brand-green); color: black; }
-
-        /* CARD ESPECIAL: IA COACH INTEGRADO */
-        .ia-card { background: linear-gradient(135deg, #0D1527, #070A12); color: white; border: 1px solid rgba(0, 255, 204, 0.15); }
-        .ia-badge { color: var(--neon-green); font-size: 11px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; }
-        .ia-pulse-row { display: flex; align-items: center; gap: 10px; margin: 12px 0; }
-        .pulse-dot { width: 8px; height: 8px; background-color: var(--neon-green); border-radius: 50%; box-shadow: 0 0 10px var(--neon-green); }
-        .btn-ia { background-color: var(--neon-green); color: #000; border: none; width: 100%; padding: 12px; border-radius: 12px; font-weight: 700; cursor: pointer; margin-top: 15px; }
-
-        /* RESPONSIVIDADE COMPLETA */
-        @media (max-width: 1024px) {
-            .layout-grid { grid-template-columns: 1fr; }
-        }
-        @media (max-width: 768px) {
-            .sidebar { display: none; }
-            .main-content { margin-left: 0; padding: 20px; width: 100%; }
-        }
-    </style>
 </head>
+
 <body>
 
-    <div class="dashboard-container">
-        
-        <aside class="sidebar">
-            <div class="logo-area">.D<span>+</span></div>
-            <nav class="nav-menu">
-                <a href="#" class="nav-item active">🏠</a>
-                <a href="#" class="nav-item">🥗</a>
-                <a href="#" class="nav-item">📊</a>
-                <a href="#" class="nav-item">⚙️</a>
-            </nav>
-        </aside>
+<div class="dashboard-container">
 
-        <main class="main-content">
-            
-            <header class="header">
-                <div class="header-left">
-                    <h1>Olá, Vinicius 👋</h1>
-                    <p>Vamos começar a viver de forma saudável a partir de hoje.</p>
-                </div>
-                <div class="header-right">
-                    <div class="search-bar">
-                        <span>🔍</span>
-                        <input type="text" placeholder="Procurar alimentos, treinos...">
-                    </div>
-                    <button class="icon-btn">🔔</button>
-                    <button class="icon-btn" onclick="document.body.classList.toggle('dark-mode')">🌙</button>
-                </div>
-            </header>
+    <!-- SIDEBAR -->
 
-            <div class="plan-simulator-bar">
-                <strong>Nível de Acesso do Usuário:</strong>
-                <button id="btn-digital" onclick="mudarPlano('digital')">Plano Digital</button>
-                <button id="btn-max" onclick="mudarPlano('max')">Plano MAX</button>
-                <button id="btn-super" onclick="mudarPlano('super')">Plano SUPER</button>
+    <aside class="sidebar">
+
+        <div class="logo">
+            <h2>NUTRI+</h2>
+            <span>Premium Health</span>
+        </div>
+
+        <nav>
+
+            <a href="#">
+                <i class="fas fa-user"></i>
+                Meu Perfil
+            </a>
+
+            <a href="#">
+                <i class="fas fa-utensils"></i>
+                Minha Dieta
+            </a>
+
+            <a href="#">
+                <i class="fas fa-chart-line"></i>
+                Minha Evolução
+            </a>
+
+            <a href="#">
+                <i class="fas fa-stethoscope"></i>
+                Consulta Nutricionista
+            </a>
+
+            <a href="#">
+                <i class="fas fa-file-invoice"></i>
+                Faturas
+            </a>
+
+            <a href="#">
+                <i class="fas fa-crown"></i>
+                Planos
+            </a>
+
+            <a href="#" class="max-link">
+                Treino Personalizado
+                <span>MAX</span>
+            </a>
+
+            <a href="#" class="max-link">
+                Consulta Personal
+                <span>MAX</span>
+            </a>
+
+            <a href="#" class="max-link">
+                Receitas Premium
+                <span>MAX</span>
+            </a>
+
+            <a href="#" class="super-link">
+                IA Nutri Coach
+                <span>SUPER</span>
+            </a>
+
+            <a href="#" class="super-link">
+                Ajuste Inteligente
+                <span>SUPER</span>
+            </a>
+
+            <a href="#">
+                <i class="fas fa-comments"></i>
+                Chat Suporte
+            </a>
+
+            <a href="#" id="toggleTheme">
+                <i class="fas fa-moon"></i>
+                Modo Escuro / Claro
+            </a>
+
+            <a href="#">
+                <i class="fas fa-right-from-bracket"></i>
+                Sair
+            </a>
+
+        </nav>
+
+    </aside>
+
+    <!-- CONTEÚDO -->
+
+    <main class="main-content">
+
+        <!-- TOPO -->
+
+        <header class="topbar">
+
+            <div>
+
+                <h1>IA NUTRI+</h1>
+
+                <p id="textoIA">
+                    Analisando sua alimentação...
+                </p>
+
             </div>
 
-            <div class="layout-grid">
-                
-                <div class="left-column">
-                    
-                    <div class="card challenge-card">
-                        <div class="challenge-info">
-                            <span class="challenge-tag">Desafio dos 5 dias 🔥</span>
-                            <h2>Desafio Foco Total Semana</h2>
-                            <p style="font-size:14px; color:var(--text-muted); margin-top:4px;">🔥 +5 mil pessoas participando</p>
-                        </div>
-                        <button class="round-action-btn">→</button>
-                    </div>
+            <div class="profile-box">
 
-                    <div class="card activity-card">
-                        <div class="activity-header">
-                            <div>
-                                <h3>Atividade Diária</h3>
-                                <h2 style="font-size:28px; font-weight:700; margin-top:5px;">625 Kcal</h2>
-                            </div>
-                            <strong>Dezembro</strong>
-                        </div>
-                        <div class="chart-mock-svg">
-                            <div class="chart-popover">25%<br><span style="font-size:10px;font-weight:400;">19:00</span></div>
-                        </div>
-                    </div>
+                <img
+                src="https://i.pravatar.cc/300?img=12"
+                class="avatar"
+                onclick="toggleMenu()">
 
-                    <div class="card ia-card" id="card-ia-coach">
-                        <span class="ia-badge">🤖 IA Nutri Coach</span>
-                        <div class="ia-pulse-row">
-                            <div class="pulse-dot"></div>
-                            <p style="font-size:14px; color:#94A3B8;">Análise preditiva de macronutrientes ativa.</p>
-                        </div>
-                        <button class="btn-ia">Iniciar Chat Inteligente</button>
-                        
-                        <div class="lock-overlay">
-                            <div class="lock-text">🔒 Conteúdo exclusivo para assinantes do Plano SUPER.</div>
-                            <button class="lock-btn">Fazer Upgrade para SUPER</button>
-                        </div>
-                    </div>
+                <div class="profile-menu" id="profileMenu">
 
-                    <div class="card">
-                        <h3>Resumo Diário</h3>
-                        <div class="macro-row-container">
-                            <div class="macro-item-box">
-                                <div class="macro-pill" style="background-color: var(--carb-color);">54g</div>
-                                <div class="macro-grow">
-                                    <div class="macro-text-split"><span>Carboidratos</span><span>25%</span></div>
-                                    <div class="progress-bar-track"><div class="progress-bar-fill" style="background-color: var(--carb-color); width: 25%;"></div></div>
-                                </div>
-                            </div>
-                            <div class="macro-item-box">
-                                <div class="macro-pill" style="background-color: var(--protein-color);">16.2g</div>
-                                <div class="macro-grow">
-                                    <div class="macro-text-split"><span>Proteínas</span><span>25%</span></div>
-                                    <div class="progress-bar-track"><div class="progress-bar-fill" style="background-color: var(--protein-color); width: 50%;"></div></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    <a href="#">Meu Perfil</a>
+                    <a href="#">Minha Dieta</a>
+                    <a href="#">Minha Evolução</a>
+                    <a href="#">Consulta Nutricionista</a>
+                    <a href="#">Faturas</a>
+                    <a href="#">Planos</a>
 
-                    <div class="card" id="card-receitas-premium">
-                        <h3>Calorias Diárias</h3>
-                        <div class="meal-stack">
-                            <div class="meal-row meal-blue">
-                                <div class="meal-info">
-                                    <h4>Café da Manhã</h4>
-                                    <p>Cereal matinal com leite desnatado</p>
-                                </div>
-                                <div class="meal-right"><strong>240 Kcal</strong><button class="round-action-btn">→</button></div>
-                            </div>
-                            <div class="meal-row meal-green">
-                                <div class="meal-info">
-                                    <h4>Almoço</h4>
-                                    <p>Salada de folhas verdes com frango grelhado</p>
-                                </div>
-                                <div class="meal-right"><strong>240 Kcal</strong><button class="round-action-btn">→</button></div>
-                            </div>
-                        </div>
+                    <hr>
 
-                        <div class="lock-overlay">
-                            <div class="lock-text">🔒 Cronograma detalhado disponível a partir do Plano MAX.</div>
-                            <button class="lock-btn">Fazer Upgrade para MAX</button>
-                        </div>
-                    </div>
+                    <a href="#">
+                        Treino Personalizado
+                        <span>MAX</span>
+                    </a>
 
-                </div>
+                    <a href="#">
+                        Consulta Personal
+                        <span>MAX</span>
+                    </a>
 
-                <div class="right-column">
-                    
-                    <div class="card">
-                        <div class="calendar-header">
-                            <strong style="font-size:16px;">Dezembro</strong>
-                            <span style="font-size:13px; color:var(--text-muted); cursor:pointer;">‹ &nbsp; ›</span>
-                        </div>
-                        <div class="calendar-grid">
-                            <span class="day-name">Do</span><span class="day-name">Se</span><span class="day-name">Te</span><span class="day-name">Qu</span><span class="day-name">Qu</span><span class="day-name">Se</span><span class="day-name">Sa</span>
-                            <span class="day-num">24</span><span class="day-num">25</span><span class="day-num">26</span><span class="day-num">27</span><span class="day-num active-day">28</span><span class="day-num">29</span><span class="day-num">30</span>
-                        </div>
-                    </div>
+                    <a href="#">
+                        Receitas Premium
+                        <span>MAX</span>
+                    </a>
 
-                    <div class="card">
-                        <h3 style="text-align: center;">Orçamento de Calorias</h3>
-                        <div class="budget-container">
-                            <div class="circle-wrapper">
-                                <svg class="circle-svg" width="150" height="150">
-                                    <circle stroke="var(--border-color)" stroke-width="10" fill="transparent" r="65" cx="75" cy="75"/>
-                                    <circle stroke="var(--brand-green)" stroke-width="10" stroke-dasharray="408.4" stroke-dashoffset="120" fill="transparent" r="65" cx="75" cy="75" stroke-linecap="round"/>
-                                </svg>
-                                <div class="circle-center-content">
-                                    <span>🥑</span>
-                                    <strong>750 Kcal</strong>
-                                    <span style="font-size:11px;">Restantes</span>
-                                </div>
-                            </div>
-                            <span style="font-size:12px; color:var(--text-muted); font-weight:500;">Minhas Análises</span>
-                        </div>
-                    </div>
+                    <hr>
 
-                    <div class="card water-card">
-                        <div>
-                            <h4 style="font-size:16px; font-weight:700;">Beba 10 Copos</h4>
-                            <p style="font-size:12px; color:#94A3B8; margin-top:2px;">Meta: 06:00 às 18:00</p>
-                        </div>
-                        <div class="water-progress-ring">80%</div>
-                    </div>
+                    <a href="#">
+                        IA Nutri Coach
+                        <span>SUPER</span>
+                    </a>
+
+                    <a href="#">
+                        Ajuste Inteligente
+                        <span>SUPER</span>
+                    </a>
+
+                    <hr>
+
+                    <a href="#">Chat Suporte</a>
+                    <a href="#">Configurações</a>
+                    <a href="#">Modo Escuro</a>
+                    <a href="#">Sair</a>
 
                 </div>
 
             </div>
-        </main>
-    </div>
 
-    <script>
-        function mudarPlano(plano Selecionado) {
-            // Remove a classe ativa de todos os botões do simulador
-            document.getElementById('btn-digital').classList.remove('active-btn');
-            document.getElementById('btn-max').classList.remove('active-btn');
-            document.getElementById('btn-super').classList.remove('active-btn');
-            
-            // Elementos dos Cards que possuem travas
-            const cardIa = document.getElementById('card-ia-coach');
-            const cardDieta = document.getElementById('card-receitas-premium');
+        </header>
 
-            // Ativa o botão correto e gerencia as travas visuais em tempo real
-            if (planoSelecionado === 'digital') {
-                document.getElementById('btn-digital').classList.add('active-btn');
-                cardIa.classList.add('card-bloqueado'); // Bloqueia IA
-                cardDieta.classList.add('card-bloqueado'); // Bloqueia Dieta detalhada
-            } 
-            else if (planoSelecionado === 'max') {
-                document.getElementById('btn-max').classList.add('active-btn');
-                cardIa.classList.add('card-bloqueado'); // Bloqueia IA
-                cardDieta.classList.remove('card-bloqueado'); // Libera Dieta
-            } 
-            else if (planoSelecionado === 'super') {
-                document.getElementById('btn-super').classList.add('active-btn');
-                cardIa.classList.remove('card-bloqueado'); // Libera tudo
-                cardDieta.classList.remove('card-bloqueado');
-            }
-        }
+        <!-- HERO IA -->
 
-        // Inicializa o sistema configurado no Plano MAX por padrão
-        mudarPlano('max');
-    </script>
+        <section class="hero-card">
+
+            <div>
+
+                <h2>Olá, Vinicius 👋</h2>
+
+                <p>
+                    Sua alimentação está sendo monitorada
+                    pela IA Nutri+
+                </p>
+
+            </div>
+
+            <div class="ia-orb">
+                IA
+            </div>
+
+        </section>
+
+        <!-- CARDS RESUMO -->
+
+        <section class="dashboard-grid">
+
+            <div class="card">
+
+                <h3>Calorias</h3>
+
+                <div class="big-number">
+                    2200
+                </div>
+
+                <span>Meta diária</span>
+
+            </div>
+
+            <div class="card">
+
+                <h3>Proteínas</h3>
+
+                <div class="progress">
+
+                    <div style="width:80%"></div>
+
+                </div>
+
+                <span>120g / 150g</span>
+
+            </div>
+
+            <div class="card">
+
+                <h3>Carboidratos</h3>
+
+                <div class="progress">
+
+                    <div style="width:70%"></div>
+
+                </div>
+
+                <span>180g / 220g</span>
+
+            </div>
+
+            <div class="card">
+
+                <h3>Gorduras</h3>
+
+                <div class="progress">
+
+                    <div style="width:75%"></div>
+
+                </div>
+
+                <span>45g / 60g</span>
+
+            </div>
+
+        </section>
+
+                <!-- EVOLUÇÃO -->
+
+        <section class="card evolution-card">
+
+            <h3>📈 Evolução de Peso</h3>
+
+            <div class="weight-info">
+
+                <div>
+                    <strong>92kg</strong>
+                    <span>Inicial</span>
+                </div>
+
+                <div>
+                    <strong>88kg</strong>
+                    <span>Atual</span>
+                </div>
+
+                <div>
+                    <strong>84kg</strong>
+                    <span>Meta</span>
+                </div>
+
+            </div>
+
+            <div class="progress">
+
+                <div style="width:70%"></div>
+
+            </div>
+
+            <p>70% concluído</p>
+
+        </section>
+
+        <!-- DIETA -->
+
+        <section class="card diet-card">
+
+            <h3>🥗 Dieta de Hoje</h3>
+
+            <div class="meal">
+
+                <h4>Café da Manhã</h4>
+
+                <p>4 ovos inteiros</p>
+                <p>100g pão integral</p>
+                <p>1 banana</p>
+
+            </div>
+
+            <div class="meal">
+
+                <h4>Almoço</h4>
+
+                <p>300g frango grelhado</p>
+                <p>150g arroz integral</p>
+                <p>100g feijão</p>
+                <p>Salada à vontade</p>
+
+            </div>
+
+        </section>
+
+        <!-- CONSULTA NUTRICIONISTA -->
+
+        <section class="premium-card">
+
+            <img
+            src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=1200">
+
+            <div class="premium-content">
+
+                <h3>👨‍⚕️ CONSULTA NUTRICIONISTA</h3>
+
+                <p class="old-price">
+                    De R$459,99
+                </p>
+
+                <h2>Por R$298,99</h2>
+
+                <ul>
+
+                    <li>✓ 24h de suporte</li>
+                    <li>✓ Nutricionista parceiro</li>
+                    <li>✓ Plano ajustável</li>
+                    <li>✓ Retorno programado</li>
+
+                </ul>
+
+                <button id="btnConsulta">
+                    AGENDAR CONSULTA
+                </button>
+
+            </div>
+
+        </section>
+
+        <!-- CONSULTA PERSONAL -->
+
+        <section class="premium-card">
+
+            <img
+            src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=1200">
+
+            <div class="premium-content">
+
+                <h3>🏋️ CONSULTA PERSONAL</h3>
+
+                <span class="max-badge">
+                    MAX
+                </span>
+
+                <ul>
+
+                    <li>✓ Avaliação física</li>
+                    <li>✓ Planejamento de treino</li>
+                    <li>✓ Correção de exercícios</li>
+                    <li>✓ Suporte especializado</li>
+
+                </ul>
+
+                <button id="btnPersonal">
+                    AGENDAR PERSONAL
+                </button>
+
+            </div>
+
+        </section>
+
+        <!-- TREINO -->
+
+        <section class="premium-card">
+
+            <img
+            src="https://images.unsplash.com/photo-1517836357463-d25dfeac3438?w=1200">
+
+            <div class="premium-content">
+
+                <h3>🏋️ TREINO PERSONALIZADO</h3>
+
+                <span class="max-badge">
+                    MAX
+                </span>
+
+                <ul>
+
+                    <li>✓ Emagrecimento</li>
+                    <li>✓ Hipertrofia</li>
+                    <li>✓ Condicionamento</li>
+                    <li>✓ Atualizações mensais</li>
+
+                </ul>
+
+                <button id="btnTreino">
+                    GERAR TREINO
+                </button>
+
+            </div>
+
+        </section>
+
+        <!-- RECEITAS -->
+
+        <section class="recipes-grid">
+
+            <div class="recipe-card">
+
+                <h3>🍳 OMELETE FIT</h3>
+
+                <p>290 kcal</p>
+                <p>26g proteína</p>
+                <p>12g carbo</p>
+                <p>15g gordura</p>
+
+                <button onclick="abrirReceita()">
+                    VER RECEITA
+                </button>
+
+            </div>
+
+            <div class="recipe-card">
+
+                <h3>🍗 FRANGO FIT</h3>
+
+                <p>780 kcal</p>
+                <p>68g proteína</p>
+                <p>42g carbo</p>
+                <p>12g gordura</p>
+
+                <button onclick="abrirReceita()">
+                    VER RECEITA
+                </button>
+
+            </div>
+
+        </section>
+
+        <!-- MODAL RECEITA -->
+
+        <div class="modal" id="modalReceita">
+
+            <div class="modal-content">
+
+                <h2>OMELETE FIT</h2>
+
+                <h4>Ingredientes</h4>
+
+                <p>3 ovos inteiros</p>
+                <p>150g frango desfiado</p>
+                <p>20g queijo light</p>
+                <p>100g tomate</p>
+
+                <hr>
+
+                <h4>Valores Nutricionais</h4>
+
+                <p>290 kcal</p>
+                <p>26g proteína</p>
+                <p>12g carbo</p>
+                <p>15g gordura</p>
+
+                <button onclick="fecharReceita()">
+                    FECHAR
+                </button>
+
+            </div>
+
+        </div>
+
+        <!-- IA NUTRI -->
+
+        <section class="card ia-card">
+
+            <div class="ia-core">
+                IA
+            </div>
+
+            <h2>🤖 IA NUTRI COACH</h2>
+
+            <p id="iaStatus">
+                Analisando dieta...
+            </p>
+
+            <span class="super-badge">
+                SUPER
+            </span>
+
+        </section>
+
+        <!-- SUPORTE -->
+
+        <section class="card support-card">
+
+            <h3>💬 SUPORTE NUTRI+</h3>
+
+            <p>Digital → até 20 min</p>
+            <p>MAX → até 5 min</p>
+            <p>SUPER → até 2 min</p>
+
+            <button id="btnSuporte">
+                ABRIR CHAT
+            </button>
+
+        </section>
+
+        <!-- NOTÍCIAS PREMIUM -->
+
+        <section class="news-grid">
+
+            <div class="news-card">
+
+                <img src="https://images.unsplash.com/photo-1518611012118-696072aa579a?w=1200">
+
+                <h4>🏋️ Treinos Personalizados</h4>
+
+                <p>Disponível no MAX</p>
+
+                <button>
+                    CONHECER MAX
+                </button>
+
+            </div>
+
+            <div class="news-card">
+
+                <img src="https://images.unsplash.com/photo-1490645935967-10de6ba17061?w=1200">
+
+                <h4>🥗 Mais de 100 Receitas</h4>
+
+                <p>Exclusivo MAX</p>
+
+                <button>
+                    VER BENEFÍCIOS
+                </button>
+
+            </div>
+
+            <div class="news-card">
+
+                <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?w=1200">
+
+                <h4>🤖 IA Nutri Coach</h4>
+
+                <p>Exclusivo SUPER</p>
+
+                <button>
+                    CONHECER SUPER
+                </button>
+
+            </div>
+
+        </section>
+
+    </main>
+
+</div>
+
+<script src="dashboard.js"></script>
+
 </body>
 </html>
