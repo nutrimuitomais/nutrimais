@@ -1,339 +1,166 @@
-// =========================
-// NUTRI+ DASHBOARD
-// =========================
-
-const usuario = JSON.parse(
-  localStorage.getItem("nutri_usuario")
-) || {
-  email: "paciente@nutri.com",
-  plano: "Digital"
-};
-
-const plano = usuario.plano.toUpperCase();
-
-// NOME
-const nome = usuario.email.split("@")[0];
-
-document.querySelectorAll(".nome-usuario").forEach(el=>{
-  el.innerText = nome;
-});
-
-// BADGE PLANO
-const badge = document.getElementById("badgePlano");
-
-if(plano.includes("SUPER")){
-  badge.innerHTML = "👑 SUPER";
-  badge.className = "badge badge-super";
-}
-else if(plano.includes("MAX")){
-  badge.innerHTML = "🥈 MAX";
-  badge.className = "badge badge-max";
-}
-else{
-  badge.innerHTML = "🌱 DIGITAL";
-  badge.className = "badge badge-digital";
-}
-
-// =========================
+// ============================
 // MENU PERFIL
-// =========================
-
-function toggleMenu(){
-  document
-  .getElementById("menuPerfil")
-  .classList
-  .toggle("ativo");
+// ============================
+function toggleMenu() {
+    document.getElementById("menuPerfil").classList.toggle("ativo");
 }
 
-window.onclick = function(e){
+document.addEventListener("click", function(e){
+    const menu = document.getElementById("menuPerfil");
+    const avatar = document.querySelector(".avatar");
 
-  if(
-    !e.target.closest(".perfil-area")
-  ){
-    const menu =
-    document.getElementById(
-      "menuPerfil"
-    );
-
-    if(menu){
-      menu.classList.remove("ativo");
+    if(menu && avatar){
+        if(!menu.contains(e.target) && !avatar.contains(e.target)){
+            menu.classList.remove("ativo");
+        }
     }
-  }
-
-}
-
-// =========================
-// BLOQUEIOS PREMIUM
-// =========================
-
-document
-.querySelectorAll(".max-only")
-.forEach(card=>{
-
-  if(
-    !plano.includes("MAX") &&
-    !plano.includes("SUPER")
-  ){
-
-    card.classList.add("bloqueado");
-
-  }
-
 });
 
-document
-.querySelectorAll(".super-only")
-.forEach(card=>{
-
-  if(
-    !plano.includes("SUPER")
-  ){
-
-    card.classList.add("bloqueado");
-
-  }
-
-});
-
-// =========================
-// CALORIAS
-// =========================
-
-const metaCalorias = 2200;
-const caloriasConsumidas = 1760;
-
-const porcentagemCalorias =
-(caloriasConsumidas/metaCalorias)*100;
-
-const circulo =
-document.getElementById(
-"circuloCalorias"
-);
-
-if(circulo){
-
-  circulo.style.background =
-  `conic-gradient(
-    #00f7ff ${porcentagemCalorias}%,
-    rgba(255,255,255,.08)
-    ${porcentagemCalorias}%
-  )`;
-
-}
-
-const txtCalorias =
-document.getElementById(
-"txtCalorias"
-);
-
-if(txtCalorias){
-
-txtCalorias.innerHTML =
-`${caloriasConsumidas}
-<span>de ${metaCalorias}</span>`;
-
-}
-
-// =========================
-// MACROS
-// =========================
-
-function atualizarMacro(
-barra,
-texto,
-atual,
-meta
-){
-
-const porcentagem =
-(atual/meta)*100;
-
-document
-.getElementById(barra)
-.style.width =
-porcentagem+"%";
-
-document
-.getElementById(texto)
-.innerText =
-`${atual}g / ${meta}g`;
-
-}
-
-atualizarMacro(
-"barraProteina",
-"txtProteina",
-120,
-150
-);
-
-atualizarMacro(
-"barraCarbo",
-"txtCarbo",
-180,
-220
-);
-
-atualizarMacro(
-"barraGordura",
-"txtGordura",
-45,
-60
-);
-
-// =========================
-// PROGRESSO PESO
-// =========================
-
-const pesoInicial = 92;
-const pesoAtual = 88;
-const pesoMeta = 84;
-
-const total =
-pesoInicial-pesoMeta;
-
-const perdido =
-pesoInicial-pesoAtual;
-
-const progresso =
-Math.round(
-(perdido/total)*100
-);
-
-const barraPeso =
-document.getElementById(
-"barraPeso"
-);
-
-if(barraPeso){
-
-barraPeso.style.width =
-progresso+"%";
-
-}
-
-const txtPeso =
-document.getElementById(
-"txtProgressoPeso"
-);
-
-if(txtPeso){
-
-txtPeso.innerText =
-`${progresso}%`;
-
-}
-
-// =========================
+// ============================
 // RECEITA
-// =========================
-
-function abrirReceita(){
-
-const texto = `
-OMELETE FIT
-
-✓ 3 ovos
-
-✓ 50g queijo minas
-
-✓ 30g aveia
-
-✓ 1 banana
-
-Macronutrientes:
-
-290 kcal
-
-26g proteína
-
-12g carboidrato
-
-15g gordura
-`;
-
-alert(texto);
-
+// ============================
+function abrirReceita() {
+    document.getElementById("modalReceita").style.display = "flex";
 }
 
-// =========================
-// CONSULTA
-// =========================
-
-function agendarConsulta(){
-
-alert(
-"Redirecionando para agendamento da consulta nutricional."
-);
-
+function fecharReceita() {
+    document.getElementById("modalReceita").style.display = "none";
 }
 
-// =========================
-// PERSONAL
-// =========================
-
-function agendarPersonal(){
-
-if(
-!plano.includes("MAX") &&
-!plano.includes("SUPER")
-){
-
-alert(
-"Função disponível apenas para assinantes MAX ou SUPER."
-);
-
-return;
-
+// ============================
+// CONSULTA NUTRICIONAL
+// ============================
+function agendarConsulta() {
+    alert("Redirecionando para agendamento da consulta nutricional.");
 }
 
-alert(
-"Redirecionando para Personal Trainer."
-);
+// ============================
+// PERSONAL MAX
+// ============================
+function gerarTreino() {
 
+    const plano = localStorage.getItem("plano") || "DIGITAL";
+
+    if (
+        plano !== "MAX" &&
+        plano !== "SUPER"
+    ) {
+        alert("Função disponível apenas para assinantes MAX ou SUPER.");
+        return;
+    }
+
+    alert("Treino personalizado gerado com sucesso!");
 }
 
-// =========================
+// ============================
 // CHAT SUPORTE
-// =========================
+// ============================
+function abrirSuporte() {
 
-function abrirSuporte(){
+    const plano = localStorage.getItem("plano") || "DIGITAL";
 
-if(plano.includes("SUPER")){
-
-alert(
-"Tempo médio de resposta: 2 minutos."
-);
-
-}
-else if(plano.includes("MAX")){
-
-alert(
-"Tempo médio de resposta: 5 minutos."
-);
-
-}
-else{
-
-alert(
-"Tempo médio de resposta: 20 minutos."
-);
-
+    if(plano === "SUPER"){
+        alert("Tempo médio de atendimento: 2 minutos.");
+    }
+    else if(plano === "MAX"){
+        alert("Tempo médio de atendimento: 5 minutos.");
+    }
+    else{
+        alert("Tempo médio de atendimento: 20 minutos.");
+    }
 }
 
+// ============================
+// MODO ESCURO / CLARO
+// ============================
+function alternarTema(){
+
+    document.body.classList.toggle("light");
+
+    if(document.body.classList.contains("light")){
+        localStorage.setItem("tema","light");
+    }else{
+        localStorage.setItem("tema","dark");
+    }
 }
 
-// =========================
-// SAIR
-// =========================
+window.addEventListener("load", ()=>{
 
-function sair(){
+    const tema = localStorage.getItem("tema");
 
-localStorage.removeItem(
-"nutri_usuario"
-);
+    if(tema === "light"){
+        document.body.classList.add("light");
+    }
 
-window.location.href =
-"login.html";
+});
 
-}
+// ============================
+// ANIMAÇÃO IA
+// ============================
+const textosIA = [
+    "Analisando dieta...",
+    "Calculando calorias...",
+    "Comparando evolução...",
+    "Ajustando macros...",
+    "Gerando recomendações..."
+];
+
+let indiceIA = 0;
+
+setInterval(()=>{
+
+    const elemento = document.getElementById("textoIA");
+
+    if(elemento){
+
+        indiceIA++;
+
+        if(indiceIA >= textosIA.length){
+            indiceIA = 0;
+        }
+
+        elemento.innerText = textosIA[indiceIA];
+    }
+
+},2500);
+
+// ============================
+// BOTÕES PREMIUM
+// ============================
+document.addEventListener("DOMContentLoaded", ()=>{
+
+    const consultaBtn =
+        document.getElementById("btnConsulta");
+
+    if(consultaBtn){
+        consultaBtn.addEventListener(
+            "click",
+            agendarConsulta
+        );
+    }
+
+    const treinoBtn =
+        document.getElementById("btnTreino");
+
+    if(treinoBtn){
+        treinoBtn.addEventListener(
+            "click",
+            gerarTreino
+        );
+    }
+
+});
+
+// ============================
+// FECHAR MODAL AO CLICAR FORA
+// ============================
+window.onclick = function(event){
+
+    const modal =
+        document.getElementById("modalReceita");
+
+    if(event.target === modal){
+        modal.style.display = "none";
+    }
+
+};
