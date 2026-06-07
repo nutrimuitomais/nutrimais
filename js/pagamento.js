@@ -32,6 +32,16 @@ hero.style.backgroundSize = "200% 200%";
 document.getElementById("nomePlano").innerText =
 plano.nome;
 
+const nomePlano = document.getElementById("nomePlano");
+
+if(plano.nome.includes("MAX")){
+  nomePlano.classList.add("plano-premium-prata");
+}
+
+if(plano.nome.includes("SUPER")){
+  nomePlano.classList.add("plano-premium-dourado");
+}
+
 document.getElementById("tipoPlano").innerText =
 plano.tipo === "anual"
 ? "Assinatura anual"
