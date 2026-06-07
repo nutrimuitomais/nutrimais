@@ -29,12 +29,10 @@ hero.style.backgroundSize = "200% 200%";
 
 /* DADOS DO PLANO */
 
-const nomePlano =
-document.getElementById("nomePlano");
+const nomePlano = document.getElementById("nomePlano");
 
 nomePlano.innerText = plano.nome;
 
-/* Reseta classes */
 nomePlano.classList.remove("prata","dourado");
 
 if(plano.nome.includes("Max")){
@@ -44,6 +42,8 @@ else if(plano.nome.includes("Super")){
   nomePlano.classList.add("dourado");
 }
 else{
+  nomePlano.style.background = "none";
+  nomePlano.style.webkitTextFillColor = "#ffffff";
   nomePlano.style.color = "#ffffff";
 }
 
