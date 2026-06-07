@@ -191,3 +191,57 @@ animation:gradienteIA 4s ease infinite;
   position:relative;
   z-index:1;
 }
+
+/* MENU SEMPRE NA FRENTE */
+.perfil-area{
+  position:relative;
+  z-index:9999;
+}
+
+.menu-perfil{
+  z-index:99999;
+}
+
+/* CARDS ATRÁS DO MENU */
+.card-boas-vindas,
+.grid-cards,
+.info-card{
+  position:relative;
+  z-index:1;
+}
+
+/* BADGE DO PLANO */
+.badge-plano{
+  display:inline-block;
+  padding:8px 18px;
+  border-radius:999px;
+  font-weight:700;
+  color:#fff;
+  margin-top:10px;
+}
+
+.plano-digital{
+  background:#1db954;
+}
+
+.plano-max{
+  background:
+  linear-gradient(
+    120deg,
+    #bfc5cc,
+    #e7ebef,
+    #aab2ba
+  );
+  color:#333;
+}
+
+.plano-super{
+  background:
+  linear-gradient(
+    120deg,
+    #caa54d,
+    #f4d67a,
+    #b88b2f
+  );
+  color:#fff;
+}
