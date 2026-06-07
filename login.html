@@ -1,22 +1,48 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <title>Login</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="css/estilo.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Login - Nutri+</title>
+<link rel="stylesheet" href="css/login.css">
 </head>
 <body>
 
-<div class="container">
-  <h1>Acessar Portal</h1>
+<div class="login-container">
 
-  <input type="email" id="email" placeholder="E-mail">
-  <input type="password" id="senha" placeholder="Senha">
+  <div class="login-card">
 
-  <button class="btn" onclick="login()">Entrar</button>
+    <h1>Nutri+</h1>
+
+    <p class="subtitulo">
+      Entre na sua conta
+    </p>
+
+    <input
+      type="email"
+      id="email"
+      placeholder="Seu Gmail">
+
+    <input
+      type="password"
+      id="senha"
+      placeholder="Sua senha">
+
+    <button
+      class="btn-login"
+      onclick="fazerLogin()">
+      Entrar
+    </button>
+
+    <a href="recuperar-senha.html" class="link">
+      Esqueci minha senha
+    </a>
+
+  </div>
+
 </div>
 
-<script src="js/auth.js"></script>
+<script src="js/login.js"></script>
+
 </body>
 </html>
