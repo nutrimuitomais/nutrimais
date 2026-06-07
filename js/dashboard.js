@@ -4,92 +4,95 @@ localStorage.getItem("nutri_usuario")
 );
 
 if(!usuario){
-  window.location.href =
-  "login.html";
+window.location.href = "login.html";
 }
 
 /* DADOS */
 
-document.getElementById(
-"nomeUsuario"
-).innerText =
+document.getElementById("nomeUsuario").innerText =
 usuario.email || "Paciente";
 
-document.getElementById(
-"planoAtual"
-).innerText =
-usuario.plano || "Plano não encontrado";
-
-document.getElementById(
-"objetivoAtual"
-).innerText =
-usuario.objetivo || "Não definido";
-
-/* MENU PERFIL */
+/* MENU */
 
 function toggleMenu(){
-
-  document
-  .getElementById("menuPerfil")
-  .classList
-  .toggle("ativo");
-
+document
+.getElementById("menuPerfil")
+.classList.toggle("ativo");
 }
 
-/* FECHAR MENU AO CLICAR FORA */
+/* PLANO */
 
-document.addEventListener(
-"click",
-function(e){
+const badge =
+document.getElementById("badgePlano");
 
-const menu =
-document.getElementById(
-"menuPerfil"
-);
+if(badge){
 
-const avatar =
-document.querySelector(
-".avatar"
-);
-
-if(
-!menu.contains(e.target)
-&&
-e.target !== avatar
-){
-menu.classList.remove(
-"ativo"
-);
+if(usuario.plano?.includes("SUPER")){
+badge.innerText = "PLANO SUPER";
+badge.className =
+"badge-plano plano-super";
+}
+else if(usuario.plano?.includes("MAX")){
+badge.innerText = "PLANO MAX";
+badge.className =
+"badge-plano plano-max";
+}
+else{
+badge.innerText = "PLANO DIGITAL";
+badge.className =
+"badge-plano";
 }
 
 }
-);
 
-/* SAIR */
+/* DIETA */
 
-const links =
-document.querySelectorAll(
-".menu-perfil a"
-);
+const refeicoes =
+document.querySelectorAll(".refeicao p");
 
-links.forEach(link=>{
+const dietaBase = [
+"2 ovos + banana + café sem açúcar",
+"Iogurte + castanhas",
+"Arroz + frango + salada",
+"Fruta + whey protein",
+"Peixe + legumes"
+];
 
-if(
-link.innerText.trim() === "Sair"
-){
-
-link.addEventListener(
-"click",
-function(){
-
-localStorage.removeItem(
-"acessoLiberado"
-);
-
-}
-
-);
-
-}
-
+refeicoes.forEach((item,index)=>{
+item.innerText = dietaBase[index];
 });
+
+/* FUNÇÕES PREMIUM */
+
+const treinoCard =
+document.getElementById("treinoCard");
+
+if(treinoCard){
+
+if(
+usuario.plano?.includes("MAX") ||
+usuario.plano?.includes("SUPER")
+){
+treinoCard.style.display = "block";
+}
+else{
+treinoCard.style.display = "none";
+}
+
+}
+
+const superCard =
+document.getElementById("superCard");
+
+if(superCard){
+
+if(
+usuario.plano?.includes("SUPER")
+){
+superCard.style.display = "block";
+}
+else{
+superCard.style.display = "none";
+}
+
+}
