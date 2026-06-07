@@ -4,10 +4,686 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nutri+ | Prático e Inteligente</title>
+    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="dashboard.css">
+
+    <style>
+        /* ==========================================================================
+           1. VARIÁVEIS DE ESTILO & CONFIGURAÇÃO CORE (Tons SaaS Premium e Neon)
+           ========================================================================== */
+        :root {
+            --bg-main: #F6F8F7;
+            --bg-sidebar: #0B0E11;
+            --bg-card: #FFFFFF;
+            --text-main: #1A1F26;
+            --text-muted: #64748B;
+            --border-color: #E2E8F0;
+            
+            --brand-green: #1DB954;       
+            --neon-green: #00FFCC;        
+            --plan-digital: #64748B;      
+            --plan-max: #BFC7D1;          
+            --plan-super: #D4AF37;         
+            
+            --carb-color: #3B82F6;
+            --protein-color: #EF4444;
+            --fat-color: #F59E0B;
+            
+            --radius-lg: 24px;
+            --radius-md: 16px;
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            --shadow: 0 15px 40px rgba(0, 0, 0, 0.04);
+        }
+
+        body.dark-mode {
+            --bg-main: #0B0E11;
+            --bg-sidebar: #050709;
+            --bg-card: #13181E;
+            --text-main: #F8FAFC;
+            --text-muted: #94A3B8;
+            --border-color: #1E293B;
+            --shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        /* ==========================================================================
+           2. RESETS E REGRAS GERAIS DE LAYOUT
+           ========================================================================== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        body {
+            background-color: var(--bg-main);
+            color: var(--text-main);
+            transition: background-color 0.3s, color 0.3s;
+            overflow-x: hidden;
+        }
+
+        .dashboard-container {
+            display: flex;
+            min-height: 100vh;
+        }
+
+        /* ==========================================================================
+           3. SIDEBAR DESKTOP
+           ========================================================================== */
+        .sidebar {
+            width: 260px;
+            background-color: var(--bg-sidebar);
+            display: flex;
+            flex-direction: column;
+            padding: 30px 20px;
+            position: fixed;
+            height: 100vh;
+            z-index: 100;
+            border-right: 1px solid rgba(255, 255, 255, 0.05);
+            transition: var(--transition);
+        }
+
+        .logo-container {
+            padding-bottom: 40px;
+            padding-left: 10px;
+        }
+
+        .logo-text {
+            color: #FFFFFF;
+            font-size: 24px;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+        }
+
+        .logo-text span {
+            color: var(--brand-green);
+        }
+
+        .nav-menu {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            flex-grow: 1;
+        }
+
+        .nav-item {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            color: #8E9AA8;
+            text-decoration: none;
+            padding: 14px 16px;
+            border-radius: var(--radius-md);
+            font-size: 15px;
+            font-weight: 500;
+            transition: var(--transition);
+        }
+
+        .nav-item:hover, .nav-item.active {
+            color: #FFFFFF;
+            background-color: rgba(255, 255, 255, 0.08);
+        }
+
+        .nav-item.active {
+            background-color: var(--brand-green);
+            color: #FFFFFF;
+            box-shadow: 0 8px 20px rgba(29, 185, 84, 0.3);
+        }
+
+        .sidebar-footer {
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            padding-top: 20px;
+        }
+
+        .logout-btn {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            color: #EF4444;
+            text-decoration: none;
+            padding: 14px 16px;
+            font-size: 15px;
+            font-weight: 500;
+        }
+
+        /* ==========================================================================
+           4. CONTEÚDO PRINCIPAL E HEADER
+           ========================================================================== */
+        .main-content {
+            flex-grow: 1;
+            margin-left: 260px;
+            padding: 40px;
+            max-width: 1400px;
+            width: calc(100% - 260px);
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 35px;
+            gap: 20px;
+        }
+
+        .header-left h1 {
+            font-size: 28px;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            margin-bottom: 5px;
+        }
+
+        .wave-emoji {
+            margin-left: 8px;
+            display: inline-block;
+        }
+
+        .header-left p {
+            color: var(--text-muted);
+            font-size: 15px;
+        }
+
+        .header-right {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .search-bar {
+            position: relative;
+            background-color: var(--bg-card);
+            border-radius: var(--radius-md);
+            padding: 0 15px;
+            display: flex;
+            align-items: center;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border-color);
+        }
+
+        .search-icon {
+            color: var(--text-muted);
+            margin-right: 10px;
+        }
+
+        .search-bar input {
+            border: none;
+            background: transparent;
+            height: 48px;
+            width: 220px;
+            color: var(--text-main);
+            font-size: 14px;
+            outline: none;
+        }
+
+        .notification-box {
+            background-color: var(--bg-card);
+            border-radius: var(--radius-md);
+            width: 48px;
+            height: 48px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            position: relative;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border-color);
+        }
+
+        .notification-box .badge {
+            position: absolute;
+            top: 14px;
+            right: 14px;
+            width: 8px;
+            height: 8px;
+            background-color: #EF4444;
+            border-radius: 50%;
+        }
+
+        .user-profile-box {
+            background-color: var(--bg-card);
+            border-radius: var(--radius-md);
+            padding: 6px 16px 6px 8px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            cursor: pointer;
+            position: relative;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border-color);
+            user-select: none;
+        }
+
+        .avatar-topo {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--brand-green);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+        }
+
+        .user-info-text h4 {
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .plan-badge {
+            font-size: 11px;
+            font-weight: 700;
+            padding: 2px 6px;
+            border-radius: 6px;
+            display: inline-block;
+        }
+
+        .digital-tag { background: #E2E8F0; color: #475569; }
+        .max-tag { background: #E0F2FE; color: #0369A1; }
+        .super-tag { background: #FEF3C7; color: #B45309; }
+
+        .arrow-down {
+            font-size: 10px;
+            color: var(--text-muted);
+        }
+
+        /* DROPDOWN MENU PREMIUM */
+        .profile-dropdown {
+            position: absolute;
+            top: calc(100% + 10px);
+            right: 0;
+            width: 260px;
+            background-color: var(--bg-card);
+            border-radius: var(--radius-md);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.15);
+            border: 1px solid var(--border-color);
+            padding: 15px;
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-10px);
+            transition: var(--transition);
+            z-index: 500;
+        }
+
+        .profile-dropdown.active {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .dropdown-header {
+            padding: 5px 10px 10px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .dropdown-header strong { font-size: 15px; color: var(--text-main); }
+        .dropdown-header span { font-size: 12px; color: var(--text-muted); }
+
+        .profile-dropdown hr {
+            border: 0;
+            border-top: 1px solid var(--border-color);
+            margin: 8px 0;
+        }
+
+        .profile-dropdown a {
+            color: var(--text-main);
+            text-decoration: none;
+            padding: 10px;
+            border-radius: 8px;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            transition: var(--transition);
+        }
+
+        .profile-dropdown a:hover {
+            background-color: var(--bg-main);
+        }
+
+        .dropdown-section-title {
+            font-size: 11px;
+            font-weight: 700;
+            color: var(--text-muted);
+            padding-left: 10px;
+            margin: 4px 0;
+            text-transform: uppercase;
+        }
+
+        .premium-link-item { font-weight: 500; }
+        .link-max { color: #0284C7 !important; }
+        .link-super { color: #D97706 !important; }
+
+        .menu-switch-mode {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 8px 10px;
+            font-size: 14px;
+        }
+
+        .dropdown-logout { color: #EF4444 !important; }
+
+        /* SIMULADOR DE PLANO DE TESTE */
+        .plan-simulator {
+            background: var(--bg-card);
+            border: 1px dashed var(--brand-green);
+            padding: 15px 20px;
+            border-radius: var(--radius-md);
+            margin-bottom: 30px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            font-size: 14px;
+            box-shadow: var(--shadow);
+        }
+        .plan-simulator button {
+            background: var(--bg-main);
+            border: 1px solid var(--border-color);
+            padding: 8px 16px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            color: var(--text-main);
+            transition: var(--transition);
+        }
+        .plan-simulator button:hover { background: var(--brand-green); color: white; }
+
+        /* Switch Toggle */
+        .switch { position: relative; display: inline-block; width: 36px; height: 20px; }
+        .switch input { opacity: 0; width: 0; height: 0; }
+        .slider { position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0; background-color: #CBD5E1; transition: .4s; }
+        .slider:before { position: absolute; content: ""; height: 14px; width: 14px; left: 3px; bottom: 3px; background-color: white; transition: .4s; }
+        input:checked + .slider { background-color: var(--brand-green); }
+        input:checked + .slider:before { transform: translateX(16px); }
+        .slider.round { border-radius: 34px; }
+        .slider.round:before { border-radius: 50%; }
+
+        /* ==========================================================================
+           5. DASHBOARD GRID & CARDS
+           ========================================================================== */
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        .card {
+            background-color: var(--bg-card);
+            border-radius: var(--radius-lg);
+            padding: 28px;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border-color);
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-2px);
+        }
+
+        .card h3 {
+            font-size: 18px;
+            font-weight: 700;
+            letter-spacing: -0.3px;
+            margin-bottom: 20px;
+        }
+
+        .card-header-split {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        .card-header-split h3 { margin-bottom: 0; }
+
+        .plan-tag {
+            font-size: 11px;
+            font-weight: 800;
+            padding: 4px 10px;
+            border-radius: 20px;
+            letter-spacing: 0.5px;
+        }
+        .max-color { background: rgba(3, 105, 161, 0.1); color: #0369A1; }
+
+        /* TRAVAS DE PLANO */
+        .lock-overlay {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(6px);
+            -webkit-backdrop-filter: blur(6px);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            padding: 20px;
+            text-align: center;
+            opacity: 0;
+            visibility: hidden;
+            z-index: 10;
+            transition: var(--transition);
+        }
+
+        body.dark-mode .lock-overlay {
+            background: rgba(19, 24, 30, 0.85);
+        }
+
+        .card.locked .lock-overlay {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .lock-overlay span {
+            font-size: 15px;
+            font-weight: 700;
+            color: var(--text-main);
+        }
+
+        .btn-lock-upgrade {
+            background: var(--bg-sidebar);
+            color: #FFFFFF;
+            border: none;
+            padding: 10px 20px;
+            border-radius: var(--radius-md);
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        /* CARD 1: HERO IA COACH */
+        .hero-ia-card {
+            grid-column: span 3;
+            background: radial-gradient(circle at top left, #132724, #0B0E11);
+            border: 1px solid rgba(0, 255, 204, 0.2);
+            color: #FFFFFF;
+        }
+
+        .ia-badge {
+            font-weight: 700;
+            color: var(--neon-green);
+            font-size: 14px;
+            letter-spacing: 0.5px;
+        }
+
+        .ia-status-animation {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin: 15px 0;
+        }
+
+        .pulse-circle {
+            width: 10px;
+            height: 10px;
+            background-color: var(--neon-green);
+            border-radius: 50%;
+            box-shadow: 0 0 12px var(--neon-green);
+            animation: pulseGlow 2s infinite;
+        }
+
+        .ia-analysis-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-bottom: 25px;
+        }
+
+        .ia-analysis-list li {
+            font-size: 14px;
+            color: #94A3B8;
+        }
+
+        .btn-premium {
+            border: none;
+            padding: 14px 28px;
+            border-radius: var(--radius-md);
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        .btn-super-neon {
+            background-color: var(--neon-green);
+            color: #050709;
+            box-shadow: 0 8px 25px rgba(0, 255, 204, 0.3);
+        }
+
+        /* CARD 2: DESAFIO 5 DIAS */
+        .challenge-card {
+            grid-column: span 2;
+            background-color: #E6F9F3;
+            border: none;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        body.dark-mode .challenge-card { background-color: #122C24; }
+
+        .challenge-tag {
+            background-color: #FFFFFF;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            display: inline-block;
+            margin-bottom: 14px;
+        }
+
+        .challenge-info h2 {
+            font-size: 26px;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .arrow-action-btn {
+            width: 48px; height: 48px;
+            border-radius: 50%;
+            background-color: var(--bg-sidebar);
+            color: #FFFFFF;
+            border: none;
+            font-size: 18px;
+            cursor: pointer;
+            display: flex; align-items: center; justify-content: center;
+        }
+
+        /* CARD 3: GRÁFICO MOCK */
+        .chart-container-mock {
+            height: 150px;
+            background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 100' preserveAspectRatio='none'%3E%3Cpath d='M0,80 Q50,40 100,70 T200,30 T300,50' fill='none' stroke='%231DB954' stroke-width='4'/%3E%3C/svg%3E") no-repeat center center;
+            background-size: 100% 100%;
+            position: relative;
+        }
+
+        .graph-tooltip {
+            position: absolute;
+            background-color: var(--bg-sidebar);
+            color: #FFFFFF;
+            padding: 6px 10px;
+            border-radius: 8px;
+            font-size: 11px;
+        }
+
+        /* CARD 4: CIRCULAR PROGRESS */
+        .budget-card { display: flex; flex-direction: column; align-items: center; }
+        .circular-progress-box { position: relative; width: 160px; height: 160px; margin: 10px 0; }
+        .progress-ring { transform: rotate(-90deg); }
+        .circle-inner-text {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            display: flex; flex-direction: column; align-items: center; justify-content: center;
+        }
+
+        /* CARD 5: MACROS */
+        .macro-list { display: flex; flex-direction: column; gap: 16px; }
+        .macro-item { display: flex; align-items: center; gap: 14px; }
+        .macro-badge { width: 55px; height: 38px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 700; color: #FFFFFF; }
+        .carb-bg { background-color: var(--carb-color); }
+        .protein-bg { background-color: var(--protein-color); }
+        .fat-bg { background-color: var(--fat-color); }
+        .macro-details { flex-grow: 1; }
+        .macro-name-row { display: flex; justify-content: space-between; font-size: 13px; font-weight: 600; margin-bottom: 6px; }
+        .macro-bar { height: 6px; background-color: var(--border-color); border-radius: 10px; overflow: hidden; }
+        .macro-progress { height: 100%; border-radius: 10px; }
+
+        /* CARD 6: DIETA */
+        .dieta-card { grid-column: span 2; }
+        .meal-timeline { display: flex; flex-direction: column; gap: 15px; }
+        .meal-box { padding: 18px 22px; border-radius: var(--radius-md); display: flex; justify-content: space-between; align-items: center; border: 1px solid var(--border-color); }
+        .blue-theme { background-color: rgba(59, 130, 246, 0.04); border-left: 5px solid var(--carb-color); }
+        .green-theme { background-color: rgba(29, 185, 84, 0.04); border-left: 5px solid var(--brand-green); }
+        .dieta-footer { margin-top: 22px; display: flex; justify-content: space-between; align-items: center; }
+
+        /* MODAL RECEITAS */
+        .modal-overlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(11, 14, 17, 0.4); backdrop-filter: blur(8px);
+            z-index: 1000; display: flex; align-items: center; justify-content: center;
+            opacity: 0; visibility: hidden; transition: var(--transition);
+        }
+        .modal-overlay.active { opacity: 1; visibility: visible; }
+        .modal-container {
+            background-color: var(--bg-card); width: 100%; max-width: 550px;
+            border-radius: var(--radius-lg); padding: 35px; border: 1px solid var(--border-color);
+            position: relative;
+        }
+        .modal-close { position: absolute; top: 20px; right: 20px; background: transparent; border: none; font-size: 18px; cursor: pointer; }
+
+        /* MOBILE BOTTOM BAR */
+        .mobile-bottom-bar {
+            position: fixed; bottom: 0; left: 0; width: 100%; height: 70px;
+            background-color: var(--bg-card); border-top: 1px solid var(--border-color);
+            display: none; justify-content: space-around; align-items: center; z-index: 900;
+        }
+
+        @keyframes pulseGlow {
+            0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(0, 255, 204, 0.5); }
+            70% { transform: scale(1); box-shadow: 0 0 0 12px rgba(0, 255, 204, 0); }
+            100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(0, 255, 204, 0); }
+        }
+
+        /* RESPONSIVIDADE */
+        @media (max-width: 1100px) {
+            .dashboard-grid { grid-template-columns: repeat(2, 1fr); }
+            .hero-ia-card { grid-column: span 2; }
+        }
+
+        @media (max-width: 768px) {
+            .sidebar { display: none; }
+            .main-content { margin-left: 0; padding: 20px 16px 90px; width: 100%; }
+            .mobile-bottom-bar { display: flex; }
+            .dashboard-grid { grid-template-columns: 1fr; }
+            .hero-ia-card, .challenge-card, .dieta-card { grid-column: span 1; }
+        }
+    </style>
 </head>
 <body>
 
@@ -15,19 +691,16 @@
         
         <aside class="sidebar">
             <div class="logo-container">
-                <div class="logo">
-                    <span class="logo-text">Nutri<span>+</span></span>
-                </div>
+                <div class="logo-text">Nutri<span>+</span></div>
             </div>
             <nav class="nav-menu">
-                <a href="#" class="nav-item active"><span class="m-icon">🏠</span> Início</a>
-                <a href="#" class="nav-item"><span class="m-icon">🥗</span> Dieta</a>
-                <a href="#" class="nav-item"><span class="m-icon">📈</span> Evolução</a>
-                <a href="#" class="nav-item"><span class="m-icon">🍳</span> Receitas</a>
-                <a href="#" class="nav-item"><span class="m-icon">🏋️‍♂️</span> Treinos</a>
-                <a href="#" class="nav-item"><span class="m-icon">🩺</span> Consultas</a>
-                <a href="#" class="nav-item"><span class="m-icon">💬</span> Suporte</a>
-                <a href="#" class="nav-item"><span class="m-icon">⚙️</span> Configurações</a>
+                <a href="#" class="nav-item active">🏠 Início</a>
+                <a href="#" class="nav-item">🥗 Dieta</a>
+                <a href="#" class="nav-item">📈 Evolução</a>
+                <a href="#" class="nav-item">🍳 Receitas</a>
+                <a href="#" class="nav-item">🏋️‍♂️ Treinos</a>
+                <a href="#" class="nav-item">🩺 Consultas</a>
+                <a href="#" class="nav-item">💬 Suporte</a>
             </nav>
             <div class="sidebar-footer">
                 <a href="#" class="logout-btn">🚪 Sair</a>
@@ -44,14 +717,12 @@
                 <div class="header-right">
                     <div class="search-bar">
                         <span class="search-icon">🔍</span>
-                        <input type="text" placeholder="Buscar alimentos, treinos...">
+                        <input type="text" placeholder="Buscar alimentos...">
                     </div>
-                    <div class="notification-box">
-                        <span class="bell-icon">🔔</span>
-                        <span class="badge"></span>
-                    </div>
+                    <div class="notification-box">🔔</div>
+                    
                     <div class="user-profile-box" id="profileToggle">
-                        <div class="avatar-topo" style="background-color: #1DB954; display: inline-block; width: 40px; height: 40px; border-radius: 50%;"></div>
+                        <div class="avatar-topo">V</div>
                         <div class="user-info-text">
                             <h4>Vinicius</h4>
                             <span class="plan-badge max-tag" id="currentPlanTag">Plano MAX</span>
@@ -60,25 +731,13 @@
                         
                         <div class="profile-dropdown" id="profileDropdown">
                             <div class="dropdown-header">
-                                <strong>Vinicius Neves</strong>
+                                id<strong>Vinicius Neves</strong>
                                 <span>vinicius@email.com</span>
                             </div>
                             <hr>
                             <a href="#">👤 Meu Perfil</a>
                             <a href="#">🥗 Minha Dieta</a>
-                            <a href="#">📈 Minha Evolução</a>
-                            <a href="#">🩺 Consulta Nutricionista</a>
                             <a href="#">💳 Faturas</a>
-                            <a href="#">👑 Planos</a>
-                            <hr>
-                            <div class="dropdown-section-title">Acesso MAX</div>
-                            <a href="#" class="premium-link-item link-max">🏋️‍♂️ Treino Personalizado</a>
-                            <a href="#" class="premium-link-item link-max">🩺 Consulta Personal</a>
-                            <a href="#" class="premium-link-item link-max">🍳 Receitas Premium</a>
-                            <hr>
-                            <div class="dropdown-section-title">Acesso SUPER</div>
-                            <a href="#" class="premium-link-item link-super">🤖 IA Nutri Coach</a>
-                            <a href="#" class="premium-link-item link-super">⚡ Ajuste Inteligente</a>
                             <hr>
                             <div class="menu-switch-mode">
                                 <span>🌙 Modo Escuro</span>
@@ -87,56 +746,43 @@
                                     <span class="slider round"></span>
                                 </label>
                             </div>
-                            <hr>
-                            <a href="#" class="dropdown-logout">🚪 Sair</a>
                         </div>
                     </div>
                 </div>
             </header>
 
             <div class="plan-simulator">
-                <strong>Simular Visual do Plano:</strong>
-                <button onclick="setPlan('digital')">Digital</button>
-                <button onclick="setPlan('max')">MAX</button>
-                <button onclick="setPlan('super')">SUPER</button>
+                <strong>Simular Nível de Assinatura:</strong>
+                <button onclick="setPlan('digital')">Plano Digital</button>
+                <button onclick="setPlan('max')">Plano MAX</button>
+                <button onclick="setPlan('super')">Plano SUPER</button>
             </div>
 
             <div class="dashboard-grid">
                 
                 <div class="card hero-ia-card" id="card-ia">
-                    <div class="ia-glow-effect"></div>
-                    <div class="ia-header">
-                        <span class="ia-badge">🤖 IA NUTRI+ COACH SUPER</span>
-                    </div>
+                    <span class="ia-badge">🤖 IA NUTRI+ COACH SUPER</span>
                     <div class="ia-status-animation">
                         <div class="pulse-circle"></div>
-                        <div class="ia-status-text">IA Ativa analisando sua rotina...</div>
+                        <p>IA Ativa analisando sua rotina...</p>
                     </div>
                     <ul class="ia-analysis-list">
-                        <li><span class="check-neon">✓</span> Analisando adesão da dieta diária</li>
-                        <li><span class="check-neon">✓</span> Monitorando variação de peso metabólico</li>
-                        <li><span class="check-neon">✓</span> Otimizando distribuição de macronutrientes</li>
+                        <li>✓ Analisando adesão da dieta diária</li>
+                        <li>✓ Monitorando variação de peso metabólico</li>
                     </ul>
-                    <button class="btn-premium btn-super-neon">Abrir IA Coach</button>
+                    <button class="btn-premium btn-super-neon">Abrir Chat Inteligente</button>
                     
                     <div class="lock-overlay">
-                        <span>🔒 Exclusivo para Assinantes SUPER</span>
-                        <button class="btn-lock-upgrade">Fazer Upgrade para SUPER</button>
+                        <span>🔒 Funcionalidade Exclusiva do Plano SUPER</span>
+                        <button class="btn-lock-upgrade">Fazer Upgrade agora</button>
                     </div>
                 </div>
 
                 <div class="card challenge-card">
                     <div class="challenge-info">
                         <span class="challenge-tag">The 5 a day challenge 🔥</span>
-                        <h2>Desafio Foco Total Semana</h2>
-                        <div class="joined-users">
-                            <div style="width:32px; height:32px; background:#CBD5E1; border-radius:50%; margin-right:-10px;"></div>
-                            <div style="width:32px; height:32px; background:#94A3B8; border-radius:50%; margin-right:-10px;"></div>
-                            <span class="joined-count">+5k participando</span>
-                        </div>
-                    </div>
-                    <div class="challenge-image">
-                        <span style="font-size: 64px;">🏋️‍♂️</span>
+                        <h2>Desafio Foco Total</h2>
+                        <span class="joined-count">🔥 +5k participando</span>
                     </div>
                     <button class="arrow-action-btn">→</button>
                 </div>
@@ -144,13 +790,10 @@
                 <div class="card activity-card">
                     <div class="card-header-split">
                         <h3>Atividade Diária</h3>
-                        <span class="kcal-counter">625 Kcal</span>
+                        <strong>625 Kcal</strong>
                     </div>
                     <div class="chart-container-mock">
-                        <div class="graph-tooltip" style="top: 20px; left: 60%;">
-                            <span class="tooltip-val">25%</span>
-                            <span class="tooltip-time">19:00pm</span>
-                        </div>
+                        <div class="graph-tooltip" style="top: 20px; left: 55%;">25% (19:00pm)</div>
                     </div>
                 </div>
 
@@ -158,40 +801,31 @@
                     <h3>Calorias Restantes</h3>
                     <div class="circular-progress-box">
                         <svg class="progress-ring" width="160" height="160">
-                            <circle class="progress-ring__circle" stroke="#E2E8F0" stroke-width="12" fill="transparent" r="70" cx="80" cy="80"/>
-                            <circle class="progress-ring__circle" stroke="#1DB954" stroke-width="12" stroke-dasharray="439.8" stroke-dashoffset="110" fill="transparent" r="70" cx="80" cy="80" stroke-linecap="round"/>
+                            <circle stroke="#E2E8F0" stroke-width="12" fill="transparent" r="70" cx="80" cy="80"/>
+                            <circle stroke="#1DB954" stroke-width="12" stroke-dasharray="439.8" stroke-dashoffset="110" fill="transparent" r="70" cx="80" cy="80" stroke-linecap="round"/>
                         </svg>
                         <div class="circle-inner-text">
-                            <span class="emoji">🥑</span>
-                            <span class="calories-num">750 Kcal</span>
-                            <span class="calories-sub">Atividade</span>
+                            <span style="font-size:20px;">🥑</span>
+                            <strong>750 Kcal</strong>
                         </div>
                     </div>
-                    <span class="budget-footer-text">My Analytics</span>
                 </div>
 
                 <div class="card macro-card">
                     <h3>Daily Recap</h3>
                     <div class="macro-list">
                         <div class="macro-item">
-                            <div class="macro-badge carb-bg">54 g</div>
+                            <div class="macro-badge carb-bg">54g</div>
                             <div class="macro-details">
-                                <div class="macro-name-row"><span>Carbohydrate</span> <span>25%</span></div>
+                                <div class="macro-name-row"><span>Carboidratos</span><span>25%</span></div>
                                 <div class="macro-bar"><div class="macro-progress carb-bar" style="width: 25%;"></div></div>
                             </div>
                         </div>
                         <div class="macro-item">
-                            <div class="macro-badge protein-bg">16.2 g</div>
+                            <div class="macro-badge protein-bg">16.2g</div>
                             <div class="macro-details">
-                                <div class="macro-name-row"><span>Protein</span> <span>25%</span></div>
-                                <div class="macro-bar"><div class="macro-progress protein-bar" style="width: 25%;"></div></div>
-                            </div>
-                        </div>
-                        <div class="card-bar macro-item">
-                            <div class="macro-badge fat-bg">11.2 g</div>
-                            <div class="macro-details">
-                                <div class="macro-name-row"><span>Fats</span> <span>25%</span></div>
-                                <div class="macro-bar"><div class="macro-progress fat-bar" style="width: 25%;"></div></div>
+                                <div class="macro-name-row"><span>Proteínas</span><span>25%</span></div>
+                                <div class="macro-bar"><div class="macro-progress protein-bar" style="width: 50%;"></div></div>
                             </div>
                         </div>
                     </div>
@@ -201,49 +835,20 @@
                     <h3>Daily Calories</h3>
                     <div class="meal-timeline">
                         <div class="meal-box blue-theme">
-                            <div class="meal-header">
-                                <h4>Breakfast</h4>
-                                <p>cold cereal and milk</p>
+                            <div>
+                                <strong>Breakfast</strong>
+                                <p style="font-size:13px; color:var(--text-muted);">Cold cereal and milk</p>
                             </div>
-                            <div style="display: flex; align-items: center; gap: 15px;">
-                                <span class="meal-kcal">240 Kcal</span>
-                                <button class="meal-action-arrow">→</button>
-                            </div>
+                            <strong>240 Kcal</strong>
                         </div>
                         <div class="meal-box green-theme">
-                            <div class="meal-header">
-                                <h4>Lunch</h4>
-                                <p>vegetables Salad</p>
+                            <div>
+                                <strong>Lunch</strong>
+                                <p style="font-size:13px; color:var(--text-muted);">Vegetables Salad</p>
                             </div>
-                            <div style="display: flex; align-items: center; gap: 15px;">
-                                <span class="meal-kcal">240 Kcal</span>
-                                <button class="meal-action-arrow">→</button>
-                            </div>
+                            <strong>240 Kcal</strong>
                         </div>
                     </div>
-                    <div class="dieta-footer">
-                        <span>Remaining: <strong>635 Kcal</strong></span>
-                        <button class="btn-add-food">+</button>
-                    </div>
-                </div>
-
-                <div class="card evolution-card">
-                    <h3>Sua Evolução</h3>
-                    <div class="evolution-stats">
-                        <div class="stat-node"><span>Meta</span><strong>75 kg</strong></div>
-                        <div class="stat-node current"><span>Atual</span><strong>79 kg</strong></div>
-                        <div class="stat-node"><span>Inicial</span><strong>85 kg</strong></div>
-                    </div>
-                    <div class="evolution-bar-container">
-                        <div class="evolution-bar-progress" style="width: 65%;"></div>
-                        <div class="evolution-line-track">
-                            <div class="dot-track active"></div>
-                            <div class="dot-track active"></div>
-                            <div class="dot-track active current-dot"></div>
-                            <div class="dot-track"></div>
-                        </div>
-                    </div>
-                    <p class="evolution-percentage-text">Você já completou <strong>65%</strong> da sua meta de perda de gordura. Faltam apenas 4kg!</p>
                 </div>
 
                 <div class="card recipes-card" id="card-receitas">
@@ -251,77 +856,15 @@
                         <h3>Receitas Personalizadas</h3>
                         <span class="plan-tag max-color">MAX</span>
                     </div>
-                    <p class="section-sub-desc">Sugestões baseadas no seu objetivo metabólico</p>
-                    <div class="receitas-list">
-                        <div class="recipe-item-box">
-                            <div class="recipe-img-placeholder" style="background-color: #FFEAEA; font-size:24px; display:flex; align-items:center; justify-content:center;">🥣</div>
-                            <div class="recipe-info-short">
-                                <h4>Bowl de Iogurte de Whey</h4>
-                                <div class="recipe-tags"><span>Café da manhã</span><span>Alta Proteína</span></div>
-                                <button class="btn-view-recipe" onclick="openModal('Bowl de Iogurte Proteico', '300g Iogurte Natural Desnatado, 30g Whey Protein Isolado, 50g Morangos frescos', 'Misture o Whey diretamente no iogurte até homogeneizar. Decore com os morangos fatiados por cima. Consuma gelado.')">Ver Receita Premium →</button>
-                            </div>
-                        </div>
-                    </div>
+                    <button style="background:var(--brand-green); color:white; border:none; padding:10px; border-radius:8px; cursor:pointer; width:100%; margin-top:20px;" 
+                            onclick="openModal('Bowl de Frango Avançado', '500g de Frango Desfiado, 150g de Arroz Integral, Tempero Verde', 'Cozinhe o arroz integral por 20 minutos. Misture o frango desfiado previamente temperado e sirva quente.')">
+                        Ver Receita de Hipertrofia →
+                    </button>
+                    
                     <div class="lock-overlay">
-                        <span>🔒 Disponível a partir do Plano MAX</span>
-                        <button class="btn-lock-upgrade">Fazer Upgrade para MAX</button>
+                        <span>🔒 Disponível no Plano MAX</span>
+                        <button class="btn-lock-upgrade">Fazer Upgrade</button>
                     </div>
-                </div>
-
-                <div class="card product-card" id="card-consultas">
-                    <span class="product-badge">Agendamento Integrado</span>
-                    <div class="product-layout">
-                        <div class="product-details">
-                            <h3>Consulta com Personal Trainer</h3>
-                            <div class="price-tag-container">
-                                <span class="old-price">R$ 150,00</span>
-                                <span class="current-price">Grátis</span>
-                            </div>
-                            <ul class="product-benefits">
-                                <li>• Check-in de bioimpedância online</li>
-                                <li>• Montagem de treino ABCDE focada em hipertrofia</li>
-                            </ul>
-                            <button class="btn-action-buy">Agendar Horário</button>
-                        </div>
-                        <div class="product-image-container personal-bg"></div>
-                    </div>
-                    <div class="lock-overlay">
-                        <span>🔒 Disponível a partir do Plano MAX</span>
-                        <button class="btn-lock-upgrade">Fazer Upgrade para MAX</button>
-                    </div>
-                </div>
-
-                <div class="card news-slider-card">
-                    <div class="news-slider-wrapper">
-                        <div class="news-slide">
-                            <div class="slide-content">
-                                <span class="news-tag">DICA DA SEMANA</span>
-                                <h3>Como manter a constância nos treinos matinais</h3>
-                                <p>Descubra técnicas científicas de higiene do sono para acordar com máxima energia disposta.</p>
-                                <button class="btn-slider-action">Ler Artigo</button>
-                            </div>
-                            <div class="slide-img gym-slide-bg" style="font-size:32px; display:flex; align-items:center; justify-content:center;">⏰</div>
-                        </div>
-                    </div>
-                    <div class="slider-dots">
-                        <span class="dot active"></span>
-                        <span class="dot"></span>
-                        <span class="dot"></span>
-                    </div>
-                </div>
-
-                <div class="card support-card">
-                    <div class="card-header-split">
-                        <h3>Suporte Nutri+</h3>
-                        <div class="support-status-dot"></div>
-                    </div>
-                    <p>Fale diretamente com nossa central de atendimento humanizada.</p>
-                    <div class="sla-container">
-                        <div class="sla-row"><span>Tempo de Resposta:</span> <strong>&lt; 15 min</strong></div>
-                        <div class="sla-row"><span>Seu Plano:</span> <strong id="slaPlanName">MAX Priority</strong></div>
-                    </div>
-                    <div class="current-sla-alert">Fila prioritária ativada para sua conta.</div>
-                    <button class="btn-support-connect">Iniciar Conversa no Chat</button>
                 </div>
 
             </div>
@@ -331,113 +874,62 @@
     <div class="modal-overlay" id="recipeModal">
         <div class="modal-container">
             <button class="modal-close" onclick="closeModal()">✕</button>
-            <div class="recipe-modal-header">
-                <h2 id="modalTitle">Nome da Receita</h2>
-                <div class="modal-macro-strip">
-                    <span class="macro-badge-modal kcal">🔥 380 Kcal</span>
-                    <span class="macro-badge-modal prot">🥩 35g Prot</span>
-                    <span class="macro-badge-modal carb">🍞 22g Carb</span>
-                    <span class="macro-badge-modal fat">🥑 8g Gord</span>
-                </div>
-            </div>
-            <h3>Ingredientes (Pesagem Precisa)</h3>
-            <ul class="modal-ingredients-list" id="modalIngredients">
-                </ul>
-            <hr class="modal-divider">
-            <h3>Modo de Preparo</h3>
-            <ol class="modal-prep-list" id="modalPrep">
-                </ol>
+            <h2 id="modalTitle" style="margin-bottom:15px;"></h2>
+            <strong style="display:block; margin-bottom:8px;">Ingredientes Exatos:</strong>
+            <p id="modalIngredients" style="background:var(--bg-main); padding:15px; border-radius:8px; margin-bottom:15px;"></p>
+            <strong style="display:block; margin-bottom:8px;">Modo de Preparo:</strong>
+            <p id="modalPrep" style="color:var(--text-muted); line-height:1.5;"></p>
         </div>
     </div>
 
     <nav class="mobile-bottom-bar">
-        <button class="mobile-nav-item active">
-            <span class="m-icon">🏠</span>
-            <span class="m-label">Início</span>
-        </button>
-        <button class="mobile-nav-item">
-            <span class="m-icon">🥗</span>
-            <span class="m-label">Dieta</span>
-        </button>
-        <button class="mobile-nav-item">
-            <span class="m-icon">🍳</span>
-            <span class="m-label">Receitas</span>
-        </button>
-        <button class="mobile-nav-item">
-            <div class="avatar-mobile-nav" style="background-color:#1DB954;"></div>
-            <span class="m-label">Perfil</span>
-        </button>
+        <button style="background:none; border:none; color:var(--brand-green);">🏠<br><span style="font-size:10px;">Início</span></button>
+        <button style="background:none; border:none; color:var(--text-muted);">🥗<br><span style="font-size:10px;">Dieta</span></button>
+        <button style="background:none; border:none; color:var(--text-muted);">🍳<br><span style="font-size:10px;">Receitas</span></button>
     </nav>
 
     <script>
-        // Toggle do Dropdown de Perfil
         const profileToggle = document.getElementById('profileToggle');
         const profileDropdown = document.getElementById('profileDropdown');
-        
         profileToggle.addEventListener('click', (e) => {
             e.stopPropagation();
             profileDropdown.classList.toggle('active');
         });
+        document.addEventListener('click', () => profileDropdown.classList.remove('active'));
 
-        document.addEventListener('click', () => {
-            profileDropdown.classList.remove('active');
-        });
-
-        // Dark Mode Toggle
         const darkModeToggle = document.getElementById('darkModeToggle');
-        darkModeToggle.addEventListener('change', () => {
-            document.body.classList.toggle('dark-mode');
-        });
+        darkModeToggle.addEventListener('change', () => document.body.classList.toggle('dark-mode'));
 
-        // Controle do Simulador de Planos Dinâmicos (Travas Ativas)
         function setPlan(plan) {
             const cardIa = document.getElementById('card-ia');
             const cardReceitas = document.getElementById('card-receitas');
-            const cardConsultas = document.getElementById('card-consultas');
             const tag = document.getElementById('currentPlanTag');
-            const slaName = document.getElementById('slaPlanName');
 
-            // Reset inicial
             cardIa.classList.remove('locked');
             cardReceitas.classList.remove('locked');
-            cardConsultas.classList.remove('locked');
 
             if (plan === 'digital') {
                 cardIa.classList.add('locked');
                 cardReceitas.classList.add('locked');
-                cardConsultas.classList.add('locked');
                 tag.innerText = "Plano Digital";
                 tag.className = "plan-badge digital-tag";
-                slaName.innerText = "Digital Standard";
             } else if (plan === 'max') {
-                cardIa.classList.add('locked'); // Bloqueia apenas a IA Coach
+                cardIa.classList.add('locked');
                 tag.innerText = "Plano MAX";
                 tag.className = "plan-badge max-tag";
-                slaName.innerText = "MAX Priority";
             } else if (plan === 'super') {
-                // Tudo liberado no SUPER
                 tag.innerText = "Plano SUPER";
                 tag.className = "plan-badge super-tag";
-                slaName.innerText = "SUPER Realtime";
             }
         }
+        setPlan('max'); // Inicia no seu plano real
 
-        // Inicializa o simulador no modo MAX padrão conforme o seu estado atual
-        setPlan('max');
-
-        // Lógica do Modal de Receitas Premium
-        function openModal(title, ingredients, preparation) {
+        function openModal(title, ingredients, prep) {
             document.getElementById('modalTitle').innerText = title;
-            
-            const ingList = document.getElementById('modalIngredients');
-            ingList.innerHTML = ingredients.split(',').map(i => `<li>🔹 ${i.trim()}</li>`).join('');
-            
-            const prepList = document.getElementById('modalPrep');
-            prepList.innerHTML = preparation.split('.').filter(p => p.trim()).map(p => `<li>${p.trim()}.</li>`).join('');
-
+            document.getElementById('modalIngredients').innerText = ingredients;
+            document.getElementById('modalPrep').innerText = prep;
             document.getElementById('recipeModal').classList.add('active');
         }
-
         function closeModal() {
             document.getElementById('recipeModal').classList.remove('active');
         }
