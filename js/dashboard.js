@@ -7,7 +7,7 @@ MENU PERFIL
 function toggleMenu(){
 
     const menu =
-    document.getElementById("profilePerfil");
+    document.getElementById("profileMenu");
 
     if(
         menu.style.display === "block"
@@ -24,7 +24,7 @@ document.addEventListener(
 function(e){
 
     const menu =
-    document.getElementById("profilePerfil");
+    document.getElementById("profileMenu");
 
     const avatar =
     document.querySelector(".avatar");
@@ -44,30 +44,19 @@ function(e){
 MODO ESCURO / CLARO
 ========================== */
 
-const toggletheme =
-document.getElementById("togglethemea");
+const btnTema =
+document.getElementById("toggleTheme");
 
-if(toggletheme){
-
-    btnTema.addEventListener(
-    "click",
-    function(e){
-
+if(btnTema){
+    btnTema.addEventListener("click", function(e){
         e.preventDefault();
-
-        document.body.classList.toggle(
-            "light"
-        );
+        document.body.classList.toggle("light");
 
         localStorage.setItem(
             "nutriTema",
-            document.body.classList.contains(
-                "light"
-            )
+            document.body.classList.contains("light")
         );
-
     });
-
 }
 
 if(
