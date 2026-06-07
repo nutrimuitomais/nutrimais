@@ -1,17 +1,20 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Nutri+ Dashboard</title>
+<title>NUTRI+ Dashboard</title>
 
-<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="dashboard.css">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 
 <link rel="stylesheet"
 href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-
 </head>
 
 <body>
@@ -22,37 +25,81 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
 
     <aside class="sidebar">
 
-        <div class="logo-area">
-            <img
-            src="https://via.placeholder.com/180x60?text=NUTRI%2B"
-            class="logo">
+        <div class="logo-box">
+            <h2>NUTRI+</h2>
+            <span>Premium Dashboard</span>
         </div>
 
         <nav>
 
             <a href="#">
-                <i class="fas fa-home"></i>
-                <span>Dashboard</span>
+                <i class="fas fa-user"></i>
+                Meu Perfil
             </a>
 
             <a href="#">
                 <i class="fas fa-utensils"></i>
-                <span>Minha Dieta</span>
+                Minha Dieta
             </a>
 
             <a href="#">
                 <i class="fas fa-chart-line"></i>
-                <span>Evolução</span>
+                Minha Evolução
             </a>
 
             <a href="#">
-                <i class="fas fa-comments"></i>
-                <span>Suporte</span>
+                <i class="fas fa-stethoscope"></i>
+                Consulta Nutricionista
+            </a>
+
+            <a href="#">
+                <i class="fas fa-file-invoice"></i>
+                Faturas
             </a>
 
             <a href="#">
                 <i class="fas fa-crown"></i>
-                <span>Planos</span>
+                Planos
+            </a>
+
+            <a href="#" class="max-link">
+                Treino Personalizado
+                <span>MAX</span>
+            </a>
+
+            <a href="#" class="max-link">
+                Consulta Personal
+                <span>MAX</span>
+            </a>
+
+            <a href="#" class="max-link">
+                Receitas Premium
+                <span>MAX</span>
+            </a>
+
+            <a href="#" class="super-link">
+                IA Nutri Coach
+                <span>SUPER</span>
+            </a>
+
+            <a href="#" class="super-link">
+                Ajuste Inteligente
+                <span>SUPER</span>
+            </a>
+
+            <a href="#">
+                <i class="fas fa-comments"></i>
+                Chat Suporte
+            </a>
+
+            <a href="#" id="toggleTheme">
+                <i class="fas fa-moon"></i>
+                Modo Escuro/Claro
+            </a>
+
+            <a href="#">
+                <i class="fas fa-right-from-bracket"></i>
+                Sair
             </a>
 
         </nav>
@@ -61,107 +108,29 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
 
     <!-- MAIN -->
 
-    <main class="main">
+    <main class="main-content">
 
-        <!-- HEADER -->
-
-        <header class="top-header">
+        <header class="topbar">
 
             <div>
-
                 <h1>IA NUTRI+</h1>
-
-                <p>
-                    Analisando dieta e metas em tempo real
-                </p>
-
+                <p>Analisando suas metas em tempo real</p>
             </div>
 
-            <div style="display:flex;align-items:center;gap:15px;">
+            <div class="profile">
 
-                <div
-                id="badgePlano"
-                class="badge badge-digital">
-                    DIGITAL
-                </div>
+                <img
+                src="https://i.pravatar.cc/150?img=12"
+                class="avatar"
+                onclick="toggleMenu()">
 
-                <div class="perfil-box">
+                <div class="profile-menu" id="profileMenu">
 
-                    <img
-                    src="https://i.pravatar.cc/150?img=12"
-                    class="avatar"
-                    onclick="toggleMenu()">
-
-                    <div
-                    id="menuPerfil"
-                    class="menu">
-
-                        <a href="#">Meu Perfil</a>
-
-                        <a href="#">Minha Dieta</a>
-
-                        <a href="#">Minha Evolução</a>
-
-                        <a href="#">
-                            Consulta Nutricionista
-                        </a>
-
-                        <a href="#">
-                            Faturas
-                        </a>
-
-                        <a href="#">
-                            Planos
-                        </a>
-
-                        <a href="#">
-                            Treino Personalizado
-                            <span class="max-tag">
-                                MAX
-                            </span>
-                        </a>
-
-                        <a href="#">
-                            Consulta Personal
-                            <span class="max-tag">
-                                MAX
-                            </span>
-                        </a>
-
-                        <a href="#">
-                            Receitas Premium
-                            <span class="max-tag">
-                                MAX
-                            </span>
-                        </a>
-
-                        <a href="#">
-                            IA Nutri Coach
-                            <span class="super-tag">
-                                SUPER
-                            </span>
-                        </a>
-
-                        <a href="#">
-                            Ajuste Inteligente
-                            <span class="super-tag">
-                                SUPER
-                            </span>
-                        </a>
-
-                        <a href="#">
-                            Chat Suporte
-                        </a>
-
-                        <a href="#">
-                            Modo Escuro
-                        </a>
-
-                        <a href="#" onclick="sair()">
-                            Sair
-                        </a>
-
-                    </div>
+                    <a href="#">Meu Perfil</a>
+                    <a href="#">Minha Dieta</a>
+                    <a href="#">Minha Evolução</a>
+                    <a href="#">Consulta Nutricionista</a>
+                    <a href="#">Faturas</a>
 
                 </div>
 
@@ -169,301 +138,56 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
 
         </header>
 
-        <!-- HERO -->
-
         <section class="hero">
 
             <div>
 
-                <h2>
-                    Olá,
-                    <span class="nome-usuario">
-                        Paciente
-                    </span>
-                    👋
-                </h2>
+                <h2>Olá, Vinicius 👋</h2>
 
                 <p>
-                    Sua dieta está sendo ajustada pela IA Nutri+
+                    Sua alimentação está sendo acompanhada pela IA NUTRI+
                 </p>
 
             </div>
 
-            <div class="ia-pulse">
+            <div class="ia-orb">
                 IA
             </div>
 
         </section>
 
-        <!-- GRID -->
+        <section class="dashboard-grid">
 
-        <div class="dashboard-grid">
-
-            <!-- CALORIAS -->
-
-            <section class="card calorias-card">
-
+            <div class="card">
                 <h3>Calorias</h3>
+                <div class="big-number">2200</div>
+                <span>Meta diária</span>
+            </div>
 
-                <div
-                class="circle"
-                id="circuloCalorias">
-
-                    <span id="txtCalorias">
-                        1760
-                    </span>
-
+            <div class="card">
+                <h3>Proteínas</h3>
+                <div class="progress">
+                    <div style="width:80%"></div>
                 </div>
+                <span>120g / 150g</span>
+            </div>
 
-            </section>
-
-            <!-- MACROS -->
-
-            <section class="card macros-card">
-
-                <h3>Macronutrientes</h3>
-
-                <div class="macro">
-
-                    <span id="txtProteina">
-                        120g / 150g
-                    </span>
-
-                    <div class="bar">
-                        <div
-                        class="fill protein"
-                        id="barraProteina">
-                        </div>
-                    </div>
-
+            <div class="card">
+                <h3>Carboidratos</h3>
+                <div class="progress">
+                    <div style="width:70%"></div>
                 </div>
+                <span>180g / 220g</span>
+            </div>
 
-                <div class="macro">
-
-                    <span id="txtCarbo">
-                        180g / 220g
-                    </span>
-
-                    <div class="bar">
-                        <div
-                        class="fill carbo"
-                        id="barraCarbo">
-                        </div>
-                    </div>
-
+            <div class="card">
+                <h3>Gorduras</h3>
+                <div class="progress">
+                    <div style="width:75%"></div>
                 </div>
+                <span>45g / 60g</span>
+            </div>
 
-                <div class="macro">
+        </section>
 
-                    <span id="txtGordura">
-                        45g / 60g
-                    </span>
-
-                    <div class="bar">
-                        <div
-                        class="fill gordura"
-                        id="barraGordura">
-                        </div>
-                    </div>
-
-                </div>
-
-            </section>
-
-            <!-- PESO -->
-
-            <section class="card peso-card">
-
-                <h3>
-                    Progresso de Peso
-                </h3>
-
-                <p>Inicial: 92kg</p>
-
-                <p>Atual: 88kg</p>
-
-                <p>Meta: 84kg</p>
-
-                <br>
-
-                <div class="bar">
-
-                    <div
-                    class="fill progresso"
-                    id="barraPeso">
-                    </div>
-
-                </div>
-
-                <br>
-
-                <span
-                id="txtProgressoPeso">
-                    70%
-                </span>
-
-            </section>
-
-            <!-- CONSULTA -->
-
-            <section class="premium-card">
-
-                <img
-                src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=900">
-
-                <div>
-
-                    <h3>
-                        👨‍⚕️ CONSULTA AVULSA
-                    </h3>
-
-                    <p>De R$459,99</p>
-
-                    <h2>Por R$298,99</h2>
-
-                    <ul>
-
-                        <li>24h de suporte</li>
-
-                        <li>Nutricionista parceiro</li>
-
-                        <li>Plano ajustável</li>
-
-                    </ul>
-
-                    <button
-                    onclick="agendarConsulta()">
-
-                        AGENDAR CONSULTA
-
-                    </button>
-
-                </div>
-
-            </section>
-
-            <!-- PERSONAL -->
-
-            <section class="premium-card max-only">
-
-                <img
-                src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=900">
-
-                <div>
-
-                    <h3>
-                        🏋️ TREINO PERSONALIZADO
-                    </h3>
-
-                    <p>
-                        Exclusivo MAX
-                    </p>
-
-                    <button
-                    onclick="agendarPersonal()">
-
-                        GERAR TREINO
-
-                    </button>
-
-                </div>
-
-            </section>
-
-            <!-- RECEITA -->
-
-            <section class="card">
-
-                <h3>
-                    🍳 OMELETE FIT
-                </h3>
-
-                <br>
-
-                <p>290 kcal</p>
-
-                <p>26g proteína</p>
-
-                <p>12g carbo</p>
-
-                <p>15g gordura</p>
-
-                <br>
-
-                <button
-                onclick="abrirReceita()">
-
-                    VER RECEITA
-
-                </button>
-
-            </section>
-
-            <!-- IA -->
-
-            <section class="card">
-
-                <h2>
-                    🤖 IA NUTRI COACH
-                </h2>
-
-                <br>
-
-                <p>
-                    Analisando metas...
-                </p>
-
-                <p>
-                    Calculando calorias...
-                </p>
-
-                <p>
-                    Ajustando dieta...
-                </p>
-
-            </section>
-
-            <!-- CHAT -->
-
-            <section class="card">
-
-                <h3>
-                    Chat Suporte
-                </h3>
-
-                <br>
-
-                <p>
-                    DIGITAL → 20 min
-                </p>
-
-                <p>
-                    MAX → 5 min
-                </p>
-
-                <p>
-                    SUPER → 2 min
-                </p>
-
-                <br>
-
-                <button
-                onclick="abrirSuporte()">
-
-                    ABRIR CHAT
-
-                </button>
-
-            </section>
-
-        </div>
-
-    </main>
-
-</div>
-
-<script src="dashboard.js"></script>
-
-</body>
-
-</html>
+        
