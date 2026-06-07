@@ -196,12 +196,35 @@ function aplicarCupom(){
 
 /* PAGAMENTO */
 
-function confirmarPagamento(){
+function confirmarPagamento() {
+
+  const email =
+  document.getElementById("email").value.trim();
+
+  const senha =
+  document.getElementById("senha").value.trim();
+
+  if(!email || !senha){
+    alert("Preencha Gmail e senha.");
+    return;
+  }
+
+  const usuario = {
+    email,
+    senha
+  };
 
   localStorage.setItem(
-    "pagamentoAprovado",
+    "nutri_usuario",
+    JSON.stringify(usuario)
+  );
+
+  localStorage.setItem(
+    "acessoLiberado",
     "true"
   );
+
+  alert("Acesso liberado com sucesso!");
 
   window.location.href =
   "anamnese.html";
