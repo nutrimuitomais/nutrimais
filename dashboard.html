@@ -226,10 +226,8 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
                 <h3>Proteínas</h3>
 
                 <div class="progress">
-
-                    <div style="width:80%"></div>
-
-                </div>
+    <div id="barraPeso"></div>
+</div>
 
                 <span>120g / 150g</span>
 
@@ -240,10 +238,8 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
                 <h3>Carboidratos</h3>
 
                 <div class="progress">
-
-                    <div style="width:70%"></div>
-
-                </div>
+    <div id="barraPeso"></div>
+</div>
 
                 <span>180g / 220g</span>
 
@@ -253,11 +249,9 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
 
                 <h3>Gorduras</h3>
 
-                <div class="progress">
-
-                    <div style="width:75%"></div>
-
-                </div>
+               <div class="progress">
+    <div id="barraPeso"></div>
+</div>
 
                 <span>45g / 60g</span>
 
@@ -267,38 +261,32 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
 
                 <!-- EVOLUÇÃO -->
 
-        <section class="card evolution-card">
+        <section class=".progresso-card">
+    <h3>📈 Evolução de Peso</h3>
 
-            <h3>📈 Evolução de Peso</h3>
+    <div class="weight-info">
+        <div>
+            <strong>92kg</strong>
+            <span>Inicial</span>
+        </div>
 
-            <div class="weight-info">
+        <div>
+            <strong>88kg</strong>
+            <span>Atual</span>
+        </div>
 
-                <div>
-                    <strong>92kg</strong>
-                    <span>Inicial</span>
-                </div>
+        <div>
+            <strong>84kg</strong>
+            <span>Meta</span>
+        </div>
+    </div>
 
-                <div>
-                    <strong>88kg</strong>
-                    <span>Atual</span>
-                </div>
+    <div class="progress">
+        <div id="barraPeso"></div>
+    </div>
 
-                <div>
-                    <strong>84kg</strong>
-                    <span>Meta</span>
-                </div>
-
-            </div>
-
-            <div class="progress">
-
-                <div style="width:70%"></div>
-
-            </div>
-
-            <p>70% concluído</p>
-
-        </section>
+    <p>70% concluído</p>
+</section>
 
         <!-- DIETA -->
 
@@ -427,11 +415,46 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
 
         </section>
 
+        <!-- CONTEÚDO MAX -->
+<section class="card somente-max">
+    <div class="max-badge">
+        MAX
+    </div>
+
+    <h3>🏋️ Treino Personalizado</h3>
+
+    <p>
+        Gerado automaticamente conforme
+        seus objetivos e evolução.
+    </p>
+
+    <button class="btn-premium">
+        GERAR TREINO
+    </button>
+</section>
+
+<!-- CONTEÚDO SUPER -->
+<section class="card somente-super">
+    <div class="super-badge">
+        SUPER
+    </div>
+
+    <h3>🤖 IA Nutri Coach</h3>
+
+    <p>
+        Sua inteligência nutricional
+        personalizada.
+    </p>
+
+    <button class="btn-premium">
+        ABRIR IA
+    </button>
+</section>
         <!-- RECEITAS -->
 
         <section class="recipes-grid">
 
-            <div class="recipe-card">
+            <div class="receita-card">
 
                 <h3>🍳 OMELETE FIT</h3>
 
@@ -446,7 +469,7 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
 
             </div>
 
-            <div class="recipe-card">
+            <div class="receita-card">
 
                 <h3>🍗 FRANGO FIT</h3>
 
@@ -505,7 +528,7 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
 
             <h2>🤖 IA NUTRI COACH</h2>
 
-            <p id="iaStatus">
+            <p id="iastatus">
                 Analisando dieta...
             </p>
 
@@ -533,6 +556,17 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
 
         <!-- NOTÍCIAS PREMIUM -->
 
+<!-- NOTÍCIAS ROTATIVAS IA -->
+<section class="card noticias-rotativas">
+    <h3 id="tituloNoticia">
+        🔥 Mais de 100 receitas geradas para você
+    </h3>
+
+    <p id="textoNoticia">
+        Assine MAX e desbloqueie receitas exclusivas.
+    </p>
+</section>
+        
         <section class="news-grid">
 
             <div class="news-card">
