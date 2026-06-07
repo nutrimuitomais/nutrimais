@@ -4,95 +4,164 @@ localStorage.getItem("nutri_usuario")
 );
 
 if(!usuario){
-window.location.href = "login.html";
+window.location.href =
+"login.html";
 }
 
-/* DADOS */
+/* NOME */
 
-document.getElementById("nomeUsuario").innerText =
+document.getElementById(
+"nomeUsuario"
+).innerText =
 usuario.email || "Paciente";
-
-/* MENU */
-
-function toggleMenu(){
-document
-.getElementById("menuPerfil")
-.classList.toggle("ativo");
-}
 
 /* PLANO */
 
 const badge =
-document.getElementById("badgePlano");
+document.getElementById(
+"badgePlano"
+);
 
-if(badge){
+const plano =
+(usuario.plano || "Digital")
+.toUpperCase();
 
-if(usuario.plano?.includes("SUPER")){
-badge.innerText = "PLANO SUPER";
-badge.className =
-"badge-plano plano-super";
+if(plano.includes("SUPER")){
+
+badge.innerText =
+"Plano Super";
+
+badge.classList.add(
+"plano-super"
+);
+
 }
-else if(usuario.plano?.includes("MAX")){
-badge.innerText = "PLANO MAX";
-badge.className =
-"badge-plano plano-max";
+else if(plano.includes("MAX")){
+
+badge.innerText =
+"Plano Max";
+
+badge.classList.add(
+"plano-max"
+);
+
 }
 else{
-badge.innerText = "PLANO DIGITAL";
-badge.className =
-"badge-plano";
+
+badge.innerText =
+"Plano Digital";
+
+badge.classList.add(
+"plano-digital"
+);
+
 }
 
+/* MENU PERFIL */
+
+function toggleMenu(){
+
+document
+.getElementById(
+"menuPerfil"
+)
+.classList.toggle("ativo");
+
+}
+
+/* CALORIAS */
+
+const metaCalorias = 2200;
+const caloriasConsumidas = 1760;
+
+const percentual =
+(caloriasConsumidas /
+metaCalorias) * 100;
+
+const barra =
+document.getElementById(
+"barraCalorias"
+);
+
+if(barra){
+barra.style.width =
+percentual + "%";
 }
 
 /* DIETA */
 
 const refeicoes =
-document.querySelectorAll(".refeicao p");
+document.querySelectorAll(
+".refeicao p"
+);
 
-const dietaBase = [
-"2 ovos + banana + café sem açúcar",
-"Iogurte + castanhas",
-"Arroz + frango + salada",
-"Fruta + whey protein",
-"Peixe + legumes"
-];
+if(refeicoes.length >= 5){
 
-refeicoes.forEach((item,index)=>{
-item.innerText = dietaBase[index];
+refeicoes[0].innerText =
+"Ovos mexidos + banana + café";
+
+refeicoes[1].innerText =
+"Iogurte natural + castanhas";
+
+refeicoes[2].innerText =
+"Arroz, feijão, frango e salada";
+
+refeicoes[3].innerText =
+"Sanduíche integral + fruta";
+
+refeicoes[4].innerText =
+"Peixe grelhado + legumes";
+
+}
+
+/* BLOQUEIOS MAX */
+
+document
+.querySelectorAll(
+".somente-max"
+)
+.forEach(item => {
+
+if(!plano.includes("MAX")
+&& !plano.includes("SUPER")){
+
+item.style.opacity = ".5";
+
+item.innerHTML +=
+"<br><br>🔒 Disponível apenas no Plano MAX";
+
+}
+
 });
 
-/* FUNÇÕES PREMIUM */
+/* BLOQUEIOS SUPER */
 
-const treinoCard =
-document.getElementById("treinoCard");
+document
+.querySelectorAll(
+".somente-super"
+)
+.forEach(item => {
 
-if(treinoCard){
+if(!plano.includes("SUPER")){
 
-if(
-usuario.plano?.includes("MAX") ||
-usuario.plano?.includes("SUPER")
-){
-treinoCard.style.display = "block";
-}
-else{
-treinoCard.style.display = "none";
-}
+item.style.opacity = ".5";
+
+item.innerHTML +=
+"<br><br>🔒 Disponível apenas no Plano SUPER";
 
 }
 
-const superCard =
-document.getElementById("superCard");
+});
 
-if(superCard){
+/* SAIR */
 
-if(
-usuario.plano?.includes("SUPER")
-){
-superCard.style.display = "block";
-}
-else{
-superCard.style.display = "none";
-}
+function sair(){
+
+localStorage.removeItem(
+"nutri_usuario"
+);
+
+window.location.href =
+"login.html";
 
 }
