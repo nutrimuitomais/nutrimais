@@ -245,3 +245,23 @@ animation:gradienteIA 4s ease infinite;
   );
   color:#fff;
 }
+
+.dieta-card{
+  background:rgba(255,255,255,.92);
+  padding:25px;
+  border-radius:24px;
+  margin-bottom:25px;
+  box-shadow:0 10px 30px rgba(0,0,0,.06);
+}
+
+.refeicao{
+  padding:15px;
+  border-radius:16px;
+  background:#f8fafc;
+  margin-top:12px;
+}
+
+.refeicao h3{
+  color:#1db954;
+  margin-bottom:6px;
+}
