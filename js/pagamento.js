@@ -34,12 +34,12 @@ plano.nome;
 
 const nomePlano = document.getElementById("nomePlano");
 
-if(plano.nome.includes("MAX")){
-  nomePlano.classList.add("plano-premium-prata");
+if(plano.nome.includes("Max")){
+nomePlano.classList.add("prata");
 }
 
-if(plano.nome.includes("SUPER")){
-  nomePlano.classList.add("plano-premium-dourado");
+if(plano.nome.includes("Super")){
+nomePlano.classList.add("dourado");
 }
 
 document.getElementById("tipoPlano").innerText =
