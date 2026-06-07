@@ -177,3 +177,17 @@ animation:gradienteIA 4s ease infinite;
 50%{background-position:100% 50%;}
 100%{background-position:0% 50%;}
 }
+
+.menu-perfil{
+  z-index:9999;
+}
+
+.topo{
+  position:relative;
+  z-index:100;
+}
+
+.card-boas-vindas{
+  position:relative;
+  z-index:1;
+}
