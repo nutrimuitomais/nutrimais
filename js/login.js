@@ -26,7 +26,7 @@ function fazerLogin() {
     usuario.email === email &&
     usuario.senha === senha
   ) {
-    window.location.href = "anamnese.html";
+    window.location.href = "dashboard.html";
   } else {
     alert("E-mail ou senha incorretos.");
   }
