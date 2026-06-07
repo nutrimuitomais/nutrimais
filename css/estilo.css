@@ -11,7 +11,7 @@
   margin: 0 auto;
   padding: 50px 20px 60px;
   display: flex;
-  flex-direction: colu.
+  flex-direction: column;
   align-items: center;
   text-align: center;
 }
@@ -1108,16 +1108,21 @@ white-space:nowrap;
 }
 
 /* MÉTODOS DE PAGAMENTO */
+.metodos{
+  display:flex;
+  gap:12px;
+  margin:25px 0;
+}
+
 .metodo{
-  flex:1;
-  padding:12px;
-  font-size:13px;
-  font-weight:700;
-  border-radius:14px;
-  background:#f8fafc;
-  border:1px solid #e5e7eb;
-  color:#444;
-  text-align:center;
+flex:1;
+padding:12px;
+font-size:13px;
+font-weight:700;
+border-radius:14px;
+background:#f8fafc;
+border:1px solid #e5e7eb;
+color:#444;
 }
 
 .metodo.ativo{
