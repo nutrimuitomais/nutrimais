@@ -29,21 +29,22 @@ hero.style.backgroundSize = "200% 200%";
 
 /* DADOS DO PLANO */
 
-document.getElementById("nomePlano").innerText =
-plano.nome;
-
-const nomePlano = document.getElementById("nomePlano");
+const nomePlano =
+document.getElementById("nomePlano");
 
 nomePlano.innerText = plano.nome;
 
-console.log(plano.nome);
+/* Reseta classes */
+nomePlano.classList.remove("prata","dourado");
 
 if(plano.nome.includes("Max")){
   nomePlano.classList.add("prata");
 }
-
-if(plano.nome.includes("Super")){
+else if(plano.nome.includes("Super")){
   nomePlano.classList.add("dourado");
+}
+else{
+  nomePlano.style.color = "#ffffff";
 }
 
 document.getElementById("tipoPlano").innerText =
