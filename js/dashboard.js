@@ -7,7 +7,7 @@ MENU PERFIL
 function toggleMenu(){
 
     const menu =
-    document.getElementById("menuPerfil");
+    document.getElementById("profilePerfil");
 
     if(
         menu.style.display === "block"
@@ -24,7 +24,7 @@ document.addEventListener(
 function(e){
 
     const menu =
-    document.getElementById("menuPerfil");
+    document.getElementById("profilePerfil");
 
     const avatar =
     document.querySelector(".avatar");
@@ -44,10 +44,10 @@ function(e){
 MODO ESCURO / CLARO
 ========================== */
 
-const btnTema =
-document.getElementById("btnTema");
+const toggletheme =
+document.getElementById("togglethemea");
 
-if(btnTema){
+if(toggletheme){
 
     btnTema.addEventListener(
     "click",
@@ -236,19 +236,29 @@ setInterval(() => {
 
     if(titulo && texto){
 
-        titulo.innerText =
-        noticias[noticiaAtual].titulo;
+        titulo.style.opacity = "0";
+        texto.style.opacity = "0";
 
-        texto.innerText =
-        noticias[noticiaAtual].texto;
+        setTimeout(() => {
 
-        noticiaAtual++;
+            titulo.innerText =
+            noticias[noticiaAtual].titulo;
 
-        if(
-            noticiaAtual >= noticias.length
-        ){
-            noticiaAtual = 0;
-        }
+            texto.innerText =
+            noticias[noticiaAtual].texto;
+
+            titulo.style.opacity = "1";
+            texto.style.opacity = "1";
+
+            noticiaAtual++;
+
+            if(
+                noticiaAtual >= noticias.length
+            ){
+                noticiaAtual = 0;
+            }
+
+        },300);
 
     }
 
