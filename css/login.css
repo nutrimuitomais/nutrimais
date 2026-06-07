@@ -6,12 +6,15 @@ font-family:'Segoe UI',sans-serif;
 }
 
 body{
-min-height:100vh;
-display:flex;
-align-items:center;
-justify-content:center;
-padding:20px;
-background:#f5f7fa;
+  margin:0;
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:20px;
+  background:transparent;
+  position:relative;
+  overflow-x:hidden;
 }
 
 .login-card{
@@ -63,4 +66,43 @@ margin-top:18px;
 text-decoration:none;
 color:#1db954;
 font-weight:600;
+}
+
+body::before,
+body::after{
+  content:"";
+  position:fixed;
+  inset:-40%;
+  z-index:-1;
+  filter:blur(45px);
+  animation-timing-function:ease-in-out;
+  animation-iteration-count:infinite;
+  animation-direction:alternate;
+}
+
+body::before{
+  background:
+    radial-gradient(55% 70% at 25% 30%, rgba(180,245,210,1) 0%, transparent 45%),
+    radial-gradient(55% 70% at 80% 25%, rgba(214,233,255,.7) 0%, transparent 55%),
+    radial-gradient(65% 80% at 55% 80%, rgba(233,221,255,.95) 0%, transparent 60%);
+  animation:fundoIA1 9s infinite;
+}
+
+body::after{
+  background:
+    radial-gradient(85% 95% at 70% 65%, rgba(170,240,205,1) 0%, transparent 50%),
+    radial-gradient(80% 95% at 30% 75%, rgba(220,215,255,.85) 0%, transparent 60%);
+  animation:fundoIA2 10s infinite;
+}
+
+@keyframes fundoIA1{
+  0%{transform:translate(0%,0%) scale(1.1);}
+  50%{transform:translate(-14%,-12%) scale(1.35);}
+  100%{transform:translate(12%,10%) scale(1.15);}
+}
+
+@keyframes fundoIA2{
+  0%{transform:translate(0%,0%) scale(1.15);}
+  50%{transform:translate(14%,-10%) scale(1.45);}
+  100%{transform:translate(-12%,12%) scale(1.2);}
 }
