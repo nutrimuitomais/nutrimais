@@ -1,103 +1,95 @@
-// ============================
+// ================================
+// NUTRI+ DASHBOARD JS
+// ================================
+
 // MENU PERFIL
-// ============================
 function toggleMenu() {
-    document.getElementById("menuPerfil").classList.toggle("ativo");
+    const menu = document.getElementById("menuPerfil");
+    if (menu) {
+        menu.classList.toggle("ativo");
+    }
 }
 
-document.addEventListener("click", function(e){
+document.addEventListener("click", function (e) {
     const menu = document.getElementById("menuPerfil");
     const avatar = document.querySelector(".avatar");
 
-    if(menu && avatar){
-        if(!menu.contains(e.target) && !avatar.contains(e.target)){
-            menu.classList.remove("ativo");
-        }
+    if (
+        menu &&
+        avatar &&
+        !menu.contains(e.target) &&
+        !avatar.contains(e.target)
+    ) {
+        menu.classList.remove("ativo");
     }
 });
 
-// ============================
-// RECEITA
-// ============================
+// MODAL RECEITA
 function abrirReceita() {
-    document.getElementById("modalReceita").style.display = "flex";
+    const modal = document.getElementById("modalReceita");
+    if (modal) {
+        modal.style.display = "flex";
+    }
 }
 
 function fecharReceita() {
-    document.getElementById("modalReceita").style.display = "none";
+    const modal = document.getElementById("modalReceita");
+    if (modal) {
+        modal.style.display = "none";
+    }
 }
 
-// ============================
-// CONSULTA NUTRICIONAL
-// ============================
+// FECHAR MODAL CLICANDO FORA
+window.addEventListener("click", function (e) {
+    const modal = document.getElementById("modalReceita");
+
+    if (e.target === modal) {
+        modal.style.display = "none";
+    }
+});
+
+// CONSULTA
 function agendarConsulta() {
-    alert("Redirecionando para agendamento da consulta nutricional.");
+    alert("Redirecionando para o agendamento da consulta.");
 }
 
-// ============================
-// PERSONAL MAX
-// ============================
+// TREINO
 function gerarTreino() {
-
-    const plano = localStorage.getItem("plano") || "DIGITAL";
-
-    if (
-        plano !== "MAX" &&
-        plano !== "SUPER"
-    ) {
-        alert("Função disponível apenas para assinantes MAX ou SUPER.");
-        return;
-    }
-
-    alert("Treino personalizado gerado com sucesso!");
+    alert("Gerando treino personalizado...");
 }
 
-// ============================
-// CHAT SUPORTE
-// ============================
+// SUPORTE
 function abrirSuporte() {
-
-    const plano = localStorage.getItem("plano") || "DIGITAL";
-
-    if(plano === "SUPER"){
-        alert("Tempo médio de atendimento: 2 minutos.");
-    }
-    else if(plano === "MAX"){
-        alert("Tempo médio de atendimento: 5 minutos.");
-    }
-    else{
-        alert("Tempo médio de atendimento: 20 minutos.");
-    }
+    alert("Abrindo chat de suporte.");
 }
 
-// ============================
-// MODO ESCURO / CLARO
-// ============================
-function alternarTema(){
+// BOTÕES
+document.addEventListener("DOMContentLoaded", () => {
 
-    document.body.classList.toggle("light");
+    const btnConsulta =
+        document.getElementById("btnConsulta");
 
-    if(document.body.classList.contains("light")){
-        localStorage.setItem("tema","light");
-    }else{
-        localStorage.setItem("tema","dark");
+    if (btnConsulta) {
+        btnConsulta.addEventListener(
+            "click",
+            agendarConsulta
+        );
     }
-}
 
-window.addEventListener("load", ()=>{
+    const btnTreino =
+        document.getElementById("btnTreino");
 
-    const tema = localStorage.getItem("tema");
-
-    if(tema === "light"){
-        document.body.classList.add("light");
+    if (btnTreino) {
+        btnTreino.addEventListener(
+            "click",
+            gerarTreino
+        );
     }
 
 });
 
-// ============================
-// ANIMAÇÃO IA
-// ============================
-const textosIA = [
+// IA NUTRI COACH
+const mensagensIA = [
     "Analisando dieta...",
     "Calculando calorias...",
     "Comparando evolução...",
@@ -107,60 +99,69 @@ const textosIA = [
 
 let indiceIA = 0;
 
-setInterval(()=>{
+setInterval(() => {
 
-    const elemento = document.getElementById("textoIA");
+    const texto =
+        document.getElementById("textoIA");
 
-    if(elemento){
+    if (!texto) return;
 
-        indiceIA++;
+    indiceIA++;
 
-        if(indiceIA >= textosIA.length){
-            indiceIA = 0;
+    if (indiceIA >= mensagensIA.length) {
+        indiceIA = 0;
+    }
+
+    texto.innerText =
+        mensagensIA[indiceIA];
+
+}, 2500);
+
+// TEMA CLARO / ESCURO
+const btnTema =
+    document.getElementById("btnTema");
+
+if (btnTema) {
+
+    btnTema.addEventListener(
+        "click",
+        function (e) {
+
+            e.preventDefault();
+
+            document.body.classList.toggle(
+                "light"
+            );
+
+            if (
+                document.body.classList.contains(
+                    "light"
+                )
+            ) {
+                localStorage.setItem(
+                    "tema",
+                    "light"
+                );
+            } else {
+                localStorage.setItem(
+                    "tema",
+                    "dark"
+                );
+            }
         }
+    );
+}
 
-        elemento.innerText = textosIA[indiceIA];
-    }
+// CARREGAR TEMA
+window.addEventListener("load", () => {
 
-},2500);
+    const tema =
+        localStorage.getItem("tema");
 
-// ============================
-// BOTÕES PREMIUM
-// ============================
-document.addEventListener("DOMContentLoaded", ()=>{
-
-    const consultaBtn =
-        document.getElementById("btnConsulta");
-
-    if(consultaBtn){
-        consultaBtn.addEventListener(
-            "click",
-            agendarConsulta
-        );
-    }
-
-    const treinoBtn =
-        document.getElementById("btnTreino");
-
-    if(treinoBtn){
-        treinoBtn.addEventListener(
-            "click",
-            gerarTreino
+    if (tema === "light") {
+        document.body.classList.add(
+            "light"
         );
     }
 
 });
-
-// ============================
-// FECHAR MODAL AO CLICAR FORA
-// ============================
-window.onclick = function(event){
-
-    const modal =
-        document.getElementById("modalReceita");
-
-    if(event.target === modal){
-        modal.style.display = "none";
-    }
-
-};
