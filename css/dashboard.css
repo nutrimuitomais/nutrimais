@@ -1041,7 +1041,7 @@ body.light .sidebar nav a:hover{
 
 }
 
-body.light .hero{
+body.light .hero-card{
 
     background:
     linear-gradient(
@@ -1286,7 +1286,7 @@ REFEIÇÕES
 /* =====================
 RECEITAS
 ===================== */
-.recipes-grid{
+.receitas-grid{
     display:grid;
     grid-template-columns:repeat(2,1fr);
     gap:20px;
@@ -1294,22 +1294,22 @@ RECEITAS
     margin-bottom:25px;
 }
 
-.recipe-card{
+.receita-card{
     background:var(--card);
     border:1px solid rgba(255,255,255,.08);
     border-radius:24px;
     padding:24px;
 }
 
-.recipe-card h3{
+.receita-card h3{
     margin-bottom:15px;
 }
 
-.recipe-card p{
+.receita-card p{
     margin-bottom:8px;
 }
 
-.recipe-card button{
+.receita-card button{
     margin-top:15px;
     width:100%;
     padding:12px;
@@ -1334,7 +1334,7 @@ RESPONSIVO
         grid-template-columns:1fr;
     }
 
-    .recipes-grid{
+    .receitas-grid{
         grid-template-columns:1fr;
     }
 
