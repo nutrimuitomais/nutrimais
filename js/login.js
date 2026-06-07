@@ -30,15 +30,20 @@ function fazerLogin(){
 }
 
 function fazerLogin() {
-  const email = document.getElementById("email").value;
-  const senha = document.getElementById("senha").value;
+  const email = document.getElementById("email").value.trim();
+  const senha = document.getElementById("senha").value.trim();
 
-  const emailTeste = "viniciuscostacorreia2018";
-  const senhaTeste = "978612";
-
-  if (email === emailTeste && senha === senhaTeste) {
+  if (
+    email === "viniciuscostacorreia2018@gmail.com" &&
+    senha === "978612"
+  ) {
+    alert("Login realizado com sucesso!");
     window.location.href = "dashboard.html";
   } else {
     alert("E-mail ou senha inválidos.");
   }
+}
+
+function loginGoogle() {
+  alert("Login Google será ativado quando integrarmos o Google OAuth.");
 }
