@@ -165,3 +165,43 @@ window.location.href =
 "login.html";
 
 }
+
+/* EVOLUÇÃO DE PESO */
+
+const pesoInicial = 92;
+const pesoAtual = 88;
+const pesoMeta = 84;
+
+const totalPerder =
+pesoInicial - pesoMeta;
+
+const perdido =
+pesoInicial - pesoAtual;
+
+const progresso =
+(perdido / totalPerder) * 100;
+
+const barraPeso =
+document.getElementById(
+"barraPeso"
+);
+
+if(barraPeso){
+
+barraPeso.style.width =
+progresso + "%";
+
+}
+
+const percentualPeso =
+document.getElementById(
+"percentualPeso"
+);
+
+if(percentualPeso){
+
+percentualPeso.innerText =
+Math.round(progresso) +
+"% concluído";
+
+}
