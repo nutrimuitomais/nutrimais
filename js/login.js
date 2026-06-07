@@ -28,3 +28,17 @@ function fazerLogin(){
   }
 
 }
+
+function fazerLogin() {
+  const email = document.getElementById("email").value;
+  const senha = document.getElementById("senha").value;
+
+  const emailTeste = "viniciuscostacorreia2018";
+  const senhaTeste = "978612";
+
+  if (email === emailTeste && senha === senhaTeste) {
+    window.location.href = "dashboard.html";
+  } else {
+    alert("E-mail ou senha inválidos.");
+  }
+}
