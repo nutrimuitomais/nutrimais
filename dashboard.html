@@ -3,51 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nutri+ Dashboard Premium</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <title>Nutri+ | Prático e Inteligente</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="dashboard.css">
 </head>
-<body class="light-mode"> <div class="dashboard-container">
+<body>
+
+    <div class="dashboard-container">
         
         <aside class="sidebar">
             <div class="logo-container">
                 <div class="logo">
-                    <img src="img/logo.png" alt="Nutri+" class="logo-img">
                     <span class="logo-text">Nutri<span>+</span></span>
                 </div>
             </div>
-            
             <nav class="nav-menu">
-                <a href="#" class="nav-item active" data-target="inicio">
-                    <span class="icon">🏠</span> <span class="nav-label">Início</span>
-                </a>
-                <a href="#" class="nav-item" data-target="dieta">
-                    <span class="icon">🍽️</span> <span class="nav-label">Dieta</span>
-                </a>
-                <a href="#" class="nav-item" data-target="evolucao">
-                    <span class="icon">📈</span> <span class="nav-label">Evolução</span>
-                </a>
-                <a href="#" class="nav-item" data-target="receitas">
-                    <span class="icon">🥗</span> <span class="nav-label">Receitas</span>
-                </a>
-                <a href="#" class="nav-item" data-target="treinos">
-                    <span class="icon">🏋️</span> <span class="nav-label">Treinos</span>
-                </a>
-                <a href="#" class="nav-item" data-target="consultas">
-                    <span class="icon">👨‍⚕️</span> <span class="nav-label">Consultas</span>
-                </a>
-                <a href="#" class="nav-item" data-target="suporte">
-                    <span class="icon">💬</span> <span class="nav-label">Suporte</span>
-                </a>
-                <a href="#" class="nav-item" data-target="config">
-                    <span class="icon">⚙️</span> <span class="nav-label">Configurações</span>
-                </a>
+                <a href="#" class="nav-item active"><span class="m-icon">🏠</span> Início</a>
+                <a href="#" class="nav-item"><span class="m-icon">🥗</span> Dieta</a>
+                <a href="#" class="nav-item"><span class="m-icon">📈</span> Evolução</a>
+                <a href="#" class="nav-item"><span class="m-icon">🍳</span> Receitas</a>
+                <a href="#" class="nav-item"><span class="m-icon">🏋️‍♂️</span> Treinos</a>
+                <a href="#" class="nav-item"><span class="m-icon">🩺</span> Consultas</a>
+                <a href="#" class="nav-item"><span class="m-icon">💬</span> Suporte</a>
+                <a href="#" class="nav-item"><span class="m-icon">⚙️</span> Configurações</a>
             </nav>
-
             <div class="sidebar-footer">
-                <a href="#" class="logout-btn">
-                    <span class="icon">🚪</span> <span class="nav-label">Sair</span>
-                </a>
+                <a href="#" class="logout-btn">🚪 Sair</a>
             </div>
         </aside>
 
@@ -55,29 +38,26 @@
             
             <header class="header">
                 <div class="header-left">
-                    <h1>Olá, Vinicius<span class="wave-emoji">👋</span></h1>
+                    <h1>Olá, Vinicius <span class="wave-emoji">👋</span></h1>
                     <p>Vamos começar a viver de forma saudável a partir de hoje.</p>
                 </div>
-                
                 <div class="header-right">
                     <div class="search-bar">
                         <span class="search-icon">🔍</span>
                         <input type="text" placeholder="Buscar alimentos, treinos...">
                     </div>
-                    
                     <div class="notification-box">
                         <span class="bell-icon">🔔</span>
                         <span class="badge"></span>
                     </div>
-
-                    <div class="user-profile-box" id="profileDropdownBtn">
-                        <img src="img/avatar.png" alt="Foto do Paciente" class="avatar-topo">
+                    <div class="user-profile-box" id="profileToggle">
+                        <div class="avatar-topo" style="background-color: #1DB954; display: inline-block; width: 40px; height: 40px; border-radius: 50%;"></div>
                         <div class="user-info-text">
                             <h4>Vinicius</h4>
-                            <span class="plan-badge max-tag" id="currentPlanLabel">Plano MAX</span>
+                            <span class="plan-badge max-tag" id="currentPlanTag">Plano MAX</span>
                         </div>
                         <span class="arrow-down">▼</span>
-
+                        
                         <div class="profile-dropdown" id="profileDropdown">
                             <div class="dropdown-header">
                                 <strong>Vinicius Neves</strong>
@@ -85,24 +65,23 @@
                             </div>
                             <hr>
                             <a href="#">👤 Meu Perfil</a>
-                            <a href="#">🍽️ Minha Dieta</a>
+                            <a href="#">🥗 Minha Dieta</a>
                             <a href="#">📈 Minha Evolução</a>
-                            <a href="#">👨‍⚕️ Consulta Nutricionista</a>
+                            <a href="#">🩺 Consulta Nutricionista</a>
                             <a href="#">💳 Faturas</a>
                             <a href="#">👑 Planos</a>
                             <hr>
                             <div class="dropdown-section-title">Acesso MAX</div>
-                            <a href="#" class="premium-link-item link-max">🏋️ Treino Personalizado</a>
-                            <a href="#" class="premium-link-item link-max">🏃 Consulta Personal</a>
-                            <a href="#" class="premium-link-item link-max">🥗 Receitas Premium</a>
+                            <a href="#" class="premium-link-item link-max">🏋️‍♂️ Treino Personalizado</a>
+                            <a href="#" class="premium-link-item link-max">🩺 Consulta Personal</a>
+                            <a href="#" class="premium-link-item link-max">🍳 Receitas Premium</a>
                             <hr>
                             <div class="dropdown-section-title">Acesso SUPER</div>
                             <a href="#" class="premium-link-item link-super">🤖 IA Nutri Coach</a>
                             <a href="#" class="premium-link-item link-super">⚡ Ajuste Inteligente</a>
                             <hr>
-                            <a href="#">💬 Chat Suporte</a>
                             <div class="menu-switch-mode">
-                                <span>🌓 Modo Escuro</span>
+                                <span>🌙 Modo Escuro</span>
                                 <label class="switch">
                                     <input type="checkbox" id="darkModeToggle">
                                     <span class="slider round"></span>
@@ -116,7 +95,7 @@
             </header>
 
             <div class="plan-simulator">
-                <span>Simular Visual do Plano:</span>
+                <strong>Simular Visual do Plano:</strong>
                 <button onclick="setPlan('digital')">Digital</button>
                 <button onclick="setPlan('max')">MAX</button>
                 <button onclick="setPlan('super')">SUPER</button>
@@ -124,25 +103,22 @@
 
             <div class="dashboard-grid">
                 
-                <div class="card hero-ia-card" id="cardIaCoach">
+                <div class="card hero-ia-card" id="card-ia">
                     <div class="ia-glow-effect"></div>
-                    <div class="ia-content">
-                        <div class="ia-header">
-                            <span class="ia-badge">🤖 IA NUTRI+ COACH</span>
-                            <span class="plan-tag super-color">SUPER</span>
-                        </div>
-                        <div class="ia-status-animation">
-                            <div class="pulse-circle"></div>
-                            <div class="moving-particles"></div>
-                            <span class="ia-status-text">IA Ativa analisando sua rotina...</span>
-                        </div>
-                        <ul class="ia-analysis-list">
-                            <li><span class="check-neon">●</span> Analisando adesão da dieta diária</li>
-                            <li><span class="check-neon">●</span> Monitorando variação de peso metabólico</li>
-                            <li><span class="check-neon">●</span> Otimizando distribuição de macronutrientes</li>
-                        </ul>
-                        <button class="btn-premium btn-super-neon">Abrir IA Coach</button>
+                    <div class="ia-header">
+                        <span class="ia-badge">🤖 IA NUTRI+ COACH SUPER</span>
                     </div>
+                    <div class="ia-status-animation">
+                        <div class="pulse-circle"></div>
+                        <div class="ia-status-text">IA Ativa analisando sua rotina...</div>
+                    </div>
+                    <ul class="ia-analysis-list">
+                        <li><span class="check-neon">✓</span> Analisando adesão da dieta diária</li>
+                        <li><span class="check-neon">✓</span> Monitorando variação de peso metabólico</li>
+                        <li><span class="check-neon">✓</span> Otimizando distribuição de macronutrientes</li>
+                    </ul>
+                    <button class="btn-premium btn-super-neon">Abrir IA Coach</button>
+                    
                     <div class="lock-overlay">
                         <span>🔒 Exclusivo para Assinantes SUPER</span>
                         <button class="btn-lock-upgrade">Fazer Upgrade para SUPER</button>
@@ -154,14 +130,13 @@
                         <span class="challenge-tag">The 5 a day challenge 🔥</span>
                         <h2>Desafio Foco Total Semana</h2>
                         <div class="joined-users">
-                            <img src="img/user1.jpg" alt="User">
-                            <img src="img/user2.jpg" alt="User">
-                            <img src="img/user3.jpg" alt="User">
+                            <div style="width:32px; height:32px; background:#CBD5E1; border-radius:50%; margin-right:-10px;"></div>
+                            <div style="width:32px; height:32px; background:#94A3B8; border-radius:50%; margin-right:-10px;"></div>
                             <span class="joined-count">+5k participando</span>
                         </div>
                     </div>
                     <div class="challenge-image">
-                        <img src="img/gym-dumbbells.png" alt="Halteres">
+                        <span style="font-size: 64px;">🏋️‍♂️</span>
                     </div>
                     <button class="arrow-action-btn">→</button>
                 </div>
@@ -172,8 +147,7 @@
                         <span class="kcal-counter">625 Kcal</span>
                     </div>
                     <div class="chart-container-mock">
-                        <div class="mock-graph-lines"></div>
-                        <div class="graph-tooltip" style="left: 70%; bottom: 55%;">
+                        <div class="graph-tooltip" style="top: 20px; left: 60%;">
                             <span class="tooltip-val">25%</span>
                             <span class="tooltip-time">19:00pm</span>
                         </div>
@@ -184,246 +158,289 @@
                     <h3>Calorias Restantes</h3>
                     <div class="circular-progress-box">
                         <svg class="progress-ring" width="160" height="160">
-                            <circle class="progress-ring__background" stroke="#e6f9f3" stroke-width="12" fill="transparent" r="70" cx="80" cy="80"/>
-                            <circle class="progress-ring__circle" stroke="#1db954" stroke-width="12" fill="transparent" r="70" cx="80" cy="80"/>
+                            <circle class="progress-ring__circle" stroke="#E2E8F0" stroke-width="12" fill="transparent" r="70" cx="80" cy="80"/>
+                            <circle class="progress-ring__circle" stroke="#1DB954" stroke-width="12" stroke-dasharray="439.8" stroke-dashoffset="110" fill="transparent" r="70" cx="80" cy="80" stroke-linecap="round"/>
                         </svg>
                         <div class="circle-inner-text">
-                            <span class="emoji">🍳</span>
+                            <span class="emoji">🥑</span>
                             <span class="calories-num">750 Kcal</span>
-                            <span class="calories-sub">Consumidas</span>
+                            <span class="calories-sub">Atividade</span>
                         </div>
                     </div>
-                    <div class="budget-footer-text">Meta Diária: 2200 Kcal</div>
+                    <span class="budget-footer-text">My Analytics</span>
                 </div>
 
-                <div class="card macros-card">
-                    <h3>Recap Diário de Macros</h3>
+                <div class="card macro-card">
+                    <h3>Daily Recap</h3>
                     <div class="macro-list">
                         <div class="macro-item">
                             <div class="macro-badge carb-bg">54 g</div>
                             <div class="macro-details">
-                                <div class="macro-name-row"><span>Carboidratos</span> <span>25%</span></div>
+                                <div class="macro-name-row"><span>Carbohydrate</span> <span>25%</span></div>
                                 <div class="macro-bar"><div class="macro-progress carb-bar" style="width: 25%;"></div></div>
                             </div>
                         </div>
                         <div class="macro-item">
-                            <div class="macro-badge protein-bg">162 g</div>
+                            <div class="macro-badge protein-bg">16.2 g</div>
                             <div class="macro-details">
-                                <div class="macro-name-row"><span>Proteínas</span> <span>55%</span></div>
-                                <div class="macro-bar"><div class="macro-progress protein-bar" style="width: 55%;"></div></div>
+                                <div class="macro-name-row"><span>Protein</span> <span>25%</span></div>
+                                <div class="macro-bar"><div class="macro-progress protein-bar" style="width: 25%;"></div></div>
                             </div>
                         </div>
-                        <div class="macro-item">
-                            <div class="macro-badge fat-bg">51.2 g</div>
+                        <div class="card-bar macro-item">
+                            <div class="macro-badge fat-bg">11.2 g</div>
                             <div class="macro-details">
-                                <div class="macro-name-row"><span>Gorduras</span> <span>20%</span></div>
-                                <div class="macro-bar"><div class="macro-progress fat-bar" style="width: 20%;"></div></div>
+                                <div class="macro-name-row"><span>Fats</span> <span>25%</span></div>
+                                <div class="macro-bar"><div class="macro-progress fat-bar" style="width: 25%;"></div></div>
                             </div>
                         </div>
                     </div>
                 </div>
 
                 <div class="card dieta-card">
-                    <h3>Dieta de Hoje</h3>
+                    <h3>Daily Calories</h3>
                     <div class="meal-timeline">
                         <div class="meal-box blue-theme">
                             <div class="meal-header">
-                                <div>
-                                    <h4>Café da Manhã</h4>
-                                    <p>Cereal integral com leite desnatado</p>
-                                </div>
-                                <span class="meal-kcal">240 Kcal</span>
+                                <h4>Breakfast</h4>
+                                <p>cold cereal and milk</p>
                             </div>
-                            <button class="meal-action-arrow">→</button>
+                            <div style="display: flex; align-items: center; gap: 15px;">
+                                <span class="meal-kcal">240 Kcal</span>
+                                <button class="meal-action-arrow">→</button>
+                            </div>
                         </div>
-
                         <div class="meal-box green-theme">
                             <div class="meal-header">
-                                <div>
-                                    <h4>Almoço</h4>
-                                    <p>Frango grelhado com arroz e legumes</p>
-                                </div>
-                                <span class="meal-kcal">520 Kcal</span>
+                                <h4>Lunch</h4>
+                                <p>vegetables Salad</p>
                             </div>
-                            <button class="meal-action-arrow">→</button>
+                            <div style="display: flex; align-items: center; gap: 15px;">
+                                <span class="meal-kcal">240 Kcal</span>
+                                <button class="meal-action-arrow">→</button>
+                            </div>
                         </div>
                     </div>
                     <div class="dieta-footer">
-                        <span>Restante do dia: <strong>1440 Kcal</strong></span>
+                        <span>Remaining: <strong>635 Kcal</strong></span>
                         <button class="btn-add-food">+</button>
                     </div>
                 </div>
 
                 <div class="card evolution-card">
-                    <h3>Evolução de Peso</h3>
+                    <h3>Sua Evolução</h3>
                     <div class="evolution-stats">
-                        <div class="stat-node"><span>Inicial</span><strong>92kg</strong></div>
-                        <div class="stat-node current"><span>Atual</span><strong>88kg</strong></div>
-                        <div class="stat-node target"><span>Meta</span><strong>84kg</strong></div>
+                        <div class="stat-node"><span>Meta</span><strong>75 kg</strong></div>
+                        <div class="stat-node current"><span>Atual</span><strong>79 kg</strong></div>
+                        <div class="stat-node"><span>Inicial</span><strong>85 kg</strong></div>
                     </div>
                     <div class="evolution-bar-container">
-                        <div class="evolution-bar-progress" style="width: 50%;"></div>
+                        <div class="evolution-bar-progress" style="width: 65%;"></div>
                         <div class="evolution-line-track">
-                            <span class="dot-track active"></span>
-                            <span class="dot-track active current-dot"></span>
-                            <span class="dot-track"></span>
+                            <div class="dot-track active"></div>
+                            <div class="dot-track active"></div>
+                            <div class="dot-track active current-dot"></div>
+                            <div class="dot-track"></div>
                         </div>
                     </div>
-                    <div class="evolution-percentage-text">Você já completou 50% da sua meta de perda de peso!</div>
+                    <p class="evolution-percentage-text">Você já completou <strong>65%</strong> da sua meta de perda de gordura. Faltam apenas 4kg!</p>
                 </div>
 
-                <div class="card receitas-card" id="cardReceitas">
+                <div class="card recipes-card" id="card-receitas">
                     <div class="card-header-split">
                         <h3>Receitas Personalizadas</h3>
                         <span class="plan-tag max-color">MAX</span>
                     </div>
-                    <p class="section-sub-desc">Quantidades exatas calculadas para seu objetivo:</p>
-                    
+                    <p class="section-sub-desc">Sugestões baseadas no seu objetivo metabólico</p>
                     <div class="receitas-list">
                         <div class="recipe-item-box">
-                            <div class="recipe-img-placeholder" style="background-image: url('img/omelete.jpg');"></div>
+                            <div class="recipe-img-placeholder" style="background-color: #FFEAEA; font-size:24px; display:flex; align-items:center; justify-content:center;">🥣</div>
                             <div class="recipe-info-short">
-                                <h4>Omelete Premium Fit</h4>
-                                <div class="recipe-tags">
-                                    <span>290 Kcal</span> <span>26g P</span>
-                                </div>
-                                <button class="btn-view-recipe" onclick="openRecipe('omelete')">Ver Receita</button>
-                            </div>
-                        </div>
-
-                        <div class="recipe-item-box">
-                            <div class="recipe-img-placeholder" style="background-image: url('img/frango.jpg');"></div>
-                            <div class="recipe-info-short">
-                                <h4>Almoço de Frango Fit</h4>
-                                <div class="recipe-tags">
-                                    <span>520 Kcal</span> <span>58g P</span>
-                                </div>
-                                <button class="btn-view-recipe" onclick="openRecipe('frango')">Ver Receita</button>
+                                <h4>Bowl de Iogurte de Whey</h4>
+                                <div class="recipe-tags"><span>Café da manhã</span><span>Alta Proteína</span></div>
+                                <button class="btn-view-recipe" onclick="openModal('Bowl de Iogurte Proteico', '300g Iogurte Natural Desnatado, 30g Whey Protein Isolado, 50g Morangos frescos', 'Misture o Whey diretamente no iogurte até homogeneizar. Decore com os morangos fatiados por cima. Consuma gelado.')">Ver Receita Premium →</button>
                             </div>
                         </div>
                     </div>
-                    
                     <div class="lock-overlay">
-                        <span>🔒 Liberar +100 Receitas Geradas por IA</span>
+                        <span>🔒 Disponível a partir do Plano MAX</span>
                         <button class="btn-lock-upgrade">Fazer Upgrade para MAX</button>
                     </div>
                 </div>
 
-                <div class="card product-card consult-nutri">
-                    <div class="product-badge">👨‍⚕️ Nutricionista Parceiro</div>
+                <div class="card product-card" id="card-consultas">
+                    <span class="product-badge">Agendamento Integrado</span>
                     <div class="product-layout">
                         <div class="product-details">
-                            <h3>Consulta Premium Avulsa</h3>
+                            <h3>Consulta com Personal Trainer</h3>
                             <div class="price-tag-container">
-                                <span class="old-price">R$ 459,99</span>
-                                <span class="current-price">R$ 298,99</span>
+                                <span class="old-price">R$ 150,00</span>
+                                <span class="current-price">Grátis</span>
                             </div>
                             <ul class="product-benefits">
-                                <li>✓ Plano alimentar 100% ajustável</li>
-                                <li>✓ Avaliação clínica detalhada</li>
-                                <li>✓ Canal direto de mensagens 24h</li>
+                                <li>• Check-in de bioimpedância online</li>
+                                <li>• Montagem de treino ABCDE focada em hipertrofia</li>
                             </ul>
-                            <button class="btn-action-buy">Agendar Consulta</button>
-                        </div>
-                        <div class="product-image-container doctor-bg"></div>
-                    </div>
-                </div>
-
-                <div class="card product-card consult-personal" id="cardPersonal">
-                    <div class="product-badge">🏋️ Professor de Educação Física</div>
-                    <div class="product-layout">
-                        <div class="product-details">
-                            <h3>Acompanhamento com Personal</h3>
-                            <div class="price-tag-container">
-                                <span class="old-price">R$ 459,99</span>
-                                <span class="current-price">R$ 298,99</span>
-                            </div>
-                            <ul class="product-benefits">
-                                <li>✓ Planejamento de treino montado</li>
-                                <li>✓ Correção e análise de execução por vídeo</li>
-                                <li>✓ Suporte especializado direto</li>
-                            </ul>
-                            <button class="btn-action-buy" id="btnPersonalAction">Agendar Personal</button>
+                            <button class="btn-action-buy">Agendar Horário</button>
                         </div>
                         <div class="product-image-container personal-bg"></div>
                     </div>
                     <div class="lock-overlay">
-                        <span>🔒 Treinos e Personal exclusivos do Plano MAX</span>
-                        <button class="btn-lock-upgrade">Assinar Plano MAX</button>
+                        <span>🔒 Disponível a partir do Plano MAX</span>
+                        <button class="btn-lock-upgrade">Fazer Upgrade para MAX</button>
                     </div>
                 </div>
 
                 <div class="card news-slider-card">
                     <div class="news-slider-wrapper">
-                        <div class="news-slide active" id="slide1">
+                        <div class="news-slide">
                             <div class="slide-content">
-                                <span class="news-tag">🔥 UPGRADE</span>
-                                <h3>Mais de 100 receitas geradas para você</h3>
-                                <p>Descubra combinações deliciosas que batem seus macros exatos.</p>
-                                <button class="btn-slider-action">Assinar o MAX</button>
+                                <span class="news-tag">DICA DA SEMANA</span>
+                                <h3>Como manter a constância nos treinos matinais</h3>
+                                <p>Descubra técnicas científicas de higiene do sono para acordar com máxima energia disposta.</p>
+                                <button class="btn-slider-action">Ler Artigo</button>
                             </div>
-                            <div class="slide-img salad-slide-bg"></div>
+                            <div class="slide-img gym-slide-bg" style="font-size:32px; display:flex; align-items:center; justify-content:center;">⏰</div>
                         </div>
-                        </div>
+                    </div>
                     <div class="slider-dots">
-                        <span class="dot active" onclick="changeSlide(0)"></span>
-                        <span class="dot" onclick="changeSlide(1)"></span>
-                        <span class="dot" onclick="changeSlide(2)"></span>
+                        <span class="dot active"></span>
+                        <span class="dot"></span>
+                        <span class="dot"></span>
                     </div>
                 </div>
 
                 <div class="card support-card">
                     <div class="card-header-split">
-                        <h3>Suporte Humanizado</h3>
-                        <span class="support-status-dot"></span>
+                        <h3>Suporte Nutri+</h3>
+                        <div class="support-status-dot"></div>
                     </div>
-                    <p>Fale com nossa equipe especializada em tempo real.</p>
-                    
+                    <p>Fale diretamente com nossa central de atendimento humanizada.</p>
                     <div class="sla-container">
-                        <div class="sla-row" id="slaDigital"><span>Nutri Digital:</span> <strong>Até 20 min</strong></div>
-                        <div class="sla-row" id="slaMax"><span>Plano MAX:</span> <strong>Até 5 min</strong></div>
-                        <div class="sla-row" id="slaSuper"><span>Plano SUPER:</span> <strong>Até 2 min</strong></div>
+                        <div class="sla-row"><span>Tempo de Resposta:</span> <strong>&lt; 15 min</strong></div>
+                        <div class="sla-row"><span>Seu Plano:</span> <strong id="slaPlanName">MAX Priority</strong></div>
                     </div>
-
-                    <div class="current-sla-alert" id="currentSlaBadge">
-                        Tempo médio estimado para você: <strong>5 minutos</strong>
-                    </div>
-                    
-                    <button class="btn-support-connect">Abrir Chat Suporte</button>
+                    <div class="current-sla-alert">Fila prioritária ativada para sua conta.</div>
+                    <button class="btn-support-connect">Iniciar Conversa no Chat</button>
                 </div>
 
             </div>
         </main>
-
-        <div class="mobile-bottom-bar">
-            <button class="mobile-nav-item active" data-target="inicio">
-                <span class="m-icon">🏠</span><span class="m-label">Início</span>
-            </button>
-            <button class="mobile-nav-item" data-target="dieta">
-                <span class="m-icon">🍽️</span><span class="m-label">Dieta</span>
-            </button>
-            <button class="mobile-nav-item" data-target="receitas">
-                <span class="m-icon"> Salad </span><span class="m-label">Receitas</span>
-            </button>
-            <button class="mobile-nav-item" data-target="suporte">
-                <span class="m-icon">💬</span><span class="m-label">Suporte</span>
-            </button>
-            <button class="mobile-nav-item" id="mobileMenuProfileBtn">
-                <img src="img/avatar.png" alt="Perfil" class="avatar-mobile-nav">
-                <span class="m-label">Perfil</span>
-            </button>
-        </div>
-
     </div>
 
     <div class="modal-overlay" id="recipeModal">
         <div class="modal-container">
-            <button class="modal-close" onclick="closeRecipeModal()">✕</button>
-            <div id="recipeModalContent">
+            <button class="modal-close" onclick="closeModal()">✕</button>
+            <div class="recipe-modal-header">
+                <h2 id="modalTitle">Nome da Receita</h2>
+                <div class="modal-macro-strip">
+                    <span class="macro-badge-modal kcal">🔥 380 Kcal</span>
+                    <span class="macro-badge-modal prot">🥩 35g Prot</span>
+                    <span class="macro-badge-modal carb">🍞 22g Carb</span>
+                    <span class="macro-badge-modal fat">🥑 8g Gord</span>
                 </div>
+            </div>
+            <h3>Ingredientes (Pesagem Precisa)</h3>
+            <ul class="modal-ingredients-list" id="modalIngredients">
+                </ul>
+            <hr class="modal-divider">
+            <h3>Modo de Preparo</h3>
+            <ol class="modal-prep-list" id="modalPrep">
+                </ol>
         </div>
     </div>
 
-    <script src="dashboard.js"></script>
+    <nav class="mobile-bottom-bar">
+        <button class="mobile-nav-item active">
+            <span class="m-icon">🏠</span>
+            <span class="m-label">Início</span>
+        </button>
+        <button class="mobile-nav-item">
+            <span class="m-icon">🥗</span>
+            <span class="m-label">Dieta</span>
+        </button>
+        <button class="mobile-nav-item">
+            <span class="m-icon">🍳</span>
+            <span class="m-label">Receitas</span>
+        </button>
+        <button class="mobile-nav-item">
+            <div class="avatar-mobile-nav" style="background-color:#1DB954;"></div>
+            <span class="m-label">Perfil</span>
+        </button>
+    </nav>
+
+    <script>
+        // Toggle do Dropdown de Perfil
+        const profileToggle = document.getElementById('profileToggle');
+        const profileDropdown = document.getElementById('profileDropdown');
+        
+        profileToggle.addEventListener('click', (e) => {
+            e.stopPropagation();
+            profileDropdown.classList.toggle('active');
+        });
+
+        document.addEventListener('click', () => {
+            profileDropdown.classList.remove('active');
+        });
+
+        // Dark Mode Toggle
+        const darkModeToggle = document.getElementById('darkModeToggle');
+        darkModeToggle.addEventListener('change', () => {
+            document.body.classList.toggle('dark-mode');
+        });
+
+        // Controle do Simulador de Planos Dinâmicos (Travas Ativas)
+        function setPlan(plan) {
+            const cardIa = document.getElementById('card-ia');
+            const cardReceitas = document.getElementById('card-receitas');
+            const cardConsultas = document.getElementById('card-consultas');
+            const tag = document.getElementById('currentPlanTag');
+            const slaName = document.getElementById('slaPlanName');
+
+            // Reset inicial
+            cardIa.classList.remove('locked');
+            cardReceitas.classList.remove('locked');
+            cardConsultas.classList.remove('locked');
+
+            if (plan === 'digital') {
+                cardIa.classList.add('locked');
+                cardReceitas.classList.add('locked');
+                cardConsultas.classList.add('locked');
+                tag.innerText = "Plano Digital";
+                tag.className = "plan-badge digital-tag";
+                slaName.innerText = "Digital Standard";
+            } else if (plan === 'max') {
+                cardIa.classList.add('locked'); // Bloqueia apenas a IA Coach
+                tag.innerText = "Plano MAX";
+                tag.className = "plan-badge max-tag";
+                slaName.innerText = "MAX Priority";
+            } else if (plan === 'super') {
+                // Tudo liberado no SUPER
+                tag.innerText = "Plano SUPER";
+                tag.className = "plan-badge super-tag";
+                slaName.innerText = "SUPER Realtime";
+            }
+        }
+
+        // Inicializa o simulador no modo MAX padrão conforme o seu estado atual
+        setPlan('max');
+
+        // Lógica do Modal de Receitas Premium
+        function openModal(title, ingredients, preparation) {
+            document.getElementById('modalTitle').innerText = title;
+            
+            const ingList = document.getElementById('modalIngredients');
+            ingList.innerHTML = ingredients.split(',').map(i => `<li>🔹 ${i.trim()}</li>`).join('');
+            
+            const prepList = document.getElementById('modalPrep');
+            prepList.innerHTML = preparation.split('.').filter(p => p.trim()).map(p => `<li>${p.trim()}.</li>`).join('');
+
+            document.getElementById('recipeModal').classList.add('active');
+        }
+
+        function closeModal() {
+            document.getElementById('recipeModal').classList.remove('active');
+        }
+    </script>
 </body>
 </html>
