@@ -3,32 +3,96 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Painel - Nutri+</title>
+<title>Dashboard - Nutri+</title>
+
 <link rel="stylesheet" href="css/dashboard.css">
 </head>
+
 <body>
 
-<div class="dashboard-card">
+<header class="topo">
 
-  <h1>Nutri+</h1>
+<img
+src="img/logo.png"
+class="logo"
+alt="Nutri+">
 
-  <h2 id="boasVindas">
-    Bem-vindo!
-  </h2>
+<div class="perfil-area">
 
-  <p>
-    Seu acesso está ativo.
-  </p>
+<img
+src="img/avatar.png"
+class="avatar"
+onclick="toggleMenu()">
 
-  <button onclick="entrarAnamnese()">
-    Iniciar Anamnese
-  </button>
+<div
+id="menuPerfil"
+class="menu-perfil">
 
-  <button onclick="sair()">
-    Sair
-  </button>
+<a href="#">Meu Perfil</a>
+
+<a href="#">Faturas do meu Plano</a>
+
+<a href="#">Evolução</a>
+
+<a href="#">Minha Dieta</a>
+
+<a href="#">Meu Objetivo</a>
+
+<a href="#">Configurações</a>
+
+<a href="login.html">Sair</a>
 
 </div>
+
+</div>
+
+</header>
+
+<main>
+
+<div class="card-boas-vindas">
+
+<h1>
+Bem-vindo ao Nutri+
+</h1>
+
+<p id="nomeUsuario">
+Paciente
+</p>
+
+</div>
+
+<div class="grid-cards">
+
+<div class="info-card">
+<h3>Plano Atual</h3>
+<p id="planoAtual">
+Carregando...
+</p>
+</div>
+
+<div class="info-card">
+<h3>Objetivo</h3>
+<p id="objetivoAtual">
+Carregando...
+</p>
+</div>
+
+<div class="info-card">
+<h3>Status</h3>
+<p>
+Plano Ativo
+</p>
+</div>
+
+</div>
+
+<button
+class="btn-plano">
+Alterar Plano
+</button>
+
+</main>
 
 <script src="js/dashboard.js"></script>
 
