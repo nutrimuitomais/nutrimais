@@ -211,7 +211,15 @@ function confirmarPagamento() {
 
   const usuario = {
     email,
-    senha
+    senha,
+    plano: plano.nome,
+    tipoPlano: plano.tipo,
+    objetivo:
+      localStorage.getItem("objetivo") || "",
+    alimentos:
+      JSON.parse(
+        localStorage.getItem("alimentos")
+      ) || []
   };
 
   localStorage.setItem(
