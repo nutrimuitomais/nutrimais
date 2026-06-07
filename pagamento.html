@@ -5,329 +5,82 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Pagamento - Nutri+</title>
 
-<style>
-    /* HERO PAGAMENTO */
-  
-.hero-pagamento{
-position:relative;
-overflow:hidden;
+<link rel="stylesheet" href="css/pagamento.css">
 
-background:linear-gradient(
-120deg,
-#3f5b50,
-#4f6b56,
-#3f5b50
-);
-
-background-size:200% 200%;
-
-animation:gradientePagamento 6s ease infinite;
-
-padding:35px 30px;
-
-border-radius:28px;
-
-margin-bottom:30px;
-
-color:#fff;
-
-box-shadow:
-0 20px 50px rgba(0,0,0,.20),
-0 0 25px rgba(79,107,86,.25);
-}
-
-box-shadow:
-0 20px 50px rgba(0,0,0,.20),
-0 0 25px rgba(79,107,86,.25);
-}
-
-@keyframes gradientePagamento{
-0%{background-position:0% 50%;}
-50%{background-position:100% 50%;}
-100%{background-position:0% 50%;}
-}
-
-.hero-pagamento .plano{
-font-size:26px;
-font-weight:800;
-color:#fff;
-margin-bottom:8px;
-}
-
-.hero-pagamento .tipo{
-color:rgba(255,255,255,.9);
-margin-bottom:14px;
-}
-
-.hero-pagamento .preco{
-font-size:48px;
-font-weight:900;
-color:#fff;
-line-height:1;
-}
-
-.hero-pagamento .economia{
-background:rgba(255,255,255,.15);
-border:none;
-color:#fff;
-margin-top:15px;
-}
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:Arial,sans-serif;
-}
-
-body{
-background:transparent;
-min-height:100vh;
-padding:30px;
-color:#fff;
-}
-
-.titulo{
-text-align:center;
-font-size:42px;
-font-weight:800;
-margin-bottom:10px;
-color:#1f2937;
-}
-
-.subtitulo{
-text-align:center;
-color:#6b7280;
-margin-bottom:35px;
-}
-
-.card{
-width:100%;
-max-width:900px;
-margin:auto;
-
-background:rgba(255,255,255,.82);
-backdrop-filter:blur(20px);
-
-border-radius:32px;
-
-padding:18px;
-
-box-shadow:0 20px 50px rgba(0,0,0,.12);
-
-color:#111;
-}
-    
-box-shadow:0 20px 50px rgba(0,0,0,.12);
-color:#111;
-}
-
-.tag{
-display:inline-block;
-padding:8px 16px;
-border-radius:999px;
-background:#1db954;
-font-weight:700;
-margin-bottom:20px;
-}
-
-.plano{
-font-size:30px;
-font-weight:800;
-margin-bottom:10px;
-}
-
-.tipo{
-color:#6fd18c;
-font-weight:700;
-margin-bottom:15px;
-}
-
-.preco{
-  font-size:72px;
-  font-weight:900;
-  text-align:left;
-  margin:20px 0;
-  white-space:nowrap;
-}
-
-.economia{
-display:none;
-}
-
-..ativo{
-background:#1db954;
-border-color:#1db954;
-color:#fff;
-}
-
-.pix-area,
-.cartao-area{
-display:none;
-}
-
-.ativo-area{
-display:block;
-}
-
-.qrcode{
-height:220px;
-background:#f8fafc;
-border-radius:20px;
-display:flex;
-align-items:center;
-justify-content:center;
-color:#000;
-font-weight:800;
-margin-bottom:15px;
-}
-
-.pix-code,
-input{
-width:100%;
-padding:15px;
-border:none;
-border-radius:12px;
-margin-bottom:12px;
-}
-
-.linha{
-display:flex;
-gap:10px;
-}
-
-.cupom{
-margin-top:20px;
-}
-
-.btn{
-width:100%;
-padding:16px;
-border:none;
-border-radius:14px;
-background:#1db954;
-color:#fff;
-font-size:17px;
-font-weight:800;
-cursor:pointer;
-}
-
-.btn-cupom{
-background:#111827;
-margin-bottom:10px;
-}
-
-.desconto{
-margin-top:10px;
-color:#6fd18c;
-font-weight:700;
-}
-
-.seguro{
-margin-top:20px;
-text-align:center;
-opacity:.8;
-}
-    body{
-background:transparent;
-min-height:100vh;
-padding:30px;
-color:#fff;
-}
-
-body::before,
-body::after{
-content:"";
-position:fixed;
-inset:-40%;
-z-index:-1;
-animation-timing-function:ease-in-out;
-animation-iteration-count:infinite;
-animation-direction:alternate;
-filter:blur(45px);
-}
-
-body::before{
-background:
-radial-gradient(55% 70% at 25% 30%, rgba(180,245,210,1) 0%, transparent 45%),
-radial-gradient(55% 70% at 80% 25%, rgba(214,233,255,.7) 0%, transparent 55%),
-radial-gradient(65% 80% at 55% 80%, rgba(233,221,255,.95) 0%, transparent 60%);
-animation:fundoIA1 9s infinite;
-}
-
-body::after{
-background:
-radial-gradient(85% 95% at 70% 65%, rgba(170,240,205,1) 0%, transparent 50%),
-radial-gradient(80% 95% at 30% 75%, rgba(220,215,255,.85) 0%, transparent 60%);
-animation:fundoIA2 10s infinite;
-}
-
-@keyframes fundoIA1{
-0%{transform:translate(0%,0%) scale(1.1);}
-50%{transform:translate(-14%,-12%) scale(1.35);}
-100%{transform:translate(12%,10%) scale(1.15);}
-}
-
-@keyframes fundoIA2{
-0%{transform:translate(0%,0%) scale(1.15);}
-50%{transform:translate(14%,-10%) scale(1.45);}
-100%{transform:translate(-12%,12%) scale(1.2);}
-}
-</style>
 </head>
-
 <body>
 
 <div class="checkout">
 
-<h1 class="titulo">Finalize sua assinatura</h1>
+<h1 class="titulo">
+Finalize sua assinatura
+</h1>
+
 <p class="subtitulo">
 Pagamento seguro e liberação imediata.
 </p>
 
-<div class="card">
+<div class="checkout-card">
 
 <div class="hero-pagamento">
 
 <div class="hero-tag">
-Custo-benefício
+Plano selecionado
 </div>
 
-<div id="nomePlano" class="plano"></div>
+<h2 id="nomePlano" class="plano">
+Carregando...
+</h2>
 
-<div id="tipoPlano" class="tipo"></div>
+<div id="tipoPlano" class="tipo">
+Assinatura
+</div>
 
 <div class="preco">
-R$ <span id="valorPlano"></span>
-</div>
-    
-    <div class="resumo-plano">
-✓ Acesso imediato ao aplicativo<br>
-✓ APP com melhor custo-beneficio<br>
-✓ Plano completo e personalizado<br>
+R$ <span id="valorPlano">0,00</span>
 </div>
 
-<div id="economia" class="economia"></div>
+<div id="economia" class="economia">
+</div>
+
+<div class="resumo-plano">
+
+<div>✓ Acesso imediato ao aplicativo</div>
+
+<div>✓ Plano alimentar personalizado</div>
+
+<div>✓ Atualizações periódicas</div>
 
 </div>
 
-<div class="s">
-    <div class=" ativo" onclick="trocar('pix',this)">
-    ❖ PIX
-    </div>
+</div>
 
-    <div class="" onclick="trocarMetodo('credito',this)">
-    💳 Crédito
-    </div>
+<div class="metodos">
 
-    <div class="metodo" onclick="trocarMetodo('debito',this)">
-    💳 Débito
-    </div>
+<button
+class="metodo ativo"
+onclick="trocarMetodo('pix',this)">
+PIX
+</button>
+
+<button
+class="metodo"
+onclick="trocarMetodo('credito',this)">
+CRÉDITO
+</button>
+
+<button
+class="metodo"
+onclick="trocarMetodo('debito',this)">
+DÉBITO
+</button>
+
 </div>
 
 <div id="pixArea" class="pix-area ativo-area">
 
 <div class="qrcode">
-QR Code será gerado após integração
+QR CODE
 </div>
 
 <input
@@ -351,6 +104,7 @@ maxlength="19"
 placeholder="Número do cartão">
 
 <div id="bandeiraCartao"></div>
+
 <div class="linha">
 
 <input
@@ -361,14 +115,14 @@ placeholder="MM/AA">
 
 <input
 type="text"
-placeholder="CVV"
-maxlength="3">
+maxlength="3"
+placeholder="CVV">
 
 </div>
 
 </div>
 
-<div class="cupom">
+<div class="cupom-box">
 
 <input
 type="text"
@@ -376,17 +130,17 @@ id="cupom"
 placeholder="Cupom promocional">
 
 <button
-class="btn btn-cupom"
+class="btn-cupom"
 onclick="aplicarCupom()">
 Aplicar cupom
 </button>
 
-<div id="msgCupom" class="desconto"></div>
+<div id="msgCupom"></div>
 
 </div>
 
 <button
-class="btn"
+class="btn-pagamento"
 onclick="confirmarPagamento()">
 Liberar meu acesso
 </button>
@@ -399,258 +153,7 @@ Liberar meu acesso
 
 </div>
 
-<script>
+<script src="js/pagamento.js"></script>
 
-const plano =
-JSON.parse(localStorage.getItem("planoEscolhido"));
-
-console.log("PLANO COMPLETO:", plano);
-console.log("ESTILO:", plano?.estilo);
-
-
-if(!plano){
-  alert("Nenhum plano encontrado");
-  window.location.href = "planos.html";
-}
-
-
-const hero = document.querySelector(".hero-pagamento");
-
-if(hero && plano){
-
-}
-    
-if(plano.estilo === "digital"){
-hero.style.background =
-"linear-gradient(120deg,#64756f,#7c8b86,#64756f)";
-hero.style.backgroundSize = "200% 200%";
-}
-
-if(plano.estilo === "max"){
-hero.style.background =
-"linear-gradient(120deg,#4f6b56,#688f73,#4f6b56)";
-hero.style.backgroundSize = "200% 200%";
-}
-
-if(plano.estilo === "super"){
-hero.style.background =
-"linear-gradient(135deg,#8b7750,#9a8457,#8b7750)";
-hero.style.backgroundSize = "200% 200%";
-}
-
-if(!plano){
-window.location.href="planos.html";
-}
-
-document.getElementById("nomePlano")
-.innerText = plano.nome;
-    const tag = document.querySelector(".hero-tag");
-
-if(plano.nome.includes("Digital")){
-tag.innerText = "Ideal para começar";
-}
-
-if(plano.nome.includes("Max")){
-tag.innerText = "Mais escolhido";
-}
-
-if(plano.nome.includes("Super")){
-tag.innerText = "Melhor custo-benefício";
-}
-
-document.getElementById("tipoPlano")
-.innerText =
-plano.tipo === "anual"
-? "Assinatura anual"
-: "Assinatura mensal";
-
-document.getElementById("valorPlano")
-.innerText =
-plano.preco.toFixed(2);
-
-const economia =
-document.getElementById("economia");
-
-if(plano.tipo === "anual"){
-
-if(plano.nome.includes("Digital")){
-economia.innerText =
-"🎉 Você economizou 17% escolhendo o plano anual";
-}
-
-else if(plano.nome.includes("Max")){
-economia.innerText =
-"🎁 Você ganha 1 mês grátis";
-}
-
-else{
-economia.innerText =
-"🎁 Você ganha 2 meses grátis";
-}
-
-}else{
-
-economia.innerText =
-"Plano mensal selecionado";
-
-}
-
-function trocarMetodo(tipo, el){
-
-document.querySelectorAll(".metodo")
-.forEach(item=>{
-item.classList.remove("ativo");
-});
-
-el.classList.add("ativo");
-
-document
-.getElementById("pixArea")
-.classList.remove("ativo-area");
-
-document
-.getElementById("cartaoArea")
-.classList.remove("ativo-area");
-
-const nomeInput =
-document.getElementById("nomeCompleto");
-
-if(tipo === "pix"){
-
-document
-.getElementById("pixArea")
-.classList.add("ativo-area");
-
-}
-
-else{
-
-document
-.getElementById("cartaoArea")
-.classList.add("ativo-area");
-
-}
-
-if(tipo === "debito"){
-nomeInput.style.display = "none";
-}else{
-nomeInput.style.display = "block";
-}
-
-}
-
-const cupons = {
-NUTRI2:2,
-VINY1:3,
-NUTRI4:4,
-VINY1:5,
-MAX6:6,
-MAX7:7,
-MAX8:8,
-VINY1:8,
-SUPER9:9,
-SUPER10:10
-};
-
-.metodos{
-  display:flex;
-  gap:12px;
-  margin:30px 0;
-}
-    
-function aplicarCupom(){
-
-const codigo =
-document
-.getElementById("cupom")
-.value
-.toUpperCase()
-.trim();
-
-const desconto =
-cupons[codigo] || 0;
-
-if(desconto){
-
-const novoValor =
-plano.preco - desconto;
-
-document
-.getElementById("valorPlano")
-.innerText =
-novoValor.toFixed(2);
-
-document
-.getElementById("msgCupom")
-.innerText =
-`Desconto aplicado: R$ ${desconto.toFixed(2)}`;
-
-}else{
-
-document
-.getElementById("msgCupom")
-.innerText =
-"Cupom inválido";
-
-}
-
-}
-
-function confirmarPagamento(){
-
-localStorage.setItem(
-"pagamentoAprovado",
-"true"
-);
-
-window.location.href =
-"anamnese.html";
-
-}
-
-<input
-id="validade"
-type="text"
-maxlength="5"
-placeholder="MM/AA">
-
-const cartao =
-document.getElementById("numeroCartao");
-
-const bandeira =
-document.getElementById("bandeiraCartao");
-
-cartao.addEventListener("input", function(){
-
-let valor =
-this.value.replace(/\D/g,'');
-
-valor =
-valor.substring(0,16);
-
-this.value = valor;
-
-if(valor.startsWith("4")){
-bandeira.innerText = "Visa";
-}
-else if(
-valor.startsWith("51") ||
-valor.startsWith("52") ||
-valor.startsWith("53") ||
-valor.startsWith("54") ||
-valor.startsWith("55")
-){
-bandeira.innerText = "Mastercard";
-}
-else if(valor.startsWith("34") || valor.startsWith("37")){
-bandeira.innerText = "American Express";
-}
-else{
-bandeira.innerText = "";
-}
-
-});
-
-</script>
 </body>
 </html>
