@@ -227,7 +227,7 @@ function confirmarPagamento() {
   alert("Acesso liberado com sucesso!");
 
   window.location.href =
-  "anamnese.html";
+  "dashboard.html";
 }
 
 /* BANDEIRA */
