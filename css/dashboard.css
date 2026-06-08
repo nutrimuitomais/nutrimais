@@ -1,20 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
 
 :root{
-    --bg:#070b14;
-    --bg2:#0f172a;
-    --card:#111827;
-    --card2:#182234;
-    --primary:#00ffb3;
-    --primary-light:#00d9ff;
-    --primary-dark:#00c58b;
-    --text:#ffffff;
-    --text-secondary:#9fb0c3;
-    --max:#cfd5dd;
-    --super:#f5c542;
-    --radius:24px;
-    --shadow:
-    0 20px 60px rgba(0,0,0,.35);
+    --bg:#f5f7f5;
+    --card:#ffffff;
+    --primary:#22c55e;
+    --primary-dark:#16a34a;
+    --text:#1f2937;
+    --text-secondary:#6b7280;
 }
 
 *{
@@ -25,16 +17,7 @@
 }
 
 body{
-background:
-    linear-gradient(
-        180deg,
-        #031a12 0%,
-        #07251a 30%,
-        #0b1220 100%
-    );
-    color:var(--text);
-    min-height:100vh;
-    overflow-x:hidden;
+    background:#f5f7f5;
 }
 
 a{
@@ -47,9 +30,7 @@ button{
 }
 
 .dashboard-container{
-
     display:flex;
-
     min-height:100vh;
 
 }
@@ -59,97 +40,49 @@ SIDEBAR
 ===================== */
 
 .sidebar{
-
     width:280px;
-
-    background:
-    rgba(7,11,20,.95);
-
-    backdrop-filter:blur(20px);
-
-    border-right:
-    1px solid rgba(255,255,255,.05);
-
+    background:#ffffff;
+    border-right:1px solid #e5e7eb;
     padding:25px;
-
     position:sticky;
-
     top:0;
-
     height:100vh;
-
     overflow-y:auto;
-
 }
 
 .logo{
-
     margin-bottom:35px;
-
 }
 
-.logo h2{
-
-    font-size:32px;
-
-    font-weight:900;
-
-    color:var(--primary);
-
-    text-shadow:
-    0 0 20px rgba(0,255,179,.5);
-
-}
-
-.logo span{
-
-    color:var(--text-secondary);
-
-    font-size:13px;
-
+.logo img{
+    width:180px;
+    display:block;
 }
 
 .sidebar nav{
 
     display:flex;
-
     flex-direction:column;
-
-    gap:4px;
+    gap:3px;
 
 }
 
 .sidebar nav a{
-
-    color:#bfd0e3;
-
+    color:var(--text);
     padding:10px 12px;
-
-    border-radius:18px;
-
+    border-radius:12px;
     display:flex;
-
     justify-content:space-between;
-
     align-items:center;
-
-    transition:.3s;
-
+    transition:.2s;
 }
 
 .sidebar nav a:hover{
-
-    background:
-    rgba(0,255,179,.08);
-
-    color:white;
-
-    transform:translateX(5px);
-
+    background:#f0fdf4;
+    color:var(--primary-dark);
 }
 
 .sidebar nav a i{
-
     margin-right:10px;
 
 }
@@ -168,15 +101,10 @@ MAX
     );
 
     color:#333;
-
     font-size:11px;
-
     font-weight:700;
-
     padding:5px 10px;
-
     border-radius:999px;
-
 }
 
 /* =====================
@@ -184,7 +112,6 @@ SUPER
 ===================== */
 
 .super-link span{
-
     background:
     linear-gradient(
         120deg,
@@ -193,15 +120,10 @@ SUPER
     );
 
     color:#111;
-
     font-size:11px;
-
     font-weight:700;
-
     padding:5px 10px;
-
     border-radius:999px;
-
 }
 
 /* =====================
@@ -209,11 +131,9 @@ MAIN
 ===================== */
 
 .main-content{
-
     flex:1;
-
-    padding:30px;
-
+    padding:25px;
+    background:var(--bg);
 }
 
 /* =====================
@@ -221,31 +141,23 @@ TOPBAR
 ===================== */
 
 .topbar{
-
     display:flex;
-
     justify-content:space-between;
-
     align-items:center;
-
-    margin-bottom:25px;
-
+    margin-bottom:20px;
+    padding:0 5px;
 }
 
 .topbar h1{
-
-    font-size:34px;
-
-    font-weight:900;
-
+    font-size:26px;
+    font-weight:700;
+    color:var(--text);
 }
 
 .topbar p{
-
     color:var(--text-secondary);
-
-    margin-top:5px;
-
+    font-size:14px;
+    margin-top:4px;
 }
 
 /* =====================
@@ -253,91 +165,52 @@ PERFIL
 ===================== */
 
 .profile-box{
-
     position:relative;
-
 }
 
 .avatar{
-
-    width:60px;
-
-    height:60px;
-
+    width:52px;
+    height:52px;
     border-radius:50%;
-
     object-fit:cover;
-
     cursor:pointer;
-
-    border:3px solid var(--primary);
-
-    box-shadow:
-    0 0 20px rgba(0,255,179,.4);
-
+    border:2px solid #e5e7eb;
 }
 
 .profile-menu{
-
     display:none;
-
     position:absolute;
-
-    top:75px;
-
+    top:65px;
     right:0;
-
-    width:330px;
-
-    background:#111827;
-
-    border-radius:20px;
-
+    width:300px;
+    background:#ffffff;
+    border:1px solid #e5e7eb;
+    border-radius:14px;
     overflow:hidden;
-
     z-index:999;
-
-    box-shadow:var(--shadow);
-
+    box-shadow:0 8px 24px rgba(0,0,0,.08);
 }
 
 .profile-menu.active{
-
     display:block;
-
 }
 
 .profile-menu a{
-
     display:flex;
-
     justify-content:space-between;
-
     align-items:center;
-
-    color:white;
-
-    padding:15px 18px;
-
-    border-bottom:
-    1px solid rgba(255,255,255,.05);
-
+    color:var(--text);
+    padding:14px 18px;
+    border-bottom:1px solid #f1f5f9;
 }
 
 .profile-menu a:hover{
-
-    background:
-    rgba(0,255,179,.08);
-
+    background:#f8fafc;
 }
 
 .profile-menu hr{
-
     border:none;
-
-    border-top:
-    1px solid rgba(255,255,255,.08);
-
+    border-top:1px solid #e5e7eb;
 }
 
 /* ===== CARDS PREMIUM ===== */
@@ -347,7 +220,7 @@ PERFIL
     gap:20px;
     align-items:center;
     background:var(--card);
-    border:1px solid rgba(0,255,170,.15);
+    border:1px solid #e5e7eb;
     border-radius:24px;
     padding:20px;
     margin-bottom:20px;
@@ -392,18 +265,13 @@ PERFIL
     border-radius:14px;
     padding:12px 20px;
     font-weight:700;
-    color:#fff;
-    background:linear-gradient(
-        135deg,
-        var(--primary),
-        var(--primary-light)
-    );
+    color:white;
+    background:var(--primary);
     transition:.3s;
 }
 
 .btn-premium:hover{
-    transform:translateY(-2px);
-    box-shadow:0 0 20px rgba(0,255,170,.4);
+    background:var(--primary-dark);
 }
 
 /* ===== EVOLUÇÃO ===== */
@@ -418,56 +286,6 @@ PERFIL
 
 .progresso-card .progress{
     margin:15px 0;
-}
-
-/* ===== IA NUTRI ===== */
-
-.ia-card{
-    text-align:center;
-    position:relative;
-    overflow:hidden;
-}
-
-.ia-card::before{
-    content:'';
-    position:absolute;
-    width:250px;
-    height:250px;
-    border-radius:50%;
-    background:rgba(0,255,170,.15);
-    filter:blur(60px);
-    top:-80px;
-    left:50%;
-    transform:translateX(-50%);
-}
-
-.ia-card h2{
-    position:relative;
-    z-index:2;
-}
-
-.ia-card p{
-    position:relative;
-    z-index:2;
-}
-
-#iastatus{
-    margin-top:15px;
-    color:var(--primary);
-    font-weight:700;
-    animation:pulse 2s infinite;
-}
-
-@keyframes pulse{
-    0%{
-        opacity:.4;
-    }
-    50%{
-        opacity:1;
-    }
-    100%{
-        opacity:.4;
-    }
 }
 
 /* ===== RECEITAS ===== */
@@ -508,6 +326,11 @@ PERFIL
     margin-top:20px;
 }
 
+.modal-content hr{
+    border-top:1px slid #e5e7eb;
+}
+
+
 /* ===== BENEFÍCIOS PREMIUM ===== */
 
 .beneficios{
@@ -522,7 +345,7 @@ PERFIL
     border-radius:22px;
     overflow:hidden;
     text-align:center;
-    border:1px solid rgba(0,255,170,.12);
+    border:1px solid #e5e7eb;
 }
 
 .beneficio-card img{
@@ -539,81 +362,11 @@ PERFIL
     margin-bottom:20px;
 }
 
-/* ========= CARDS PREMIUM ========= */
-
-.premium-card{
-    display:flex;
-    gap:20px;
-    align-items:center;
-    background:rgba(255,255,255,.04);
-    border:1px solid rgba(0,255,170,.15);
-    border-radius:24px;
-    overflow:hidden;
-    padding:20px;
-    margin-bottom:20px;
-    backdrop-filter:blur(10px);
-    box-shadow:0 0 25px rgba(0,255,170,.08);
-}
-
-.premium-card img{
-    width:220px;
-    height:160px;
-    object-fit:cover;
-    border-radius:18px;
-}
-
-.premium-card h3{
-    font-size:1.3rem;
-    margin-bottom:10px;
-}
-
-.old-price{
-    text-decoration:line-through;
-    opacity:.6;
-    font-size:.9rem;
-}
-
-.premium-card h2{
-    color:#00ffb3;
-    margin:8px 0;
-}
-
-.premium-card ul{
-    list-style:none;
-    margin:15px 0;
-}
-
-.premium-card ul li{
-    margin-bottom:8px;
-}
-
-.btn-premium{
-    background:linear-gradient(
-        135deg,
-        #00ffb3,
-        #00d9ff
-    );
-    color:#000;
-    border:none;
-    border-radius:12px;
-    padding:14px 24px;
-    font-weight:700;
-    cursor:pointer;
-    transition:.3s;
-}
-
-.btn-premium:hover{
-    transform:translateY(-2px);
-    box-shadow:0 0 20px rgba(0,255,170,.4);
-}
-
 /* ========= RECEITAS ========= */
 
 .receita-card{
-    background:rgba(255,255,255,.04);
-    border-radius:24px;
-    padding:24px;
-    border:1px solid rgba(255,255,255,.08);
+    background:#ffffff;
+    border:1px solid #e5e7eb;
 }
 
 .receita-card h3{
@@ -622,53 +375,7 @@ PERFIL
 
 .receita-card p{
     margin-bottom:8px;
-    color:#cfcfcf;
-}
-
-/* ========= IA NUTRI ========= */
-
-.ia-card{
-    position:relative;
-    overflow:hidden;
-    text-align:center;
-    padding:35px;
-    border-radius:24px;
-    background:
-    radial-gradient(
-        circle at center,
-        rgba(0,255,170,.15),
-        rgba(0,0,0,.2)
-    );
-    border:1px solid rgba(0,255,170,.25);
-}
-
-.ia-card::before{
-    content:"";
-    position:absolute;
-    width:220px;
-    height:220px;
-    background:#00ffb3;
-    filter:blur(120px);
-    opacity:.15;
-    top:-50px;
-    left:50%;
-    transform:translateX(-50%);
-}
-
-.ia-card h2{
-    margin-bottom:12px;
-    color:#00ffb3;
-}
-
-#textoIA{
-    color:#ddd;
-    animation:pulseText 2s infinite;
-}
-
-@keyframes pulseText{
-    0%{opacity:.5;}
-    50%{opacity:1;}
-    100%{opacity:.5;}
+    color:var(--text-secondary);
 }
 
 /* ========= MODAL RECEITA ========= */
@@ -678,7 +385,6 @@ PERFIL
     position:fixed;
     inset:0;
     background:rgba(0,0,0,.75);
-    backdrop-filter:blur(8px);
     justify-content:center;
     align-items:center;
     z-index:9999;
@@ -687,16 +393,16 @@ PERFIL
 .modal-content{
     width:90%;
     max-width:650px;
-    background:#111827;
+    background:#ffffff;
     border-radius:24px;
     padding:30px;
-    border:1px solid rgba(0,255,179,.15);
+    border:1px solid #e5e7eb;
     box-shadow:0 20px 60px rgba(0,0,0,.4);
 }
 
 .modal-content h2{
     margin-bottom:15px;
-    color:#00ffb3;
+    color:var(--primary);
 }
 
 .modal-content h4{
@@ -706,7 +412,7 @@ PERFIL
 
 .modal-content p{
     margin-bottom:8px;
-    color:#d8d8d8;
+    color:var(--text-secondary);
 }
 
 .modal-content hr{
@@ -718,8 +424,8 @@ PERFIL
 .modal-content button{
     margin-top:20px;
     width:100%;
-    background:#00ffb3;
-    color:#000;
+    background:var(--primary);
+    color:white;
     font-weight:700;
     border:none;
     border-radius:14px;
@@ -737,16 +443,16 @@ PERFIL
 }
 
 .news-card{
-    background:rgba(255,255,255,.04);
+    background:#ffffff;
     border-radius:24px;
     overflow:hidden;
-    border:1px solid rgba(255,255,255,.08);
+    border:1px solid #e5e7eb;
     transition:.3s;
 }
 
 .news-card:hover{
     transform:translateY(-5px);
-    border-color:rgba(0,255,179,.25);
+    border-color:var(--primary);
 }
 
 .news-card img{
@@ -761,7 +467,7 @@ PERFIL
 
 .news-card p{
     padding:0 15px;
-    color:#c4c4c4;
+    color:var(--text-secondary);
 }
 
 .news-card button{
@@ -770,8 +476,8 @@ PERFIL
     padding:12px;
     border:none;
     border-radius:12px;
-    background:#00ffb3;
-    color:#000;
+    background:var(--primary);
+    color:white;
     font-weight:700;
     cursor:pointer;
 }
@@ -813,8 +519,8 @@ PERFIL
 .support-card button{
     margin-top:15px;
     width:100%;
-    background:#00ffb3;
-    color:#000;
+    background:var(--primary);
+    color:white;
     border:none;
     border-radius:12px;
     padding:14px;
@@ -827,7 +533,6 @@ RESPONSIVIDADE TABLET
 ================================= */
 
 @media(max-width:1200px){
-
     .dashboard-grid{
         grid-template-columns:repeat(2,1fr);
     }
@@ -921,132 +626,37 @@ MENU MOBILE FIXO
 ================================= */
 
 .mobile-nav{
-
     display:none;
-
 }
 
 @media(max-width:768px){
-
     .mobile-nav{
-
         display:flex;
-
         position:fixed;
-
         bottom:0;
-
         left:0;
-
         width:100%;
-
         height:70px;
-
-        background:#0b1220;
-
-        border-top:
-        1px solid rgba(255,255,255,.08);
-
+        background:#ffffff;
+        border-top: 1px solid #e5e7eb;
         justify-content:space-around;
-
         align-items:center;
-
         z-index:9999;
-
-        backdrop-filter:blur(15px);
-
     }
 
     .mobile-nav a{
-
         color:#ffffff;
-
         display:flex;
-
         flex-direction:column;
-
         align-items:center;
-
         font-size:12px;
-
         gap:4px;
-
     }
 
     .mobile-nav i{
-
         font-size:18px;
-
-        color:#00ffb3;
-
+        color:var(--primary);
     }
-
-}
-
-/* =================================
-MODO CLARO
-================================= */
-
-body.light{
-
-    background:#f4f7fb;
-
-    color:#222;
-
-}
-
-body.light .sidebar{
-
-    background:#ffffff;
-
-    border-right:
-    1px solid rgba(0,0,0,.08);
-
-}
-
-body.light .card,
-body.light .premium-card,
-body.light .profile-menu,
-body.light .modal-content,
-body.light .news-card,
-body.light .beneficio-card{
-
-    background:#ffffff;
-
-    color:#222;
-
-}
-
-body.light .topbar p,
-body.light .card span,
-body.light .card p{
-
-    color:#666;
-
-}
-
-body.light .sidebar nav a{
-
-    color:#333;
-
-}
-
-body.light .sidebar nav a:hover{
-
-    background:
-    rgba(0,255,179,.08);
-
-}
-
-body.light .hero-card{
-
-    background:
-    linear-gradient(
-        135deg,
-        #ffffff,
-        #eef4f9
-    );
-
 }
 
 /* =================================
@@ -1058,46 +668,35 @@ SCROLLBAR PREMIUM
 }
 
 ::-webkit-scrollbar-track{
-    background:#0b1220;
+    background:#f1f5f9;
 }
 
 ::-webkit-scrollbar-thumb{
-    background:#00ffb3;
+    background:var(--primary);
     border-radius:999px;
 }
 
 ::-webkit-scrollbar-thumb:hover{
-    background:#00d89a;
+    background:var(--primary-dark);
 }
 
 .noticias-rotativas{
     margin:25px 0;
     padding:25px;
-    border-radius:24px;
-
-    background:
-    linear-gradient(
-        135deg,
-        rgba(0,255,179,.08),
-        rgba(0,217,255,.08)
-    );
-
-    border:
-    1px solid rgba(0,255,179,.15);
-
+    border-radius:20px;
+    background:#ffffff;
+    border:1px solid #e5e7eb;
     text-align:center;
-
-    transition:.4s;
 }
 
 .noticias-rotativas h3{
-    color:#00ffb3;
+    color:var(--primary);
     margin-bottom:12px;
     font-size:1.3rem;
 }
 
 .noticias-rotativas p{
-    color:#cfd5dd;
+    color:var(--text-secondary);
 }
 
 #tituloNoticia,
@@ -1111,7 +710,7 @@ SCROLLBAR PREMIUM
     padding:25px;
     border-radius:24px;
     background:var(--card);
-    border:1px solid rgba(255,255,255,.08);
+    border:1px solid #e5e7eb;
 }
 
 .somente-max h3,
@@ -1136,12 +735,8 @@ HERO CARD
     padding:30px;
     margin-bottom:25px;
     border-radius:24px;
-    background:linear-gradient(
-        135deg,
-        rgba(0,255,179,.12),
-        rgba(0,255,179,.03)
-    );
-    border:1px solid rgba(0,255,179,.15);
+    background:#ffffff;
+    border:1px solid #e5e7eb;
 }
 
 .hero-card h2{
@@ -1151,29 +746,6 @@ HERO CARD
 
 .hero-card p{
     color:var(--text-secondary);
-}
-
-/* =====================
-ORB IA
-===================== */
-.ia-orb,
-.ia-core{
-    width:90px;
-    height:90px;
-    border-radius:50%;
-    background:radial-gradient(
-        circle,
-        #00ffb3,
-        #00c58b
-    );
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    color:#000;
-    font-weight:900;
-    font-size:1.4rem;
-    box-shadow:
-    0 0 40px rgba(0,255,179,.45);
 }
 
 /* =====================
@@ -1190,11 +762,11 @@ GRID DASHBOARD
 CARD PADRÃO
 ===================== */
 .card{
-    background:var(--card);
-    border:1px solid rgba(0,255,179,.12);
+    background:#ffffff;
+    border:1px solid #e5e7eb;
     border-radius:24px;
     padding:24px;
-    box-shadow:var(--shadow);
+    box-shadow:0 4px 12px rgba(0,0,0,.04);
 }
 
 .card h3{
@@ -1221,7 +793,7 @@ BARRAS
 .progress{
     width:100%;
     height:12px;
-    background:rgba(255,255,255,.08);
+    background:#e5e7eb;
     border-radius:999px;
     overflow:hidden;
     margin-bottom:10px;
@@ -1229,11 +801,7 @@ BARRAS
 
 .progress div{
     height:100%;
-    background:linear-gradient(
-        90deg,
-        #00ffb3,
-        #00c58b
-    );
+    background: var(--primary);
     border-radius:999px;
 }
 
@@ -1267,7 +835,7 @@ REFEIÇÕES
     margin-top:20px;
     padding:18px;
     border-radius:18px;
-    background:rgba(255,255,255,.03);
+    background:#f8fafc;
 }
 
 .meal h4{
@@ -1277,7 +845,7 @@ REFEIÇÕES
 
 .meal p{
     margin-bottom:6px;
-    color:#d6d6d6;
+    color:var(--text);
 }
 
 /* =====================
@@ -1292,8 +860,8 @@ RECEITAS
 }
 
 .receita-card{
-    background:var(--card);
-    border:1px solid rgba(255,255,255,.08);
+    background:#ffffff;
+    border:1px solid #e5e7eb);
     border-radius:24px;
     padding:24px;
 }
@@ -1312,8 +880,8 @@ RECEITAS
     padding:12px;
     border:none;
     border-radius:12px;
-    background:#00ffb3;
-    color:#000;
+    background:var(--primary);
+    color:#ffffff;
     font-weight:700;
 }
 
@@ -1341,20 +909,14 @@ RESPONSIVO
     }
 }
 
-background:
-linear-gradient(
-    180deg,
-    rgba(0,255,179,.04),
-    rgba(17,24,39,.95)
-);
-
 .logo img{
     width:180px;
     height:auto;
+    display:block;
 }
 
 .hero-status{
-    background:#00ffb3;
+    background:var(--primary);
     color:#000;
     font-weight:700;
     padding:12px 20px;
@@ -1366,4 +928,164 @@ linear-gradient(
     gap:10px;
     margin:12px 0;
     cursor:pointer;
+}
+
+.dieta-card h3{
+    margin-bottom:20px;
+}
+
+.meal-check{
+    margin-bottom:18px;
+    padding:16px;
+    border:1px solid #e5e7eb;
+    border-radius:14px;
+    background:#f9fafb;
+}
+
+.meal-check label{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    font-weight:600;
+    color:#1f2937;
+    cursor:pointer;
+}
+
+.meal-check input[type="checkbox"]{
+    width:18px;
+    height:18px;
+    accent-color:#22c55e;
+}
+
+.meal-foods{
+    margin-top:10px;
+    margin-left:28px;
+    color:#6b7280;
+    line-height:1.8;
+    font-size:14px;
+}
+
+.sidebar nav{
+    gap:4px;
+}
+
+.sidebar nav a{
+    padding:10px 12px;
+    font-size:14px;
+}
+
+.topbar{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:25px;
+}
+
+.header-info h1{
+    font-size:28px;
+    font-weight:700;
+    color:#1f2937;
+}
+
+.header-info p{
+    margin-top:5px;
+    color:#6b7280;
+}
+
+.header-right{
+    display:flex;
+    align-items:center;
+    gap:15px;
+}
+
+.plano-card{
+    background:#fff;
+    border:1px solid #e5e7eb;
+    border-radius:14px;
+    padding:12px 18px;
+    text-align:center;
+}
+
+.plano-card span{
+    display:block;
+    font-size:12px;
+    color:#6b7280;
+}
+
+.plano-card strong{
+    display:block;
+    margin-top:4px;
+    font-size:15px;
+    color:#1f2937;
+}
+
+.resumo-nutricional{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:20px;
+    margin-bottom:20px;
+}
+
+.resumo-item{
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+}
+
+.resumo-item span{
+    color:#6b7280;
+}
+
+.resumo-item strong{
+    font-size:20px;
+    color:#1f2937;
+}
+
+.card-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:20px;
+}
+
+.receita-dia{
+    margin-top:20px;
+}
+
+    .plan-features{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:20px;
+    margin:25px 0;
+}
+
+.service-tag{
+    display:inline-block;
+    font-size:12px;
+    font-weight:600;
+    color:#6b7280;
+    margin-bottom:10px;
+}
+
+.service-description{
+    margin:15px 0;
+    color:#6b7280;
+    line-height:1.6;
+}
+
+.section-header{
+    margin-bottom:20px;
+}
+
+.recipe-macros{
+    display:flex;
+    gap:12px;
+    margin:15px 0;
+    color:#6b7280;
+}
+
+@media(max-width:768px){
+    .resumo-nutricional{
+        grid-template-columns:1fr 1fr;
+    }
 }
