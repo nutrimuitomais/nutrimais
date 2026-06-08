@@ -1,22 +1,13 @@
 // dashboard.js
 
 /* ==========================
+/* ==========================
 MENU PERFIL
 ========================== */
-
 function toggleMenu(){
-
-    const menu =
-    document.getElementById("profileMenu");
-
-    if(
-        menu.style.display === "block"
-    ){
-        menu.style.display = "none";
-    }else{
-        menu.style.display = "block";
-    }
-
+    document
+    .getElementById("profileMenu")
+    .classList.toggle("active");
 }
 
 document.addEventListener(
@@ -24,10 +15,14 @@ document.addEventListener(
 function(e){
 
     const menu =
-    document.getElementById("profileMenu");
+    document.getElementById(
+    "profileMenu"
+    );
 
     const avatar =
-    document.querySelector(".avatar");
+    document.querySelector(
+    ".avatar"
+    );
 
     if(
         menu &&
@@ -35,7 +30,9 @@ function(e){
         !menu.contains(e.target) &&
         !avatar.contains(e.target)
     ){
-        menu.style.display = "none";
+        menu.classList.remove(
+        "active"
+        );
     }
 
 });
@@ -163,23 +160,26 @@ const mensagensIA = [
 let indiceIA = 0;
 
 setInterval(() => {
-
     const textoIA =
     document.getElementById("textoIA");
 
-    if(textoIA){
+    const statusIA =
+    document.getElementById("iastatus");
 
+    if(textoIA){
         textoIA.innerText =
         mensagensIA[indiceIA];
+    }
 
-        indiceIA++;
+    if(statusIA){
+        statusIA.innerText =
+        mensagensIA[indiceIA];
+    }
 
-        if(indiceIA >= mensagensIA.length){
+    indiceIA++;
 
-            indiceIA = 0;
-
-        }
-
+    if(indiceIA >= mensagensIA.length){
+        indiceIA = 0;
     }
 
 },3000);
@@ -418,4 +418,14 @@ if(ano){
     ano.innerText =
     new Date().getFullYear();
 
+}
+
+const btnSuporte =
+document.getElementById("btnSuporte");
+
+if(btnSuporte){
+    btnSuporte.addEventListener(
+    "click",
+    abrirSuporte
+    );
 }
