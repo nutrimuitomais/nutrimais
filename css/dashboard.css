@@ -582,16 +582,6 @@ RESPONSIVIDADE CELULAR
         gap:20px;
     }
 
-    .hero{
-        flex-direction:column;
-        text-align:center;
-        gap:20px;
-    }
-
-    .hero h2{
-        font-size:26px;
-    }
-
     .dashboard-grid{
         grid-template-columns:1fr;
     }
@@ -1088,4 +1078,12 @@ RESPONSIVO
     .resumo-nutricional{
         grid-template-columns:1fr 1fr;
     }
+}
+
+.ia-card{
+    text-align:center;
+}
+
+.ia-card .ia-core{
+    margin:0 auto 20px;
 }
