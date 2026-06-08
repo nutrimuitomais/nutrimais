@@ -1189,3 +1189,103 @@ body.light .topbar p,
 body.light .header-info p{
     color:#cbd5e1;
 }
+
+.premium-card,
+.news-card,
+.receita-card,
+.somente-max,
+.somente-super,
+.support-card{
+
+    position:relative;
+    overflow:hidden;
+
+    background:linear-gradient(
+        135deg,
+        #22c55e,
+        #16a34a,
+        #22c55e
+    );
+
+    background-size:300% 300%;
+
+    animation:cardMove 8s ease infinite;
+
+    color:#ffffff;
+
+    border:none;
+
+    box-shadow:
+    0 15px 40px rgba(
+        34,
+        197,
+        94,
+        .25
+    );
+
+}
+
+@keyframes cardMove{
+
+    0%{
+        background-position:0% 50%;
+    }
+
+    50%{
+        background-position:100% 50%;
+    }
+
+    100%{
+        background-position:0% 50%;
+    }
+
+}
+
+.premium-card h2,
+.premium-card h3,
+.news-card h4,
+.receita-card h3,
+.somente-max h3,
+.somente-super h3,
+.support-card h3{
+
+    color:#ffffff;
+
+}
+
+.premium-card p,
+.news-card p,
+.receita-card p,
+.somente-max p,
+.somente-super p,
+.support-card p{
+
+    color:rgba(
+        255,
+        255,
+        255,
+        .9
+    );
+
+}
+
+.btn-premium{
+
+    background:#ffffff;
+    color:#16a34a;
+
+    font-weight:800;
+
+    border-radius:14px;
+
+    transition:.3s;
+
+}
+
+.btn-premium:hover{
+
+    transform:translateY(-2px);
+
+    background:#f8fafc;
+
+}
