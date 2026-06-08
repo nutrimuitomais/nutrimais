@@ -188,16 +188,6 @@ TOPBAR
     margin-top:4px;
 }
 
-@media(max-width:768px){
-
-    .topbar{
-        flex-direction:row;
-        justify-content:space-between;
-        align-items:flex-start;
-        gap: 12px;
-    }
-}
-
 /* =====================
 PERFIL
 ===================== */
@@ -631,8 +621,8 @@ RESPONSIVIDADE CELULAR
     }
 
     .avatar{
-        width:50px;
-        height:50px;
+        width:52px;
+        height:52px;
     }
 }
 
@@ -1485,4 +1475,5 @@ body.light .header-info p{
 #textoIA{
     min-height:20px;
     white-space:nowrap;
+    width: 260px;
 }
