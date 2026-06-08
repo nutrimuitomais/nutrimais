@@ -305,7 +305,8 @@ PERFIL
 /* ===== EVOLUÇÃO ===== */
 
 .progresso-card{
-    background:var(--card);
+    padding:18px;
+    border-radius:20px;
 }
 
 .progresso-card p{
