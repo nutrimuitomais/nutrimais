@@ -1087,3 +1087,105 @@ RESPONSIVO
 .ia-card .ia-core{
     margin:0 auto 20px;
 }
+
+/* =================================
+TEMA ESCURO
+================================= */
+
+body.light{
+    background:#0f172a;
+    color:#f8fafc;
+}
+
+body.light .main-content{
+    background:#0f172a;
+}
+
+body.light .sidebar{
+    background:#111827;
+    border-right:1px solid #1f2937;
+}
+
+body.light .sidebar nav a{
+    color:#e5e7eb;
+}
+
+body.light .sidebar nav a:hover{
+    background:#1f2937;
+}
+
+body.light .card,
+body.light .premium-card,
+body.light .receita-card,
+body.light .news-card,
+body.light .noticias-rotativas,
+body.light .plano-card,
+body.light .somente-max,
+body.light .somente-super,
+body.light .modal-content{
+    background:#111827;
+    border-color:#1f2937;
+}
+
+body.light h1,
+body.light h2,
+body.light h3,
+body.light h4,
+body.light strong{
+    color:#f8fafc;
+}
+
+body.light p,
+body.light span,
+body.light small{
+    color:#cbd5e1;
+}
+
+body.light .hero-card{
+    background:#111827;
+    border-color:#1f2937;
+}
+
+body.light .meal{
+    background:#1f2937;
+}
+
+body.light .meal-check{
+    background:#1f2937;
+    border-color:#334155;
+}
+
+body.light .meal-check label{
+    color:#f8fafc;
+}
+
+body.light .meal-foods{
+    color:#cbd5e1;
+}
+
+body.light .progress{
+    background:#334155;
+}
+
+body.light .profile-menu{
+    background:#111827;
+    border-color:#1f2937;
+}
+
+body.light .profile-menu a{
+    color:#f8fafc;
+}
+
+body.light .profile-menu a:hover{
+    background:#1f2937;
+}
+
+body.light .mobile-nav{
+    background:#111827;
+    border-top:1px solid #1f2937;
+}
+
+body.light .topbar p,
+body.light .header-info p{
+    color:#cbd5e1;
+}
