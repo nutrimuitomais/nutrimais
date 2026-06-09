@@ -1,351 +1,196 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-
 <head>
-
     <meta charset="UTF-8">
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0"
-    >
-
-    <title>Nutri+</title>
-
-    <link
-        rel="stylesheet"
-        href="css/dashboard.css"
-    >
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Plataforma Alimentar | Vinicius</title>
+    <link rel="stylesheet" href="css/dashboard.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
 </head>
-
 <body>
 
-    <!-- POPUP PREMIUM -->
+    <div class="mobile-device">
+        <div class="status-bar">
+            <span>9:41</span>
+            <div class="status-icons">📶 🔋</div>
+        </div>
 
-    <div
-        class="premium-popup active"
-        id="premiumPopup"
-    >
+        <div class="app-content">
+            
+            <div id="promotional-popin" class="promotional-popin hidden">
+                <button class="close-promo" onclick="closePromo()">×</button>
+                <div class="promo-text-layer">
+                    <h2>Refeições<br>Personalizadas no seu celular. ☘️</h2>
+                    <p>Suas receitas favoritas a um toque de distância. Prático, rápido e moldado para o seu objetivo.</p>
+                </div>
+                <div class="promo-image-placeholder"></div>
+                <button class="promo-cta-btn" onclick="closePromo()">
+                    <span>➔</span>
+                </button>
+            </div>
 
-        <button
-            class="close-popup"
-            id="closePopup"
-        >
-            ✕
-        </button>
+            <header>
+                <div class="profile-pic"></div>
+                <div class="welcome-text">
+                    <h1>Olá, Vinicius</h1>
+                    <p>Seu plano alimentar de hoje</p>
+                </div>
+            </header>
 
-        <div class="popup-content">
+            <main>
+                <section class="daily-meta">
+                    <div class="meta-header">
+                        <h2>Meta do dia</h2>
+                        <span class="meta-value">1800 / 2200 kcal</span>
+                    </div>
+                    
+                    <div class="progress-container">
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 81%"></div>
+                        </div>
+                    </div>
 
-            <span>
-                NUTRI+ MAX
-            </span>
+                    <div class="macronutrients">
+                        <span>Proteína</span>
+                        <span>Carbo</span>
+                        <span>Gordura</span>
+                    </div>
+                </section>
 
-            <h2>
-                Evolua sua alimentação com mais inteligência.
-            </h2>
+                <section class="today-meals">
+                    <div class="meal-group-header">
+                        <h2>Refeições de hoje</h2>
+                    </div>
 
-            <p>
-                Receitas ilimitadas, IA Nutri+,
-                reanálise nutricional e muito mais.
-            </p>
+                    <div class="meal-item">
+                        <div class="meal-main">
+                            <input type="checkbox" class="meal-check">
+                            <div class="meal-details">
+                                <span class="meal-time">Café da manhã</span>
+                                <p class="meal-summary">Frango 150g, Batata Doce 200g, etc.</p>
+                            </div>
+                        </div>
+                        <button class="view-diet-btn" onclick="openDietModal('Café da Manhã', 320, 25, 40, 8)">Ver dieta</button>
+                    </div>
 
-            <a
-                href="planos.html"
-                class="popup-btn"
-            >
-                Conhecer planos
-            </a>
+                    <div class="meal-item">
+                        <div class="meal-main">
+                            <input type="checkbox" class="meal-check">
+                            <div class="meal-details">
+                                <span class="meal-time">Almoço</span>
+                                <p class="meal-summary">Frango 200g, Arroz Integral 150g, Salada</p>
+                            </div>
+                        </div>
+                        <button class="view-diet-btn" onclick="openDietModal('Almoço', 550, 45, 50, 12)">Ver dieta</button>
+                    </div>
+                    
+                    <div class="meal-item">
+                        <div class="meal-main">
+                            <input type="checkbox" class="meal-check">
+                            <div class="meal-details">
+                                <span class="meal-time">Café da tarde</span>
+                                <p class="meal-summary">Iogurte Desnatado 200g, Aveia 30g</p>
+                            </div>
+                        </div>
+                        <button class="view-diet-btn" onclick="openDietModal('Café da Tarde', 210, 18, 25, 4)">Ver dieta</button>
+                    </div>
+                    
+                    <div class="meal-item">
+                        <div class="meal-main">
+                            <input type="checkbox" class="meal-check">
+                            <div class="meal-details">
+                                <span class="meal-time">Jantar</span>
+                                <p class="meal-summary">Patinho Moído 150g, Macarrão Integral 100g</p>
+                            </div>
+                        </div>
+                        <button class="view-diet-btn" onclick="openDietModal('Jantar', 520, 40, 45, 14)">Ver dieta</button>
+                    </div>
+                    
+                    <div class="meal-item">
+                        <div class="meal-main">
+                            <input type="checkbox" class="meal-check">
+                            <div class="meal-details">
+                                <span class="meal-time">Ceia</span>
+                                <p class="meal-summary">Mix de Castanhas 30g, Albumina</p>
+                            </div>
+                        </div>
+                        <button class="view-diet-btn" onclick="openDietModal('Ceia', 200, 22, 5, 10)">Ver dieta</button>
+                    </div>
+                </section>
+                
+                <section class="publications">
+                    <h2>Dicas Inteligentes</h2>
+                    <div class="pub-card">
+                        <span class="badge">Dica do Dia</span>
+                        <h3>A importância da hidratação no ganho de massa</h3>
+                        <p>Beber a quantidade correta de água otimiza a síntese proteica e acelera seus resultados...</p>
+                    </div>
+                </section>
+            </main>
 
+            <footer class="app-nav">
+                <button class="nav-item active">🏠</button>
+                <button class="nav-item">📋</button>
+                <div class="nav-action">
+                    <button class="action-btn">+</button>
+                </div>
+                <button class="nav-item">📈</button>
+                <button class="nav-item">👤</button>
+            </footer>
+        </div>
+
+        <div id="diet-modal" class="diet-modal hidden">
+            <div class="modal-content">
+                <header class="modal-header">
+                    <button class="close-modal" onclick="closeDietModal()">✕</button>
+                    <h1 id="modal-meal-name">Nome da Refeição</h1>
+                </header>
+                
+                <div class="modal-body">
+                    <div class="nutrition-overview">
+                        <div class="nut-card cal">
+                            <span id="modal-kcal">0</span>
+                            <span class="label">Calorias</span>
+                        </div>
+                        <div class="nut-card pro">
+                            <span id="modal-pro">0g</span>
+                            <span class="label">Proteínas</span>
+                        </div>
+                        <div class="nut-card carb">
+                            <span id="modal-carb">0g</span>
+                            <span class="label">Carbos</span>
+                        </div>
+                    </div>
+
+                    <div class="ingredients-section">
+                        <h3>Alimentos e Quantidades</h3>
+                        
+                        <div class="ingredients-list">
+                            <div class="ing-item">
+                                <div class="ing-icon">🍗</div>
+                                <div class="ing-details">
+                                    <h3>Filé de Frango Grelhado</h3>
+                                    <p>Pesar pronto / grelhado sem óleo</p>
+                                </div>
+                                <span class="ing-meta">150g</span>
+                            </div>
+
+                            <div class="ing-item">
+                                <div class="ing-icon">🥔</div>
+                                <div class="ing-details">
+                                    <h3>Batata Doce Cozida</h3>
+                                    <p>Fonte de carboidrato de baixo índice glicêmico</p>
+                                </div>
+                                <span class="ing-meta">200g</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
 
     </div>
 
-    <main class="container">
-
-        <!-- PERFIL -->
-
-        <section class="hero">
-
-            <img
-                src="img/avatar.jpg"
-                class="avatar"
-            >
-
-            <div>
-
-                <h1>
-                    Olá, Vinicius 👋
-                </h1>
-
-                <small>
-                    Plano Nutri+ Free
-                </small>
-
-            </div>
-
-        </section>
-
-        <!-- META -->
-
-        <section class="daily-goal">
-
-            <div class="goal-top">
-
-                <h2>
-                    Meta do Dia
-                </h2>
-
-                <strong>
-                    1800 / 2200 kcal
-                </strong>
-
-            </div>
-
-            <div class="progress">
-
-                <div
-                    class="progress-fill"
-                    id="progressFill"
-                >
-                    82%
-                </div>
-
-            </div>
-
-            <div class="macros">
-
-                <div>
-
-                    <span>
-                        Proteína
-                    </span>
-
-                    <strong id="protein">
-                        120g
-                    </strong>
-
-                </div>
-
-                <div>
-
-                    <span>
-                        Carboidratos
-                    </span>
-
-                    <strong id="carb">
-                        180g
-                    </strong>
-
-                </div>
-
-                <div>
-
-                    <span>
-                        Gorduras
-                    </span>
-
-                    <strong id="fat">
-                        50g
-                    </strong>
-
-                </div>
-
-            </div>
-
-        </section>
-
-        <!-- REFEIÇÕES -->
-
-        <section class="meals">
-
-            <h2>
-                Refeições de Hoje
-            </h2>
-
-            <div class="meal">
-
-                <label>
-
-                    <input
-                        type="checkbox"
-                        class="meal-check"
-                    >
-
-                    Café da manhã
-
-                </label>
-
-                <button
-                    class="diet-btn"
-                >
-                    Ver dieta
-                </button>
-
-            </div>
-
-            <div class="meal">
-
-                <label>
-
-                    <input
-                        type="checkbox"
-                        class="meal-check"
-                    >
-
-                    Lanche da manhã
-
-                </label>
-
-                <button
-                    class="diet-btn"
-                >
-                    Ver dieta
-                </button>
-
-            </div>
-
-            <div class="meal">
-
-                <label>
-
-                    <input
-                        type="checkbox"
-                        class="meal-check"
-                    >
-
-                    Almoço
-
-                </label>
-
-                <button
-                    class="diet-btn"
-                >
-                    Ver dieta
-                </button>
-
-            </div>
-
-            <div class="meal">
-
-                <label>
-
-                    <input
-                        type="checkbox"
-                        class="meal-check"
-                    >
-
-                    Café da tarde
-
-                </label>
-
-                <button
-                    class="diet-btn"
-                >
-                    Ver dieta
-                </button>
-
-            </div>
-
-            <div class="meal">
-
-                <label>
-
-                    <input
-                        type="checkbox"
-                        class="meal-check"
-                    >
-
-                    Jantar
-
-                </label>
-
-                <button
-                    class="diet-btn"
-                >
-                    Ver dieta
-                </button>
-
-            </div>
-
-        </section>
-
-        <!-- PESO -->
-
-        <section class="weight">
-
-            <h2>
-                Evolução
-            </h2>
-
-            <div class="weight-grid">
-
-                <div>
-
-                    <span>
-                        Peso Atual
-                    </span>
-
-                    <strong>
-                        92.4 kg
-                    </strong>
-
-                </div>
-
-                <div>
-
-                    <span>
-                        Meta
-                    </span>
-
-                    <strong>
-                        80 kg
-                    </strong>
-
-                </div>
-
-            </div>
-
-            <button class="update-weight">
-
-                Atualizar Peso
-
-            </button>
-
-        </section>
-
-        <!-- PUBLICAÇÃO -->
-
-        <section class="news">
-
-            <div class="news-content">
-
-                <span>
-                    NUTRI+ MAX
-                </span>
-
-                <h2>
-                    Tenha acesso a receitas ilimitadas
-                </h2>
-
-                <p>
-                    Receitas personalizadas,
-                    IA Nutri+ e acompanhamento avançado.
-                </p>
-
-                <a href="planos.html">
-
-                    Conhecer plano
-
-                </a>
-
-            </div>
-
-        </section>
-
-    </main>
-
     <script src="js/dashboard.js"></script>
-
 </body>
-
 </html>
