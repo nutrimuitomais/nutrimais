@@ -1,3 +1,18 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Nutri+</title>
+
+<link rel="stylesheet" href="style.css">
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+</head>
+
 <body>
 
 <div class="app-container">
@@ -706,11 +721,89 @@ onclick="voltarReceita()">
 
         </div>
 
-        <button class="recipe-add-btn">
+        <div class="recipe-section">
 
-            Adicionar à Dieta
+    <h3>
+        Benefícios Nutricionais
+    </h3>
 
+    <ul class="benefits-list">
+
+        <li>
+            Alto teor de proteína para preservação muscular
+        </li>
+
+        <li>
+            Excelente saciedade
+        </li>
+
+        <li>
+            Baixo teor de açúcar
+        </li>
+
+        <li>
+            Ideal para emagrecimento e hipertrofia
+        </li>
+
+    </ul>
+
+</div>
+
+        <div class="recipe-rating">
+
+    <span>⭐⭐⭐⭐⭐</span>
+
+    <small>
+        Receita mais utilizada pelos usuários
+    </small>
+
+</div>
+
+        <div class="recipe-actions">
+
+    <button class="recipe-add-btn">
+        Adicionar à Dieta
+    </button>
+
+    <button class="recipe-ai-btn">
+        Gerar Similar IA
+    </button>
+
+</div>
+
+        <div class="shopping-list-card">
+
+    <div class="shopping-header">
+        <h3>
+            Lista de Compras
+        </h3>
+
+        <button class="shopping-btn">
+            Gerar Lista
         </button>
+    </div>
+
+    <ul class="shopping-list">
+
+        <li>
+            3 ovos inteiros
+        </li>
+
+        <li>
+            150g frango desfiado
+        </li>
+
+        <li>
+            20g queijo light
+        </li>
+
+        <li>
+            100g tomate
+        </li>
+
+    </ul>
+
+</div>
 
         <!-- INFORMAÇÕES EXTRAS -->
 
@@ -816,6 +909,157 @@ onclick="voltarReceita()">
 
 </section>
 
+    <section class="related-recipes">
+
+    <div class="section-title">
+
+        <div>
+            <span class="section-tag">
+                RECEITAS RELACIONADAS
+            </span>
+
+            <h2>
+                Você também pode gostar
+            </h2>
+        </div>
+
+    </div>
+
+    <div class="related-grid">
+
+        <div class="related-card">
+
+            <img
+            src="img/receita1.jpg"
+            alt="Receita">
+
+            <div class="related-content">
+
+                <h3>
+                    Panqueca Proteica
+                </h3>
+
+                <p>
+                    320 kcal • 28g proteína
+                </p>
+
+            </div>
+
+        </div>
+
+        <div class="related-card">
+
+            <img
+            src="img/receita2.jpg"
+            alt="Receita">
+
+            <div class="related-content">
+
+                <h3>
+                    Frango Cremoso Fit
+                </h3>
+
+                <p>
+                    410 kcal • 42g proteína
+                </p>
+
+            </div>
+
+        </div>
+
+        <div class="related-card">
+
+            <img
+            src="img/receita3.jpg"
+            alt="Receita">
+
+            <div class="related-content">
+
+                <h3>
+                    Bowl de Carne Magra
+                </h3>
+
+                <p>
+                    390 kcal • 37g proteína
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+    <section class="favorite-recipes">
+
+    <div class="section-title">
+
+        <div>
+            <span class="section-tag">
+                FAVORITAS
+            </span>
+
+            <h2>
+                Suas receitas favoritas
+            </h2>
+        </div>
+
+    </div>
+
+    <div class="favorite-grid">
+
+        <div class="favorite-card">
+
+            <div class="favorite-top">
+
+                <span>
+                    Proteína Alta
+                </span>
+
+                <button>
+                    ♥
+                </button>
+
+            </div>
+
+            <h3>
+                Omelete Proteica
+            </h3>
+
+            <p>
+                290 kcal • 26g proteína
+            </p>
+
+        </div>
+
+        <div class="favorite-card">
+
+            <div class="favorite-top">
+
+                <span>
+                    Emagrecimento
+                </span>
+
+                <button>
+                    ♥
+                </button>
+
+            </div>
+
+            <h3>
+                Frango Fit
+            </h3>
+
+            <p>
+                410 kcal • 42g proteína
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
     
     <!-- NEWS PREMIUM -->
 <section class="news-highlight">
@@ -912,9 +1156,10 @@ onclick="voltarReceita()">
 
         <div class="weight-update">
 
-            <input
-            type="number"
-            placeholder="Adicionar peso">
+<input
+type="number"
+step="0.1"
+placeholder="Ex: 88.4">
 
             <button>
                 Salvar
@@ -953,6 +1198,166 @@ onclick="voltarReceita()">
             </div>
 
         </label>
+
+    </div>
+
+</section>
+
+    <section class="nutrition-history">
+
+    <div class="section-title">
+
+        <div>
+
+            <span class="section-tag">
+                HISTÓRICO
+            </span>
+
+            <h2>
+                Seu desempenho recente
+            </h2>
+
+        </div>
+
+    </div>
+
+    <div class="history-grid">
+
+        <div class="history-card">
+
+            <span>
+                Dieta Concluída
+            </span>
+
+            <strong>
+                87%
+            </strong>
+
+            <small>
+                Últimos 30 dias
+            </small>
+
+        </div>
+
+        <div class="history-card">
+
+            <span>
+                Peso Perdido
+            </span>
+
+            <strong>
+                -4kg
+            </strong>
+
+            <small>
+                Desde o início
+            </small>
+
+        </div>
+
+        <div class="history-card">
+
+            <span>
+                Dias Seguidos
+            </span>
+
+            <strong>
+                18
+            </strong>
+
+            <small>
+                Consistência
+            </small>
+
+        </div>
+
+        <div class="history-card">
+
+            <span>
+                Receitas Testadas
+            </span>
+
+            <strong>
+                42
+            </strong>
+
+            <small>
+                Este mês
+            </small>
+
+        </div>
+
+    </div>
+
+</section>
+
+    <section class="achievements-section">
+
+    <div class="section-title">
+
+        <div>
+
+            <span class="section-tag">
+                CONQUISTAS
+            </span>
+
+            <h2>
+                Seu desempenho
+            </h2>
+
+        </div>
+
+    </div>
+
+    <div class="achievement-grid">
+
+        <div class="achievement-card completed">
+
+            <div class="achievement-icon">
+                ✓
+            </div>
+
+            <h3>
+                7 dias seguidos
+            </h3>
+
+            <p>
+                Dieta concluída por 7 dias consecutivos
+            </p>
+
+        </div>
+
+        <div class="achievement-card">
+
+            <div class="achievement-icon">
+                50%
+            </div>
+
+            <h3>
+                Meta de Peso
+            </h3>
+
+            <p>
+                Você está na metade do caminho
+            </p>
+
+        </div>
+
+        <div class="achievement-card">
+
+            <div class="achievement-icon">
+                42
+            </div>
+
+            <h3>
+                Receitas Testadas
+            </h3>
+
+            <p>
+                Continue explorando novas refeições
+            </p>
+
+        </div>
 
     </div>
 
@@ -1334,9 +1739,7 @@ onclick="abrirReceita()">
 
         </div>
 
-        <canvas id="graficoPeso">
-
-        </canvas>
+        <canvas id="graficoPeso"></canvas>
 
     </section>
 
