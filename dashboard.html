@@ -135,6 +135,40 @@
 
 </section>
 
+    <section class="ia-assistant">
+
+    <div class="ia-left">
+
+        <span class="ia-tag">
+            IA NUTRI+
+        </span>
+
+        <h2>
+            Seu nutricionista inteligente
+        </h2>
+
+        <p>
+            Pergunte sobre sua dieta,
+            receitas, substituições,
+            emagrecimento ou ganho de massa.
+        </p>
+
+    </div>
+
+    <div class="ia-right">
+
+        <input
+        type="text"
+        placeholder="Pergunte algo para a IA Nutri+">
+
+        <button>
+            Perguntar
+        </button>
+
+    </div>
+
+</section>
+
     <section class="premium-news-popup" id="newsPopup">
 
     <button class="close-news" onclick="fecharNews()">
@@ -434,9 +468,11 @@
 
         </div>
 
-        <button class="recipe-btn">
-            Ver Receita
-        </button>
+        <button
+class="recipe-btn"
+onclick="abrirReceita()">
+    Ver Receita
+</button>
 
     </div>
 
@@ -476,9 +512,11 @@
 
         </div>
 
-        <button class="recipe-btn">
-            Ver Receita
-        </button>
+        <button
+class="recipe-btn"
+onclick="abrirReceita()">
+    Ver Receita
+</button>
 
     </div>
 
@@ -518,9 +556,11 @@
 
         </div>
 
-        <button class="recipe-btn">
-            Ver Receita
-        </button>
+        <button
+class="recipe-btn"
+onclick="abrirReceita()">
+    Ver Receita
+</button>
 
     </div>
 
@@ -560,14 +600,223 @@
 
         </div>
 
-        <button class="recipe-btn">
-            Ver Receita
-        </button>
+        <button
+class="recipe-btn"
+onclick="abrirReceita()">
+    Ver Receita
+</button>
 
     </div>
 
 </section>
 
+    <section class="recipe-details">
+
+    <div class="recipe-banner">
+
+        <img
+        src="img/receita-omelete.jpg"
+        alt="Receita">
+
+    </div>
+
+    <div class="recipe-body">
+
+        <button
+class="back-btn"
+onclick="voltarReceita()">
+    ← Voltar
+</button>
+
+        <span class="recipe-category">
+            RECEITA PREMIUM
+        </span>
+
+        <h2>
+            Omelete Proteica com Frango
+        </h2>
+
+        <p class="recipe-description">
+
+            Receita rica em proteínas,
+            ideal para hipertrofia e
+            emagrecimento saudável.
+
+        </p>
+
+        <div class="recipe-stats">
+
+            <div>
+                <strong>290</strong>
+                <span>kcal</span>
+            </div>
+
+            <div>
+                <strong>26g</strong>
+                <span>Proteína</span>
+            </div>
+
+            <div>
+                <strong>12g</strong>
+                <span>Carbo</span>
+            </div>
+
+            <div>
+                <strong>15g</strong>
+                <span>Gordura</span>
+            </div>
+
+        </div>
+
+        <div class="recipe-section">
+
+            <h3>
+                Ingredientes
+            </h3>
+
+            <ul>
+
+                <li>3 ovos inteiros</li>
+
+                <li>150g frango desfiado</li>
+
+                <li>20g queijo light</li>
+
+                <li>100g tomate</li>
+
+            </ul>
+
+        </div>
+
+        <div class="recipe-section">
+
+            <h3>
+                Modo de preparo
+            </h3>
+
+            <p>
+
+                Bata os ovos.
+                Misture o frango.
+                Acrescente tomate e queijo.
+                Cozinhe em fogo médio por
+                aproximadamente 8 minutos.
+
+            </p>
+
+        </div>
+
+        <button class="recipe-add-btn">
+
+            Adicionar à Dieta
+
+        </button>
+
+        <!-- INFORMAÇÕES EXTRAS -->
+
+<div class="recipe-info-grid">
+
+    <div class="recipe-info-card">
+        <span>Tempo de preparo</span>
+        <strong>25 min</strong>
+    </div>
+
+    <div class="recipe-info-card">
+        <span>Dificuldade</span>
+        <strong>Fácil</strong>
+    </div>
+
+    <div class="recipe-info-card">
+        <span>Porções</span>
+        <strong>1 Pessoa</strong>
+    </div>
+
+</div>
+
+<!-- LISTA DE COMPRAS -->
+
+<div class="recipe-section">
+
+    <h3>Lista de Compras</h3>
+
+    <div class="shopping-list">
+
+        <label>
+            <input type="checkbox">
+            Frango
+        </label>
+
+        <label>
+            <input type="checkbox">
+            Arroz Integral
+        </label>
+
+        <label>
+            <input type="checkbox">
+            Feijão
+        </label>
+
+        <label>
+            <input type="checkbox">
+            Temperos Naturais
+        </label>
+
+    </div>
+
+</div>
+
+<!-- RECEITAS RELACIONADAS -->
+
+<div class="recipe-section">
+
+    <h3>
+        Você também pode gostar
+    </h3>
+
+    <div class="related-recipes">
+
+        <div class="related-card">
+
+            <img
+            src="img/receita2.jpg">
+
+            <h4>
+                Frango Fit
+            </h4>
+
+        </div>
+
+        <div class="related-card">
+
+            <img
+            src="img/receita3.jpg">
+
+            <h4>
+                Panqueca Proteica
+            </h4>
+
+        </div>
+
+        <div class="related-card">
+
+            <img
+            src="img/receita4.jpg">
+
+            <h4>
+                Bowl de Frango
+            </h4>
+
+        </div>
+
+    </div>
+
+</div>
+
+    </div>
+
+</section>
+
+    
     <!-- NEWS PREMIUM -->
 <section class="news-highlight">
 
@@ -704,6 +953,111 @@
             </div>
 
         </label>
+
+    </div>
+
+</section>
+
+    <!-- RECEITAS PREMIUM -->
+<section class="recipes-section">
+
+    <div class="section-title">
+        <div>
+            <span class="section-tag">
+                RECEITAS PREMIUM
+            </span>
+            <h2>
+                Receitas para sua meta
+            </h2>
+        </div>
+
+        <button class="btn-secondary">
+            Ver Todas
+        </button>
+    </div>
+
+    <div class="recipes-grid">
+
+        <div class="recipe-card">
+            <img
+            src="img/receita1.jpg"
+            alt="Receita">
+
+            <div class="recipe-info">
+                <span class="recipe-category">
+                    HIPERTROFIA
+                </span>
+
+                <h3>
+                    Panqueca Proteica de Banana
+                </h3>
+
+                <div class="recipe-macros">
+                    <span>420 kcal</span>
+                    <span>32g proteína</span>
+                </div>
+
+                <button
+class="recipe-btn"
+onclick="abrirReceita()">
+    Ver Receita
+</button>
+            </div>
+        </div>
+
+        <div class="recipe-card">
+            <img
+            src="img/receita2.jpg"
+            alt="Receita">
+
+            <div class="recipe-info">
+                <span class="recipe-category">
+                    EMAGRECIMENTO
+                </span>
+
+                <h3>
+                    Frango Cremoso Fit
+                </h3>
+
+                <div class="recipe-macros">
+                    <span>390 kcal</span>
+                    <span>40g proteína</span>
+                </div>
+
+                <button
+class="recipe-btn"
+onclick="abrirReceita()">
+    Ver Receita
+</button>
+            </div>
+        </div>
+
+        <div class="recipe-card">
+            <img
+            src="img/receita3.jpg"
+            alt="Receita">
+
+            <div class="recipe-info">
+                <span class="recipe-category">
+                    PREMIUM
+                </span>
+
+                <h3>
+                    Bowl Mediterrâneo
+                </h3>
+
+                <div class="recipe-macros">
+                    <span>510 kcal</span>
+                    <span>38g proteína</span>
+                </div>
+
+                <button
+class="recipe-btn"
+onclick="abrirReceita()">
+    Ver Receita
+</button>
+            </div>
+        </div>
 
     </div>
 
@@ -868,9 +1222,11 @@
 
                     </label>
 
-                    <button>
-                        Ver Receita
-                    </button>
+                    <button
+class="recipe-btn"
+onclick="abrirReceita()">
+    Ver Receita
+</button>
 
                 </div>
 
@@ -913,9 +1269,11 @@
 
                     </label>
 
-                    <button>
-                        Ver Receita
-                    </button>
+                    <button
+class="recipe-btn"
+onclick="abrirReceita()">
+    Ver Receita
+</button>
 
                 </div>
 
@@ -982,8 +1340,147 @@
 
     </section>
 
-    
+</div>
+
+    <!-- MODAL RECEITA PREMIUM -->
+<div class="recipe-modal" id="recipeModal">
+
+    <div class="recipe-modal-content">
+
+        <button
+        class="close-recipe"
+        onclick="fecharReceita()">
+            ×
+        </button>
+
+        <div class="recipe-cover">
+            <img
+            src="img/receita.jpg"
+            alt="Receita">
+        </div>
+
+        <div class="recipe-body">
+
+            <span class="recipe-tag">
+                RECEITA PREMIUM
+            </span>
+
+            <h2>
+                Frango com Arroz Integral
+            </h2>
+
+            <p class="recipe-description">
+                Receita rica em proteínas,
+                ideal para ganho de massa
+                muscular e controle de gordura.
+            </p>
+
+            <div class="recipe-macros">
+
+                <div class="recipe-macro">
+                    <span>Calorias</span>
+                    <strong>680 kcal</strong>
+                </div>
+
+                <div class="recipe-macro">
+                    <span>Proteína</span>
+                    <strong>58g</strong>
+                </div>
+
+                <div class="recipe-macro">
+                    <span>Carboidrato</span>
+                    <strong>60g</strong>
+                </div>
+
+                <div class="recipe-macro">
+                    <span>Gordura</span>
+                    <strong>12g</strong>
+                </div>
+
+            </div>
+
+            <div class="recipe-section">
+
+                <h3>
+                    Ingredientes
+                </h3>
+
+                <ul>
+                    <li>300g de frango</li>
+                    <li>150g arroz integral</li>
+                    <li>100g feijão</li>
+                    <li>Temperos naturais</li>
+                </ul>
+
+            </div>
+
+            <div class="recipe-section">
+
+                <h3>
+                    Modo de Preparo
+                </h3>
+
+                <p>
+                    Tempere o frango e grelhe.
+                    Cozinhe o arroz integral e o feijão.
+                    Monte o prato e sirva.
+                </p>
+
+            </div>
+
+            <button class="btn-primary">
+                Adicionar à Lista de Compras
+            </button>
+
+        </div>
+
+    </div>
 
 </div>
 
+    <script>
+
+function abrirReceita(){
+    document
+    .getElementById("recipeModal")
+    .classList.add("active");
+}
+
+function fecharReceita(){
+    document
+    .getElementById("recipeModal")
+    .classList.remove("active");
+}
+
+</script>
+
+    <!-- MOBILE NAV -->
+<nav class="mobile-nav">
+
+    <a href="#" class="active">
+        Início
+    </a>
+
+    <a href="#">
+        Dieta
+    </a>
+
+    <a href="#">
+        Receitas
+    </a>
+
+    <a href="#">
+        Evolução
+    </a>
+
+    <a href="#">
+        IA Nutri+
+    </a>
+
+    <a href="#">
+        Perfil
+    </a>
+
+</nav>
+    
 </body>
