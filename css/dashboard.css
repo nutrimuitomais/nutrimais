@@ -3063,3 +3063,506 @@ MOBILE NAV PREMIUM
     }
 
 }
+
+.recipe-rating{
+    display:flex;
+    flex-direction:column;
+    gap:8px;
+    margin-top:25px;
+    margin-bottom:25px;
+}
+
+.recipe-rating span{
+    font-size:22px;
+}
+
+.recipe-rating small{
+    color:#64748b;
+    font-weight:600;
+}
+
+.benefits-list{
+    margin-top:15px;
+    padding-left:20px;
+}
+
+.benefits-list li{
+    margin-bottom:10px;
+    color:#475569;
+    line-height:1.7;
+}
+
+.recipe-actions{
+    display:flex;
+    gap:15px;
+    margin-top:25px;
+}
+
+.recipe-ai-btn{
+    background:#111827;
+    color:white;
+    padding:16px 22px;
+    border-radius:18px;
+    font-weight:800;
+}
+
+/* ==========================
+LISTA DE COMPRAS
+========================== */
+
+.shopping-list-card{
+
+    margin-top:30px;
+
+    padding:25px;
+
+    background:white;
+
+    border-radius:24px;
+
+    border:1px solid #e5e7eb;
+
+}
+
+.shopping-header{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    margin-bottom:20px;
+
+}
+
+.shopping-header h3{
+
+    font-size:20px;
+
+    font-weight:800;
+
+}
+
+.shopping-btn{
+
+    background:#22c55e;
+
+    color:white;
+
+    padding:12px 18px;
+
+    border-radius:14px;
+
+    font-weight:700;
+
+}
+
+.shopping-list{
+
+    list-style:none;
+
+}
+
+.shopping-list li{
+
+    padding:14px 0;
+
+    border-bottom:1px solid #f1f5f9;
+
+    color:#475569;
+
+    font-weight:500;
+
+}
+
+/* ==========================
+RECEITAS RELACIONADAS
+========================== */
+
+.related-recipes{
+
+    margin-top:40px;
+
+}
+
+.related-grid{
+
+    display:grid;
+
+    grid-template-columns:
+    repeat(auto-fit,minmax(260px,1fr));
+
+    gap:25px;
+
+}
+
+.related-card{
+
+    background:white;
+
+    border-radius:24px;
+
+    overflow:hidden;
+
+    border:1px solid #edf2f7;
+
+    transition:.3s;
+
+    cursor:pointer;
+
+}
+
+.related-card:hover{
+
+    transform:translateY(-6px);
+
+}
+
+.related-card img{
+
+    width:100%;
+
+    height:180px;
+
+    object-fit:cover;
+
+}
+
+.related-content{
+
+    padding:20px;
+
+}
+
+.related-content h3{
+
+    margin-bottom:10px;
+
+    font-size:18px;
+
+    font-weight:800;
+
+}
+
+.related-content p{
+
+    color:#64748b;
+
+}
+
+/* ==========================
+FAVORITAS
+========================== */
+
+.favorite-recipes{
+
+    margin-top:40px;
+
+}
+
+.favorite-grid{
+
+    display:grid;
+
+    grid-template-columns:
+    repeat(auto-fit,minmax(280px,1fr));
+
+    gap:20px;
+
+}
+
+.favorite-card{
+
+    background:white;
+
+    padding:25px;
+
+    border-radius:24px;
+
+    border:1px solid #edf2f7;
+
+    transition:.3s;
+
+}
+
+.favorite-card:hover{
+
+    transform:translateY(-4px);
+
+}
+
+.favorite-top{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    margin-bottom:20px;
+
+}
+
+.favorite-top span{
+
+    background:#f1f5f9;
+
+    padding:8px 12px;
+
+    border-radius:999px;
+
+    font-size:12px;
+
+    font-weight:700;
+
+}
+
+.favorite-top button{
+
+    background:none;
+
+    font-size:20px;
+
+    color:#ef4444;
+
+}
+
+.favorite-card h3{
+
+    font-size:20px;
+
+    margin-bottom:10px;
+
+    font-weight:800;
+
+}
+
+.favorite-card p{
+
+    color:#64748b;
+
+}
+
+/* ==========================
+HISTÓRICO NUTRICIONAL
+========================== */
+
+.nutrition-history{
+
+    margin-top:40px;
+
+}
+
+.history-grid{
+
+    display:grid;
+
+    grid-template-columns:
+    repeat(auto-fit,minmax(220px,1fr));
+
+    gap:20px;
+
+}
+
+.history-card{
+
+    background:white;
+
+    padding:28px;
+
+    border-radius:24px;
+
+    border:1px solid #edf2f7;
+
+    transition:.3s;
+
+}
+
+.history-card:hover{
+
+    transform:translateY(-5px);
+
+}
+
+.history-card span{
+
+    display:block;
+
+    color:#64748b;
+
+    margin-bottom:12px;
+
+    font-size:14px;
+
+}
+
+.history-card strong{
+
+    display:block;
+
+    font-size:34px;
+
+    font-weight:900;
+
+    color:#111827;
+
+    margin-bottom:8px;
+
+}
+
+.history-card small{
+
+    color:#94a3b8;
+
+}
+
+           /* ==========================
+CONQUISTAS
+========================== */
+
+.achievements-section{
+
+    margin-top:40px;
+
+}
+
+.achievement-grid{
+
+    display:grid;
+
+    grid-template-columns:
+    repeat(auto-fit,minmax(260px,1fr));
+
+    gap:20px;
+
+}
+
+.achievement-card{
+
+    background:white;
+
+    border:1px solid #edf2f7;
+
+    border-radius:24px;
+
+    padding:28px;
+
+    transition:.3s;
+
+}
+
+.achievement-card:hover{
+
+    transform:translateY(-5px);
+
+}
+
+.achievement-icon{
+
+    width:70px;
+
+    height:70px;
+
+    border-radius:20px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    font-size:22px;
+
+    font-weight:800;
+
+    background:#f8fafc;
+
+    margin-bottom:20px;
+
+}
+
+.achievement-card.completed
+.achievement-icon{
+
+    background:#dcfce7;
+
+    color:#16a34a;
+
+}
+
+.achievement-card h3{
+
+    font-size:20px;
+
+    margin-bottom:10px;
+
+    font-weight:800;
+
+}
+
+.achievement-card p{
+
+    color:#64748b;
+
+    line-height:1.6;
+
+}
+
+.avatar{
+
+    width:90px;
+
+    height:90px;
+
+    border-radius:50%;
+
+    object-fit:cover;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+}
+
+.avatar:hover{
+
+    transform:scale(1.05);
+
+}
+
+.avatar-uploaded{
+
+    border:4px solid #22c55e;
+
+}
+
+.weight-chart-card{
+
+    background:white;
+
+    border-radius:30px;
+
+    padding:30px;
+
+    margin-top:25px;
+
+    border:1px solid #edf2f7;
+
+    box-shadow:
+    0 20px 50px rgba(
+        0,
+        0,
+        0,
+        .06
+    );
+
+}
+
+#graficoPeso{
+
+    width:100%;
+
+    height:320px !important;
+
+}
