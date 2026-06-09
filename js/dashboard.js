@@ -1,154 +1,36 @@
-/* ==========================
-NOVO
-========================== */
-function fecharNews(){
-
-    document
-    .getElementById("newsPopup")
-    .style.display = "none";
-
+// CONTROLAR POP-IN PROMOCIONAL (Imagem 2)
+function closePromo() {
+    const promo = document.getElementById('promotional-popin');
+    promo.classList.add('hidden');
 }
 
-function abrirReceita(){
+// Abre o anúncio/pop-in de forma inteligente 1.5 segundos após carregar o app
+document.addEventListener('DOMContentLoaded', () => {
+    setTimeout(() => {
+        const promo = document.getElementById('promotional-popin');
+        promo.classList.remove('hidden');
+    }, 1500);
+});
 
-    document.querySelector(
-        ".meal-plan-section"
-    ).style.display = "none";
+// CONTROLAR POP-IN DETALHADO DA RECEITA (Imagem 3)
+const dietModal = document.getElementById('diet-modal');
+const modalMealName = document.getElementById('modal-meal-name');
+const modalKcal = document.getElementById('modal-kcal');
+const modalPro = document.getElementById('modal-pro');
+const modalCarb = document.getElementById('modal-carb');
 
-    document.querySelector(
-        ".recipe-details"
-    ).style.display = "block";
+function openDietModal(nomeRefeicao, kcal, proteinas, carboidratos) {
+    // Altera os textos do modal dinamicamente de acordo com o botão clicado
+    modalMealName.textContent = nomeRefeicao;
+    modalKcal.textContent = kcal;
+    modalPro.textContent = proteinas + "g";
+    modalCarb.textContent = carboidratos + "g";
 
-    window.scrollTo({
-        top:0,
-        behavior:"smooth"
-    });
-
+    // Exibe o modal na tela
+    dietModal.classList.remove('hidden');
 }
 
-function voltarReceita(){
-
-    document.querySelector(
-        ".recipe-details"
-    ).style.display = "none";
-
-    document.querySelector(
-        ".meal-plan-section"
-    ).style.display = "block";
-
-    window.scrollTo({
-        top:0,
-        behavior:"smooth"
-    });
-
+function closeDietModal() {
+    // Esconde o modal com animação suave
+    dietModal.classList.add('hidden');
 }
-
-/* ==========================
-FOTO PERFIL
-========================== */
-
-const avatarUser =
-document.getElementById(
-    "avatarUser"
-);
-
-const uploadFoto =
-document.getElementById(
-    "uploadFoto"
-);
-
-avatarUser.addEventListener(
-    "click",
-    () => {
-        uploadFoto.click();
-    }
-);
-
-uploadFoto.addEventListener(
-    "change",
-    (e) => {
-
-        const file =
-        e.target.files[0];
-
-        if(!file) return;
-
-        const reader =
-        new FileReader();
-
-        reader.onload =
-        function(event){
-
-            avatarUser.src =
-            event.target.result;
-
-            avatarUser.classList.add(
-                "avatar-uploaded"
-            );
-
-        };
-
-        reader.readAsDataURL(
-            file
-        );
-
-    }
-);
-
-/* ==========================
-GRAFICO DE PESO
-========================== */
-
-const ctx =
-document.getElementById(
-    "graficoPeso"
-);
-
-new Chart(
-    ctx,
-    {
-        type:"line",
-        data:{
-            labels:[
-                "01/06",
-                "02/06",
-                "03/06",
-                "04/06",
-                "05/06",
-                "06/06",
-                "07/06"
-            ],
-            datasets:[
-                {
-                    label:"Peso",
-                    data:[
-                        92,
-                        91.6,
-                        91.1,
-                        90.8,
-                        90.2,
-                        89.7,
-                        89.1
-                    ],
-                    borderColor:"#22c55e",
-                    backgroundColor:
-                    "rgba(34,197,94,.15)",
-                    fill:true,
-                    tension:.4,
-                    borderWidth:4,
-                    pointRadius:6,
-                    pointBackgroundColor:
-                    "#22c55e"
-                }
-            ]
-        },
-        options:{
-            responsive:true,
-            plugins:{
-                legend:{
-                    display:false
-                }
-            }
-        }
-    }
-);
