@@ -2,26 +2,51 @@
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Nutri+ Core Edition</title>
     <link rel="stylesheet" href="css/dashboard.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 </head>
 <body>
+
+    <div id="interstitial-marketing-portal" class="interstitial-backdrop hidden">
+        <div class="interstitial-wrapper-card">
+            <button class="close-interstitial-btn" onclick="dismissInterstitialHub()">×</button>
+            <div class="interstitial-banner-hero">
+                <div class="mini-logo-inline-premium">NUTRI+</div>
+                <img src="https://images.unsplash.com/photo-1490645935967-10de6ba17061?w=600" alt="Plano Performance" class="interstitial-img-render">
+            </div>
+            <div class="interstitial-marketing-body">
+                <h2>Evolua para o Próximo Nível</h2>
+                <p>Modelos dietéticos avançados estruturados pelos maiores especialistas de mercado. Conquiste resultados até 3x mais rápidos com acompanhamento de Elite.</p>
+                <a href="planos.html" class="interstitial-cta-btn">Quero o Acesso Premium</a>
+            </div>
+        </div>
+    </div>
 
     <div class="platform-container">
         
         <aside class="desktop-sidebar">
             <div class="sidebar-logo-box">
-                <img src="img/logo.png" alt="NUTRI+" class="brand-logo-img">
+                <div class="brand-logo-main-text">NUTRI<span>+</span></div>
             </div>
+            
             <nav class="sidebar-menu">
+                <div class="menu-section-label">Navegação Principal</div>
                 <a href="#" class="menu-item active">Início</a>
-                <a href="#" class="menu-item">Dieta</a>
-                <a href="#" class="menu-item">Progresso</a>
-                <a href="#" class="menu-item" onclick="toggleProfileSubmenu()">Perfil</a>
+                <a href="#" class="menu-item">Minha Dieta</a>
+                <a href="#" class="menu-item">Evolução Corpórea</a>
+                
+                <div class="menu-section-label">Recursos do Assinante</div>
+                <a href="#" class="menu-item core-ia-link" onclick="triggerAIVoiceEngine()">IA NUTRI - MAX</a>
+                <a href="#" class="menu-item" onclick="triggerAIVoiceEngine()">Gerar Treino MAX</a>
+                <a href="#" class="menu-item" onclick="triggerAIVoiceEngine()">FOTO IA SUPER</a>
+                
+                <div class="menu-section-label">Painel de Conta</div>
+                <a href="planos.html" class="menu-item accent-gold-item">Mudar de Plano</a>
+                <a href="#" class="menu-item">Faturas e Cobranças</a>
             </nav>
             <div class="sidebar-footer">
                 <div class="badge-metal super-gold-card">SUPER NUTRI</div>
@@ -32,7 +57,7 @@
             
             <header class="app-top-bar">
                 <div class="welcome-user">
-                    <div class="avatar-upload-container">
+                    <div class="avatar-upload-container" onclick="triggerAvatarUpload()">
                         <img id="user-avatar-target" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150" alt="Vinicius" class="profile-avatar">
                         <input type="file" id="avatar-file-input" accept="image/*" class="hidden-file-input">
                         <div class="avatar-overlay">ALTERAR</div>
@@ -42,13 +67,12 @@
                             <h1>Olá, Vinicius</h1>
                             <span class="badge-metal max-silver-liquid" id="plan-badge-top">MAX NUTRI</span>
                         </div>
-                        <p class="sub-welcome">Plano Customizado por Inteligência Artificial</p>
+                        <p class="sub-welcome" id="dynamic-expert-subtitle">Carregando diretrizes clínicas de referências do mercado...</p>
                     </div>
                 </div>
                 
                 <div class="top-actions">
-                    <img src="img/logo.png" alt="NUTRI+" class="mobile-top-logo-render">
-                    <button class="notification-btn" onclick="triggerNotificationPush()">
+                    <button class="notification-btn" onclick="openIfoodNotificationsHub()">
                         <span class="bell-icon">🔔</span>
                         <span class="pulse-dot"></span>
                     </button>
@@ -60,25 +84,29 @@
                     
                     <div class="upsell-slide-card active">
                         <div class="upsell-text-side">
+                            <div class="slide-mini-branded-tag">NUTRI+ Core</div>
                             <span class="trending-tag">UPGRADE RECOMENDADO</span>
                             <h2 class="editorial-title">Refeições personalizadas no seu celular</h2>
-                            <p>Desbloqueie substituições moleculares inteligentes em tempo real e relatórios metabólicos baseados na sua anamnese.</p>
+                            <p>Substituições inteligentes em tempo real validadas por bancadas clínicas especializadas.</p>
                             <a href="planos.html" class="action-upgrade-btn-wave">Mudar de plano agora →</a>
                         </div>
-                        <div class="upsell-visual-side">
-                            <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=500" alt="Refeição Premium" class="dish-marketing-img">
+                        <div class="upsell-visual-side-3d">
+                            <div class="shadow-ground-3d"></div>
+                            <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=400" alt="Refeição Premium" class="dish-marketing-img-3d">
                         </div>
                     </div>
 
                     <div class="upsell-slide-card">
                         <div class="upsell-text-side">
+                            <div class="slide-mini-branded-tag">NUTRI+ Elite</div>
                             <span class="trending-tag">EXCLUSIVO MAX & SUPER</span>
-                            <h2 class="editorial-title">Gere Treinos de Elite com a IA Nutri</h2>
-                            <p>Ajuste sua planilha de hipertrofia e definição na mesma velocidade em que muda sua escolha de alimentos.</p>
+                            <h2 class="editorial-title">Gere Treinos de Elite com Alta Precisão</h2>
+                            <p>Planilhas completas de hipertrofia baseadas em rotinas de atletas profissionais.</p>
                             <a href="planos.html" class="action-upgrade-btn-wave">Garantir Acesso VIP →</a>
                         </div>
-                        <div class="upsell-visual-side">
-                            <img src="https://images.unsplash.com/photo-1517838277536-f5f99be501cd?w=500" alt="Treino de Elite" class="dish-marketing-img">
+                        <div class="upsell-visual-side-3d">
+                            <div class="shadow-ground-3d"></div>
+                            <img src="https://images.unsplash.com/photo-1517838277536-f5f99be501cd?w=400" alt="Treino de Elite" class="dish-marketing-img-3d">
                         </div>
                     </div>
 
@@ -98,7 +126,7 @@
                     <div class="progress-bar-container">
                         <div id="calories-progress-line" class="progress-fill-line-animated" style="width: 0%;"></div>
                     </div>
-                    <p id="calories-remainder-msg" class="helper-text">Monitore seus macros marcando os consumos abaixo</p>
+                    <p id="calories-remainder-msg" class="helper-text">Marque os consumos abaixo para atualizar.</p>
                 </div>
 
                 <div class="macros-progress-row">
@@ -222,12 +250,8 @@
         </main>
 
         <nav class="mobile-bottom-bar">
-            <button class="m-nav-btn active">
-                <span class="m-label">Início</span>
-            </button>
-            <button class="m-nav-btn">
-                <span class="m-label">Dieta</span>
-            </button>
+            <button class="m-nav-btn active"><span class="m-label">Início</span></button>
+            <button class="m-nav-btn"><span class="m-label">Dieta</span></button>
             
             <div class="ai-button-container-hub">
                 <button class="premium-ai-core-btn" onclick="triggerAIVoiceEngine()">
@@ -236,13 +260,49 @@
                 </button>
             </div>
 
-            <button class="m-nav-btn">
-                <span class="m-label">Progresso</span>
-            </button>
-            <button class="m-nav-btn" onclick="toggleProfileSubmenu()">
-                <span class="m-label">Perfil</span>
-            </button>
+            <button class="m-nav-btn"><span class="m-label">Progresso</span></button>
+            <button class="m-nav-btn" onclick="toggleProfileSubmenu()"><span class="m-label">Perfil</span></button>
         </nav>
+
+        <div id="ifood-notifications-overlay" class="ifood-overlay hidden" onclick="closeIfoodNotificationsHub()">
+            <div class="ifood-panel-sheet" onclick="event.stopPropagation()">
+                <div class="ifood-panel-header">
+                    <div class="ifood-drag-line"></div>
+                    <h3>Notificações e Dicas</h3>
+                    <button class="clear-all-ifood-btn" onclick="closeIfoodNotificationsHub()">Fechar</button>
+                </div>
+                <div class="ifood-cards-scroll-area">
+                    
+                    <div class="ifood-notif-card highlighted" onclick="window.location.href='planos.html'">
+                        <div class="ifood-card-icon">💎</div>
+                        <div class="ifood-card-content">
+                            <h4>Ganho de Massa 25% mais rápido?</h4>
+                            <p>Assinantes do plano <strong>SUPER NUTRI</strong> contam com planilhas metabólicas calibradas para otimização hormonal natural. Faça o upgrade e confira.</p>
+                            <span class="ifood-time-tag">Agora mesmo</span>
+                        </div>
+                    </div>
+
+                    <div class="ifood-notif-card">
+                        <div class="ifood-card-icon">🍎</div>
+                        <div class="ifood-card-content">
+                            <h4>Dica do Especialista Dr. Alan</h4>
+                            <p>Consumir 400ml de água gelada imediatamente ao acordar acelera seu transito metabólico basal e prepara os receptores de carboidrato para o café da manhã.</p>
+                            <span class="ifood-time-tag">Há 2 horas</span>
+                        </div>
+                    </div>
+
+                    <div class="ifood-notif-card" onclick="window.location.href='planos.html'">
+                        <div class="ifood-card-icon">⚡</div>
+                        <div class="ifood-card-content">
+                            <h4>Desbloqueie substituições livres</h4>
+                            <p>Enjoou do frango? No plano MAX você troca alimentos mantendo os macronutrientes idênticos sem quebrar o planejamento da semana.</p>
+                            <span class="ifood-time-tag">Há 1 dia</span>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
 
         <div id="profile-drawer-overlay" class="profile-drawer-overlay hidden" onclick="toggleProfileSubmenu()">
             <div class="drawer-sheet" onclick="event.stopPropagation()">
@@ -253,12 +313,9 @@
                 <div class="drawer-options-list">
                     <button class="drawer-item" onclick="triggerAvatarUpload()">Upload da Foto de Perfil</button>
                     <a href="planos.html" class="drawer-item link-item-action">Planos e Assinaturas</a>
-                    <button class="drawer-item header-split-btn">Faturas e Cobranças</button>
+                    <button class="drawer-item">Faturas e Cobranças</button>
                     <button class="drawer-item premium-tag-max" onclick="triggerAIVoiceEngine()">IA NUTRI - MAX</button>
                     <button class="drawer-item premium-tag-super" onclick="triggerAIVoiceEngine()">FOTO IA NUTRI SUPER</button>
-                    <button class="drawer-item">Consulta de Nutricionista</button>
-                    <button class="drawer-item premium-tag-max">Gerar Treino MAX</button>
-                    <button class="drawer-item premium-tag-max">Consulta com Personal MAX</button>
                     <hr class="drawer-divider">
                     <button class="drawer-item logout-btn">Sair da Conta</button>
                 </div>
@@ -274,20 +331,15 @@
                 <div class="recipe-scroll-body" id="recipe-content-loaded-view">
                     <div class="recipe-visual-banner" id="recipe-banner-image-bg">
                         <div class="recipe-macro-badges-row">
-                            <div class="badge-item"><span id="recipe-kcal">0</span><span class="lbl">Kcal</span></div>
-                            <div class="badge-item"><span id="recipe-prot">0</span><span class="lbl">Prot</span></div>
-                            <div class="badge-item"><span id="recipe-carb">0</span><span class="lbl">Carb</span></div>
+                            <div class="badge-item"><span>0</span><span class="lbl">Kcal</span></div>
+                            <div class="badge-item"><span>0</span><span class="lbl">Prot</span></div>
+                            <div class="badge-item"><span>0</span><span class="lbl">Carb</span></div>
                         </div>
                     </div>
                     <div class="ingredients-list-wrapper">
                         <h3>Ingredientes e Pesos Exatos</h3>
                         <p class="count-subtitle">Ajustados dinamicamente para sua meta</p>
                         <div class="ingredients-render-grid" id="ingredients-target-box"></div>
-                    </div>
-                </div>
-                <div class="recipe-error-viewport hidden" id="recipe-error-view">
-                    <div class="error-box-data">
-                        <p>Receita não gerada por falta de escolha de alimentos</p>
                     </div>
                 </div>
             </div>
