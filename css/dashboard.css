@@ -1,4 +1,4 @@
-/* PALETA ORGÂNICA PREMIUM AVANÇADA (Foto 1 + Foto 3) */
+/* DESIGN ECO-PREMIUM LUXURY SPREAD */
 * {
     margin: 0;
     padding: 0;
@@ -8,424 +8,354 @@
 }
 
 :root {
-    --bg-creme-base: #F5F3EC;      /* Tom de creme nobre limpo */
-    --surface-white: #FFFFFF;
-    --primary-green: #1E382A;     /* Verde floresta suave das referências */
-    --mid-green: #2B523C;
-    --bright-active-green: #4DAE6E;/* Tom verde mais vivo e amigável */
-    --neon-ai-start: #3FE17A;     /* Paleta verde claro neon para o botão IA */
-    --neon-ai-end: #14B251;
-    --text-main: #131E18;
-    --text-muted: #64756B;
-    --border-light: #EBE7DC;
-    --shadow-soft: 0 12px 32px rgba(30, 56, 42, 0.04);
+    --bg-luxury-creme: #F4F2EB;
+    --surface-solid: #FFFFFF;
+    --brand-olive-deep: #162E20;   /* Verde oliva profundo super limpo */
+    --brand-emerald-active: #388E57;
+    --neon-mint-bright: #2CE071;
+    --neon-mint-deep: #129E47;
+    --text-pitch-dark: #0D1410;
+    --text-cool-grey: #5A6B60;
+    --border-smooth: #E8E4D9;
+    
+    /* Cores Específicas dos Macros */
+    --color-prot: #D96B27;
+    --color-carb: #3B82F6;
+    --color-fats: #10B981;
 }
 
 body {
-    background-color: #EAE6DB;
-    color: var(--text-main);
+    background-color: #E2DDD0;
+    color: var(--text-pitch-dark);
     min-height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
-    overflow-x: hidden;
 }
 
-/* CONTAINER RESPONSIVO DUPLO (AUTODETECTÁVEL) */
+/* DUAL PLATFORM LAYOUT CONTAINER */
 .platform-container {
     width: 100%;
     max-width: 1280px;
     height: 900px;
-    background-color: var(--bg-creme-base);
+    background-color: var(--bg-luxury-creme);
     display: flex;
     position: relative;
     overflow: hidden;
-    border-radius: 28px;
-    box-shadow: 0 40px 90px rgba(0,0,0,0.06);
+    border-radius: 24px;
+    box-shadow: 0 40px 100px rgba(13, 20, 16, 0.08);
 }
 
-/* BARRA LATERAL NOTEBOOK FIXA */
+/* SIDEBAR NOTEBOOK LIMPA (CRUA - SEM ICONES FEIOS) */
 .desktop-sidebar {
-    width: 270px;
-    background-color: var(--primary-green);
-    padding: 40px 24px;
+    width: 260px;
+    background-color: var(--brand-olive-deep);
+    padding: 48px 24px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    border-top-left-radius: 28px;
-    border-bottom-left-radius: 28px;
 }
 
 .brand-logo-img {
-    max-width: 130px;
+    max-width: 140px;
     height: auto;
-    object-fit: contain;
-}
-
-.mobile-only-logo {
-    display: none;
 }
 
 .sidebar-menu {
     display: flex;
     flex-direction: column;
-    gap: 10px;
-    margin-top: 40px;
+    gap: 12px;
+    margin-top: 60px;
     flex: 1;
 }
 
 .menu-item {
-    display: flex;
-    align-items: center;
-    gap: 16px;
-    color: #A3BAAC;
+    color: #8C9F93;
     text-decoration: none;
-    padding: 14px 20px;
-    border-radius: 16px;
     font-size: 15px;
-    font-weight: 600;
+    font-weight: 700;
+    padding: 14px 20px;
+    border-radius: 12px;
     transition: all 0.2s ease;
 }
 
 .menu-item:hover, .menu-item.active {
-    background-color: rgba(255, 255, 255, 0.07);
-    color: var(--surface-white);
+    background-color: rgba(255, 255, 255, 0.06);
+    color: var(--surface-solid);
 }
 
-.sidebar-footer {
-    padding-top: 20px;
-}
-
-/* MARCAÇÃO DE PLANO IDENTIFICADO NO TOPO */
-.plan-tag.super {
-    background-color: #FDF1DD;
-    color: #C67611;
-    padding: 6px 14px;
-    border-radius: 12px;
-    font-size: 11px;
+/* TEXTURAS METALIZADAS DE LUXO (MAX SILVER & SUPER GOLD) */
+.badge-metal {
+    padding: 8px 16px;
+    border-radius: 8px;
+    font-size: 12px;
     font-weight: 800;
-    letter-spacing: 0.5px;
+    letter-spacing: 1px;
+    text-align: center;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
 }
 
-/* ÁREA DE RENDERIZAÇÃO DA PLATAFORMA */
+/* Efeito Prata Espelhado Líquido */
+.max-silver-liquid {
+    background: linear-gradient(120deg, #E5E8EB 0%, #C3C7CC 25%, #F3F4F5 50%, #A2A8AF 75%, #E5E8EB 100%);
+    background-size: 200% auto;
+    color: #374151;
+    border: 1px solid #D1D5DB;
+    animation: metalShineFlow 4s linear infinite;
+}
+
+/* Efeito Ouro Lapidado Real */
+.super-gold-card {
+    background: linear-gradient(120deg, #D4AF37 0%, #FFF3B3 30%, #AA7C11 60%, #F3E5AB 85%, #D4AF37 100%);
+    background-size: 200% auto;
+    color: #4A3700;
+    border: 1px solid #B8860B;
+    animation: metalShineFlow 4s linear infinite;
+}
+
+@keyframes metalShineFlow {
+    0% { background-position: 0% center; }
+    100% { background-position: 200% center; }
+}
+
+/* MAIN DASHBOARD CONTAINER */
 .main-app-content {
     flex: 1;
-    padding: 40px;
+    padding: 44px;
     overflow-y: auto;
-    height: 100%;
 }
-
 .main-app-content::-webkit-scrollbar { display: none; }
 
-.app-top-bar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 32px;
-}
+.app-top-bar { display: flex; justify-content: space-between; align-items: center; margin-bottom: 36px; }
+.welcome-user { display: flex; align-items: center; gap: 16px; }
 
-.welcome-user {
-    display: flex;
-    align-items: center;
-    gap: 18px;
-}
-
-/* RENDER AVATAR COM UPLOAD EM TEMPO REAL */
+/* AVATAR ARREDONDADO DE APP PREMIUM */
 .avatar-upload-container {
     position: relative;
-    width: 64px;
-    height: 64px;
-    border-radius: 50%;
-    cursor: pointer;
+    width: 68px;
+    height: 68px;
+    border-radius: 20px; /* Quadrado arredondado moderno */
     overflow: hidden;
-    box-shadow: 0 4px 16px rgba(0,0,0,0.06);
-    border: 2px solid var(--surface-white);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+    border: 3px solid var(--surface-solid);
+    cursor: pointer;
 }
-
-.profile-avatar {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-.avatar-overlay {
-    position: absolute;
-    top: 0; left: 0; width: 100%; height: 100%;
-    background: rgba(30, 56, 42, 0.7);
-    color: var(--surface-white);
-    font-size: 11px;
-    font-weight: 700;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    opacity: 0;
-    transition: opacity 0.2s ease;
-}
-
+.profile-avatar { width: 100%; height: 100%; object-fit: cover; }
+.avatar-overlay { position: absolute; bottom: 0; left: 0; width: 100%; background: rgba(0,0,0,0.6); color: white; font-size: 9px; text-align: center; padding: 3px 0; opacity: 0; transition: opacity 0.2s; }
 .avatar-upload-container:hover .avatar-overlay { opacity: 1; }
 .hidden-file-input { display: none; }
 
-.name-row {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-}
+.name-row { display: flex; align-items: center; gap: 14px; }
+.name-row h1 { font-size: 28px; font-weight: 800; color: var(--brand-olive-deep); letter-spacing: -0.5px; }
+.sub-welcome { font-size: 13px; color: var(--text-cool-grey); margin-top: 4px; }
 
-.name-row h1 { font-size: 26px; font-weight: 800; color: var(--primary-green); }
+.notification-btn { width: 48px; height: 48px; background: var(--surface-solid); border: 1px solid var(--border-smooth); border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; }
+.mobile-top-logo-render { display: none; }
 
-.current-plan-badge {
-    padding: 6px 12px;
-    border-radius: 20px;
-    font-size: 11px;
-    font-weight: 700;
-    text-transform: uppercase;
-}
-
-.current-plan-badge.max { background-color: #E1EFE6; color: var(--mid-green); }
-.sub-welcome { font-size: 13px; color: var(--text-muted); margin-top: 2px; }
-
-.notification-btn {
-    width: 46px;
-    height: 46px;
-    background: var(--surface-white);
-    border: 1px solid var(--border-light);
-    border-radius: 50%;
-    position: relative;
-    cursor: pointer;
-}
-
-.pulse-dot {
-    position: absolute;
-    top: 12px; right: 12px; width: 8px; height: 8px;
-    background-color: #E25A5A;
-    border-radius: 50%;
-}
-
-/* CARD DE PUBLICIDADE E CONVERSÃO EDITORIAL (Foto 3) */
-.editorial-upsell-card {
-    background-color: #E0ECE5;
-    border-radius: 26px;
-    padding: 36px;
+/* EDITORIAL SLIDER DE CAMPAHAS DE ALTO IMPACTO */
+.editorial-upsell-slider {
+    background-color: #E2ECE6;
+    border-radius: 24px;
+    min-height: 240px;
     position: relative;
     overflow: hidden;
-    margin-bottom: 32px;
-    border: 1px solid rgba(30, 56, 42, 0.04);
+    margin-bottom: 36px;
 }
 
-.close-banner-btn {
-    position: absolute;
-    top: 20px; right: 20px;
-    background: rgba(255,255,255,0.6);
-    border: none;
-    width: 28px; height: 28px;
-    border-radius: 50%;
-    cursor: pointer;
-    font-weight: 700;
-    color: var(--primary-green);
+.upsell-slide-card {
+    display: none;
+    padding: 40px;
+    justify-content: space-between;
+    align-items: center;
+    gap: 40px;
+    height: 100%;
 }
 
-.upsell-grid { display: flex; justify-content: space-between; align-items: center; gap: 32px; }
-.trending-tag { font-size: 11px; font-weight: 800; color: var(--bright-active-green); letter-spacing: 1.5px; display: block; margin-bottom: 12px; }
+.upsell-slide-card.active { display: flex; }
 
-.upsell-text-side h2 {
-    font-family: 'Playfair Display', serif;
-    font-size: 32px;
-    font-weight: 600;
-    line-height: 1.15;
-    color: var(--primary-green);
-    margin-bottom: 12px;
-}
+.trending-tag { font-size: 11px; font-weight: 800; color: var(--brand-emerald-active); letter-spacing: 1.5px; margin-bottom: 12px; display: block; }
+.editorial-title { font-size: 26px; font-weight: 800; color: var(--brand-olive-deep); line-height: 1.2; margin-bottom: 12px; }
+.upsell-text-side p { font-size: 14px; color: var(--text-cool-grey); max-width: 480px; line-height: 1.5; margin-bottom: 24px; }
 
-.upsell-text-side p { font-size: 14px; color: var(--text-muted); max-width: 480px; line-height: 1.5; margin-bottom: 24px; }
-
-.action-upgrade-btn {
-    background-color: var(--primary-green);
-    color: var(--surface-white);
-    border: none;
+/* BOTÃO UPGRADE ONDAS EM MOVIMENTO GRADIENTE */
+.action-upgrade-btn-wave {
+    display: inline-block;
+    text-decoration: none;
+    background: linear-gradient(90deg, var(--brand-olive-deep) 0%, var(--brand-emerald-active) 50%, var(--brand-olive-deep) 100%);
+    background-size: 200% auto;
+    color: var(--surface-solid);
     padding: 14px 28px;
-    border-radius: 14px;
+    border-radius: 12px;
     font-size: 13px;
     font-weight: 700;
-    cursor: pointer;
+    animation: gradientWaveFlow 3s linear infinite;
 }
 
-.gradient-dish-sphere {
-    width: 150px;
-    height: 150px;
-    background: linear-gradient(135deg, #C2E7D1 0%, var(--bright-active-green) 100%);
-    border-radius: 50%;
-    box-shadow: 0 20px 45px rgba(30, 56, 42, 0.12);
+@keyframes gradientWaveFlow {
+    0% { background-position: 0% center; }
+    100% { background-position: 200% center; }
 }
 
-/* GRID DE METAS DIÁRIAS */
-.dashboard-metrics-grid {
-    display: grid;
-    grid-template-columns: 1fr 1.3fr;
-    gap: 24px;
-    margin-bottom: 32px;
+.upsell-visual-side { width: 180px; height: 180px; display: flex; align-items: center; justify-content: center; }
+.dish-marketing-img { width: 100%; height: 100%; object-fit: cover; border-radius: 20px; box-shadow: 0 15px 35px rgba(0,0,0,0.1); }
+
+.slider-dots-indicator { position: absolute; bottom: 16px; left: 40px; display: flex; gap: 6px; }
+.slider-dots-indicator .dot { width: 8px; height: 8px; background: rgba(0,0,0,0.1); border-radius: 50%; }
+.slider-dots-indicator .dot.active { background: var(--brand-emerald-active); width: 18px; border-radius: 4px; }
+
+/* METRICS GRID & BARRA EXPANDIDA ONDULATÓRIA */
+.dashboard-metrics-grid { display: grid; grid-template-columns: 1fr 1.2fr; gap: 24px; margin-bottom: 36px; }
+.metric-box.main-calories { background: var(--surface-solid); border-radius: 20px; padding: 24px; border: 1px solid var(--border-smooth); }
+.metric-header h3 { font-size: 14px; color: var(--text-cool-grey); }
+.kcal-target-text { font-size: 20px; font-weight: 800; color: var(--brand-olive-deep); }
+
+.progress-bar-container { width: 100%; height: 16px; background-color: #F1EEE4; border-radius: 8px; overflow: hidden; margin: 16px 0; }
+.progress-fill-line-animated {
+    height: 100%;
+    background: linear-gradient(90deg, #32C86C, #12A44B, #32C86C);
+    background-size: 200% auto;
+    animation: gradientWaveFlow 2s linear infinite;
+    transition: width 0.4s ease;
 }
 
-.metric-box.main-calories {
-    background: var(--surface-white);
-    border-radius: 24px;
-    padding: 24px;
-    border: 1px solid var(--border-light);
-}
-
-.metric-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; }
-.metric-header h3 { font-size: 15px; color: var(--text-muted); }
-.kcal-target-text { font-size: 19px; font-weight: 700; color: var(--primary-green); }
-
-.progress-bar-container { width: 100%; height: 12px; background-color: #F1EEE6; border-radius: 6px; overflow: hidden; margin-bottom: 12px; }
-.progress-fill-line { height: 100%; background: linear-gradient(90deg, var(--bright-active-green) 0%, var(--primary-green) 100%); transition: width 0.35s ease; }
-
-/* ANÉIS CIRCULARES DOS MACROS */
-.macros-progress-row {
-    display: flex;
-    justify-content: space-between;
-    background: var(--surface-white);
-    border-radius: 24px;
-    padding: 20px;
-    border: 1px solid var(--border-light);
-}
-
+/* RINGS DOS MACROS CUSTOMIZADOS */
+.macros-progress-row { background: var(--surface-solid); border-radius: 20px; padding: 20px; border: 1px solid var(--border-smooth); display: flex; justify-content: space-between; }
 .macro-ring-card { display: flex; flex-direction: column; align-items: center; flex: 1; }
 .circle-box { position: relative; width: 66px; height: 66px; }
 .circular-chart { width: 100%; height: 100%; }
-.circle-bg { fill: none; stroke: #F1EEE6; stroke-width: 3.2; }
-.circle-fill { fill: none; stroke-width: 3.2; stroke-linecap: round; transition: stroke-dasharray 0.3s ease; }
-.green-theme .circle-fill { stroke: var(--bright-active-green); }
-.percentage-display { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-size: 12px; font-weight: 700; color: var(--primary-green); }
-.macro-name { font-size: 13px; font-weight: 700; margin-top: 8px; color: var(--primary-green); }
-.macro-sub-weight { font-size: 11px; color: var(--text-muted); margin-top: 2px; }
+.circle-bg { fill: none; stroke: #F1EEE4; stroke-width: 3.5; }
+.circle-fill { fill: none; stroke-width: 3.5; stroke-linecap: round; transition: stroke-dasharray 0.3s ease; }
 
-/* REFEIÇÕES INTERATIVAS */
-.section-title-bar { display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; }
-.section-title-bar h2 { font-size: 22px; font-weight: 800; color: var(--primary-green); }
+.c-protein .circle-fill { stroke: var(--color-prot); }
+.c-carbs .circle-fill { stroke: var(--color-carb); }
+.c-fats .circle-fill { stroke: var(--color-fats); }
+
+.percentage-display { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-size: 12px; font-weight: 800; }
+.macro-name { font-size: 13px; font-weight: 700; margin-top: 10px; color: var(--brand-olive-deep); }
+.macro-sub-weight { font-size: 11px; color: var(--text-cool-grey); margin-top: 2px; }
+
+/* DIET INTERACTIVE CARDS */
+.meals-tracker-section h2 { font-size: 20px; font-weight: 800; color: var(--brand-olive-deep); margin-bottom: 20px; }
 .meals-interactive-list { display: flex; flex-direction: column; gap: 14px; }
+.diet-action-card { background: var(--surface-solid); border-radius: 18px; padding: 22px; border: 1px solid var(--border-smooth); display: flex; flex-direction: column; gap: 14px; }
+.diet-card-main { display: flex; gap: 16px; align-items: flex-start; }
 
-.diet-action-card {
-    background: var(--surface-white);
-    border-radius: 22px;
-    padding: 20px;
-    border: 1px solid var(--border-light);
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-    box-shadow: var(--shadow-soft);
-}
-
-.diet-card-main { display: flex; align-items: flex-start; gap: 16px; }
-
-/* Checkbox Premium Redondo */
-.premium-checkbox-wrapper { position: relative; width: 26px; height: 26px; cursor: pointer; }
+/* Checkbox circular custom */
+.premium-checkbox-wrapper { position: relative; width: 24px; height: 24px; cursor: pointer; }
 .premium-checkbox-wrapper input { opacity: 0; width: 0; height: 0; }
-.premium-checkmark { position: absolute; top: 0; left: 0; width: 26px; height: 26px; border: 2px solid #D5DDD7; background-color: var(--surface-white); border-radius: 50%; transition: all 0.2s ease; }
-.premium-checkbox-wrapper input:checked ~ .premium-checkmark { background-color: var(--bright-active-green); border-color: var(--bright-active-green); }
-.premium-checkbox-wrapper input:checked ~ .premium-checkmark::after { content: "✓"; position: absolute; color: white; font-size: 13px; font-weight: 700; top: 2px; left: 6px; }
+.premium-checkmark { position: absolute; top: 0; left: 0; width: 24px; height: 24px; border: 2px solid #D4DDD6; background: var(--surface-solid); border-radius: 50%; }
+.premium-checkbox-wrapper input:checked ~ .premium-checkmark { background-color: var(--brand-emerald-active); border-color: var(--brand-emerald-active); }
+.premium-checkbox-wrapper input:checked ~ .premium-checkmark::after { content: "✓"; position: absolute; color: white; font-size: 12px; font-weight: 700; top: 2px; left: 6px; }
 
-.meal-time-tag { font-size: 11px; font-weight: 700; color: var(--bright-active-green); background-color: #EBF6EE; padding: 2px 8px; border-radius: 6px; display: inline-block; margin-bottom: 6px; }
-.diet-card-details h3 { font-size: 16px; font-weight: 700; color: var(--text-main); }
-.food-composition { font-size: 13px; color: var(--text-muted); margin-top: 4px; line-height: 1.4; }
-.diet-card-footer { display: flex; justify-content: space-between; align-items: center; border-top: 1px solid #FAF8F4; padding-top: 12px; }
-.kcal-pill { font-size: 12px; font-weight: 700; color: var(--mid-green); }
+.meal-time-tag { font-size: 11px; font-weight: 700; color: var(--brand-emerald-active); background: #EAF5EE; padding: 3px 8px; border-radius: 6px; display: inline-block; margin-bottom: 4px; }
+.diet-card-details h3 { font-size: 16px; font-weight: 700; color: var(--text-pitch-dark); }
+.food-composition { font-size: 13px; color: var(--text-cool-grey); margin-top: 4px; }
 
-.recipe-trigger-btn {
-    background: transparent;
-    border: 1px solid var(--border-light);
-    color: var(--primary-green);
-    font-size: 12px;
-    font-weight: 700;
-    padding: 8px 16px;
-    border-radius: 12px;
-    cursor: pointer;
-}
-.recipe-trigger-btn:hover { background: var(--primary-green); color: var(--surface-white); }
+.diet-card-footer { display: flex; justify-content: space-between; align-items: center; border-top: 1px solid #FAF9F5; padding-top: 12px; }
+.kcal-pill { font-size: 12px; font-weight: 700; color: var(--brand-emerald-active); }
+.recipe-trigger-btn { background: transparent; border: 1px solid var(--border-smooth); color: var(--brand-olive-deep); font-size: 12px; font-weight: 700; padding: 8px 16px; border-radius: 10px; cursor: pointer; }
+.recipe-trigger-btn:hover { background-color: var(--brand-olive-deep); color: var(--surface-solid); }
 
-/* BARRA MOBILE INFERIOR */
+/* MOBILE BOTTOM BAR FIXA (CRUA, SEM ICONES ICONOCLASTAS) */
 .mobile-bottom-bar {
     display: none;
     position: absolute;
-    bottom: 0; left: 0; right: 0; height: 90px;
-    background: rgba(255, 255, 255, 0.95);
-    backdrop-filter: blur(10px);
-    border-top: 1px solid var(--border-light);
+    bottom: 0; left: 0; right: 0; height: 84px;
+    background: rgba(255, 255, 255, 0.96);
+    backdrop-filter: blur(15px);
+    border-top: 1px solid var(--border-smooth);
     justify-content: space-around;
     align-items: center;
-    padding: 0 16px 16px;
-    z-index: 50;
+    padding-bottom: 12px;
+    z-index: 80;
 }
 
-.m-nav-btn { background: none; border: none; display: flex; flex-direction: column; align-items: center; color: #95A59B; cursor: pointer; }
-.m-nav-btn.active { color: var(--primary-green); }
-.m-icon { font-size: 22px; }
-.m-label { font-size: 10px; font-weight: 700; margin-top: 4px; }
+.m-nav-btn { background: none; border: none; color: #9AA8A0; font-size: 12px; font-weight: 700; cursor: pointer; display: flex; flex-direction: column; align-items: center; }
+.m-nav-btn.active { color: var(--brand-olive-deep); font-weight: 800; }
 
-/* BOTÃO IA PREMIUM VERDE CLARO BRILHANTE AURORA */
-.ai-button-container-hub { position: relative; top: -20px; }
+/* BOTÃO IA PREMIUM ESMERALDA VIVO METAMÓRFICO */
+.ai-button-container-hub { position: relative; top: -16px; }
 .premium-ai-core-btn {
-    width: 64px;
-    height: 64px;
+    width: 60px;
+    height: 60px;
     border-radius: 50%;
-    background: linear-gradient(135deg, var(--neon-ai-start) 0%, var(--neon-ai-end) 100%);
-    border: 4px solid var(--surface-white);
-    color: var(--surface-white);
-    font-size: 16px;
+    background: linear-gradient(135deg, var(--neon-mint-bright) 0%, var(--neon-mint-deep) 100%);
+    border: 4px solid var(--surface-solid);
+    color: var(--surface-solid);
+    font-size: 15px;
     font-weight: 800;
     cursor: pointer;
     position: relative;
-    box-shadow: 0 12px 30px rgba(20, 178, 81, 0.35);
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    box-shadow: 0 10px 25px rgba(18, 158, 71, 0.4);
 }
 
-.ai-pulse-wave { position: absolute; top: 0; left: 0; right: 0; bottom: 0; border-radius: 50%; background: inherit; z-index: -1; animation: wavePulse 2s infinite ease-out; opacity: 0.5; }
-@keyframes wavePulse { 0% { transform: scale(1); opacity: 0.5; } 100% { transform: scale(1.4); opacity: 0; } }
+.ai-liquid-glow {
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    border-radius: 50%;
+    background: inherit;
+    z-index: -1;
+    animation: aiWaveRadar 2s infinite ease-out;
+}
 
-/* SUBMENU GAVETA DO PERFIL */
-.profile-drawer-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.25); z-index: 90; display: flex; align-items: flex-end; }
-.drawer-sheet { width: 100%; background: var(--surface-white); border-top-left-radius: 32px; border-top-right-radius: 32px; padding: 24px; }
+@keyframes aiWaveRadar {
+    0% { transform: scale(1); opacity: 0.6; }
+    100% { transform: scale(1.4); opacity: 0; }
+}
+
+/* GAVETA DO PERFIL COM OPÇÕES LINKADAS */
+.profile-drawer-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.3); z-index: 120; display: flex; align-items: flex-end; }
+.drawer-sheet { width: 100%; background: var(--surface-solid); border-top-left-radius: 28px; border-top-right-radius: 28px; padding: 28px; }
 .drawer-header-bar { display: flex; flex-direction: column; align-items: center; margin-bottom: 20px; }
-.bar-indicator { width: 40px; height: 4px; background-color: #E4E0D5; border-radius: 2px; margin-bottom: 12px; }
-.drawer-header-bar h3 { font-size: 18px; font-weight: 800; color: var(--primary-green); }
-.drawer-options-list { display: flex; flex-direction: column; gap: 8px; }
-.drawer-item { width: 100%; text-align: left; background: none; border: none; padding: 14px 16px; border-radius: 12px; font-size: 15px; font-weight: 600; color: var(--text-main); cursor: pointer; display: flex; align-items: center; gap: 12px; }
-.drawer-item:hover { background-color: var(--bg-creme-base); }
-.drawer-divider { border: 0; border-top: 1px solid var(--border-light); margin: 8px 0; }
-.logout-btn { color: #C44545; }
+.bar-indicator { width: 45px; height: 5px; background-color: #E2DDD3; border-radius: 3px; margin-bottom: 12px; }
+.drawer-header-bar h3 { font-size: 18px; font-weight: 800; color: var(--brand-olive-deep); }
+.drawer-options-list { display: flex; flex-direction: column; gap: 8px; max-height: 400px; overflow-y: auto; }
 
-/* MODAL DE RECEITAS (Foto 4) */
-.recipe-modal-backdrop { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(19, 30, 24, 0.4); z-index: 100; display: flex; align-items: flex-end; }
-.recipe-glass-card { width: 100%; height: 88%; background-color: var(--bg-creme-base); border-top-left-radius: 36px; border-top-right-radius: 36px; padding: 28px; display: flex; flex-direction: column; }
-.recipe-card-header { display: flex; align-items: center; gap: 16px; margin-bottom: 20px; }
-.back-recipe-btn { background: var(--surface-white); border: 1px solid var(--border-light); padding: 8px 16px; border-radius: 12px; font-size: 13px; font-weight: 700; cursor: pointer; }
-#recipe-title-render { font-size: 20px; font-weight: 800; color: var(--primary-green); }
+.drawer-item { width: 100%; text-align: left; background: none; border: none; padding: 14px 18px; border-radius: 12px; font-size: 14px; font-weight: 700; color: var(--text-pitch-dark); cursor: pointer; display: block; text-decoration: none; }
+.drawer-item:hover { background-color: var(--bg-luxury-creme); }
+.link-item-action { color: var(--brand-emerald-active) !important; }
+
+/* Badges Exclusivos da Lista de Funções */
+.premium-tag-max { background-color: #F3F4F6; border-left: 4px solid #A2A8AF; }
+.premium-tag-super { background-color: #FFFDF5; border-left: 4px solid #D4AF37; }
+.drawer-divider { border: 0; border-top: 1px solid var(--border-smooth); margin: 8px 0; }
+.logout-btn { color: #DC2626; }
+
+/* MODAL DE DETALHAMENTO DE RECEITA FOTO 4 */
+.recipe-modal-backdrop { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.4); z-index: 150; display: flex; align-items: flex-end; }
+.recipe-glass-card { width: 100%; height: 86%; background-color: var(--bg-luxury-creme); border-top-left-radius: 32px; border-top-right-radius: 32px; padding: 28px; display: flex; flex-direction: column; }
+.recipe-card-header { display: flex; align-items: center; gap: 16px; margin-bottom: 24px; }
+.back-recipe-btn { background: var(--surface-solid); border: 1px solid var(--border-smooth); padding: 8px 16px; border-radius: 10px; font-size: 13px; font-weight: 700; cursor: pointer; }
+#recipe-title-render { font-size: 20px; font-weight: 800; color: var(--brand-olive-deep); }
+
 .recipe-scroll-body { flex: 1; overflow-y: auto; }
-.recipe-scroll-body::-webkit-scrollbar { display: none; }
-.recipe-visual-banner { width: 100%; height: 110px; background: linear-gradient(135deg, #E2EFE7 0%, #CADECE 100%); border-radius: 24px; margin-bottom: 24px; display: flex; align-items: center; padding: 20px; }
-.recipe-macro-badges-row { display: flex; gap: 12px; }
-.badge-item { background: var(--surface-white); padding: 10px 16px; border-radius: 14px; display: flex; flex-direction: column; align-items: center; }
-.badge-item span:first-child { font-size: 16px; font-weight: 800; color: var(--text-main); }
-.badge-item span:last-child { font-size: 10px; color: var(--text-muted); font-weight: 700; }
-.ingredients-list-wrapper h3 { font-size: 16px; font-weight: 800; color: var(--primary-green); }
-.count-subtitle { font-size: 12px; color: var(--text-muted); margin-bottom: 16px; }
+.recipe-visual-banner { width: 100%; height: 150px; background-size: cover; background-position: center; border-radius: 20px; display: flex; align-items: flex-end; padding: 16px; box-shadow: inset 0 -60px 40px rgba(0,0,0,0.5); }
+.recipe-macro-badges-row { display: flex; gap: 10px; }
+.badge-item { background: var(--surface-solid); padding: 8px 14px; border-radius: 10px; text-align: center; }
+.badge-item span { display: block; font-size: 15px; font-weight: 800; color: var(--text-pitch-dark); }
+.badge-item .lbl { font-size: 9px; color: var(--text-cool-grey); font-weight: 700; text-transform: uppercase; }
+
+.ingredients-list-wrapper h3 { font-size: 16px; font-weight: 800; color: var(--brand-olive-deep); margin-top: 24px; }
+.count-subtitle { font-size: 12px; color: var(--text-cool-grey); margin-bottom: 16px; }
 .ingredients-render-grid { display: flex; flex-direction: column; gap: 10px; }
-.ingredient-row-premium { background: var(--surface-white); padding: 14px 18px; border-radius: 16px; display: flex; justify-content: space-between; align-items: center; border: 1px solid var(--border-light); }
-.ing-primary-meta h4 { font-size: 14px; font-weight: 700; color: var(--text-main); }
-.ing-primary-meta p { font-size: 11px; color: var(--text-muted); margin-top: 2px; }
-.ing-measured-val { font-size: 14px; font-weight: 700; color: var(--bright-active-green); }
+.ingredient-row-premium { background: var(--surface-solid); padding: 14px 18px; border-radius: 12px; display: flex; justify-content: space-between; align-items: center; border: 1px solid var(--border-smooth); }
+.ingredient-row-premium h4 { font-size: 14px; font-weight: 700; }
+.ingredient-row-premium span { font-size: 14px; font-weight: 700; color: var(--brand-emerald-active); }
+
+/* BOX DE ERRO DE DIETA */
+.recipe-error-viewport { flex: 1; display: flex; align-items: center; justify-content: center; }
+.error-box-data { text-align: center; background: var(--surface-solid); padding: 32px; border-radius: 16px; border: 1px solid #FCA5A5; max-width: 320px; }
+.error-box-data p { font-size: 14px; font-weight: 700; color: #DC2626; line-height: 1.4; }
 
 .hidden { display: none !important; }
 
-/* RESPONSIVIDADE DINÂMICA (Notebook vs Mobile) */
+/* RESPONSIVIDADE ADAPTATIVA NOTEBOOK VS SMARTPHONE */
 @media (max-width: 860px) {
     .desktop-sidebar { display: none; }
-    .mobile-only-logo { display: inline-block; }
-    .platform-container { max-width: 420px; height: 860px; border-radius: 0; }
-    .main-app-content { padding: 20px; padding-bottom: 100px; }
+    .mobile-top-logo-render { display: inline-block; max-width: 100px; }
+    .platform-container { max-width: 412px; height: 860px; border-radius: 0; }
+    .main-app-content { padding: 20px; padding-bottom: 120px; /* Garante espaço para a última janta */ }
     .mobile-bottom-bar { display: flex; }
     .dashboard-metrics-grid { grid-template-columns: 1fr; gap: 16px; }
-    .upsell-grid { grid-template-columns: 1fr; }
     .upsell-visual-side { display: none; }
 }
