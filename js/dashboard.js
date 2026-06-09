@@ -1,47 +1,53 @@
-// BANCO DE DADOS ATUALIZADO (CAFÉ, ALMOÇO, TARDE E JANTA)
+// CONTROLE DE FLUXO DE ANAMNESE (MUDAR PARA FALSE PARA TESTAR O AVISO DE ERRO)
+const usuarioCompletouAnamnese = true;
+
+// BANCO DE DADOS INTEGRADO COM FOTOS REAIS DOS ALIMENTOS (FOTO 4 PERFORMANCE)
 const dbRefeicoesMetabolicas = {
     "cafe": {
         titulo: "Café da Manhã de Alta Performance",
         kcal: 390, proteinas: 28, carboidratos: 35, gorduras: 12,
+        foto: "https://images.unsplash.com/photo-1525351484163-7529414344d8?w=600",
         itens: [
-            { nome: "Ovos Mexidos Inteiros", desc: "Preparados sem óleo vegetal", qtd: "3 unidades" },
-            { nome: "Pão Integral de Forma", desc: "Carboidrato complexo de baixo IG", qtd: "60g" },
-            { nome: "Mamão Formosa Fresco", desc: "Auxílio direto na digestão rápida", qtd: "150g" }
+            { nome: "Ovos Mexidos Inteiros", qtd: "3 unidades" },
+            { nome: "Pão Integral de Forma", qtd: "60g" },
+            { nome: "Mamão Formosa Fresco", qtd: "150g" }
         ]
     },
     "almoco": {
         titulo: "Almoço Funcional Batendo Macros",
         kcal: 980, proteinas: 95, carboidratos: 78, gorduras: 18,
+        foto: "https://images.unsplash.com/photo-1540420773420-3366772f4999?w=600",
         itens: [
-            { nome: "Filé de Frango Grelhado", desc: "Pesar o alimento já grelhado", qtd: "500g" },
-            { nome: "Arroz Integral Cozido", desc: "Liberação energética linear", qtd: "200g" },
-            { nome: "Mix de Legumes no Vapor", desc: "Brócolis, cenoura e folhas livres", qtd: "100g" }
+            { nome: "Filé de Frango Grelhado", qtd: "500g" },
+            { nome: "Arroz Integral Cozido", qtd: "200g" },
+            { nome: "Salada Verde Mix", qtd: "À vontade" }
         ]
     },
     "tarde": {
         titulo: "Lanche da Tarde Sacietógeno",
         kcal: 310, proteinas: 22, carboidratos: 30, gorduras: 6,
+        foto: "https://images.unsplash.com/photo-1488477181946-6428a0291777?w=600",
         itens: [
-            { nome: "Iogurte Natural Proteico", desc: "Rápido aporte proteico", qtd: "200g" },
-            { nome: "Aveia em Flocos Inteiros", desc: "Fibras solúveis beta-glucanas", qtd: "30g" },
-            { nome: "Morangos Picados Frescos", desc: "Ação antioxidante natural", qtd: "100g" }
+            { nome: "Iogurte Natural Proteico", qtd: "200g" },
+            { nome: "Aveia em Flocos Inteiros", qtd: "30g" },
+            { nome: "Morangos Picados", qtd: "100g" }
         ]
     },
     "janta": {
-        titulo: "Janta Econômica & Saudável",
+        titulo: "Janta Anabólica & Completa",
         kcal: 520, proteinas: 42, carboidratos: 45, gorduras: 14,
+        foto: "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=600",
         itens: [
-            { nome: "Patinho Moído Grelhado", desc: "Corte magro de carne vermelha", qtd: "200g" },
-            { nome: "Mandioca Cozida", desc: "Excelente fonte de energia limpa", qtd: "150g" },
-            { nome: "Brócolis refogado", desc: "Rico em micronutrientes essenciais", qtd: "80g" }
+            { nome: "Patinho Moído Grelhado", qtd: "200g" },
+            { nome: "Mandioca Cozida Salteada", qtd: "150g" },
+            { nome: "Brócolis Americano", qtd: "80g" }
         ]
     }
 };
 
-// META GLOBAL PARA O MOTOR DE CÁLCULO
 const metaDiariaGlobal = { kcal: 2200, proteinas: 160, carboidratos: 220, gorduras: 70 };
 
-// MOTOR DE ATUALIZAÇÃO DINÂMICA EM TEMPO REAL (INTEGRAÇÃO CHECKS)
+// ENGINE DE CÁLCULO DINÂMICO
 function calculateMacrosEngine() {
     let somas = { kcal: 0, proteinas: 0, carboidratos: 0, gorduras: 0 };
 
@@ -71,9 +77,9 @@ function calculateMacrosEngine() {
     
     const msgAuxiliar = document.getElementById('calories-remainder-msg');
     if (pctKcal >= 100) {
-        msgAuxiliar.innerHTML = "🎉 <strong>Parabéns!</strong> Você alcançou 100% da sua meta de hoje!";
+        msgAuxiliar.innerHTML = "🎉 <strong>100% Batido!</strong> Meta diária consolidada com sucesso.";
     } else {
-        msgAuxiliar.textContent = `Restam ${metaDiariaGlobal.kcal - somas.kcal} kcal para fechar o plano diário.`;
+        msgAuxiliar.textContent = `Faltam ${metaDiariaGlobal.kcal - somas.kcal} kcal para fechar o dia.`;
     }
 
     updateCircularRing('ring-protein', 'pct-protein', pctPro);
@@ -90,23 +96,49 @@ function updateCircularRing(ringId, textId, percentage) {
     document.getElementById(textId).textContent = `${percentage}%`;
 }
 
-// FECHAMENTO DA PUBLICIDADE / BANNER DE UPSELL
-function closeUpsellBanner() {
-    document.getElementById('upsell-marketing-banner').classList.add('hidden');
+// CARROSSEL ROTATIVO DE PUBLICIDADE DE UPSELL
+let slideIndex = 0;
+function rotateMarketingSlides() {
+    const slides = document.querySelectorAll('.upsell-slide-card');
+    const dots = document.querySelectorAll('.slider-dots-indicator .dot');
+    if(slides.length === 0) return;
+
+    slides.forEach(slide => slide.classList.remove('active'));
+    dots.forEach(dot => dot.classList.remove('active'));
+
+    slideIndex++;
+    if (slideIndex > slides.length) { slideIndex = 1; }
+
+    slides[slideIndex - 1].classList.add('active');
+    dots[slideIndex - 1].classList.add('active');
+
+    setTimeout(rotateMarketingSlides, 5000); // Rotaciona a cada 5 segundos
 }
 
-// ABERTURA DE RECEITAS ESTILO CAPA (Foto 4)
-const recipeModal = document.getElementById('recipe-modal-viewport');
-
+// LOGICA CONDICIONAL DE VISUALIZAÇÃO DE RECEITAS (AVISO SE FALTAR ESCOLHA DE ALIMENTOS)
 function openRecipePanel(chaveRefeicao) {
+    const modal = document.getElementById('recipe-modal-viewport');
+    const viewConteudo = document.getElementById('recipe-content-loaded-view');
+    const viewErro = document.getElementById('recipe-error-view');
+
+    if (!usuarioCompletouAnamnese) {
+        viewConteudo.classList.add('hidden');
+        viewErro.classList.remove('hidden');
+        modal.classList.remove('hidden');
+        return;
+    }
+
     const dados = dbRefeicoesMetabolicas[chaveRefeicao];
     if (!dados) return;
+
+    viewErro.classList.add('hidden');
+    viewConteudo.classList.remove('hidden');
 
     document.getElementById('recipe-title-render').textContent = dados.titulo;
     document.getElementById('recipe-kcal').textContent = dados.kcal;
     document.getElementById('recipe-prot').textContent = `${dados.proteinas}g`;
     document.getElementById('recipe-carb').textContent = `${dados.carboidratos}g`;
-    document.getElementById('recipe-items-count').textContent = `${dados.itens.length} itens estruturados`;
+    document.getElementById('recipe-banner-image-bg').style.backgroundImage = `url('${dados.foto}')`;
 
     const boxAlvo = document.getElementById('ingredients-target-box');
     boxAlvo.innerHTML = "";
@@ -114,54 +146,53 @@ function openRecipePanel(chaveRefeicao) {
     dados.itens.forEach(item => {
         boxAlvo.innerHTML += `
             <div class="ingredient-row-premium">
-                <div class="ing-primary-meta">
-                    <h4>${item.nome}</h4>
-                    <p>${item.desc}</p>
-                </div>
-                <span class="ing-measured-val">${item.qtd}</span>
+                <h4>${item.nome}</h4>
+                <span>${item.qtd}</span>
             </div>
         `;
     });
 
-    recipeModal.classList.remove('hidden');
+    modal.classList.remove('hidden');
 }
 
 function closeRecipePanel() {
-    recipeModal.classList.add('hidden');
+    document.getElementById('recipe-modal-viewport').classList.add('hidden');
 }
 
-// BOTÃO INTERATIVO DA INTELIGÊNCIA ARTIFICIAL (PLANOS PREMIUM)
+// BLOQUEIO DE SEGURANÇA SE NÃO ESTIVER NO PLANO MAX OU SUPER
 function triggerAIVoiceEngine() {
-    alert("Nutri AI iniciada! Analisando os macros do seu dia para sugerir otimizações...");
+    const planoAtual = "MAX NUTRI"; // Simulação de backend
+    if(planoAtual === "MAX NUTRI" || planoAtual === "SUPER NUTRI") {
+        alert("Nutri AI Ativada! Analisando balanço hidroeletrolítico e cruzando dados de treino...");
+    } else {
+        alert("Função Exclusiva para assinantes MAX ou SUPER. Faça o upgrade no painel.");
+    }
 }
 
-// SELETOR EXCLUSIVO DE FOTOS DA BIBLIOTECA / GALERIA NATIVA
+// NOTIFICAÇÕES ATIVAS INTERATIVAS DIÁRIAS
+function triggerNotificationPush() {
+    alert("Notificação Nutri+: 'Vinicius, você consumiu apenas 25% das proteínas necessárias para manter sua massa magra hoje. Agilize o check no seu Almoço!'");
+}
+
+// SCRIPT DE FILE SELECTION NATIVO (CELULAR E NOTEBOOK)
 const fileInput = document.getElementById('avatar-file-input');
 const avatarImg = document.getElementById('user-avatar-target');
 
-function triggerAvatarUpload() {
-    fileInput.click();
-}
-
+function triggerAvatarUpload() { fileInput.click(); }
 fileInput.addEventListener('change', function(e) {
     const file = e.target.files[0];
     if (file) {
         const reader = new FileReader();
-        reader.onload = function(event) {
-            avatarImg.src = event.target.result;
-        };
+        reader.onload = function(event) { avatarImg.src = event.target.result; };
         reader.readAsDataURL(file);
     }
-    profileDrawer.classList.add('hidden');
+    toggleProfileSubmenu();
 });
 
-// SUBMENU DO PERFIL (GAVETA FLUTUANTE)
 const profileDrawer = document.getElementById('profile-drawer-overlay');
-function toggleProfileSubmenu() {
-    profileDrawer.classList.toggle('hidden');
-}
+function toggleProfileSubmenu() { profileDrawer.classList.toggle('hidden'); }
 
-// INICIALIZAÇÃO DO ESTADO PADRÃO
 window.addEventListener('DOMContentLoaded', () => {
     calculateMacrosEngine();
+    rotateMarketingSlides();
 });
