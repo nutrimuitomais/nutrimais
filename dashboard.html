@@ -1,708 +1,373 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>NUTRI+ Dashboard</title>
-
-<link rel="stylesheet" href="css/dashboard.css">
-
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-
-<link rel="stylesheet"
-href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-
-</head>
-
 <body>
 
-<div class="dashboard-container">
+<div class="app-container">
 
-    <!-- SIDEBAR -->
+    <!-- HEADER -->
+    <header class="hero-header">
 
-    <aside class="sidebar">
+        <div class="user-info">
 
-    <div class="logo">
-    <img src="img/logo-nutriplus.png" alt="Nutri+">
- </div>
+            <span class="plan-badge">
+                NUTRI DIGITAL
+            </span>
 
-        <nav>
+            <h1>
+                Olá, Vinicius
+            </h1>
 
-            <a href="#">
-                <i class="fas fa-user"></i>
-                Meu Perfil
-            </a>
-
-            <a href="#">
-                <i class="fas fa-utensils"></i>
-                Minha Dieta
-            </a>
-
-            <a href="#">
-                <i class="fas fa-chart-line"></i>
-                Minha Evolução
-            </a>
-
-            <a href="#">
-                <i class="fas fa-stethoscope"></i>
-                Consulta Nutricionista
-            </a>
-
-            <a href="#">
-                <i class="fas fa-file-invoice"></i>
-                Faturas
-            </a>
-
-            <a href="#">
-                <i class="fas fa-crown"></i>
-                Planos
-            </a>
-
-            <a href="#" class="max-link">
-                Treino Personalizado
-                <span>MAX</span>
-            </a>
-
-            <a href="#" class="max-link">
-                Consulta Personal
-                <span>MAX</span>
-            </a>
-
-            <a href="#" class="max-link">
-                Receitas Premium
-                <span>MAX</span>
-            </a>
-
-            <a href="#" class="super-link">
-                IA Nutri Coach
-                <span>SUPER</span>
-            </a>
-
-            <a href="#" class="super-link">
-                Ajuste Inteligente
-                <span>SUPER</span>
-            </a>
-
-            <a href="#">
-                <i class="fas fa-comments"></i>
-                Chat Suporte
-            </a>
-
-            <a href="#" id="toggleTheme">
-                <i class="fas fa-moon"></i>
-                Modo Escuro / Claro
-            </a>
-
-            <a href="#">
-                <i class="fas fa-right-from-bracket"></i>
-                Sair
-            </a>
-
-        </nav>
-
-    </aside>
-
-    <!-- CONTEÚDO -->
-
-    <main class="main-content">
-
-<!-- TOPO -->
-<header class="topbar">
-
-    <div class="header-left">
-
-        <h1>IA NUTRI+</h1>
-
-        <p id="textoIA">
-            Analisando sua alimentação...
-        </p>
-
-        <div class="plano-status plano-digital">
-
-            <span>NUTRI DIGITAL</span>
-            <small>Plano Mensal</small>
+            <p>
+                Vamos atingir sua meta hoje.
+            </p>
 
         </div>
 
-    </div>
+        <div class="profile-area">
 
-    <div class="profile-box">
+            <input
+            type="file"
+            id="uploadFoto"
+            hidden>
+
+            <img
+            src="img/avatar.jpg"
+            id="avatarUser"
+            class="avatar">
+
+            <!-- MENU PERFIL -->
+            <div class="profile-menu">
+
+                <a href="#">Meu Perfil</a>
+
+                <a href="#">Faturas</a>
+
+                <a href="#">Planos</a>
+
+                <a href="#">Consulta Nutricionista</a>
+
+                <hr>
+
+                <a href="#">
+                    Consulta Personal
+                    <span>MAX</span>
+                </a>
+
+                <a href="#">
+                    Relatório de Evolução
+                    <span>MAX</span>
+                </a>
+
+                <a href="#">
+                    Treino Personalizado
+                    <span>MAX</span>
+                </a>
+
+                <a href="#">
+                    Receitas Premium
+                    <span>MAX</span>
+                </a>
+
+                <hr>
+
+                <a href="#">
+                    IA Nutri Fotos
+                    <span>SUPER</span>
+                </a>
+
+                <a href="#">
+                    Redefinir Anamnese
+                    <span>SUPER</span>
+                </a>
+
+                <a href="#">
+                    Análise de Nutricionista
+                    <span>SUPER</span>
+                </a>
+
+                <hr>
+
+                <a href="#">Configurações</a>
+
+                <a href="#">Sair</a>
+
+            </div>
+
+        </div>
+
+    </header>
+
+    <!-- NOTÍCIA PRINCIPAL -->
+    <section class="news-banner">
+
+        <div class="news-content">
+
+            <span class="news-tag">
+                NUTRI+ MAX
+            </span>
+
+            <h2>
+                Mais de 500 receitas premium para acelerar seus resultados
+            </h2>
+
+            <p>
+                Desbloqueie receitas exclusivas desenvolvidas para sua meta.
+            </p>
+
+            <button>
+                Conhecer Plano MAX
+            </button>
+
+        </div>
 
         <img
-        src="https://i.pravatar.cc/300?img=12"
-        class="avatar"
-        onclick="toggleMenu()">
+        src="img/banner-max.png">
 
-        <div class="profile-menu" id="profileMenu">
+    </section>
 
-                    <a href="#">Meu Perfil</a>
-                    <a href="#">Minha Dieta</a>
-                    <a href="#">Minha Evolução</a>
-                    <a href="#">Consulta Nutricionista</a>
-                    <a href="#">Faturas</a>
-                    <a href="#">Planos</a>
+    <!-- IA -->
+    <section class="ia-banner">
 
-                    <hr>
+        <div>
 
-                    <a href="#">
-                        Treino Personalizado
-                        <span>MAX</span>
-                    </a>
+            <small>
+                IA NUTRI+
+            </small>
 
-                    <a href="#">
-                        Consulta Personal
-                        <span>MAX</span>
-                    </a>
+            <h2>
+                Analyse My Diet
+            </h2>
 
-                    <a href="#">
-                        Receitas Premium
-                        <span>MAX</span>
-                    </a>
+            <p>
+                Receba recomendações inteligentes em segundos.
+            </p>
 
-                    <hr>
+        </div>
 
-                    <a href="#">
-                        IA Nutri Coach
-                        <span>SUPER</span>
-                    </a>
+        <button>
+            Analisar
+        </button>
 
-                    <a href="#">
-                        Ajuste Inteligente
-                        <span>SUPER</span>
-                    </a>
+    </section>
 
-                    <hr>
+    <!-- RESUMO DO DIA -->
+    <section class="daily-summary">
 
-                    <a href="#">Chat Suporte</a>
-                    <a href="#">Configurações</a>
-                    <a href="#">Modo Escuro</a>
-                    <a href="#">Sair</a>
+        <div class="progress-ring">
+
+            <div class="ring-center">
+
+                <strong>65%</strong>
+
+                <span>1430 kcal</span>
+
+            </div>
+
+        </div>
+
+        <div class="macro-grid">
+
+            <div class="macro-item">
+
+                <span>Calorias</span>
+
+                <strong>
+                    1430 / 2200
+                </strong>
+
+            </div>
+
+            <div class="macro-item">
+
+                <span>Proteínas</span>
+
+                <strong>
+                    120g / 150g
+                </strong>
+
+            </div>
+
+            <div class="macro-item">
+
+                <span>Carboidratos</span>
+
+                <strong>
+                    180g / 220g
+                </strong>
+
+            </div>
+
+            <div class="macro-item">
+
+                <span>Gorduras</span>
+
+                <strong>
+                    45g / 60g
+                </strong>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- PLANO ALIMENTAR -->
+    <section class="meal-section">
+
+        <div class="section-title">
+
+            <h2>
+                Plano Alimentar de Hoje
+            </h2>
+
+        </div>
+
+        <!-- CAFÉ -->
+        <article class="meal-card">
+
+            <img src="img/cafe.jpg">
+
+            <div class="meal-content">
+
+                <h3>
+                    Café da Manhã
+                </h3>
+
+                <p>
+                    4 ovos inteiros
+                </p>
+
+                <p>
+                    100g pão integral
+                </p>
+
+                <p>
+                    1 banana
+                </p>
+
+                <div class="meal-actions">
+
+                    <label>
+
+                        <input
+                        type="checkbox">
+
+                        Concluir
+
+                    </label>
+
+                    <button>
+                        Ver Receita
+                    </button>
 
                 </div>
 
             </div>
 
-        </header>
+        </article>
 
-<section class="card saudacao-card">
+        <!-- ALMOÇO -->
 
-    <h2>Olá, Vinicius 👋</h2>
+        <article class="meal-card">
 
-    <p>
-        Acompanhe sua dieta, evolução e metas nutricionais.
-    </p>
+            <img src="img/almoco.jpg">
 
-</section>
+            <div class="meal-content">
 
+                <h3>
+                    Almoço
+                </h3>
 
-<!-- CARDS RESUMO -->
-<section class="resumo-premium">
-
-    <div class="nutri-progress">
-
-        <div class="progress-ring">
-
-            <svg viewBox="0 0 120 120">
-
-                <circle
-                cx="60"
-                cy="60"
-                r="52"
-                class="bg-circle"/>
-
-                <circle
-                cx="60"
-                cy="60"
-                r="52"
-                class="progress-circle"/>
-
-            </svg>
-
-            <div class="progress-center">
-
-                <strong>65%</strong>
-
-                <span>Meta diária</span>
-
-            </div>
-
-        </div>
-
-    </div>
-
-    <div class="nutri-macros">
-
-        <div class="macro-box">
-
-            <span>🔥 Calorias</span>
-
-            <strong>1430 / 2200</strong>
-
-        </div>
-
-        <div class="macro-box">
-
-            <span>🥩 Proteínas</span>
-
-            <strong>120g / 150g</strong>
-
-        </div>
-
-        <div class="macro-box">
-
-            <span>🍚 Carboidratos</span>
-
-            <strong>180g / 220g</strong>
-
-        </div>
-
-        <div class="macro-box">
-
-            <span>🥑 Gorduras</span>
-
-            <strong>45g / 60g</strong>
-
-        </div>
-
-    </div>
-
-</section>
-
- <!-- RECEITAS -->
-
-       <section class="card dieta-card">
-
-    <h3>🍽️ Plano Alimentar de Hoje</h3>
-
-    <!-- CAFÉ DA MANHÃ -->
-    <div class="meal-check">
-
-        <label>
-            <input
-            type="checkbox"
-            class="meal-checkbox">
-
-            ☀️ Café da Manhã
-        </label>
-
-        <div class="meal-foods">
-            4 ovos inteiros<br>
-            100g pão integral<br>
-            1 banana
-        </div>
-
-        <button
-        class="btn-premium"
-        onclick="abrirReceita()">
-            Ver Receita
-        </button>
-
-    </div>
-
-    <!-- ALMOÇO -->
-    <div class="meal-check">
-
-        <label>
-            <input
-            type="checkbox"
-            class="meal-checkbox">
-
-            🍛 Almoço
-        </label>
-
-        <div class="meal-foods">
-            300g frango grelhado<br>
-            150g arroz integral<br>
-            100g feijão
-        </div>
-
-        <button
-        class="btn-premium"
-        onclick="abrirReceita()">
-            Ver Receita
-        </button>
-
-    </div>
-
-    <!-- LANCHE -->
-    <div class="meal-check">
-
-        <label>
-            <input
-            type="checkbox"
-            class="meal-checkbox">
-
-            🍎 Lanche da Tarde
-        </label>
-
-        <div class="meal-foods">
-            1 iogurte natural<br>
-            30g aveia<br>
-            1 maçã
-        </div>
-
-        <button
-        class="btn-premium"
-        onclick="abrirReceita()">
-            Ver Receita
-        </button>
-
-    </div>
-
-    <!-- JANTAR -->
-    <div class="meal-check">
-
-        <label>
-            <input
-            type="checkbox"
-            class="meal-checkbox">
-
-            🌙 Jantar
-        </label>
-
-        <div class="meal-foods">
-            250g frango grelhado<br>
-            120g arroz integral<br>
-            Legumes cozidos
-        </div>
-
-        <button
-        class="btn-premium"
-        onclick="abrirReceita()">
-            Ver Receita
-        </button>
-
-    </div>
-
-</section> 
-        
-<!-- EVOLUÇÃO -->
-<section class="card progresso-card">
-
-    <h3>📈 Evolução de Peso</h3>
-
-    <div class="weight-info">
-        <div>
-            <strong>92kg</strong>
-            <span>Inicial</span>
-        </div>
-
-        <div>
-            <strong>88kg</strong>
-            <span>Atual</span>
-        </div>
-
-        <div>
-            <strong>84kg</strong>
-            <span>Meta</span>
-        </div>
-    </div>
-
-    <div class="progress">
-        <div id="barraPeso"></div>
-    </div>
-
-    <p>70% concluído</p>
-
-</section>
-
-        <!-- DIETA -->
-
-        <section class="card">
-    <h3>✅ Refeições de Hoje</h3>
-
-    <label>
-        <input type="checkbox">
-        Café da manhã concluído
-    </label>
-
-    <label>
-        <input type="checkbox">
-        Almoço concluído
-    </label>
-
-    <label>
-        <input type="checkbox">
-        Lanche concluído
-    </label>
-
-    <label>
-        <input type="checkbox">
-        Jantar concluído
-    </label>
-</section>
-
-        <!-- CONSULTA NUTRICIONISTA -->
-
-        <section class="premium-card">
-
-            <img
-            src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=1200">
-
-            <div class="premium-content">
-
-                <h3>👨‍⚕️ CONSULTA NUTRICIONISTA</h3>
-
-                <p class="old-price">
-                    De R$459,99
+                <p>
+                    300g frango grelhado
                 </p>
 
-                <h2>Por R$298,99</h2>
+                <p>
+                    150g arroz integral
+                </p>
 
-                <ul>
+                <p>
+                    100g feijão
+                </p>
 
-                    <li>✓ 24h de suporte</li>
-                    <li>✓ Nutricionista parceiro</li>
-                    <li>✓ Plano ajustável</li>
-                    <li>✓ Retorno programado</li>
+                <div class="meal-actions">
 
-                </ul>
+                    <label>
 
-                <button id="btnConsulta" class="btn-premium">
-                    AGENDAR CONSULTA
-                </button>
+                        <input
+                        type="checkbox">
+
+                        Concluir
+
+                    </label>
+
+                    <button>
+                        Ver Receita
+                    </button>
+
+                </div>
 
             </div>
 
-        </section>
+        </article>
 
-        <!-- CONSULTA PERSONAL -->
+    </section>
 
-        <section class="premium-card">
+    <!-- EVOLUÇÃO -->
+    <section class="weight-section">
 
-            <img
-            src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=1200">
+        <div class="section-title">
 
-            <div class="premium-content">
+            <h2>
+                Evolução de Peso
+            </h2>
 
-                <h3>🏋️ CONSULTA PERSONAL</h3>
+        </div>
 
-                <span class="max-badge">
-                    MAX
+        <div class="weight-card">
+
+            <div>
+
+                <span>
+                    Atual
                 </span>
 
-                <ul>
-
-                    <li>✓ Avaliação física</li>
-                    <li>✓ Planejamento de treino</li>
-                    <li>✓ Correção de exercícios</li>
-                    <li>✓ Suporte especializado</li>
-
-                </ul>
-
-                <button id="btnPersonal" class="btn-premium">
-                    AGENDAR PERSONAL
-                </button>
+                <strong>
+                    88kg
+                </strong>
 
             </div>
 
-        </section>
+            <div>
 
-        <!-- TREINO -->
-
-        <section class="premium-card">
-
-            <img
-            src="https://images.unsplash.com/photo-1517836357463-d25dfeac3438?w=1200">
-
-            <div class="premium-content">
-
-                <h3>🏋️ TREINO PERSONALIZADO</h3>
-
-                <span class="max-badge">
-                    MAX
+                <span>
+                    Meta
                 </span>
 
-                <ul>
-
-                    <li>✓ Emagrecimento</li>
-                    <li>✓ Hipertrofia</li>
-                    <li>✓ Condicionamento</li>
-                    <li>✓ Atualizações mensais</li>
-
-                </ul>
-
-                <button id="btnTreino" class="btn-premium">
-                    GERAR TREINO
-                </button>
-
-            </div>
-
-        </section>
-
-        <!-- CONTEÚDO MAX -->
-<section class="card somente-max">
-    <div class="max-badge">
-        MAX
-    </div>
-
-    <h3>🏋️ Treino Personalizado</h3>
-
-    <p>
-        Gerado automaticamente conforme
-        seus objetivos e evolução.
-    </p>
-
-    <button class="btn-premium">
-        GERAR TREINO
-    </button>
-</section>
-
-<!-- CONTEÚDO SUPER -->
-<section class="card somente-super">
-    <div class="super-badge">
-        SUPER
-    </div>
-
-    <h3>🤖 IA Nutri Coach</h3>
-
-    <p>
-        Sua inteligência nutricional
-        personalizada.
-    </p>
-
-    <button class="btn-premium">
-        ABRIR IA
-    </button>
-</section>
-       
-        <!-- MODAL RECEITA -->
-
-        <div class="modal" id="modalReceita">
-
-            <div class="modal-content">
-
-                <h2>OMELETE FIT</h2>
-
-                <h4>Ingredientes</h4>
-
-                <p>3 ovos inteiros</p>
-                <p>150g frango desfiado</p>
-                <p>20g queijo light</p>
-                <p>100g tomate</p>
-
-                <hr>
-
-                <h4>Valores Nutricionais</h4>
-
-                <p>290 kcal</p>
-                <p>26g proteína</p>
-                <p>12g carbo</p>
-                <p>15g gordura</p>
-
-                <button onclick="fecharReceita()">
-                    FECHAR
-                </button>
+                <strong>
+                    84kg
+                </strong>
 
             </div>
 
         </div>
 
-        <!-- IA NUTRI -->
+        <div class="weight-update">
 
-        <section class="card ia-card">
+            <input
+            type="number"
+            placeholder="Adicionar peso de hoje">
 
-            <div class="ia-core">
-                IA
-            </div>
-
-            <h2>🤖 IA NUTRI COACH</h2>
-
-            <p id="iastatus">
-                Analisando dieta...
-            </p>
-
-            <span class="super-badge">
-                SUPER
-            </span>
-
-        </section>
-
-        <!-- SUPORTE -->
-
-        <section class="card support-card">
-
-            <h3>💬 SUPORTE NUTRI+</h3>
-
-            <p>Digital → até 20 min</p>
-            <p>MAX → até 5 min</p>
-            <p>SUPER → até 2 min</p>
-
-            <button id="btnSuporte" class="btn-premium">
-                ABRIR CHAT
+            <button>
+                Salvar
             </button>
 
-        </section>
+        </div>
 
-        <!-- NOTÍCIAS PREMIUM -->
+        <canvas id="graficoPeso">
 
-<!-- NOTÍCIAS ROTATIVAS IA -->
-<section class="card noticias-rotativas">
-    <h3 id="tituloNoticia">
-        🔥 Mais de 100 receitas geradas para você
-    </h3>
+        </canvas>
 
-    <p id="textoNoticia">
-        Assine MAX e desbloqueie receitas exclusivas.
-    </p>
-</section>
-        
-        <section class="news-grid">
-
-            <div class="news-card">
-
-                <img src="https://images.unsplash.com/photo-1518611012118-696072aa579a?w=1200">
-
-                <h4>🏋️ Treinos Personalizados</h4>
-
-                <p>Disponível no MAX</p>
-
-                <button>
-                    CONHECER MAX
-                </button>
-
-            </div>
-
-            <div class="news-card">
-
-                <img src="https://images.unsplash.com/photo-1490645935967-10de6ba17061?w=1200">
-
-                <h4>🥗 Mais de 100 Receitas</h4>
-
-                <p>Exclusivo MAX</p>
-
-                <button>
-                    VER BENEFÍCIOS
-                </button>
-
-            </div>
-
-            <div class="news-card">
-
-                <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?w=1200">
-
-                <h4>🤖 IA Nutri Coach</h4>
-
-                <p>Exclusivo SUPER</p>
-
-                <button>
-                    CONHECER SUPER
-                </button>
-
-            </div>
-
-        </section>
-
-    </main>
+    </section>
 
 </div>
 
-<script src="js/dashboard.js"></script>
-
 </body>
-</html>
