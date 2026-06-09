@@ -1,1889 +1,351 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
 
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
 
-<title>Nutri+</title>
+    <title>Nutri+</title>
 
-<link rel="stylesheet" href="css/dashboard.css">
-
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link
+        rel="stylesheet"
+        href="css/dashboard.css"
+    >
 
 </head>
 
 <body>
 
-<div class="app-container">
+    <!-- POPUP PREMIUM -->
 
-    <!-- HEADER -->
-    <header class="hero-header">
+    <div
+        class="premium-popup active"
+        id="premiumPopup"
+    >
 
-        <div class="user-info">
-
-            <span class="plan-badge">
-                NUTRI DIGITAL
-            </span>
-
-            <h1>
-                Olá, Vinicius
-            </h1>
-
-            <p>
-                Vamos atingir sua meta hoje.
-            </p>
-
-        </div>
-
-        <div class="profile-area">
-
-            <input
-            type="file"
-            id="uploadFoto"
-            hidden>
-
-            <img
-            src="img/avatar.jpg"
-            id="avatarUser"
-            class="avatar">
-
-            <!-- MENU PERFIL -->
-            <div class="profile-menu">
-
-                <a href="#">Meu Perfil</a>
-
-                <a href="#">Faturas</a>
-
-                <a href="#">Planos</a>
-
-                <a href="#">Consulta Nutricionista</a>
-
-                <hr>
-
-                <a href="#">
-                    Consulta Personal
-                    <span>MAX</span>
-                </a>
-
-                <a href="#">
-                    Relatório de Evolução
-                    <span>MAX</span>
-                </a>
-
-                <a href="#">
-                    Treino Personalizado
-                    <span>MAX</span>
-                </a>
-
-                <a href="#">
-                    Receitas Premium
-                    <span>MAX</span>
-                </a>
-
-                <hr>
-
-                <a href="#">
-                    IA Nutri Fotos
-                    <span>SUPER</span>
-                </a>
-
-                <a href="#">
-                    Redefinir Anamnese
-                    <span>SUPER</span>
-                </a>
-
-                <a href="#">
-                    Análise de Nutricionista
-                    <span>SUPER</span>
-                </a>
-
-                <hr>
-
-                <a href="#">Configurações</a>
-
-                <a href="#">Sair</a>
-
-            </div>
-
-        </div>
-
-    </header>
-
-    <section class="hero-section">
-
-    <div class="hero-content">
-
-        <span class="hero-tag">
-            PLANO DIGITAL
-        </span>
-
-        <h2>
-            Bem-vindo de volta, Vinicius
-        </h2>
-
-        <p>
-            Continue sua evolução nutricional e acompanhe sua meta diária.
-        </p>
-
-        <div class="hero-buttons">
-
-            <button class="btn-primary">
-                IA NUTRI+
-            </button>
-
-            <button class="btn-secondary">
-                Ver Evolução
-            </button>
-
-        </div>
-
-    </div>
-
-    <div class="hero-image">
-
-        <img
-        src="https://i.pravatar.cc/500?img=12"
-        alt="Perfil">
-
-    </div>
-
-</section>
-
-    <section class="ia-assistant">
-
-    <div class="ia-left">
-
-        <span class="ia-tag">
-            IA NUTRI+
-        </span>
-
-        <h2>
-            Seu nutricionista inteligente
-        </h2>
-
-        <p>
-            Pergunte sobre sua dieta,
-            receitas, substituições,
-            emagrecimento ou ganho de massa.
-        </p>
-
-    </div>
-
-    <div class="ia-right">
-
-        <input
-        type="text"
-        placeholder="Pergunte algo para a IA Nutri+">
-
-        <button>
-            Perguntar
+        <button
+            class="close-popup"
+            id="closePopup"
+        >
+            ✕
         </button>
 
-    </div>
-
-</section>
-
-    <section class="premium-news-popup" id="newsPopup">
-
-    <button class="close-news" onclick="fecharNews()">
-        ×
-    </button>
-
-    <div class="news-content">
-
-        <span class="news-badge">
-            NUTRI+ SUPER
-        </span>
-
-        <h2>
-            Desbloqueie a IA Nutri Coach
-        </h2>
-
-        <p>
-            Receba análises inteligentes da sua dieta,
-            sugestões automáticas de ajustes,
-            acompanhamento por fotos e recursos
-            exclusivos do plano SUPER.
-        </p>
-
-        <div class="news-actions">
-
-            <button class="btn-primary">
-                Conhecer SUPER
-            </button>
-
-            <button class="btn-secondary">
-                Agora não
-            </button>
-
-        </div>
-
-    </div>
-
-    <div class="news-image">
-
-        <img src="img/banner-super.jpg">
-
-    </div>
-
-</section>
-
-<section class="nutrition-overview">
-
-    <div class="nutrition-left">
-
-        <div class="nutrition-header">
-
-            <h2>Meu Dia Nutricional</h2>
+        <div class="popup-content">
 
             <span>
-                Meta diária
-            </span>
-
-        </div>
-
-        <div class="nutrition-progress">
-
-            <div class="nutrition-progress-fill">
-                65%
-            </div>
-
-        </div>
-
-        <div class="nutrition-kcal">
-
-            <strong>
-                1430 kcal
-            </strong>
-
-            <span>
-                de 2200 kcal
-            </span>
-
-        </div>
-
-    </div>
-
-    <div class="nutrition-right">
-
-        <div class="macro-card">
-
-            <span>Proteínas</span>
-
-            <strong>
-                120g
-            </strong>
-
-            <small>
-                de 150g
-            </small>
-
-        </div>
-
-        <div class="macro-card">
-
-            <span>Carboidratos</span>
-
-            <strong>
-                180g
-            </strong>
-
-            <small>
-                de 220g
-            </small>
-
-        </div>
-
-        <div class="macro-card">
-
-            <span>Gorduras</span>
-
-            <strong>
-                45g
-            </strong>
-
-            <small>
-                de 60g
-            </small>
-
-        </div>
-
-    </div>
-
-</section>
-
-  <section class="nutrition-overview">
-
-    <div class="nutrition-progress">
-
-        <div class="progress-ring">
-
-            <svg>
-                <circle class="bg"
-                cx="90"
-                cy="90"
-                r="75"></circle>
-
-                <circle class="progress"
-                cx="90"
-                cy="90"
-                r="75"></circle>
-            </svg>
-
-            <div class="progress-center">
-
-                <strong>65%</strong>
-
-                <span>Meta do Dia</span>
-
-            </div>
-
-        </div>
-
-    </div>
-
-    <div class="nutrition-macros">
-
-        <div class="macro-card">
-
-            <span>Calorias</span>
-
-            <strong>1430 / 2200 kcal</strong>
-
-            <div class="mini-bar">
-                <div style="width:65%"></div>
-            </div>
-
-        </div>
-
-        <div class="macro-card">
-
-            <span>Proteínas</span>
-
-            <strong>120g / 150g</strong>
-
-            <div class="mini-bar protein">
-                <div style="width:80%"></div>
-            </div>
-
-        </div>
-
-        <div class="macro-card">
-
-            <span>Carboidratos</span>
-
-            <strong>180g / 220g</strong>
-
-            <div class="mini-bar carb">
-                <div style="width:81%"></div>
-            </div>
-
-        </div>
-
-        <div class="macro-card">
-
-            <span>Gorduras</span>
-
-            <strong>45g / 60g</strong>
-
-            <div class="mini-bar fat">
-                <div style="width:75%"></div>
-            </div>
-
-        </div>
-
-    </div>
-
-</section>
-
-    <section class="featured-news">
-
-    <div class="featured-content">
-
-        <span class="featured-tag">
-            EXCLUSIVO MAX
-        </span>
-
-        <h2>
-            Mais de 500 receitas premium disponíveis para acelerar seus resultados
-        </h2>
-
-        <p>
-            Desbloqueie receitas completas, listas de compras automáticas e sugestões inteligentes geradas pela IA Nutri+.
-        </p>
-
-        <button class="featured-button">
-            CONHECER MAX
-        </button>
-
-    </div>
-
-    <div class="featured-image">
-
-        <img
-        src="https://images.unsplash.com/photo-1490645935967-10de6ba17061?w=1200"
-        alt="Receitas Premium">
-
-    </div>
-
-</section>
-
-<section class="meal-plan-section">
-
-    <div class="section-title">
-
-        <div>
-
-            <span class="section-tag">
-                PLANO ALIMENTAR
-            </span>
-
-            <h2>
-                Suas refeições de hoje
-            </h2>
-
-        </div>
-
-    </div>
-
-    <!-- CAFÉ DA MANHÃ -->
-
-    <div class="meal-card">
-
-        <div class="meal-top">
-
-            <label>
-
-                <input type="checkbox">
-
-                Café da Manhã
-
-            </label>
-
-            <span class="meal-calories">
-                520 kcal
-            </span>
-
-        </div>
-
-        <div class="meal-foods">
-
-            4 ovos inteiros<br>
-            100g pão integral<br>
-            1 banana
-
-        </div>
-
-        <div class="meal-macros">
-
-            <span>35g proteína</span>
-            <span>45g carbo</span>
-            <span>18g gordura</span>
-
-        </div>
-
-        <button
-class="recipe-btn"
-onclick="abrirReceita()">
-    Ver Receita
-</button>
-
-    </div>
-
-    <!-- ALMOÇO -->
-
-    <div class="meal-card">
-
-        <div class="meal-top">
-
-            <label>
-
-                <input type="checkbox">
-
-                Almoço
-
-            </label>
-
-            <span class="meal-calories">
-                680 kcal
-            </span>
-
-        </div>
-
-        <div class="meal-foods">
-
-            300g frango grelhado<br>
-            150g arroz integral<br>
-            100g feijão
-
-        </div>
-
-        <div class="meal-macros">
-
-            <span>58g proteína</span>
-            <span>60g carbo</span>
-            <span>12g gordura</span>
-
-        </div>
-
-        <button
-class="recipe-btn"
-onclick="abrirReceita()">
-    Ver Receita
-</button>
-
-    </div>
-
-    <!-- LANCHE DA TARDE -->
-
-    <div class="meal-card">
-
-        <div class="meal-top">
-
-            <label>
-
-                <input type="checkbox">
-
-                Lanche da Tarde
-
-            </label>
-
-            <span class="meal-calories">
-                320 kcal
-            </span>
-
-        </div>
-
-        <div class="meal-foods">
-
-            1 iogurte natural<br>
-            30g aveia<br>
-            1 maçã
-
-        </div>
-
-        <div class="meal-macros">
-
-            <span>18g proteína</span>
-            <span>40g carbo</span>
-            <span>8g gordura</span>
-
-        </div>
-
-        <button
-class="recipe-btn"
-onclick="abrirReceita()">
-    Ver Receita
-</button>
-
-    </div>
-
-    <!-- JANTAR -->
-
-    <div class="meal-card">
-
-        <div class="meal-top">
-
-            <label>
-
-                <input type="checkbox">
-
-                Jantar
-
-            </label>
-
-            <span class="meal-calories">
-                480 kcal
-            </span>
-
-        </div>
-
-        <div class="meal-foods">
-
-            250g frango grelhado<br>
-            120g arroz integral<br>
-            Legumes cozidos
-
-        </div>
-
-        <div class="meal-macros">
-
-            <span>40g proteína</span>
-            <span>35g carbo</span>
-            <span>10g gordura</span>
-
-        </div>
-
-        <button
-class="recipe-btn"
-onclick="abrirReceita()">
-    Ver Receita
-</button>
-
-    </div>
-
-</section>
-
-    <section class="recipe-details">
-
-    <div class="recipe-banner">
-
-        <img
-        src="img/receita-omelete.jpg"
-        alt="Receita">
-
-    </div>
-
-    <div class="recipe-body">
-
-        <button
-class="back-btn"
-onclick="voltarReceita()">
-    ← Voltar
-</button>
-
-        <span class="recipe-category">
-            RECEITA PREMIUM
-        </span>
-
-        <h2>
-            Omelete Proteica com Frango
-        </h2>
-
-        <p class="recipe-description">
-
-            Receita rica em proteínas,
-            ideal para hipertrofia e
-            emagrecimento saudável.
-
-        </p>
-
-        <div class="recipe-stats">
-
-            <div>
-                <strong>290</strong>
-                <span>kcal</span>
-            </div>
-
-            <div>
-                <strong>26g</strong>
-                <span>Proteína</span>
-            </div>
-
-            <div>
-                <strong>12g</strong>
-                <span>Carbo</span>
-            </div>
-
-            <div>
-                <strong>15g</strong>
-                <span>Gordura</span>
-            </div>
-
-        </div>
-
-        <div class="recipe-section">
-
-            <h3>
-                Ingredientes
-            </h3>
-
-            <ul>
-
-                <li>3 ovos inteiros</li>
-
-                <li>150g frango desfiado</li>
-
-                <li>20g queijo light</li>
-
-                <li>100g tomate</li>
-
-            </ul>
-
-        </div>
-
-        <div class="recipe-section">
-
-            <h3>
-                Modo de preparo
-            </h3>
-
-            <p>
-
-                Bata os ovos.
-                Misture o frango.
-                Acrescente tomate e queijo.
-                Cozinhe em fogo médio por
-                aproximadamente 8 minutos.
-
-            </p>
-
-        </div>
-
-        <div class="recipe-section">
-
-    <h3>
-        Benefícios Nutricionais
-    </h3>
-
-    <ul class="benefits-list">
-
-        <li>
-            Alto teor de proteína para preservação muscular
-        </li>
-
-        <li>
-            Excelente saciedade
-        </li>
-
-        <li>
-            Baixo teor de açúcar
-        </li>
-
-        <li>
-            Ideal para emagrecimento e hipertrofia
-        </li>
-
-    </ul>
-
-</div>
-
-        <div class="recipe-rating">
-
-    <span>⭐⭐⭐⭐⭐</span>
-
-    <small>
-        Receita mais utilizada pelos usuários
-    </small>
-
-</div>
-
-        <div class="recipe-actions">
-
-    <button class="recipe-add-btn">
-        Adicionar à Dieta
-    </button>
-
-    <button class="recipe-ai-btn">
-        Gerar Similar IA
-    </button>
-
-</div>
-
-        <div class="shopping-list-card">
-
-    <div class="shopping-header">
-        <h3>
-            Lista de Compras
-        </h3>
-
-        <button class="shopping-btn">
-            Gerar Lista
-        </button>
-    </div>
-
-    <ul class="shopping-list">
-
-        <li>
-            3 ovos inteiros
-        </li>
-
-        <li>
-            150g frango desfiado
-        </li>
-
-        <li>
-            20g queijo light
-        </li>
-
-        <li>
-            100g tomate
-        </li>
-
-    </ul>
-
-</div>
-
-        <!-- INFORMAÇÕES EXTRAS -->
-
-<div class="recipe-info-grid">
-
-    <div class="recipe-info-card">
-        <span>Tempo de preparo</span>
-        <strong>25 min</strong>
-    </div>
-
-    <div class="recipe-info-card">
-        <span>Dificuldade</span>
-        <strong>Fácil</strong>
-    </div>
-
-    <div class="recipe-info-card">
-        <span>Porções</span>
-        <strong>1 Pessoa</strong>
-    </div>
-
-</div>
-
-<!-- LISTA DE COMPRAS -->
-
-<div class="recipe-section">
-
-    <h3>Lista de Compras</h3>
-
-    <div class="shopping-list">
-
-        <label>
-            <input type="checkbox">
-            Frango
-        </label>
-
-        <label>
-            <input type="checkbox">
-            Arroz Integral
-        </label>
-
-        <label>
-            <input type="checkbox">
-            Feijão
-        </label>
-
-        <label>
-            <input type="checkbox">
-            Temperos Naturais
-        </label>
-
-    </div>
-
-</div>
-
-<!-- RECEITAS RELACIONADAS -->
-
-<div class="recipe-section">
-
-    <h3>
-        Você também pode gostar
-    </h3>
-
-    <div class="related-recipes">
-
-        <div class="related-card">
-
-            <img
-            src="img/receita2.jpg">
-
-            <h4>
-                Frango Fit
-            </h4>
-
-        </div>
-
-        <div class="related-card">
-
-            <img
-            src="img/receita3.jpg">
-
-            <h4>
-                Panqueca Proteica
-            </h4>
-
-        </div>
-
-        <div class="related-card">
-
-            <img
-            src="img/receita4.jpg">
-
-            <h4>
-                Bowl de Frango
-            </h4>
-
-        </div>
-
-    </div>
-
-</div>
-
-    </div>
-
-</section>
-
-    <section class="related-recipes">
-
-    <div class="section-title">
-
-        <div>
-            <span class="section-tag">
-                RECEITAS RELACIONADAS
-            </span>
-
-            <h2>
-                Você também pode gostar
-            </h2>
-        </div>
-
-    </div>
-
-    <div class="related-grid">
-
-        <div class="related-card">
-
-            <img
-            src="img/receita1.jpg"
-            alt="Receita">
-
-            <div class="related-content">
-
-                <h3>
-                    Panqueca Proteica
-                </h3>
-
-                <p>
-                    320 kcal • 28g proteína
-                </p>
-
-            </div>
-
-        </div>
-
-        <div class="related-card">
-
-            <img
-            src="img/receita2.jpg"
-            alt="Receita">
-
-            <div class="related-content">
-
-                <h3>
-                    Frango Cremoso Fit
-                </h3>
-
-                <p>
-                    410 kcal • 42g proteína
-                </p>
-
-            </div>
-
-        </div>
-
-        <div class="related-card">
-
-            <img
-            src="img/receita3.jpg"
-            alt="Receita">
-
-            <div class="related-content">
-
-                <h3>
-                    Bowl de Carne Magra
-                </h3>
-
-                <p>
-                    390 kcal • 37g proteína
-                </p>
-
-            </div>
-
-        </div>
-
-    </div>
-
-</section>
-
-    <section class="favorite-recipes">
-
-    <div class="section-title">
-
-        <div>
-            <span class="section-tag">
-                FAVORITAS
-            </span>
-
-            <h2>
-                Suas receitas favoritas
-            </h2>
-        </div>
-
-    </div>
-
-    <div class="favorite-grid">
-
-        <div class="favorite-card">
-
-            <div class="favorite-top">
-
-                <span>
-                    Proteína Alta
-                </span>
-
-                <button>
-                    ♥
-                </button>
-
-            </div>
-
-            <h3>
-                Omelete Proteica
-            </h3>
-
-            <p>
-                290 kcal • 26g proteína
-            </p>
-
-        </div>
-
-        <div class="favorite-card">
-
-            <div class="favorite-top">
-
-                <span>
-                    Emagrecimento
-                </span>
-
-                <button>
-                    ♥
-                </button>
-
-            </div>
-
-            <h3>
-                Frango Fit
-            </h3>
-
-            <p>
-                410 kcal • 42g proteína
-            </p>
-
-        </div>
-
-    </div>
-
-</section>
-    
-    <!-- NEWS PREMIUM -->
-<section class="news-highlight">
-
-    <div class="news-banner">
-
-        <div class="news-content">
-
-            <span class="news-tag">
-                RECURSO PREMIUM
-            </span>
-
-            <h2>
-                Receitas Premium liberam resultados até 37% mais rápidos
-            </h2>
-
-            <p>
-                Desbloqueie mais de 500 receitas exclusivas,
-                planejamento automático e ajustes inteligentes
-                baseados na sua evolução.
-            </p>
-
-            <button class="btn-primary">
-                Conhecer Plano MAX
-            </button>
-
-        </div>
-
-        <div class="news-image">
-            <img
-            src="img/news-premium.jpg"
-            alt="Premium">
-        </div>
-
-    </div>
-
-</section>
-
-    <section class="evolution-section">
-
-    <div class="evolution-card">
-
-        <div class="section-header">
-
-            <div>
-
-                <span class="section-tag">
-                    EVOLUÇÃO
-                </span>
-
-                <h2>
-                    Seu progresso
-                </h2>
-
-            </div>
-
-        </div>
-
-        <div class="weight-area">
-
-            <div class="current-weight">
-
-                <span>Peso Atual</span>
-
-                <strong>88 kg</strong>
-
-            </div>
-
-            <div class="goal-weight">
-
-                <span>Meta</span>
-
-                <strong>84 kg</strong>
-
-            </div>
-
-        </div>
-
-        <div class="weight-progress">
-
-            <div class="weight-fill"></div>
-
-        </div>
-
-        <div class="weight-info">
-
-            <span>92kg Inicial</span>
-
-            <span>70% concluído</span>
-
-            <span>84kg Meta</span>
-
-        </div>
-
-        <div class="weight-update">
-
-<input
-type="number"
-step="0.1"
-placeholder="Ex: 88.4">
-
-            <button>
-                Salvar
-            </button>
-
-        </div>
-
-    </div>
-
-    <div class="photo-card">
-
-        <div class="photo-header">
-
-            <h3>
-                Fotos de Evolução
-            </h3>
-
-        </div>
-
-        <label class="upload-area">
-
-            <input
-            type="file"
-            accept="image/*">
-
-            <div>
-
-                <h4>
-                    Adicionar Foto
-                </h4>
-
-                <p>
-                    Tire ou envie uma foto da galeria
-                </p>
-
-            </div>
-
-        </label>
-
-    </div>
-
-</section>
-
-    <section class="nutrition-history">
-
-    <div class="section-title">
-
-        <div>
-
-            <span class="section-tag">
-                HISTÓRICO
-            </span>
-
-            <h2>
-                Seu desempenho recente
-            </h2>
-
-        </div>
-
-    </div>
-
-    <div class="history-grid">
-
-        <div class="history-card">
-
-            <span>
-                Dieta Concluída
-            </span>
-
-            <strong>
-                87%
-            </strong>
-
-            <small>
-                Últimos 30 dias
-            </small>
-
-        </div>
-
-        <div class="history-card">
-
-            <span>
-                Peso Perdido
-            </span>
-
-            <strong>
-                -4kg
-            </strong>
-
-            <small>
-                Desde o início
-            </small>
-
-        </div>
-
-        <div class="history-card">
-
-            <span>
-                Dias Seguidos
-            </span>
-
-            <strong>
-                18
-            </strong>
-
-            <small>
-                Consistência
-            </small>
-
-        </div>
-
-        <div class="history-card">
-
-            <span>
-                Receitas Testadas
-            </span>
-
-            <strong>
-                42
-            </strong>
-
-            <small>
-                Este mês
-            </small>
-
-        </div>
-
-    </div>
-
-</section>
-
-    <section class="achievements-section">
-
-    <div class="section-title">
-
-        <div>
-
-            <span class="section-tag">
-                CONQUISTAS
-            </span>
-
-            <h2>
-                Seu desempenho
-            </h2>
-
-        </div>
-
-    </div>
-
-    <div class="achievement-grid">
-
-        <div class="achievement-card completed">
-
-            <div class="achievement-icon">
-                ✓
-            </div>
-
-            <h3>
-                7 dias seguidos
-            </h3>
-
-            <p>
-                Dieta concluída por 7 dias consecutivos
-            </p>
-
-        </div>
-
-        <div class="achievement-card">
-
-            <div class="achievement-icon">
-                50%
-            </div>
-
-            <h3>
-                Meta de Peso
-            </h3>
-
-            <p>
-                Você está na metade do caminho
-            </p>
-
-        </div>
-
-        <div class="achievement-card">
-
-            <div class="achievement-icon">
-                42
-            </div>
-
-            <h3>
-                Receitas Testadas
-            </h3>
-
-            <p>
-                Continue explorando novas refeições
-            </p>
-
-        </div>
-
-    </div>
-
-</section>
-
-    <!-- RECEITAS PREMIUM -->
-<section class="recipes-section">
-
-    <div class="section-title">
-        <div>
-            <span class="section-tag">
-                RECEITAS PREMIUM
-            </span>
-            <h2>
-                Receitas para sua meta
-            </h2>
-        </div>
-
-        <button class="btn-secondary">
-            Ver Todas
-        </button>
-    </div>
-
-    <div class="recipes-grid">
-
-        <div class="recipe-card">
-            <img
-            src="img/receita1.jpg"
-            alt="Receita">
-
-            <div class="recipe-info">
-                <span class="recipe-category">
-                    HIPERTROFIA
-                </span>
-
-                <h3>
-                    Panqueca Proteica de Banana
-                </h3>
-
-                <div class="recipe-macros">
-                    <span>420 kcal</span>
-                    <span>32g proteína</span>
-                </div>
-
-                <button
-class="recipe-btn"
-onclick="abrirReceita()">
-    Ver Receita
-</button>
-            </div>
-        </div>
-
-        <div class="recipe-card">
-            <img
-            src="img/receita2.jpg"
-            alt="Receita">
-
-            <div class="recipe-info">
-                <span class="recipe-category">
-                    EMAGRECIMENTO
-                </span>
-
-                <h3>
-                    Frango Cremoso Fit
-                </h3>
-
-                <div class="recipe-macros">
-                    <span>390 kcal</span>
-                    <span>40g proteína</span>
-                </div>
-
-                <button
-class="recipe-btn"
-onclick="abrirReceita()">
-    Ver Receita
-</button>
-            </div>
-        </div>
-
-        <div class="recipe-card">
-            <img
-            src="img/receita3.jpg"
-            alt="Receita">
-
-            <div class="recipe-info">
-                <span class="recipe-category">
-                    PREMIUM
-                </span>
-
-                <h3>
-                    Bowl Mediterrâneo
-                </h3>
-
-                <div class="recipe-macros">
-                    <span>510 kcal</span>
-                    <span>38g proteína</span>
-                </div>
-
-                <button
-class="recipe-btn"
-onclick="abrirReceita()">
-    Ver Receita
-</button>
-            </div>
-        </div>
-
-    </div>
-
-</section>
-
-    <!-- NOTÍCIA PRINCIPAL -->
-    <section class="news-banner">
-
-        <div class="news-content">
-
-            <span class="news-tag">
                 NUTRI+ MAX
             </span>
 
             <h2>
-                Mais de 500 receitas premium para acelerar seus resultados
+                Evolua sua alimentação com mais inteligência.
             </h2>
 
             <p>
-                Desbloqueie receitas exclusivas desenvolvidas para sua meta.
+                Receitas ilimitadas, IA Nutri+,
+                reanálise nutricional e muito mais.
             </p>
 
-            <button>
-                Conhecer Plano MAX
-            </button>
-
-        </div>
-
-        <img
-        src="img/banner-max.png">
-
-    </section>
-
-    <!-- IA -->
-    <section class="ia-banner">
-
-        <div>
-
-            <small>
-                IA NUTRI+
-            </small>
-
-            <h2>
-                Analyse My Diet
-            </h2>
-
-            <p>
-                Receba recomendações inteligentes em segundos.
-            </p>
-
-        </div>
-
-        <button>
-            Analisar
-        </button>
-
-    </section>
-
-    <!-- RESUMO DO DIA -->
-    <section class="daily-summary">
-
-        <div class="progress-ring">
-
-            <div class="ring-center">
-
-                <strong>65%</strong>
-
-                <span>1430 kcal</span>
-
-            </div>
-
-        </div>
-
-        <div class="macro-grid">
-
-            <div class="macro-item">
-
-                <span>Calorias</span>
-
-                <strong>
-                    1430 / 2200
-                </strong>
-
-            </div>
-
-            <div class="macro-item">
-
-                <span>Proteínas</span>
-
-                <strong>
-                    120g / 150g
-                </strong>
-
-            </div>
-
-            <div class="macro-item">
-
-                <span>Carboidratos</span>
-
-                <strong>
-                    180g / 220g
-                </strong>
-
-            </div>
-
-            <div class="macro-item">
-
-                <span>Gorduras</span>
-
-                <strong>
-                    45g / 60g
-                </strong>
-
-            </div>
-
-        </div>
-
-    </section>
-
-    <!-- PLANO ALIMENTAR -->
-    <section class="meal-section">
-
-        <div class="section-title">
-
-            <h2>
-                Plano Alimentar de Hoje
-            </h2>
-
-        </div>
-
-        <!-- CAFÉ -->
-        <article class="meal-card">
-
-            <img src="img/cafe.jpg">
-
-            <div class="meal-content">
-
-                <h3>
-                    Café da Manhã
-                </h3>
-
-                <p>
-                    4 ovos inteiros
-                </p>
-
-                <p>
-                    100g pão integral
-                </p>
-
-                <p>
-                    1 banana
-                </p>
-
-                <div class="meal-actions">
-
-                    <label>
-
-                        <input
-                        type="checkbox">
-
-                        Concluir
-
-                    </label>
-
-                    <button
-class="recipe-btn"
-onclick="abrirReceita()">
-    Ver Receita
-</button>
-
-                </div>
-
-            </div>
-
-        </article>
-
-        <!-- ALMOÇO -->
-
-        <article class="meal-card">
-
-            <img src="img/almoco.jpg">
-
-            <div class="meal-content">
-
-                <h3>
-                    Almoço
-                </h3>
-
-                <p>
-                    300g frango grelhado
-                </p>
-
-                <p>
-                    150g arroz integral
-                </p>
-
-                <p>
-                    100g feijão
-                </p>
-
-                <div class="meal-actions">
-
-                    <label>
-
-                        <input
-                        type="checkbox">
-
-                        Concluir
-
-                    </label>
-
-                    <button
-class="recipe-btn"
-onclick="abrirReceita()">
-    Ver Receita
-</button>
-
-                </div>
-
-            </div>
-
-        </article>
-
-    </section>
-
-    <!-- EVOLUÇÃO -->
-    <section class="weight-section">
-
-        <div class="section-title">
-
-            <h2>
-                Evolução de Peso
-            </h2>
-
-        </div>
-
-        <div class="weight-card">
-
-            <div>
-
-                <span>
-                    Atual
-                </span>
-
-                <strong>
-                    88kg
-                </strong>
-
-            </div>
-
-            <div>
-
-                <span>
-                    Meta
-                </span>
-
-                <strong>
-                    84kg
-                </strong>
-
-            </div>
-
-        </div>
-
-        <div class="weight-update">
-
-            <input
-            type="number"
-            placeholder="Adicionar peso de hoje">
-
-            <button>
-                Salvar
-            </button>
-
-        </div>
-
-        <canvas id="graficoPeso"></canvas>
-
-    </section>
-
-</div>
-
-    <!-- MODAL RECEITA PREMIUM -->
-<div class="recipe-modal" id="recipeModal">
-
-    <div class="recipe-modal-content">
-
-        <button
-        class="close-recipe"
-        onclick="fecharReceita()">
-            ×
-        </button>
-
-        <div class="recipe-cover">
-            <img
-            src="img/receita.jpg"
-            alt="Receita">
-        </div>
-
-        <div class="recipe-body">
-
-            <span class="recipe-tag">
-                RECEITA PREMIUM
-            </span>
-
-            <h2>
-                Frango com Arroz Integral
-            </h2>
-
-            <p class="recipe-description">
-                Receita rica em proteínas,
-                ideal para ganho de massa
-                muscular e controle de gordura.
-            </p>
-
-            <div class="recipe-macros">
-
-                <div class="recipe-macro">
-                    <span>Calorias</span>
-                    <strong>680 kcal</strong>
-                </div>
-
-                <div class="recipe-macro">
-                    <span>Proteína</span>
-                    <strong>58g</strong>
-                </div>
-
-                <div class="recipe-macro">
-                    <span>Carboidrato</span>
-                    <strong>60g</strong>
-                </div>
-
-                <div class="recipe-macro">
-                    <span>Gordura</span>
-                    <strong>12g</strong>
-                </div>
-
-            </div>
-
-            <div class="recipe-section">
-
-                <h3>
-                    Ingredientes
-                </h3>
-
-                <ul>
-                    <li>300g de frango</li>
-                    <li>150g arroz integral</li>
-                    <li>100g feijão</li>
-                    <li>Temperos naturais</li>
-                </ul>
-
-            </div>
-
-            <div class="recipe-section">
-
-                <h3>
-                    Modo de Preparo
-                </h3>
-
-                <p>
-                    Tempere o frango e grelhe.
-                    Cozinhe o arroz integral e o feijão.
-                    Monte o prato e sirva.
-                </p>
-
-            </div>
-
-            <button class="btn-primary">
-                Adicionar à Lista de Compras
-            </button>
+            <a
+                href="planos.html"
+                class="popup-btn"
+            >
+                Conhecer planos
+            </a>
 
         </div>
 
     </div>
 
-</div>
+    <main class="container">
 
-    <script>
+        <!-- PERFIL -->
 
-function abrirReceita(){
-    document
-    .getElementById("recipeModal")
-    .classList.add("active");
-}
+        <section class="hero">
 
-function fecharReceita(){
-    document
-    .getElementById("recipeModal")
-    .classList.remove("active");
-}
+            <img
+                src="img/avatar.jpg"
+                class="avatar"
+            >
 
-</script>
+            <div>
 
-    <!-- MOBILE NAV -->
-<nav class="mobile-nav">
+                <h1>
+                    Olá, Vinicius 👋
+                </h1>
 
-    <a href="#" class="active">
-        Início
-    </a>
+                <small>
+                    Plano Nutri+ Free
+                </small>
 
-    <a href="#">
-        Dieta
-    </a>
+            </div>
 
-    <a href="#">
-        Receitas
-    </a>
+        </section>
 
-    <a href="#">
-        Evolução
-    </a>
+        <!-- META -->
 
-    <a href="#">
-        IA Nutri+
-    </a>
+        <section class="daily-goal">
 
-    <a href="#">
-        Perfil
-    </a>
+            <div class="goal-top">
 
-</nav>
-    
+                <h2>
+                    Meta do Dia
+                </h2>
+
+                <strong>
+                    1800 / 2200 kcal
+                </strong>
+
+            </div>
+
+            <div class="progress">
+
+                <div
+                    class="progress-fill"
+                    id="progressFill"
+                >
+                    82%
+                </div>
+
+            </div>
+
+            <div class="macros">
+
+                <div>
+
+                    <span>
+                        Proteína
+                    </span>
+
+                    <strong id="protein">
+                        120g
+                    </strong>
+
+                </div>
+
+                <div>
+
+                    <span>
+                        Carboidratos
+                    </span>
+
+                    <strong id="carb">
+                        180g
+                    </strong>
+
+                </div>
+
+                <div>
+
+                    <span>
+                        Gorduras
+                    </span>
+
+                    <strong id="fat">
+                        50g
+                    </strong>
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- REFEIÇÕES -->
+
+        <section class="meals">
+
+            <h2>
+                Refeições de Hoje
+            </h2>
+
+            <div class="meal">
+
+                <label>
+
+                    <input
+                        type="checkbox"
+                        class="meal-check"
+                    >
+
+                    Café da manhã
+
+                </label>
+
+                <button
+                    class="diet-btn"
+                >
+                    Ver dieta
+                </button>
+
+            </div>
+
+            <div class="meal">
+
+                <label>
+
+                    <input
+                        type="checkbox"
+                        class="meal-check"
+                    >
+
+                    Lanche da manhã
+
+                </label>
+
+                <button
+                    class="diet-btn"
+                >
+                    Ver dieta
+                </button>
+
+            </div>
+
+            <div class="meal">
+
+                <label>
+
+                    <input
+                        type="checkbox"
+                        class="meal-check"
+                    >
+
+                    Almoço
+
+                </label>
+
+                <button
+                    class="diet-btn"
+                >
+                    Ver dieta
+                </button>
+
+            </div>
+
+            <div class="meal">
+
+                <label>
+
+                    <input
+                        type="checkbox"
+                        class="meal-check"
+                    >
+
+                    Café da tarde
+
+                </label>
+
+                <button
+                    class="diet-btn"
+                >
+                    Ver dieta
+                </button>
+
+            </div>
+
+            <div class="meal">
+
+                <label>
+
+                    <input
+                        type="checkbox"
+                        class="meal-check"
+                    >
+
+                    Jantar
+
+                </label>
+
+                <button
+                    class="diet-btn"
+                >
+                    Ver dieta
+                </button>
+
+            </div>
+
+        </section>
+
+        <!-- PESO -->
+
+        <section class="weight">
+
+            <h2>
+                Evolução
+            </h2>
+
+            <div class="weight-grid">
+
+                <div>
+
+                    <span>
+                        Peso Atual
+                    </span>
+
+                    <strong>
+                        92.4 kg
+                    </strong>
+
+                </div>
+
+                <div>
+
+                    <span>
+                        Meta
+                    </span>
+
+                    <strong>
+                        80 kg
+                    </strong>
+
+                </div>
+
+            </div>
+
+            <button class="update-weight">
+
+                Atualizar Peso
+
+            </button>
+
+        </section>
+
+        <!-- PUBLICAÇÃO -->
+
+        <section class="news">
+
+            <div class="news-content">
+
+                <span>
+                    NUTRI+ MAX
+                </span>
+
+                <h2>
+                    Tenha acesso a receitas ilimitadas
+                </h2>
+
+                <p>
+                    Receitas personalizadas,
+                    IA Nutri+ e acompanhamento avançado.
+                </p>
+
+                <a href="planos.html">
+
+                    Conhecer plano
+
+                </a>
+
+            </div>
+
+        </section>
+
+    </main>
+
+    <script src="js/dashboard.js"></script>
+
 </body>
+
+</html>
