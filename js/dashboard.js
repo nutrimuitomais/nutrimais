@@ -1,9 +1,7 @@
-// BANCO DE DADOS DE DIETAS E CARDÁPIOS METABÓLICOS
 const dbRefeicoesMetabolicas = {
     "cafe": {
         titulo: "Café da Manhã de Alta Performance",
         kcal: 390, proteinas: 28, carboidratos: 35, gorduras: 12,
-        foto: "https://images.unsplash.com/photo-1525351484163-7529414344d8?w=600",
         itens: [
             { nome: "Ovos Mexidos Inteiros", qtd: "3 unidades" },
             { nome: "Pão Integral de Forma", qtd: "60g" },
@@ -13,7 +11,6 @@ const dbRefeicoesMetabolicas = {
     "almoco": {
         titulo: "Almoço Funcional Batendo Macros",
         kcal: 980, proteinas: 95, carboidratos: 78, gorduras: 18,
-        foto: "https://images.unsplash.com/photo-1540420773420-3366772f4999?w=600",
         itens: [
             { nome: "Filé de Frango Grelhado", qtd: "500g" },
             { nome: "Arroz Integral Cozido", qtd: "200g" },
@@ -23,7 +20,6 @@ const dbRefeicoesMetabolicas = {
     "tarde": {
         titulo: "Lanche da Tarde Sacietógeno",
         kcal: 310, proteinas: 22, carboidratos: 30, gorduras: 6,
-        foto: "https://images.unsplash.com/photo-1488477181946-6428a0291777?w=600",
         itens: [
             { nome: "Iogurte Natural Proteico", qtd: "200g" },
             { nome: "Aveia em Flocos Inteiros", qtd: "30g" },
@@ -33,7 +29,6 @@ const dbRefeicoesMetabolicas = {
     "janta": {
         titulo: "Janta Anabólica & Completa",
         kcal: 520, proteinas: 42, carboidratos: 45, gorduras: 14,
-        foto: "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=600",
         itens: [
             { nome: "Patinho Moído Grelhado", qtd: "200g" },
             { nome: "Mandioca Cozida Salteada", qtd: "150g" },
@@ -44,26 +39,10 @@ const dbRefeicoesMetabolicas = {
 
 const metaDiariaGlobal = { kcal: 2200, proteinas: 160, carboidratos: 220, gorduras: 70 };
 
-// ROTATIVIDADE DE ASSINATURAS DOS NUTRICIONISTAS CONCEITUADOS
-const listagemNutricionistasEspecialistas = [
-    "Dieta estruturada sob as diretrizes clínicas de Dr. Alan Rodrigues",
-    "Cardápio adaptado baseado nos modelos de rendimento de Dra. Tatiane Mendes",
-    "Planejamento metabólico referenciado pelas condutas de Dr. Felipe Rossi",
-    "Alinhamento calórico estruturado conforme modelos de alta performance de Dra. Amanda Costa"
-];
-
-function injectHumanizedExpertSubtitle() {
-    const boxSubtitulo = document.getElementById('dynamic-expert-subtitle');
-    if (!boxSubtitulo) return;
-    const indiceAleatorio = Math.floor(Math.random() * listagemNutricionistasEspecialistas.length);
-    boxSubtitulo.textContent = listagemNutricionistasEspecialistas[indiceAleatorio];
-}
-
-// CONTROLADOR DO POP-UP INTERSTICIAL (EXIBE 2 VEZES POR DIA)
+// CONTROLE DO BANNER POP-UP (2 VEZES POR DIA)
 function evaluateInterstitialMarketingPopup() {
     const storageKeyDate = 'nutri_interstitial_date';
     const storageKeyCount = 'nutri_interstitial_count';
-    
     const hoje = new Date().toDateString();
     const dataRegistrada = localStorage.getItem(storageKeyDate);
     let contagemVisualizacoes = parseInt(localStorage.getItem(storageKeyCount) || "0");
@@ -82,7 +61,7 @@ function triggerInterstitialDisplay() {
     setTimeout(() => {
         const portalPopup = document.getElementById('interstitial-marketing-portal');
         if (portalPopup) portalPopup.classList.remove('hidden');
-    }, 1200);
+    }, 1000);
 }
 
 function dismissInterstitialHub() {
@@ -90,25 +69,29 @@ function dismissInterstitialHub() {
     if (portalPopup) portalPopup.classList.add('hidden');
 }
 
-// CALCULADORA DE MACROS
+// CALCULADORA DE MACROS COM COR CONDICIONAL VERDE CLARO NOS CARDS
 function calculateMacrosEngine() {
     let somas = { kcal: 0, proteinas: 0, carboidratos: 0, gorduras: 0 };
 
-    const checks = {
-        "cafe": document.getElementById('check-cafe').checked,
-        "almoco": document.getElementById('check-almoco').checked,
-        "tarde": document.getElementById('check-tarde').checked,
-        "janta": document.getElementById('check-janta').checked
-    };
+    const refeicoes = ["cafe", "almoco", "tarde", "janta"];
 
-    for (let chave in checks) {
-        if (checks[chave]) {
+    refeicoes.forEach(chave => {
+        const checkbox = document.getElementById(`check-${chave}`);
+        const cardContainer = document.getElementById(`card-meal-${chave}`);
+        
+        if (checkbox && checkbox.checked) {
             somas.kcal += dbRefeicoesMetabolicas[chave].kcal;
             somas.proteinas += dbRefeicoesMetabolicas[chave].proteinas;
             somas.carboidratos += dbRefeicoesMetabolicas[chave].carboidratos;
             somas.gorduras += dbRefeicoesMetabolicas[chave].gorduras;
+            
+            // Ativa o fundo verde claro caso concluído
+            if(cardContainer) cardContainer.classList.add('concluido');
+        } else {
+            // Remove o fundo se desmarcado
+            if(cardContainer) cardContainer.classList.remove('concluido');
         }
-    }
+    });
 
     const pctKcal = Math.min(Math.round((somas.kcal / metaDiariaGlobal.kcal) * 100), 100);
     const pctPro = Math.min(Math.round((somas.proteinas / metaDiariaGlobal.proteinas) * 100), 100);
@@ -120,7 +103,7 @@ function calculateMacrosEngine() {
     
     const msgAuxiliar = document.getElementById('calories-remainder-msg');
     if (pctKcal >= 100) {
-        msgAuxiliar.innerHTML = "🎉 <strong>100% Batido!</strong> Meta consolidada.";
+        msgAuxiliar.innerHTML = "🎉 <strong>Meta batida!</strong> Cronograma consolidado.";
     } else {
         msgAuxiliar.textContent = `Faltam ${metaDiariaGlobal.kcal - somas.kcal} kcal para fechar o dia.`;
     }
@@ -130,16 +113,18 @@ function calculateMacrosEngine() {
     updateCircularRing('ring-fats', 'pct-fats', pctFat);
 
     document.getElementById('weight-protein').textContent = `${somas.proteinas}g / ${metaDiariaGlobal.proteinas}g`;
-    document.getElementById('weight-carbs').textContent = `${somas.carboidratos}g / ${metaDiariaGlobal.carboidratos}g`;
+    document.getElementById('weight-carbs').textContent = `${somas.carboidratos}g / ${metaDiariaGlobal.carbs || metaDiariaGlobal.carboidratos}g`;
     document.getElementById('weight-fats').textContent = `${somas.gorduras}g / ${metaDiariaGlobal.gorduras}g`;
 }
 
 function updateCircularRing(ringId, textId, percentage) {
-    document.getElementById(ringId).setAttribute("stroke-dasharray", `${percentage}, 100`);
-    document.getElementById(textId).textContent = `${percentage}%`;
+    const ring = document.getElementById(ringId);
+    if(ring) ring.setAttribute("stroke-dasharray", `${percentage}, 100`);
+    const text = document.getElementById(textId);
+    if(text) text.textContent = `${percentage}%`;
 }
 
-// CARROSSEL ROTATIVO DE UPSELL
+// ROTATIVIDADE DO CARROSSEL DE UPSELL
 let slideIndex = 0;
 function rotateMarketingSlides() {
     const slides = document.querySelectorAll('.upsell-slide-card');
@@ -155,10 +140,10 @@ function rotateMarketingSlides() {
     slides[slideIndex - 1].classList.add('active');
     dots[slideIndex - 1].classList.add('active');
 
-    setTimeout(rotateMarketingSlides, 6000);
+    setTimeout(rotateMarketingSlides, 5000);
 }
 
-// GERENCIAMENTO DA GAVETA DE NOTIFICAÇÕES (ESTILO IFOOD)
+// GAVETA DE NOTIFICAÇÕES (ESTILO IFOOD)
 function openIfoodNotificationsHub() {
     const notifyPanel = document.getElementById('ifood-notifications-overlay');
     if (notifyPanel) notifyPanel.classList.remove('hidden');
@@ -169,18 +154,13 @@ function closeIfoodNotificationsHub() {
     if (notifyPanel) notifyPanel.classList.add('hidden');
 }
 
-// DETALHAMENTO DE RECEITAS CORES E ITENS
+// DETALHAMENTO DE RECEITAS
 function openRecipePanel(chaveRefeicao) {
     const modal = document.getElementById('recipe-modal-viewport');
-    const viewConteudo = document.getElementById('recipe-content-loaded-view');
     const dados = dbRefeicoesMetabolicas[chaveRefeicao];
     if (!dados) return;
 
-    viewConteudo.classList.remove('hidden');
-
     document.getElementById('recipe-title-render').textContent = dados.titulo;
-    document.getElementById('recipe-banner-image-bg').style.backgroundImage = `url('${dados.foto}')`;
-
     const boxAlvo = document.getElementById('ingredients-target-box');
     boxAlvo.innerHTML = "";
 
@@ -193,18 +173,18 @@ function openRecipePanel(chaveRefeicao) {
         `;
     });
 
-    modal.classList.remove('hidden');
+    if(modal) modal.classList.remove('hidden');
 }
 
 function closeRecipePanel() {
     document.getElementById('recipe-modal-viewport').classList.add('hidden');
 }
 
-function triggerAIVoiceEngine() {
-    alert("Modulo Nutri+ Premium: Carregando análise metabólica avançada baseada nos seus treinos...");
+function triggerPremiumModule() {
+    alert("Redirecionando para o canal direto da sua área do assinante...");
 }
 
-// EVENTO DE UPLOAD DA FOTO DE PERFIL DE USUÁRIO
+// PROFILE UPLOAD LOGIC
 const fileInput = document.getElementById('avatar-file-input');
 const avatarImg = document.getElementById('user-avatar-target');
 
@@ -223,10 +203,8 @@ if(fileInput) {
 const profileDrawer = document.getElementById('profile-drawer-overlay');
 function toggleProfileSubmenu() { if(profileDrawer) profileDrawer.classList.toggle('hidden'); }
 
-// EXECUÇÃO INICIAL COMPORTAMENTAL
 window.addEventListener('DOMContentLoaded', () => {
     calculateMacrosEngine();
     rotateMarketingSlides();
-    injectHumanizedExpertSubtitle();
     evaluateInterstitialMarketingPopup();
 });
