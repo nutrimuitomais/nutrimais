@@ -1,484 +1,361 @@
-/* CONFIGURAÇÕES GERAIS e CORES */
+/* DESIGN SYSTEM: EDITORIAL PREMIUM & ORGÂNICO */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Plus Jakarta Sans', sans-serif;
 }
 
 :root {
-    --bg-global: #F4F6F5;
-    --primary-color: #233A2E;   /* Verde escuro elegante das referências */
-    --accent-color: #A3C5B5;    /* Verde menta suave */
-    --text-dark: #1C2721;
-    --text-light: #707A75;
-    --white: #FFFFFF;
-    --bg-modal: #FDF9F4;        /* Tom creme sofisticado da imagem 3 */
+    --bg-creme-light: #F9F6F0;    /* Fundo creme elegante e acolhedor (Imagem 3) */
+    --primary-olive: #1C3427;     /* Verde oliva escuro luxuoso */
+    --accent-mint: #A4C2B2;       /* Verde menta suave */
+    --surface-white: #FFFFFF;
+    --text-dark: #121A16;
+    --text-muted: #6E7974;
+    --border-clean: #F0EDE6;
 }
 
 body {
-    background-color: var(--bg-global);
+    background-color: #ECE9E2;
+    color: var(--text-dark);
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    color: var(--text-dark);
 }
 
-/* SIMULADOR DE DISPOSITIVO MÓVEL */
-.mobile-device {
-    width: 375px;
-    height: 812px;
-    background-color: var(--white);
-    border-radius: 40px;
-    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.08);
-    overflow: hidden;
-    position: relative;
-    display: flex;
-    flex-direction: column;
-}
-
-/* BARRA DE STATUS FICTÍCIA */
-.status-bar {
-    height: 40px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0 25px;
-    font-size: 13px;
-    font-weight: 500;
-}
-
-.app-content {
-    flex: 1;
+/* VIEWPORT RESPONSIVO (Sem simulação de hardware ou bateria) */
+.app-viewport {
+    width: 100%;
+    max-width: 410px;
+    height: 840px;
+    background-color: var(--bg-creme-light);
     overflow-y: auto;
-    padding: 20px;
-    padding-bottom: 90px;
     position: relative;
+    padding: 24px 20px 100px;
 }
 
-/* Remover barra de rolagem visual mantendo a função */
-.app-content::-webkit-scrollbar {
+.app-viewport::-webkit-scrollbar {
     display: none;
 }
 
-/* HEADER DO USUÁRIO */
-header {
-    display: flex;
-    align-items: center;
-    margin-bottom: 25px;
+/* TYPOGRAPHY EDITORIAL */
+h1, h2, .promo-info h2 {
+    font-family: 'DM Serif Display', serif;
+    font-weight: 400;
+    color: var(--primary-olive);
 }
 
-.profile-pic {
-    width: 52px;
-    height: 52px;
+/* HEADER STYLE */
+.app-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+}
+
+.header-left h1 { font-size: 26px; }
+.header-left p { font-size: 13px; color: var(--text-muted); }
+
+.notification-trigger {
+    background: var(--surface-white);
+    border: none;
+    width: 44px;
+    height: 44px;
     border-radius: 50%;
-    background-color: #D1DED7;
-    margin-right: 15px;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.02);
 }
 
-.welcome-text h1 {
-    font-size: 19px;
-    font-weight: 600;
-    color: var(--primary-color);
+/* CARD DE RESUMO DO DIA (Inspirado no card superior roxo) */
+.daily-summary-card {
+    background: linear-gradient(135deg, var(--primary-olive) 0%, #2A4D3A; 100%);
+    border-radius: 28px;
+    padding: 24px;
+    color: var(--surface-white);
+    margin-bottom: 28px;
+    box-shadow: 0 12px 30px rgba(28, 52, 39, 0.12);
 }
 
-.welcome-text p {
-    font-size: 13px;
-    color: var(--text-light);
+.daily-summary-card h2 {
+    color: var(--surface-white);
+    font-size: 32px;
+    margin: 6px 0;
 }
 
-/* SEÇÃO META DO DIA */
-.daily-meta {
-    background-color: #FAFBFB;
-    padding: 15px;
-    border-radius: 16px;
-    margin-bottom: 25px;
-}
-
-.meta-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 10px;
-}
-
-.meta-header h2 {
-    font-size: 15px;
-    font-weight: 500;
-}
-
-.meta-value {
+.daily-summary-card .unit {
     font-size: 14px;
-    font-weight: 600;
-    color: var(--primary-color);
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    color: var(--accent-mint);
 }
 
-.progress-bar {
-    height: 10px;
-    background-color: #E6ECE9;
-    border-radius: 5px;
-    overflow: hidden;
-    margin-bottom: 10px;
-}
-
-.progress-fill {
-    height: 100%;
-    background-color: var(--primary-color);
-    border-radius: 5px;
-}
-
-.macronutrients {
-    display: flex;
-    justify-content: space-around;
+.card-label {
     font-size: 12px;
-    color: var(--text-light);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--accent-mint);
 }
 
-/* LISTA DE REFEIÇÕES */
-.today-meals h2 {
-    font-size: 16px;
-    margin-bottom: 15px;
-    color: var(--primary-color);
+.kcal-status {
+    font-size: 12px;
+    opacity: 0.8;
 }
 
-.meal-item {
+.summary-main {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 14px 0;
-    border-bottom: 1px solid #EDF2F0;
 }
 
-.meal-main {
+.mini-chart-box {
+    width: 100px;
+    height: 40px;
+}
+
+/* LISTA HORIZONTAL DE MACROS */
+.section-title {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--primary-olive);
+    margin-bottom: 14px;
+}
+
+.macros-row-scroll {
+    display: flex;
+    gap: 14px;
+    overflow-x: auto;
+    padding-bottom: 8px;
+}
+
+.macros-row-scroll::-webkit-scrollbar { display: none; }
+
+.macro-circle-card {
+    background: var(--surface-white);
+    border-radius: 20px;
+    padding: 14px;
+    min-width: 90px;
+    text-align: center;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.01);
+}
+
+.macro-circle-card span {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--text-muted);
+    display: block;
+    margin-top: 8px;
+}
+
+.circle-progress {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: radial-gradient(closest-side, white 79%, transparent 80% 100%), conic-gradient(var(--color) calc(var(--percent) * 1%), #F0F4F2 0);
     display: flex;
     align-items: center;
-    flex: 1;
-    padding-right: 10px;
-}
-
-.meal-check {
-    width: 18px;
-    height: 18px;
-    margin-right: 12px;
-    accent-color: var(--primary-color);
-    cursor: pointer;
-}
-
-.meal-time {
-    font-size: 14px;
-    font-weight: 500;
-}
-
-.meal-summary {
+    justify-content: center;
     font-size: 11px;
-    color: var(--text-light);
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    max-width: 170px;
+    font-weight: 700;
+    margin: 0 auto;
 }
 
-.view-diet-btn {
-    background: none;
-    border: 1px solid var(--accent-color);
-    color: var(--primary-color);
-    padding: 5px 12px;
+/* TIMELINE E MEAL CARDS (Baseado na organização estruturada das fotos) */
+.meals-timeline { margin-top: 24px; }
+.timeline-header { display: flex; justify-content: space-between; align-items: center; }
+.date-badge { font-size: 12px; color: var(--primary-olive); font-weight: 600; }
+.meals-stack { display: flex; flex-direction: column; gap: 12px; margin-top: 14px; }
+
+.timeline-meal-card {
+    background: var(--surface-white);
+    border-radius: 24px;
+    padding: 16px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.01);
+    border: 1px solid var(--border-clean);
+}
+
+.meal-left { display: flex; align-items: center; gap: 16px; }
+
+/* Custom Checkbox Redondo Premium */
+.custom-check { position: relative; width: 24px; height: 24px; cursor: pointer; }
+.custom-check input { opacity: 0; width: 0; height: 0; }
+.check-box { position: absolute; top: 0; left: 0; width: 24px; height: 24px; background-color: transparent; border: 2px solid #D5DDD8; border-radius: 50%; transition: all 0.2s; }
+.custom-check input:checked ~ .check-box { background-color: var(--primary-olive); border-color: var(--primary-olive); }
+.custom-check input:checked ~ .check-box::after { content: "✓"; position: absolute; color: white; font-size: 12px; top: 2px; left: 6px; }
+
+.meal-brief h4 { font-size: 15px; font-weight: 700; color: var(--text-dark); }
+.meal-brief p { font-size: 12px; color: var(--text-muted); margin-top: 2px; }
+
+.btn-open-diet {
+    background: transparent;
+    border: 1px solid var(--accent-mint);
+    color: var(--primary-olive);
+    padding: 8px 16px;
     border-radius: 20px;
-    font-size: 11px;
-    font-weight: 500;
-    cursor: pointer;
-    transition: all 0.2s ease;
-}
-
-.view-diet-btn:hover {
-    background-color: var(--primary-color);
-    color: var(--white);
-}
-
-/* SEÇÃO DE PUBLICAÇÕES / NOTÍCIAS */
-.publications {
-    margin-top: 25px;
-}
-
-.publications h2 {
-    font-size: 16px;
-    margin-bottom: 10px;
-}
-
-.pub-card {
-    background-color: #EBF2EE;
-    padding: 15px;
-    border-radius: 16px;
-    border-left: 4px solid var(--primary-color);
-}
-
-.pub-card .badge {
-    font-size: 10px;
-    background-color: var(--primary-color);
-    color: var(--white);
-    padding: 2px 8px;
-    border-radius: 10px;
-    font-weight: 500;
-}
-
-.pub-card h3 {
-    font-size: 13px;
-    margin: 5px 0;
+    font-size: 12px;
     font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
 }
 
-.pub-card p {
-    font-size: 11px;
-    color: var(--text-light);
-    line-height: 1.4;
-}
+.btn-open-diet:hover { background: var(--primary-olive); color: var(--surface-white); border-color: var(--primary-olive); }
 
-/* NAVEGAÇÃO INFERIOR FIXA */
-.app-nav {
+/* BARRA DE NAVEGAÇÃO INFERIOR E BOTÃO CENTRAL DE AÇÃO (+) */
+.bottom-navigation {
     position: absolute;
     bottom: 0;
     left: 0;
     right: 0;
-    height: 70px;
-    background-color: var(--white);
-    border-top: 1px solid #EDF2F0;
+    height: 84px;
+    background: var(--surface-white);
+    border-top: 1px solid var(--border-clean);
     display: flex;
     justify-content: space-around;
     align-items: center;
-    padding: 0 10px;
+    padding: 0 12px 14px;
+    z-index: 10;
 }
 
-.nav-item {
+.nav-btn {
     background: none;
     border: none;
-    font-size: 20px;
-    color: #A3AFA8;
-    cursor: pointer;
-}
-
-.nav-item.active {
-    color: var(--primary-color);
-}
-
-.nav-action {
-    position: relative;
-    top: -15px;
-}
-
-.action-btn {
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    background-color: var(--primary-color);
-    color: var(--white);
-    font-size: 24px;
-    border: none;
-    cursor: pointer;
-    box-shadow: 0 4px 12px rgba(35, 58, 46, 0.3);
-}
-
-/* POP-IN PROMOCIONAL INTELIGENTE (Referência Imagem 2) */
-.promotional-popin {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: #E1EAE6; 
-    z-index: 10;
-    padding: 40px 25px;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    transition: all 0.4s ease;
+    align-items: center;
+    cursor: pointer;
+    color: #A3AEA9;
 }
 
-.promotional-popin.hidden {
-    opacity: 0;
-    visibility: hidden;
-    pointer-events: none;
-    transform: scale(1.05);
+.nav-btn.active { color: var(--primary-olive); }
+.nav-icon { font-size: 20px; }
+.nav-label { font-size: 10px; font-weight: 600; margin-top: 4px; }
+
+.nav-center-action { position: relative; top: -18px; }
+.floating-add-btn {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: var(--primary-olive);
+    color: var(--surface-white);
+    font-size: 28px;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 8px 20px rgba(28, 52, 39, 0.3);
 }
 
-.close-promo {
+/* POP-IN PROMOCIONAL DE CONVERSÃO (Capa de Revista / Imagem 2) */
+.premium-promo-card {
+    background-color: #E3ECE8;
+    border-radius: 28px;
+    padding: 28px;
+    margin-bottom: 24px;
+    position: relative;
+    overflow: hidden;
+}
+
+.premium-promo-card.hidden { display: none; }
+
+.close-promo-x {
     position: absolute;
-    top: 20px;
-    right: 20px;
-    background: rgba(255, 255, 255, 0.6);
+    top: 16px;
+    right: 16px;
+    background: rgba(255,255,255,0.5);
     border: none;
-    width: 28px;
-    height: 28px;
+    width: 26px;
+    height: 26px;
     border-radius: 50%;
-    font-size: 16px;
     cursor: pointer;
 }
 
-.promo-text-layer h2 {
-    font-size: 24px;
-    color: var(--primary-color);
-    font-weight: 600;
-    line-height: 1.2;
-    margin-top: 20px;
-}
+.promo-split { display: flex; justify-content: space-between; align-items: center; }
+.promo-info h2 { font-size: 24px; line-height: 1.1; margin-bottom: 8px; }
+.promo-info p { font-size: 12px; color: var(--text-muted); max-width: 180px; line-height: 1.4; }
 
-.promo-text-layer p {
-    font-size: 12px;
-    color: var(--text-light);
-    margin-top: 8px;
-}
-
-.promo-image-placeholder {
-    flex: 1;
-    background: radial-gradient(circle, rgba(163,197,181,0.4) 0%, rgba(225,234,230,0) 70%);
-    margin: 20px 0;
-}
-
-.promo-cta-btn {
-    width: 54px;
-    height: 54px;
-    background-color: var(--primary-color);
-    color: var(--white);
+.floating-dish-graphic {
+    width: 110px;
+    height: 110px;
+    background: var(--accent-mint);
     border-radius: 50%;
-    border: none;
-    align-self: flex-end;
-    font-size: 18px;
-    cursor: pointer;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.05);
 }
 
-/* MODAL DE DIETA SOBREPOSTO (Referência Imagem 3) */
-.diet-modal {
+.promo-arrow-btn {
+    position: absolute;
+    bottom: 24px;
+    right: 24px;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: var(--primary-olive);
+    color: var(--surface-white);
+    border: none;
+    cursor: pointer;
+}
+
+/* MODAL DE DIETA COM ESTILO DE FUNDO CREME NOBRE (Imagem 3) */
+.meal-details-modal {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    z-index: 20;
-    transition: all 0.3s ease-in-out;
+    background: rgba(0,0,0,0.15);
+    z-index: 100;
+    display: flex;
+    align-items: flex-end;
 }
 
-.diet-modal.hidden {
-    opacity: 0;
-    visibility: hidden;
-    pointer-events: none;
-}
+.meal-details-modal.hidden { display: none; }
 
-.modal-content {
-    position: absolute;
-    bottom: 0;
+.modal-sheet {
+    background-color: var(--bg-creme-light);
     width: 100%;
     height: 88%;
-    background-color: var(--bg-modal);
-    border-top-left-radius: 32px;
-    border-top-right-radius: 32px;
-    padding: 24px;
+    border-top-left-radius: 36px;
+    border-top-right-radius: 36px;
+    padding: 28px;
     display: flex;
     flex-direction: column;
-    box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.05);
-    transform: translateY(0);
-    transition: transform 0.3s ease-in-out;
 }
 
-.diet-modal.hidden .modal-content {
-    transform: translateY(100%);
-}
+.modal-sheet-header { display: flex; align-items: center; gap: 16px; margin-bottom: 24px; }
+.btn-back-modal { background: var(--surface-white); border: none; width: 40px; height: 40px; border-radius: 50%; font-size: 18px; cursor: pointer; display: flex; align-items: center; justify-content: center; box-shadow: 0 2px 8px rgba(0,0,0,0.02); }
+#diet-modal-title { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 19px; font-weight: 700; color: var(--primary-olive); }
 
-.modal-header {
-    display: flex;
-    align-items: center;
-    margin-bottom: 20px;
-}
+.modal-sheet-scroll { flex: 1; overflow-y: auto; }
+.modal-sheet-scroll::-webkit-scrollbar { display: none; }
 
-.close-modal {
-    background: var(--white);
-    border: none;
-    width: 32px;
-    height: 32px;
-    border-radius: 50%;
-    font-size: 14px;
-    cursor: pointer;
-    margin-right: 15px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-}
+/* Injetando as barras verticais sutis de macros da Imagem 3 */
+.nutrition-pill-list { display: flex; justify-content: space-between; margin-bottom: 28px; }
+.nutri-row-item { background: var(--surface-white); width: 31%; padding: 12px; border-radius: 18px; }
+.nutri-tag { display: flex; flex-direction: column; position: relative; padding-left: 12px; }
+.indicator-bar { position: absolute; left: 0; top: 4px; bottom: 4px; width: 3px; border-radius: 2px; }
 
-.modal-header h1 {
-    font-size: 18px;
-    font-weight: 600;
-    color: var(--primary-color);
-}
+.calories .indicator-bar { background-color: #D68A27; }
+.protein .indicator-bar { background-color: #3E8B5E; }
+.carbs .indicator-bar { background-color: #437AA8; }
 
-.nutrition-overview {
+.nutri-tag span { font-size: 18px; font-weight: 700; color: var(--text-dark); }
+.nutri-tag p { font-size: 11px; color: var(--text-muted); }
+
+/* Seção de Ingredientes */
+.ingredients-card-section h3 { font-size: 16px; font-weight: 700; color: var(--primary-olive); }
+.sub-ing-count { font-size: 12px; color: var(--text-muted); margin-bottom: 16px; }
+.ingredients-render-stack { display: flex; flex-direction: column; gap: 10px; }
+
+.premium-ingredient-row {
+    background: var(--surface-white);
+    padding: 16px;
+    border-radius: 20px;
     display: flex;
     justify-content: space-between;
-    margin-bottom: 25px;
-}
-
-.nut-card {
-    background-color: var(--white);
-    width: 31%;
-    padding: 12px;
-    border-radius: 16px;
-    text-align: center;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.02);
-}
-
-.nut-card span {
-    display: block;
-    font-size: 18px;
-    font-weight: 600;
-}
-
-.nut-card .label {
-    font-size: 10px;
-    color: var(--text-light);
-}
-
-.nut-card.cal span { color: #D9822B; }
-.nut-card.pro span { color: #3B7A57; }
-.nut-card.carb span { color: #4A7BB0; }
-
-.ingredients-section h3 {
-    font-size: 14px;
-    margin-bottom: 12px;
-    color: var(--primary-color);
-}
-
-.ing-item {
-    display: flex;
     align-items: center;
-    background-color: var(--white);
-    padding: 12px;
-    border-radius: 16px;
-    margin-bottom: 10px;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.01);
+    border: 1px solid #FAF7F0;
 }
 
-.ing-icon {
-    font-size: 20px;
-    margin-right: 12px;
-}
-
-.ing-details {
-    flex: 1;
-}
-
-.ing-details h3 {
-    font-size: 12px;
-    font-weight: 600;
-    margin-bottom: 1px;
-}
-
-.ing-details p {
-    font-size: 10px;
-    color: var(--text-light);
-}
-
-.ing-meta {
-    font-size: 12px;
-    font-weight: 600;
-    color: var(--primary-color);
-}
+.ing-name-details h5 { font-size: 13px; font-weight: 700; color: var(--text-dark); }
+.ing-name-details p { font-size: 11px; color: var(--text-muted); margin-top: 2px; }
+.ing-portion { font-size: 13px; font-weight: 700; color: var(--primary-olive); }
