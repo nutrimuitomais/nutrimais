@@ -1,12 +1,30 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
 
 :root{
-    --bg:#f5f7f5;
+
+    --bg:#f4f7fb;
+    --bg-secondary:#eef3f8;
+
     --card:#ffffff;
+    --card-border:#e6edf5;
+
     --primary:#22c55e;
     --primary-dark:#16a34a;
-    --text:#1f2937;
+    --primary-light:#86efac;
+
+    --text:#111827;
     --text-secondary:#6b7280;
+
+    --shadow:
+    0 10px 30px rgba(
+        15,
+        23,
+        42,
+        .06
+    );
+
+    --radius:28px;
+
 }
 
 *{
@@ -20,32 +38,14 @@ body{
     min-height:100vh;
     background:
     linear-gradient(
-        -45deg,
-        #f0fff4,
-        #dcfce7,
-        #bbf7d0,
-        #ecfdf5
+        180deg,
+        #f8fafc 0%,
+        #eef5fb 100%
     );
-    background-size:
-    400% 400%;
-    animation:
-    gradientMove 15s ease infinite;
-}
 
-@keyframes gradientMove{
+    color:var(--text);
 
-    0%{
-        background-position:0% 50%;
-    }
-
-    50%{
-        background-position:100% 50%;
-    }
-
-    100%{
-        background-position:0% 50%;
-    }
-
+    overflow-x:hidden;
 }
 
 a{
@@ -53,1358 +53,318 @@ a{
 }
 
 button{
-    cursor:pointer;
     border:none;
+    cursor:pointer;
 }
 
 .dashboard-container{
-    display:flex;
+
+    width:100%;
     min-height:100vh;
 
 }
 
-/* =====================
-SIDEBAR
-===================== */
-
-.sidebar{
-    width:280px;
-    background:#ffffff;
-    border-right:1px solid #e5e7eb;
-    padding:25px;
-    position:sticky;
-    top:0;
-    height:100vh;
-    overflow-y:auto;
-}
-
-.logo{
-    margin-bottom:35px;
-}
-
-.logo img{
-    width:180px;
-    display:block;
-}
-
-.sidebar nav{
-
-    display:flex;
-    flex-direction:column;
-    gap:3px;
-
-}
-
-.sidebar nav a{
-    color:var(--text);
-    padding:10px 12px;
-    border-radius:12px;
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    transition:.2s;
-}
-
-.sidebar nav a:hover{
-    background:#f0fdf4;
-    color:var(--primary-dark);
-}
-
-.sidebar nav a i{
-    margin-right:10px;
-
-}
-
-/* =====================
-MAX
-===================== */
-
-.max-link span{
-
-    background:
-    linear-gradient(
-        120deg,
-        #cfd7df,
-        #ffffff
-    );
-
-    color:#333;
-    font-size:11px;
-    font-weight:700;
-    padding:5px 10px;
-    border-radius:999px;
-}
-
-/* =====================
-SUPER
-===================== */
-
-.super-link span{
-    background:
-    linear-gradient(
-        120deg,
-        #d39c24,
-        #ffd978
-    );
-
-    color:#111;
-    font-size:11px;
-    font-weight:700;
-    padding:5px 10px;
-    border-radius:999px;
-}
-
-/* =====================
-MAIN
-===================== */
-
 .main-content{
-    flex:1;
-    padding:25px;
-    background:transparent;
+
+    max-width:1400px;
+
+    margin:auto;
+
+    padding:30px;
+
 }
 
-/* =====================
-TOPBAR
-===================== */
+img{
+    max-width:100%;
+    display:block;
+}
 
 .topbar{
+
     display:flex;
+
     justify-content:space-between;
+
     align-items:flex-start;
-    margin-bottom:20px;
-    padding:0 5px;
-}
 
-.topbar h1{
-    font-size:26px;
-    font-weight:700;
-    color:var(--text);
-}
+    margin-bottom:40px;
 
-.topbar p{
-    color:var(--text-secondary);
-    font-size:14px;
-    margin-top:4px;
-}
-
-/* =====================
-PERFIL
-===================== */
-
-.profile-box{
-    position:relative;
-}
-
-.avatar{
-    width:52px;
-    height:52px;
-    border-radius:50%;
-    object-fit:cover;
-    cursor:pointer;
-    border:2px solid #e5e7eb;
-}
-
-.profile-menu{
-    display:none;
-    position:absolute;
-    top:65px;
-    right:0;
-    width:300px;
-    background:#ffffff;
-    border:1px solid #e5e7eb;
-    border-radius:14px;
-    overflow:hidden;
-    z-index:999;
-    box-shadow:0 8px 24px rgba(0,0,0,.08);
-}
-
-.profile-menu.active{
-    display:block;
-}
-
-.profile-menu a{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    color:var(--text);
-    padding:14px 18px;
-    border-bottom:1px solid #f1f5f9;
-}
-
-.profile-menu a:hover{
-    background:#f8fafc;
-}
-
-.profile-menu hr{
-    border:none;
-    border-top:1px solid #e5e7eb;
-}
-
-/* ===== CARDS PREMIUM ===== */
-
-.premium-card{
-    display:flex;
-    gap:20px;
-    align-items:center;
-    background:var(--card);
-    border:1px solid #e5e7eb;
-    border-radius:24px;
-    padding:20px;
-    margin-bottom:20px;
-    box-shadow:0 10px 30px rgba(0,0,0,.08);
-}
-
-.premium-card img{
-    width:220px;
-    height:160px;
-    object-fit:cover;
-    border-radius:18px;
-}
-
-.premium-card h3{
-    font-size:1.3rem;
-    margin-bottom:10px;
-}
-
-.old-price{
-    text-decoration:line-through;
-    color:#888;
-    font-size:.9rem;
-}
-
-.premium-card h2{
-    color:var(--primary);
-    margin:5px 0 15px;
-}
-
-.premium-card ul{
-    list-style:none;
-    margin-bottom:15px;
-}
-
-.premium-card li{
-    margin-bottom:8px;
-}
-
-.btn-premium{
-    border:none;
-    cursor:pointer;
-    border-radius:14px;
-    padding:12px 20px;
-    font-weight:700;
-    color:white;
-    background:var(--primary);
-    transition:.3s;
-}
-
-.btn-premium:hover{
-    background:var(--primary-dark);
-}
-
-/* ===== EVOLUÇÃO ===== */
-
-.progresso-card{
-    padding:18px;
-    border-radius:20px;
-}
-
-.progresso-card p{
-    margin:8px 0;
-}
-
-.progresso-card .progress{
-    margin:15px 0;
-}
-
-/* ===== RECEITAS ===== */
-
-.receita-card{
-    text-align:center;
-}
-
-.receita-card button{
-    margin-top:15px;
-}
-
-.modal{
-    display:none;
-    position:fixed;
-    inset:0;
-    background:rgba(0,0,0,.7);
-    z-index:999;
-    justify-content:center;
-    align-items:center;
-}
-
-.modal-content{
-    width:90%;
-    max-width:600px;
-    background:var(--card);
-    padding:30px;
-    border-radius:20px;
-    max-height:85vh;
-    overflow:auto;
-}
-
-.modal-content h2{
-    margin-bottom:15px;
-}
-
-.modal-content button{
-    margin-top:20px;
-}
-
-.modal-content hr{
-    border-top:1px slid #e5e7eb;
-}
-
-
-/* ===== BENEFÍCIOS PREMIUM ===== */
-
-.beneficios{
-    display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:20px;
-    margin-top:25px;
-}
-
-.beneficio-card{
-    background:var(--card);
-    border-radius:22px;
-    overflow:hidden;
-    text-align:center;
-    border:1px solid #e5e7eb;
-}
-
-.beneficio-card img{
-    width:100%;
-    height:180px;
-    object-fit:cover;
-}
-
-.beneficio-card h4{
-    padding:15px;
-}
-
-.beneficio-card button{
-    margin-bottom:20px;
-}
-
-/* ========= RECEITAS ========= */
-
-.receita-card{
-    background:#ffffff;
-    border:1px solid #e5e7eb;
-}
-
-.receita-card h3{
-    margin-bottom:15px;
-}
-
-.receita-card p{
-    margin-bottom:8px;
-    color:var(--text-secondary);
-}
-
-/* ========= MODAL RECEITA ========= */
-
-.modal{
-    display:none;
-    position:fixed;
-    inset:0;
-    background:rgba(0,0,0,.75);
-    justify-content:center;
-    align-items:center;
-    z-index:9999;
-}
-
-.modal-content{
-    width:90%;
-    max-width:650px;
-    background:#ffffff;
-    border-radius:24px;
-    padding:30px;
-    border:1px solid #e5e7eb;
-    box-shadow:0 20px 60px rgba(0,0,0,.4);
-}
-
-.modal-content h2{
-    margin-bottom:15px;
-    color:var(--primary);
-}
-
-.modal-content h4{
-    margin-top:20px;
-    margin-bottom:10px;
-}
-
-.modal-content p{
-    margin-bottom:8px;
-    color:var(--text-secondary);
-}
-
-.modal-content hr{
-    border:none;
-    border-top:1px solid rgba(255,255,255,.08);
-    margin:20px 0;
-}
-
-.modal-content button{
-    margin-top:20px;
-    width:100%;
-    background:var(--primary);
-    color:white;
-    font-weight:700;
-    border:none;
-    border-radius:14px;
-    padding:14px;
-    cursor:pointer;
-}
-
-/* ========= NEWS PREMIUM ========= */
-
-.news-grid{
-    display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:20px;
-    margin-top:25px;
-}
-
-.news-card{
-    background:#ffffff;
-    border-radius:24px;
-    overflow:hidden;
-    border:1px solid #e5e7eb;
-    transition:.3s;
-}
-
-.news-card:hover{
-    transform:translateY(-5px);
-    border-color:var(--primary);
-}
-
-.news-card img{
-    width:100%;
-    height:180px;
-    object-fit:cover;
-}
-
-.news-card h4{
-    padding:15px 15px 5px;
-}
-
-.news-card p{
-    padding:0 15px;
-    color:var(--text-secondary);
-}
-
-.news-card button{
-    margin:15px;
-    width:calc(100% - 30px);
-    padding:12px;
-    border:none;
-    border-radius:12px;
-    background:var(--primary);
-    color:white;
-    font-weight:700;
-    cursor:pointer;
-}
-
-/* ========= BADGES ========= */
-
-.max-badge{
-    display:inline-block;
-    background:linear-gradient(
-        135deg,
-        #dfe4ea,
-        #ffffff
-    );
-    color:#222;
-    padding:6px 12px;
-    border-radius:999px;
-    font-size:12px;
-    font-weight:700;
-    margin-bottom:15px;
-}
-
-.super-badge{
-    display:inline-block;
-    margin-top:15px;
-    background:linear-gradient(
-        135deg,
-        #d4a62f,
-        #ffd978
-    );
-    color:#111;
-    padding:6px 14px;
-    border-radius:999px;
-    font-size:12px;
-    font-weight:700;
-}
-
-/* ========= SUPPORT ========= */
-
-.support-card button{
-    margin-top:15px;
-    width:100%;
-    background:var(--primary);
-    color:white;
-    border:none;
-    border-radius:12px;
-    padding:14px;
-    font-weight:700;
-    cursor:pointer;
-}
-
-/* =================================
-RESPONSIVIDADE TABLET
-================================= */
-
-@media(max-width:1200px){
-    .dashboard-grid{
-        grid-template-columns:repeat(2,1fr);
-    }
-
-    .beneficios{
-        grid-template-columns:repeat(2,1fr);
-    }
-
-    .news-grid{
-        grid-template-columns:repeat(2,1fr);
-    }
-
-    .premium-card{
-        flex-direction:column;
-        text-align:center;
-    }
-
-    .premium-card img{
-        width:100%;
-        height:250px;
-    }
-
-}
-
-/* =================================
-RESPONSIVIDADE CELULAR
-================================= */
-
-@media(max-width:768px){
-    .dashboard-container{
-        flex-direction:column;
-    }
-
-    .sidebar{
-        display:none;
-    }
-
-    .main-content{
-        padding:15px;
-        padding-bottom:90px;
-    }
-
-    .topbar{
-        display:flex;
-        flex-direction:row;
-        justify-content:space-between;
-        align-items:flex-start;
-        gap:12px;
-    }
-
-    .header-left{
-        flex:1;
-        min-width:0;
-    }
-
-    .profile-box{
-        flex-shrink:0;
-    }
-
-    .avatar{
-        width:52px;
-        height:52px;
-    }
-}
-
-    .dashboard-grid{
-        grid-template-columns:1fr;
-    }
-
-    .beneficios{
-        grid-template-columns:1fr;
-    }
-
-    .news-grid{
-        grid-template-columns:1fr;
-    }
-
-    .premium-card{
-        flex-direction:column;
-        text-align:center;
-    }
-
-    .premium-card img{
-        width:100%;
-        height:220px;
-    }
-
-    .profile-menu{
-        width:100%;
-        right:0;
-    }
-
-}
-
-/* =================================
-MENU MOBILE FIXO
-================================= */
-
-.mobile-nav{
-    display:none;
-}
-
-@media(max-width:768px){
-    .mobile-nav{
-        display:flex;
-        position:fixed;
-        bottom:0;
-        left:0;
-        width:100%;
-        height:70px;
-        background:#ffffff;
-        border-top: 1px solid #e5e7eb;
-        justify-content:space-around;
-        align-items:center;
-        z-index:9999;
-    }
-
-    .mobile-nav a{
-        color:#ffffff;
-        display:flex;
-        flex-direction:column;
-        align-items:center;
-        font-size:12px;
-        gap:4px;
-    }
-
-    .mobile-nav i{
-        font-size:18px;
-        color:var(--primary);
-    }
-}
-
-/* =================================
-SCROLLBAR PREMIUM
-================================= */
-
-::-webkit-scrollbar{
-    width:10px;
-}
-
-::-webkit-scrollbar-track{
-    background:#f1f5f9;
-}
-
-::-webkit-scrollbar-thumb{
-    background:var(--primary);
-    border-radius:999px;
-}
-
-::-webkit-scrollbar-thumb:hover{
-    background:var(--primary-dark);
-}
-
-.noticias-rotativas{
-    margin:25px 0;
-    padding:25px;
-    border-radius:20px;
-    background:#ffffff;
-    border:1px solid #e5e7eb;
-    text-align:center;
-}
-
-.noticias-rotativas h3{
-    color:var(--primary);
-    margin-bottom:12px;
-    font-size:1.3rem;
-}
-
-.noticias-rotativas p{
-    color:var(--text-secondary);
-}
-
-#tituloNoticia,
-#textoNoticia{
-    transition:.4s;
-}
-
-.somente-max,
-.somente-super{
-    margin-bottom:20px;
-    padding:25px;
-    border-radius:24px;
-    background:var(--card);
-    border:1px solid #e5e7eb;
-}
-
-.somente-max h3,
-.somente-super h3{
-    margin:15px 0 10px;
-}
-
-.somente-max p,
-.somente-super p{
-    color:var(--text-secondary);
-    margin-bottom:15px;
-}
-
-/* =====================
-HERO CARD
-===================== */
-.hero-card{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    gap:20px;
-    padding:30px;
-    margin-bottom:25px;
-    border-radius:24px;
-    background:#ffffff;
-    border:1px solid #e5e7eb;
-}
-
-.hero-card h2{
-    font-size:2rem;
-    margin-bottom:10px;
-}
-
-.hero-card p{
-    color:var(--text-secondary);
-}
-
-/* =====================
-GRID DASHBOARD
-===================== */
-.dashboard-grid{
-    display:grid;
-    grid-template-columns:repeat(4,1fr);
-    gap:20px;
-    margin-bottom:25px;
-}
-
-/* =====================
-CARD PADRÃO
-===================== */
-.card{
-    background:#ffffff;
-    border:1px solid #e5e7eb;
-    border-radius:24px;
-    padding:24px;
-    box-shadow:0 4px 12px rgba(0,0,0,.04);
-}
-
-.card h3{
-    margin-bottom:15px;
-}
-
-.card span{
-    color:var(--text-secondary);
-}
-
-/* =====================
-NÚMEROS
-===================== */
-.big-number{
-    font-size:2rem;
-    font-weight:900;
-    color:var(--primary);
-    margin-bottom:10px;
-}
-
-/* =====================
-BARRAS
-===================== */
-.progress{
-    width:100%;
-    height:12px;
-    background:#e5e7eb;
-    border-radius:999px;
-    overflow:hidden;
-    margin-bottom:10px;
-}
-
-.progress div{
-    height:100%;
-    background: var(--primary);
-    border-radius:999px;
-}
-
-/* =====================
-EVOLUÇÃO PESO
-===================== */
-.weight-info{
-    display:flex;
-    justify-content:space-between;
-    margin:20px 0;
-}
-
-.weight-info div{
-    text-align:center;
-}
-
-.weight-info strong{
-    display:block;
-    font-size:1.5rem;
-    color:var(--primary);
-}
-
-.weight-info span{
-    color:var(--text-secondary);
-}
-
-/* =====================
-REFEIÇÕES
-===================== */
-.meal{
-    margin-top:20px;
-    padding:18px;
-    border-radius:18px;
-    background:#f8fafc;
-}
-
-.meal h4{
-    margin-bottom:10px;
-    color:var(--primary);
-}
-
-.meal p{
-    margin-bottom:6px;
-    color:var(--text);
-}
-
-/* =====================
-RECEITAS
-===================== */
-.receitas-grid{
-    display:grid;
-    grid-template-columns:repeat(2,1fr);
-    gap:20px;
-    margin-top:25px;
-    margin-bottom:25px;
-}
-
-.receita-card{
-    background:#ffffff;
-    border:1px solid #e5e7eb);
-    border-radius:24px;
-    padding:24px;
-}
-
-.receita-card h3{
-    margin-bottom:15px;
-}
-
-.receita-card p{
-    margin-bottom:8px;
-}
-
-.receita-card button{
-    margin-top:15px;
-    width:100%;
-    padding:12px;
-    border:none;
-    border-radius:12px;
-    background:var(--primary);
-    color:#ffffff;
-    font-weight:700;
-}
-
-/* =====================
-RESPONSIVO
-===================== */
-@media(max-width:768px){
-    .hero-card{
-        flex-direction:column;
-    }
-
-    .dashboard-grid{
-        grid-template-columns:1fr;
-    }
-
-    .receitas-grid{
-        grid-template-columns:1fr;
-    }
-
-    .weight-info{
-        flex-direction:column;
-        gap:15px;
-    }
-}
-
-.logo img{
-    width:180px;
-    height:auto;
-    display:block;
-}
-
-.hero-status{
-    background:var(--primary);
-    color:#000;
-    font-weight:700;
-    padding:12px 20px;
-    border-radius:999px;
-}
-
-.card label{
-    display:flex;
-    gap:10px;
-    margin:12px 0;
-    cursor:pointer;
-}
-
-.dieta-card h3{
-    margin-bottom:20px;
-}
-
-.meal-check{
-    margin-bottom:18px;
-    padding:16px;
-    border:1px solid #e5e7eb;
-    border-radius:14px;
-    background:#f9fafb;
-}
-
-.meal-check label{
-    display:flex;
-    align-items:center;
-    gap:10px;
-    font-weight:600;
-    color:#1f2937;
-    cursor:pointer;
-}
-
-.meal-check input[type="checkbox"]{
-    width:18px;
-    height:18px;
-    accent-color:#22c55e;
-}
-
-.meal-foods{
-    margin-top:10px;
-    margin-left:28px;
-    color:#6b7280;
-    line-height:1.8;
-    font-size:14px;
-}
-
-.sidebar nav{
-    gap:4px;
-}
-
-.sidebar nav a{
-    padding:10px 12px;
-    font-size:14px;
-}
-
-.topbar{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    margin-bottom:25px;
 }
 
 .header-left{
+
     display:flex;
+
     flex-direction:column;
-    align-items:flex-start;
-    gap:5px;
+
+    gap:10px;
+
+}
+
+.header-left h1{
+
+    font-size:42px;
+
+    font-weight:900;
+
+    line-height:1;
+
+}
+
+.header-left p{
+
+    color:var(--text-secondary);
+
+    font-size:15px;
+
 }
 
 .plano-status{
 
     display:inline-flex;
+
     flex-direction:column;
 
     width:max-content;
 
-    padding:8px 14px;
+    padding:10px 16px;
 
-    border-radius:14px;
+    border-radius:18px;
 
-    margin-top:8px;
+    background:white;
 
-    border:1px solid rgba(255,255,255,.3);
+    border:1px solid var(--card-border);
 
-    backdrop-filter:blur(20px);
+    box-shadow:var(--shadow);
 
 }
 
 .plano-status span{
-    font-size:12px;
+
     font-weight:800;
+
+    font-size:13px;
+
 }
 
 .plano-status small{
-    font-size:10px;
-    opacity:.7;
-}
 
-.plano-digital{
-
-    background:#ffffff;
-
-    color:#1f2937;
+    color:var(--text-secondary);
 
 }
 
-.plano-max{
-
-    background:
-    linear-gradient(
-        135deg,
-        #dfe4ea,
-        #ffffff
-    );
-
-    color:#111;
-
-}
-
-.plano-super{
-
-    background:
-    linear-gradient(
-        135deg,
-        #d4a62f,
-        #ffd978
-    );
-
-    color:#111;
-
-}
-
-.resumo-nutricional{
-    display:grid;
-    grid-template-columns:repeat(4,1fr);
-    gap:20px;
-    margin-bottom:20px;
-}
-
-.resumo-item{
-    display:flex;
-    flex-direction:column;
-    gap:10px;
-}
-
-.resumo-item span{
-    color:#6b7280;
-}
-
-.resumo-item strong{
-    font-size:20px;
-    color:#1f2937;
-}
-
-.card-header{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    margin-bottom:20px;
-}
-
-.receita-dia{
-    margin-top:20px;
-}
-
-    .plan-features{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:20px;
-    margin:25px 0;
-}
-
-.service-tag{
-    display:inline-block;
-    font-size:12px;
-    font-weight:600;
-    color:#6b7280;
-    margin-bottom:10px;
-}
-
-.service-description{
-    margin:15px 0;
-    color:#6b7280;
-    line-height:1.6;
-}
-
-.section-header{
-    margin-bottom:20px;
-}
-
-.recipe-macros{
-    display:flex;
-    gap:12px;
-    margin:15px 0;
-    color:#6b7280;
-}
-
-@media(max-width:768px){
-    .resumo-nutricional{
-        grid-template-columns:1fr 1fr;
-    }
-}
-
-.ia-card{
-    text-align:center;
-}
-
-.ia-card .ia-core{
-    margin:0 auto 20px;
-}
-
-/* =================================
-TEMA ESCURO
-================================= */
-
-body.light{
-    background:#0f172a;
-    color:#f8fafc;
-}
-
-body.light .main-content{
-    background:#0f172a;
-}
-
-body.light .sidebar{
-    background:#111827;
-    border-right:1px solid #1f2937;
-}
-
-body.light .sidebar nav a{
-    color:#e5e7eb;
-}
-
-body.light .sidebar nav a:hover{
-    background:#1f2937;
-}
-
-body.light .card,
-body.light .premium-card,
-body.light .receita-card,
-body.light .news-card,
-body.light .noticias-rotativas,
-body.light .plano-card,
-body.light .somente-max,
-body.light .somente-super,
-body.light .modal-content{
-    background:#111827;
-    border-color:#1f2937;
-}
-
-body.light h1,
-body.light h2,
-body.light h3,
-body.light h4,
-body.light strong{
-    color:#f8fafc;
-}
-
-body.light p,
-body.light span,
-body.light small{
-    color:#cbd5e1;
-}
-
-body.light .hero-card{
-    background:#111827;
-    border-color:#1f2937;
-}
-
-body.light .meal{
-    background:#1f2937;
-}
-
-body.light .meal-check{
-    background:#1f2937;
-    border-color:#334155;
-}
-
-body.light .meal-check label{
-    color:#f8fafc;
-}
-
-body.light .meal-foods{
-    color:#cbd5e1;
-}
-
-body.light .progress{
-    background:#334155;
-}
-
-body.light .profile-menu{
-    background:#111827;
-    border-color:#1f2937;
-}
-
-body.light .profile-menu a{
-    color:#f8fafc;
-}
-
-body.light .profile-menu a:hover{
-    background:#1f2937;
-}
-
-body.light .mobile-nav{
-    background:#111827;
-    border-top:1px solid #1f2937;
-}
-
-body.light .topbar p,
-body.light .header-info p{
-    color:#cbd5e1;
-}
-
-.premium-card,
-.news-card,
-.receita-card,
-.somente-max,
-.somente-super,
-.support-card{
+.profile-box{
 
     position:relative;
-    overflow:hidden;
 
-    background:linear-gradient(
-        135deg,
-        #22c55e,
-        #16a34a,
-        #22c55e
-    );
+}
 
-    background-size:300% 300%;
+.avatar{
 
-    animation:cardMove 8s ease infinite;
+    width:82px;
 
-    color:#ffffff;
+    height:82px;
 
-    border:none;
+    border-radius:50%;
+
+    object-fit:cover;
+
+    cursor:pointer;
+
+    border:4px solid white;
 
     box-shadow:
-    0 15px 40px rgba(
-        34,
-        197,
-        94,
-        .25
+    0 15px 35px rgba(
+        0,
+        0,
+        0,
+        .12
     );
 
 }
 
-@keyframes cardMove{
+.profile-menu{
 
-    0%{
-        background-position:0% 50%;
-    }
+    position:absolute;
 
-    50%{
-        background-position:100% 50%;
-    }
+    top:95px;
 
-    100%{
-        background-position:0% 50%;
-    }
+    right:0;
 
-}
+    width:340px;
 
-.premium-card h2,
-.premium-card h3,
-.news-card h4,
-.receita-card h3,
-.somente-max h3,
-.somente-super h3,
-.support-card h3{
+    background:white;
 
-    color:#ffffff;
+    border-radius:28px;
 
-}
+    overflow:hidden;
 
-.premium-card p,
-.news-card p,
-.receita-card p,
-.somente-max p,
-.somente-super p,
-.support-card p{
+    border:1px solid #edf2f7;
 
-    color:rgba(
-        255,
-        255,
-        255,
-        .9
+    box-shadow:
+    0 30px 60px rgba(
+        0,
+        0,
+        0,
+        .08
     );
 
-}
+    display:none;
 
-.btn-premium{
-
-    background:#ffffff;
-    color:#16a34a;
-
-    font-weight:800;
-
-    border-radius:14px;
-
-    transition:.3s;
+    z-index:999;
 
 }
 
-.btn-premium:hover{
+.profile-menu.active{
 
-    transform:translateY(-2px);
+    display:block;
+
+}
+
+.profile-menu a{
+
+    display:block;
+
+    padding:16px 20px;
+
+    color:#111827;
+
+    font-weight:600;
+
+    border-bottom:1px solid #f1f5f9;
+
+}
+
+.profile-menu a:hover{
 
     background:#f8fafc;
 
 }
 
-.resumo-dashboard{
+/* =================================
+HERO PREMIUM
+================================= */
+
+.hero-section{
 
     display:flex;
-    align-items:center;
+
     justify-content:space-between;
 
-    gap:25px;
+    align-items:center;
 
-    margin-bottom:25px;
-    padding:10px 0;
+    gap:40px;
+
+    padding:45px;
+
+    margin-bottom:35px;
+
+    border-radius:36px;
+
+    background:
+    linear-gradient(
+        135deg,
+        #ffffff,
+        #f8fafc
+    );
+
+    border:1px solid #e6edf5;
+
+    box-shadow:
+    0 25px 60px rgba(
+        15,
+        23,
+        42,
+        .08
+    );
 
 }
 
-/* =================================
-BARRA PREMIUM
-================================= */
+.hero-content{
 
-.caloria-circle{
+    flex:1;
 
-    width:130px;
-    height:130px;
+}
 
-    border-radius:50%;
+.hero-tag{
+
+    display:inline-flex;
+
+    padding:10px 16px;
+
+    border-radius:999px;
 
     background:
-    conic-gradient(
-        from 180deg,
-        #86efac,
-        #4ade80,
-        #22c55e,
-        #16a34a 65%,
-        rgba(255,255,255,.2) 65%
+    rgba(
+        34,
+        197,
+        94,
+        .12
     );
 
+    color:#16a34a;
+
+    font-size:12px;
+
+    font-weight:800;
+
+    margin-bottom:20px;
+
+}
+
+.hero-content h2{
+
+    font-size:48px;
+
+    font-weight:900;
+
+    line-height:1.1;
+
+    margin-bottom:15px;
+
+}
+
+.hero-content p{
+
+    max-width:520px;
+
+    color:#6b7280;
+
+    font-size:16px;
+
+    line-height:1.8;
+
+    margin-bottom:30px;
+
+}
+
+.hero-buttons{
+
     display:flex;
-    justify-content:center;
-    align-items:center;
+
+    gap:15px;
+
+}
+
+.btn-primary{
+
+    background:
+    linear-gradient(
+        135deg,
+        #22c55e,
+        #16a34a
+    );
+
+    color:white;
+
+    padding:16px 24px;
+
+    border-radius:18px;
+
+    font-weight:800;
 
     box-shadow:
-    0 15px 40px rgba(
+    0 15px 35px rgba(
         34,
         197,
         94,
@@ -1413,335 +373,91 @@ BARRA PREMIUM
 
 }
 
-.caloria-circle div{
+.btn-secondary{
 
-    width:96px;
-    height:96px;
+    background:white;
 
-    background:
-    rgba(
-        255,
-        255,
-        255,
-        .85
-    );
-
-    backdrop-filter:blur(20px);
-
-    border-radius:50%;
-
-    display:flex;
-    flex-direction:column;
-    justify-content:center;
-    align-items:center;
-
-}
-
-.caloria-circle strong{
-
-    font-size:22px;
-    font-weight:800;
+    border:1px solid #e5e7eb;
 
     color:#111827;
 
-}
-
-.caloria-circle span{
-
-    font-size:11px;
-    color:#6b7280;
-
-}
-
-/* =================================
-LADO DIREITO
-================================= */
-
-.macro-list{
-
-    flex:1;
-
-    display:flex;
-    flex-direction:column;
-
-    gap:12px;
-
-}
-
-.macro-item{
-
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-
-    padding:12px 16px;
+    padding:16px 24px;
 
     border-radius:18px;
-
-    background:
-    linear-gradient(
-        135deg,
-        rgba(255,255,255,.75),
-        rgba(255,255,255,.35)
-    );
-
-    backdrop-filter:blur(20px);
-
-    border:
-    1px solid
-    rgba(
-        255,
-        255,
-        255,
-        .4
-    );
-
-    box-shadow:
-    0 8px 20px rgba(
-        0,
-        0,
-        0,
-        .05
-    );
-
-}
-
-.macro-item span{
 
     font-weight:700;
-    color:#374151;
 
 }
 
-.macro-item strong{
+.hero-image{
 
-    font-weight:800;
-    color:#111827;
-
-}
-
-.saudacao-card{
-
-    margin-bottom:20px;
-
-    padding:20px;
-
-}
-
-.saudacao-card h2{
-
-    font-size:24px;
-
-    margin-bottom:5px;
-
-}
-
-.saudacao-card p{
-
-    color:#6b7280;
-
-    font-size:14px;
-
-}
-
-#textoIA{
-    min-height:20px;
-    white-space:nowrap;
-    width: 260px;
-}
-
-/* ==========================
-RESUMO PREMIUM
-========================== */
-
-.resumo-premium{
+    width:320px;
 
     display:flex;
 
-    align-items:center;
-
-    gap:25px;
-
-    margin-bottom:25px;
+    justify-content:flex-end;
 
 }
 
-.progress-ring{
+.hero-image img{
 
-    position:relative;
+    width:260px;
 
-    width:140px;
+    height:260px;
 
-    height:140px;
+    object-fit:cover;
 
-}
+    border-radius:35px;
 
-.progress-ring svg{
-
-    width:140px;
-
-    height:140px;
-
-    transform:rotate(-90deg);
-
-}
-
-.bg-circle{
-
-    fill:none;
-
-    stroke:rgba(
-        255,
-        255,
-        255,
-        .25
+    box-shadow:
+    0 25px 60px rgba(
+        0,
+        0,
+        0,
+        .15
     );
-
-    stroke-width:10;
-
-}
-
-.progress-circle{
-
-    fill:none;
-
-    stroke:url(#gradiente);
-
-    stroke:#22c55e;
-
-    stroke-width:10;
-
-    stroke-linecap:round;
-
-    stroke-dasharray:327;
-
-    stroke-dashoffset:114;
-
-}
-
-.progress-center{
-
-    position:absolute;
-
-    inset:0;
-
-    display:flex;
-
-    flex-direction:column;
-
-    justify-content:center;
-
-    align-items:center;
-
-}
-
-.progress-center strong{
-
-    font-size:28px;
-
-    font-weight:900;
-
-    color:#166534;
-
-}
-
-.progress-center span{
-
-    font-size:11px;
-
-    color:#6b7280;
-
-}
-
-.nutri-macros{
-
-    flex:1;
-
-    display:grid;
-
-    grid-template-columns:1fr 1fr;
-
-    gap:12px;
-
-}
-
-.macro-box{
-
-    padding:14px;
-
-    border-radius:18px;
-
-    background:
-    linear-gradient(
-        135deg,
-        rgba(255,255,255,.65),
-        rgba(255,255,255,.25)
-    );
-
-    backdrop-filter:blur(20px);
-
-    border:
-    1px solid
-    rgba(
-        255,
-        255,
-        255,
-        .4
-    );
-
-}
-
-.macro-box span{
-
-    display:block;
-
-    font-size:13px;
-
-    color:#6b7280;
-
-    margin-bottom:6px;
-
-}
-
-.macro-box strong{
-
-    font-size:15px;
-
-    font-weight:800;
-
-    color:#111827;
 
 }
 
 @media(max-width:768px){
 
-    .resumo-premium{
+    .hero-section{
 
-        flex-direction:row;
+        flex-direction:column;
 
-        align-items:center;
+        text-align:center;
 
-    }
-
-    .progress-ring{
-
-        width:110px;
-
-        height:110px;
+        padding:30px;
 
     }
 
-    .progress-ring svg{
+    .hero-content h2{
 
-        width:110px;
-
-        height:110px;
+        font-size:34px;
 
     }
 
-    .nutri-macros{
+    .hero-buttons{
 
-        grid-template-columns:1fr;
+        justify-content:center;
+
+        flex-wrap:wrap;
+
+    }
+
+    .hero-image{
+
+        width:100%;
+
+        justify-content:center;
+
+    }
+
+    .hero-image img{
+
+        width:220px;
+
+        height:220px;
 
     }
 
