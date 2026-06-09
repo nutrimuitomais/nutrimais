@@ -2,188 +2,187 @@
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-    <title>Plataforma Alimentar | Vinicius</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minha Dieta Premium</title>
     <link rel="stylesheet" href="css/dashboard.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
 
-    <div class="mobile-device">
-        <div class="status-bar">
-            <span>9:41</span>
-            <div class="status-icons">📶 🔋</div>
-        </div>
-
-        <div class="app-content">
-            
-            <div id="promotional-popin" class="promotional-popin hidden">
-                <button class="close-promo" onclick="closePromo()">×</button>
-                <div class="promo-text-layer">
-                    <h2>Refeições<br>Personalizadas no seu celular. ☘️</h2>
+    <div class="app-viewport">
+        
+        <div id="promo-card" class="premium-promo-card">
+            <button class="close-promo-x" onclick="dismissPromo()">×</button>
+            <div class="promo-split">
+                <div class="promo-info">
+                    <h2>Refeições<br>Personalizadas no<br>Seu Celular. ☘️</h2>
                     <p>Suas receitas favoritas a um toque de distância. Prático, rápido e moldado para o seu objetivo.</p>
                 </div>
-                <div class="promo-image-placeholder"></div>
-                <button class="promo-cta-btn" onclick="closePromo()">
-                    <span>➔</span>
-                </button>
+                <div class="promo-image-box">
+                    <div class="floating-dish-graphic"></div>
+                </div>
             </div>
-
-            <header>
-                <div class="profile-pic"></div>
-                <div class="welcome-text">
-                    <h1>Olá, Vinicius</h1>
-                    <p>Seu plano alimentar de hoje</p>
-                </div>
-            </header>
-
-            <main>
-                <section class="daily-meta">
-                    <div class="meta-header">
-                        <h2>Meta do dia</h2>
-                        <span class="meta-value">1800 / 2200 kcal</span>
-                    </div>
-                    
-                    <div class="progress-container">
-                        <div class="progress-bar">
-                            <div class="progress-fill" style="width: 81%"></div>
-                        </div>
-                    </div>
-
-                    <div class="macronutrients">
-                        <span>Proteína</span>
-                        <span>Carbo</span>
-                        <span>Gordura</span>
-                    </div>
-                </section>
-
-                <section class="today-meals">
-                    <div class="meal-group-header">
-                        <h2>Refeições de hoje</h2>
-                    </div>
-
-                    <div class="meal-item">
-                        <div class="meal-main">
-                            <input type="checkbox" class="meal-check">
-                            <div class="meal-details">
-                                <span class="meal-time">Café da manhã</span>
-                                <p class="meal-summary">Frango 150g, Batata Doce 200g, etc.</p>
-                            </div>
-                        </div>
-                        <button class="view-diet-btn" onclick="openDietModal('Café da Manhã', 320, 25, 40, 8)">Ver dieta</button>
-                    </div>
-
-                    <div class="meal-item">
-                        <div class="meal-main">
-                            <input type="checkbox" class="meal-check">
-                            <div class="meal-details">
-                                <span class="meal-time">Almoço</span>
-                                <p class="meal-summary">Frango 200g, Arroz Integral 150g, Salada</p>
-                            </div>
-                        </div>
-                        <button class="view-diet-btn" onclick="openDietModal('Almoço', 550, 45, 50, 12)">Ver dieta</button>
-                    </div>
-                    
-                    <div class="meal-item">
-                        <div class="meal-main">
-                            <input type="checkbox" class="meal-check">
-                            <div class="meal-details">
-                                <span class="meal-time">Café da tarde</span>
-                                <p class="meal-summary">Iogurte Desnatado 200g, Aveia 30g</p>
-                            </div>
-                        </div>
-                        <button class="view-diet-btn" onclick="openDietModal('Café da Tarde', 210, 18, 25, 4)">Ver dieta</button>
-                    </div>
-                    
-                    <div class="meal-item">
-                        <div class="meal-main">
-                            <input type="checkbox" class="meal-check">
-                            <div class="meal-details">
-                                <span class="meal-time">Jantar</span>
-                                <p class="meal-summary">Patinho Moído 150g, Macarrão Integral 100g</p>
-                            </div>
-                        </div>
-                        <button class="view-diet-btn" onclick="openDietModal('Jantar', 520, 40, 45, 14)">Ver dieta</button>
-                    </div>
-                    
-                    <div class="meal-item">
-                        <div class="meal-main">
-                            <input type="checkbox" class="meal-check">
-                            <div class="meal-details">
-                                <span class="meal-time">Ceia</span>
-                                <p class="meal-summary">Mix de Castanhas 30g, Albumina</p>
-                            </div>
-                        </div>
-                        <button class="view-diet-btn" onclick="openDietModal('Ceia', 200, 22, 5, 10)">Ver dieta</button>
-                    </div>
-                </section>
-                
-                <section class="publications">
-                    <h2>Dicas Inteligentes</h2>
-                    <div class="pub-card">
-                        <span class="badge">Dica do Dia</span>
-                        <h3>A importância da hidratação no ganho de massa</h3>
-                        <p>Beber a quantidade correta de água otimiza a síntese proteica e acelera seus resultados...</p>
-                    </div>
-                </section>
-            </main>
-
-            <footer class="app-nav">
-                <button class="nav-item active">🏠</button>
-                <button class="nav-item">📋</button>
-                <div class="nav-action">
-                    <button class="action-btn">+</button>
-                </div>
-                <button class="nav-item">📈</button>
-                <button class="nav-item">👤</button>
-            </footer>
+            <button class="promo-arrow-btn" onclick="dismissPromo()">➔</button>
         </div>
 
-        <div id="diet-modal" class="diet-modal hidden">
-            <div class="modal-content">
-                <header class="modal-header">
-                    <button class="close-modal" onclick="closeDietModal()">✕</button>
-                    <h1 id="modal-meal-name">Nome da Refeição</h1>
+        <header class="app-header">
+            <div class="header-left">
+                <h1>Olá, Vinicius</h1>
+                <p>Bem-vindo de volta!</p>
+            </div>
+            <button class="notification-trigger">
+                <span class="bell-icon">🔔</span>
+            </button>
+        </header>
+
+        <section class="daily-summary-card">
+            <div class="summary-main">
+                <div class="calories-col">
+                    <span class="card-label">Resumo do dia</span>
+                    <h2>1.400 <span class="unit">/ 2.200 kcal</span></h2>
+                    <p class="kcal-status">Restam 800 kcal para bater a meta</p>
+                </div>
+                <div class="mini-chart-box">
+                    <svg viewBox="0 0 100 40" class="smooth-line-chart">
+                        <path d="M0,35 Q25,30 50,15 T100,5" fill="none" stroke="#A4C2B2" stroke-width="3" stroke-linecap="round"/>
+                        <circle cx="100" cy="5" r="4" fill="#1C3427" />
+                    </svg>
+                </div>
+            </div>
+        </section>
+
+        <section class="macros-track-section">
+            <h3 class="section-title">Macros atingidos</h3>
+            <div class="macros-row-scroll">
+                <div class="macro-circle-card">
+                    <div class="circle-progress" style="--percent: 75; --color: #4AA366;">75%</div>
+                    <span>Proteínas</span>
+                </div>
+                <div class="macro-circle-card">
+                    <div class="circle-progress" style="--percent: 60; --color: #E6A23C;">60%</div>
+                    <span>Carbos</span>
+                </div>
+                <div class="macro-circle-card">
+                    <div class="circle-progress" style="--percent: 45; --color: #E66C6C;">45%</div>
+                    <span>Gorduras</span>
+                </div>
+                <div class="macro-circle-card">
+                    <div class="circle-progress" style="--percent: 90; --color: #4A89A3;">90%</div>
+                    <span>Fibras</span>
+                </div>
+            </div>
+        </section>
+
+        <section class="meals-timeline">
+            <div class="timeline-header">
+                <h3 class="section-title">Suas refeições de hoje</h3>
+                <span class="date-badge">Terça, 26 de Maio</span>
+            </div>
+
+            <div class="meals-stack">
+                <div class="timeline-meal-card">
+                    <div class="meal-left">
+                        <label class="custom-check">
+                            <input type="checkbox">
+                            <span class="check-box"></span>
+                        </label>
+                        <div class="meal-brief">
+                            <h4>Café da manhã</h4>
+                            <p>Ovos mexidos, torrada e mamão</p>
+                        </div>
+                    </div>
+                    <button class="btn-open-diet" onclick="showMealDiet('cafe-da-manha')">Ver dieta</button>
+                </div>
+
+                <div class="timeline-meal-card">
+                    <div class="meal-left">
+                        <label class="custom-check">
+                            <input type="checkbox">
+                            <span class="check-box"></span>
+                        </label>
+                        <div class="meal-brief">
+                            <h4>Almoço</h4>
+                            <p>Frango, arroz integral e salada</p>
+                        </div>
+                    </div>
+                    <button class="btn-open-diet" onclick="showMealDiet('almoco')">Ver dieta</button>
+                </div>
+
+                <div class="timeline-meal-card">
+                    <div class="meal-left">
+                        <label class="custom-check">
+                            <input type="checkbox">
+                            <span class="check-box"></span>
+                        </label>
+                        <div class="meal-brief">
+                            <h4>Café da tarde</h4>
+                            <p>Iogurte natural, aveia e morangos</p>
+                        </div>
+                    </div>
+                    <button class="btn-open-diet" onclick="showMealDiet('cafe-da-tarde')">Ver dieta</button>
+                </div>
+            </div>
+        </section>
+
+        <nav class="bottom-navigation">
+            <button class="nav-btn active">
+                <span class="nav-icon">🏠</span>
+                <span class="nav-label">Início</span>
+            </button>
+            <button class="nav-btn">
+                <span class="nav-icon">📋</span>
+                <span class="nav-label">Dieta</span>
+            </button>
+            <div class="nav-center-action">
+                <button class="floating-add-btn">+</button>
+            </div>
+            <button class="nav-btn">
+                <span class="nav-icon">📈</span>
+                <span class="nav-label">Evolução</span>
+            </button>
+            <button class="nav-btn">
+                <span class="nav-icon">👤</span>
+                <span class="nav-label">Perfil</span>
+            </button>
+        </nav>
+
+        <div id="meal-details-modal" class="meal-details-modal hidden">
+            <div class="modal-sheet">
+                <header class="modal-sheet-header">
+                    <button class="btn-back-modal" onclick="hideMealDiet()">←</button>
+                    <h2 id="diet-modal-title">Mix salad vegetables</h2>
                 </header>
-                
-                <div class="modal-body">
-                    <div class="nutrition-overview">
-                        <div class="nut-card cal">
-                            <span id="modal-kcal">0</span>
-                            <span class="label">Calorias</span>
+
+                <div class="modal-sheet-scroll">
+                    <div class="nutrition-pill-list">
+                        <div class="nutri-row-item calories">
+                            <div class="nutri-tag">
+                                <span class="indicator-bar"></span>
+                                <span id="diet-modal-kcal">240</span> <p>Calories</p>
+                            </div>
                         </div>
-                        <div class="nut-card pro">
-                            <span id="modal-pro">0g</span>
-                            <span class="label">Proteínas</span>
+                        <div class="nutri-row-item protein">
+                            <div class="nutri-tag">
+                                <span class="indicator-bar"></span>
+                                <span id="diet-modal-pro">19g</span> <p>Protein</p>
+                            </div>
                         </div>
-                        <div class="nut-card carb">
-                            <span id="modal-carb">0g</span>
-                            <span class="label">Carbos</span>
+                        <div class="nutri-row-item carbs">
+                            <div class="nutri-tag">
+                                <span class="indicator-bar"></span>
+                                <span id="diet-modal-carb">5g</span> <p>Carbs</p>
+                            </div>
                         </div>
                     </div>
 
-                    <div class="ingredients-section">
-                        <h3>Alimentos e Quantidades</h3>
-                        
-                        <div class="ingredients-list">
-                            <div class="ing-item">
-                                <div class="ing-icon">🍗</div>
-                                <div class="ing-details">
-                                    <h3>Filé de Frango Grelhado</h3>
-                                    <p>Pesar pronto / grelhado sem óleo</p>
-                                </div>
-                                <span class="ing-meta">150g</span>
-                            </div>
+                    <div class="ingredients-card-section">
+                        <h3>Ingredients</h3>
+                        <p class="sub-ing-count" id="diet-modal-count">6 healthy ingredients</p>
 
-                            <div class="ing-item">
-                                <div class="ing-icon">🥔</div>
-                                <div class="ing-details">
-                                    <h3>Batata Doce Cozida</h3>
-                                    <p>Fonte de carboidrato de baixo índice glicêmico</p>
-                                </div>
-                                <span class="ing-meta">200g</span>
+                        <div id="ingredients-target-container" class="ingredients-render-stack">
                             </div>
-                        </div>
                     </div>
                 </div>
             </div>
