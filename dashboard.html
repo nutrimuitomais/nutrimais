@@ -3,28 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nutri+ Plataforma Inteligente</title>
+    <title>Nutri+ Core Edition</title>
     <link rel="stylesheet" href="css/dashboard.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;1,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 </head>
 <body>
 
     <div class="platform-container">
         
         <aside class="desktop-sidebar">
-            <div class="sidebar-logo">
+            <div class="sidebar-logo-box">
                 <img src="img/logo.png" alt="NUTRI+" class="brand-logo-img">
             </div>
             <nav class="sidebar-menu">
-                <a href="#" class="menu-item active"><span class="icon">✨</span> Início</a>
-                <a href="#" class="menu-item"><span class="icon">🥗</span> Dieta</a>
-                <a href="#" class="menu-item"><span class="icon">📊</span> Progresso</a>
-                <a href="#" class="menu-item" onclick="toggleProfileSubmenu()"><span class="icon">🥑</span> Perfil</a>
+                <a href="#" class="menu-item active">Início</a>
+                <a href="#" class="menu-item">Dieta</a>
+                <a href="#" class="menu-item">Progresso</a>
+                <a href="#" class="menu-item" onclick="toggleProfileSubmenu()">Perfil</a>
             </nav>
             <div class="sidebar-footer">
-                <span class="plan-tag super">SUPER NUTRI</span>
+                <div class="badge-metal super-gold-card">SUPER NUTRI</div>
             </div>
         </aside>
 
@@ -33,58 +33,78 @@
             <header class="app-top-bar">
                 <div class="welcome-user">
                     <div class="avatar-upload-container">
-                        <img id="user-avatar-target" src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=150" alt="Foto de Perfil" class="profile-avatar">
+                        <img id="user-avatar-target" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150" alt="Vinicius" class="profile-avatar">
                         <input type="file" id="avatar-file-input" accept="image/*" class="hidden-file-input">
-                        <div class="avatar-overlay">Trocar</div>
+                        <div class="avatar-overlay">ALTERAR</div>
                     </div>
                     <div class="user-meta">
                         <div class="name-row">
                             <h1>Olá, Vinicius</h1>
-                            <span class="current-plan-badge max" id="plan-badge-top">MAX NUTRI</span>
+                            <span class="badge-metal max-silver-liquid" id="plan-badge-top">MAX NUTRI</span>
                         </div>
-                        <p class="sub-welcome">Plano Nutricional Inteligente Ativo</p>
+                        <p class="sub-welcome">Plano Customizado por Inteligência Artificial</p>
                     </div>
                 </div>
+                
                 <div class="top-actions">
-                    <img src="img/logo.png" alt="NUTRI+" class="brand-logo-img mobile-only-logo">
-                    <button class="notification-btn">
-                        <span class="bell">🔔</span>
+                    <img src="img/logo.png" alt="NUTRI+" class="mobile-top-logo-render">
+                    <button class="notification-btn" onclick="triggerNotificationPush()">
+                        <span class="bell-icon">🔔</span>
                         <span class="pulse-dot"></span>
                     </button>
                 </div>
             </header>
 
-            <section id="upsell-marketing-banner" class="editorial-upsell-card">
-                <button class="close-banner-btn" onclick="closeUpsellBanner()">×</button>
-                <div class="upsell-grid">
-                    <div class="upsell-text-side">
-                        <span class="trending-tag">UPGRADE RECOMENDADO</span>
-                        <h2>Refeições<br>Personalizadas no<br>Seu Celular. ☘️</h2>
-                        <p>Desbloqueie agora o plano <strong>SUPER NUTRI</strong> para ter acesso a inteligência artificial preditiva, gráficos de absorção em tempo real e ajustes automáticos baseados nos seus treinos.</p>
-                        <button class="action-upgrade-btn">Mudar de Plano Agora ➔</button>
+            <section class="editorial-upsell-slider">
+                <div class="slides-container" id="marketing-slides-wrapper">
+                    
+                    <div class="upsell-slide-card active">
+                        <div class="upsell-text-side">
+                            <span class="trending-tag">UPGRADE RECOMENDADO</span>
+                            <h2 class="editorial-title">Refeições personalizadas no seu celular</h2>
+                            <p>Desbloqueie substituições moleculares inteligentes em tempo real e relatórios metabólicos baseados na sua anamnese.</p>
+                            <a href="planos.html" class="action-upgrade-btn-wave">Mudar de plano agora →</a>
+                        </div>
+                        <div class="upsell-visual-side">
+                            <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=500" alt="Refeição Premium" class="dish-marketing-img">
+                        </div>
                     </div>
-                    <div class="upsell-visual-side">
-                        <div class="gradient-dish-sphere"></div>
+
+                    <div class="upsell-slide-card">
+                        <div class="upsell-text-side">
+                            <span class="trending-tag">EXCLUSIVO MAX & SUPER</span>
+                            <h2 class="editorial-title">Gere Treinos de Elite com a IA Nutri</h2>
+                            <p>Ajuste sua planilha de hipertrofia e definição na mesma velocidade em que muda sua escolha de alimentos.</p>
+                            <a href="planos.html" class="action-upgrade-btn-wave">Garantir Acesso VIP →</a>
+                        </div>
+                        <div class="upsell-visual-side">
+                            <img src="https://images.unsplash.com/photo-1517838277536-f5f99be501cd?w=500" alt="Treino de Elite" class="dish-marketing-img">
+                        </div>
                     </div>
+
+                </div>
+                <div class="slider-dots-indicator">
+                    <span class="dot active"></span>
+                    <span class="dot"></span>
                 </div>
             </section>
 
             <section class="dashboard-metrics-grid">
                 <div class="metric-box main-calories">
                     <div class="metric-header">
-                        <h3>Consumo Calórico</h3>
+                        <h3>Meta do Dia</h3>
                         <span class="kcal-target-text"><strong id="current-kcal-sum">0</strong> / 2200 kcal</span>
                     </div>
                     <div class="progress-bar-container">
-                        <div id="calories-progress-line" class="progress-fill-line" style="width: 0%;"></div>
+                        <div id="calories-progress-line" class="progress-fill-line-animated" style="width: 0%;"></div>
                     </div>
-                    <p id="calories-remainder-msg" class="helper-text">Marque as refeições realizadas para atualizar o dashboard.</p>
+                    <p id="calories-remainder-msg" class="helper-text">Monitore seus macros marcando os consumos abaixo</p>
                 </div>
 
                 <div class="macros-progress-row">
                     <div class="macro-ring-card">
                         <div class="circle-box">
-                            <svg viewBox="0 0 36 36" class="circular-chart green-theme">
+                            <svg viewBox="0 0 36 36" class="circular-chart c-protein">
                                 <path class="circle-bg" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
                                 <path id="ring-protein" class="circle-fill" stroke-dasharray="0, 100" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
                             </svg>
@@ -96,7 +116,7 @@
 
                     <div class="macro-ring-card">
                         <div class="circle-box">
-                            <svg viewBox="0 0 36 36" class="circular-chart green-theme">
+                            <svg viewBox="0 0 36 36" class="circular-chart c-carbs">
                                 <path class="circle-bg" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
                                 <path id="ring-carbs" class="circle-fill" stroke-dasharray="0, 100" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
                             </svg>
@@ -108,7 +128,7 @@
 
                     <div class="macro-ring-card">
                         <div class="circle-box">
-                            <svg viewBox="0 0 36 36" class="circular-chart green-theme">
+                            <svg viewBox="0 0 36 36" class="circular-chart c-fats">
                                 <path class="circle-bg" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
                                 <path id="ring-fats" class="circle-fill" stroke-dasharray="0, 100" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
                             </svg>
@@ -122,8 +142,7 @@
 
             <section class="meals-tracker-section">
                 <div class="section-title-bar">
-                    <h2>Refeições Planejadas</h2>
-                    <span class="date-tag">Hoje</span>
+                    <h2>Cronograma Alimentar</h2>
                 </div>
 
                 <div class="meals-interactive-list">
@@ -134,13 +153,13 @@
                                 <span class="premium-checkmark"></span>
                             </label>
                             <div class="diet-card-details">
-                                <span class="meal-time-tag">07:30</span>
+                                <span class="meal-time-tag">08:00</span>
                                 <h3>Café da Manhã</h3>
-                                <p class="food-composition">Ovos Mexidos Inteiros (3 un), Pão Integral de Forma (60g), Mamão Formosa (150g)</p>
+                                <p class="food-composition">Ovos Mexidos (3 un), Pão Integral (60g), Mamão (150g)</p>
                             </div>
                         </div>
                         <div class="diet-card-footer">
-                            <span class="kcal-pill">🥑 390 kcal</span>
+                            <span class="kcal-pill">⚡ 390 kcal</span>
                             <button class="recipe-trigger-btn" onclick="openRecipePanel('cafe')">Ver Receita</button>
                         </div>
                     </div>
@@ -152,13 +171,13 @@
                                 <span class="premium-checkmark"></span>
                             </label>
                             <div class="diet-card-details">
-                                <span class="meal-time-tag">12:00</span>
+                                <span class="meal-time-tag">12:30</span>
                                 <h3>Almoço Funcional</h3>
-                                <p class="food-composition">Filé de Frango Grelhado (500g), Arroz Integral Cozido (200g), Mix de Salada e Legumes (100g)</p>
+                                <p class="food-composition">Frango Grelhado (500g), Arroz Integral (200g), Salada Livre</p>
                             </div>
                         </div>
                         <div class="diet-card-footer">
-                            <span class="kcal-pill">🥑 980 kcal</span>
+                            <span class="kcal-pill">⚡ 980 kcal</span>
                             <button class="recipe-trigger-btn" onclick="openRecipePanel('almoco')">Ver Receita</button>
                         </div>
                     </div>
@@ -170,13 +189,13 @@
                                 <span class="premium-checkmark"></span>
                             </label>
                             <div class="diet-card-details">
-                                <span class="meal-time-tag">16:00</span>
+                                <span class="meal-time-tag">16:30</span>
                                 <h3>Lanche da Tarde</h3>
-                                <p class="food-composition">Iogurte Natural Proteico (200g), Aveia em Flocos (30g), Morangos Picados (100g)</p>
+                                <p class="food-composition">Iogurte Whey (200g), Aveia (30g), Morangos (100g)</p>
                             </div>
                         </div>
                         <div class="diet-card-footer">
-                            <span class="kcal-pill">🥑 310 kcal</span>
+                            <span class="kcal-pill">⚡ 310 kcal</span>
                             <button class="recipe-trigger-btn" onclick="openRecipePanel('tarde')">Ver Receita</button>
                         </div>
                     </div>
@@ -188,13 +207,13 @@
                                 <span class="premium-checkmark"></span>
                             </label>
                             <div class="diet-card-details">
-                                <span class="meal-time-tag">19:30</span>
-                                <h3>Janta Econômica & Saudável</h3>
-                                <p class="food-composition">Patinho Moído Grelhado (200g), Mandioca Cozida (150g), Brócolis refogado (80g)</p>
+                                <span class="meal-time-tag">20:00</span>
+                                <h3>Janta Anabólica</h3>
+                                <p class="food-composition">Patinho Moído (200g), Mandioca Cozida (150g), Brócolis (80g)</p>
                             </div>
                         </div>
                         <div class="diet-card-footer">
-                            <span class="kcal-pill">🥑 520 kcal</span>
+                            <span class="kcal-pill">⚡ 520 kcal</span>
                             <button class="recipe-trigger-btn" onclick="openRecipePanel('janta')">Ver Receita</button>
                         </div>
                     </div>
@@ -204,27 +223,23 @@
 
         <nav class="mobile-bottom-bar">
             <button class="m-nav-btn active">
-                <span class="m-icon">✨</span>
                 <span class="m-label">Início</span>
             </button>
             <button class="m-nav-btn">
-                <span class="m-icon">🥗</span>
                 <span class="m-label">Dieta</span>
             </button>
             
             <div class="ai-button-container-hub">
                 <button class="premium-ai-core-btn" onclick="triggerAIVoiceEngine()">
-                    <span class="ai-pulse-wave"></span>
+                    <span class="ai-liquid-glow"></span>
                     <span class="ai-text-brand">AI</span>
                 </button>
             </div>
 
             <button class="m-nav-btn">
-                <span class="m-icon">📊</span>
                 <span class="m-label">Progresso</span>
             </button>
             <button class="m-nav-btn" onclick="toggleProfileSubmenu()">
-                <span class="m-icon">🥑</span>
                 <span class="m-label">Perfil</span>
             </button>
         </nav>
@@ -233,15 +248,19 @@
             <div class="drawer-sheet" onclick="event.stopPropagation()">
                 <div class="drawer-header-bar">
                     <div class="bar-indicator"></div>
-                    <h3>Minha Conta Premium</h3>
+                    <h3>Painel de Controle Nutri+</h3>
                 </div>
                 <div class="drawer-options-list">
-                    <button class="drawer-item" onclick="triggerAvatarUpload()"><span class="icon">🖼️</span> Upload da Foto de Perfil</button>
-                    <button class="drawer-item"><span class="icon">⚙️</span> Preferências da Dieta</button>
-                    <button class="drawer-item"><span class="icon">💳</span> Detalhes da Cobrança</button>
-                    <button class="drawer-item"><span class="icon">🛡️</span> Chaves de Segurança</button>
+                    <button class="drawer-item" onclick="triggerAvatarUpload()">Upload da Foto de Perfil</button>
+                    <a href="planos.html" class="drawer-item link-item-action">Planos e Assinaturas</a>
+                    <button class="drawer-item header-split-btn">Faturas e Cobranças</button>
+                    <button class="drawer-item premium-tag-max" onclick="triggerAIVoiceEngine()">IA NUTRI - MAX</button>
+                    <button class="drawer-item premium-tag-super" onclick="triggerAIVoiceEngine()">FOTO IA NUTRI SUPER</button>
+                    <button class="drawer-item">Consulta de Nutricionista</button>
+                    <button class="drawer-item premium-tag-max">Gerar Treino MAX</button>
+                    <button class="drawer-item premium-tag-max">Consulta com Personal MAX</button>
                     <hr class="drawer-divider">
-                    <button class="drawer-item logout-btn"><span class="icon">🔒</span> Fazer Logout</button>
+                    <button class="drawer-item logout-btn">Sair da Conta</button>
                 </div>
             </div>
         </div>
@@ -249,22 +268,26 @@
         <div id="recipe-modal-viewport" class="recipe-modal-backdrop hidden" onclick="closeRecipePanel()">
             <div class="recipe-glass-card" onclick="event.stopPropagation()">
                 <header class="recipe-card-header">
-                    <button class="back-recipe-btn" onclick="closeRecipePanel()">← Fechar</button>
+                    <button class="back-recipe-btn" onclick="closeRecipePanel()">← Voltar</button>
                     <h2 id="recipe-title-render">Detalhamento</h2>
                 </header>
-                <div class="recipe-scroll-body">
-                    <div class="recipe-visual-banner">
+                <div class="recipe-scroll-body" id="recipe-content-loaded-view">
+                    <div class="recipe-visual-banner" id="recipe-banner-image-bg">
                         <div class="recipe-macro-badges-row">
-                            <div class="badge-item calc"><span id="recipe-kcal">0</span><span>Kcal</span></div>
-                            <div class="badge-item prot"><span id="recipe-prot">0</span><span>Prot</span></div>
-                            <div class="badge-item carb"><span id="recipe-carb">0</span><span>Carb</span></div>
+                            <div class="badge-item"><span id="recipe-kcal">0</span><span class="lbl">Kcal</span></div>
+                            <div class="badge-item"><span id="recipe-prot">0</span><span class="lbl">Prot</span></div>
+                            <div class="badge-item"><span id="recipe-carb">0</span><span class="lbl">Carb</span></div>
                         </div>
                     </div>
                     <div class="ingredients-list-wrapper">
-                        <h3>Pesos e Ingredientes Exatos</h3>
-                        <p class="count-subtitle" id="recipe-items-count">Calculados via Anamnese</p>
-                        <div class="ingredients-render-grid" id="ingredients-target-box">
-                            </div>
+                        <h3>Ingredientes e Pesos Exatos</h3>
+                        <p class="count-subtitle">Ajustados dinamicamente para sua meta</p>
+                        <div class="ingredients-render-grid" id="ingredients-target-box"></div>
+                    </div>
+                </div>
+                <div class="recipe-error-viewport hidden" id="recipe-error-view">
+                    <div class="error-box-data">
+                        <p>Receita não gerada por falta de escolha de alimentos</p>
                     </div>
                 </div>
             </div>
