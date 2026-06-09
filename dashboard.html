@@ -135,39 +135,136 @@
 
 </section>
 
-    <section class="featured-news">
+    <section class="premium-news-popup" id="newsPopup">
 
-    <div class="featured-content">
+    <button class="close-news" onclick="fecharNews()">
+        ×
+    </button>
 
-        <span class="featured-tag">
-            EXCLUSIVO MAX
+    <div class="news-content">
+
+        <span class="news-badge">
+            NUTRI+ SUPER
         </span>
 
         <h2>
-            Mais de 500 receitas premium disponíveis para acelerar seus resultados
+            Desbloqueie a IA Nutri Coach
         </h2>
 
         <p>
-            Desbloqueie receitas completas, listas de compras automáticas e sugestões inteligentes geradas pela IA Nutri+.
+            Receba análises inteligentes da sua dieta,
+            sugestões automáticas de ajustes,
+            acompanhamento por fotos e recursos
+            exclusivos do plano SUPER.
         </p>
 
-        <button class="featured-button">
-            CONHECER MAX
-        </button>
+        <div class="news-actions">
+
+            <button class="btn-primary">
+                Conhecer SUPER
+            </button>
+
+            <button class="btn-secondary">
+                Agora não
+            </button>
+
+        </div>
 
     </div>
 
-    <div class="featured-image">
+    <div class="news-image">
 
-        <img
-        src="https://images.unsplash.com/photo-1490645935967-10de6ba17061?w=1200"
-        alt="Receitas Premium">
+        <img src="img/banner-super.jpg">
 
     </div>
 
 </section>
 
-    <section class="nutrition-overview">
+<section class="nutrition-overview">
+
+    <div class="nutrition-left">
+
+        <div class="nutrition-header">
+
+            <h2>Meu Dia Nutricional</h2>
+
+            <span>
+                Meta diária
+            </span>
+
+        </div>
+
+        <div class="nutrition-progress">
+
+            <div class="nutrition-progress-fill">
+                65%
+            </div>
+
+        </div>
+
+        <div class="nutrition-kcal">
+
+            <strong>
+                1430 kcal
+            </strong>
+
+            <span>
+                de 2200 kcal
+            </span>
+
+        </div>
+
+    </div>
+
+    <div class="nutrition-right">
+
+        <div class="macro-card">
+
+            <span>Proteínas</span>
+
+            <strong>
+                120g
+            </strong>
+
+            <small>
+                de 150g
+            </small>
+
+        </div>
+
+        <div class="macro-card">
+
+            <span>Carboidratos</span>
+
+            <strong>
+                180g
+            </strong>
+
+            <small>
+                de 220g
+            </small>
+
+        </div>
+
+        <div class="macro-card">
+
+            <span>Gorduras</span>
+
+            <strong>
+                45g
+            </strong>
+
+            <small>
+                de 60g
+            </small>
+
+        </div>
+
+    </div>
+
+</section>
+
+  <section class="nutrition-overview">
 
     <div class="nutrition-progress">
 
@@ -246,6 +343,367 @@
             </div>
 
         </div>
+
+    </div>
+
+</section>
+
+    <section class="featured-news">
+
+    <div class="featured-content">
+
+        <span class="featured-tag">
+            EXCLUSIVO MAX
+        </span>
+
+        <h2>
+            Mais de 500 receitas premium disponíveis para acelerar seus resultados
+        </h2>
+
+        <p>
+            Desbloqueie receitas completas, listas de compras automáticas e sugestões inteligentes geradas pela IA Nutri+.
+        </p>
+
+        <button class="featured-button">
+            CONHECER MAX
+        </button>
+
+    </div>
+
+    <div class="featured-image">
+
+        <img
+        src="https://images.unsplash.com/photo-1490645935967-10de6ba17061?w=1200"
+        alt="Receitas Premium">
+
+    </div>
+
+</section>
+
+<section class="meal-plan-section">
+
+    <div class="section-title">
+
+        <div>
+
+            <span class="section-tag">
+                PLANO ALIMENTAR
+            </span>
+
+            <h2>
+                Suas refeições de hoje
+            </h2>
+
+        </div>
+
+    </div>
+
+    <!-- CAFÉ DA MANHÃ -->
+
+    <div class="meal-card">
+
+        <div class="meal-top">
+
+            <label>
+
+                <input type="checkbox">
+
+                Café da Manhã
+
+            </label>
+
+            <span class="meal-calories">
+                520 kcal
+            </span>
+
+        </div>
+
+        <div class="meal-foods">
+
+            4 ovos inteiros<br>
+            100g pão integral<br>
+            1 banana
+
+        </div>
+
+        <div class="meal-macros">
+
+            <span>35g proteína</span>
+            <span>45g carbo</span>
+            <span>18g gordura</span>
+
+        </div>
+
+        <button class="recipe-btn">
+            Ver Receita
+        </button>
+
+    </div>
+
+    <!-- ALMOÇO -->
+
+    <div class="meal-card">
+
+        <div class="meal-top">
+
+            <label>
+
+                <input type="checkbox">
+
+                Almoço
+
+            </label>
+
+            <span class="meal-calories">
+                680 kcal
+            </span>
+
+        </div>
+
+        <div class="meal-foods">
+
+            300g frango grelhado<br>
+            150g arroz integral<br>
+            100g feijão
+
+        </div>
+
+        <div class="meal-macros">
+
+            <span>58g proteína</span>
+            <span>60g carbo</span>
+            <span>12g gordura</span>
+
+        </div>
+
+        <button class="recipe-btn">
+            Ver Receita
+        </button>
+
+    </div>
+
+    <!-- LANCHE DA TARDE -->
+
+    <div class="meal-card">
+
+        <div class="meal-top">
+
+            <label>
+
+                <input type="checkbox">
+
+                Lanche da Tarde
+
+            </label>
+
+            <span class="meal-calories">
+                320 kcal
+            </span>
+
+        </div>
+
+        <div class="meal-foods">
+
+            1 iogurte natural<br>
+            30g aveia<br>
+            1 maçã
+
+        </div>
+
+        <div class="meal-macros">
+
+            <span>18g proteína</span>
+            <span>40g carbo</span>
+            <span>8g gordura</span>
+
+        </div>
+
+        <button class="recipe-btn">
+            Ver Receita
+        </button>
+
+    </div>
+
+    <!-- JANTAR -->
+
+    <div class="meal-card">
+
+        <div class="meal-top">
+
+            <label>
+
+                <input type="checkbox">
+
+                Jantar
+
+            </label>
+
+            <span class="meal-calories">
+                480 kcal
+            </span>
+
+        </div>
+
+        <div class="meal-foods">
+
+            250g frango grelhado<br>
+            120g arroz integral<br>
+            Legumes cozidos
+
+        </div>
+
+        <div class="meal-macros">
+
+            <span>40g proteína</span>
+            <span>35g carbo</span>
+            <span>10g gordura</span>
+
+        </div>
+
+        <button class="recipe-btn">
+            Ver Receita
+        </button>
+
+    </div>
+
+</section>
+
+    <!-- NEWS PREMIUM -->
+<section class="news-highlight">
+
+    <div class="news-banner">
+
+        <div class="news-content">
+
+            <span class="news-tag">
+                RECURSO PREMIUM
+            </span>
+
+            <h2>
+                Receitas Premium liberam resultados até 37% mais rápidos
+            </h2>
+
+            <p>
+                Desbloqueie mais de 500 receitas exclusivas,
+                planejamento automático e ajustes inteligentes
+                baseados na sua evolução.
+            </p>
+
+            <button class="btn-primary">
+                Conhecer Plano MAX
+            </button>
+
+        </div>
+
+        <div class="news-image">
+            <img
+            src="img/news-premium.jpg"
+            alt="Premium">
+        </div>
+
+    </div>
+
+</section>
+
+    <section class="evolution-section">
+
+    <div class="evolution-card">
+
+        <div class="section-header">
+
+            <div>
+
+                <span class="section-tag">
+                    EVOLUÇÃO
+                </span>
+
+                <h2>
+                    Seu progresso
+                </h2>
+
+            </div>
+
+        </div>
+
+        <div class="weight-area">
+
+            <div class="current-weight">
+
+                <span>Peso Atual</span>
+
+                <strong>88 kg</strong>
+
+            </div>
+
+            <div class="goal-weight">
+
+                <span>Meta</span>
+
+                <strong>84 kg</strong>
+
+            </div>
+
+        </div>
+
+        <div class="weight-progress">
+
+            <div class="weight-fill"></div>
+
+        </div>
+
+        <div class="weight-info">
+
+            <span>92kg Inicial</span>
+
+            <span>70% concluído</span>
+
+            <span>84kg Meta</span>
+
+        </div>
+
+        <div class="weight-update">
+
+            <input
+            type="number"
+            placeholder="Adicionar peso">
+
+            <button>
+                Salvar
+            </button>
+
+        </div>
+
+    </div>
+
+    <div class="photo-card">
+
+        <div class="photo-header">
+
+            <h3>
+                Fotos de Evolução
+            </h3>
+
+        </div>
+
+        <label class="upload-area">
+
+            <input
+            type="file"
+            accept="image/*">
+
+            <div>
+
+                <h4>
+                    Adicionar Foto
+                </h4>
+
+                <p>
+                    Tire ou envie uma foto da galeria
+                </p>
+
+            </div>
+
+        </label>
 
     </div>
 
