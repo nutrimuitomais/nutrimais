@@ -1,7 +1,4 @@
-// CONTROLE DE FLUXO DE ANAMNESE (MUDAR PARA FALSE PARA TESTAR O AVISO DE ERRO)
-const usuarioCompletouAnamnese = true;
-
-// BANCO DE DADOS INTEGRADO COM FOTOS REAIS DOS ALIMENTOS (FOTO 4 PERFORMANCE)
+// BANCO DE DADOS DE DIETAS E CARDÁPIOS METABÓLICOS
 const dbRefeicoesMetabolicas = {
     "cafe": {
         titulo: "Café da Manhã de Alta Performance",
@@ -47,7 +44,53 @@ const dbRefeicoesMetabolicas = {
 
 const metaDiariaGlobal = { kcal: 2200, proteinas: 160, carboidratos: 220, gorduras: 70 };
 
-// ENGINE DE CÁLCULO DINÂMICO
+// ROTATIVIDADE DE ASSINATURAS DOS NUTRICIONISTAS CONCEITUADOS
+const listagemNutricionistasEspecialistas = [
+    "Dieta estruturada sob as diretrizes clínicas de Dr. Alan Rodrigues",
+    "Cardápio adaptado baseado nos modelos de rendimento de Dra. Tatiane Mendes",
+    "Planejamento metabólico referenciado pelas condutas de Dr. Felipe Rossi",
+    "Alinhamento calórico estruturado conforme modelos de alta performance de Dra. Amanda Costa"
+];
+
+function injectHumanizedExpertSubtitle() {
+    const boxSubtitulo = document.getElementById('dynamic-expert-subtitle');
+    if (!boxSubtitulo) return;
+    const indiceAleatorio = Math.floor(Math.random() * listagemNutricionistasEspecialistas.length);
+    boxSubtitulo.textContent = listagemNutricionistasEspecialistas[indiceAleatorio];
+}
+
+// CONTROLADOR DO POP-UP INTERSTICIAL (EXIBE 2 VEZES POR DIA)
+function evaluateInterstitialMarketingPopup() {
+    const storageKeyDate = 'nutri_interstitial_date';
+    const storageKeyCount = 'nutri_interstitial_count';
+    
+    const hoje = new Date().toDateString();
+    const dataRegistrada = localStorage.getItem(storageKeyDate);
+    let contagemVisualizacoes = parseInt(localStorage.getItem(storageKeyCount) || "0");
+
+    if (dataRegistrada !== hoje) {
+        localStorage.setItem(storageKeyDate, hoje);
+        localStorage.setItem(storageKeyCount, "1");
+        triggerInterstitialDisplay();
+    } else if (contagemVisualizacoes < 2) {
+        localStorage.setItem(storageKeyCount, (contagemVisualizacoes + 1).toString());
+        triggerInterstitialDisplay();
+    }
+}
+
+function triggerInterstitialDisplay() {
+    setTimeout(() => {
+        const portalPopup = document.getElementById('interstitial-marketing-portal');
+        if (portalPopup) portalPopup.classList.remove('hidden');
+    }, 1200);
+}
+
+function dismissInterstitialHub() {
+    const portalPopup = document.getElementById('interstitial-marketing-portal');
+    if (portalPopup) portalPopup.classList.add('hidden');
+}
+
+// CALCULADORA DE MACROS
 function calculateMacrosEngine() {
     let somas = { kcal: 0, proteinas: 0, carboidratos: 0, gorduras: 0 };
 
@@ -77,7 +120,7 @@ function calculateMacrosEngine() {
     
     const msgAuxiliar = document.getElementById('calories-remainder-msg');
     if (pctKcal >= 100) {
-        msgAuxiliar.innerHTML = "🎉 <strong>100% Batido!</strong> Meta diária consolidada com sucesso.";
+        msgAuxiliar.innerHTML = "🎉 <strong>100% Batido!</strong> Meta consolidada.";
     } else {
         msgAuxiliar.textContent = `Faltam ${metaDiariaGlobal.kcal - somas.kcal} kcal para fechar o dia.`;
     }
@@ -96,7 +139,7 @@ function updateCircularRing(ringId, textId, percentage) {
     document.getElementById(textId).textContent = `${percentage}%`;
 }
 
-// CARROSSEL ROTATIVO DE PUBLICIDADE DE UPSELL
+// CARROSSEL ROTATIVO DE UPSELL
 let slideIndex = 0;
 function rotateMarketingSlides() {
     const slides = document.querySelectorAll('.upsell-slide-card');
@@ -112,32 +155,30 @@ function rotateMarketingSlides() {
     slides[slideIndex - 1].classList.add('active');
     dots[slideIndex - 1].classList.add('active');
 
-    setTimeout(rotateMarketingSlides, 5000); // Rotaciona a cada 5 segundos
+    setTimeout(rotateMarketingSlides, 6000);
 }
 
-// LOGICA CONDICIONAL DE VISUALIZAÇÃO DE RECEITAS (AVISO SE FALTAR ESCOLHA DE ALIMENTOS)
+// GERENCIAMENTO DA GAVETA DE NOTIFICAÇÕES (ESTILO IFOOD)
+function openIfoodNotificationsHub() {
+    const notifyPanel = document.getElementById('ifood-notifications-overlay');
+    if (notifyPanel) notifyPanel.classList.remove('hidden');
+}
+
+function closeIfoodNotificationsHub() {
+    const notifyPanel = document.getElementById('ifood-notifications-overlay');
+    if (notifyPanel) notifyPanel.classList.add('hidden');
+}
+
+// DETALHAMENTO DE RECEITAS CORES E ITENS
 function openRecipePanel(chaveRefeicao) {
     const modal = document.getElementById('recipe-modal-viewport');
     const viewConteudo = document.getElementById('recipe-content-loaded-view');
-    const viewErro = document.getElementById('recipe-error-view');
-
-    if (!usuarioCompletouAnamnese) {
-        viewConteudo.classList.add('hidden');
-        viewErro.classList.remove('hidden');
-        modal.classList.remove('hidden');
-        return;
-    }
-
     const dados = dbRefeicoesMetabolicas[chaveRefeicao];
     if (!dados) return;
 
-    viewErro.classList.add('hidden');
     viewConteudo.classList.remove('hidden');
 
     document.getElementById('recipe-title-render').textContent = dados.titulo;
-    document.getElementById('recipe-kcal').textContent = dados.kcal;
-    document.getElementById('recipe-prot').textContent = `${dados.proteinas}g`;
-    document.getElementById('recipe-carb').textContent = `${dados.carboidratos}g`;
     document.getElementById('recipe-banner-image-bg').style.backgroundImage = `url('${dados.foto}')`;
 
     const boxAlvo = document.getElementById('ingredients-target-box');
@@ -159,40 +200,33 @@ function closeRecipePanel() {
     document.getElementById('recipe-modal-viewport').classList.add('hidden');
 }
 
-// BLOQUEIO DE SEGURANÇA SE NÃO ESTIVER NO PLANO MAX OU SUPER
 function triggerAIVoiceEngine() {
-    const planoAtual = "MAX NUTRI"; // Simulação de backend
-    if(planoAtual === "MAX NUTRI" || planoAtual === "SUPER NUTRI") {
-        alert("Nutri AI Ativada! Analisando balanço hidroeletrolítico e cruzando dados de treino...");
-    } else {
-        alert("Função Exclusiva para assinantes MAX ou SUPER. Faça o upgrade no painel.");
-    }
+    alert("Modulo Nutri+ Premium: Carregando análise metabólica avançada baseada nos seus treinos...");
 }
 
-// NOTIFICAÇÕES ATIVAS INTERATIVAS DIÁRIAS
-function triggerNotificationPush() {
-    alert("Notificação Nutri+: 'Vinicius, você consumiu apenas 25% das proteínas necessárias para manter sua massa magra hoje. Agilize o check no seu Almoço!'");
-}
-
-// SCRIPT DE FILE SELECTION NATIVO (CELULAR E NOTEBOOK)
+// EVENTO DE UPLOAD DA FOTO DE PERFIL DE USUÁRIO
 const fileInput = document.getElementById('avatar-file-input');
 const avatarImg = document.getElementById('user-avatar-target');
 
 function triggerAvatarUpload() { fileInput.click(); }
-fileInput.addEventListener('change', function(e) {
-    const file = e.target.files[0];
-    if (file) {
-        const reader = new FileReader();
-        reader.onload = function(event) { avatarImg.src = event.target.result; };
-        reader.readAsDataURL(file);
-    }
-    toggleProfileSubmenu();
-});
+if(fileInput) {
+    fileInput.addEventListener('change', function(e) {
+        const file = e.target.files[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = function(event) { avatarImg.src = event.target.result; };
+            reader.readAsDataURL(file);
+        }
+    });
+}
 
 const profileDrawer = document.getElementById('profile-drawer-overlay');
-function toggleProfileSubmenu() { profileDrawer.classList.toggle('hidden'); }
+function toggleProfileSubmenu() { if(profileDrawer) profileDrawer.classList.toggle('hidden'); }
 
+// EXECUÇÃO INICIAL COMPORTAMENTAL
 window.addEventListener('DOMContentLoaded', () => {
     calculateMacrosEngine();
     rotateMarketingSlides();
+    injectHumanizedExpertSubtitle();
+    evaluateInterstitialMarketingPopup();
 });
