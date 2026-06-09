@@ -2342,3 +2342,724 @@ DIETA PREMIUM
 
 }
 
+/* =================================
+RECEITA PREMIUM
+================================= */
+
+.recipe-details{
+
+    background:white;
+
+    border-radius:32px;
+
+    overflow:hidden;
+
+    margin-bottom:40px;
+
+    border:1px solid #e5edf6;
+
+    box-shadow:var(--shadow);
+
+    display:none;
+
+}
+
+.recipe-banner{
+
+    width:100%;
+
+    height:350px;
+
+}
+
+.recipe-banner img{
+
+    width:100%;
+
+    height:100%;
+
+    object-fit:cover;
+
+}
+
+.recipe-body{
+
+    padding:35px;
+
+}
+
+.recipe-category{
+
+    color:#22c55e;
+
+    font-size:12px;
+
+    font-weight:800;
+
+    letter-spacing:1px;
+
+}
+
+.recipe-body h2{
+
+    margin-top:12px;
+
+    font-size:36px;
+
+    font-weight:900;
+
+    margin-bottom:15px;
+
+}
+
+.recipe-description{
+
+    color:#64748b;
+
+    line-height:1.8;
+
+    margin-bottom:30px;
+
+}
+
+.recipe-stats{
+
+    display:grid;
+
+    grid-template-columns:
+    repeat(4,1fr);
+
+    gap:15px;
+
+    margin-bottom:35px;
+
+}
+
+.recipe-stats div{
+
+    background:#f8fafc;
+
+    padding:20px;
+
+    border-radius:20px;
+
+    text-align:center;
+
+}
+
+.recipe-stats strong{
+
+    display:block;
+
+    font-size:26px;
+
+    font-weight:900;
+
+}
+
+.recipe-stats span{
+
+    color:#64748b;
+
+    font-size:13px;
+
+}
+
+.recipe-section{
+
+    margin-bottom:25px;
+
+}
+
+.recipe-section h3{
+
+    margin-bottom:15px;
+
+    font-size:22px;
+
+}
+
+.recipe-section ul{
+
+    padding-left:20px;
+
+}
+
+.recipe-section li{
+
+    margin-bottom:10px;
+
+}
+
+.recipe-section p{
+
+    color:#64748b;
+
+    line-height:1.9;
+
+}
+
+.recipe-add-btn{
+
+    width:100%;
+
+    height:60px;
+
+    border-radius:20px;
+
+    background:
+    linear-gradient(
+        135deg,
+        #22c55e,
+        #16a34a
+    );
+
+    color:white;
+
+    font-size:16px;
+
+    font-weight:800;
+
+}
+
+@media(max-width:768px){
+
+    .recipe-banner{
+
+        height:220px;
+
+    }
+
+    .recipe-stats{
+
+        grid-template-columns:
+        repeat(2,1fr);
+
+    }
+
+    .recipe-body h2{
+
+        font-size:28px;
+
+    }
+
+}
+
+/* =================================
+RECEITAS PREMIUM
+================================= */
+
+.recipes-section{
+    margin-top:40px;
+}
+
+.recipes-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:24px;
+}
+
+.recipe-card{
+    background:#fff;
+    border-radius:30px;
+    overflow:hidden;
+    border:1px solid #edf2f7;
+    box-shadow:0 20px 40px rgba(0,0,0,.05);
+    transition:.3s;
+}
+
+.recipe-card:hover{
+    transform:translateY(-6px);
+}
+
+.recipe-card img{
+    width:100%;
+    height:220px;
+    object-fit:cover;
+}
+
+.recipe-info{
+    padding:22px;
+}
+
+.recipe-category{
+    display:inline-flex;
+    padding:8px 14px;
+    border-radius:999px;
+    background:#ecfdf5;
+    color:#16a34a;
+    font-size:11px;
+    font-weight:800;
+    margin-bottom:15px;
+}
+
+.recipe-info h3{
+    font-size:20px;
+    margin-bottom:15px;
+}
+
+.recipe-macros{
+    display:flex;
+    gap:15px;
+    margin-bottom:20px;
+    color:#6b7280;
+    font-size:14px;
+}
+
+.recipe-btn{
+    width:100%;
+    height:52px;
+    border:none;
+    border-radius:16px;
+    background:linear-gradient(
+        135deg,
+        #22c55e,
+        #16a34a
+    );
+    color:white;
+    font-weight:800;
+}
+
+@media(max-width:768px){
+
+    .recipes-grid{
+        grid-template-columns:1fr;
+    }
+
+}
+
+/* =================================
+MODAL RECEITA PREMIUM
+================================= */
+
+.recipe-modal{
+    position:fixed;
+    inset:0;
+    background:
+    rgba(
+        15,
+        23,
+        42,
+        .85
+    );
+    backdrop-filter:blur(12px);
+    display:none;
+    justify-content:center;
+    align-items:center;
+    z-index:99999;
+    padding:20px;
+}
+
+.recipe-modal.active{
+    display:flex;
+}
+
+.recipe-modal-content{
+    width:100%;
+    max-width:850px;
+    max-height:95vh;
+    overflow:auto;
+    background:white;
+    border-radius:35px;
+    position:relative;
+    animation:modalShow .3s ease;
+}
+
+@keyframes modalShow{
+    from{
+        transform:translateY(30px);
+        opacity:0;
+    }
+    to{
+        transform:translateY(0);
+        opacity:1;
+    }
+}
+
+.close-recipe{
+    position:absolute;
+    top:20px;
+    right:20px;
+    width:45px;
+    height:45px;
+    border-radius:50%;
+    background:white;
+    font-size:24px;
+    z-index:5;
+}
+
+.recipe-cover img{
+    width:100%;
+    height:320px;
+    object-fit:cover;
+}
+
+.recipe-body{
+    padding:35px;
+}
+
+.recipe-tag{
+    display:inline-block;
+    padding:8px 14px;
+    border-radius:999px;
+    background:#dcfce7;
+    color:#16a34a;
+    font-weight:800;
+    font-size:12px;
+    margin-bottom:15px;
+}
+
+.recipe-body h2{
+    font-size:34px;
+    margin-bottom:15px;
+}
+
+.recipe-description{
+    color:#6b7280;
+    line-height:1.8;
+    margin-bottom:30px;
+}
+
+.recipe-macros{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:15px;
+    margin-bottom:35px;
+}
+
+.recipe-macro{
+    background:#f8fafc;
+    border-radius:18px;
+    padding:18px;
+}
+
+.recipe-macro span{
+    color:#6b7280;
+    display:block;
+    margin-bottom:8px;
+}
+
+.recipe-macro strong{
+    font-size:20px;
+}
+
+.recipe-section{
+    margin-bottom:30px;
+}
+
+.recipe-section h3{
+    margin-bottom:15px;
+}
+
+.recipe-section ul{
+    padding-left:20px;
+}
+
+.recipe-section li{
+    margin-bottom:10px;
+}
+
+@media(max-width:768px){
+
+    .recipe-cover img{
+        height:220px;
+    }
+
+    .recipe-body{
+        padding:25px;
+    }
+
+    .recipe-body h2{
+        font-size:26px;
+    }
+
+    .recipe-macros{
+        grid-template-columns:1fr 1fr;
+    }
+
+}
+
+/* =================================
+DETALHE RECEITA PREMIUM
+================================= */
+
+.recipe-info-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:15px;
+    margin-bottom:35px;
+}
+
+.recipe-info-card{
+    background:#f8fafc;
+    border-radius:20px;
+    padding:18px;
+}
+
+.recipe-info-card span{
+    display:block;
+    color:#64748b;
+    margin-bottom:8px;
+}
+
+.recipe-info-card strong{
+    font-size:18px;
+}
+
+.shopping-list{
+    display:flex;
+    flex-direction:column;
+    gap:12px;
+}
+
+.shopping-list label{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    padding:14px;
+    border-radius:14px;
+    background:#f8fafc;
+}
+
+.related-recipes{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:15px;
+}
+
+.related-card{
+    background:white;
+    border:1px solid #e5e7eb;
+    border-radius:20px;
+    overflow:hidden;
+    cursor:pointer;
+    transition:.3s;
+}
+
+.related-card:hover{
+    transform:translateY(-4px);
+}
+
+.related-card img{
+    width:100%;
+    height:130px;
+    object-fit:cover;
+}
+
+.related-card h4{
+    padding:15px;
+    font-size:14px;
+}
+
+@media(max-width:768px){
+
+    .recipe-info-grid{
+        grid-template-columns:1fr;
+    }
+
+    .related-recipes{
+        grid-template-columns:1fr;
+    }
+
+}
+
+.back-btn{
+    background:#f1f5f9;
+    color:#111827;
+    padding:12px 18px;
+    border-radius:14px;
+    font-weight:700;
+    margin-bottom:25px;
+}
+
+.back-btn:hover{
+    background:#e2e8f0;
+}
+
+/* ==========================
+IA NUTRI+
+========================== */
+
+.ia-assistant{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:25px;
+    padding:30px;
+    margin-bottom:30px;
+
+    background:
+    linear-gradient(
+        135deg,
+        #111827,
+        #1f2937
+    );
+
+    border-radius:32px;
+    color:white;
+
+    box-shadow:
+    0 25px 60px rgba(
+        17,
+        24,
+        39,
+        .18
+    );
+}
+
+.ia-left{
+    flex:1;
+}
+
+.ia-tag{
+    display:inline-flex;
+    padding:8px 14px;
+    border-radius:999px;
+
+    background:
+    rgba(
+        255,
+        255,
+        255,
+        .12
+    );
+
+    font-size:12px;
+    font-weight:800;
+
+    margin-bottom:15px;
+}
+
+.ia-left h2{
+    font-size:30px;
+    margin-bottom:10px;
+    color:white;
+}
+
+.ia-left p{
+    color:
+    rgba(
+        255,
+        255,
+        255,
+        .75
+    );
+}
+
+.ia-right{
+    display:flex;
+    gap:10px;
+    width:450px;
+}
+
+.ia-right input{
+    flex:1;
+    border:none;
+    border-radius:18px;
+    padding:16px;
+    font-size:15px;
+}
+
+.ia-right button{
+    padding:16px 22px;
+
+    border-radius:18px;
+
+    background:
+    linear-gradient(
+        135deg,
+        #22c55e,
+        #16a34a
+    );
+
+    color:white;
+    font-weight:800;
+}
+
+@media(max-width:768px){
+
+    .ia-assistant{
+        flex-direction:column;
+        align-items:flex-start;
+    }
+
+    .ia-right{
+        width:100%;
+        flex-direction:column;
+    }
+
+}
+
+/* ==========================
+MOBILE NAV PREMIUM
+========================== */
+
+.mobile-nav{
+    position:fixed;
+    bottom:20px;
+    left:50%;
+    transform:translateX(-50%);
+
+    width:calc(100% - 30px);
+    max-width:700px;
+
+    display:none;
+    justify-content:space-between;
+    align-items:center;
+
+    padding:14px;
+
+    background:
+    rgba(
+        255,
+        255,
+        255,
+        .92
+    );
+
+    backdrop-filter:blur(25px);
+
+    border:1px solid
+    rgba(
+        255,
+        255,
+        255,
+        .5
+    );
+
+    border-radius:24px;
+
+    box-shadow:
+    0 20px 40px rgba(
+        15,
+        23,
+        42,
+        .12
+    );
+
+    z-index:999;
+}
+
+.mobile-nav a{
+    color:#64748b;
+    font-size:13px;
+    font-weight:700;
+    padding:10px;
+}
+
+.mobile-nav a.active{
+    color:#22c55e;
+}
+
+@media(max-width:768px){
+
+    .mobile-nav{
+        display:flex;
+    }
+
+    .main-content,
+    .app-container{
+        padding-bottom:100px;
+    }
+
+}
