@@ -462,3 +462,399 @@ HERO PREMIUM
     }
 
 }
+
+/* =================================
+NEWS PREMIUM
+================================= */
+
+.featured-news{
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    gap:40px;
+
+    margin-bottom:35px;
+
+    padding:40px;
+
+    border-radius:36px;
+
+    overflow:hidden;
+
+    position:relative;
+
+    background:
+    linear-gradient(
+        135deg,
+        #111827,
+        #1f2937
+    );
+
+    color:white;
+
+}
+
+.featured-content{
+
+    flex:1;
+
+    z-index:2;
+
+}
+
+.featured-tag{
+
+    display:inline-block;
+
+    padding:10px 16px;
+
+    border-radius:999px;
+
+    background:
+    rgba(
+        255,
+        255,
+        255,
+        .12
+    );
+
+    font-size:12px;
+
+    font-weight:800;
+
+    margin-bottom:20px;
+
+}
+
+.featured-content h2{
+
+    font-size:40px;
+
+    font-weight:900;
+
+    line-height:1.1;
+
+    margin-bottom:20px;
+
+}
+
+.featured-content p{
+
+    max-width:600px;
+
+    line-height:1.8;
+
+    color:
+    rgba(
+        255,
+        255,
+        255,
+        .8
+    );
+
+    margin-bottom:30px;
+
+}
+
+.featured-button{
+
+    padding:16px 26px;
+
+    border-radius:18px;
+
+    background:
+    linear-gradient(
+        135deg,
+        #22c55e,
+        #16a34a
+    );
+
+    color:white;
+
+    font-weight:800;
+
+}
+
+.featured-image{
+
+    width:420px;
+
+}
+
+.featured-image img{
+
+    width:100%;
+
+    height:280px;
+
+    object-fit:cover;
+
+    border-radius:28px;
+
+}
+
+@media(max-width:768px){
+
+    .featured-news{
+
+        flex-direction:column;
+
+        text-align:center;
+
+        padding:25px;
+
+    }
+
+    .featured-content h2{
+
+        font-size:28px;
+
+    }
+
+    .featured-image{
+
+        width:100%;
+
+    }
+
+}
+
+/* =================================
+NUTRITION OVERVIEW
+================================= */
+
+.nutrition-overview{
+
+    display:grid;
+
+    grid-template-columns:320px 1fr;
+
+    gap:30px;
+
+    margin-bottom:40px;
+
+}
+
+.nutrition-progress{
+
+    background:white;
+
+    border-radius:32px;
+
+    padding:30px;
+
+    border:1px solid #e6edf5;
+
+    box-shadow:var(--shadow);
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+}
+
+.progress-ring{
+
+    position:relative;
+
+    width:180px;
+
+    height:180px;
+
+}
+
+.progress-ring svg{
+
+    width:180px;
+
+    height:180px;
+
+    transform:rotate(-90deg);
+
+}
+
+.progress-ring circle{
+
+    fill:none;
+
+    stroke-width:12;
+
+}
+
+.progress-ring .bg{
+
+    stroke:#edf2f7;
+
+}
+
+.progress-ring .progress{
+
+    stroke:url(#gradient);
+
+    stroke:#22c55e;
+
+    stroke-linecap:round;
+
+    stroke-dasharray:471;
+
+    stroke-dashoffset:165;
+
+}
+
+.progress-center{
+
+    position:absolute;
+
+    inset:0;
+
+    display:flex;
+
+    flex-direction:column;
+
+    justify-content:center;
+
+    align-items:center;
+
+}
+
+.progress-center strong{
+
+    font-size:38px;
+
+    font-weight:900;
+
+}
+
+.progress-center span{
+
+    color:#6b7280;
+
+}
+
+.nutrition-macros{
+
+    display:grid;
+
+    grid-template-columns:1fr 1fr;
+
+    gap:20px;
+
+}
+
+.macro-card{
+
+    background:white;
+
+    border-radius:28px;
+
+    padding:22px;
+
+    border:1px solid #e6edf5;
+
+    box-shadow:var(--shadow);
+
+}
+
+.macro-card span{
+
+    color:#6b7280;
+
+    display:block;
+
+    margin-bottom:8px;
+
+}
+
+.macro-card strong{
+
+    font-size:20px;
+
+    display:block;
+
+    margin-bottom:15px;
+
+}
+
+.mini-bar{
+
+    width:100%;
+
+    height:10px;
+
+    background:#edf2f7;
+
+    border-radius:999px;
+
+    overflow:hidden;
+
+}
+
+.mini-bar div{
+
+    height:100%;
+
+    border-radius:999px;
+
+    background:
+    linear-gradient(
+        90deg,
+        #86efac,
+        #22c55e
+    );
+
+}
+
+.protein div{
+
+    background:
+    linear-gradient(
+        90deg,
+        #a7f3d0,
+        #10b981
+    );
+
+}
+
+.carb div{
+
+    background:
+    linear-gradient(
+        90deg,
+        #bfdbfe,
+        #3b82f6
+    );
+
+}
+
+.fat div{
+
+    background:
+    linear-gradient(
+        90deg,
+        #fde68a,
+        #f59e0b
+    );
+
+}
+
+    @media(max-width:768px){
+
+    .nutrition-overview{
+
+        grid-template-columns:1fr;
+
+    }
+
+    .nutrition-macros{
+
+        grid-template-columns:1fr;
+
+    }
+
+}
