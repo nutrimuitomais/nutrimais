@@ -7,9 +7,23 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
+
+    <canvas id="fireworks-canvas"></canvas>
+
+    <div id="welcome-promo-overlay" class="promo-overlay hidden">
+        <div class="promo-banner-card">
+            <button class="promo-close-btn" onclick="closePromoBanner()">✕</button>
+            <div class="promo-badge">OFERTA EXCLUSIVA</div>
+            <h2>Refeições Pessoais<br>no seu Celular a<span> Qualquer Hora.</span></h2>
+            <p>Seus pratos saudáveis favoritos criados por Inteligência Artificial a um toque de distância. Rápido, prático e moldado para o seu metabolismo.</p>
+            <div class="promo-action-row">
+                <a href="planos.html" class="btn-promo-go">Evoluir Meu Plano ↗</a>
+            </div>
+        </div>
+    </div>
 
     <input type="file" id="file-input" accept="image/*" style="display: none;">
 
@@ -23,49 +37,49 @@
 
             <div class="nav-label">NAVEGAÇÃO PRINCIPAL</div>
             <a href="#" class="menu-item active">
-                <span class="menu-icon">🏠</span> Início
+                <span class="prof-icon icon-home"></span> Início
             </a>
             <a href="#" class="menu-item">
-                <span class="menu-icon">📈</span> Evolução Mensal
+                <span class="prof-icon icon-chart"></span> Evolução Mensal
             </a>
             <a href="#" class="menu-item">
-                <span class="menu-icon">📄</span> Relatório Semanal <span class="badge-inline max-silver">MAX</span>
+                <span class="prof-icon icon-report"></span> Relatório Semanal <span class="badge-inline max-silver animated-metallic-badge">MAX</span>
             </a>
 
             <div class="nav-label">RECURSOS VIP</div>
             <a href="#" class="menu-item" onclick="triggerIA()">
-                <span class="menu-icon">✨</span> IA Nutri <span class="badge-inline max-silver">MAX</span>
+                <span class="prof-icon icon-ai"></span> IA Nutri <span class="badge-inline max-silver animated-metallic-badge">MAX</span>
             </a>
             <a href="#" class="menu-item" onclick="triggerIA()">
-                <span class="menu-icon">🏋️</span> Gerar treino <span class="badge-inline max-silver">MAX</span>
+                <span class="prof-icon icon-workout"></span> Gerar treino <span class="badge-inline max-silver animated-metallic-badge">MAX</span>
             </a>
             <a href="#" class="menu-item" onclick="triggerIA()">
-                <span class="menu-icon">📸</span> Foto IA <span class="badge-inline super-gold">SUPER</span>
+                <span class="prof-icon icon-camera"></span> Foto IA <span class="badge-inline super-gold animated-metallic-badge">SUPER</span>
             </a>
             <a href="#" class="menu-item">
-                <span class="menu-icon">🩺</span> Consulta com Nutricionista
+                <span class="prof-icon icon-doctor"></span> Consulta com Nutricionista
             </a>
-            <a href="#" class="menu-item">
-                <span class="menu-icon">🤝</span> Consulta com Personal <span class="badge-inline max-silver">MAX</span>
+            <a href="#" class="menu-item" onclick="triggerIA()">
+                <span class="prof-icon icon-personal"></span> Consulta com Personal <span class="badge-inline max-silver animated-metallic-badge">MAX</span>
             </a>
 
             <div class="nav-label">CONTA</div>
             <a href="#" class="menu-item" onclick="toggleMenuConta()">
-                <span class="menu-icon">💳</span> Fatura e Cobrança
+                <span class="prof-icon icon-billing"></span> Fatura e Cobrança
             </a>
             <a href="#" class="menu-item" onclick="toggleMenuConta()">
-                <span class="menu-icon">🔄</span> Mudar plano
+                <span class="prof-icon icon-swap"></span> Mudar plano
             </a>
             <a href="#" class="menu-item" onclick="toggleMenuConta()">
-                <span class="menu-icon">🌙</span> Modo Escuro <span class="badge-inline max-silver">MAX</span>
+                <span class="prof-icon icon-dark"></span> Modo Escuro <span class="badge-inline max-silver animated-metallic-badge">MAX</span>
             </a>
             <a href="#" class="menu-item">
-                <span class="menu-icon">🎧</span> Suporte via Chat
+                <span class="prof-icon icon-support"></span> Suporte via Chat
             </a>
             
             <div class="sidebar-footer">
                 <a href="#" class="menu-item logout">
-                    <span class="menu-icon">🚪</span> Sair
+                    <span class="prof-icon icon-logout"></span> Sair
                 </a>
                 <div class="badge-footer-fixed animated-metallic-badge">MAX NUTRI</div>
             </div>
@@ -74,7 +88,7 @@
         <main class="main-content">
             
             <div class="app-top-bar">
-                <div class="user-info">
+                <div class="user-info desktop-only-user">
                     <div class="avatar-box" onclick="triggerAvatarUpload()">
                         <img id="user-avatar" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150" alt="Avatar do Usuário">
                     </div>
@@ -86,7 +100,16 @@
                         <p class="expert-subtitle">Dieta adaptada para emagrecimento baseada nos melhores Nutricionistas</p>
                     </div>
                 </div>
-                <button class="notif-btn" onclick="toggleNotifHub()">🔔</button>
+                <div class="top-bar-right">
+                    <button class="notif-btn" id="desktop-notif-bell" onclick="toggleNotifHub()">🔔<span class="notif-dot"></span></button>
+                    <div id="ifood-notif-box" class="ifood-notif-dropdown hidden">
+                        <div class="notif-dropdown-header">
+                            <h4>Notificações Nutri+</h4>
+                        </div>
+                        <div class="notif-dropdown-body" id="notif-list-container">
+                            </div>
+                    </div>
+                </div>
             </div>
 
             <section class="upsell-slider-container">
@@ -109,8 +132,8 @@
                     </div>
                     <div class="slide-item slide-bg-3">
                         <div class="slide-text">
-                            <span class="tag">NOVIDADE</span>
-                            <h2>Acompanhar pacientes</h2>
+                            <span class="tag">NOVIDADE VIP</span>
+                            <h2>Gere relatório e dicas de melhora</h2>
                             <p>Olá, Vinicius, sabia que você pode gerar seu Relatório Semanal MAX para um PDF com detalhes da sua evolução?</p>
                             <button class="btn-premium-grad" onclick="triggerPremium()">Gerar PDF →</button>
                         </div>
@@ -138,21 +161,21 @@
                 <div class="macros-card-row">
                     <div class="macro-item prot">
                         <div class="ring-box">
-                            <svg class="ring-svg"><circle class="ring-bg" cx="34" cy="34" r="30"/><circle class="ring-fill" id="ring-pro" cx="34" cy="34" r="30" stroke-dasharray="0, 100"/></svg>
+                            <svg class="ring-svg"><circle class="ring-bg" cx="34" cy="34" r="30"/><circle class="ring-fill" id="ring-pro" cx="34" cy="34" r="30" stroke-dasharray="0 188.4"/></svg>
                             <span class="percentage-label" id="txt-pro">0%</span>
                         </div>
                         <span class="macro-title">Proteínas</span>
                     </div>
                     <div class="macro-item carb">
                         <div class="ring-box">
-                            <svg class="ring-svg"><circle class="ring-bg" cx="34" cy="34" r="30"/><circle class="ring-fill" id="ring-car" cx="34" cy="34" r="30" stroke-dasharray="0, 100"/></svg>
+                            <svg class="ring-svg"><circle class="ring-bg" cx="34" cy="34" r="30"/><circle class="ring-fill" id="ring-car" cx="34" cy="34" r="30" stroke-dasharray="0 188.4"/></svg>
                             <span class="percentage-label" id="txt-car">0%</span>
                         </div>
                         <span class="macro-title">Carbos</span>
                     </div>
                     <div class="macro-item fat">
                         <div class="ring-box">
-                            <svg class="ring-svg"><circle class="ring-bg" cx="34" cy="34" r="30"/><circle class="ring-fill" id="ring-fat" cx="34" cy="34" r="30" stroke-dasharray="0, 100"/></svg>
+                            <svg class="ring-svg"><circle class="ring-bg" cx="34" cy="34" r="30"/><circle class="ring-fill" id="ring-fat" cx="34" cy="34" r="30" stroke-dasharray="0 188.4"/></svg>
                             <span class="percentage-label" id="txt-fat">0%</span>
                         </div>
                         <span class="macro-title">Gorduras</span>
@@ -250,16 +273,6 @@
                             </div>
                             <p class="feedback-text">"Excelente app! Senti resultados reais emagrecendo de forma consistente."</p>
                         </div>
-                        <div class="feedback-item">
-                            <div class="feedback-user-row">
-                                <div class="user-avatar-placeholder">👤</div>
-                                <div>
-                                    <h4>Amanda R.</h4>
-                                    <div class="stars">★★★★★</div>
-                                </div>
-                            </div>
-                            <p class="feedback-text">"As planilhas do plano MAX mudaram completamente meus treinos."</p>
-                        </div>
                     </div>
 
                     <div class="comment-box-container">
@@ -284,13 +297,17 @@
             <div class="modal-card">
                 <button class="modal-close" onclick="toggleMenuConta()">✕</button>
                 <div class="modal-header">
-                    <h3 id="account-modal-title">Configurações de Conta</h3>
+                    <h3>Configurações do Perfil</h3>
+                    <p class="modal-subtitle">Gerencie suas funções e assinatura da plataforma.</p>
                 </div>
                 <div class="modal-body">
                     <div class="account-options-stack">
-                        <button class="account-opt-btn" onclick="triggerPremium()">🔄 Mudar de Plano / Gerenciar Assinatura</button>
-                        <button class="account-opt-btn" onclick="triggerPremium()">💳 Ver Histórico de Faturas e Cartões</button>
-                        <button class="account-opt-btn" onclick="alert('Modo Escuro será ativado na próxima atualização!')">🌙 Alternar Modo Escuro</button>
+                        <button class="account-opt-btn" onclick="triggerPremium()"><span class="prof-icon icon-swap"></span> Mudar de Plano / Gerenciar Assinatura</button>
+                        <button class="account-opt-btn" onclick="triggerPremium()"><span class="prof-icon icon-billing"></span> Ver Histórico de Faturas e Cartões</button>
+                        <button class="account-opt-btn" onclick="alert('Modo Escuro será ativado na próxima versão!')"><span class="prof-icon icon-dark"></span> Alternar Modo Escuro</button>
+                        <button class="account-opt-btn" onclick="alert('Conectando ao chat de suporte premium...')"><span class="prof-icon icon-support"></span> Abrir Suporte via Chat</button>
+                        <hr class="modal-divider">
+                        <button class="account-opt-btn btn-modal-logout" onclick="alert('Desconectando...'); window.location.reload();"><span class="prof-icon icon-logout"></span> Sair da Conta</button>
                     </div>
                 </div>
             </div>
@@ -302,9 +319,11 @@
                 <div class="modal-header">
                     <span class="modal-badge-plan animated-metallic-badge" id="modal-recipe-plan-badge">PLANO MAX</span>
                     <h3 id="modal-recipe-title">Título da Receita</h3>
-                    <p class="modal-subtitle">Sua assinatura permite ver esta receita inteligente.</p>
+                    <div class="recipe-usage-counter" id="recipe-usage-container">
+                        Visualizações do seu plano: <span id="recipe-count-used">0</span> / <span id="recipe-count-total">50</span>
+                    </div>
                 </div>
-                <div class="modal-body">
+                <div class="modal-body" id="recipe-allowed-body">
                     <div class="recipe-img-container">
                         <img id="modal-recipe-img" src="" alt="Foto da Receita Inteligente">
                     </div>
@@ -318,25 +337,38 @@
                     </div>
 
                     <h4>🍳 Modo de Preparo Inteligente</h4>
-                    <p class="recipe-instructions">Com base na sua anamnese e seleção de alimentos, misture os ingredientes pesados na balança de forma homogênea. Cozinhe em fogo médio para preservar a biodisponibilidade molecular dos macronutrientes calculados para o seu objetivo de definição.</p>
-                    
-                    <p class="plan-info-text" id="modal-plan-text"></p>
+                    <p class="recipe-instructions">Instruções personalizadas geradas por IA para bater seus macros diários perfeitamente.</p>
+                </div>
+
+                <div class="recipe-blocked-container hidden" id="recipe-blocked-body">
+                    <div class="lock-icon">🔒</div>
+                    <h4>Limite de Receitas Atingido!</h4>
+                    <p id="recipe-blocked-message">Seu plano atual atingiu o limite máximo de visualizações de receitas inteligentes.</p>
+                    <a href="planos.html" class="btn-upgrade-modal">Fazer Upgrade de Plano Agora</a>
                 </div>
             </div>
         </div>
 
         <nav class="mobile-nav-bar">
             <a href="#" class="mobile-nav-item active">
-                <span class="m-nav-icon">🏠</span>
+                <span class="m-nav-icon prof-icon icon-home"></span>
                 <span>Início</span>
             </a>
             <a href="#" class="mobile-nav-item">
-                <span class="m-nav-icon">📈</span>
+                <span class="m-nav-icon prof-icon icon-chart"></span>
                 <span>Evolução</span>
             </a>
-            <a href="#" class="mobile-nav-item" onclick="triggerIA()">
-                <span class="m-nav-icon">✨</span>
-                <span>IA VIP</span>
+            
+            <a href="#" class="mobile-nav-item mobile-ia-center-btn" onclick="triggerIA()">
+                <div class="ia-pulse-glow">
+                    <span class="prof-icon icon-ai"></span>
+                </div>
+                <span class="ia-label-text">IA NUTRI</span>
+            </a>
+
+            <a href="#" class="mobile-nav-item" onclick="triggerPremium()">
+                <span class="m-nav-icon prof-icon icon-swap"></span>
+                <span>Planos</span>
             </a>
             <a href="#" class="mobile-nav-item mobile-avatar-link" onclick="toggleMenuConta()">
                 <div class="mobile-avatar-wrapper">
