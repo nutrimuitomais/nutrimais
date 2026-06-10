@@ -1,136 +1,108 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>NUTRI+ Dashboard</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nutri+ Plataforma</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/dashboard.css">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
 </head>
 <body>
 
-    <canvas id="fireworks-canvas"></canvas>
-
-    <input type="file" id="file-input" accept="image/*" style="display: none;">
-
     <div class="platform-container">
-        
         <aside class="desktop-sidebar">
             <div class="sidebar-logo">
                 <h2>NUTRI<span>+</span></h2>
                 <div class="logo-sub">PLATAFORMA EVOLUÍDA</div>
             </div>
-
-            <div class="nav-label">NAVEGAÇÃO PRINCIPAL</div>
-            <a href="#" class="menu-item active">
-                <span class="prof-icon icon-home"></span> Início
-            </a>
-            <a href="#" class="menu-item">
-                <span class="prof-icon icon-chart"></span> Evolução Mensal
-            </a>
-            <a href="#" class="menu-item">
-                <span class="prof-icon icon-report"></span> Relatório Semanal <span class="badge-inline max-silver animated-metallic-badge">MAX</span>
-            </a>
-
-            <div class="nav-label">RECURSOS VIP</div>
-            <a href="#" class="menu-item" onclick="triggerIA()">
-                <span class="prof-icon icon-ai"></span> IA Nutri <span class="badge-inline max-silver animated-metallic-badge">MAX</span>
-            </a>
-            <a href="#" class="menu-item" onclick="triggerIA()">
-                <span class="prof-icon icon-workout"></span> Gerar treino <span class="badge-inline max-silver animated-metallic-badge">MAX</span>
-            </a>
-            <a href="#" class="menu-item" onclick="triggerIA()">
-                <span class="prof-icon icon-camera"></span> Foto IA <span class="badge-inline super-gold animated-metallic-badge">SUPER</span>
-            </a>
-            <a href="#" class="menu-item">
-                <span class="prof-icon icon-doctor"></span> Consulta com Nutricionista
-            </a>
-            <a href="#" class="menu-item" onclick="triggerIA()">
-                <span class="prof-icon icon-personal"></span> Consulta com Personal <span class="badge-inline max-silver animated-metallic-badge">MAX</span>
-            </a>
-
-            <div class="nav-label">CONTA</div>
-            <a href="#" class="menu-item" onclick="toggleMenuConta()">
-                <span class="prof-icon icon-billing"></span> Fatura e Cobrança
-            </a>
-            <a href="#" class="menu-item" onclick="toggleMenuConta()">
-                <span class="prof-icon icon-swap"></span> Mudar plano
-            </a>
-            <a href="#" class="menu-item" onclick="toggleMenuConta()">
-                <span class="prof-icon icon-dark"></span> Modo Escuro <span class="badge-inline max-silver animated-metallic-badge">MAX</span>
-            </a>
-            <a href="#" class="menu-item">
-                <span class="prof-icon icon-support"></span> Suporte via Chat
-            </a>
             
+            <nav class="sidebar-nav">
+                <a href="#" class="menu-item active">Início</a>
+                <a href="#" class="menu-item">Evolução Mensal</a>
+                <a href="#" class="menu-item">Relatório Semanal <span class="badge-inline max-badge">MAX</span></a>
+                
+                <div class="nav-label">RECURSOS VIP</div>
+                <a href="#" class="menu-item">IA Nutri <span class="badge-inline max-badge">MAX</span></a>
+                <a href="#" class="menu-item">Gerar treino <span class="badge-inline max-badge">MAX</span></a>
+                <a href="#" class="menu-item">Foto IA <span class="badge-inline super-badge">SUPER</span></a>
+                <a href="#" class="menu-item">Consulta com Nutricionista</a>
+                <a href="#" class="menu-item">Consulta com Personal <span class="badge-inline max-badge">MAX</span></a>
+                
+                <div class="nav-label">CONTA</div>
+                <a href="#" class="menu-item">Fatura e Cobrança</a>
+                <a href="#" class="menu-item">Mudar plano</a>
+                <a href="#" class="menu-item">Modo Escuro <span class="badge-inline max-badge">MAX</span></a>
+                <a href="#" class="menu-item">Suporte via Chat</a>
+                
+                <a href="#" class="menu-item logout">Sair</a>
+            </nav>
+
             <div class="sidebar-footer">
-                <a href="#" class="menu-item logout">
-                    <span class="prof-icon icon-logout"></span> Sair
-                </a>
-                <div class="badge-footer-fixed animated-metallic-badge">MAX NUTRI</div>
+                <button class="btn-max-nutri">MAX NUTRI</button>
             </div>
         </aside>
 
         <main class="main-content">
-            
-            <div class="app-top-bar">
-                <div class="user-info desktop-only-user">
-                    <div class="avatar-box" onclick="triggerAvatarUpload()">
-                        <img id="user-avatar" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150" alt="Avatar do Usuário">
+            <header class="app-top-bar">
+                <div class="user-info">
+                    <div class="avatar-box">
+                        <img src="avatar.jpg" alt="Foto de perfil">
                     </div>
-                    <div>
+                    <div class="user-text">
                         <div class="name-row">
                             <h1>Olá, Vinicius</h1>
-                            <span class="badge-top-max animated-metallic-badge">MAX NUTRI</span>
+                            <span class="badge-top-max">MAX NUTRI</span>
                         </div>
                         <p class="expert-subtitle">Dieta adaptada para emagrecimento baseada nos melhores Nutricionistas</p>
                     </div>
                 </div>
-                <div class="top-bar-right">
-                    <button class="notif-btn" id="desktop-notif-bell" onclick="toggleNotifHub()">🔔<span class="notif-dot"></span></button>
-                    <div id="ifood-notif-box" class="ifood-notif-dropdown hidden">
-                        <div class="notif-dropdown-header">
-                            <h4>Notificações Nutri+</h4>
-                        </div>
-                        <div class="notif-dropdown-body" id="notif-list-container">
-                        </div>
-                    </div>
+                <div class="notif-container">
+                    <button class="notif-btn">🔔</button>
+                    <span class="notif-text">Notificações Nutri+</span>
                 </div>
-            </div>
+            </header>
+
+            <section class="banner-highlight">
+                <div class="banner-content">
+                    <span class="banner-tag">RECOMENDADO</span>
+                    <h2>Gere Treinos de Elite com a IA Nutri</h2>
+                    <p>Ajuste sua planilha de hipertrofia e definição na mesma velocidade em que muda sua escolha de alimentos.</p>
+                    <button class="btn-vip">Garantir Acesso VIP &rarr;</button>
+                </div>
+            </section>
 
             <section class="metrics-grid">
                 <div class="card-cal">
-                    <div class="card-header">
-                        <h3>Meta do Dia</h3>
-                        <span class="kcal-counter"><span id="sum-kcal">0</span> / 2200 kcal</span>
-                    </div>
+                    <h3>Meta do Dia</h3>
+                    <div class="kcal-counter" id="kcal-display">0 / 2200 kcal</div>
                     <div class="progress-bg">
-                        <div class="progress-fill" id="bar-kcal" style="width: 0%;"></div>
+                        <div class="progress-fill" id="progress-bar" style="width: 0%;"></div>
                     </div>
-                    <p class="kcal-status-msg" id="kcal-feedback">Restam 2200 kcal para fechar o plano diário.</p>
+                    <div class="kcal-status-msg" id="status-msg">Restam 2200 kcal para fechar o plano diário.</div>
                 </div>
 
                 <div class="macros-card-row">
                     <div class="macro-item prot">
                         <div class="ring-box">
-                            <svg class="ring-svg"><circle class="ring-bg" cx="34" cy="34" r="30"/><circle class="ring-fill" id="ring-pro" cx="34" cy="34" r="30" stroke-dasharray="0 188.4"/></svg>
-                            <span class="percentage-label" id="txt-pro">0%</span>
+                            <svg class="ring-svg"><circle class="ring-bg" cx="34" cy="34" r="30"></circle><circle class="ring-fill" id="ring-prot" cx="34" cy="34" r="30" style="stroke-dasharray: 188.5; stroke-dashoffset: 188.5;"></circle></svg>
+                            <span class="percentage-label" id="perc-prot">0%</span>
                         </div>
                         <span class="macro-title">Proteínas</span>
                     </div>
+
                     <div class="macro-item carb">
                         <div class="ring-box">
-                            <svg class="ring-svg"><circle class="ring-bg" cx="34" cy="34" r="30"/><circle class="ring-fill" id="ring-car" cx="34" cy="34" r="30" stroke-dasharray="0 188.4"/></svg>
-                            <span class="percentage-label" id="txt-car">0%</span>
+                            <svg class="ring-svg"><circle class="ring-bg" cx="34" cy="34" r="30"></circle><circle class="ring-fill" id="ring-carb" cx="34" cy="34" r="30" style="stroke-dasharray: 188.5; stroke-dashoffset: 188.5;"></circle></svg>
+                            <span class="percentage-label" id="perc-carb">0%</span>
                         </div>
                         <span class="macro-title">Carbos</span>
                     </div>
+
                     <div class="macro-item fat">
                         <div class="ring-box">
-                            <svg class="ring-svg"><circle class="ring-bg" cx="34" cy="34" r="30"/><circle class="ring-fill" id="ring-fat" cx="34" cy="34" r="30" stroke-dasharray="0 188.4"/></svg>
-                            <span class="percentage-label" id="txt-fat">0%</span>
+                            <svg class="ring-svg"><circle class="ring-bg" cx="34" cy="34" r="30"></circle><circle class="ring-fill" id="ring-fat" cx="34" cy="34" r="30" style="stroke-dasharray: 188.5; stroke-dashoffset: 188.5;"></circle></svg>
+                            <span class="percentage-label" id="perc-fat">0%</span>
                         </div>
                         <span class="macro-title">Gorduras</span>
                     </div>
@@ -139,11 +111,12 @@
 
             <section class="meals-section">
                 <h2>Cronograma Alimentar</h2>
+                
                 <div class="meals-stack">
-                    <div class="meal-card">
+                    <div class="meal-card" data-kcal="390">
                         <div class="meal-main">
                             <label class="check-container">
-                                <input type="checkbox" id="chk-cafe" onclick="updateEngine()">
+                                <input type="checkbox" class="meal-checkbox">
                                 <span class="checkmark"></span>
                             </label>
                             <div class="details">
@@ -153,14 +126,15 @@
                             </div>
                         </div>
                         <div class="meal-footer">
-                            <span class="kcal-indicator">⚡ 390 kcal</span>
-                            <button class="btn-recipe" onclick="openRecipe('cafe')">Ver Receita</button>
+                            <span class="kcal-tag">⚡ 390 kcal</span>
+                            <button class="btn-recipe">Ver Receita</button>
                         </div>
                     </div>
-                    <div class="meal-card">
+
+                    <div class="meal-card" data-kcal="980">
                         <div class="meal-main">
                             <label class="check-container">
-                                <input type="checkbox" id="chk-almoco" onclick="updateEngine()">
+                                <input type="checkbox" class="meal-checkbox">
                                 <span class="checkmark"></span>
                             </label>
                             <div class="details">
@@ -170,14 +144,15 @@
                             </div>
                         </div>
                         <div class="meal-footer">
-                            <span class="kcal-indicator">⚡ 980 kcal</span>
-                            <button class="btn-recipe" onclick="openRecipe('almoco')">Ver Receita</button>
+                            <span class="kcal-tag">⚡ 980 kcal</span>
+                            <button class="btn-recipe">Ver Receita</button>
                         </div>
                     </div>
-                    <div class="meal-card">
+
+                    <div class="meal-card" data-kcal="310">
                         <div class="meal-main">
                             <label class="check-container">
-                                <input type="checkbox" id="chk-tarde" onclick="updateEngine()">
+                                <input type="checkbox" class="meal-checkbox">
                                 <span class="checkmark"></span>
                             </label>
                             <div class="details">
@@ -187,14 +162,15 @@
                             </div>
                         </div>
                         <div class="meal-footer">
-                            <span class="kcal-indicator">⚡ 310 kcal</span>
-                            <button class="btn-recipe" onclick="openRecipe('tarde')">Ver Receita</button>
+                            <span class="kcal-tag">⚡ 310 kcal</span>
+                            <button class="btn-recipe">Ver Receita</button>
                         </div>
                     </div>
-                    <div class="meal-card">
+
+                    <div class="meal-card" data-kcal="520">
                         <div class="meal-main">
                             <label class="check-container">
-                                <input type="checkbox" id="chk-janta" onclick="updateEngine()">
+                                <input type="checkbox" class="meal-checkbox">
                                 <span class="checkmark"></span>
                             </label>
                             <div class="details">
@@ -204,8 +180,8 @@
                             </div>
                         </div>
                         <div class="meal-footer">
-                            <span class="kcal-indicator">⚡ 520 kcal</span>
-                            <button class="btn-recipe" onclick="openRecipe('janta')">Ver Receita</button>
+                            <span class="kcal-tag">⚡ 520 kcal</span>
+                            <button class="btn-recipe">Ver Receita</button>
                         </div>
                     </div>
                 </div>
@@ -216,48 +192,54 @@
                     <h3>Comunidade NUTRI+</h3>
                     <p class="comm-sub">Veja o que dizem sobre nós!</p>
                     
-                    <div class="feedbacks-stack" id="app-feedbacks-container">
-                        <div class="feedback-item">
-                            <div class="feedback-user-row">
-                                <div class="user-avatar-placeholder">👤</div>
-                                <div>
-                                    <h4>Carlos M.</h4>
-                                    <div class="stars">★★★★★</div>
-                                </div>
+                    <div class="feedback-item">
+                        <div class="feedback-user-row">
+                            <div class="user-avatar-placeholder">👤</div>
+                            <div class="feedback-info">
+                                <strong>Carlos M.</strong>
+                                <div class="stars">⭐⭐⭐⭐⭐</div>
                             </div>
-                            <p class="feedback-text">"Excelente app! Senti resultados reais emagrecendo de forma consistente."</p>
                         </div>
+                        <p class="feedback-text">"Excelente app! Senti resultados reais emagrecendo de forma consistente."</p>
                     </div>
 
                     <div class="comment-box-container">
                         <h4>Faça um comentário sobre o app!</h4>
                         <div class="stars-selector">
-                            <span class="star-clickable" data-value="1">☆</span>
-                            <span class="star-clickable" data-value="2">☆</span>
-                            <span class="star-clickable" data-value="3">☆</span>
-                            <span class="star-clickable" data-value="4">☆</span>
-                            <span class="star-clickable" data-value="5">☆</span>
+                            <span class="star-clickable">☆</span>
+                            <span class="star-clickable">☆</span>
+                            <span class="star-clickable">☆</span>
+                            <span class="star-clickable">☆</span>
+                            <span class="star-clickable">☆</span>
                         </div>
                         <div class="input-group">
-                            <textarea id="user-comment-input" placeholder="Escreva aqui sua experiência com o app..."></textarea>
-                            <button id="submit-comment-btn" onclick="submitAppComment()">Enviar Comentário</button>
+                            <textarea placeholder="Escreva aqui sua experiência com o app..."></textarea>
+                            <button id="submit-comment-btn">Enviar Comentário</button>
                         </div>
                     </div>
                 </div>
             </section>
         </main>
-
-        <div id="account-modal" class="modal-overlay hidden">
-            </div>
-
-        <div id="recipe-modal" class="modal-overlay hidden">
-            </div>
-
-        <nav class="mobile-nav-bar">
-            </nav>
-
     </div>
 
-    <script src="js/dashboard.js"></script>
+    <nav class="mobile-nav-bar">
+        <a href="#" class="mobile-nav-item">
+            <span class="m-nav-icon">🏠</span>
+            Início
+        </a>
+        <a href="#" class="mobile-nav-item">
+            <span class="m-nav-icon">📈</span>
+            Evolução
+        </a>
+        <a href="#" class="mobile-nav-item">
+            <span class="m-nav-icon">🥗</span>
+            Dieta
+        </a>
+        <a href="#" class="mobile-nav-item">
+            <span class="m-nav-icon">⚙️</span>
+            Conta
+        </a>
+    </nav>
+
 </body>
 </html>
