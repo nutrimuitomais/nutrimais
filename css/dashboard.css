@@ -39,10 +39,8 @@ body {
 }
 
 .platform-container {
-    width: 100%;
-    min-height: 100vh;
-    display: flex;
-    position: relative;
+    padding-top: 0 !important;
+    margin-top: 0 !important;
 }
 
 /* ==========================================================================
