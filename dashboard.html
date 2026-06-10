@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Nutri+ Core Edition</title>
+    <title>Nutri+ | Elite Platform</title>
     <link rel="stylesheet" href="css/dashboard.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -11,324 +11,267 @@
 </head>
 <body>
 
-    <div id="interstitial-marketing-portal" class="interstitial-backdrop hidden">
-        <div class="interstitial-wrapper-card">
-            <button class="close-interstitial-btn" onclick="dismissInterstitialHub()">×</button>
-            <div class="interstitial-banner-hero">
-                <div class="mini-logo-inline-premium">NUTRI+</div>
-                <img src="https://images.unsplash.com/photo-1490645935967-10de6ba17061?w=600" alt="Plano Performance" class="interstitial-img-render">
-            </div>
-            <div class="interstitial-marketing-body">
-                <h2>Evolua para o Próximo Nível</h2>
-                <p>Modelos dietéticos avançados estruturados pelos maiores especialistas de mercado. Conquiste resultados até 3x mais rápidos com acompanhamento de Elite.</p>
-                <a href="planos.html" class="interstitial-cta-btn">Quero o Acesso Premium</a>
-            </div>
-        </div>
-    </div>
-
     <div class="platform-container">
         
         <aside class="desktop-sidebar">
-            <div class="sidebar-logo-box">
-                <div class="brand-logo-main-text">NUTRI<span>+</span></div>
+            <div class="sidebar-logo">
+                <h2>NUTRI<span>+</span></h2>
             </div>
             
             <nav class="sidebar-menu">
-                <div class="menu-section-label">Navegação Principal</div>
+                <div class="nav-label">Principal</div>
                 <a href="#" class="menu-item active">Início</a>
                 <a href="#" class="menu-item">Evolução Corpórea</a>
                 
-                <div class="menu-section-label">Recursos do Assinante</div>
-                <a href="#" class="menu-item core-ia-link" onclick="triggerPremiumModule()">IA NUTRI - MAX</a>
-                <a href="#" class="menu-item" onclick="triggerPremiumModule()">Gerar Treino MAX</a>
-                <a href="#" class="menu-item" onclick="triggerPremiumModule()">FOTO IA SUPER</a>
+                <div class="nav-label">Recursos VIP</div>
+                <a href="#" class="menu-item link-ia" onclick="triggerPremium()">IA NUTRI - MAX</a>
+                <a href="#" class="menu-item" onclick="triggerPremium()">Gerar Treino MAX</a>
+                <a href="#" class="menu-item" onclick="triggerPremium()">FOTO IA SUPER</a>
+                <a href="#" class="menu-item" onclick="triggerPremium()">Consulta com Nutricionista</a>
+                <a href="#" class="menu-item" onclick="triggerPremium()">Consulta com Personal MAX</a>
                 
-                <div class="menu-section-label">Serviços Exclusivos</div>
-                <a href="#" class="menu-item VIP-service" onclick="triggerPremiumModule()">Consulta com Nutricionista</a>
-                <a href="#" class="menu-item VIP-service" onclick="triggerPremiumModule()">Consulta com Personal MAX</a>
-                
-                <div class="menu-section-label">Painel de Conta</div>
-                <a href="planos.html" class="menu-item accent-gold-item">Mudar de Plano</a>
-                <a href="#" class="menu-item">Faturas e Cobranças</a>
+                <div class="nav-label">Conta</div>
+                <a href="planos.html" class="menu-item link-gold">Mudar de Plano</a>
             </nav>
+
             <div class="sidebar-footer">
-                <div class="badge-metal super-gold-card">SUPER NUTRI</div>
+                <div class="badge-metal super-gold">SUPER NUTRI</div>
             </div>
         </aside>
 
-        <main class="main-app-content">
+        <main class="main-content">
             
             <header class="app-top-bar">
-                <div class="welcome-user">
-                    <div class="avatar-upload-container" onclick="triggerAvatarUpload()">
-                        <img id="user-avatar-target" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150" alt="Vinicius" class="profile-avatar">
-                        <input type="file" id="avatar-file-input" accept="image/*" class="hidden-file-input">
-                        <div class="avatar-overlay">ALTERAR</div>
+                <div class="user-info">
+                    <div class="avatar-box" onclick="triggerAvatarUpload()">
+                        <img id="user-avatar" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150" alt="Avatar">
+                        <input type="file" id="file-input" accept="image/*" style="display:none">
                     </div>
-                    <div class="user-meta">
+                    <div class="user-text">
                         <div class="name-row">
                             <h1>Olá, Vinicius</h1>
-                            <span class="badge-metal max-silver-liquid" id="plan-badge-top">MAX NUTRI</span>
+                            <span class="badge-metal max-silver">MAX NUTRI</span>
                         </div>
-                        <p class="sub-welcome" id="dynamic-expert-subtitle">Dieta adaptada baseado nos modelos de rendimento de especialistas nutricionistas</p>
+                        <p class="expert-subtitle">Dieta adaptada baseado nos modelos de rendimento de especialistas nutricionistas</p>
                     </div>
                 </div>
-                
                 <div class="top-actions desktop-only">
-                    <button class="notification-btn" onclick="openIfoodNotificationsHub()">
-                        <span class="bell-icon">🔔</span>
-                        <span class="pulse-dot"></span>
-                    </button>
+                    <button class="notif-btn" onclick="toggleNotifHub()">🔔<span class="dot"></span></button>
                 </div>
             </header>
 
-            <section class="editorial-upsell-slider">
-                <div class="slides-container" id="marketing-slides-wrapper">
-                    
-                    <div class="upsell-slide-card active">
-                        <div class="upsell-text-side">
-                            <div class="slide-mini-branded-tag">NUTRI+ Core</div>
-                            <span class="trending-tag">UPGRADE RECOMENDADO</span>
-                            <h2 class="editorial-title">Refeições personalizadas no seu celular</h2>
-                            <p>Substituições inteligentes em tempo real validadas por bancadas clínicas especializadas.</p>
-                            <a href="planos.html" class="action-upgrade-btn-wave">Mudar de plano agora →</a>
-                        </div>
-                        <div class="upsell-visual-side-3d">
-                            <div class="shadow-ground-3d"></div>
-                            <img src="https://i.postimg.cc/85zXbX7G/png-salada-3d.png" alt="Refeição Premium" class="dish-marketing-img-3d">
-                        </div>
+            <section class="upsell-slider">
+                <div class="slide active">
+                    <div class="slide-text">
+                        <span class="tag">RECOMENDADO</span>
+                        <h2>Refeições personalizadas no seu celular</h2>
+                        <p>Substituições validadas por bancadas clínicas especializadas em tempo real.</p>
+                        <a href="planos.html" class="btn-wave">Mudar de plano agora →</a>
                     </div>
-
-                    <div class="upsell-slide-card">
-                        <div class="upsell-text-side">
-                            <div class="slide-mini-branded-tag">NUTRI+ Elite</div>
-                            <span class="trending-tag">EXCLUSIVO MAX & SUPER</span>
-                            <h2 class="editorial-title">Gere Treinos de Elite com Alta Precisão</h2>
-                            <p>Planilhas completas de hipertrofia baseadas em rotinas de atletas profissionais.</p>
-                            <a href="planos.html" class="action-upgrade-btn-wave">Garantir Acesso VIP →</a>
-                        </div>
-                        <div class="upsell-visual-side-3d">
-                            <div class="shadow-ground-3d"></div>
-                            <img src="https://i.postimg.cc/mDbyxH0X/png-whey-3d.png" alt="Treino de Elite" class="dish-marketing-img-3d">
-                        </div>
+                    <div class="slide-visual">
+                        <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=500&auto=format&fit=crop" class="img-3d-overlap" alt="Food 3D">
                     </div>
-
-                </div>
-                <div class="slider-dots-indicator">
-                    <span class="dot active"></span>
-                    <span class="dot"></span>
                 </div>
             </section>
 
-            <section class="dashboard-metrics-grid">
-                <div class="metric-box main-calories">
-                    <div class="metric-header">
+            <section class="metrics-grid">
+                <div class="card-cal">
+                    <div class="card-header">
                         <h3>Meta do Dia</h3>
-                        <span class="kcal-target-text"><strong id="current-kcal-sum">0</strong> / 2200 kcal</span>
+                        <span><strong id="sum-kcal">0</strong> / 2200 kcal</span>
                     </div>
-                    <div class="progress-bar-container">
-                        <div id="calories-progress-line" class="progress-fill-line-animated" style="width: 0%;"></div>
+                    <div class="progress-bg">
+                        <div id="bar-kcal" class="progress-fill"></div>
                     </div>
-                    <p id="calories-remainder-msg" class="helper-text">Marque os consumos abaixo para atualizar.</p>
                 </div>
 
-                <div class="macros-progress-row">
-                    <div class="macro-ring-card">
-                        <div class="circle-box">
-                            <svg viewBox="0 0 36 36" class="circular-chart c-protein">
-                                <path class="circle-bg" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
-                                <path id="ring-protein" class="circle-fill" stroke-dasharray="0, 100" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+                <div class="macros-row">
+                    <div class="macro-item">
+                        <div class="ring-box">
+                            <svg viewBox="0 0 36 36" class="ring-svg prot">
+                                <path class="ring-bg" d="M18 2 a 16 16 0 0 1 0 32 a 16 16 0 0 1 0 -32" />
+                                <path id="ring-pro" class="ring-fill" stroke-dasharray="0, 100" d="M18 2 a 16 16 0 0 1 0 32 a 16 16 0 0 1 0 -32" />
                             </svg>
-                            <div class="percentage-display" id="pct-protein">0%</div>
+                            <span id="txt-pro">0%</span>
                         </div>
-                        <span class="macro-name">Proteínas</span>
-                        <span class="macro-sub-weight" id="weight-protein">0g / 160g</span>
+                        <label>Proteínas</label>
                     </div>
-
-                    <div class="macro-ring-card">
-                        <div class="circle-box">
-                            <svg viewBox="0 0 36 36" class="circular-chart c-carbs">
-                                <path class="circle-bg" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
-                                <path id="ring-carbs" class="circle-fill" stroke-dasharray="0, 100" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+                    <div class="macro-item">
+                        <div class="ring-box">
+                            <svg viewBox="0 0 36 36" class="ring-svg carb">
+                                <path class="ring-bg" d="M18 2 a 16 16 0 0 1 0 32 a 16 16 0 0 1 0 -32" />
+                                <path id="ring-car" class="ring-fill" stroke-dasharray="0, 100" d="M18 2 a 16 16 0 0 1 0 32 a 16 16 0 0 1 0 -32" />
                             </svg>
-                            <div class="percentage-display" id="pct-carbs">0%</div>
+                            <span id="txt-car">0%</span>
                         </div>
-                        <span class="macro-name">Carbos</span>
-                        <span class="macro-sub-weight" id="weight-carbs">0g / 220g</span>
+                        <label>Carbos</label>
                     </div>
-
-                    <div class="macro-ring-card">
-                        <div class="circle-box">
-                            <svg viewBox="0 0 36 36" class="circular-chart c-fats">
-                                <path class="circle-bg" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
-                                <path id="ring-fats" class="circle-fill" stroke-dasharray="0, 100" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+                    <div class="macro-item">
+                        <div class="ring-box">
+                            <svg viewBox="0 0 36 36" class="ring-svg fat">
+                                <path class="ring-bg" d="M18 2 a 16 16 0 0 1 0 32 a 16 16 0 0 1 0 -32" />
+                                <path id="ring-fat" class="ring-fill" stroke-dasharray="0, 100" d="M18 2 a 16 16 0 0 1 0 32 a 16 16 0 0 1 0 -32" />
                             </svg>
-                            <div class="percentage-display" id="pct-fats">0%</div>
+                            <span id="txt-fat">0%</span>
                         </div>
-                        <span class="macro-name">Gorduras</span>
-                        <span class="macro-sub-weight" id="weight-fats">0g / 70g</span>
+                        <label>Gorduras</label>
                     </div>
                 </div>
             </section>
 
-            <section class="meals-tracker-section">
-                <div class="section-title-bar">
-                    <h2>Cronograma Alimentar</h2>
-                </div>
-
-                <div class="meals-interactive-list">
-                    <div class="diet-action-card" id="card-meal-cafe">
-                        <div class="diet-card-main">
-                            <label class="premium-checkbox-wrapper">
-                                <input type="checkbox" id="check-cafe" onchange="calculateMacrosEngine()">
-                                <span class="premium-checkmark"></span>
+            <section class="meals-section">
+                <h2>Cronograma Alimentar</h2>
+                <div class="meals-stack">
+                    <div class="meal-card" id="meal-cafe">
+                        <div class="meal-main">
+                            <label class="check-container">
+                                <input type="checkbox" id="chk-cafe" onchange="updateEngine()">
+                                <span class="checkmark"></span>
                             </label>
-                            <div class="diet-card-details">
-                                <span class="meal-time-tag">08:00</span>
+                            <div class="details">
+                                <span class="time">08:00</span>
                                 <h3>Café da Manhã</h3>
-                                <p class="food-composition">Ovos Mexidos (3 un), Pão Integral (60g), Mamão (150g)</p>
+                                <p>Ovos mexidos (3 un), Pão Integral (60g), Mamão (150g)</p>
                             </div>
                         </div>
-                        <div class="diet-card-footer">
-                            <span class="kcal-pill">⚡ 390 kcal</span>
-                            <button class="recipe-trigger-btn" onclick="openRecipePanel('cafe')">Ver Receita</button>
+                        <div class="footer">
+                            <span class="kcal">⚡ 390 kcal</span>
+                            <button class="btn-recipe" onclick="openRecipe('cafe')">Ver Receita</button>
                         </div>
                     </div>
-
-                    <div class="diet-action-card" id="card-meal-almoco">
-                        <div class="diet-card-main">
-                            <label class="premium-checkbox-wrapper">
-                                <input type="checkbox" id="check-almoco" onchange="calculateMacrosEngine()">
-                                <span class="premium-checkmark"></span>
+                    <div class="meal-card" id="meal-almoco">
+                        <div class="meal-main">
+                            <label class="check-container">
+                                <input type="checkbox" id="chk-almoco" onchange="updateEngine()">
+                                <span class="checkmark"></span>
                             </label>
-                            <div class="diet-card-details">
-                                <span class="meal-time-tag">12:30</span>
+                            <div class="details">
+                                <span class="time">12:30</span>
                                 <h3>Almoço Funcional</h3>
-                                <p class="food-composition">Frango Grelhado (500g), Arroz Integral (200g), Salada Livre</p>
+                                <p>Frango Grelhado (500g), Arroz Integral (200g), Salada Livre</p>
                             </div>
                         </div>
-                        <div class="diet-card-footer">
-                            <span class="kcal-pill">⚡ 980 kcal</span>
-                            <button class="recipe-trigger-btn" onclick="openRecipePanel('almoco')">Ver Receita</button>
+                        <div class="footer">
+                            <span class="kcal">⚡ 980 kcal</span>
+                            <button class="btn-recipe" onclick="openRecipe('almoco')">Ver Receita</button>
                         </div>
                     </div>
-
-                    <div class="diet-action-card" id="card-meal-tarde">
-                        <div class="diet-card-main">
-                            <label class="premium-checkbox-wrapper">
-                                <input type="checkbox" id="check-tarde" onchange="calculateMacrosEngine()">
-                                <span class="premium-checkmark"></span>
+                    <div class="meal-card" id="meal-tarde">
+                        <div class="meal-main">
+                            <label class="check-container">
+                                <input type="checkbox" id="chk-tarde" onchange="updateEngine()">
+                                <span class="checkmark"></span>
                             </label>
-                            <div class="diet-card-details">
-                                <span class="meal-time-tag">16:30</span>
+                            <div class="details">
+                                <span class="time">16:30</span>
                                 <h3>Lanche da Tarde</h3>
-                                <p class="food-composition">Iogurte Whey (200g), Aveia (30g), Morangos (100g)</p>
+                                <p>Iogurte Whey (200g), Aveia (30g), Morangos (100g)</p>
                             </div>
                         </div>
-                        <div class="diet-card-footer">
-                            <span class="kcal-pill">⚡ 310 kcal</span>
-                            <button class="recipe-trigger-btn" onclick="openRecipePanel('tarde')">Ver Receita</button>
+                        <div class="footer">
+                            <span class="kcal">⚡ 310 kcal</span>
+                            <button class="btn-recipe" onclick="openRecipe('tarde')">Ver Receita</button>
                         </div>
                     </div>
-
-                    <div class="diet-action-card" id="card-meal-janta">
-                        <div class="diet-card-main">
-                            <label class="premium-checkbox-wrapper">
-                                <input type="checkbox" id="check-janta" onchange="calculateMacrosEngine()">
-                                <span class="premium-checkmark"></span>
+                    <div class="meal-card" id="meal-janta">
+                        <div class="meal-main">
+                            <label class="check-container">
+                                <input type="checkbox" id="chk-janta" onchange="updateEngine()">
+                                <span class="checkmark"></span>
                             </label>
-                            <div class="diet-card-details">
-                                <span class="meal-time-tag">20:00</span>
+                            <div class="details">
+                                <span class="time">20:00</span>
                                 <h3>Janta Anabólica</h3>
-                                <p class="food-composition">Patinho Moído (200g), Mandioca Cozida (150g), Brócolis (80g)</p>
+                                <p>Patinho Moído (200g), Mandioca Cozida (150g), Brócolis (80g)</p>
                             </div>
                         </div>
-                        <div class="diet-card-footer">
-                            <span class="kcal-pill">⚡ 520 kcal</span>
-                            <button class="recipe-trigger-btn" onclick="openRecipePanel('janta')">Ver Receita</button>
+                        <div class="footer">
+                            <span class="kcal">⚡ 520 kcal</span>
+                            <button class="btn-recipe" onclick="openRecipe('janta')">Ver Receita</button>
                         </div>
                     </div>
                 </div>
             </section>
         </main>
 
-        <nav class="mobile-bottom-bar">
-            <button class="m-nav-btn active"><span class="m-label">Início</span></button>
-            <button class="m-nav-btn" onclick="openIfoodNotificationsHub()"><span class="m-label">Notificações</span></button>
-            
-            <div class="ai-button-container-hub">
-                <button class="premium-ai-core-btn" onclick="triggerPremiumModule()">
-                    <span class="ai-liquid-glow"></span>
-                    <span class="ai-text-brand">AI</span>
-                </button>
+        <nav class="mobile-nav">
+            <button class="nav-btn active">🏠<span>Início</span></button>
+            <button class="nav-btn" onclick="toggleNotifHub()">🔔<span>Avisos</span></button>
+            <div class="ai-central">
+                <button class="ai-btn-neon" onclick="triggerPremium()">AI</button>
             </div>
-
-            <button class="m-nav-btn" onclick="triggerPremiumModule()"><span class="m-label">Consultas</span></button>
-            <button class="m-nav-btn" onclick="toggleProfileSubmenu()"><span class="m-label">Perfil</span></button>
+            <button class="nav-btn" onclick="triggerPremium()">👤<span>Planos</span></button>
+            <button class="nav-btn" onclick="triggerPremium()">⚙️<span>Consultas</span></button>
         </nav>
 
-        <div id="ifood-notifications-overlay" class="ifood-overlay hidden" onclick="closeIfoodNotificationsHub()">
-            <div class="ifood-panel-sheet" onclick="event.stopPropagation()">
-                <div class="ifood-panel-header">
-                    <div class="ifood-drag-line"></div>
-                    <h3>Notificações e Dicas</h3>
-                    <button class="clear-all-ifood-btn" onclick="closeIfoodNotificationsHub()">Fechar</button>
+        <div id="notif-hub" class="notif-overlay hidden" onclick="toggleNotifHub()">
+            <div class="notif-sheet" onclick="event.stopPropagation()">
+                <div class="header">
+                    <div class="drag"></div>
+                    <h3>Novidades e Dicas</h3>
                 </div>
-                <div class="ifood-cards-scroll-area">
-                    
-                    <div class="ifood-notif-card highlighted" onclick="window.location.href='planos.html'">
-                        <div class="ifood-card-icon">💎</div>
-                        <div class="ifood-card-content">
-                            <h4>Ganho de Massa 25% mais rápido?</h4>
-                            <p>Assinantes do plano <strong>SUPER NUTRI</strong> contam com planilhas metabólicas calibradas para otimização hormonal natural. Faça o upgrade e confira.</p>
-                            <span class="ifood-time-tag">Agora mesmo</span>
+                <div class="notif-list">
+                    <div class="notif-card highlight" onclick="window.location.href='planos.html'">
+                        <div class="notif-img-frame">
+                            <img src="https://images.unsplash.com/photo-1517838277536-f5f99be501cd?w=150&auto=format&fit=crop" alt="Workout">
+                        </div>
+                        <div class="txt">
+                            <h4>Ganhe massa 25% mais rápido</h4>
+                            <p>Assinantes SUPER têm acesso a planilhas de elite calibradas.</p>
+                            <small>Agora mesmo</small>
                         </div>
                     </div>
-
-                    <div class="ifood-notif-card">
-                        <div class="ifood-card-icon">🍎</div>
-                        <div class="ifood-card-content">
-                            <h4>Dica de Especialistas</h4>
-                            <p>Consumir 400ml de água gelada imediatamente ao acordar acelera seu transito metabólico basal e prepara os receptores de carboidrato para o café da manhã.</p>
-                            <span class="ifood-time-tag">Há 2 horas</span>
+                    <div class="notif-card">
+                        <div class="notif-img-frame">
+                            <img src="https://images.unsplash.com/photo-1540420773420-3366772f4999?w=150&auto=format&fit=crop" alt="Salad">
+                        </div>
+                        <div class="txt">
+                            <h4>Dica do Especialista</h4>
+                            <p>400ml de água gelada ao acordar acelera seu metabolismo basal de forma imediata.</p>
+                            <small>Há 2 horas</small>
                         </div>
                     </div>
-
                 </div>
             </div>
         </div>
 
-        <div id="profile-drawer-overlay" class="profile-drawer-overlay hidden" onclick="toggleProfileSubmenu()">
-            <div class="drawer-sheet" onclick="event.stopPropagation()">
-                <div class="drawer-header-bar">
-                    <div class="bar-indicator"></div>
-                    <h3>Painel de Controle Nutri+</h3>
+        <div id="recipe-modal" class="recipe-backdrop hidden">
+            <div class="recipe-card-full">
+                <div class="top-nav">
+                    <button class="btn-back" onclick="closeRecipe()">←</button>
                 </div>
-                <div class="drawer-options-list">
-                    <button class="drawer-item" onclick="triggerAvatarUpload()">Upload da Foto de Perfil</button>
-                    <a href="planos.html" class="drawer-item link-item-action">Planos e Assinaturas</a>
-                    <button class="drawer-item">Faturas e Cobranças</button>
-                    <button class="drawer-item" onclick="triggerPremiumModule()">Consulta com Nutricionista</button>
-                    <button class="drawer-item" onclick="triggerPremiumModule()">Consulta com Personal MAX</button>
-                    <hr class="drawer-divider">
-                    <button class="drawer-item logout-btn">Sair da Conta</button>
-                </div>
-            </div>
-        </div>
-
-        <div id="recipe-modal-viewport" class="recipe-modal-backdrop hidden" onclick="closeRecipePanel()">
-            <div class="recipe-glass-card" onclick="event.stopPropagation()">
-                <header class="recipe-card-header">
-                    <button class="back-recipe-btn" onclick="closeRecipePanel()">← Voltar</button>
-                    <h2 id="recipe-title-render">Detalhamento</h2>
-                </header>
-                <div class="recipe-scroll-body" id="recipe-content-loaded-view">
-                    <div class="recipe-visual-banner" id="recipe-banner-image-bg"></div>
-                    <div class="ingredients-list-wrapper">
-                        <h3>Ingredientes e Pesos Exatos</h3>
-                        <p class="count-subtitle">Ajustados para sua meta</p>
-                        <div class="ingredients-render-grid" id="ingredients-target-box"></div>
+                
+                <div class="hero-section">
+                    <div class="title-area">
+                        <h2 id="recipe-name">Mix salad vegetables</h2>
                     </div>
+                    <div class="plate-image-container">
+                        <img id="recipe-plate" src="" alt="Plate Core">
+                    </div>
+                </div>
+
+                <div class="macros-row-modal">
+                    <div class="macro-pill yellow">
+                        <span id="rec-kcal">240</span>
+                        <label>Calorias</label>
+                    </div>
+                    <div class="macro-pill green">
+                        <span id="rec-pro">19g</span>
+                        <label>Proteína</label>
+                    </div>
+                    <div class="macro-pill blue">
+                        <span id="rec-car">5g</span>
+                        <label>Carbos</label>
+                    </div>
+                </div>
+
+                <div class="ingredients-section">
+                    <div class="section-header">
+                        <h3>Ingredientes e Pesos</h3>
+                        <small id="rec-count">3 itens saudáveis</small>
+                    </div>
+                    <div id="ingredients-list" class="ing-list">
+                        </div>
                 </div>
             </div>
         </div>
