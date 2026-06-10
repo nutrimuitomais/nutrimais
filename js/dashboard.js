@@ -1,266 +1,296 @@
 /* ==========================================================================
-   BANCO DE DADOS DE REFEIÇÕES, PLANOS E RECEITAS
+   BANCO DE DADOS DE RECEITAS INTELIGENTES (VALORES MOLECULARES)
    ========================================================================== */
-const db = {
-    "cafe": { 
-        titulo: "Café Performance Premium", 
-        kcal: 390, pro: 28, car: 35, fat: 12, 
-        foto: "https://images.unsplash.com/photo-1525351484163-7529414344d8?w=500" 
+const recipeDatabase = {
+    cafe: {
+        title: "Café da Manhã Anabólico",
+        img: "https://images.unsplash.com/photo-1525351484163-7529414344d8?w=500",
+        kcal: 390,
+        pro: 32,
+        car: 40,
+        fat: 11,
+        plan: "PLANO MAX: Distribuição molecular calculada para o pico de cortisol matinal."
     },
-    "almoco": { 
-        titulo: "Almoço Altamente Anabólico", 
-        kcal: 980, pro: 95, car: 78, fat: 18, 
-        foto: "https://images.unsplash.com/photo-1540420773420-3366772f4999?w=500" 
+    almoco: {
+        title: "Almoço Funcional Termogênico",
+        img: "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=500",
+        kcal: 980,
+        pro: 85,
+        car: 110,
+        fat: 22,
+        plan: "PLANO MAX: Alta concentração proteica ideal para manutenção do balanço nitrogenado positivo."
     },
-    "tarde": { 
-        titulo: "Lanche Termogênico Ativo", 
-        kcal: 310, pro: 22, car: 30, fat: 6, 
-        foto: "https://images.unsplash.com/photo-1488477181946-6428a0291777?w=500" 
+    tarde: {
+        title: "Lanche de Recuperação Enzimática",
+        img: "https://images.unsplash.com/photo-1488477181946-6428a0291777?w=500",
+        kcal: 310,
+        pro: 24,
+        car: 38,
+        fat: 6,
+        plan: "PLANO MAX: Absorção otimizada com carboidratos de baixo índice glicêmico."
     },
-    "janta": { 
-        titulo: "Janta Regeneradora Ultra", 
-        kcal: 520, pro: 42, car: 45, fat: 14, 
-        foto: "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=500" 
+    janta: {
+        title: "Janta Anabólica de Baixo Impacto Glicêmico",
+        img: "https://images.unsplash.com/photo-1544025162-d76694265947?w=500",
+        kcal: 520,
+        pro: 52,
+        car: 45,
+        fat: 14,
+        plan: "PLANO MAX: Nutrição noturna focada na liberação gradual de aminoácidos durante o sono."
     }
 };
 
-const metaDiaria = { kcal: 2200, pro: 160, car: 220, fat: 70 };
-let currentSlide = 0;
-let selectedRating = 0; // Armazena a nota por estrelas selecionada
-
-// Definição do Perfil atual do Usuário (Pode ser alterado para testar limites)
-const usuarioAtual = {
-    nome: "Vinicius",
-    plano: "MAX" // Opções: "Nutri Inteligente", "MAX", "SUPER"
-};
-
 /* ==========================================================================
-   SISTEMA DE MODAL DE RECEITAS COM LOGICA DE LIMITE POR PLANO
+   SISTEMA DE METAS, MACROS E ATUALIZAÇÃO EM TEMPO REAL (ENGINE)
    ========================================================================== */
-function openRecipe(mealKey) {
-    const modal = document.getElementById('recipe-modal');
-    const refeicao = db[mealKey];
-    
-    if (!modal || !refeicao) return;
+const METAS_DIARIAS = { kcal: 2200, pro: 193, car: 233, fat: 53 };
 
-    // 1. Define o limite de receitas com base nas regras de negócio do plano
-    let limiteReceitas = 1;
-    if (usuarioAtual.plano === "MAX") limiteReceitas = 50;
-    if (usuarioAtual.plano === "SUPER") limiteReceitas = 100;
-
-    // 2. Injeta os dados dinâmicos da refeição selecionada no Modal
-    document.getElementById('modal-recipe-title').textContent = refeicao.titulo;
-    document.getElementById('modal-recipe-img').src = refeicao.foto;
-    document.getElementById('modal-recipe-plan-badge').textContent = `PLANO ${usuarioAtual.plano.toUpperCase()}`;
-    
-    // Injeta os macros exatos calculados
-    document.getElementById('m-kcal').textContent = refeicao.kcal;
-    document.getElementById('m-pro').textContent = refeicao.pro + "g";
-    document.getElementById('m-car').textContent = refeicao.car + "g";
-    document.getElementById('m-fat').textContent = refeicao.fat + "g";
-
-    // Exibe texto informando sobre o limite de variação inteligente
-    document.getElementById('modal-plan-text').innerHTML = 
-        `Seu plano <strong>${usuarioAtual.plano}</strong> com base na anamnese e escolhas alimentares gera até <strong>${limiteReceitas} receitas exclusivas</strong> para esta refeição.`;
-
-    // Revela o modal removendo a classe hidden
-    modal.classList.remove('hidden');
-}
-
-function closeRecipeModal() {
-    const modal = document.getElementById('recipe-modal');
-    if (modal) modal.classList.add('hidden');
-}
-
-/* ==========================================================================
-   FILTRO INTELIGENTE E GERENCIADOR DA COMUNIDADE (ESTRELAS)
-   ========================================================================== */
-function initStarsSelector() {
-    const stars = document.querySelectorAll('.star-clickable');
-    
-    stars.forEach(star => {
-        star.addEventListener('click', function() {
-            selectedRating = parseInt(this.getAttribute('data-value'));
-            
-            // Acende as estrelas até a clicada e apaga as posteriores
-            stars.forEach(s => {
-                const val = parseInt(s.getAttribute('data-value'));
-                if (val <= selectedRating) {
-                    s.textContent = "★";
-                    s.classList.add('selected');
-                } else {
-                    s.textContent = "☆";
-                    s.classList.remove('selected');
-                }
-            });
-        });
-    });
-}
-
-function submitAppComment() {
-    const textInput = document.getElementById('user-comment-input');
-    const container = document.getElementById('app-feedbacks-container');
-    
-    if (!textInput || !textInput.value.trim()) {
-        alert("Por favor, digite um comentário antes de enviar.");
-        return;
-    }
-
-    if (selectedRating === 0) {
-        alert("Por favor, selecione uma nota de 1 a 5 estrelas clicando nos símbolos.");
-        return;
-    }
-
-    const textoComentario = textInput.value.trim();
-
-    // FILTRO INTELIGENTE DE REGRAS DE NEGÓCIO:
-    // Se a avaliação for de 1 a 3 estrelas (ruim/regular), não publica direto no app.
-    if (selectedRating <= 3) {
-        alert("Obrigado pelo feedback! O seu comentário foi enviado para a moderação interna privada dos administradores e desenvolvedores.");
-    } else {
-        // Se for bom (4 ou 5 estrelas), cria o elemento e joga no topo do feed público
-        const novoFeedback = document.createElement('div');
-        novoFeedback.className = 'feedback-item';
-        
-        let estrelasMontadas = "★".repeat(selectedRating) + "☆".repeat(5 - selectedRating);
-
-        novoFeedback.innerHTML = `
-            <div class="feedback-user-row">
-                <div class="user-avatar-placeholder">👤</div>
-                <div>
-                    <h4>${usuarioAtual.nome} (Você)</h4>
-                    <div class="stars" style="color: #F5A623;">${estrelasMontadas}</div>
-                </div>
-            </div>
-            <p class="feedback-text">"${textoComentario}"</p>
-        `;
-
-        // Coloca no início da lista de comentários da comunidade
-        container.insertBefore(novoFeedback, container.firstChild);
-        alert("Sucesso! O seu depoimento positivo foi aprovado automaticamente e publicado na comunidade NUTRI+!");
-    }
-
-    // Limpa o formulário de envio para o padrão original
-    textInput.value = "";
-    selectedRating = 0;
-    document.querySelectorAll('.star-clickable').forEach(s => {
-        s.textContent = "☆";
-        s.classList.remove('selected');
-    });
-}
-
-/* ==========================================================================
-   MOTOR PRINCIPAL DE CÁLCULO DE CALORIAS E MACROS
-   ========================================================================== */
 function updateEngine() {
-    let acumulado = { kcal: 0, pro: 0, car: 0, fat: 0 };
-    const chkIds = ["cafe", "almoco", "tarde", "janta"];
+    let currentKcal = 0;
+    let currentPro = 0;
+    let currentCar = 0;
+    let currentFat = 0;
 
-    chkIds.forEach(id => {
-        const checkbox = document.getElementById(`chk-${id}`);
-        const cardRefeicao = checkbox ? checkbox.closest('.meal-card') : null;
-        
-        if (checkbox && checkbox.checked) {
-            acumulado.kcal += db[id].kcal;
-            acumulado.pro += db[id].pro;
-            acumulado.car += db[id].car;
-            acumulado.fat += db[id].fat;
-            if (cardRefeicao) cardRefeicao.classList.add('concluido');
+    // Varre as refeições checadas e soma os nutrientes
+    if (document.getElementById('chk-cafe').checked) {
+        currentKcal += recipeDatabase.cafe.kcal;
+        currentPro += recipeDatabase.cafe.pro;
+        currentCar += recipeDatabase.cafe.car;
+        currentFat += recipeDatabase.cafe.fat;
+    }
+    if (document.getElementById('chk-almoco').checked) {
+        currentKcal += recipeDatabase.almoco.kcal;
+        currentPro += recipeDatabase.almoco.pro;
+        currentCar += recipeDatabase.almoco.car;
+        currentFat += recipeDatabase.almoco.fat;
+    }
+    if (document.getElementById('chk-tarde').checked) {
+        currentKcal += recipeDatabase.tarde.kcal;
+        currentPro += recipeDatabase.tarde.pro;
+        currentCar += recipeDatabase.tarde.car;
+        currentFat += recipeDatabase.tarde.fat;
+    }
+    if (document.getElementById('chk-janta').checked) {
+        currentKcal += recipeDatabase.janta.kcal;
+        currentPro += recipeDatabase.janta.pro;
+        currentCar += recipeDatabase.janta.car;
+        currentFat += recipeDatabase.janta.fat;
+    }
+
+    // Altera as classes visuais dos cards baseando-se no checkbox
+    const meals = ['cafe', 'almoco', 'tarde', 'janta'];
+    meals.forEach(meal => {
+        const chk = document.getElementById(`chk-${meal}`);
+        const card = chk.closest('.meal-card');
+        if (chk.checked) {
+            card.classList.add('concluido');
         } else {
-            if (cardRefeicao) cardRefeicao.classList.remove('concluido');
+            card.classList.remove('concluido');
         }
     });
 
-    document.getElementById('sum-kcal').textContent = acumulado.kcal;
-    
-    const pctKcal = Math.min((acumulado.kcal / metaDiaria.kcal) * 100, 100);
-    document.getElementById('bar-kcal').style.width = pctKcal + "%";
+    // 1. Atualiza a Barra de Calorias Principais
+    document.getElementById('sum-kcal').innerText = currentKcal;
+    let kcalPercent = Math.min((currentKcal / METAS_DIARIAS.kcal) * 100, 100);
+    document.getElementById('bar-kcal').style.width = `${kcalPercent}%`;
 
-    const feedbackText = document.getElementById('kcal-feedback');
-    const kcalRestantes = metaDiaria.kcal - acumulado.kcal;
-
-    if (pctKcal >= 100) {
-        feedbackText.innerHTML = "🏆 <span style='color: #3CA36A; font-weight: 700;'>Parabéns, Vinicius! Você completou 100% da meta hoje!</span>";
-    } else if (acumulado.kcal === 0) {
-        feedbackText.textContent = `Restam ${metaDiaria.kcal} kcal para fechar o plano diário.`;
+    // Mensagem de feedback dinâmico
+    const feedback = document.getElementById('kcal-feedback');
+    if (currentKcal >= METAS_DIARIAS.kcal) {
+        feedback.innerHTML = "🏆 <strong>Parabéns, Vinicius!</strong> Você completou 100% da meta hoje!";
+        feedback.style.color = "#3CA36A";
     } else {
-        feedbackText.innerHTML = `Faltam <strong>${kcalRestantes} kcal</strong> para completar os 100%.`;
+        feedback.innerText = `Restam ${METAS_DIARIAS.kcal - currentKcal} kcal para fechar o plano diário.`;
+        feedback.style.color = "";
     }
 
-    updateMacroRing('ring-pro', 'txt-pro', (acumulado.pro / metaDiaria.pro) * 100);
-    updateMacroRing('ring-car', 'txt-car', (acumulado.car / metaDiaria.car) * 100);
-    updateMacroRing('ring-fat', 'txt-fat', (acumulado.fat / metaDiaria.fat) * 100);
+    // 2. Atualiza os Anéis de Macronutrientes Graficamente
+    updateMacroRing('pro', currentPro, METAS_DIARIAS.pro, 'txt-pro');
+    updateMacroRing('car', currentCar, METAS_DIARIAS.car, 'txt-car');
+    updateMacroRing('fat', currentFat, METAS_DIARIAS.fat, 'txt-fat');
 }
 
-function updateMacroRing(ringId, textId, porcentagem) {
-    const p = Math.min(Math.round(porcentagem), 100);
-    const ringEl = document.getElementById(ringId);
-    const textEl = document.getElementById(textId);
+function updateMacroRing(id, atual, meta, textId) {
+    let percent = Math.min((atual / meta) * 100, 100);
+    document.getElementById(textId).innerText = `${Math.round(percent)}%`;
     
-    if (ringEl) ringEl.setAttribute("stroke-dasharray", `${p}, 100`);
-    if (textEl) textEl.textContent = p + "%";
+    // Perímetro do círculo matemático baseado no raio r=30 (2 * PI * r) = ~188.4
+    let strokeDash = (percent / 100) * 188.4;
+    document.getElementById(`ring-${id}`).style.strokeDasharray = `${strokeDash}, 188.4`;
 }
 
 /* ==========================================================================
-   CARROSSEL E AUXILIARES DO MENU SUPERIOR/INFERIOR
+   CARROSSEL DE DESTAQUES INFINITO AUTOMÁTICO & MANUAL
    ========================================================================== */
-function initSlider() {
-    const sliderWrapper = document.getElementById('main-slider');
-    const dots = document.querySelectorAll('.s-dot');
-    const totalSlides = 3;
+let activeSlideIndex = 0;
+const slides = document.querySelectorAll('.slide-item');
+const dots = document.querySelectorAll('.s-dot');
+let sliderInterval;
 
-    if (!sliderWrapper || dots.length === 0) return;
+function showSlide(index) {
+    if (index >= slides.length) activeSlideIndex = 0;
+    else if (index < 0) activeSlideIndex = slides.length - 1;
+    else activeSlideIndex = index;
 
-    setInterval(() => {
-        currentSlide = (currentSlide + 1) % totalSlides;
-        sliderWrapper.style.transform = `translateX(-${currentSlide * 100}%)`;
-        dots.forEach((dot, index) => {
-            dot.classList.toggle('active', index === currentSlide);
-        });
-    }, 5000);
-}
+    const wrapper = document.getElementById('main-slider');
+    if (wrapper) {
+        wrapper.style.transform = `translateX(-${activeSlideIndex * 100}%)`;
+    }
 
-function initMobileNav() {
-    const navItems = document.querySelectorAll('.mobile-nav-item');
-    navItems.forEach(item => {
-        item.addEventListener('click', function(e) {
-            if (this.getAttribute('onclick')) return;
-            e.preventDefault();
-            navItems.forEach(nav => nav.classList.remove('active'));
-            this.classList.add('active');
-        });
+    dots.forEach((dot, idx) => {
+        dot.classList.toggle('active', idx === activeSlideIndex);
     });
 }
 
-function triggerPremium() { alert("Ação do plano executada com sucesso!"); }
-function toggleNotifHub() { alert("Você não possui novos alertas no painel."); }
-function triggerAvatarUpload() { document.getElementById('file-input').click(); }
+function startSliderTimeline() {
+    sliderInterval = setInterval(() => {
+        showSlide(activeSlideIndex + 1);
+    }, 5000); // Passa a cada 5 segundos
+}
 
-document.getElementById('file-input')?.addEventListener('change', function(e) {
-    const file = e.target.files[0];
+// Vincula cliques manuais nos pontinhos refletores
+dots.forEach((dot, idx) => {
+    dot.addEventListener('click', () => {
+        clearInterval(sliderInterval);
+        showSlide(idx);
+        startSliderTimeline();
+    });
+});
+
+/* ==========================================================================
+   GERENCIADOR DE MODAIS (RECEITAS E RECURSOS DA CONTA)
+   ========================================================================== */
+function openRecipe(mealKey) {
+    const recipe = recipeDatabase[mealKey];
+    if (!recipe) return;
+
+    // Injeta os dados da receita no Modal Corrigido
+    document.getElementById('modal-recipe-title').innerText = recipe.title;
+    document.getElementById('modal-recipe-img').src = recipe.img;
+    document.getElementById('m-kcal').innerText = recipe.kcal;
+    document.getElementById('m-pro').innerText = `${recipe.pro}g`;
+    document.getElementById('m-car').innerText = `${recipe.car}g`;
+    document.getElementById('m-fat').innerText = `${recipe.fat}g`;
+    document.getElementById('modal-plan-text').innerText = recipe.plan;
+
+    // Torna visível removendo a trava oculta
+    document.getElementById('recipe-modal').classList.remove('hidden');
+}
+
+function closeRecipeModal() {
+    document.getElementById('recipe-modal').classList.add('hidden');
+}
+
+function toggleMenuConta() {
+    const modalConta = document.getElementById('account-modal');
+    if (modalConta) {
+        modalConta.classList.toggle('hidden');
+    }
+}
+
+/* ==========================================================================
+   SISTEMA DE INTERAÇÃO DA COMUNIDADE (ESTRELAS & REVIEWS)
+   ========================================================================== */
+let selectedRatingValue = 0;
+const starElements = document.querySelectorAll('.star-clickable');
+
+starElements.forEach(star => {
+    star.addEventListener('click', function() {
+        selectedRatingValue = parseInt(this.getAttribute('data-value'));
+        starElements.forEach((s, idx) => {
+            if (idx < selectedRatingValue) {
+                s.innerHTML = '★';
+                s.classList.add('selected');
+            } else {
+                s.innerHTML = '☆';
+                s.classList.remove('selected');
+            }
+        });
+    });
+});
+
+function submitAppComment() {
+    const commentText = document.getElementById('user-comment-input').value.trim();
+    if (!commentText) {
+        alert("Por favor, digite um comentário antes de enviar.");
+        return;
+    }
+    if (selectedRatingValue === 0) {
+        alert("Por favor, selecione uma nota clicando nas estrelas.");
+        return;
+    }
+
+    // Cria visualmente a nova publicação na pilha da comunidade
+    const container = document.getElementById('app-feedbacks-container');
+    const newFeedback = document.createElement('div');
+    newFeedback.className = 'feedback-item';
+    
+    let stringEstrelas = '★'.repeat(selectedRatingValue) + '☆'.repeat(5 - selectedRatingValue);
+
+    newFeedback.innerHTML = `
+        <div class="feedback-user-row">
+            <div class="user-avatar-placeholder">👤</div>
+            <div>
+                <h4>Vinicius (Você)</h4>
+                <div class="stars" style="color: #F5A623;">${stringEstrelas}</div>
+            </div>
+        </div>
+        <p class="feedback-text">"${commentText}"</p>
+    `;
+
+    container.prepend(newFeedback);
+
+    // Limpa os campos da interface
+    document.getElementById('user-comment-input').value = '';
+    selectedRatingValue = 0;
+    starElements.forEach(s => { s.innerHTML = '☆'; s.classList.remove('selected'); });
+
+    alert("Obrigado pelo seu comentário na Comunidade NUTRI+!");
+}
+
+/* ==========================================================================
+   UPLOAD DE AVATAR INTEGRADO (MUDAR EM TODOS OS LOCAIS)
+   ========================================================================== */
+function triggerAvatarUpload() {
+    document.getElementById('file-input').click();
+}
+
+document.getElementById('file-input').addEventListener('change', function(event) {
+    const file = event.target.files[0];
     if (file) {
         const reader = new FileReader();
-        reader.onload = function(event) {
-            document.getElementById('user-avatar').src = event.target.result;
+        reader.onload = function(e) {
+            // Atualiza a foto do Top Bar (Desktop/Geral)
+            document.getElementById('user-avatar').src = e.target.result;
+            // Atualiza a foto incorporada no Menu Inferior Mobile
+            const mobileAvatar = document.querySelector('.mobile-user-avatar');
+            if (mobileAvatar) {
+                mobileAvatar.src = e.target.result;
+            }
         };
         reader.readAsDataURL(file);
     }
 });
 
-// Fecha o modal caso o usuário clique fora da caixa branca central
-window.onclick = function(event) {
-    const modal = document.getElementById('recipe-modal');
-    if (event.target == modal) {
-        modal.classList.add('hidden');
-    }
+/* ==========================================================================
+   GATILHOS E SISTEMA DE NOTIFICAÇÃO DO PROJETO
+   ========================================================================== */
+function toggleNotifHub() {
+    alert("Central de Notificações:\n\n🔔 Novas atualizações de receitas foram aplicadas ao plano MAX.");
+}
+
+function triggerIA() {
+    alert("✨ Assistente IA Nutri Inteligente ✨\n\nEssa função exclusiva está processando os dados da sua anamnese molecular em tempo real. Preparando insights!");
+}
+
+function triggerPremium() {
+    alert("🔒 Upgrade de Assinatura\n\nVocê já é um membro com acesso ao PLANO MAX. Para upgrades corporativos ou adicionais exclusivos, contate o administrador.");
 }
 
 /* ==========================================================================
-   INICIALIZAÇÃO GLOBAL
+   INICIALIZAÇÃO AUTOMÁTICA DA APLICAÇÃO
    ========================================================================== */
-window.addEventListener('DOMContentLoaded', () => {
-    updateEngine();        // Carrega o contador de calorias baseado nos checks
-    initSlider();          // Ativa o temporizador de anúncios de 5s
-    initMobileNav();       // Ativa o controle por toque do app móvel
-    initStarsSelector();   // Inicializa o seletor clicável de estrelas
+document.addEventListener("DOMContentLoaded", () => {
+    updateEngine(); // Executa o motor limpando os dados (tudo inicia desmarcado)
+    startSliderTimeline(); // Inicia o carrossel automático
 });
