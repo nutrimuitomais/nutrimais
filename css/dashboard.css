@@ -323,6 +323,25 @@ body {
 .slide-treino { background-image: url('../img/anamnese.png'); }
 .slide-anamnese { background-image: url('../img/treino.png'); }
 
+   .btn-premium-action {
+    background: linear-gradient(135deg, #3CA36A 0%, #153222 100%);
+    color: #ffffff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 14px;
+    cursor: pointer;
+    transition: transform 0.2s ease, opacity 0.2s ease;
+    display: inline-block;
+    text-decoration: none; /* Importante se for um link */
+}
+
+.btn-premium-action:hover {
+    transform: translateY(-2px);
+    opacity: 0.9;
+}
+
 /* ==========================================================================
    6. METRICS GRID (HORIZONTAL UNIFICADO EM QUALQUER TELA)
    ========================================================================== */
