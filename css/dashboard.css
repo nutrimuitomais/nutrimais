@@ -175,35 +175,41 @@ body {
 }
 
 /* ==========================================================================
-   4. HEADER E AVATAR (COM FUNÇÃO DE UPLOAD)
+   4. HEADER E AVATAR (REMODELADO E 100% REDONDO)
    ========================================================================== */
 .app-top-bar {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 40px;
+    background: #FFF;          /* Visual unificado estilo card para o desktop */
+    padding: 20px 30px;
+    border-radius: 16px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.02);
+    margin-bottom: 35px;
 }
 
 .user-info {
     display: flex;
-    align-items: center;
-    gap: 20px;
+    align-items: center;        /* Mantém o texto alinhado verticalmente com o centro da foto */
+    gap: 16px;
 }
 
 .avatar-box {
-    width: 70px;
-    height: 70px;
-    border-radius: 50%;
+    width: 80px;                /* Tamanho ideal aumentado */
+    height: 80px;
+    min-width: 80px;            /* Impede o flexbox de achatar o círculo */
+    border-radius: 50% !important; /* Força o formato 100% esférico (nunca oval) */
     overflow: hidden;
     position: relative;
-    cursor: pointer; /* Indica que é clicável */
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    cursor: pointer;
+    border: 3px solid #FFF;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
 }
 
 .avatar-box img {
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: cover;          /* Recorta a imagem proporcionalmente sem distorcer */
     transition: 0.3s;
 }
 
@@ -232,7 +238,10 @@ body {
     gap: 12px;
 }
 
-.name-row h1 { font-size: 26px; }
+.name-row h1 { 
+    font-size: 24px; 
+    font-weight: 700;
+}
 
 /* Badge ao lado do nome */
 .badge-top-max {
@@ -246,47 +255,70 @@ body {
     animation: metallic-shine 3s linear infinite;
 }
 
-.expert-subtitle { color: var(--text-muted); font-size: 14px; margin-top: 4px; }
+.expert-subtitle { color: var(--text-muted); font-size: 13px; margin-top: 4px; }
 
 .top-bar-right {
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 15px;
+    background: #F8FAF9;        /* Alinhamento limpo e elegante para a direita */
+    padding: 8px 16px;
+    border-radius: 30px;
+    border: 1px solid #E8F3ED;
 }
 
 .notif-btn {
-    background: #FFF; border: none; border-radius: 50%; width: 45px; height: 45px;
-    font-size: 20px; cursor: pointer; box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    background: none; border: none; font-size: 18px; cursor: pointer;
 }
 
-.notif-text { font-weight: 700; font-size: 14px; }
+.notif-text { font-weight: 700; font-size: 13px; color: var(--sidebar-bg); }
 
 /* ==========================================================================
-   5. BANNER E METAS DO DIA
+   5. BANNER ULTRA-COMPACTO (ROTATIVO COM IMAGEM DE SALADA POR IA)
    ========================================================================== */
 .banner-highlight {
-    background: linear-gradient(to right, #E8F3ED, #F8FAF9);
-    border-radius: 20px;
-    padding: 30px;
-    margin-bottom: 30px;
+    background: linear-gradient(135deg, #E8F3ED 0%, #F4F8F6 100%);
+    border-radius: 16px;
+    padding: 20px 25px;         /* Reduzido drasticamente para ser compacto */
+    margin-bottom: 35px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
     position: relative;
+    border: 1px solid rgba(60, 163, 106, 0.15);
     overflow: hidden;
 }
 
-.banner-tag {
-    color: var(--color-progress); font-weight: 800; font-size: 12px;
-    letter-spacing: 1px; display: block; margin-bottom: 10px;
+.banner-text-side {
+    flex: 1;
+    transition: opacity 0.3s ease-in-out; /* Transição para a rotação de texto via JS */
 }
 
-.banner-highlight h2 { font-size: 24px; margin-bottom: 10px; max-width: 60%; }
-.banner-highlight p { color: var(--text-muted); font-size: 14px; max-width: 50%; margin-bottom: 20px; }
+.banner-tag {
+    color: var(--color-progress); font-weight: 800; font-size: 11px;
+    letter-spacing: 1px; display: block; margin-bottom: 6px;
+}
+
+.banner-highlight h2 { font-size: 19px; margin-bottom: 6px; color: var(--sidebar-bg); line-height: 1.3; }
+.banner-highlight p { color: var(--text-muted); font-size: 13px; margin-bottom: 12px; max-width: 90%; }
 
 .btn-premium-action {
-    background: var(--sidebar-bg); color: #FFF; border: none; padding: 12px 24px;
-    border-radius: 12px; font-weight: 700; cursor: pointer; transition: 0.3s;
+    background: var(--sidebar-bg); color: #FFF; border: none; padding: 10px 20px;
+    border-radius: 10px; font-weight: 700; font-size: 13px; cursor: pointer; transition: 0.3s;
 }
 
 .btn-premium-action:hover { background: #0c1e14; }
+
+/* Slot para a imagem de Salada por IA no lado direito */
+.banner-image-side {
+    width: 110px;
+    height: 110px;
+    background: url('https://img.icons8.com/emoji/96/salad-emoji.png') no-repeat center;
+    background-size: contain;
+    opacity: 0.95;
+    flex-shrink: 0;
+}
 
 /* ==========================================================================
    6. METRICS GRID (BARRA PROGRESSO E ANÉIS CORRIGIDOS)
@@ -312,7 +344,7 @@ body {
 /* Correção da Barra de Progresso - Reta e Limpa */
 .progress-bg {
     width: 100%;
-    height: 12px; /* Mais espessa para ficar elegante */
+    height: 12px;
     background: #F0F0F0;
     border-radius: 10px;
     overflow: hidden;
@@ -351,21 +383,19 @@ body {
 .ring-svg {
     width: 100%;
     height: 100%;
-    transform: rotate(-90deg); /* Ponto inicial no topo (12h) */
+    transform: rotate(-90deg);
 }
 
-/* Círculo Base (Cinza) */
 .ring-bg {
     fill: none;
     stroke: #F0F0F0;
-    stroke-width: 6; /* Largura da borda consistente */
+    stroke-width: 6;
 }
 
-/* Círculo de Progresso */
 .ring-fill {
     fill: none;
     stroke-width: 6;
-    stroke-linecap: round; /* Pontas arredondadas elegantes */
+    stroke-linecap: round;
     transition: stroke-dashoffset 0.8s ease-in-out;
 }
 
@@ -449,18 +479,22 @@ body {
 
 @media (max-width: 900px) {
     .desktop-sidebar { display: none; }
-    .desktop-only { display: none; }
+    .desktop-only { display: none !important; }
     
     .main-content {
         margin-left: 0;
-        padding: 20px;
-        padding-bottom: 120px; /* Mais espaço pro menu de baixo */
+        padding: 15px;
+        padding-bottom: 120px;
+    }
+
+    .app-top-bar {
+        background: none;
+        padding: 10px 5px;
+        box-shadow: none;
+        margin-bottom: 20px;
     }
 
     .metrics-grid { grid-template-columns: 1fr; }
-    
-    .app-top-bar { align-items: flex-start; }
-    .banner-highlight h2, .banner-highlight p { max-width: 100%; }
 
     /* Barra Nativa tipo App Mobile */
     .mobile-nav-bar {
@@ -470,7 +504,7 @@ body {
         background: #FFF;
         justify-content: space-around;
         align-items: center;
-        padding: 15px 10px 25px; /* Padding extra embaixo pro iOS */
+        padding: 15px 10px 25px;
         box-shadow: 0 -4px 20px rgba(0,0,0,0.05);
         z-index: 1000;
         border-top-left-radius: 20px;
@@ -486,7 +520,6 @@ body {
     .mobile-nav-item.active { color: var(--sidebar-bg); }
     .m-nav-icon { font-size: 20px; }
 
-    /* Botão IA Central e Flutuante */
     .mobile-ia-center {
         transform: translateY(-20px);
         color: var(--sidebar-bg);
@@ -503,13 +536,18 @@ body {
         color: #FFF;
     }
 
-    /* Avatar Mobile no Menu - Clicável para Upload */
     .mobile-avatar-wrapper {
         width: 30px; height: 30px; border-radius: 50%; overflow: hidden;
         border: 2px solid #E0E0E0;
     }
     .mobile-nav-item.active .mobile-avatar-wrapper { border-color: var(--sidebar-bg); }
     .mobile-user-avatar { width: 100%; height: 100%; object-fit: cover; }
+}
+
+@media (max-width: 600px) {
+    .banner-image-side {
+        display: none;          /* Esconde o emoji de salada em telas minúsculas para priorizar a leitura */
+    }
 }
 
 /* ==========================================================================
@@ -532,7 +570,6 @@ body {
     margin-bottom: 25px;
 }
 
-/* Card de Feedback de Exemplo */
 .feedback-item {
     background: #F8FAF9;
     border-radius: 12px;
@@ -566,7 +603,7 @@ body {
 }
 
 .stars {
-    color: #D4AF37; /* Dourado para as estrelas */
+    color: #D4AF37;
     font-size: 12px;
     letter-spacing: 2px;
 }
@@ -578,7 +615,6 @@ body {
     font-style: italic;
 }
 
-/* Caixa para Novo Comentário */
 .comment-box-container {
     border-top: 1px solid #F0F0F0;
     padding-top: 25px;
@@ -595,16 +631,15 @@ body {
     gap: 5px;
 }
 
-/* Interatividade das Estrelas */
 .star-clickable {
     font-size: 26px;
-    color: #D1DDD6; /* Estrela apagada */
+    color: #D1DDD6;
     cursor: pointer;
     transition: color 0.2s ease-in-out;
 }
 
 .star-clickable.selected {
-    color: #D4AF37; /* Estrela acesa (Dourada) */
+    color: #D4AF37;
 }
 
 .input-group {
@@ -627,7 +662,7 @@ body {
 }
 
 .input-group textarea:focus {
-    border-color: var(--color-progress); /* Borda verde ao clicar */
+    border-color: var(--color-progress);
 }
 
 #submit-comment-btn {
@@ -644,16 +679,15 @@ body {
 }
 
 #submit-comment-btn:hover {
-    background: #0c1e14; /* Escurece no hover */
+    background: #0c1e14;
 }
 
-/* Ajustes no Responsivo para Mobile */
 @media (max-width: 900px) {
     .community-card-box {
         padding: 20px;
     }
     
     #submit-comment-btn {
-        width: 100%; /* Botão ocupa 100% no mobile para facilitar o clique */
+        width: 100%;
     }
 }
