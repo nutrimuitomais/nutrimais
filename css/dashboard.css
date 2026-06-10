@@ -39,8 +39,10 @@ body {
 }
 
 .platform-container {
-    padding-top: 0 !important;
-    margin-top: 0 !important;
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    position: relative;
 }
 
 /* ==========================================================================
@@ -625,4 +627,19 @@ body {
     }
     .mobile-nav-item.active .mobile-avatar-wrapper { border-color: var(--sidebar-bg); }
     .mobile-user-avatar { width: 100%; height: 100%; object-fit: cover; }
+}
+
+/* Remove o banner de oferta, caso ele ainda esteja injetado no DOM */
+#welcome-promo-overlay {
+    display: none !important;
+}
+
+/* Limpa o botão de notificações (remove o texto extra) */
+.notif-btn {
+    font-size: 20px; /* Mantém apenas o tamanho do emoji */
+}
+
+/* Oculta o texto que diz "Notificações Nutri+" */
+.notif-btn::after {
+    content: none !important;
 }
