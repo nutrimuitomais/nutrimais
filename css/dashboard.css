@@ -1,30 +1,30 @@
 /* ==========================================================================
-   PALETA DE CORES E VARIÁVEIS ORIGINAIS
+   VARIÁVEIS DE ESTILO & IDENTIDADE PREMIUM
    ========================================================================== */
 :root {
-    --bg-plataforma: #FAF8F5;          /* Creme muito claro e limpo do fundo principal */
-    --sidebar-bg: #142F1F;             /* Verde escuro profundo e sofisticado da sidebar */
-    --sidebar-item-active: #1D3D2B;    /* Fundo do item ativo na navegação */
-    --card-bg: #FFFFFF;                /* Fundo branco puro dos cards internos */
-    --card-borda: #EAE5DB;             /* Borda fina e sutil dos cards */
-    --texto-principal: #111111;        /* Cor do título e textos de destaque */
-    --texto-secundario: #666666;       /* Subtítulos e informações secundárias */
+    --bg-plataforma: #FAF8F5;          /* Creme claro de fundo do app */
+    --sidebar-bg: #142F1F;             /* Verde escuro profundo e sofisticado */
+    --sidebar-item-active: #1D3D2B;    /* Item ativo no menu */
+    --card-bg: #FFFFFF;                /* Fundo puro dos cards */
+    --card-borda: #EAE5DB;             /* Bordas suaves */
+    --texto-principal: #111111;        
+    --texto-secundario: #666666;       
     
-    /* Cores das Refeições Concluídas */
-    --meal-concluido-bg: #EAF6EE;
+    /* Cores das Refeições e Progresso */
+    --meal-concluido-bg: #EAF6EE;      /* Verde sutil do card de refeição checado */
     --meal-concluido-borda: #BFE3CD;
     --mint-principal: #3CA36A;
 
-    /* Gradientes dos Planos Metálicos */
+    /* Badges Metálicas Originais */
     --silver-grad: linear-gradient(95deg, #B0B7BD 0%, #D1D7DC 50%, #9FA6AD 100%);
     --gold-grad: linear-gradient(95deg, #C5A059 0%, #F3DCAC 50%, #B38F46 100%);
     
-    /* NOVO: Gradiente Verde Vivo e Pulsante para os Botões Premium */
-    --btn-vibrante-grad: linear-gradient(90deg, #1E824A, #3CA36A, #27AE60, #1E824A);
+    /* Botões Dinâmicos */
+    --btn-vibrante-grad: linear-gradient(90deg, #142F1F, #1D3D2B, #142F1F);
 }
 
 /* ==========================================================================
-   RESET E CONFIGURAÇÕES GERAIS
+   RESET GERAL E ADAPTAÇÃO PARA TOQUE MOBILE
    ========================================================================== */
 * {
     margin: 0;
@@ -32,22 +32,24 @@
     box-sizing: border-box;
     font-family: 'Plus Jakarta Sans', sans-serif;
     -webkit-font-smoothing: antialiased;
+    -webkit-tap-highlight-color: transparent; /* Remove o flash azul ao tocar no celular */
 }
 
 body {
-    background-color: #E3DDD3; /* Camada de fundo sutil sob a plataforma */
+    background-color: var(--bg-plataforma);
     overflow-x: hidden;
+    color: var(--texto-principal);
 }
 
 .platform-container {
     width: 100%;
     min-height: 100vh;
     display: flex;
-    background-color: var(--bg-plataforma);
+    position: relative;
 }
 
 /* ==========================================================================
-   SIDEBAR (IDENTICA AO DESIGN ORIGINAL)
+   SIDEBAR DESKTOP (ESTILIZAÇÃO DOS ÍCONES E TEXTOS DOS PRINTS)
    ========================================================================== */
 .desktop-sidebar {
     width: 290px;
@@ -68,7 +70,6 @@ body {
     color: #FFFFFF;
     font-size: 26px;
     font-weight: 800;
-    letter-spacing: 0.5px;
 }
 
 .sidebar-logo h2 span {
@@ -83,7 +84,6 @@ body {
     margin-top: 2px;
 }
 
-/* Itens de Menu */
 .nav-label {
     font-size: 10px;
     color: #557761;
@@ -92,10 +92,10 @@ body {
     margin: 24px 0 10px 8px;
 }
 
+/* Estrutura dos Itens com Ícones Incorporados */
 .menu-item {
     display: flex;
     align-items: center;
-    justify-content: space-between;
     color: #A3BCA9;
     text-decoration: none;
     font-size: 14px;
@@ -111,13 +111,30 @@ body {
     color: #FFFFFF;
 }
 
-/* Cores de Texto Especiais da Sidebar */
-.text-max { color: #A3BCA9; }
-.menu-item:hover .text-max { color: #FFFFFF; }
-.text-super { color: #E5C687; }
-.text-gold { color: #F3DCAC; font-weight: 700; }
+/* Customização dos Símbolos SVGs idênticos às imagens */
+.menu-icon {
+    width: 18px;
+    height: 18px;
+    margin-right: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #A3BCA9;
+    transition: color 0.2s;
+}
 
-/* Badges Internas da Sidebar */
+.menu-item:hover .menu-icon, 
+.menu-item.active .menu-icon {
+    color: #49C481; /* Destaque verde ao passar o mouse ou ativo */
+}
+
+/* Ícone da Estrela Azul do Print */
+.icon-star .menu-icon, .icon-star svg {
+    color: #46B2C8 !important;
+    fill: #46B2C8 !important;
+}
+
+/* Badges Metálicos do Menu Lateral */
 .badge-inline {
     font-size: 9px;
     font-weight: 800;
@@ -129,7 +146,14 @@ body {
 .max-silver { background: var(--silver-grad); }
 .super-gold { background: var(--gold-grad); }
 
-/* Rodapé da Sidebar */
+/* Item Sair em Destaque Vermelho Suave */
+.menu-item.logout {
+    color: #E68A8A;
+}
+.menu-item.logout .menu-icon {
+    color: #E68A8A;
+}
+
 .sidebar-footer {
     margin-top: auto;
     padding-top: 20px;
@@ -144,11 +168,10 @@ body {
     border-radius: 14px;
     font-size: 13px;
     font-weight: 800;
-    letter-spacing: 0.5px;
 }
 
 /* ==========================================================================
-   CONTEÚDO PRINCIPAL (MAIN)
+   CONTEÚDO PRINCIPAL (MAIN CONTENT)
    ========================================================================== */
 .main-content {
     flex: 1;
@@ -176,8 +199,6 @@ body {
     height: 60px;
     border-radius: 18px;
     overflow: hidden;
-    cursor: pointer;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.04);
 }
 
 .avatar-box img {
@@ -195,7 +216,6 @@ body {
 .name-row h1 {
     font-size: 24px;
     font-weight: 700;
-    color: var(--texto-principal);
 }
 
 .badge-top-max {
@@ -219,57 +239,29 @@ body {
     width: 46px;
     height: 46px;
     border-radius: 16px;
-    font-size: 18px;
     cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: background 0.2s;
 }
-.notif-btn:hover { background-color: #F3EFE6; }
 
-/* ==========================================================================
-   NOVO BOTÃO COM GRADIENTE VERDE SE MEXENDO (PREMIUM ANIMAÇÃO)
-   ========================================================================== */
+/* Botões com Visual Maciço Escuro */
 .btn-premium-grad {
     display: inline-flex;
     align-items: center;
-    justify-content: center;
-    background: var(--btn-vibrante-grad);
-    background-size: 300% 100%; /* Permite suavidade no rolamento da cor */
+    background: var(--sidebar-bg);
     color: #FFFFFF;
     text-decoration: none;
     font-size: 14px;
     font-weight: 700;
-    padding: 14px 28px;
+    padding: 14px 24px;
     border-radius: 14px;
     border: none;
     cursor: pointer;
-    box-shadow: 0 4px 15px rgba(60, 163, 106, 0.3);
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-    animation: glowMove 3s linear infinite; /* Movimento contínuo e suave */
-}
-
-.btn-premium-grad:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(60, 163, 106, 0.45);
-}
-
-.btn-premium-grad:active {
-    transform: translateY(0);
-}
-
-/* Linha de Animação Infinita para o Gradiente Metálico/Neon */
-@keyframes glowMove {
-    0% { background-position: 0% 50%; }
-    100% { background-position: 300% 50%; }
 }
 
 /* ==========================================================================
-   SEÇÃO RECOMENDADO - SLIDER CARROSSEL DE 3 PUBLICAÇÕES
+   CARROSSEL DE RECOMENDAÇÕES (3 PUBLICAÇÕES)
    ========================================================================== */
 .upsell-slider-container {
-    background-color: #EBF3EF; /* Fundo verde bem suave e elegante do container original */
+    background-color: #EBF3EF; 
     border-radius: 24px;
     margin-bottom: 30px;
     position: relative;
@@ -280,7 +272,7 @@ body {
 .slider-wrapper {
     display: flex;
     width: 100%;
-    transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1); /* Transição suave de rolamento */
+    transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
 .slide-item {
@@ -292,15 +284,13 @@ body {
 }
 
 .slide-text {
-    max-width: 62%;
+    max-width: 65%;
 }
 
 .slide-text .tag {
     font-size: 11px;
     font-weight: 800;
     color: var(--mint-principal);
-    letter-spacing: 1px;
-    text-transform: uppercase;
     display: block;
     margin-bottom: 12px;
 }
@@ -309,34 +299,27 @@ body {
     font-size: 24px;
     font-weight: 800;
     color: #142F1F;
-    line-height: 1.2;
     margin-bottom: 10px;
 }
 
 .slide-text p {
     font-size: 14px;
     color: #4A5D52;
-    line-height: 1.5;
     margin-bottom: 22px;
 }
 
 .slide-visual {
-    width: 180px;
-    height: 140px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    width: 150px;
+    height: 150px;
 }
 
 .img-slide {
-    width: 150px;
-    height: 150px;
+    width: 100%;
+    height: 100%;
     object-fit: cover;
     border-radius: 24px;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.06);
 }
 
-/* Indicadores de Bolinha do Carrossel */
 .slider-dots {
     position: absolute;
     bottom: 16px;
@@ -350,17 +333,16 @@ body {
     height: 6px;
     border-radius: 50%;
     background-color: #C0DDD0;
-    transition: all 0.3s ease;
 }
 
 .s-dot.active {
     background-color: var(--mint-principal);
-    width: 18px; /* Transforma em pill oval quando ativo igual ao print */
+    width: 18px;
     border-radius: 4px;
 }
 
 /* ==========================================================================
-   GRID DE METAS DO DIA E MACRONUTRIENTES
+   SEÇÃO METAS DO DIA E MACROS GRÁFICOS RISCADOS
    ========================================================================== */
 .metrics-grid {
     display: grid;
@@ -369,7 +351,6 @@ body {
     margin-bottom: 35px;
 }
 
-/* Card Meta do Dia */
 .card-cal {
     background-color: var(--card-bg);
     border: 1px solid var(--card-borda);
@@ -387,20 +368,8 @@ body {
 .card-header h3 {
     font-size: 18px;
     font-weight: 700;
-    color: var(--texto-principal);
 }
 
-.kcal-counter {
-    font-size: 15px;
-    color: var(--texto-principal);
-    font-weight: 500;
-}
-
-.kcal-counter strong {
-    font-weight: 700;
-}
-
-/* Barra de Progresso das Calorias */
 .progress-bg {
     width: 100%;
     height: 10px;
@@ -411,20 +380,17 @@ body {
 
 .progress-fill {
     height: 100%;
-    width: 0%; /* Cresce dinamicamente via JS */
     background-color: #4CB074;
     border-radius: 10px;
-    transition: width 0.6s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .kcal-status-msg {
     font-size: 13px;
     color: var(--texto-secundario);
-    font-weight: 500;
     margin-top: 14px;
 }
 
-/* Card Linha de Macronutrientes (Gráficos) */
+/* Alinhamento dos Três Círculos Conforme Imagem */
 .macros-card-row {
     background-color: var(--card-bg);
     border: 1px solid var(--card-borda);
@@ -439,10 +405,8 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    text-align: center;
 }
 
-/* Estrutura do Gráfico Circular SVG */
 .ring-box {
     position: relative;
     width: 68px;
@@ -453,7 +417,7 @@ body {
 .ring-svg {
     width: 100%;
     height: 100%;
-    transform: rotate(-90deg); /* Faz o preenchimento começar do topo */
+    transform: rotate(-90deg);
 }
 
 .ring-bg {
@@ -466,13 +430,11 @@ body {
     fill: none;
     stroke-width: 3.5;
     stroke-linecap: round;
-    transition: stroke-dasharray 0.6s ease;
 }
 
-/* Cores específicas de cada macro correspondente ao print */
-.prot .ring-fill { stroke: #D26425; } /* Laranja escuro */
-.carb .ring-fill { stroke: #3A83F6; } /* Azul */
-.fat .ring-fill  { stroke: #1CB67C; } /* Verde Água */
+.prot .ring-fill { stroke: #D26425; }
+.carb .ring-fill { stroke: #3A83F6; }
+.fat .ring-fill  { stroke: #1CB67C; }
 
 .percentage-label {
     position: absolute;
@@ -481,29 +443,25 @@ body {
     transform: translate(-50%, -50%);
     font-size: 12px;
     font-weight: 700;
-    color: var(--texto-principal);
 }
 
 .macro-title {
     font-size: 13px;
     font-weight: 700;
-    color: var(--texto-principal);
     margin-bottom: 2px;
 }
 
 .macro-sub {
     font-size: 11px;
     color: var(--texto-secundario);
-    font-weight: 500;
 }
 
 /* ==========================================================================
-   CRONOGRAMA ALIMENTAR ORIGINAL DO PRINT
+   CRONOGRAMA ALIMENTAR & COMUNIDADE
    ========================================================================== */
 .meals-section h2 {
     font-size: 20px;
     font-weight: 700;
-    color: var(--texto-principal);
     margin-bottom: 20px;
 }
 
@@ -518,13 +476,11 @@ body {
     border: 1px solid var(--card-borda);
     border-radius: 20px;
     padding: 22px 26px;
-    transition: all 0.25s ease;
 }
 
-/* Quando marcado como concluído (Estado Verde do Print) */
 .meal-card.concluido {
-    background-color: var(--meal-concluido-bg) !important;
-    border-color: var(--meal-concluido-borda) !important;
+    background-color: var(--meal-concluido-bg);
+    border-color: var(--meal-concluido-borda);
 }
 
 .meal-main {
@@ -533,20 +489,16 @@ body {
     gap: 16px;
 }
 
-/* Custom Checkbox Redondo */
 .check-container {
     position: relative;
     width: 22px;
     height: 22px;
     margin-top: 3px;
-    cursor: pointer;
-    flex-shrink: 0;
 }
 
 .check-container input {
     position: absolute;
     opacity: 0;
-    cursor: pointer;
 }
 
 .checkmark {
@@ -558,7 +510,6 @@ body {
     border: 2px solid #C5DDD0;
     border-radius: 50%;
     background-color: #FFFFFF;
-    transition: all 0.15s ease;
 }
 
 .check-container input:checked ~ .checkmark {
@@ -566,7 +517,6 @@ body {
     border-color: #4CB074;
 }
 
-/* Check Icon */
 .checkmark:after {
     content: "";
     position: absolute;
@@ -584,7 +534,6 @@ body {
     display: block;
 }
 
-/* Detalhes do Texto do Card */
 .time-tag {
     font-size: 11px;
     font-weight: 700;
@@ -599,17 +548,14 @@ body {
 .details h3 {
     font-size: 16px;
     font-weight: 700;
-    color: var(--texto-principal);
     margin-bottom: 4px;
 }
 
 .details p {
     font-size: 13px;
     color: var(--texto-secundario);
-    line-height: 1.4;
 }
 
-/* Rodapé Interno do Card */
 .meal-footer {
     display: flex;
     justify-content: space-between;
@@ -619,15 +565,9 @@ body {
     border-top: 1px solid #F5F2EB;
 }
 
-/* Garante que some a linha divisória interna se estiver marcado verde */
-.meal-card.concluido .meal-footer {
-    border-top-color: #D6EDE0;
-}
-
 .kcal-indicator {
     font-size: 15px;
     font-weight: 700;
-    color: var(--texto-principal);
 }
 
 .btn-recipe {
@@ -636,22 +576,11 @@ body {
     padding: 8px 16px;
     font-size: 12px;
     font-weight: 700;
-    color: var(--texto-principal);
     border-radius: 10px;
     cursor: pointer;
-    transition: background 0.2s;
 }
 
-.btn-recipe:hover {
-    background-color: #F8F6F0;
-}
-
-/* ==========================================================================
-   SEÇÃO COMUNIDADE COMPLETA E FORMULÁRIO DE FEEDBACK
-   ========================================================================== */
-.community-section {
-    margin-top: 35px;
-}
+.community-section { margin-top: 35px; }
 
 .community-card-box {
     background-color: var(--card-bg);
@@ -660,23 +589,11 @@ body {
     padding: 35px;
 }
 
-.community-card-box h2 {
-    font-size: 20px;
-    font-weight: 700;
-    color: var(--texto-principal);
-}
-
-.community-sub {
-    font-size: 13px;
-    color: var(--texto-secundario);
-    margin-bottom: 24px;
-}
-
 .feedbacks-stack {
     display: flex;
     flex-direction: column;
     gap: 14px;
-    margin-bottom: 30px;
+    margin-top: 20px;
 }
 
 .feedback-item {
@@ -701,82 +618,116 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 16px;
 }
 
-.feedback-user-row h4 {
-    font-size: 14px;
-    font-weight: 700;
-    color: var(--texto-principal);
-}
+.stars { color: #F5A623; font-size: 12px; }
+.feedback-text { font-size: 13px; font-style: italic; }
 
-.feedback-user-row .stars {
-    font-size: 11px;
-    color: #F5A623;
-    margin-top: 1px;
-}
+/* Ocultador da barra mobile em telas desktop */
+.mobile-nav-bar { display: none; }
 
-.feedback-text {
-    font-size: 13px;
-    color: #444444;
-    font-style: italic;
-    line-height: 1.4;
-    padding-left: 2px;
-}
+/* ==========================================================================
+   MEDIA QUERY - ADAPTAÇÃO TOTAL PARA MOBILE APP PREMIUM (CELULAR)
+   ========================================================================== */
+@media (max-width: 820px) {
+    /* Oculta totalmente a barra lateral desktop */
+    .desktop-sidebar {
+        display: none !important;
+    }
 
-/* Formulário de Envio */
-.add-comment-form {
-    border-top: 1px dashed #DDD7CD;
-    padding-top: 25px;
-}
+    /* Expande a área interna preenchendo a tela do aparelho */
+    .main-content {
+        padding: 20px 16px 100px 16px; /* Espaçamento de sobra no fundo para não cobrir o menu inferior */
+    }
 
-.add-comment-form h3 {
-    font-size: 15px;
-    font-weight: 700;
-    color: var(--texto-principal);
-    margin-bottom: 8px;
-}
+    /* Ajuste do Header Mobile */
+    .app-top-bar {
+        margin-bottom: 24px;
+    }
 
-.star-rating-selector {
-    font-size: 22px;
-    color: #DDD7CD;
-    margin-bottom: 15px;
-    cursor: pointer;
-    letter-spacing: 2px;
-}
+    .name-row h1 {
+        font-size: 20px;
+    }
 
-.add-comment-form textarea {
-    width: 100%;
-    height: 90px;
-    border: 1px solid #DDD7CD;
-    border-radius: 14px;
-    padding: 14px;
-    font-size: 13px;
-    resize: none;
-    outline: none;
-    margin-bottom: 16px;
-    transition: border-color 0.2s;
-}
+    /* Colapsa o grid de metas de colunas para linhas verticais organizadas */
+    .metrics-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
 
-.add-comment-form textarea:focus {
-    border-color: #4CB074;
-}
+    /* Ajuste do Slider de Anúncios no Mobile */
+    .slide-item {
+        flex-direction: column-reverse; /* Foto fica em cima ou texto ganha destaque total */
+        align-items: flex-start;
+        padding: 24px 20px;
+        gap: 20px;
+    }
 
-.btn-send-comment {
-    background-color: #4CB074;
-    color: #FFFFFF;
-    border: none;
-    font-size: 13px;
-    font-weight: 700;
-    padding: 12px 24px;
-    border-radius: 12px;
-    cursor: pointer;
-    transition: background 0.2s;
-}
+    .slide-text {
+        max-width: 100%;
+    }
 
-.btn-send-comment:hover {
-    background-color: #3CA36A;
-}
+    .slide-visual {
+        width: 70px;
+        height: 70px;
+        align-self: flex-end; /* Posiciona de forma sutil */
+        margin-top: -40px;
+    }
 
-/* Ocultador Global */
-.hidden { display: none !important; }
+    .img-slide {
+        border-radius: 14px;
+    }
+
+    /* Compacta a exibição dos três anéis de macros no celular */
+    .macros-card-row {
+        padding: 20px 10px;
+    }
+
+    .ring-box {
+        width: 58px;
+        height: 58px;
+    }
+
+    .macro-title {
+        font-size: 12px;
+    }
+
+    /* ATIVAÇÃO DA NAV BAR ESTILO APLICATIVO NATIVO (FIXA NO RODAPÉ) */
+    .mobile-nav-bar {
+        display: flex;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 72px;
+        background-color: #FFFFFF;
+        border-top: 1px solid #EEE9DF;
+        justify-content: space-around;
+        align-items: center;
+        padding-bottom: env(safe-area-inset-bottom); /* Suporte para a barra inferior do iPhone */
+        z-index: 9999;
+        box-shadow: 0 -4px 12px rgba(0,0,0,0.03);
+    }
+
+    .mobile-nav-item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-decoration: none;
+        color: #8C9A90;
+        font-size: 10px;
+        font-weight: 700;
+        gap: 4px;
+        transition: color 0.2s ease;
+    }
+
+    .mobile-nav-item svg {
+        width: 22px;
+        height: 22px;
+    }
+
+    /* Estado ativo na barra inferior do aplicativo */
+    .mobile-nav-item.active {
+        color: var(--sidebar-bg);
+    }
+}
