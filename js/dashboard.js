@@ -1,4 +1,3 @@
-// BANCO DE DADOS DINÂMICO COM LINKS INTELIGENTES AUTO-GERADOS
 const db = {
     "cafe": {
         titulo: "Café da Manhã Performance", kcal: 390, pro: 28, car: 35, fat: 12,
@@ -24,6 +23,74 @@ const db = {
 
 const meta = { kcal: 2200, pro: 160, car: 220, fat: 70 };
 
+let selectedRating = 0;
+
+// GERENCIADOR DE ESTRELAS INTERATIVO
+document.querySelectorAll('.star-select').forEach(star => {
+    star.addEventListener('click', (e) => {
+        selectedRating = parseInt(e.target.getAttribute('data-value'));
+        document.querySelectorAll('.star-select').forEach((s, idx) => {
+            if (idx < selectedRating) {
+                s.textContent = '★';
+                s.classList.add('selected');
+            } else {
+                s.textContent = '☆';
+                s.classList.remove('selected');
+            }
+        });
+    });
+});
+
+// SUBMISSÃO DE COMENTÁRIOS COM TRIAGEM DE RESPOSTAS (SÓ CRÍTICA BOA VAI PRO AR)
+function submitAppComment() {
+    const textInput = document.getElementById('user-comment-input');
+    const msgBox = document.getElementById('comment-feedback-msg');
+    const commentText = textInput.value.trim();
+
+    if (!commentText || selectedRating === 0) {
+        msgBox.style.color = '#EF4444';
+        msgBox.textContent = "Por favor, selecione as estrelas e digite um comentário.";
+        return;
+    }
+
+    // Filtro simplificado de análise de sentimentos (palavras ruins barram a postagem)
+    const badKeywords = ["ruim", "pessimo", "horrivel", "odiei", "lento", "trava", "bug", "bosta", "lixo"];
+    let isNegative = badKeywords.some(word => commentText.toLowerCase().includes(word)) || selectedRating < 4;
+
+    if (isNegative) {
+        // Se for ruim, finge que enviou para análise interna e não renderiza na tela
+        msgBox.style.color = '#F59E0B';
+        msgBox.textContent = "Obrigado! Seu comentário foi enviado para a nossa equipe de auditoria interna.";
+    } else {
+        // Se for bom, divulga dinamicamente no topo do feed da comunidade
+        const container = document.querySelector('.feedbacks-container');
+        const newCard = document.createElement('div');
+        newCard.className = 'feedback-card';
+        
+        let starsStr = '★'.repeat(selectedRating) + '☆'.repeat(5 - selectedRating);
+
+        newCard.innerHTML = `
+            <div class="feedback-user">
+                <div class="user-dummy">👤</div>
+                <div>
+                    <h4>Você</h4>
+                    <div class="stars" style="color: #F59E0B;">${starsStr}</div>
+                </div>
+            </div>
+            <p class="feedback-text">"${commentText}"</p>
+        `;
+        container.insertBefore(newCard, container.firstChild);
+        
+        msgBox.style.color = '#10B981';
+        msgBox.textContent = "Comentário publicado com sucesso na comunidade!";
+    }
+
+    // Limpa campos
+    textInput.value = "";
+    selectedRating = 0;
+    document.querySelectorAll('.star-select').forEach(s => { s.textContent = '☆'; s.classList.remove('selected'); });
+}
+
 function updateEngine() {
     let s = { kcal: 0, pro: 0, car: 0, fat: 0 };
     const ids = ["cafe", "almoco", "tarde", "janta"];
@@ -36,7 +103,7 @@ function updateEngine() {
             s.pro += db[id].pro;
             s.car += db[id].car;
             s.fat += db[id].fat;
-            card.classList.add('concluido'); // Aplica o verde claro
+            card.classList.add('concluido');
         } else {
             card.classList.remove('concluido');
         }
@@ -57,13 +124,12 @@ function updateRing(id, txtId, val) {
     document.getElementById(txtId).textContent = p + "%";
 }
 
-// ABRE O MODAL PREENCHENDO A FOTO E INGREDIENTES AUTOMATICAMENTE
 function openRecipe(id) {
     const modal = document.getElementById('recipe-modal');
     const data = db[id];
     
     document.getElementById('recipe-name').textContent = data.titulo;
-    document.getElementById('recipe-plate').src = data.foto; // Renderiza a foto do prato
+    document.getElementById('recipe-plate').src = data.foto;
     document.getElementById('rec-kcal').textContent = data.kcal;
     document.getElementById('rec-pro').textContent = data.pro + "g";
     document.getElementById('rec-car').textContent = data.car + "g";
@@ -92,7 +158,7 @@ function toggleNotifHub() {
 }
 
 function triggerPremium() {
-    alert("Redirecionando você para a Área de Atendimento Exclusiva...");
+    alert("Acesso exclusivo do plano ativo ou redirecionando para área premium...");
 }
 
 function triggerAvatarUpload() {
