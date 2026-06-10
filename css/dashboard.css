@@ -323,23 +323,32 @@ body {
 .slide-treino { background-image: url('../img/anamnese.png'); }
 .slide-anamnese { background-image: url('../img/treino.png'); }
 
-   .btn-premium-action {
-    background: linear-gradient(135deg, #3CA36A 0%, #153222 100%);
-    color: #ffffff;
-    border: none;
+.btn-premium-action {
+    display: inline-block;
     padding: 10px 20px;
     border-radius: 8px;
-    font-weight: 600;
+    font-weight: 700;
     font-size: 14px;
+    text-decoration: none;
+    color: #153222; /* Cor do texto */
+    background: linear-gradient(90deg, #ffffff, #e2e8f0, #ffffff);
+    background-size: 200% 100%;
+    border: 1px solid #3CA36A;
     cursor: pointer;
-    transition: transform 0.2s ease, opacity 0.2s ease;
-    display: inline-block;
-    text-decoration: none; /* Importante se for um link */
+    transition: all 0.3s ease;
+    animation: gradientShift 3s ease infinite; /* Animação constante */
 }
 
 .btn-premium-action:hover {
-    transform: translateY(-2px);
-    opacity: 0.9;
+    transform: scale(1.05); /* Efeito de crescer ao passar o mouse */
+    background-color: #ffffff;
+    box-shadow: 0 4px 15px rgba(60, 163, 106, 0.3);
+}
+
+/* Animação que faz o gradiente "se mexer" */
+@keyframes gradientShift {
+    0% { background-position: 200% 0; }
+    100% { background-position: -200% 0; }
 }
 
 /* ==========================================================================
