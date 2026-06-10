@@ -268,144 +268,140 @@ body {
 .notif-text { font-weight: 700; font-size: 13px; color: var(--sidebar-bg); }
 
 /* ==========================================================================
-   5. BANNER RECOMENDADOS (MANTIDO COM DESTAQUE CONFORME SOLICITADO)
+   5. BANNER ROTATIVO (CARROSSEL PREMIUM & EDITORIAL)
    ========================================================================== */
-.banner-highlight {
-    background: linear-gradient(135deg, #E8F3ED 0%, #F4F8F6 100%);
+.banner-carousel-container {
+    position: relative;
+    margin-bottom: 45px;
+    width: 100%;
+}
+
+.banner-slider {
+    position: relative;
+    height: 180px;
+    width: 100%;
+    overflow: hidden;
     border-radius: 16px;
-    padding: 20px 25px;
-    margin-bottom: 40px;
+}
+
+.banner-slide {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    padding: 20px 25px;
     gap: 20px;
-    position: relative;
-    border: 1px solid rgba(60, 163, 106, 0.15);
-    overflow: hidden;
+    background: linear-gradient(135deg, #F4F8F6 0%, #EDF5F1 100%);
+    border: 1px solid rgba(60, 163, 106, 0.12);
+    border-radius: 16px;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.8s ease-in-out; /* Transição suave e lenta */
+    box-sizing: border-box;
 }
 
-.banner-text-side {
-    flex: 1;
+.banner-slide.active {
+    opacity: 1;
+    pointer-events: auto;
 }
 
+.banner-text-side { flex: 1; }
 .banner-tag {
     color: var(--color-progress); font-weight: 800; font-size: 11px;
-    letter-spacing: 1px; display: block; margin-bottom: 6px;
+    letter-spacing: 1px; display: block; margin-bottom: 4px;
 }
-
-.banner-highlight h2 { font-size: 19px; margin-bottom: 6px; color: var(--sidebar-bg); line-height: 1.3; }
-.banner-highlight p { color: var(--text-muted); font-size: 13px; margin-bottom: 12px; max-width: 90%; }
+.banner-slide h2 { font-size: 18px; margin-bottom: 4px; color: var(--sidebar-bg); line-height: 1.3; font-weight: 700; }
+.banner-slide p { color: var(--text-muted); font-size: 12px; margin-bottom: 12px; max-width: 85%; }
 
 .btn-premium-action {
-    background: var(--sidebar-bg); color: #FFF; border: none; padding: 10px 20px;
-    border-radius: 10px; font-weight: 700; font-size: 13px; cursor: pointer; transition: 0.3s;
+    background: var(--sidebar-bg); color: #FFF; border: none; padding: 8px 16px;
+    border-radius: 8px; font-weight: 700; font-size: 12px; cursor: pointer; transition: 0.3s;
 }
-
 .btn-premium-action:hover { background: #0c1e14; }
 
+/* Imagens Variadas do Carrossel */
 .banner-image-side {
-    width: 100px;
-    height: 100px;
-    background: url('https://img.icons8.com/emoji/96/salad-emoji.png') no-repeat center;
-    background-size: contain;
-    opacity: 0.95;
-    flex-shrink: 0;
+    width: 100px; height: 100px; background-size: contain; background-repeat: no-repeat; background-position: center; opacity: 0.95; flex-shrink: 0;
+}
+.slide-dieta { background-image: url('https://img.icons8.com/emoji/96/salad-emoji.png'); }
+.slide-treino { background-image: url('https://img.icons8.com/plasticine/100/salad.png'), url('https://img.icons8.com/emoji/96/dumbbell-emoji.png'); background-size: 55px, 55px; background-position: left center, right center; width: 120px; }
+.slide-anamnese { background-image: url('https://img.icons8.com/fluency/96/healthy-food.png'); }
+
+/* Bolinhas Indicadoras */
+.carousel-dots {
+    display: flex; justify-content: center; gap: 8px; margin-top: 12px;
+}
+.dot {
+    width: 7px; height: 7px; background: #D1DDD6; border-radius: 50%; cursor: pointer; transition: 0.3s ease;
+}
+.dot.active {
+    background: var(--color-progress); width: 20px; border-radius: 4px;
 }
 
 /* ==========================================================================
-   6. METRICS GRID (INTEGRADO AO DESIGN - SEM CAIXAS)
+   6. METRICS GRID (HORIZONTAL UNIFICADO EM QUALQUER TELA)
    ========================================================================== */
 .metrics-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 40px;                  /* Espaçamento elegante entre os blocos soltos */
+    gap: 40px;
     margin-bottom: 45px;
-    padding-bottom: 25px;
-    border-bottom: 1px solid #F0F0F0; /* Linha sutil de divisão de conteúdo */
-}
-
-.card-cal, .macros-card-row {
-    background: none;           /* Fundo removido */
-    border-radius: 0;
-    padding: 0;                 /* Sem padding forçado de card */
-    box-shadow: none;           /* Sem sombras */
-}
-
-.card-cal h3 { font-size: 16px; font-weight: 700; color: var(--text-main); margin-bottom: 8px; text-transform: uppercase; letter-spacing: 0.5px; }
-.kcal-counter { font-size: 24px; font-weight: 800; margin-bottom: 15px; }
-.kcal-counter span { color: var(--color-progress); }
-
-/* Barra de Progresso Reta */
-.progress-bg {
-    width: 100%;
-    height: 10px;
-    background: #EAEAEA;
-    border-radius: 5px;
-    overflow: hidden;
-    margin-bottom: 12px;
-}
-
-.progress-fill {
-    height: 100%;
-    background: var(--color-progress);
-    border-radius: 5px;
-    transition: width 0.5s ease;
-}
-
-.kcal-status-msg { font-size: 13px; color: var(--text-muted); }
-
-/* Anéis SVG Livres */
-.macros-card-row {
-    display: flex;
-    justify-content: space-between;
+    padding-bottom: 30px;
+    border-bottom: 1px solid #F0F0F0;
     align-items: center;
 }
 
-.macro-item {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 8px;
-}
+.card-cal, .macros-card-row { background: none; border-radius: 0; padding: 0; box-shadow: none; }
+.card-cal h3 { font-size: 14px; font-weight: 700; color: var(--text-main); margin-bottom: 6px; text-transform: uppercase; letter-spacing: 0.5px; }
+.kcal-counter { font-size: 22px; font-weight: 800; margin-bottom: 12px; color: var(--color-progress); }
+.kcal-total { color: var(--text-main); font-size: 16px; font-weight: 600; }
 
-.ring-box {
-    position: relative;
-    width: 75px;
-    height: 75px;
-}
+.progress-bg { width: 100%; height: 8px; background: #EAEAEA; border-radius: 4px; overflow: hidden; margin-bottom: 8px; }
+.progress-fill { height: 100%; background: var(--color-progress); border-radius: 4px; transition: width 0.5s ease; }
+.kcal-status-msg { font-size: 12px; color: var(--text-muted); font-weight: 600; }
 
-.ring-svg {
-    width: 100%;
-    height: 100%;
-    transform: rotate(-90deg);
-}
-
-.ring-bg {
-    fill: none;
-    stroke: #EAEAEA;
-    stroke-width: 5;
-}
-
-.ring-fill {
-    fill: none;
-    stroke-width: 5;
-    stroke-linecap: round;
-    transition: stroke-dashoffset 0.8s ease-in-out;
-}
+.macros-card-row { display: flex; justify-content: space-between; align-items: center; gap: 15px; }
+.macro-item { display: flex; flex-direction: column; align-items: center; gap: 6px; flex: 1; }
+.ring-box { position: relative; width: 65px; height: 65px; }
+.ring-svg { width: 100%; height: 100%; transform: rotate(-90deg); }
+.ring-bg { fill: none; stroke: #EAEAEA; stroke-width: 6; }
+.ring-fill { fill: none; stroke-width: 6; stroke-linecap: round; transition: stroke-dashoffset 0.8s ease-in-out; }
 
 .prot .ring-fill { stroke: var(--color-prot); }
 .carb .ring-fill { stroke: var(--color-carb); }
 .fat .ring-fill { stroke: var(--color-fat); }
+.percentage-label { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-weight: 800; font-size: 12px; color: var(--text-main); }
+.macro-title { font-size: 12px; font-weight: 700; color: var(--text-muted); }
 
-.percentage-label {
-    position: absolute;
-    top: 50%; left: 50%;
-    transform: translate(-50%, -50%);
-    font-weight: 800;
-    font-size: 14px;
+/* ==========================================================================
+   MUDANÇAS ADAPTADAS DO MOBILE (MANTENDO LADO A LADO)
+   ========================================================================== */
+@media (max-width: 900px) {
+    /* Faz a meta do dia e os macros jogarem juntos na mesma linha horizontal */
+    .metrics-grid {
+        grid-template-columns: 1.1fr 1fr;
+        gap: 20px;
+        padding-bottom: 20px;
+    }
+    .kcal-counter { font-size: 18px; }
+    .kcal-total { font-size: 13px; }
+    .ring-box { width: 52px; height: 52px; }
+    .percentage-label { font-size: 10px; }
+    .macro-title { font-size: 11px; }
+    .banner-slider { height: 210px; }
+    .banner-slide p { max-width: 100%; font-size: 11px; }
 }
 
-.macro-title { font-size: 13px; font-weight: 700; color: var(--text-main); }
+@media (max-width: 600px) {
+    /* Ajuste fino para telas muito pequenas não quebrarem */
+    .metrics-grid {
+        grid-template-columns: 1fr;
+        gap: 25px;
+    }
+    /* Se a tela for minúscula, mantemos em bloco único mas sem virar caixa/card */
+    .macros-card-row { justify-content: space-around; }
+}
 
 /* ==========================================================================
    7. CRONOGRAMA ALIMENTAR (ESTILO TIMELINE/LISTA LIMPA)
