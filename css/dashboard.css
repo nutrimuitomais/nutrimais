@@ -685,3 +685,15 @@ body {
         width: 100%;
     }
 }
+
+   /* Definição das imagens para cada slide */
+.slide-dieta { background-image: url('../img/salada.png') !important; }
+.slide-treino { background-image: url('../img/anamnese.png') !important; }
+.slide-anamnese { background-image: url('../img/treino.png') !important; }
+
+/* Ajuste de garantia para as imagens */
+.banner-image-side { 
+    background-size: cover !important; 
+    background-position: center !important; 
+    background-repeat: no-repeat !important;
+}
