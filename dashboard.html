@@ -45,7 +45,7 @@
                 </a>
                 <a href="#" class="menu-item" onclick="triggerPremium()">
                     <span class="menu-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"></path><circle cx="12" cy="13" r="4"></circle></svg></span>
-                    Foto IA <span class="badge-inline super-gold">SUPER</span>
+                    Foto IA <span class="badge-inline max-silver">MAX</span>
                 </a>
                 <a href="#" class="menu-item" onclick="triggerPremium()">
                     <span class="menu-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg></span>
@@ -80,7 +80,7 @@
             </nav>
 
             <div class="sidebar-footer">
-                <div class="badge-footer-fixed">SUPER NUTRI</div>
+                <div class="badge-footer-fixed">MAX NUTRI</div>
             </div>
         </aside>
 
@@ -136,7 +136,7 @@
                         <div class="slide-text">
                             <span class="tag">RELATÓRIO SEMANAL MAX</span>
                             <h2>Acompanhar pacientes</h2>
-                            <p>Olá, Vinicius, sabia que você pode gerar seu Relatório Semanal MAX para um PDF com detalhes da sua evolução e o que melhorar ou parabenizar suas conquistas?</p>
+                            <p>Olá, Vinicius, sabia que você pode gerar seu Relatório Semanal MAX para um PDF com detalhes da sua evolução?</p>
                             <button onclick="triggerPremium()" class="btn-premium-grad">Gerar PDF</button>
                         </div>
                         <div class="slide-visual">
@@ -283,39 +283,39 @@
             </section>
 
             <section class="community-section">
-    <div class="community-card-box">
-        <h2>Comunidade NUTRI+</h2>
-        <p class="community-sub">Veja o que dizem sobre nós!</p>
-        
-        <div class="feedbacks-stack" id="app-feedbacks-container">
-            <div class="feedback-item">
-                <div class="feedback-user-row">
-                    <div class="user-avatar-placeholder">👤</div>
-                    <div>
-                        <h4>Carlos M.</h4>
-                        <div class="stars">⭐⭐⭐⭐⭐</div>
+                <div class="community-card-box">
+                    <h2>Comunidade NUTRI+</h2>
+                    <p class="community-sub">Veja o que dizem sobre nós!</p>
+                    
+                    <div class="feedbacks-stack" id="app-feedbacks-container">
+                        <div class="feedback-item">
+                            <div class="feedback-user-row">
+                                <div class="user-avatar-placeholder">👤</div>
+                                <div>
+                                    <h4>Carlos M.</h4>
+                                    <div class="stars">⭐⭐⭐⭐⭐</div>
+                                </div>
+                            </div>
+                            <p class="feedback-text">"Excelente app! Senti resultados reais emagrecendo de forma consistente."</p>
+                        </div>
+                    </div>
+
+                    <div class="add-comment-form">
+                        <h3>Faça um comentário sobre o app!</h3>
+                        
+                        <div class="star-rating-selector" id="star-selector">
+                            <span class="star-clickable" data-value="1">☆</span>
+                            <span class="star-clickable" data-value="2">☆</span>
+                            <span class="star-clickable" data-value="3">☆</span>
+                            <span class="star-clickable" data-value="4">☆</span>
+                            <span class="star-clickable" data-value="5">☆</span>
+                        </div>
+                        
+                        <textarea id="user-comment-input" placeholder="Escreva aqui sua experiência com o app..."></textarea>
+                        <button class="btn-send-comment" onclick="submitAppComment()">Enviar Comentário</button>
                     </div>
                 </div>
-                <p class="feedback-text">"Excelente app! Senti resultados reais emagrecendo de forma consistente."</p>
-            </div>
-        </div>
-
-        <div class="add-comment-form">
-            <h3>Faça um comentário sobre o app!</h3>
-            
-            <div class="star-rating-selector" id="star-selector">
-                <span class="star-clickable" data-value="1">☆</span>
-                <span class="star-clickable" data-value="2">☆</span>
-                <span class="star-clickable" data-value="3">☆</span>
-                <span class="star-clickable" data-value="4">☆</span>
-                <span class="star-clickable" data-value="5">☆</span>
-            </div>
-            
-            <textarea id="user-comment-input" placeholder="Escreva aqui sua experiência com o app..."></textarea>
-            <button class="btn-send-comment" onclick="submitAppComment()">Enviar Comentário</button>
-        </div>
-    </div>
-</section>
+            </section>
 
         </main>
 
@@ -341,37 +341,37 @@
     </div>
 
     <div id="recipe-modal" class="modal-overlay hidden">
-    <div class="modal-card-premium">
-        <button class="close-modal-btn" onclick="closeRecipeModal()">✕</button>
-        
-        <div class="modal-hero">
-            <img id="modal-recipe-img" src="" alt="Foto da Receita">
-            <div class="modal-hero-overlay">
-                <span id="modal-recipe-plan-badge" class="plan-badge-floating">PLANO MAX</span>
-                <h2 id="modal-recipe-title">Título da Receita</h2>
-            </div>
-        </div>
-
-        <div class="modal-body-content">
-            <div class="plan-limit-info-box">
-                <p id="modal-plan-text">Sua assinatura permite ver esta receita inteligente.</p>
+        <div class="modal-card-premium">
+            <button class="close-modal-btn" onclick="closeRecipeModal()">✕</button>
+            
+            <div class="modal-hero">
+                <img id="modal-recipe-img" src="" alt="Foto da Receita">
+                <div class="modal-hero-overlay">
+                    <span id="modal-recipe-plan-badge" class="plan-badge-floating">PLANO MAX</span>
+                    <h2 id="modal-recipe-title">Título da Receita</h2>
+                </div>
             </div>
 
-            <h3>📊 Distribuição de Macronutrientes</h3>
-            <div class="modal-macros-row">
-                <div class="m-box"><span id="m-kcal">0</span><label>Kcal</label></div>
-                <div class="m-box prot-b"><span id="m-pro">0g</span><label>Proteínas</label></div>
-                <div class="m-box carb-b"><span id="m-car">0g</span><label>Carbos</label></div>
-                <div class="m-box fat-b"><span id="m-fat">0g</span><label>Gorduras</label></div>
-            </div>
+            <div class="modal-body-content">
+                <div class="plan-limit-info-box">
+                    <p id="modal-plan-text">Sua assinatura permite ver esta receita inteligente.</p>
+                </div>
 
-            <h3>🍳 Modo de Preparo Inteligente</h3>
-            <p class="recipe-instructions">
-                Com base na sua anamnese e seleção de alimentos, misture os ingredientes pesados na balança de forma homogênea. Cozinhe em fogo médio para preservar a biodisponibilidade molecular dos macronutrientes calculados para o seu objetivo de emagrecimento.
-            </p>
+                <h3>📊 Distribuição de Macronutrientes</h3>
+                <div class="modal-macros-row">
+                    <div class="m-box"><span id="m-kcal">0</span><label>Kcal</label></div>
+                    <div class="m-box prot-b"><span id="m-pro">0g</span><label>Proteínas</label></div>
+                    <div class="m-box carb-b"><span id="m-car">0g</span><label>Carbos</label></div>
+                    <div class="m-box fat-b"><span id="m-fat">0g</span><label>Gorduras</label></div>
+                </div>
+
+                <h3>🍳 Modo de Preparo Inteligente</h3>
+                <p class="recipe-instructions">
+                    Com base na sua anamnese e seleção de alimentos, misture os ingredientes pesados na balança de forma homogênea. Cozinhe em fogo médio para preservar a biodisponibilidade molecular dos macronutrientes calculados para o seu objetivo de emagrecimento.
+                </p>
+            </div>
         </div>
     </div>
-</div>
 
     <script src="js/dashboard.js"></script>
 </body>
