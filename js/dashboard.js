@@ -1,40 +1,40 @@
 document.addEventListener("DOMContentLoaded", () => {
-    // ==========================================================================
-    // 1. CONFIGURAÇÕES, METAS E BANNER ROTATIVO
-    // ==========================================================================
-    const META_CALORIAS = 2200;
-    const CIRCUNFERENCIA_MAXIMA = 2 * Math.PI * 34; // aprox. 213.63
+    // ---- LÓGICA DO CARROSSEL DE BANNERS ROTATIVOS ----
+    const slides = document.querySelectorAll(".banner-slide");
+    const dots = document.querySelectorAll(".dot");
+    let currentSlide = 0;
+    const slideInterval = 6000; // Tempo mais lento e agradável (6 segundos)
 
-    // Dados dos 3 Banners Rotativos (Compactos)
-    const bannersConteudo = [
-        {
-            tag: "UPGRADE RECOMENDADO",
-            titulo: "Planilhas de Treino de Elite via IA",
-            desc: "Ajuste sua hipertrofia na velocidade em que muda seus alimentos.",
-            img: "vazio" // Pode ser substituído por caminhos de imagem se preferir
-        },
-        {
-            tag: "NUTRI+ PREMIUM",
-            titulo: "Análise Molecular de Anamnese",
-            desc: "Descubra quais micronutrientes estão faltando no seu dia a dia.",
-            img: "vazio"
-        },
-        {
-            tag: "VIP ACCESS",
-            titulo: "Consultas Diretas com Especialistas",
-            desc: "Fale com nutricionistas e personals certificados quando quiser.",
-            img: "vazio"
-        }
-    ];
-    let bannerAtualIndex = 0;
+    function changeSlide(nextIndex) {
+        // Remove classes ativas do slide e dot atuais
+        slides[currentSlide].classList.remove("active");
+        dots[currentSlide].classList.remove("active");
 
-    const distribuicaoMacros = [
-        { prot: 20, carb: 15, fat: 25 },
-        { prot: 45, carb: 45, fat: 40 },
-        { prot: 15, carb: 15, fat: 10 },
-        { prot: 20, carb: 25, fat: 25 }
-    ];
+        // Atualiza o ponteiro
+        currentSlide = nextIndex;
 
+        // Ativa o próximo slide e dot
+        slides[currentSlide].classList.add("active");
+        dots[currentSlide].classList.add("active");
+    }
+
+    function autoPlaySlides() {
+        let next = (currentSlide + 1) % slides.length;
+        changeSlide(next);
+    }
+
+    // Inicia o temporizador automático do carrossel
+    let timer = setInterval(autoPlaySlides, slideInterval);
+
+    // Permite clicar nas bolinhas para mudar de slide de forma manual
+    dots.forEach((dot, index) => {
+        dot.addEventListener("click", () => {
+            clearInterval(timer); // Para o autoplay para não bugar o clique
+            changeSlide(index);
+            timer = setInterval(autoPlaySlides, slideInterval); // Reinicia o timer
+        });
+    });
+});
     // ==========================================================================
     // 2. SISTEMA DE FOTO PERMANENTE (LOCALSTORAGE)
     // ==========================================================================
