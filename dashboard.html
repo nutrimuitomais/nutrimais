@@ -95,44 +95,10 @@
                             <h4>Notificações Nutri+</h4>
                         </div>
                         <div class="notif-dropdown-body" id="notif-list-container">
-                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-
-            <section class="upsell-slider-container">
-                <div class="slider-wrapper" id="main-slider">
-                    <div class="slide-item slide-bg-1">
-                        <div class="slide-text">
-                            <span class="tag">UPGRADE RECOMENDADO</span>
-                            <h2>Refeições personalizadas no seu celular</h2>
-                            <p>Desbloqueie substituições moleculares inteligentes em tempo real e relatórios metabólicos baseados na sua anamnese.</p>
-                            <button class="btn-premium-grad" onclick="triggerPremium()">Mudar de plano agora →</button>
-                        </div>
-                    </div>
-                    <div class="slide-item slide-bg-2">
-                        <div class="slide-text">
-                            <span class="tag">RECOMENDADO</span>
-                            <h2>Gere Treinos de Elite com a IA Nutri</h2>
-                            <p>Ajuste sua planilha de hipertrofia e definição na mesma velocidade em que muda sua escolha de alimentos.</p>
-                            <button class="btn-premium-grad" onclick="triggerPremium()">Garantir Acesso VIP →</button>
-                        </div>
-                    </div>
-                    <div class="slide-item slide-bg-3">
-                        <div class="slide-text">
-                            <span class="tag">NOVIDADE VIP</span>
-                            <h2>Gere relatório e dicas de melhora</h2>
-                            <p>Olá, Vinicius, sabia que você pode gerar seu Relatório Semanal MAX para um PDF com detalhes da sua evolução?</p>
-                            <button class="btn-premium-grad" onclick="triggerPremium()">Gerar PDF →</button>
-                        </div>
-                    </div>
-                </div>
-                <div class="slider-dots">
-                    <span class="s-dot active"></span>
-                    <span class="s-dot"></span>
-                    <span class="s-dot"></span>
-                </div>
-            </section>
 
             <section class="metrics-grid">
                 <div class="card-cal">
@@ -282,89 +248,13 @@
         </main>
 
         <div id="account-modal" class="modal-overlay hidden">
-            <div class="modal-card">
-                <button class="modal-close" onclick="toggleMenuConta()">✕</button>
-                <div class="modal-header">
-                    <h3>Configurações do Perfil</h3>
-                    <p class="modal-subtitle">Gerencie suas funções e assinatura da plataforma.</p>
-                </div>
-                <div class="modal-body">
-                    <div class="account-options-stack">
-                        <button class="account-opt-btn" onclick="triggerPremium()"><span class="prof-icon icon-swap"></span> Mudar de Plano / Gerenciar Assinatura</button>
-                        <button class="account-opt-btn" onclick="triggerPremium()"><span class="prof-icon icon-billing"></span> Ver Histórico de Faturas e Cartões</button>
-                        <button class="account-opt-btn" onclick="alert('Modo Escuro será ativado na próxima versão!')"><span class="prof-icon icon-dark"></span> Alternar Modo Escuro</button>
-                        <button class="account-opt-btn" onclick="alert('Conectando ao chat de suporte premium...')"><span class="prof-icon icon-support"></span> Abrir Suporte via Chat</button>
-                        <hr class="modal-divider">
-                        <button class="account-opt-btn btn-modal-logout" onclick="alert('Desconectando...'); window.location.reload();"><span class="prof-icon icon-logout"></span> Sair da Conta</button>
-                    </div>
-                </div>
             </div>
-        </div>
 
         <div id="recipe-modal" class="modal-overlay hidden">
-            <div class="modal-card">
-                <button class="modal-close" onclick="closeRecipeModal()">✕</button>
-                <div class="modal-header">
-                    <span class="modal-badge-plan animated-metallic-badge" id="modal-recipe-plan-badge">PLANO MAX</span>
-                    <h3 id="modal-recipe-title">Título da Receita</h3>
-                    <div class="recipe-usage-counter" id="recipe-usage-container">
-                        Visualizações do seu plano: <span id="recipe-count-used">0</span> / <span id="recipe-count-total">50</span>
-                    </div>
-                </div>
-                <div class="modal-body" id="recipe-allowed-body">
-                    <div class="recipe-img-container">
-                        <img id="modal-recipe-img" src="" alt="Foto da Receita Inteligente">
-                    </div>
-                    
-                    <h4>📊 Distribuição de Macronutrientes</h4>
-                    <div class="modal-macros-inline">
-                        <div class="m-badge kcal"><span id="m-kcal">0</span> Kcal</div>
-                        <div class="m-badge pro">🍗 Pro: <span id="m-pro">0g</span></div>
-                        <div class="m-badge car">🍞 Carb: <span id="m-car">0g</span></div>
-                        <div class="m-badge fat">🥑 Gord: <span id="m-fat">0g</span></div>
-                    </div>
-
-                    <h4>🍳 Modo de Preparo Inteligente</h4>
-                    <p class="recipe-instructions">Instruções personalizadas geradas por IA para bater seus macros diários perfeitamente.</p>
-                </div>
-
-                <div class="recipe-blocked-container hidden" id="recipe-blocked-body">
-                    <div class="lock-icon">🔒</div>
-                    <h4>Limite de Receitas Atingido!</h4>
-                    <p id="recipe-blocked-message">Seu plano atual atingiu o limite máximo de visualizações de receitas inteligentes.</p>
-                    <a href="planos.html" class="btn-upgrade-modal">Fazer Upgrade de Plano Agora</a>
-                </div>
             </div>
-        </div>
 
         <nav class="mobile-nav-bar">
-            <a href="#" class="mobile-nav-item active">
-                <span class="m-nav-icon prof-icon icon-home"></span>
-                <span>Início</span>
-            </a>
-            <a href="#" class="mobile-nav-item">
-                <span class="m-nav-icon prof-icon icon-chart"></span>
-                <span>Evolução</span>
-            </a>
-            
-            <a href="#" class="mobile-nav-item mobile-ia-center-btn" onclick="triggerIA()">
-                <div class="ia-pulse-glow">
-                    <span class="prof-icon icon-ai"></span>
-                </div>
-                <span class="ia-label-text">IA NUTRI</span>
-            </a>
-
-            <a href="#" class="mobile-nav-item" onclick="triggerPremium()">
-                <span class="m-nav-icon prof-icon icon-swap"></span>
-                <span>Planos</span>
-            </a>
-            <a href="#" class="mobile-nav-item mobile-avatar-link" onclick="toggleMenuConta()">
-                <div class="mobile-avatar-wrapper">
-                    <img class="mobile-user-avatar" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150" alt="Conta">
-                </div>
-                <span>Conta</span>
-            </a>
-        </nav>
+            </nav>
 
     </div>
 
