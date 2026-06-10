@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Nutri+ Plataforma - Evolução Zero</title>
+    <title>Nutri+ Plataforma</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
@@ -80,11 +80,11 @@
             <section class="metrics-grid">
                 <div class="card-cal">
                     <h3>Meta do Dia</h3>
-                    <div class="kcal-counter"><span id="sum-kcal">390</span> / 2200 kcal</div>
+                    <div class="kcal-counter"><span id="sum-kcal">0</span> / 2200 kcal</div>
                     <div class="progress-bg">
-                        <div class="progress-fill" id="bar-kcal" style="width: 17.7%;"></div>
+                        <div class="progress-fill" id="bar-kcal" style="width: 0%;"></div>
                     </div>
-                    <p class="kcal-status-msg" id="kcal-feedback">Faltam 1810 kcal para completar os 100%.</p>
+                    <p class="kcal-status-msg" id="kcal-feedback">Restam 2200 kcal para fechar o plano diário.</p>
                 </div>
 
                 <div class="macros-card-row">
@@ -130,7 +130,7 @@
                     <div class="meal-card" data-kcal="390">
                         <div class="meal-main">
                             <label class="check-container">
-                                <input type="checkbox" class="meal-checkbox" id="chk-cafe">
+                                <input type="checkbox" class="meal-checkbox">
                                 <span class="checkmark"></span>
                             </label>
                             <div class="details">
@@ -148,7 +148,7 @@
                     <div class="meal-card" data-kcal="980">
                         <div class="meal-main">
                             <label class="check-container">
-                                <input type="checkbox" class="meal-checkbox" id="chk-almoco">
+                                <input type="checkbox" class="meal-checkbox">
                                 <span class="checkmark"></span>
                             </label>
                             <div class="details">
@@ -162,8 +162,43 @@
                             <button class="btn-recipe">Ver Receita</button>
                         </div>
                     </div>
-                    
+
+                    <div class="meal-card" data-kcal="310">
+                        <div class="meal-main">
+                            <label class="check-container">
+                                <input type="checkbox" class="meal-checkbox">
+                                <span class="checkmark"></span>
+                            </label>
+                            <div class="details">
+                                <span class="time-tag">16:30</span>
+                                <h3>Lanche da Tarde</h3>
+                                <p>Iogurte Whey (200g), Aveia (30g), Morangos (100g)</p>
+                            </div>
+                        </div>
+                        <div class="meal-footer">
+                            <span class="kcal-tag">⚡ 310 kcal</span>
+                            <button class="btn-recipe">Ver Receita</button>
+                        </div>
                     </div>
+
+                    <div class="meal-card" data-kcal="520">
+                        <div class="meal-main">
+                            <label class="check-container">
+                                <input type="checkbox" class="meal-checkbox">
+                                <span class="checkmark"></span>
+                            </label>
+                            <div class="details">
+                                <span class="time-tag">20:00</span>
+                                <h3>Janta Anabólica</h3>
+                                <p>Patinho Moído (200g), Mandioca Cozida (150g), Brócolis (80g)</p>
+                            </div>
+                        </div>
+                        <div class="meal-footer">
+                            <span class="kcal-tag">⚡ 520 kcal</span>
+                            <button class="btn-recipe">Ver Receita</button>
+                        </div>
+                    </div>
+                </div>
             </section>
 
             <section class="community-section">
@@ -202,25 +237,25 @@
     </div>
 
     <nav class="mobile-nav-bar">
-        <a href="#" class="mobile-nav-item m-inicio active">
-            <span class="m-nav-icon icon-home"></span>
+        <a href="#" class="mobile-nav-item active">
+            <span class="m-nav-icon">🏠</span>
             Início
         </a>
-        <a href="#" class="mobile-nav-item m-evolução">
-            <span class="m-nav-icon icon-chart"></span>
+        <a href="#" class="mobile-nav-item">
+            <span class="m-nav-icon">📈</span>
             Evolução
         </a>
-        <a href="#" class="mobile-nav-item m-ia mobile-ia-center">
+        <a href="#" class="mobile-nav-item mobile-ia-center">
             <div class="ia-glow-container">
-                <span class="m-nav-icon icon-ai ia-glow-pulse"></span>
+                <span class="m-nav-icon">✨</span>
             </div>
             IA NUTRI
         </a>
-        <a href="#" class="mobile-nav-item m-dieta">
-            <span class="m-nav-icon icon-swap"></span>
+        <a href="#" class="mobile-nav-item">
+            <span class="m-nav-icon">🥗</span>
             Dieta
         </a>
-        <a href="#" class="mobile-nav-item m-conta mobile-avatar-link" id="mobile-avatar-trigger">
+        <a href="#" class="mobile-nav-item mobile-avatar-link" id="mobile-avatar-trigger">
             <div class="mobile-avatar-wrapper">
                 <img id="user-avatar-mobile" class="mobile-user-avatar" src="avatar.jpg" alt="Conta">
             </div>
