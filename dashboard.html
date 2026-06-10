@@ -2,310 +2,266 @@
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Dashboard Premium | Nutri & Receitas</title>
-    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Painel Nutricional - App</title>
     <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
 
-    <div id="welcome-fireworks-overlay" class="fireworks-overlay">
-        <div class="fireworks-welcome-text">
-            <h2>Tudo no prato! 🥗</h2>
-            <p>Seu cardápio de hoje está servido.</p>
-        </div>
-        <canvas id="fireworks-canvas"></canvas>
+    <div id="cloud-sync-status" class="sync-active">
+        <i class="fa-brands fa-google"></i> Sincronizado via Gmail
     </div>
 
-    <div id="interstitial-promo-modal" class="interstitial-overlay active">
-        <div class="interstitial-card">
-            <button id="close-interstitial-btn" class="interstitial-close-x">&times;</button>
-            <div class="interstitial-badge">OFERTA EXCLUSIVA</div>
-            <h2>Evolua para o<br><span class="highlight-gradient">Plano Chef MAX</span></h2>
-            <p>Desbloqueie um gerador de receitas com IA, lista de compras automática e rastreamento avançado de micronutrientes.</p>
+    <aside class="sidebar" id="sidebar-menu">
+        <div class="profile-section">
+            <img src="https://via.placeholder.com/50" alt="Perfil" class="profile-pic">
+            <h2>Vinícius</h2>
+            <p class="plan-badge">Plano: MAX</p>
+            <button class="close-menu-mobile" id="close-menu"><i class="fa-solid fa-xmark"></i></button>
+        </div>
+        <nav class="nav-menu">
+            <ul>
+                <li><a href="#"><i class="fa-solid fa-dumbbell"></i> Treino com personal Local MAX</a></li>
+                <li><a href="#"><i class="fa-solid fa-user-doctor"></i> Consulta com Nutricionista</a></li>
+                <li><a href="#"><i class="fa-solid fa-chart-pie"></i> Relatório Semanal MAX</a></li>
+                <li><a href="planos.html"><i class="fa-solid fa-star"></i> Planos e Fatura</a></li>
+                <li><a href="planos.html"><i class="fa-solid fa-arrow-up-right-dots"></i> Mudar Plano</a></li>
+                <li><a href="#"><i class="fa-solid fa-headset"></i> Suporte via Chat</a></li>
+                <li><a href="#" id="toggle-dark-mode"><i class="fa-solid fa-moon"></i> Modo escuro</a></li>
+                <li><a href="#"><i class="fa-solid fa-gear"></i> Configurações</a></li>
+                <li><a href="#" class="logout"><i class="fa-solid fa-arrow-right-from-bracket"></i> Sair</a></li>
+            </ul>
+        </nav>
+    </aside>
+
+    <main class="main-content">
+        <header class="top-header">
+            <div class="greeting-area" id="open-mobile-menu">
+                <img src="https://via.placeholder.com/40" alt="Perfil" class="profile-pic-small">
+                <div>
+                    <span class="date">Quarta-Feira, 10 De Junho</span>
+                    <h1>Olá, Vinícius 👋</h1>
+                </div>
+            </div>
+            <div class="header-actions">
+                <button id="ai-camera-btn" class="ai-btn pulse-animation">
+                    <i class="fa-solid fa-camera"></i>
+                </button>
+                <button class="notification-btn">
+                    <i class="fa-regular fa-bell"></i>
+                </button>
+            </div>
+        </header>
+
+        <div id="goal-congrats" class="alert-box success hidden">
+            🎉 Parabéns! Você atingiu suas calorias diárias perfeitamente!
+        </div>
+        <div id="goal-adjustment" class="alert-box warning hidden">
+            ⚠️ Atenção: Suas calorias de amanhã foram ajustadas devido ao consumo de hoje.
+        </div>
+
+        <section class="hero-card gradient-green">
+            <div class="calories-info">
+                <p>CALORIAS DO DIA</p>
+                <div class="cal-numbers">
+                    <span class="current-cal" id="display-current-cal">900</span> <span class="total-cal">/ 1800 kcal</span>
+                </div>
+                <p class="remaining">900 kcal restantes</p>
+                
+                <div class="macros-summary">
+                    <div><span>Carbo</span><strong>90g</strong></div>
+                    <div><span>Gord</span><strong>22g</strong></div>
+                    <div><span>Prot</span><strong>56g</strong></div>
+                </div>
+            </div>
             
-            <div class="interstitial-mockup-features">
-                <div class="feat-item"><i class="fa-solid fa-robot"></i> Receitas com IA</div>
-                <div class="feat-item"><i class="fa-solid fa-basket-shopping"></i> Lista Inteligente</div>
+            <div class="progress-ring unified-bar">
+                <div class="ring-content">
+                    <span class="percentage">50%</span>
+                    <span class="meta-text">meta</span>
+                </div>
+            </div>
+        </section>
+
+        <section class="macronutrients-section">
+            <div class="macro-bar-container">
+                <div class="macro-label"><i class="fa-solid fa-bolt"></i> CARBOIDRATOS <span><strong>90</strong>/200g</span></div>
+                <div class="progress-bg"><div class="progress-fill carbo-fill" style="width: 45%;"></div></div>
+            </div>
+            <div class="macro-bar-container">
+                <div class="macro-label"><i class="fa-solid fa-droplet"></i> GORDURAS <span><strong>22</strong>/60g</span></div>
+                <div class="progress-bg"><div class="progress-fill gord-fill" style="width: 36%;"></div></div>
+            </div>
+            <div class="macro-bar-container">
+                <div class="macro-label"><i class="fa-solid fa-drumstick-bite"></i> PROTEÍNAS <span><strong>56</strong>/120g</span></div>
+                <div class="progress-bg"><div class="progress-fill prot-fill" style="width: 46%;"></div></div>
+            </div>
+        </section>
+
+        <section class="meals-section">
+            <div class="section-header">
+                <h2>Refeições de Hoje</h2>
+                <a href="#" class="see-all">Ver todas ></a>
+            </div>
+            
+            <div class="meal-card" id="meal-breakfast">
+                <img src="https://via.placeholder.com/50" alt="Café da Manhã">
+                <div class="meal-info">
+                    <h4>Café da Manhã</h4>
+                    <p class="meal-kcal"><i class="fa-solid fa-fire"></i> 380 kcal</p>
+                    <p class="meal-details-text">Ex: Ovos 100g, Aveia 40g</p>
+                </div>
+                <button class="view-recipe-btn" onclick="openRecipeModal('Café da Manhã')">Ver Receita</button>
+            </div>
+            
+            <div class="meal-card" id="meal-lunch">
+                <img src="https://via.placeholder.com/50" alt="Almoço">
+                <div class="meal-info">
+                    <h4>Almoço</h4>
+                    <p class="meal-kcal"><i class="fa-solid fa-fire"></i> 520 kcal</p>
+                    <p class="meal-details-text">Ex: Frango 500g, Arroz 150g</p>
+                </div>
+                <button class="view-recipe-btn" onclick="openRecipeModal('Almoço')">Ver Receita</button>
             </div>
 
-            <a href="planos.html" id="interstitial-action-1" class="btn-interstitial-primary">Assinar Chef MAX</a>
-            <button class="btn-interstitial-secondary" onclick="document.getElementById('interstitial-promo-modal').classList.remove('active')">Continuar no plano gratuito</button>
-        </div>
-    </div>
-
-    <div class="organic-background"></div>
-
-    <div id="corporate-notification-panel" class="notification-dropdown">
-        <div class="notif-header">
-            <h3>Notificações</h3>
-            <div class="notif-tabs">
-                <button class="notif-tab-toggle active" data-tab-target="alertas">Lembretes</button>
-                <button class="notif-tab-toggle" data-tab-target="dicas">Dicas de Cozinha</button>
+            <div class="meal-card" id="meal-snack">
+                <img src="https://via.placeholder.com/50" alt="Lanche da Tarde">
+                <div class="meal-info">
+                    <h4>Lanche da Tarde</h4>
+                    <p class="meal-kcal"><i class="fa-solid fa-fire"></i> 220 kcal</p>
+                    <p class="meal-details-text">Ex: Iogurte 150g, Fruta 100g</p>
+                </div>
+                <button class="view-recipe-btn" onclick="openRecipeModal('Lanche da Tarde')">Ver Receita</button>
             </div>
-        </div>
-        <div class="notif-body">
-            <div id="pane-alertas" class="notif-tab-pane active">
-                <div class="notif-item unread">
-                    <i class="fa-solid fa-droplet icon-notif"></i>
-                    <div class="notif-text">
-                        <p><strong>Hidratação:</strong> Lembre-se de beber água entre as refeições.</p>
-                        <span>Há 5 min</span>
+
+            <div class="meal-card" id="meal-dinner">
+                <img src="https://via.placeholder.com/50" alt="Jantar">
+                <div class="meal-info">
+                    <h4>Jantar</h4>
+                    <p class="meal-kcal"><i class="fa-solid fa-fire"></i> 300 kcal</p>
+                    <p class="meal-details-text">Ex: Peixe 200g, Salada à vontade</p>
+                </div>
+                <button class="view-recipe-btn" onclick="openRecipeModal('Jantar')">Ver Receita</button>
+            </div>
+        </section>
+
+        <section class="workout-card dark-bg">
+            <p>TREINO DE HOJE</p>
+            <h2>Treino A — Superiores</h2>
+            <div class="workout-stats">
+                <div><span>Duração</span><strong>45 min</strong></div>
+                <div><span>Exercícios</span><strong>6</strong></div>
+                <div><span>Queima</span><strong>320 cal</strong></div>
+            </div>
+            <button class="start-workout-btn gradient-green">Iniciar Treino &rarr;</button>
+            <div class="dumbbell-icon"><i class="fa-solid fa-dumbbell"></i></div>
+        </section>
+
+        <section class="featured-recipes">
+            <div class="section-header">
+                <h2>Receitas em Destaque</h2>
+            </div>
+            <div class="recipes-scroll">
+                <div class="recipe-card recipe-suggestion" onclick="openRecipeModal('Bowl de Quinoa')">
+                    <div class="recipe-img-container">
+                        <img src="https://via.placeholder.com/150" alt="Bowl">
+                        <span class="rating"><i class="fa-solid fa-star"></i> 4.9</span>
+                        <div class="tags"><span class="tag green">Vegano</span><span class="tag green-dark">Proteico</span></div>
+                    </div>
+                    <div class="recipe-details">
+                        <p class="meal-type">Almoço</p>
+                        <h4>Bowl de Quinoa</h4>
+                        <div class="recipe-macros-mini">
+                            <span>P: 25g</span> | <span>C: 45g</span> | <span>G: 10g</span>
+                        </div>
+                        <div class="recipe-footer">
+                            <span><i class="fa-solid fa-fire"></i> 420 cal</span>
+                            <span><i class="fa-regular fa-clock"></i> 25 min</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="recipe-card recipe-suggestion" onclick="openRecipeModal('Salada Grega')">
+                    <div class="recipe-img-container">
+                        <img src="https://via.placeholder.com/150" alt="Salada">
+                        <span class="rating"><i class="fa-solid fa-star"></i> 4.8</span>
+                        <div class="tags"><span class="tag green">Low Carb</span></div>
+                    </div>
+                    <div class="recipe-details">
+                        <p class="meal-type">Jantar</p>
+                        <h4>Salada Grega</h4>
+                        <div class="recipe-macros-mini">
+                            <span>P: 15g</span> | <span>C: 10g</span> | <span>G: 18g</span>
+                        </div>
+                        <div class="recipe-footer">
+                            <span><i class="fa-solid fa-fire"></i> 280 cal</span>
+                            <span><i class="fa-regular fa-clock"></i> 15 min</span>
+                        </div>
                     </div>
                 </div>
             </div>
-            <div id="pane-dicas" class="notif-tab-pane">
-                <div class="notif-item">
-                    <i class="fa-solid fa-leaf icon-notif"></i>
-                    <div class="notif-text">
-                        <p><strong>Truque Culinário:</strong> Use azeite em spray para economizar calorias ao grelhar.</p>
-                        <span>Há 2h</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <header class="app-header">
-        <div class="user-greeting">
-            <div class="avatar-container" id="profile-trigger">
-                <img src="https://ui-avatars.com/api/?name=Vinicius&background=1b4332&color=fff" alt="Perfil" id="user-avatar">
-                <input type="file" id="avatar-upload" hidden accept="image/*">
-            </div>
-            <div class="greeting-text">
-                <p>Bom apetite, Vinicius 👋</p>
-                <h1>Seu Cardápio Diário</h1>
-            </div>
-        </div>
-        <div class="header-right-actions">
-            <div class="streak-badge">
-                <i class="fa-solid fa-fire"></i> <span id="streak-count">14</span> dias na dieta
-            </div>
-            <button class="icon-btn" id="notification-bell-btn"><i class="fa-regular fa-bell"></i></button>
-        </div>
-    </header>
-
-    <section class="top-carousel-container">
-        <div class="top-carousel-track">
-            <div class="top-carousel-slide active" style="background: linear-gradient(135deg, #1b4332, #2d6a4f);">
-                <div class="slide-info">
-                    <span>CONSTÂNCIA</span>
-                    <h3>14 Dias na Linha!</h3>
-                    <p>Você bateu suas metas de macronutrientes perfeitamente.</p>
-                </div>
-                <i class="fa-solid fa-clipboard-check slide-bg-icon"></i>
-            </div>
-            <div class="top-carousel-slide" style="background: linear-gradient(135deg, #40916c, #52b788);">
-                <div class="slide-info">
-                    <span>RECEITA EM DESTAQUE</span>
-                    <h3>Salmão com Crosta</h3>
-                    <p>Rico em Ômega 3, ideal para o seu jantar de hoje.</p>
-                </div>
-                <i class="fa-solid fa-fish slide-bg-icon"></i>
-            </div>
-        </div>
-        <div class="carousel-dots">
-            <span class="top-dot active" data-go-to="0"></span>
-            <span class="top-dot" data-go-to="1"></span>
-        </div>
-    </section>
-
-    <section class="categories-scroll">
-        <button class="cat-pill active">Cardápio do Dia</button>
-        <button class="cat-pill">Refeições Rápidas</button>
-        <button class="cat-pill">Hiperproteicas</button>
-        <button class="cat-pill">Sobremesas Fit</button>
-    </section>
-
-    <section class="daily-progress">
-        <div class="progress-info">
-            <span>Calorias Consumidas</span>
-            <h2><span id="current-kcal">0</span> / 2200 kcal</h2>
-        </div>
-        <div class="progress-bar-bg">
-            <div class="progress-bar-fill" id="kcal-bar"></div>
-        </div>
-        
-        <div class="mini-macro-tracker">
-            <div>Prot: <strong id="tracker-p">0g</strong> / 160g</div>
-            <div>Carb: <strong id="tracker-c">0g</strong> / 220g</div>
-            <div>Gord: <strong id="tracker-f">0g</strong> / 65g</div>
-        </div>
-    </section>
-
-    <main class="meals-container">
-        
-        <article class="meal-card" data-kcal="450" data-protein="32" data-carb="45" data-fat="12">
-            <div class="meal-img-wrapper">
-                <img src="https://images.unsplash.com/photo-1482049016688-2d3e1b311543?auto=format&fit=crop&w=300&q=80" alt="Toast de Avocado">
-            </div>
-            <div class="meal-content">
-                <div class="meal-header">
-                    <h3>Toast de Avocado com Ovos</h3>
-                    <p class="meal-time"><i class="fa-regular fa-clock"></i> 07:30</p>
-                </div>
-                <p class="meal-price">450 Kcal</p>
-                <div class="meal-actions">
-                    <button class="btn-recipe" onclick="openRecipe('Toast de Avocado com Ovos', 'https://images.unsplash.com/photo-1482049016688-2d3e1b311543?auto=format&fit=crop&w=600&q=80', '12', '45', '450', '32', '2 fatias de Pão de Forma Integral, 3 Ovos caipiras, 50g de Avocado amassado, Pitada de pimenta do reino e sal, Café preto coado.')">Ver Receita</button>
-                    <label class="custom-checkbox">
-                        <input type="checkbox" class="meal-check">
-                        <span class="checkmark"><i class="fa-solid fa-check"></i></span>
-                    </label>
-                </div>
-            </div>
-        </article>
-
-        <article class="meal-card" data-kcal="280" data-protein="22" data-carb="35" data-fat="6">
-            <div class="meal-img-wrapper">
-                <img src="https://images.unsplash.com/photo-1511690656952-34342bb7c2f2?auto=format&fit=crop&w=300&q=80" alt="Bowl de Frutas">
-            </div>
-            <div class="meal-content">
-                <div class="meal-header">
-                    <h3>Bowl de Iogurte e Frutas</h3>
-                    <p class="meal-time"><i class="fa-regular fa-clock"></i> 10:00</p>
-                </div>
-                <p class="meal-price">280 Kcal</p>
-                <div class="meal-actions">
-                    <button class="btn-recipe" onclick="openRecipe('Bowl de Iogurte e Frutas', 'https://images.unsplash.com/photo-1511690656952-34342bb7c2f2?auto=format&fit=crop&w=600&q=80', '6', '35', '280', '22', '150g de Iogurte Natural Desnatado, 1 Banana média fatiada, 20g de Aveia em flocos finos, 1 colher de chá de Chia.')">Ver Receita</button>
-                    <label class="custom-checkbox">
-                        <input type="checkbox" class="meal-check">
-                        <span class="checkmark"><i class="fa-solid fa-check"></i></span>
-                    </label>
-                </div>
-            </div>
-        </article>
-
-        <article class="meal-card" data-kcal="680" data-protein="52" data-carb="65" data-fat="18">
-            <div class="meal-img-wrapper">
-                <img src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=300&q=80" alt="Prato Executivo Fit">
-            </div>
-            <div class="meal-content">
-                <div class="meal-header">
-                    <h3>Grelhado com Arroz Integral</h3>
-                    <p class="meal-time"><i class="fa-regular fa-clock"></i> 13:00</p>
-                </div>
-                <p class="meal-price">680 Kcal</p>
-                <div class="meal-actions">
-                    <button class="btn-recipe" onclick="openRecipe('Grelhado com Arroz Integral', 'https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=600&q=80', '18', '65', '680', '52', '180g de Peito de Frango grelhado, 150g de Arroz Integral cozido, 100g de Feijão, Brócolis e Cenoura no vapor, Fio de Azeite extra virgem.')">Ver Receita</button>
-                    <label class="custom-checkbox">
-                        <input type="checkbox" class="meal-check">
-                        <span class="checkmark"><i class="fa-solid fa-check"></i></span>
-                    </label>
-                </div>
-            </div>
-        </article>
-
-        <article class="meal-card" data-kcal="320" data-protein="18" data-carb="42" data-fat="10">
-            <div class="meal-img-wrapper">
-                <img src="https://images.unsplash.com/photo-1488477181946-6428a0291777?auto=format&fit=crop&w=300&q=80" alt="Panqueca Doce">
-            </div>
-            <div class="meal-content">
-                <div class="meal-header">
-                    <h3>Panqueca de Banana Fit</h3>
-                    <p class="meal-time"><i class="fa-regular fa-clock"></i> 16:30</p>
-                </div>
-                <p class="meal-price">320 Kcal</p>
-                <div class="meal-actions">
-                    <button class="btn-recipe" onclick="openRecipe('Panqueca de Banana Fit', 'https://images.unsplash.com/photo-1488477181946-6428a0291777?auto=format&fit=crop&w=600&q=80', '10', '42', '320', '18', '1 Banana bem madura amassada, 2 Ovos inteiros, 2 colheres de sopa de Farelo de Aveia, Canela a gosto, Fio de mel para finalizar.')">Ver Receita</button>
-                    <label class="custom-checkbox">
-                        <input type="checkbox" class="meal-check">
-                        <span class="checkmark"><i class="fa-solid fa-check"></i></span>
-                    </label>
-                </div>
-            </div>
-        </article>
-
-        <article class="meal-card" data-kcal="510" data-protein="44" data-carb="35" data-fat="15">
-            <div class="meal-img-wrapper">
-                <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=300&q=80" alt="Jantar Leve">
-            </div>
-            <div class="meal-content">
-                <div class="meal-header">
-                    <h3>Salmão Assado com Purê</h3>
-                    <p class="meal-time"><i class="fa-regular fa-clock"></i> 20:00</p>
-                </div>
-                <p class="meal-price">510 Kcal</p>
-                <div class="meal-actions">
-                    <button class="btn-recipe" onclick="openRecipe('Salmão Assado com Purê', 'https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=600&q=80', '15', '35', '510', '44', '150g de Filé de Salmão temperado com limão e ervas, 120g de Purê de Mandioquinha, Salada de rúcula com tomate cereja.')">Ver Receita</button>
-                    <label class="custom-checkbox">
-                        <input type="checkbox" class="meal-check">
-                        <span class="checkmark"><i class="fa-solid fa-check"></i></span>
-                    </label>
-                </div>
-            </div>
-        </article>
-
-        <article class="meal-card" data-kcal="150" data-protein="12" data-carb="10" data-fat="6">
-            <div class="meal-img-wrapper">
-                <img src="https://images.unsplash.com/photo-1590165482156-f5fd30f0f5b4?auto=format&fit=crop&w=300&q=80" alt="Ceia Leve">
-            </div>
-            <div class="meal-content">
-                <div class="meal-header">
-                    <h3>Creme de Ricota e Torrada</h3>
-                    <p class="meal-time"><i class="fa-regular fa-clock"></i> 22:30</p>
-                </div>
-                <p class="meal-price">150 Kcal</p>
-                <div class="meal-actions">
-                    <button class="btn-recipe" onclick="openRecipe('Creme de Ricota e Torrada', 'https://images.unsplash.com/photo-1590165482156-f5fd30f0f5b4?auto=format&fit=crop&w=600&q=80', '6', '10', '150', '12', '2 Torradas integrais, 30g de Creme de Ricota light, Chá de Camomila (sem açúcar).')">Ver Receita</button>
-                    <label class="custom-checkbox">
-                        <input type="checkbox" class="meal-check">
-                        <span class="checkmark"><i class="fa-solid fa-check"></i></span>
-                    </label>
-                </div>
-            </div>
-        </article>
-        
-        <div style="height: 110px;"></div>
+        </section>
     </main>
 
-    <nav class="floating-nav">
-        <a href="#" class="nav-item active"><i class="fa-solid fa-utensils"></i></a>
-        <a href="#" class="nav-item"><i class="fa-solid fa-clipboard-list"></i></a>
-        <a href="#" class="nav-item"><i class="fa-solid fa-chart-pie"></i></a>
-        <a href="#" class="nav-item"><i class="fa-solid fa-magnifying-glass"></i></a>
+    <nav class="bottom-nav">
+        <ul>
+            <li class="active"><a href="#"><i class="fa-solid fa-house"></i></a></li>
+            <li><a href="#"><i class="fa-solid fa-magnifying-glass"></i></a></li>
+            <li class="center-cam"><a href="#" id="mobile-cam-btn" class="pulse-animation"><i class="fa-solid fa-camera"></i></a></li>
+            <li><a href="#"><i class="fa-regular fa-heart"></i></a></li>
+            <li><a href="#" id="mobile-profile-btn"><i class="fa-regular fa-user"></i></a></li>
+        </ul>
     </nav>
 
-    <div class="recipe-modal" id="recipe-modal">
-        <button class="close-modal-btn" id="close-modal"><i class="fa-solid fa-chevron-left"></i></button>
-        
-        <div class="modal-image-header">
-            <img src="" id="modal-img" alt="Foto da Receita">
+    <div class="modal-overlay" id="scanner-modal">
+        <div class="modal-content">
+            <button class="close-modal"><i class="fa-solid fa-xmark"></i></button>
+            <h2>Scanner de Calorias IA</h2>
+            <p>A IA analisa sua foto e calcula os macros</p>
+            <div class="scanner-box">
+                <i class="fa-solid fa-camera camera-icon ai-scanning"></i>
+                <p>Tirar foto da refeição</p>
+                <span>ou escolher da galeria (salvo no Gmail)</span>
+            </div>
+            <button class="confirm-btn gradient-green hidden" id="confirm-scan-btn">Confirmar e Somar à Meta</button>
         </div>
+    </div>
 
-        <div class="modal-content-sheet">
-            <div class="sheet-drag-handle"></div>
-            <div class="modal-tags">
-                <span class="tag-star"><i class="fa-solid fa-star"></i> Receita Verificada</span>
-                <span class="tag-time"><i class="fa-regular fa-clock"></i> Fácil preparo</span>
-            </div>
-            <h2 id="modal-title">Título da Receita</h2>
-            <p class="modal-description">Detalhes da sua refeição. Siga os ingredientes abaixo para garantir a precisão dos seus macronutrientes.</p>
+    <div class="modal-overlay floating-recipe" id="recipe-detail-modal">
+        <div class="recipe-full-view">
+            <header class="recipe-header">
+                <button class="close-modal back-btn"><i class="fa-solid fa-chevron-left"></i></button>
+                <button class="more-options"><i class="fa-solid fa-ellipsis-vertical"></i></button>
+            </header>
             
-            <h3 class="section-title">Informação Nutricional</h3>
-            <div class="macro-bubbles">
-                <div class="bubble">
-                    <span class="bubble-value" id="modal-fat">0</span>
-                    <span class="bubble-label">Gordura<br><small>g</small></span>
-                </div>
-                <div class="bubble">
-                    <span class="bubble-value" id="modal-carb">0</span>
-                    <span class="bubble-label">Carb<br><small>g</small></span>
-                </div>
-                <div class="bubble">
-                    <span class="bubble-value" id="modal-kcal">0</span>
-                    <span class="bubble-label">Energia<br><small>kcal</small></span>
-                </div>
-                <div class="bubble">
-                    <span class="bubble-value" id="modal-protein">0</span>
-                    <span class="bubble-label">Proteína<br><small>g</small></span>
-                </div>
+            <div class="floating-plate">
+                <img src="https://via.placeholder.com/300" alt="Prato" class="plate-img">
             </div>
-
-            <h3 class="section-title">Ingredientes e Modo de Preparo</h3>
-            <ul class="ingredients-list" id="modal-ingredients"></ul>
             
-            <button class="btn-primary-large" onclick="document.getElementById('recipe-modal').classList.remove('active')"><i class="fa-solid fa-check"></i> Refeição Concluída</button>
+            <div class="recipe-info-container">
+                <div class="title-row">
+                    <div>
+                        <p class="category" id="modal-category">Receita Sugerida</p>
+                        <h2 id="modal-recipe-title">Quinoa Salad</h2>
+                    </div>
+                    <div class="quantity-control">
+                        <button>-</button><span>1</span><button>+</button>
+                    </div>
+                </div>
+                
+                <p class="description">Modo de preparo detalhado. Uma receita exclusiva baseada nas suas escolhas e plano atual (Integração dados.html).</p>
+                <p class="delivery-time"><i class="fa-regular fa-clock"></i> Preparo: 25 Mins</p>
+                
+                <div class="recipe-macros">
+                    <span><strong>Prot:</strong> 20g</span>
+                    <span><strong>Carb:</strong> 40g</span>
+                    <span><strong>Gord:</strong> 15g</span>
+                    <span><strong>Cal:</strong> 355</span>
+                </div>
+                
+                <button class="consume-btn gradient-green" id="confirm-consume-btn">Confirmar Consumo</button>
+            </div>
         </div>
     </div>
 
