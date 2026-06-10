@@ -68,24 +68,56 @@
                 </div>
             </header>
 
-            <section class="banner-highlight">
-                <div class="banner-text-side">
-                    <span class="banner-tag" id="banner-dynamic-tag">UPGRADE RECOMENDADO</span>
-                    <h2 id="banner-dynamic-title">Ajuste sua planilha de hipertrofia e definição</h2>
-                    <p id="banner-dynamic-desc">Mude sua escolha de alimentos e tenha relatórios moleculares baseados na sua anamnese.</p>
-                    <button class="btn-premium-action">Garantir Acesso VIP →</button>
+           <section class="banner-carousel-container">
+                <div class="banner-slider">
+                    
+                    <div class="banner-slide active">
+                        <div class="banner-text-side">
+                            <span class="banner-tag">DIETA PERSONALIZADA</span>
+                            <h2>Sua planilha baseada em relatórios moleculares</h2>
+                            <p>Mude sua escolha de alimentos e tenha combinações ajustadas à sua anamnese.</p>
+                            <button class="btn-premium-action">Acessar Planos →</button>
+                        </div>
+                        <div class="banner-image-side slide-dieta"></div>
+                    </div>
+
+                    <div class="banner-slide">
+                        <div class="banner-text-side">
+                            <span class="banner-tag">FOCO EM PERFORMANCE</span>
+                            <h2>Cronograma de hipertrofia e definição muscular</h2>
+                            <p>Treinos inteligentes calculados para queimar gordura mantendo sua massa magra.</p>
+                            <button class="btn-premium-action">Acessar Planos →</button>
+                        </div>
+                        <div class="banner-image-side slide-treino"></div>
+                    </div>
+
+                    <div class="banner-slide">
+                        <div class="banner-text-side">
+                            <span class="banner-tag">EVOLUÇÃO CONSTANTE</span>
+                            <h2>Anamnese metabólica avançada com Inteligência Artificial</h2>
+                            <p>Ajustes preditivos semanais com base na sua taxa de metabolismo basal.</p>
+                            <button class="btn-premium-action">Acessar Planos →</button>
+                        </div>
+                        <div class="banner-image-side slide-anamnese"></div>
+                    </div>
+
                 </div>
-                <div class="banner-image-side"></div>
+
+                <div class="carousel-dots">
+                    <span class="dot active"></span>
+                    <span class="dot"></span>
+                    <span class="dot"></span>
+                </div>
             </section>
 
             <section class="metrics-grid">
                 <div class="card-cal">
                     <h3>Meta do Dia</h3>
-                    <div class="kcal-counter"><span id="sum-kcal">0</span> / 2200 kcal</div>
+                    <div class="kcal-counter"><span id="sum-kcal">0</span><span class="kcal-total"> / 2200 kcal</span></div>
                     <div class="progress-bg">
                         <div class="progress-fill" id="bar-kcal" style="width: 0%;"></div>
                     </div>
-                    <p class="kcal-status-msg" id="kcal-feedback">Restam 2200 kcal para fechar o plano diário.</p>
+                    <p class="kcal-status-msg" id="kcal-feedback">Restam 2200 kcal</p>
                 </div>
 
                 <div class="macros-card-row">
@@ -97,7 +129,7 @@
                             </svg>
                             <span class="percentage-label" id="perc-prot">0%</span>
                         </div>
-                        <span class="macro-title">Proteínas</span>
+                        <span class="macro-title">Prot</span>
                     </div>
 
                     <div class="macro-item carb">
@@ -108,7 +140,7 @@
                             </svg>
                             <span class="percentage-label" id="perc-carb">0%</span>
                         </div>
-                        <span class="macro-title">Carbos</span>
+                        <span class="macro-title">Carb</span>
                     </div>
 
                     <div class="macro-item fat">
@@ -119,7 +151,7 @@
                             </svg>
                             <span class="percentage-label" id="perc-fat">0%</span>
                         </div>
-                        <span class="macro-title">Gorduras</span>
+                        <span class="macro-title">Gord</span>
                     </div>
                 </div>
             </section>
