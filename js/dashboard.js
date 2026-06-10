@@ -1,205 +1,320 @@
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener('DOMContentLoaded', () => {
     
     // ==========================================================================
-    // 1. CARROSSEL DE BANNERS ROTATIVOS (DIETA, TREINO E ANAMNESE)
+    // 1. SISTEMA DE FOGOS DE ARTIFÍCIO (BOAS-VINDAS)
     // ==========================================================================
-    const slides = document.querySelectorAll(".banner-slide");
-    const dots = document.querySelectorAll(".dot");
-    let currentSlide = 0;
-    const slideInterval = 6000; // Troca a cada 6 segundos de forma suave
-
-    function changeSlide(nextIndex) {
-        if (!slides.length || !dots.length) return;
-        
-        // Remove estado ativo do slide anterior
-        slides[currentSlide].classList.remove("active");
-        dots[currentSlide].classList.remove("active");
-
-        currentSlide = nextIndex;
-
-        // Adiciona estado ativo no novo slide escolhido
-        slides[currentSlide].classList.add("active");
-        dots[currentSlide].classList.add("active");
-    }
-
-    function autoPlaySlides() {
-        let next = (currentSlide + 1) % slides.length;
-        changeSlide(next);
-    }
-
-    let bannerTimer = setInterval(autoPlaySlides, slideInterval);
-
-    // Evento de clique direto nas bolinhas indicadoras
-    dots.forEach((dot, index) => {
-        dot.addEventListener("click", () => {
-            clearInterval(bannerTimer);
-            changeSlide(index);
-            bannerTimer = setInterval(autoPlaySlides, slideInterval);
-        });
-    });
-
-
-    // ==========================================================================
-    // 2. SISTEMA INTEGRADO DE CALORIAS E ANIMÇÃO DOS MACROS (SVG RINGS)
-    // ==========================================================================
-    const checkboxes = document.querySelectorAll(".meal-checkbox");
-    const sumKcalEl = document.getElementById("sum-kcal");
-    const barKcalEl = document.getElementById("bar-kcal");
-    const kcalFeedbackEl = document.getElementById("kcal-feedback");
+    const canvas = document.getElementById('fireworks-canvas');
+    const ctx = canvas.getContext('2d');
+    const overlay = document.getElementById('welcome-fireworks-overlay');
     
-    // Elementos dos Anéis de Macronutrientes
-    const ringProt = document.getElementById("ring-prot");
-    const ringCarb = document.getElementById("ring-carb");
-    const ringFat = document.getElementById("ring-fat");
-    
-    const percProt = document.getElementById("perc-prot");
-    const percCarb = document.getElementById("perc-carb");
-    const percFat = document.getElementById("perc-fat");
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
 
-    const TOTAL_GOAL_KCAL = 2200;
-    const MAX_CIRCUMFERENCE = 213.6; // Baseado no raio r="34" do SVG
+    let particles = [];
+    const colors = ['#d4af37', '#10b981', '#3b82f6', '#ffffff'];
 
-    function updateNutritionDashboard() {
-        let totalCheckedKcal = 0;
-
-        // Calcula os valores com base nos cards de refeição ativos
-        checkboxes.forEach(checkbox => {
-            const card = checkbox.closest(".meal-card");
-            const kcalValue = parseInt(card.getAttribute("data-kcal")) || 0;
-
-            if (checkbox.checked) {
-                totalCheckedKcal += kcalValue;
-                card.classList.add("concluido");
-            } else {
-                card.classList.remove("concluido");
-            }
-        });
-
-        // 1. Atualiza Contador e Barra Principal de Calorias
-        if (sumKcalEl) sumKcalEl.textContent = totalCheckedKcal;
-        
-        const kcalPercentage = Math.min((totalCheckedKcal / TOTAL_GOAL_KCAL) * 100, 100);
-        if (barKcalEl) barKcalEl.style.width = `${kcalPercentage}%`;
-
-        // 2. Atualiza Mensagem Dinâmica de Feedback
-        if (kcalFeedbackEl) {
-            const remaining = TOTAL_GOAL_KCAL - totalCheckedKcal;
-            if (remaining > 0) {
-                kcalFeedbackEl.textContent = `Restam ${remaining} kcal para fechar o plano diário.`;
-            } else {
-                kcalFeedbackEl.textContent = "🔥 Meta batida! Plano diário concluído com sucesso.";
-            }
+    class Particle {
+        constructor(x, y, color) {
+            this.x = x;
+            this.y = y;
+            this.color = color;
+            this.velocity = {
+                x: (Math.random() - 0.5) * 8,
+                y: (Math.random() - 0.5) * 8
+            };
+            this.alpha = 1;
+            this.friction = 0.98;
+            this.gravity = 0.05;
         }
-
-        // 3. Atualiza os Anéis de Macronutrientes (SVG Progress)
-        // Para uma experiência premium, simulamos oscilações realistas entre os macros acumulados
-        animateMacroRing(ringProt, percProt, kcalPercentage);
-        animateMacroRing(ringCarb, percCarb, kcalPercentage);
-        animateMacroRing(ringFat, percFat, kcalPercentage);
+        draw() {
+            ctx.save();
+            ctx.globalAlpha = this.alpha;
+            ctx.beginPath();
+            ctx.arc(this.x, this.y, 3, 0, Math.PI * 2, false);
+            ctx.fillStyle = this.color;
+            ctx.fill();
+            ctx.restore();
+        }
+        update() {
+            this.draw();
+            this.velocity.x *= this.friction;
+            this.velocity.y *= this.friction;
+            this.velocity.y += this.gravity;
+            this.x += this.velocity.x;
+            this.y += this.velocity.y;
+            this.alpha -= 0.015;
+        }
     }
 
-    function animateMacroRing(ringElement, labelElement, percentage) {
-        if (!ringElement || !labelElement) return;
+    // Dispara fogos no centro e nas laterais
+    function createFirework(x, y) {
+        for (let i = 0; i < 60; i++) {
+            particles.push(new Particle(x, y, colors[Math.floor(Math.random() * colors.length)]));
+        }
+    }
 
-        // Calcula o recuo físico da linha do círculo SVG
-        const offset = MAX_CIRCUMFERENCE - (MAX_CIRCUMFERENCE * percentage) / 100;
-        ringElement.style.strokeDashoffset = offset;
+    createFirework(canvas.width / 2, canvas.height / 3);
+    setTimeout(() => createFirework(canvas.width / 4, canvas.height / 2), 400);
+    setTimeout(() => createFirework((canvas.width / 4) * 3, canvas.height / 2), 800);
+
+    function animateFireworks() {
+        requestAnimationFrame(animateFireworks);
+        ctx.fillStyle = 'rgba(0, 0, 0, 0.1)';
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
         
-        // Atualiza a numeração textual interna do anel
-        labelElement.textContent = `${Math.round(percentage)}%`;
+        particles.forEach((particle, index) => {
+            if (particle.alpha > 0) {
+                particle.update();
+            } else {
+                particles.splice(index, 1);
+            }
+        });
     }
-
-    // Ouvinte de mudança para cada refeição do cronograma
-    checkboxes.forEach(checkbox => {
-        checkbox.addEventListener("change", updateNutritionDashboard);
-    });
-
-    // Inicializa zerado ou recupera o estado no primeiro carregamento
-    updateNutritionDashboard();
-
-
-    // ==========================================================================
-    // 3. PREVIEW E UPLOAD DINÂMICO DE AVATAR (DESKTOP E MOBILE)
-    // ==========================================================================
-    const fileUploadInput = document.getElementById("file-upload");
-    const desktopAvatarTrigger = document.getElementById("user-avatar-trigger");
-    const mobileAvatarTrigger = document.getElementById("mobile-avatar-trigger");
     
-    const desktopImg = document.getElementById("user-avatar-desktop");
-    const mobileImg = document.getElementById("user-avatar-mobile");
+    animateFireworks();
 
-    function triggerFileSelection(e) {
-        e.preventDefault();
-        if (fileUploadInput) fileUploadInput.click();
-    }
+    // Some com o overlay após 2.5 segundos
+    setTimeout(() => {
+        overlay.classList.add('fade-out');
+        setTimeout(() => overlay.remove(), 600); // Remove do DOM após fade
+    }, 2500);
 
-    if (desktopAvatarTrigger) desktopAvatarTrigger.addEventListener("click", triggerFileSelection);
-    if (mobileAvatarTrigger) mobileAvatarTrigger.addEventListener("click", triggerFileSelection);
 
-    if (fileUploadInput) {
-        fileUploadInput.addEventListener("change", function() {
-            const file = this.files[0];
-            if (file) {
-                const reader = new FileReader();
-                reader.onload = function(e) {
-                    // Atualiza simultaneamente as duas imagens da interface
-                    if (desktopImg) desktopImg.src = e.target.result;
-                    if (mobileImg) mobileImg.src = e.target.result;
-                };
-                reader.readAsDataURL(file);
-            }
+    // ==========================================================================
+    // 2. BANNER INTERSTITIAL (TELA CHEIA) - FECHAMENTO AQUI!
+    // ==========================================================================
+    const interstitialModal = document.getElementById('interstitial-promo-modal');
+    const closeInterstitialBtn = document.getElementById('close-interstitial-btn');
+
+    if (closeInterstitialBtn && interstitialModal) {
+        closeInterstitialBtn.addEventListener('click', () => {
+            interstitialModal.classList.remove('active');
         });
     }
 
+    // ==========================================================================
+    // 3. PERSISTÊNCIA DE DADOS (LOCAL STORAGE) - FOTO DE PERFIL E STREAK
+    // ==========================================================================
+    const avatarInput = document.getElementById('global-avatar-upload');
+    const desktopAvatarTrigger = document.getElementById('desktop-avatar-modify-trigger');
+    const mobileAvatarTrigger = document.getElementById('drawer-action-avatar');
+    
+    const desktopAvatarImg = document.getElementById('user-global-avatar-desktop');
+    const mobileAvatarImg = document.getElementById('user-global-avatar-mobile');
+
+    // Carrega a foto salva ao entrar no app
+    const savedAvatar = localStorage.getItem('nutri_premium_avatar');
+    if (savedAvatar) {
+        desktopAvatarImg.src = savedAvatar;
+        mobileAvatarImg.src = savedAvatar;
+    }
+
+    // Função para abrir o seletor de arquivos
+    const triggerAvatarUpload = () => avatarInput.click();
+    
+    if (desktopAvatarTrigger) desktopAvatarTrigger.addEventListener('click', triggerAvatarUpload);
+    if (mobileAvatarTrigger) mobileAvatarTrigger.addEventListener('click', triggerAvatarUpload);
+
+    // Processa o upload da imagem e salva no LocalStorage
+    avatarInput.addEventListener('change', function(e) {
+        const file = e.target.files[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = function(event) {
+                const base64String = event.target.result;
+                // Salva fixo no navegador
+                localStorage.setItem('nutri_premium_avatar', base64String);
+                // Atualiza as imagens na tela
+                desktopAvatarImg.src = base64String;
+                mobileAvatarImg.src = base64String;
+                
+                // Se o drawer mobile estiver aberto, fecha ele
+                document.getElementById('mobile-profile-context-drawer').classList.remove('active');
+            };
+            reader.readAsDataURL(file);
+        }
+    });
+
+    // Simulação de persistência de Dias Consecutivos (Streak)
+    let userStreak = localStorage.getItem('nutri_user_streak') || 14; // Puxa 14 dias como base
+    document.getElementById('sidebar-streak-count').textContent = userStreak;
+    document.getElementById('gamification-streak-number').textContent = userStreak;
+
 
     // ==========================================================================
-    // 4. SELEÇÃO DE ESTRELAS E COMPORTAMENTO DA COMUNIDADE
+    // 4. LÓGICA DE MACRONUTRIENTES E ANÉIS SVG
     // ==========================================================================
-    const stars = document.querySelectorAll(".star-clickable");
-    const submitCommentBtn = document.getElementById("submit-comment-btn");
-    const commentTextArea = document.querySelector(".input-group textarea");
-    let selectedRating = 0;
+    const mealCheckboxes = document.querySelectorAll('.meal-functional-checkbox');
+    const totalKcalDisplay = document.getElementById('sum-kcal-value-display');
+    const kcalProgressBar = document.getElementById('bar-kcal-progress-fill');
+    
+    // Metas Corporativas Fixas
+    const targets = { kcal: 2200, protein: 160, carb: 220, fat: 65 };
+    const ringCircumference = 213.6; // Comprimento total do stroke no SVG
 
-    stars.forEach((star, index) => {
-        star.addEventListener("click", () => {
-            selectedRating = index + 1;
+    function updateMetabolicDashboard() {
+        let currentMacros = { kcal: 0, protein: 0, carb: 0, fat: 0 };
+
+        mealCheckboxes.forEach(box => {
+            if (box.checked) {
+                const container = box.closest('.meal-row-card-container');
+                currentMacros.kcal += parseInt(container.getAttribute('data-kcal'));
+                currentMacros.protein += parseInt(container.getAttribute('data-protein'));
+                currentMacros.carb += parseInt(container.getAttribute('data-carb'));
+                currentMacros.fat += parseInt(container.getAttribute('data-fat'));
+            }
+        });
+
+        // Atualiza Calorias e Barra de Progresso
+        totalKcalDisplay.textContent = currentMacros.kcal;
+        let kcalPercentage = (currentMacros.kcal / targets.kcal) * 100;
+        kcalProgressBar.style.width = `${Math.min(kcalPercentage, 100)}%`;
+
+        // Função auxiliar para atualizar anéis SVG
+        const updateRing = (type, value, target) => {
+            const percentage = Math.min((value / target) * 100, 100);
+            const offset = ringCircumference - (percentage / 100) * ringCircumference;
             
-            // Preenche as estrelas selecionadas e limpa as restantes
-            stars.forEach((s, idx) => {
-                if (idx < selectedRating) {
-                    s.textContent = "★";
-                    s.classList.add("selected");
-                } else {
-                    s.textContent = "☆";
-                    s.classList.remove("selected");
-                }
-            });
+            let ringElement, textElement;
+            if (type === 'protein') {
+                ringElement = document.getElementById('ring-protein-progress-fill');
+                textElement = document.getElementById('percentage-protein-label');
+            } else if (type === 'carb') {
+                ringElement = document.getElementById('ring-carbohydrate-progress-fill');
+                textElement = document.getElementById('percentage-carbohydrate-label');
+            } else if (type === 'fat') {
+                ringElement = document.getElementById('ring-lipids-progress-fill');
+                textElement = document.getElementById('percentage-lipids-label');
+            }
+
+            ringElement.style.strokeDashoffset = offset;
+            textElement.textContent = `${Math.round(percentage)}%`;
+        };
+
+        updateRing('protein', currentMacros.protein, targets.protein);
+        updateRing('carb', currentMacros.carb, targets.carb);
+        updateRing('fat', currentMacros.fat, targets.fat);
+    }
+
+    mealCheckboxes.forEach(box => {
+        box.addEventListener('change', updateMetabolicDashboard);
+    });
+
+
+    // ==========================================================================
+    // 5. CARROSSEL SUPERIOR ROTATIVO
+    // ==========================================================================
+    const topSlides = document.querySelectorAll('.top-carousel-slide');
+    const topDots = document.querySelectorAll('.top-dot');
+    let currentSlideIndex = 0;
+
+    function showSlide(index) {
+        topSlides.forEach(slide => slide.classList.remove('active'));
+        topDots.forEach(dot => dot.classList.remove('active'));
+        
+        topSlides[index].classList.add('active');
+        topDots[index].classList.add('active');
+    }
+
+    function nextSlide() {
+        currentSlideIndex = (currentSlideIndex + 1) % topSlides.length;
+        showSlide(currentSlideIndex);
+    }
+
+    // Rotaciona a cada 5 segundos
+    let slideInterval = setInterval(nextSlide, 5000);
+
+    topDots.forEach(dot => {
+        dot.addEventListener('click', (e) => {
+            clearInterval(slideInterval);
+            currentSlideIndex = parseInt(e.target.getAttribute('data-go-to'));
+            showSlide(currentSlideIndex);
+            slideInterval = setInterval(nextSlide, 5000); // Reseta o timer
         });
     });
 
-    if (submitCommentBtn) {
-        submitCommentBtn.addEventListener("click", () => {
-            const commentText = commentTextArea ? commentTextArea.value.trim() : "";
 
-            if (selectedRating === 0) {
-                alert("Por favor, selecione uma nota dando estrelas antes de enviar!");
-                return;
-            }
-            if (commentText === "") {
-                alert("Por favor, escreva um breve comentário sobre sua experiência.");
-                return;
-            }
+    // ==========================================================================
+    // 6. DRAWER MOBILE (MENU INFERIOR DO PERFIL)
+    // ==========================================================================
+    const profileDrawerTrigger = document.getElementById('mobile-profile-menu-drawer-trigger');
+    const mobileDrawer = document.getElementById('mobile-profile-context-drawer');
+    const closeDrawerBtn = document.getElementById('close-profile-drawer-btn');
 
-            // Simulação de envio para a API
-            alert(`Obrigado pelo feedback Vinicius!\nAvaliação: ${selectedRating} estrelas.\nComentário enviado com sucesso.`);
+    if (profileDrawerTrigger && mobileDrawer) {
+        profileDrawerTrigger.addEventListener('click', (e) => {
+            e.preventDefault();
+            mobileDrawer.classList.add('active');
+        });
+
+        closeDrawerBtn.addEventListener('click', () => {
+            mobileDrawer.classList.remove('active');
+        });
+
+        // Fecha clicando fora da caixa
+        mobileDrawer.addEventListener('click', (e) => {
+            if (e.target === mobileDrawer) {
+                mobileDrawer.classList.remove('active');
+            }
+        });
+    }
+
+
+    // ==========================================================================
+    // 7. MODAL DE RECEITAS CORPORATIVO
+    // ==========================================================================
+    const recipeModal = document.getElementById('global-recipe-display-modal');
+    const closeRecipeBtn = document.getElementById('global-close-recipe-modal-btn');
+    const openRecipeBtns = document.querySelectorAll('.btn-open-recipe-modal-trigger');
+
+    openRecipeBtns.forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            const card = e.target.closest('.meal-row-card-container');
             
-            // Reseta os campos após o envio com sucesso
-            if (commentTextArea) commentTextArea.value = "";
-            selectedRating = 0;
-            stars.forEach(s => {
-                s.textContent = "☆";
-                s.classList.remove("selected");
+            // Popula os dados do modal com os atributos do HTML
+            document.getElementById('modal-target-macro-kcal').textContent = card.getAttribute('data-kcal');
+            document.getElementById('modal-target-macro-protein').textContent = card.getAttribute('data-protein') + 'g';
+            document.getElementById('modal-target-macro-carb').textContent = card.getAttribute('data-carb') + 'g';
+            document.getElementById('modal-target-macro-fat').textContent = card.getAttribute('data-fat') + 'g';
+            
+            document.getElementById('modal-target-recipe-ingredients-paragraph').textContent = card.getAttribute('data-recipe-ingredients');
+            document.getElementById('modal-target-recipe-steps-paragraph').textContent = card.getAttribute('data-recipe-steps');
+            
+            recipeModal.classList.add('active');
+        });
+    });
+
+    if (closeRecipeBtn) {
+        closeRecipeBtn.addEventListener('click', () => {
+            recipeModal.classList.remove('active');
+        });
+    }
+
+
+    // ==========================================================================
+    // 8. NOTIFICAÇÕES (DROPDOWN)
+    // ==========================================================================
+    const bellBtn = document.getElementById('notification-bell-btn');
+    const notifPanel = document.getElementById('corporate-notification-panel');
+    const notifTabs = document.querySelectorAll('.notif-tab-toggle');
+    const notifPanes = document.querySelectorAll('.notif-tab-pane');
+
+    if (bellBtn && notifPanel) {
+        bellBtn.addEventListener('click', () => {
+            notifPanel.classList.toggle('active');
+        });
+
+        // Sistema de Abas dentro das notificações
+        notifTabs.forEach(tab => {
+            tab.addEventListener('click', (e) => {
+                notifTabs.forEach(t => t.classList.remove('active'));
+                notifPanes.forEach(p => p.classList.remove('active'));
+                
+                e.target.classList.add('active');
+                const targetPane = document.getElementById('pane-' + e.target.getAttribute('data-tab-target'));
+                if(targetPane) targetPane.classList.add('active');
             });
         });
     }
+
 });
