@@ -1,126 +1,157 @@
+/* ==========================================================================
+   BANCO DE DADOS DE REFEIÇÕES & ALVO DE METAS
+   ========================================================================== */
 const db = {
-    "cafe": { titulo: "Café Performance", kcal: 390, pro: 28, car: 35, fat: 12, foto: "https://images.unsplash.com/photo-1525351484163-7529414344d8?w=400", itens: [{n: "Ovos", q: "3 un"}, {n: "Pão", q: "60g"}] },
-    "almoco": { titulo: "Almoço Elite", kcal: 980, pro: 95, car: 78, fat: 18, foto: "https://images.unsplash.com/photo-1540420773420-3366772f4999?w=400", itens: [{n: "Frango", q: "500g"}, {n: "Arroz", q: "200g"}] },
-    "tarde": { titulo: "Lanche", kcal: 310, pro: 22, car: 30, fat: 6, foto: "https://images.unsplash.com/photo-1488477181946-6428a0291777?w=400", itens: [{n: "Whey", q: "200g"}] },
-    "janta": { titulo: "Janta Anabólica", kcal: 520, pro: 42, car: 45, fat: 14, foto: "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=400", itens: [{n: "Patinho", q: "200g"}, {n: "Mandioca", q: "150g"}] }
+    "cafe": { 
+        titulo: "Café Performance", 
+        kcal: 390, pro: 28, car: 35, fat: 12, 
+        foto: "https://images.unsplash.com/photo-1525351484163-7529414344d8?w=400" 
+    },
+    "almoco": { 
+        titulo: "Almoço Elite", 
+        kcal: 980, pro: 95, car: 78, fat: 18, 
+        foto: "https://images.unsplash.com/photo-1540420773420-3366772f4999?w=400" 
+    },
+    "tarde": { 
+        titulo: "Lanche da Tarde", 
+        kcal: 310, pro: 22, car: 30, fat: 6, 
+        foto: "https://images.unsplash.com/photo-1488477181946-6428a0291777?w=400" 
+    },
+    "janta": { 
+        titulo: "Janta Anabólica", 
+        kcal: 520, pro: 42, car: 45, fat: 14, 
+        foto: "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=400" 
+    }
 };
 
-const meta = { kcal: 2200, pro: 160, car: 220, fat: 70 };
+const metaDiaria = { kcal: 2200, pro: 160, car: 220, fat: 70 };
 let currentSlide = 0;
 
-// MOTOR DE ATUALIZAÇÃO COM FEEDBACK DE CALORIAS
+/* ==========================================================================
+   MOTOR DE CÁLCULO DE METAS E FEEDBACK DINÂMICO
+   ========================================================================== */
 function updateEngine() {
-    let s = { kcal: 0, pro: 0, car: 0, fat: 0 };
-    const ids = ["cafe", "almoco", "tarde", "janta"];
+    let acumulado = { kcal: 0, pro: 0, car: 0, fat: 0 };
+    const chkIds = ["cafe", "almoco", "tarde", "janta"];
 
-    ids.forEach(id => {
-        const chk = document.getElementById(`chk-${id}`);
-        const card = document.getElementById(`meal-${id}`);
-        if(chk && chk.checked) {
-            s.kcal += db[id].kcal;
-            s.pro += db[id].pro;
-            s.car += db[id].car;
-            s.fat += db[id].fat;
-            card.classList.add('concluido');
-        } else {
-            card.classList.remove('concluido');
+    // 1. Varre os checkboxes e soma os macronutrientes consumidos
+    chkIds.forEach(id => {
+        const checkbox = document.getElementById(`chk-${id}`);
+        const cardRefeicao = document.getElementById(`meal-${id}`);
+        
+        if (checkbox && checkbox.checked) {
+            acumulado.kcal += db[id].kcal;
+            acumulado.pro += db[id].pro;
+            acumulado.car += db[id].car;
+            acumulado.fat += db[id].fat;
+            cardRefeicao.classList.add('concluido');
+        } else if (cardRefeicao) {
+            cardRefeicao.classList.remove('concluido');
         }
     });
 
-    const pKcal = Math.min((s.kcal / meta.kcal) * 100, 100);
-    document.getElementById('bar-kcal').style.width = pKcal + "%";
-    document.getElementById('sum-kcal').textContent = s.kcal;
+    // 2. Atualiza os contadores numéricos de calorias na tela
+    document.getElementById('sum-kcal').textContent = acumulado.kcal;
+    
+    // 3. Calcula a porcentagem e preenche a barra de progresso principal
+    const pctKcal = Math.min((acumulado.kcal / metaDiaria.kcal) * 100, 100);
+    document.getElementById('bar-kcal').style.width = pctKcal + "%";
 
-    // Lógica da mensagem dinâmica
-    const msgBox = document.getElementById('kcal-feedback');
-    const faltam = meta.kcal - s.kcal;
+    // 4. LÓGICA DO CONTADOR INTELIGENTE (INFORMAR QUANTO FALTA OU PARABENIZAR)
+    const feedbackText = document.getElementById('kcal-feedback');
+    const kcalRestantes = metaDiaria.kcal - acumulado.kcal;
 
-    if (pKcal >= 100) {
-        msgBox.innerHTML = "🏆 <span style='color:#129E47'>Parabéns, Vinicius! Você bateu 100% da sua meta de hoje!</span>";
-    } else if (s.kcal > 0) {
-        msgBox.innerHTML = `Faltam <strong>${faltam} kcal</strong> para completar os 100%.`;
+    if (pctKcal >= 100) {
+        feedbackText.innerHTML = "🏆 <span style='color: #3CA36A; font-weight: 700;'>Parabéns, Vinicius! Você completou 100% da sua meta de hoje!</span>";
+    } else if (acumulado.kcal === 0) {
+        feedbackText.textContent = `Restam ${metaDiaria.kcal} kcal para fechar o plano diário.`;
+    } else {
+        feedbackText.innerHTML = `Faltam <strong>${kcalRestantes} kcal</strong> para completar os 100%.`;
     }
 
-    updateRing('ring-pro', 'txt-pro', (s.pro / meta.pro) * 100);
-    updateRing('ring-car', 'txt-car', (s.car / meta.car) * 100);
-    updateRing('ring-fat', 'txt-fat', (s.fat / meta.fat) * 100);
+    // 5. Atualiza os gráficos circulares (SVGs) dos macros
+    updateMacroRing('ring-pro', 'txt-pro', (acumulado.pro / metaDiaria.pro) * 100);
+    updateMacroRing('ring-car', 'txt-car', (acumulado.car / metaDiaria.car) * 100);
+    updateMacroRing('ring-fat', 'txt-fat', (acumulado.fat / metaDiaria.fat) * 100);
 }
 
-function updateRing(id, txtId, val) {
-    const p = Math.min(Math.round(val), 100);
-    const el = document.getElementById(id);
-    if(el) el.setAttribute("stroke-dasharray", `${p}, 100`);
-    const txt = document.getElementById(txtId);
-    if(txt) txt.textContent = p + "%";
+// Controla o preenchimento gradual da borda do SVG circular
+function updateMacroRing(ringId, textId, porcentagem) {
+    const p = Math.min(Math.round(porcentagem), 100);
+    const ringEl = document.getElementById(ringId);
+    const textEl = document.getElementById(textId);
+    
+    if (ringEl) {
+        ringEl.setAttribute("stroke-dasharray", `${p}, 100`);
+    }
+    if (textEl) {
+        textEl.textContent = p + "%";
+    }
 }
 
-// ROTAÇÃO AUTOMÁTICA DO CARROSSEL
+/* ==========================================================================
+   ROTAÇÃO AUTOMÁTICA DO CARROSSEL (3 PUBLICAÇÕES - 5 SEGUNDOS)
+   ========================================================================== */
 function initSlider() {
-    const wrapper = document.getElementById('main-slider');
+    const sliderWrapper = document.getElementById('main-slider');
     const dots = document.querySelectorAll('.s-dot');
     const totalSlides = 3;
 
+    if (!sliderWrapper) return;
+
     setInterval(() => {
+        // Avança o slide e reinicia ao chegar no fim
         currentSlide = (currentSlide + 1) % totalSlides;
-        wrapper.style.transform = `translateX(-${currentSlide * 100}%)`;
         
-        dots.forEach((dot, idx) => {
-            dot.classList.toggle('active', idx === currentSlide);
+        // Desloca o wrapper horizontalmente usando porcentagem (100% por slide)
+        sliderWrapper.style.transform = `translateX(-${currentSlide * 100}%)`;
+        
+        // Atualiza a bolinha/pill indicadora ativa
+        dots.forEach((dot, index) => {
+            dot.classList.toggle('active', index === currentSlide);
         });
-    }, 5000); // Muda a cada 5 segundos
+    }, 5000); // 5000 milissegundos = 5 segundos
 }
 
-// FUNÇÕES DE COMENTÁRIO E INTERFACE
+/* ==========================================================================
+   INTERAÇÕES DE INTERFACE (MODAIS, COMENTÁRIOS E UPLOAD)
+   ========================================================================== */
 function submitAppComment() {
-    const textInput = document.getElementById('user-comment-input');
-    const msgBox = document.getElementById('comment-feedback-msg');
-    const commentText = textInput.value.trim();
-    if (!commentText) return;
-
-    const badKeywords = ["ruim", "pessimo", "lento", "bug"];
-    let isNegative = badKeywords.some(word => commentText.toLowerCase().includes(word));
-
-    if (isNegative) {
-        msgBox.style.color = '#F59E0B';
-        msgBox.textContent = "Obrigado! Seu comentário foi enviado para análise interna.";
-    } else {
-        msgBox.style.color = '#10B981';
-        msgBox.textContent = "Comentário publicado com sucesso!";
-    }
-    textInput.value = "";
+    const input = document.getElementById('user-comment-input');
+    if (!input || !input.value.trim()) return;
+    
+    alert("Obrigado pelo seu feedback! Seu comentário foi publicado na comunidade.");
+    input.value = "";
 }
 
-function openRecipe(id) {
-    const modal = document.getElementById('recipe-modal');
-    const data = db[id];
-    document.getElementById('recipe-name').textContent = data.titulo;
-    document.getElementById('recipe-plate').src = data.foto;
-    document.getElementById('rec-kcal').textContent = data.kcal;
-    document.getElementById('rec-pro').textContent = data.pro + "g";
-    document.getElementById('rec-car').textContent = data.car + "g";
-    const list = document.getElementById('ingredients-list');
-    list.innerHTML = "";
-    data.itens.forEach(item => {
-        list.innerHTML += `<div class="ing-item"><h4>${item.n}</h4><span>${item.q}</span></div>`;
-    });
-    modal.classList.remove('hidden');
+function triggerPremium() {
+    alert("Abrindo ferramenta ou gerando documento solicitado... (Ação vinculada ao seu plano MAX)");
 }
 
-function closeRecipe() { document.getElementById('recipe-modal').classList.add('hidden'); }
-function toggleNotifHub() { document.getElementById('notif-hub').classList.toggle('hidden'); }
-function triggerPremium() { alert("Acesso exclusivo do plano ativo ou redirecionando para área premium..."); }
-function triggerAvatarUpload() { document.getElementById('file-input').click(); }
+function toggleNotifHub() {
+    alert("Central de alertas e notificações em desenvolvimento.");
+}
 
+function triggerAvatarUpload() {
+    document.getElementById('file-input').click();
+}
+
+// Captura a troca de foto de perfil e exibe imediatamente no topo do app
 document.getElementById('file-input')?.addEventListener('change', function(e) {
     const file = e.target.files[0];
     if (file) {
         const reader = new FileReader();
-        reader.onload = function(event) { document.getElementById('user-avatar').src = event.target.result; };
+        reader.onload = function(event) {
+            document.getElementById('user-avatar').src = event.target.result;
+        };
         reader.readAsDataURL(file);
     }
 });
 
+/* ==========================================================================
+   DISPARO INICIAL AO CARREGAR A PÁGINA
+   ========================================================================== */
 window.addEventListener('DOMContentLoaded', () => {
-    updateEngine();
-    initSlider();
+    updateEngine(); // Executa o cálculo inicial (tudo zerado)
+    initSlider();   // Inicializa o temporizador do carrossel de publicações
 });
