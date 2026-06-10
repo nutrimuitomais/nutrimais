@@ -1,494 +1,311 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Nutri+ Ecosystem | Premium Dashboard</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <title>Dashboard Premium | Nutri & Receitas</title>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="css/dashboard.css">
 </head>
 <body>
 
-    <div id="welcome-fireworks-overlay" class="fireworks-canvas-wrapper">
+    <div id="welcome-fireworks-overlay" class="fireworks-overlay">
+        <div class="fireworks-welcome-text">
+            <h2>Tudo no prato! 🥗</h2>
+            <p>Seu cardápio de hoje está servido.</p>
+        </div>
         <canvas id="fireworks-canvas"></canvas>
     </div>
 
-    <div id="interstitial-promo-modal" class="interstitial-blur-overlay active">
-        <div class="interstitial-container">
-            <button id="close-interstitial-btn" class="interstitial-close-x" aria-label="Fechar anúncio">
-                <span class="close-icon-line-1"></span>
-                <span class="close-icon-line-2"></span>
-            </button>
-            <div class="interstitial-carousel-track">
-                <div class="interstitial-slide active" data-background="premium-dark">
-                    <div class="interstitial-content">
-                        <span class="interstitial-tag">UPGRADE DE PERFORMANCE</span>
-                        <h2>Aceleração Metabólica Avançada</h2>
-                        <p>Desbloqueie análises preditivas semanais, acesso direto ao chat com especialistas e ferramentas exclusivas de bioimpedância molecular.</p>
-                        <a href="#planos-section" id="interstitial-action-1" class="btn-interstitial-primary">Migrar para o Plano MAX</a>
+    <div id="interstitial-promo-modal" class="interstitial-overlay active">
+        <div class="interstitial-card">
+            <button id="close-interstitial-btn" class="interstitial-close-x">&times;</button>
+            <div class="interstitial-badge">OFERTA EXCLUSIVA</div>
+            <h2>Evolua para o<br><span class="highlight-gradient">Plano Chef MAX</span></h2>
+            <p>Desbloqueie um gerador de receitas com IA, lista de compras automática e rastreamento avançado de micronutrientes.</p>
+            
+            <div class="interstitial-mockup-features">
+                <div class="feat-item"><i class="fa-solid fa-robot"></i> Receitas com IA</div>
+                <div class="feat-item"><i class="fa-solid fa-basket-shopping"></i> Lista Inteligente</div>
+            </div>
+
+            <a href="planos.html" id="interstitial-action-1" class="btn-interstitial-primary">Assinar Chef MAX</a>
+            <button class="btn-interstitial-secondary" onclick="document.getElementById('interstitial-promo-modal').classList.remove('active')">Continuar no plano gratuito</button>
+        </div>
+    </div>
+
+    <div class="organic-background"></div>
+
+    <div id="corporate-notification-panel" class="notification-dropdown">
+        <div class="notif-header">
+            <h3>Notificações</h3>
+            <div class="notif-tabs">
+                <button class="notif-tab-toggle active" data-tab-target="alertas">Lembretes</button>
+                <button class="notif-tab-toggle" data-tab-target="dicas">Dicas de Cozinha</button>
+            </div>
+        </div>
+        <div class="notif-body">
+            <div id="pane-alertas" class="notif-tab-pane active">
+                <div class="notif-item unread">
+                    <i class="fa-solid fa-droplet icon-notif"></i>
+                    <div class="notif-text">
+                        <p><strong>Hidratação:</strong> Lembre-se de beber água entre as refeições.</p>
+                        <span>Há 5 min</span>
                     </div>
                 </div>
             </div>
-            <div class="interstitial-nav-dots">
-                <span class="int-dot active"></span>
+            <div id="pane-dicas" class="notif-tab-pane">
+                <div class="notif-item">
+                    <i class="fa-solid fa-leaf icon-notif"></i>
+                    <div class="notif-text">
+                        <p><strong>Truque Culinário:</strong> Use azeite em spray para economizar calorias ao grelhar.</p>
+                        <span>Há 2h</span>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 
-    <input type="file" id="global-avatar-upload" accept="image/*" style="display: none;">
+    <header class="app-header">
+        <div class="user-greeting">
+            <div class="avatar-container" id="profile-trigger">
+                <img src="https://ui-avatars.com/api/?name=Vinicius&background=1b4332&color=fff" alt="Perfil" id="user-avatar">
+                <input type="file" id="avatar-upload" hidden accept="image/*">
+            </div>
+            <div class="greeting-text">
+                <p>Bom apetite, Vinicius 👋</p>
+                <h1>Seu Cardápio Diário</h1>
+            </div>
+        </div>
+        <div class="header-right-actions">
+            <div class="streak-badge">
+                <i class="fa-solid fa-fire"></i> <span id="streak-count">14</span> dias na dieta
+            </div>
+            <button class="icon-btn" id="notification-bell-btn"><i class="fa-regular fa-bell"></i></button>
+        </div>
+    </header>
 
-    <div class="platform-container">
+    <section class="top-carousel-container">
+        <div class="top-carousel-track">
+            <div class="top-carousel-slide active" style="background: linear-gradient(135deg, #1b4332, #2d6a4f);">
+                <div class="slide-info">
+                    <span>CONSTÂNCIA</span>
+                    <h3>14 Dias na Linha!</h3>
+                    <p>Você bateu suas metas de macronutrientes perfeitamente.</p>
+                </div>
+                <i class="fa-solid fa-clipboard-check slide-bg-icon"></i>
+            </div>
+            <div class="top-carousel-slide" style="background: linear-gradient(135deg, #40916c, #52b788);">
+                <div class="slide-info">
+                    <span>RECEITA EM DESTAQUE</span>
+                    <h3>Salmão com Crosta</h3>
+                    <p>Rico em Ômega 3, ideal para o seu jantar de hoje.</p>
+                </div>
+                <i class="fa-solid fa-fish slide-bg-icon"></i>
+            </div>
+        </div>
+        <div class="carousel-dots">
+            <span class="top-dot active" data-go-to="0"></span>
+            <span class="top-dot" data-go-to="1"></span>
+        </div>
+    </section>
+
+    <section class="categories-scroll">
+        <button class="cat-pill active">Cardápio do Dia</button>
+        <button class="cat-pill">Refeições Rápidas</button>
+        <button class="cat-pill">Hiperproteicas</button>
+        <button class="cat-pill">Sobremesas Fit</button>
+    </section>
+
+    <section class="daily-progress">
+        <div class="progress-info">
+            <span>Calorias Consumidas</span>
+            <h2><span id="current-kcal">0</span> / 2200 kcal</h2>
+        </div>
+        <div class="progress-bar-bg">
+            <div class="progress-bar-fill" id="kcal-bar"></div>
+        </div>
         
-        <aside class="desktop-sidebar">
-            <div class="sidebar-header-brand">
-                <h2>NUTRI<span class="brand-accent">+</span></h2>
-                <p class="logo-sub-label">SaaS COMPLIANCE</p>
-            </div>
-            
-            <nav class="sidebar-navigation-menu">
-                <div class="nav-section-title">Painel de Controle</div>
-                <a href="#" class="sidebar-menu-item active">
-                    <span class="menu-icon-placeholder">[DSH]</span>
-                    <span class="menu-text-label">Dashboard Geral</span>
-                </a>
-                <a href="#" class="sidebar-menu-item" id="nav-weekly-report">
-                    <span class="menu-icon-placeholder">[REP]</span>
-                    <span class="menu-text-label">Relatório Semanal</span>
-                    <span class="badge-tier-lock max-tier">MAX</span>
-                </a>
-                <a href="#" class="sidebar-menu-item" id="nav-monthly-report">
-                    <span class="menu-icon-placeholder">[EVL]</span>
-                    <span class="menu-text-label">Evolução Mensal</span>
-                    <span class="badge-tier-lock text-muted">RETIDO</span>
-                </a>
-                
-                <div class="nav-section-title">Módulos Inteligentes</div>
-                <a href="#" class="sidebar-menu-item">
-                    <span class="menu-icon-placeholder">[PLN]</span>
-                    <span class="menu-text-label">Planejamento Nutricional</span>
-                </a>
-                <a href="#" class="sidebar-menu-item">
-                    <span class="menu-icon-placeholder">[TRN]</span>
-                    <span class="menu-text-label">Planilha de Treino</span>
-                </a>
-                <a href="#" class="sidebar-menu-item">
-                    <span class="menu-icon-placeholder">[CAM]</span>
-                    <span class="menu-text-label">Scanner de Alimentos IA</span>
-                </a>
-                
-                <div class="nav-section-title">Sustentabilidade</div>
-                <a href="#" class="sidebar-menu-item logout-action" id="desktop-logout-btn">
-                    <span class="menu-text-label">Encerrar Sessão</span>
-                </a>
-            </nav>
+        <div class="mini-macro-tracker">
+            <div>Prot: <strong id="tracker-p">0g</strong> / 160g</div>
+            <div>Carb: <strong id="tracker-c">0g</strong> / 220g</div>
+            <div>Gord: <strong id="tracker-f">0g</strong> / 65g</div>
+        </div>
+    </section>
 
-            <div class="sidebar-persistence-footer">
-                <div class="streak-corporate-widget">
-                    <div class="streak-numeric-display">
-                        <span id="sidebar-streak-count" class="user-persistence-streak">0</span>
-                    </div>
-                    <div class="streak-meta-text">
-                        <p class="streak-headline">Dias Consecutivos</p>
-                        <p class="streak-subline">Sincronizado via Nuvem</p>
-                    </div>
-                </div>
-            </div>
-        </aside>
-
-        <main class="main-content-viewport">
-            
-            <header class="app-top-header-bar">
-                
-                <button id="mobile-advanced-functions-trigger" class="mobile-square-action-btn" aria-label="Abrir recursos avançados">
-                    <span class="grid-dot"></span>
-                    <span class="grid-dot"></span>
-                    <span class="grid-dot"></span>
-                    <span class="grid-dot"></span>
-                </button>
-
-                <div class="user-identity-profile-block">
-                    <div class="avatar-wrapper-frame" id="desktop-avatar-modify-trigger">
-                        <img id="user-global-avatar-desktop" class="user-profile-picture-source" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=200" alt="Foto de perfil corporativa">
-                        <div class="avatar-hover-interaction-layer">
-                            <span class="interaction-text">EDITAR</span>
-                        </div>
-                    </div>
-                    <div class="user-headline-credentials">
-                        <div class="user-name-row">
-                            <h1 id="topbar-user-name">Vinicius</h1>
-                            <span id="user-plan-tier-badge" class="badge-tier-status tier-max">PLANO MAX</span>
-                        </div>
-                        <p class="user-objective-subtext">Objetivo Selecionado: Alta Performance e Definição Estética</p>
-                    </div>
-                </div>
-
-                <div class="top-header-action-hub">
-                    <div class="notification-center-dropdown-wrapper">
-                        <button class="notification-trigger-bell" id="notification-bell-btn" aria-label="Ver notificações">
-                            <span class="bell-svg-icon-placeholder">NOTIFICAÇÕES</span>
-                            <span id="notification-counter-badge" class="live-notification-counter">2</span>
-                        </button>
-                        
-                        <div class="ifood-style-notification-panel" id="corporate-notification-panel">
-                            <div class="notification-panel-header">
-                                <h3>Mensagens Internas</h3>
-                                <button id="mark-all-read-btn" class="btn-text-action">Limpar</button>
-                            </div>
-                            <div class="notification-panel-tabs">
-                                <button class="notif-tab-toggle active" data-tab-target="insights">Recomendações</button>
-                                <button class="notif-tab-toggle" data-tab-target="upgrades">Upgrades de Conta</button>
-                            </div>
-                            <div class="notification-panel-body" id="notification-scroll-container">
-                                <div class="notif-tab-pane active" id="pane-insights">
-                                    <div class="notification-card-item unread">
-                                        <span class="card-category-tag">NUTRIÇÃO CIENTÍFICA</span>
-                                        <h4>Panqueca Macro Otimizada</h4>
-                                        <p>Opção recomendada para o seu perfil calórico atual com 250 kcal totais. Veja o modo de preparo.</p>
-                                    </div>
-                                    <div class="notification-card-item">
-                                        <span class="card-category-tag">TREINO DE ALTA VOLTAGEM</span>
-                                        <h4>Janela Anabólica Pós-Treino</h4>
-                                        <p>Consuma sua porção de carboidratos em até 45 minutos para maximizar a síntese proteica molecular.</p>
-                                    </div>
-                                </div>
-                                <div class="notif-tab-pane" id="pane-upgrades">
-                                    <div class="notification-card-item special-highlight">
-                                        <span class="card-category-tag vip-tag">CONTA UPGRADE</span>
-                                        <h4>Acesso a Planilhas Completas</h4>
-                                        <p>Adicione treinos periodizados ao seu ecossistema por uma taxa fixa adicional. Clique para conferir.</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </header>
-
-            <section class="top-rotative-carousel-section">
-                <div class="top-carousel-viewport">
-                    <div class="top-carousel-slide active" data-slide-id="0">
-                        <div class="top-carousel-slide-inner">
-                            <div class="slide-text-group">
-                                <span class="slide-alert-label">UPGRADE DISPONÍVEL</span>
-                                <h2>Planilha de Treino Avançada Completa</h2>
-                                <p>Eleve a intensidade. Adicione a planilha desenvolvida por profissionais ao seu plano atual por um pequeno ajuste na fatura.</p>
-                            </div>
-                            <div class="slide-button-group">
-                                <a href="#planos" class="btn-slide-conversion">Adicionar ao Plano Atual</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="top-carousel-slide" data-slide-id="1">
-                        <div class="top-carousel-slide-inner">
-                            <div class="slide-text-group">
-                                <span class="slide-alert-label">ESTRATÉGIA DIÁRIA</span>
-                                <h2>Ajuste Inteligente de Macronutrientes</h2>
-                                <p>Sua ingestão de proteínas foi recalculada automaticamente com base nas escolhas de alimentos do seu perfil.</p>
-                            </div>
-                            <div class="slide-button-group">
-                                <a href="#diet-section" class="btn-slide-conversion">Revisar Alimentos</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="top-carousel-control-dots">
-                    <span class="top-dot active" data-go-to="0"></span>
-                    <span class="top-dot" data-go-to="1"></span>
-                </div>
-            </section>
-
-            <section class="gamification-center-hub">
-                <div class="streak-metric-card-premium">
-                    <div class="streak-layout-flex">
-                        <div class="streak-visualization-circle">
-                            <span id="gamification-streak-number" class="user-persistence-streak">0</span>
-                        </div>
-                        <div class="streak-content-block">
-                            <h3>Consistência Operacional</h3>
-                            <p>Sua conta está ativa e registrando dados consecutivos. Mantenha o preenchimento para evitar quebras de ciclo.</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="achievements-medals-showcase-box">
-                    <div class="showcase-header">
-                        <h3>Reconhecimentos e Conquistas</h3>
-                        <p>Progresso fixo vinculado ao e-mail cadastrado.</p>
-                    </div>
-                    <div class="medals-horizontal-grid">
-                        <div class="medal-node earned" data-achievement-tier="semanal">
-                            <div class="medal-shield silver-shield"></div>
-                            <span class="medal-title-label">Semanal</span>
-                        </div>
-                        <div class="medal-node earned" data-achievement-tier="quinzenal">
-                            <div class="medal-shield gold-shield"></div>
-                            <span class="medal-title-label">Quinzenal</span>
-                        </div>
-                        <div class="medal-node locked" data-achievement-tier="mensal">
-                            <div class="medal-shield locked-shield"></div>
-                            <span class="medal-title-label">Mensal</span>
-                        </div>
-                        <div class="medal-node locked" data-achievement-tier="anual">
-                            <div class="medal-shield locked-shield"></div>
-                            <span class="medal-title-label">Anual</span>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <section class="metabolic-metrics-dashboard-grid">
-                <div class="calorie-consumption-tracker-card">
-                    <div class="tracker-card-header">
-                        <h3>Balancete de Ingestão Diária</h3>
-                        <span id="kcal-system-feedback-label">Calculando dados...</span>
-                    </div>
-                    <div class="tracker-numeric-summary">
-                        <span id="sum-kcal-value-display" class="realtime-counter">0</span>
-                        <span class="total-target-delimiter">/ 2200 kcal</span>
-                    </div>
-                    <div class="corporate-progress-bar-container">
-                        <div id="bar-kcal-progress-fill" class="progress-bar-line-fill" style="width: 0%;"></div>
-                    </div>
-                </div>
-
-                <div class="macronutrients-svg-rings-flex-box">
-                    <div class="macro-ring-node-item component-protein">
-                        <div class="svg-ring-relative-container">
-                            <svg viewBox="0 0 80 80" class="svg-circular-frame">
-                                <circle class="circle-track-background" cx="40" cy="40" r="34"/>
-                                <circle id="ring-protein-progress-fill" class="circle-progress-moving-line" cx="40" cy="40" r="34" style="stroke-dasharray: 213.6; stroke-dashoffset: 213.6;"/>
-                            </svg>
-                            <span id="percentage-protein-label" class="ring-center-percentage-text">0%</span>
-                        </div>
-                        <span class="macro-descriptor-label">Proteínas</span>
-                    </div>
-                    <div class="macro-ring-node-item component-carbohydrate">
-                        <div class="svg-ring-relative-container">
-                            <svg viewBox="0 0 80 80" class="svg-circular-frame">
-                                <circle class="circle-track-background" cx="40" cy="40" r="34"/>
-                                <circle id="ring-carbohydrate-progress-fill" class="circle-progress-moving-line" cx="40" cy="40" r="34" style="stroke-dasharray: 213.6; stroke-dashoffset: 213.6;"/>
-                            </svg>
-                            <span id="percentage-carbohydrate-label" class="ring-center-percentage-text">0%</span>
-                        </div>
-                        <span class="macro-descriptor-label">Carboidratos</span>
-                    </div>
-                    <div class="macro-ring-node-item component-lipids">
-                        <div class="svg-ring-relative-container">
-                            <svg viewBox="0 0 80 80" class="svg-circular-frame">
-                                <circle class="circle-track-background" cx="40" cy="40" r="34"/>
-                                <circle id="ring-lipids-progress-fill" class="circle-progress-moving-line" cx="40" cy="40" r="34" style="stroke-dasharray: 213.6; stroke-dashoffset: 213.6;"/>
-                            </svg>
-                            <span id="percentage-lipids-label" class="ring-center-percentage-text">0%</span>
-                        </div>
-                        <span class="macro-descriptor-label">Gorduras</span>
-                    </div>
-                </div>
-            </section>
-
-            <section class="nutritional-schedule-section-wrapper" id="diet-section">
-                <div class="section-title-header-block">
-                    <h2>Cronograma Alimentar Estruturado</h2>
-                    <p>Selecione as refeições consumidas para consolidar o relatório de performance.</p>
-                </div>
-
-                <div class="luxury-meals-vertical-stack">
-                    <div class="meal-row-card-container" data-kcal="390" data-protein="30" data-carb="45" data-fat="10" data-recipe-ingredients="Ovos mexidos inteiros (3 unidades), Pão Integral de Forma (60g), Mamão Papaya Fresco (150g)" data-recipe-steps="Aqueça uma superfície antiaderente sem adição de óleos. Bata os ovos uniformemente e cozinhe sob fogo brando. Toste as fatias de pão integral e consuma acompanhado do mamão fatiado pesando as gramaturas especificadas.">
-                        <div class="meal-card-left-flex-gate">
-                            <label class="corporate-checkbox-container-label">
-                                <input type="checkbox" class="meal-functional-checkbox">
-                                <span class="custom-corporate-checkmark"></span>
-                            </label>
-                            <div class="meal-descriptive-text-block">
-                                <span class="meal-schedule-badge">08:00 AM</span>
-                                ### Café da Manhã Performance
-                                <p class="meal-short-summary">Proteínas de rápida absorção combinadas com micronutrientes selecionados.</p>
-                            </div>
-                        </div>
-                        <div class="meal-card-right-action-gate">
-                            <span class="meal-caloric-weight-label">390 kcal</span>
-                            <button class="btn-open-recipe-modal-trigger">Ver Receita</button>
-                        </div>
-                    </div>
-
-                    <div class="meal-row-card-container" data-kcal="980" data-protein="85" data-carb="110" data-fat="18" data-recipe-ingredients="Peito de Frango Grelhado (500g), Arroz Integral Cozido (200g), Vegetais Verdes Escuros (Alface/Brócolis) à vontade" data-recipe-steps="Grelhe o peito de frango temperado com compostos naturais e sódio controlado. Sirva com o arroz integral pesado após cozimento, adicionando a porção de vegetais verdes folhosos como fonte de fibras estabilizadoras.">
-                        <div class="meal-card-left-flex-gate">
-                            <label class="corporate-checkbox-container-label">
-                                <input type="checkbox" class="meal-functional-checkbox">
-                                <span class="custom-corporate-checkmark"></span>
-                            </label>
-                            <div class="meal-descriptive-text-block">
-                                <span class="meal-schedule-badge">12:30 PM</span>
-                                ### Almoço Construção Muscular
-                                <p class="meal-short-summary">Alimentação hiperproteica focada no balanço nitrogenado positivo do tecido muscular.</p>
-                            </div>
-                        </div>
-                        <div class="meal-card-right-action-gate">
-                            <span class="meal-caloric-weight-label">980 kcal</span>
-                            <button class="btn-open-recipe-modal-trigger">Ver Receita</button>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <section class="restricted-reports-management-section">
-                <div class="report-box-module tier-unlocked-max" id="block-weekly-report">
-                    <div class="report-module-header">
-                        <h3>Relatório Analytics Semanal</h3>
-                        <span class="badge-module-status status-unlocked">Acesso Liberado MAX</span>
-                    </div>
-                    <p class="report-description-text">Seu progresso da última semana indica adesão de 92% ao planejamento calórico. Sugestão de melhora: incremente a ingestão hídrica em 400ml durante a janela matinal para otimização da filtragem renal e síntese de glicogênio.</p>
-                </div>
-
-                <div class="report-box-module tier-locked-restricted" id="block-monthly-report">
-                    <div class="report-module-header">
-                        <h3>Relatório Consolidado Mensal</h3>
-                        <span class="badge-module-status status-locked">Bloqueado</span>
-                    </div>
-                    <p class="report-description-text">Esta análise macroscópica da sua composição corporal e retenção de massa magra é processada e liberada automaticamente apenas de forma mensal (restam 6 dias para o vencimento do plano atual e abertura do documento).</p>
-                    <button class="btn-request-early-unlock" disabled>Aguardando Liberação do Ciclo</button>
-                </div>
-            </section>
-
-            <section class="platform-feedback-corporate-zone">
-                <div class="feedback-zone-header">
-                    <h3>Validação Operacional da Comunidade</h3>
-                    <p>Membros corporativos ativos avaliando os módulos do ecossistema.</p>
-                </div>
-                
-                <div class="feedback-scrollable-container">
-                    <div class="corporate-review-card">
-                        <div class="review-card-user-meta">
-                            <div class="user-monogram-avatar">CM</div>
-                            <div class="user-info-text">
-                                <h4>Carlos M.</h4>
-                                <div class="review-fixed-stars-row" data-stars-count="5">Classificação Maxima</div>
-                            </div>
-                        </div>
-                        <p class="review-body-text">O sistema de controle macrobiótico e a persistência dos dados de treino integrados ao perfil via e-mail facilitam o monitoramento a longo prazo.</p>
-                    </div>
-                </div>
-
-                <div class="review-submission-interactive-form">
-                    <h4>Submeter Avaliação de Desempenho</h4>
-                    <div class="interactive-star-rating-row" id="corporate-star-selector">
-                        <span class="star-interactive-node" data-rating-weight="1">Nota 1</span>
-                        <span class="star-interactive-node" data-rating-weight="2">Nota 2</span>
-                        <span class="star-interactive-node" data-rating-weight="3">Nota 3</span>
-                        <span class="star-interactive-node" data-rating-weight="4">Nota 4</span>
-                        <span class="star-interactive-node" data-rating-weight="5">Nota 5</span>
-                    </div>
-                    <div class="form-input-vertical-group">
-                        <textarea id="interactive-review-textarea" placeholder="Descreva suas observações técnicas sobre o comportamento e estabilidade da plataforma..."></textarea>
-                        <button id="corporate-submit-review-btn" class="btn-submit-form-primary">Publicar Relato</button>
-                    </div>
-                </div>
-            </section>
-        </main>
-    </div>
-
-    <nav class="mobile-fixed-bottom-navigation-bar">
-        <a href="#" class="mobile-nav-link-item active">
-            <span class="mobile-nav-icon">[DSH]</span>
-            <span class="mobile-nav-label-text">Início</span>
-        </a>
-        <a href="#" class="mobile-nav-link-item">
-            <span class="mobile-nav-icon">[MET]</span>
-            <span class="mobile-nav-label-text">Métricas</span>
-        </a>
+    <main class="meals-container">
         
-        <a href="#" id="mobile-floating-ai-scanner-trigger" class="mobile-nav-link-item-center-action">
-            <div class="ai-pulsing-glow-element">
-                <span class="ai-internal-core-icon">[IA]</span>
+        <article class="meal-card" data-kcal="450" data-protein="32" data-carb="45" data-fat="12">
+            <div class="meal-img-wrapper">
+                <img src="https://images.unsplash.com/photo-1482049016688-2d3e1b311543?auto=format&fit=crop&w=300&q=80" alt="Toast de Avocado">
             </div>
-            <span class="mobile-nav-label-text bold-text">IA NUTRI</span>
-        </a>
+            <div class="meal-content">
+                <div class="meal-header">
+                    <h3>Toast de Avocado com Ovos</h3>
+                    <p class="meal-time"><i class="fa-regular fa-clock"></i> 07:30</p>
+                </div>
+                <p class="meal-price">450 Kcal</p>
+                <div class="meal-actions">
+                    <button class="btn-recipe" onclick="openRecipe('Toast de Avocado com Ovos', 'https://images.unsplash.com/photo-1482049016688-2d3e1b311543?auto=format&fit=crop&w=600&q=80', '12', '45', '450', '32', '2 fatias de Pão de Forma Integral, 3 Ovos caipiras, 50g de Avocado amassado, Pitada de pimenta do reino e sal, Café preto coado.')">Ver Receita</button>
+                    <label class="custom-checkbox">
+                        <input type="checkbox" class="meal-check">
+                        <span class="checkmark"><i class="fa-solid fa-check"></i></span>
+                    </label>
+                </div>
+            </div>
+        </article>
 
-        <a href="#" class="mobile-nav-link-item">
-            <span class="mobile-nav-icon">[PLN]</span>
-            <span class="mobile-nav-label-text">Planos</span>
-        </a>
-        
-        <a href="#" id="mobile-profile-menu-drawer-trigger" class="mobile-nav-link-item">
-            <div class="mobile-avatar-frame-container">
-                <img id="user-global-avatar-mobile" class="user-profile-picture-source" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=200" alt="Avatar Mobile">
+        <article class="meal-card" data-kcal="280" data-protein="22" data-carb="35" data-fat="6">
+            <div class="meal-img-wrapper">
+                <img src="https://images.unsplash.com/photo-1511690656952-34342bb7c2f2?auto=format&fit=crop&w=300&q=80" alt="Bowl de Frutas">
             </div>
-            <span class="mobile-nav-label-text">Perfil</span>
-        </a>
+            <div class="meal-content">
+                <div class="meal-header">
+                    <h3>Bowl de Iogurte e Frutas</h3>
+                    <p class="meal-time"><i class="fa-regular fa-clock"></i> 10:00</p>
+                </div>
+                <p class="meal-price">280 Kcal</p>
+                <div class="meal-actions">
+                    <button class="btn-recipe" onclick="openRecipe('Bowl de Iogurte e Frutas', 'https://images.unsplash.com/photo-1511690656952-34342bb7c2f2?auto=format&fit=crop&w=600&q=80', '6', '35', '280', '22', '150g de Iogurte Natural Desnatado, 1 Banana média fatiada, 20g de Aveia em flocos finos, 1 colher de chá de Chia.')">Ver Receita</button>
+                    <label class="custom-checkbox">
+                        <input type="checkbox" class="meal-check">
+                        <span class="checkmark"><i class="fa-solid fa-check"></i></span>
+                    </label>
+                </div>
+            </div>
+        </article>
+
+        <article class="meal-card" data-kcal="680" data-protein="52" data-carb="65" data-fat="18">
+            <div class="meal-img-wrapper">
+                <img src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=300&q=80" alt="Prato Executivo Fit">
+            </div>
+            <div class="meal-content">
+                <div class="meal-header">
+                    <h3>Grelhado com Arroz Integral</h3>
+                    <p class="meal-time"><i class="fa-regular fa-clock"></i> 13:00</p>
+                </div>
+                <p class="meal-price">680 Kcal</p>
+                <div class="meal-actions">
+                    <button class="btn-recipe" onclick="openRecipe('Grelhado com Arroz Integral', 'https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=600&q=80', '18', '65', '680', '52', '180g de Peito de Frango grelhado, 150g de Arroz Integral cozido, 100g de Feijão, Brócolis e Cenoura no vapor, Fio de Azeite extra virgem.')">Ver Receita</button>
+                    <label class="custom-checkbox">
+                        <input type="checkbox" class="meal-check">
+                        <span class="checkmark"><i class="fa-solid fa-check"></i></span>
+                    </label>
+                </div>
+            </div>
+        </article>
+
+        <article class="meal-card" data-kcal="320" data-protein="18" data-carb="42" data-fat="10">
+            <div class="meal-img-wrapper">
+                <img src="https://images.unsplash.com/photo-1488477181946-6428a0291777?auto=format&fit=crop&w=300&q=80" alt="Panqueca Doce">
+            </div>
+            <div class="meal-content">
+                <div class="meal-header">
+                    <h3>Panqueca de Banana Fit</h3>
+                    <p class="meal-time"><i class="fa-regular fa-clock"></i> 16:30</p>
+                </div>
+                <p class="meal-price">320 Kcal</p>
+                <div class="meal-actions">
+                    <button class="btn-recipe" onclick="openRecipe('Panqueca de Banana Fit', 'https://images.unsplash.com/photo-1488477181946-6428a0291777?auto=format&fit=crop&w=600&q=80', '10', '42', '320', '18', '1 Banana bem madura amassada, 2 Ovos inteiros, 2 colheres de sopa de Farelo de Aveia, Canela a gosto, Fio de mel para finalizar.')">Ver Receita</button>
+                    <label class="custom-checkbox">
+                        <input type="checkbox" class="meal-check">
+                        <span class="checkmark"><i class="fa-solid fa-check"></i></span>
+                    </label>
+                </div>
+            </div>
+        </article>
+
+        <article class="meal-card" data-kcal="510" data-protein="44" data-carb="35" data-fat="15">
+            <div class="meal-img-wrapper">
+                <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=300&q=80" alt="Jantar Leve">
+            </div>
+            <div class="meal-content">
+                <div class="meal-header">
+                    <h3>Salmão Assado com Purê</h3>
+                    <p class="meal-time"><i class="fa-regular fa-clock"></i> 20:00</p>
+                </div>
+                <p class="meal-price">510 Kcal</p>
+                <div class="meal-actions">
+                    <button class="btn-recipe" onclick="openRecipe('Salmão Assado com Purê', 'https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=600&q=80', '15', '35', '510', '44', '150g de Filé de Salmão temperado com limão e ervas, 120g de Purê de Mandioquinha, Salada de rúcula com tomate cereja.')">Ver Receita</button>
+                    <label class="custom-checkbox">
+                        <input type="checkbox" class="meal-check">
+                        <span class="checkmark"><i class="fa-solid fa-check"></i></span>
+                    </label>
+                </div>
+            </div>
+        </article>
+
+        <article class="meal-card" data-kcal="150" data-protein="12" data-carb="10" data-fat="6">
+            <div class="meal-img-wrapper">
+                <img src="https://images.unsplash.com/photo-1590165482156-f5fd30f0f5b4?auto=format&fit=crop&w=300&q=80" alt="Ceia Leve">
+            </div>
+            <div class="meal-content">
+                <div class="meal-header">
+                    <h3>Creme de Ricota e Torrada</h3>
+                    <p class="meal-time"><i class="fa-regular fa-clock"></i> 22:30</p>
+                </div>
+                <p class="meal-price">150 Kcal</p>
+                <div class="meal-actions">
+                    <button class="btn-recipe" onclick="openRecipe('Creme de Ricota e Torrada', 'https://images.unsplash.com/photo-1590165482156-f5fd30f0f5b4?auto=format&fit=crop&w=600&q=80', '6', '10', '150', '12', '2 Torradas integrais, 30g de Creme de Ricota light, Chá de Camomila (sem açúcar).')">Ver Receita</button>
+                    <label class="custom-checkbox">
+                        <input type="checkbox" class="meal-check">
+                        <span class="checkmark"><i class="fa-solid fa-check"></i></span>
+                    </label>
+                </div>
+            </div>
+        </article>
+        
+        <div style="height: 110px;"></div>
+    </main>
+
+    <nav class="floating-nav">
+        <a href="#" class="nav-item active"><i class="fa-solid fa-utensils"></i></a>
+        <a href="#" class="nav-item"><i class="fa-solid fa-clipboard-list"></i></a>
+        <a href="#" class="nav-item"><i class="fa-solid fa-chart-pie"></i></a>
+        <a href="#" class="nav-item"><i class="fa-solid fa-magnifying-glass"></i></a>
     </nav>
 
-    <div class="desktop-ai-floating-fab-button" id="desktop-floating-ai-scanner-trigger">
-        <div class="desktop-ai-fab-core">
-            <span class="desktop-ai-icon-label">[SCANNER IA]</span>
+    <div class="recipe-modal" id="recipe-modal">
+        <button class="close-modal-btn" id="close-modal"><i class="fa-solid fa-chevron-left"></i></button>
+        
+        <div class="modal-image-header">
+            <img src="" id="modal-img" alt="Foto da Receita">
         </div>
-    </div>
 
-    <div id="mobile-profile-context-drawer" class="mobile-drawer-bottom-overlay">
-        <div class="mobile-drawer-surface-container">
-            <div class="drawer-drag-indicator-line"></div>
-            <div class="drawer-header-block">
-                <h3>Gerenciamento de Conta</h3>
-                <button id="close-profile-drawer-btn" class="btn-drawer-close">Fechar</button>
+        <div class="modal-content-sheet">
+            <div class="sheet-drag-handle"></div>
+            <div class="modal-tags">
+                <span class="tag-star"><i class="fa-solid fa-star"></i> Receita Verificada</span>
+                <span class="tag-time"><i class="fa-regular fa-clock"></i> Fácil preparo</span>
             </div>
-            <div class="drawer-links-stack-menu">
-                <button class="drawer-menu-action-row" id="drawer-action-avatar">
-                    <span class="drawer-action-text-label">Atualizar Foto do Perfil</span>
-                    <span class="drawer-action-meta-info">Upload Local</span>
-                </button>
-                <button class="drawer-menu-action-row" id="drawer-action-billing">
-                    <span class="drawer-action-text-label">Fatura e Assinatura</span>
-                    <span class="drawer-action-meta-info">Regularizada</span>
-                </button>
-                <button class="drawer-menu-action-row" id="drawer-action-settings">
-                    <span class="drawer-action-text-label">Configurações de Informações Pessoais</span>
-                    <span class="drawer-action-meta-info">Atualizado</span>
-                </button>
-                <button class="drawer-menu-action-row" id="drawer-action-support">
-                    <span class="drawer-action-text-label">Suporte Via Chat VIP</span>
-                    <span class="drawer-action-meta-info">Canal Direto</span>
-                </button>
-                <button class="drawer-menu-action-row drawer-logout-btn" id="mobile-drawer-logout-btn">
-                    <span class="drawer-action-text-label">Sair da Conta</span>
-                </button>
-            </div>
-        </div>
-    </div>
-
-    <div class="recipe-luxury-modal-viewport-overlay" id="global-recipe-display-modal">
-        <div class="modal-surface-card-container">
-            <button class="close-recipe-modal-x-trigger" id="global-close-recipe-modal-btn" aria-label="Fechar modal">&times;</button>
-            <div class="modal-recipe-banner-summary">
-                <span id="modal-target-recipe-schedule-badge" class="modal-time-tag">00:00</span>
-                <h2 id="modal-target-recipe-title">Denominação da Refeição</h2>
-            </div>
+            <h2 id="modal-title">Título da Receita</h2>
+            <p class="modal-description">Detalhes da sua refeição. Siga os ingredientes abaixo para garantir a precisão dos seus macronutrientes.</p>
             
-            <div class="modal-recipe-macronutrient-metric-grid">
-                <div class="modal-macro-stat-block block-caloric">
-                    <span id="modal-target-macro-kcal">0</span>
-                    <label>Calorias</label>
+            <h3 class="section-title">Informação Nutricional</h3>
+            <div class="macro-bubbles">
+                <div class="bubble">
+                    <span class="bubble-value" id="modal-fat">0</span>
+                    <span class="bubble-label">Gordura<br><small>g</small></span>
                 </div>
-                <div class="modal-macro-stat-block block-protein">
-                    <span id="modal-target-macro-protein">0g</span>
-                    <label>Proteínas</label>
+                <div class="bubble">
+                    <span class="bubble-value" id="modal-carb">0</span>
+                    <span class="bubble-label">Carb<br><small>g</small></span>
                 </div>
-                <div class="modal-macro-stat-block block-carbohydrate">
-                    <span id="modal-target-macro-carb">0g</span>
-                    <label>Carboidratos</label>
+                <div class="bubble">
+                    <span class="bubble-value" id="modal-kcal">0</span>
+                    <span class="bubble-label">Energia<br><small>kcal</small></span>
                 </div>
-                <div class="modal-macro-stat-block block-lipids">
-                    <span id="modal-target-macro-fat">0g</span>
-                    <label>Gorduras</label>
+                <div class="bubble">
+                    <span class="bubble-value" id="modal-protein">0</span>
+                    <span class="bubble-label">Proteína<br><small>g</small></span>
                 </div>
             </div>
 
-            <div class="modal-recipe-extended-body-content">
-                <h3>Componentes e Insumos</h3>
-                <p id="modal-target-recipe-ingredients-paragraph" class="recipe-paragraph-text">Carregando insumos...</p>
-                
-                <h3 class="spacing-top-modifier">Metodologia e Execução</h3>
-                <p id="modal-target-recipe-steps-paragraph" class="recipe-paragraph-text">Carregando passos operacionais...</p>
-            </div>
+            <h3 class="section-title">Ingredientes e Modo de Preparo</h3>
+            <ul class="ingredients-list" id="modal-ingredients"></ul>
+            
+            <button class="btn-primary-large" onclick="document.getElementById('recipe-modal').classList.remove('active')"><i class="fa-solid fa-check"></i> Refeição Concluída</button>
         </div>
     </div>
 
