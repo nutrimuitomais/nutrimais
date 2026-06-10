@@ -268,7 +268,7 @@ body {
 .notif-text { font-weight: 700; font-size: 13px; color: var(--sidebar-bg); }
 
 /* ==========================================================================
-   5. BANNER ROTATIVO (CARROSSEL PREMIUM & EDITORIAL)
+   5. BANNER ROTATIVO (IMAGENS LOCAIS)
    ========================================================================== */
 .banner-carousel-container {
     position: relative;
@@ -297,7 +297,7 @@ body {
     border-radius: 16px;
     opacity: 0;
     pointer-events: none;
-    transition: opacity 0.8s ease-in-out; /* Transição suave e lenta */
+    transition: opacity 0.8s ease-in-out;
     box-sizing: border-box;
 }
 
@@ -307,36 +307,18 @@ body {
 }
 
 .banner-text-side { flex: 1; }
-.banner-tag {
-    color: var(--color-progress); font-weight: 800; font-size: 11px;
-    letter-spacing: 1px; display: block; margin-bottom: 4px;
-}
+.banner-tag { color: var(--color-progress); font-weight: 800; font-size: 11px; letter-spacing: 1px; display: block; margin-bottom: 4px; }
 .banner-slide h2 { font-size: 18px; margin-bottom: 4px; color: var(--sidebar-bg); line-height: 1.3; font-weight: 700; }
 .banner-slide p { color: var(--text-muted); font-size: 12px; margin-bottom: 12px; max-width: 85%; }
 
-.btn-premium-action {
-    background: var(--sidebar-bg); color: #FFF; border: none; padding: 8px 16px;
-    border-radius: 8px; font-weight: 700; font-size: 12px; cursor: pointer; transition: 0.3s;
-}
-.btn-premium-action:hover { background: #0c1e14; }
-
-/* Imagens Variadas do Carrossel */
+/* Estilo para as imagens locais */
 .banner-image-side {
-    width: 100px; height: 100px; background-size: contain; background-repeat: no-repeat; background-position: center; opacity: 0.95; flex-shrink: 0;
-}
-.slide-dieta { background-image: url('https://img.icons8.com/emoji/96/salad-emoji.png'); }
-.slide-treino { background-image: url('https://img.icons8.com/plasticine/100/salad.png'), url('https://img.icons8.com/emoji/96/dumbbell-emoji.png'); background-size: 55px, 55px; background-position: left center, right center; width: 120px; }
-.slide-anamnese { background-image: url('https://img.icons8.com/fluency/96/healthy-food.png'); }
-
-/* Bolinhas Indicadoras */
-.carousel-dots {
-    display: flex; justify-content: center; gap: 8px; margin-top: 12px;
-}
-.dot {
-    width: 7px; height: 7px; background: #D1DDD6; border-radius: 50%; cursor: pointer; transition: 0.3s ease;
-}
-.dot.active {
-    background: var(--color-progress); width: 20px; border-radius: 4px;
+    width: 100px; height: 100px; 
+    background-size: cover; 
+    background-repeat: no-repeat; 
+    background-position: center; 
+    border-radius: 12px;
+    flex-shrink: 0;
 }
 
 /* ==========================================================================
