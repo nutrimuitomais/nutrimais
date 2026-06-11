@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>App de Dieta e Receitas</title>
-    <link rel="stylesheet" href="style.css">
+    <title>NUTRI+</title>
+    <link rel="stylesheet" href="css/dashboard.css">
 </head>
 <body>
     <div class="app-container">
@@ -13,14 +13,14 @@
             <div class="user-profile">
                 <img src="https://i.pravatar.cc/150?img=11" alt="Avatar do Usuário" class="avatar">
                 <div class="user-greeting">
-                    <span class="greeting-name">Hi Alex</span>
-                    <span class="greeting-time">Good Morning</span>
+                    <span class="greeting-name">Bem vindo, Alex</span>
+                    <span class="greeting-time">Dieta gerada por Nutricionista Local</span>
                 </div>
             </div>
             <button class="notification-btn">🔔</button>
         </header>
 
-        <h1 class="main-title">What are you craving<br>today, buddy?</h1>
+        <h1 class="main-title">Como vai você Nutrice? Bem vindo ao APP Nutri+<br></h1>
 
         <div class="search-container">
             <span class="search-icon">🔍</span>
@@ -28,49 +28,104 @@
             <button class="filter-btn">⚙️</button>
         </div>
 
-        <main class="meal-section">
-            <div class="meal-image-container">
-                <img src="https://images.unsplash.com/photo-1621996346565-e3dbc646d9a9?auto=format&fit=crop&w=800&q=80" alt="Prato de Macarrão" class="meal-image">
-            </div>
+        <main class="main-content">
+            
+            <section class="meal-featured">
+                <div class="meal-image-container">
+                    <img src="https://images.unsplash.com/photo-1621996346565-e3dbc646d9a9?auto=format&fit=crop&w=800&q=80" alt="Prato de Macarrão" class="meal-image">
+                </div>
 
-            <div class="nutrition-card">
-                <h2 class="meal-name">Vegan Delight Bowl</h2>
+                <div class="nutrition-card">
+                    <h2 class="meal-name">Dieta preparada para você</h2>
+                    
+                    <div class="calories-section">
+                        <div class="calories-text">
+                            <span class="calories-label">Total Calorias</span>
+                            <div class="calories-value">
+                                <strong>280</strong> <span class="kcal">Kcal</span>
+                            </div>
+                        </div>
+                        <div class="calories-chart">
+                            <div class="fire-icon">
+                                🔥<br><span class="icon-kcal">kcal</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="macros-section">
+                        <div class="macro-card">
+                            <div class="macro-circle protein-circle"></div>
+                            <span class="macro-percent">9%</span>
+                            <span class="macro-grams">15g</span>
+                            <span class="macro-name">Protein</span>
+                        </div>
+                        <div class="macro-card">
+                            <div class="macro-circle fat-circle"></div>
+                            <span class="macro-percent">13%</span>
+                            <span class="macro-grams">45g</span>
+                            <span class="macro-name">Fat</span>
+                        </div>
+                        <div class="macro-card">
+                            <div class="macro-circle carbs-circle"></div>
+                            <span class="macro-percent">78%</span>
+                            <span class="macro-grams">8g</span>
+                            <span class="macro-name">Carbs</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="daily-meals-section">
+                <h3 class="section-title">Suas Refeições Hoje</h3>
                 
-                <div class="calories-section">
-                    <div class="calories-text">
-                        <span class="calories-label">Total Calories</span>
-                        <div class="calories-value">
-                            <strong>280</strong> <span class="kcal">Kcal</span>
-                        </div>
+                <div class="meal-list-item">
+                    <div class="meal-info">
+                        <h4>Café da Manhã</h4>
+                        <ul class="food-items">
+                            <li>Ovos mexidos <span>4 unidades</span></li>
+                            <li>Aveia em flocos <span>50g</span></li>
+                            <li>Banana prata <span>1 unidade</span></li>
+                        </ul>
                     </div>
-                    <div class="calories-chart">
-                        <div class="fire-icon">
-                            🔥<br><span class="icon-kcal">kcal</span>
-                        </div>
-                    </div>
+                    <button class="btn-receita" onclick="openRecipe()">Ver Receita</button>
                 </div>
 
-                <div class="macros-section">
-                    <div class="macro-card">
-                        <div class="macro-circle protein-circle"></div>
-                        <span class="macro-percent">9%</span>
-                        <span class="macro-grams">15g</span>
-                        <span class="macro-name">Protein</span>
+                <div class="meal-list-item">
+                    <div class="meal-info">
+                        <h4>Almoço</h4>
+                        <ul class="food-items">
+                            <li>Peito de Frango <span>500g</span></li>
+                            <li>Arroz Branco <span>150g</span></li>
+                            <li>Salada de folhas <span>À vontade</span></li>
+                        </ul>
                     </div>
-                    <div class="macro-card">
-                        <div class="macro-circle fat-circle"></div>
-                        <span class="macro-percent">13%</span>
-                        <span class="macro-grams">45g</span>
-                        <span class="macro-name">Fat</span>
-                    </div>
-                    <div class="macro-card">
-                        <div class="macro-circle carbs-circle"></div>
-                        <span class="macro-percent">78%</span>
-                        <span class="macro-grams">8g</span>
-                        <span class="macro-name">Carbs</span>
-                    </div>
+                    <button class="btn-receita" onclick="openRecipe()">Ver Receita</button>
                 </div>
-            </div>
+
+                <div class="meal-list-item">
+                    <div class="meal-info">
+                        <h4>Lanche da Tarde</h4>
+                        <ul class="food-items">
+                            <li>Whey Protein <span>30g</span></li>
+                            <li>Pasta de Amendoim <span>15g</span></li>
+                        </ul>
+                    </div>
+                    <button class="btn-receita" onclick="openRecipe()">Ver Receita</button>
+                </div>
+
+                <div class="meal-list-item">
+                    <div class="meal-info">
+                        <h4>Jantar</h4>
+                        <ul class="food-items">
+                            <li>Patinho Moído <span>200g</span></li>
+                            <li>Macarrão Integral <span>150g</span></li>
+                        </ul>
+                    </div>
+                    <button class="btn-receita" onclick="openRecipe()">Ver Receita</button>
+                </div>
+            </section>
+
+            <div class="bottom-spacer"></div>
         </main>
 
         <nav class="bottom-nav">
@@ -79,9 +134,60 @@
             <button class="nav-item">💬</button>
             <button class="nav-item">👤</button>
         </nav>
+    </div>
 
+    <div id="recipeModal" class="modal-overlay hidden">
+        <div class="modal-content">
+            <button class="close-btn" onclick="closeRecipe()">✖</button>
+            
+            <h2 class="recipe-title">Frango Grelhado Perfeito</h2>
+            
+            <div class="recipe-macros">
+                <div class="recipe-macro-item">
+                    <span class="macro-icon">🔥</span>
+                    <strong>850</strong>
+                    <span class="macro-label">Calorias</span>
+                </div>
+                <div class="recipe-macro-item">
+                    <span class="macro-icon">🥩</span>
+                    <strong>115g</strong>
+                    <span class="macro-label">Proteína</span>
+                </div>
+                <div class="recipe-macro-item">
+                    <span class="macro-icon">🥑</span>
+                    <strong>10g</strong>
+                    <span class="macro-label">Gordura</span>
+                </div>
+                <div class="recipe-macro-item">
+                    <span class="macro-icon">🍚</span>
+                    <strong>42g</strong>
+                    <span class="macro-label">Carbos</span>
+                </div>
+            </div>
+
+            <div class="recipe-section">
+                <h3>Ingredientes</h3>
+                <ul class="ingredients-list">
+                    <li>500g de peito de frango limpo</li>
+                    <li>150g de arroz branco cozido</li>
+                    <li>Sal, pimenta-do-reino e páprica defumada a gosto</li>
+                    <li>1 fio de azeite para grelhar</li>
+                </ul>
+            </div>
+
+            <div class="recipe-section">
+                <h3>Modo de Preparo</h3>
+                <ol class="prep-steps">
+                    <li>Tempere os filés de frango com sal, pimenta e a páprica defumada.</li>
+                    <li>Aqueça uma frigideira antiaderente em fogo médio-alto com um fio de azeite.</li>
+                    <li>Coloque o frango e deixe dourar bem de um lado (cerca de 4-5 minutos) antes de virar.</li>
+                    <li>Doure o outro lado e certifique-se de que o interior está cozido.</li>
+                    <li>Sirva imediatamente acompanhado da porção de arroz.</li>
+                </ol>
+            </div>
+        </div>
     </div>
     
-    <script src="script.js"></script>
+    <script src="js/dashboard.js"></script>
 </body>
 </html>
