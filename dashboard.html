@@ -9,182 +9,159 @@
 <body>
     <div class="app-container">
         
-        <header class="header">
-            <div class="user-profile">
-                <img src="https://i.pravatar.cc/150?img=11" alt="Avatar do Usuário" class="avatar">
-                <div class="user-greeting">
-                    <span class="greeting-name">Bem vindo, Alex</span>
-                    <span class="greeting-time">Dieta gerada por Nutricionista Local</span>
+        <div class="dashboard-panel">
+            <header class="header">
+                <div class="user-profile">
+                    <img src="https://i.pravatar.cc/150?img=11" alt="Avatar do Usuário" class="avatar">
+                    <div class="user-greeting">
+                        <span class="greeting-name">Bem-vindo, Alex</span>
+                        <span class="greeting-time">Foco no objetivo!</span>
+                    </div>
+                </div>
+                <button class="notification-btn">🔔</button>
+            </header>
+
+            <h1 class="main-title">Seu Progresso Diário</h1>
+
+            <div class="nutrition-card">
+                <h2 class="meal-name">Resumo da Anamnese</h2>
+                
+                <div class="calories-section">
+                    <div class="calories-text">
+                        <span class="calories-label">Calorias Consumidas</span>
+                        <div class="calories-value">
+                            <strong id="cal-value">0</strong> <span class="kcal">/ <span id="cal-goal">2800</span> kcal</span>
+                        </div>
+                    </div>
+                    <div class="calories-chart" id="cal-chart">
+                        <div class="fire-icon">🔥<br><span class="icon-kcal" id="cal-percent">0%</span></div>
+                    </div>
+                </div>
+
+                <div class="macros-section">
+                    <div class="macro-card">
+                        <div class="macro-circle protein-circle" id="pro-circle"></div>
+                        <span class="macro-percent" id="pro-percent">0%</span>
+                        <span class="macro-grams"><span id="pro-value">0</span> / 180g</span>
+                        <span class="macro-name">Proteína</span>
+                    </div>
+                    <div class="macro-card">
+                        <div class="macro-circle fat-circle" id="fat-circle"></div>
+                        <span class="macro-percent" id="fat-percent">0%</span>
+                        <span class="macro-grams"><span id="fat-value">0</span> / 70g</span>
+                        <span class="macro-name">Gordura</span>
+                    </div>
+                    <div class="macro-card">
+                        <div class="macro-circle carbs-circle" id="car-circle"></div>
+                        <span class="macro-percent" id="car-percent">0%</span>
+                        <span class="macro-grams"><span id="car-value">0</span> / 360g</span>
+                        <span class="macro-name">Carbos</span>
+                    </div>
                 </div>
             </div>
-            <button class="notification-btn">🔔</button>
-        </header>
 
-        <h1 class="main-title">Como vai você Nutrice? Bem vindo ao APP Nutri+<br></h1>
-
-        <div class="search-container">
-            <span class="search-icon">🔍</span>
-            <input type="text" class="search-input" placeholder="What are you craving today?">
-            <button class="filter-btn">⚙️</button>
+            <nav class="bottom-nav">
+                <button class="nav-item active">🏠</button>
+                <button class="nav-item">🍱</button>
+                <button class="nav-item">💬</button>
+                <button class="nav-item">👤</button>
+            </nav>
         </div>
 
         <main class="main-content">
-            
-            <section class="meal-featured">
-                <div class="meal-image-container">
-                    <img src="https://images.unsplash.com/photo-1621996346565-e3dbc646d9a9?auto=format&fit=crop&w=800&q=80" alt="Prato de Macarrão" class="meal-image">
-                </div>
-
-                <div class="nutrition-card">
-                    <h2 class="meal-name">Dieta preparada para você</h2>
-                    
-                    <div class="calories-section">
-                        <div class="calories-text">
-                            <span class="calories-label">Total Calorias</span>
-                            <div class="calories-value">
-                                <strong>280</strong> <span class="kcal">Kcal</span>
-                            </div>
-                        </div>
-                        <div class="calories-chart">
-                            <div class="fire-icon">
-                                🔥<br><span class="icon-kcal">kcal</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="macros-section">
-                        <div class="macro-card">
-                            <div class="macro-circle protein-circle"></div>
-                            <span class="macro-percent">9%</span>
-                            <span class="macro-grams">15g</span>
-                            <span class="macro-name">Protein</span>
-                        </div>
-                        <div class="macro-card">
-                            <div class="macro-circle fat-circle"></div>
-                            <span class="macro-percent">13%</span>
-                            <span class="macro-grams">45g</span>
-                            <span class="macro-name">Fat</span>
-                        </div>
-                        <div class="macro-card">
-                            <div class="macro-circle carbs-circle"></div>
-                            <span class="macro-percent">78%</span>
-                            <span class="macro-grams">8g</span>
-                            <span class="macro-name">Carbs</span>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
             <section class="daily-meals-section">
-                <h3 class="section-title">Suas Refeições Hoje</h3>
+                <h3 class="section-title">Refeições de Hoje</h3>
                 
                 <div class="meal-list-item">
+                    <label class="meal-checkbox-container">
+                        <input type="checkbox" class="meal-check" data-cal="600" data-pro="40" data-fat="15" data-car="75">
+                        <span class="checkmark"></span>
+                    </label>
                     <div class="meal-info">
                         <h4>Café da Manhã</h4>
                         <ul class="food-items">
-                            <li>Ovos mexidos <span>4 unidades</span></li>
-                            <li>Aveia em flocos <span>50g</span></li>
-                            <li>Banana prata <span>1 unidade</span></li>
+                            <li>Ovos inteiros <span>4 unidades</span></li>
+                            <li>Aveia em flocos <span>100g</span></li>
+                            <li>Banana <span>1 unidade</span></li>
                         </ul>
                     </div>
-                    <button class="btn-receita" onclick="openRecipe()">Ver Receita</button>
+                    <button class="btn-receita" onclick="openRecipe()">Receita</button>
                 </div>
 
                 <div class="meal-list-item">
+                    <label class="meal-checkbox-container">
+                        <input type="checkbox" class="meal-check" data-cal="900" data-pro="60" data-fat="20" data-car="120">
+                        <span class="checkmark"></span>
+                    </label>
                     <div class="meal-info">
                         <h4>Almoço</h4>
                         <ul class="food-items">
-                            <li>Peito de Frango <span>500g</span></li>
-                            <li>Arroz Branco <span>150g</span></li>
-                            <li>Salada de folhas <span>À vontade</span></li>
+                            <li>Peito de Frango <span>200g</span></li>
+                            <li>Arroz Branco <span>300g</span></li>
+                            <li>Azeite de Oliva <span>1 colher</span></li>
+                            <li>Salada <span>À vontade</span></li>
                         </ul>
                     </div>
-                    <button class="btn-receita" onclick="openRecipe()">Ver Receita</button>
+                    <button class="btn-receita" onclick="openRecipe()">Receita</button>
                 </div>
 
                 <div class="meal-list-item">
+                    <label class="meal-checkbox-container">
+                        <input type="checkbox" class="meal-check" data-cal="400" data-pro="35" data-fat="10" data-car="40">
+                        <span class="checkmark"></span>
+                    </label>
                     <div class="meal-info">
-                        <h4>Lanche da Tarde</h4>
+                        <h4>Lanche (Pré-treino)</h4>
                         <ul class="food-items">
-                            <li>Whey Protein <span>30g</span></li>
+                            <li>Whey Protein <span>40g</span></li>
                             <li>Pasta de Amendoim <span>15g</span></li>
+                            <li>Pão Integral <span>2 fatias</span></li>
                         </ul>
                     </div>
-                    <button class="btn-receita" onclick="openRecipe()">Ver Receita</button>
+                    <button class="btn-receita" onclick="openRecipe()">Receita</button>
                 </div>
 
                 <div class="meal-list-item">
+                    <label class="meal-checkbox-container">
+                        <input type="checkbox" class="meal-check" data-cal="900" data-pro="45" data-fat="25" data-car="125">
+                        <span class="checkmark"></span>
+                    </label>
                     <div class="meal-info">
-                        <h4>Jantar</h4>
+                        <h4>Jantar (Pós-treino)</h4>
                         <ul class="food-items">
-                            <li>Patinho Moído <span>200g</span></li>
-                            <li>Macarrão Integral <span>150g</span></li>
+                            <li>Patinho Moído <span>150g</span></li>
+                            <li>Macarrão <span>300g</span></li>
                         </ul>
                     </div>
-                    <button class="btn-receita" onclick="openRecipe()">Ver Receita</button>
+                    <button class="btn-receita" onclick="openRecipe()">Receita</button>
                 </div>
             </section>
-
             <div class="bottom-spacer"></div>
         </main>
-
-        <nav class="bottom-nav">
-            <button class="nav-item active">🏠</button>
-            <button class="nav-item">🍱</button>
-            <button class="nav-item">💬</button>
-            <button class="nav-item">👤</button>
-        </nav>
     </div>
 
     <div id="recipeModal" class="modal-overlay hidden">
         <div class="modal-content">
             <button class="close-btn" onclick="closeRecipe()">✖</button>
-            
-            <h2 class="recipe-title">Frango Grelhado Perfeito</h2>
-            
-            <div class="recipe-macros">
-                <div class="recipe-macro-item">
-                    <span class="macro-icon">🔥</span>
-                    <strong>850</strong>
-                    <span class="macro-label">Calorias</span>
-                </div>
-                <div class="recipe-macro-item">
-                    <span class="macro-icon">🥩</span>
-                    <strong>115g</strong>
-                    <span class="macro-label">Proteína</span>
-                </div>
-                <div class="recipe-macro-item">
-                    <span class="macro-icon">🥑</span>
-                    <strong>10g</strong>
-                    <span class="macro-label">Gordura</span>
-                </div>
-                <div class="recipe-macro-item">
-                    <span class="macro-icon">🍚</span>
-                    <strong>42g</strong>
-                    <span class="macro-label">Carbos</span>
-                </div>
-            </div>
-
+            <h2 class="recipe-title">Preparo Rápido</h2>
             <div class="recipe-section">
-                <h3>Ingredientes</h3>
-                <ul class="ingredients-list">
-                    <li>500g de peito de frango limpo</li>
-                    <li>150g de arroz branco cozido</li>
-                    <li>Sal, pimenta-do-reino e páprica defumada a gosto</li>
-                    <li>1 fio de azeite para grelhar</li>
-                </ul>
-            </div>
-
-            <div class="recipe-section">
-                <h3>Modo de Preparo</h3>
+                <h3>Modo de Preparo Padrão</h3>
                 <ol class="prep-steps">
-                    <li>Tempere os filés de frango com sal, pimenta e a páprica defumada.</li>
-                    <li>Aqueça uma frigideira antiaderente em fogo médio-alto com um fio de azeite.</li>
-                    <li>Coloque o frango e deixe dourar bem de um lado (cerca de 4-5 minutos) antes de virar.</li>
-                    <li>Doure o outro lado e certifique-se de que o interior está cozido.</li>
-                    <li>Sirva imediatamente acompanhado da porção de arroz.</li>
+                    <li>Pese todos os alimentos crus/secos antes do preparo para garantir a precisão dos macros.</li>
+                    <li>Utilize o mínimo de óleo/azeite possível nas panelas antiaderentes.</li>
+                    <li>Mantenha a hidratação alta ao longo do dia.</li>
                 </ol>
             </div>
+        </div>
+    </div>
+
+    <div id="congratsModal" class="modal-overlay hidden">
+        <div class="modal-content text-center">
+            <button class="close-btn" onclick="closeCongrats()">✖</button>
+            <div class="congrats-icon">🏆</div>
+            <h2 class="recipe-title" style="padding:0; text-align:center;">Meta Concluída!</h2>
+            <p style="margin-bottom: 20px; color: #666;">Parabéns, Alex! Você bateu 100% da sua meta calórica e de macronutrientes hoje. O shape agradece!</p>
+            <button class="btn-receita" style="width: 100%;" onclick="closeCongrats()">Continuar</button>
         </div>
     </div>
     
