@@ -3,46 +3,85 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard Nutricional</title>
-    
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
-    <link rel="stylesheet" href="css/dashboard.css">
+    <title>App de Dieta e Receitas</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
-    <aside class="sidebar" id="sidebar-menu">
-        <div class="profile-section">
-            <img src="img/profile.jpg" alt="Perfil" class="profile-pic">
-            <h2>Vinícius</h2>
-            <p class="plan-badge">Plano: MAX</p>
-            <button class="close-menu-mobile" id="close-menu"><i class="fa-solid fa-xmark"></i></button>
-        </div>
-        <nav class="nav-menu">
-            <ul>
-                <li><a href="#"><i class="fa-solid fa-dumbbell"></i> Treino</a></li>
-                <li><a href="#"><i class="fa-solid fa-user-doctor"></i> Nutricionista</a></li>
-                <li><a href="#" id="toggle-dark-mode"><i class="fa-solid fa-moon"></i> Modo Escuro</a></li>
-            </ul>
-        </nav>
-    </aside>
-
-    <header class="top-header">
-        <div class="greeting-area" id="open-mobile-menu">
-            <div class="menu-trigger"><i class="fa-solid fa-bars"></i></div>
-            <div>
-                <span class="date">Quarta-Feira, 10 de Junho</span>
-                <h1>Olá, Vinícius 👋</h1>
+    <div class="app-container">
+        
+        <header class="header">
+            <div class="user-profile">
+                <img src="https://i.pravatar.cc/150?img=11" alt="Avatar do Usuário" class="avatar">
+                <div class="user-greeting">
+                    <span class="greeting-name">Hi Alex</span>
+                    <span class="greeting-time">Good Morning</span>
+                </div>
             </div>
-        </div>
-        <button id="ai-camera-btn" class="ai-btn pulse-animation">
-            <i class="fa-solid fa-camera"></i>
-        </button>
-    </header>
+            <button class="notification-btn">🔔</button>
+        </header>
 
-    <main class="main-content">
+        <h1 class="main-title">What are you craving<br>today, buddy?</h1>
+
+        <div class="search-container">
+            <span class="search-icon">🔍</span>
+            <input type="text" class="search-input" placeholder="What are you craving today?">
+            <button class="filter-btn">⚙️</button>
+        </div>
+
+        <main class="meal-section">
+            <div class="meal-image-container">
+                <img src="https://images.unsplash.com/photo-1621996346565-e3dbc646d9a9?auto=format&fit=crop&w=800&q=80" alt="Prato de Macarrão" class="meal-image">
+            </div>
+
+            <div class="nutrition-card">
+                <h2 class="meal-name">Vegan Delight Bowl</h2>
+                
+                <div class="calories-section">
+                    <div class="calories-text">
+                        <span class="calories-label">Total Calories</span>
+                        <div class="calories-value">
+                            <strong>280</strong> <span class="kcal">Kcal</span>
+                        </div>
+                    </div>
+                    <div class="calories-chart">
+                        <div class="fire-icon">
+                            🔥<br><span class="icon-kcal">kcal</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="macros-section">
+                    <div class="macro-card">
+                        <div class="macro-circle protein-circle"></div>
+                        <span class="macro-percent">9%</span>
+                        <span class="macro-grams">15g</span>
+                        <span class="macro-name">Protein</span>
+                    </div>
+                    <div class="macro-card">
+                        <div class="macro-circle fat-circle"></div>
+                        <span class="macro-percent">13%</span>
+                        <span class="macro-grams">45g</span>
+                        <span class="macro-name">Fat</span>
+                    </div>
+                    <div class="macro-card">
+                        <div class="macro-circle carbs-circle"></div>
+                        <span class="macro-percent">78%</span>
+                        <span class="macro-grams">8g</span>
+                        <span class="macro-name">Carbs</span>
+                    </div>
+                </div>
+            </div>
         </main>
 
-    <script src="js/dashboard.js"></script>
+        <nav class="bottom-nav">
+            <button class="nav-item active">🏠</button>
+            <button class="nav-item">🍱</button>
+            <button class="nav-item">💬</button>
+            <button class="nav-item">👤</button>
+        </nav>
+
+    </div>
+    
+    <script src="script.js"></script>
 </body>
 </html>
