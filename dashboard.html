@@ -4,14 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NUTRI+ Dashboard</title>
-    <!-- Tailwind CSS via CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Font Awesome para os ícones -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body class="bg-gray-50 min-h-screen flex flex-col md:flex-row">
 
-    <!-- Sidebar (Desktop) -->
     <aside class="hidden md:flex flex-col w-20 bg-white border-r border-gray-200 items-center py-8 space-y-8 fixed h-full">
         <div class="text-emerald-600 text-2xl font-bold italic">N+</div>
         <nav class="flex flex-col space-y-8">
@@ -22,51 +20,42 @@
         </nav>
     </aside>
 
-    <!-- Conteúdo Principal -->
-    <main class="flex-1 p-6 md:ml-20 md:p-10">
+    <main class="flex-1 p-6 md:ml-20 md:p-10 pb-24">
         
-        <!-- Header: Perfil -->
         <header class="flex justify-between items-center mb-8">
             <div class="flex items-center gap-4">
-                <div class="w-14 h-14 bg-gray-300 rounded-full overflow-hidden border-2 border-emerald-500">
-                    <!-- Insira sua imagem aqui -->
-                    <img src="https://via.placeholder.com/150" alt="Perfil">
-                </div>
+                <label for="fileInput" class="cursor-pointer">
+                    <div class="w-14 h-14 bg-gray-300 rounded-full overflow-hidden border-2 border-emerald-500 relative shadow-lg">
+                        <img id="profileImage" src="https://via.placeholder.com/150" alt="Perfil" class="w-full h-full object-cover">
+                    </div>
+                </label>
+                <input type="file" id="fileInput" class="hidden" accept="image/*">
+                
                 <div>
-                    <p class="text-sm text-gray-500">Bom dia!</p>
-                    <h1 class="font-bold text-xl text-gray-800">Olá, Usuário</h1>
+                    <p class="text-sm text-gray-500" id="greeting">Carregando...</p>
+                    <h1 class="font-bold text-xl text-gray-800">Seu Nome</h1>
                 </div>
             </div>
             <i class="fa-solid fa-bell text-gray-400 text-xl"></i>
         </header>
 
-        <!-- Barra de Busca e Resumo (Dashboard) -->
         <section class="bg-white p-6 rounded-3xl shadow-sm border border-gray-100 mb-8">
-            <input type="text" id="searchInput" placeholder="Pesquisar alimento..." 
-                   class="w-full p-4 bg-gray-50 rounded-2xl mb-6 border border-gray-100 focus:outline-none focus:ring-2 focus:ring-emerald-500">
-            
+            <input type="text" id="searchInput" placeholder="Pesquisar alimento..." class="w-full p-4 bg-gray-50 rounded-2xl mb-6 border border-gray-100 focus:outline-none focus:ring-2 focus:ring-emerald-500">
             <div class="flex justify-between items-center">
-                <!-- Indicador Circular (Simulado) -->
-                <div class="flex flex-col items-center">
-                    <div class="w-24 h-24 rounded-full border-8 border-emerald-500 flex items-center justify-center font-bold text-emerald-700">
-                        <span id="totalCalories">0</span> kcal
-                    </div>
+                <div class="w-24 h-24 rounded-full border-8 border-emerald-500 flex flex-col items-center justify-center font-bold text-emerald-700">
+                    <span id="totalCalories">0</span> <span class="text-[10px]">kcal</span>
                 </div>
-                
-                <!-- Resumo Macros -->
                 <div class="flex gap-6 text-center">
-                    <div><p class="text-xl font-bold" id="totalP">0g</p><p class="text-xs text-gray-400 uppercase tracking-widest">Prot</p></div>
-                    <div><p class="text-xl font-bold" id="totalC">0g</p><p class="text-xs text-gray-400 uppercase tracking-widest">Carb</p></div>
-                    <div><p class="text-xl font-bold" id="totalF">0g</p><p class="text-xs text-gray-400 uppercase tracking-widest">Gord</p></div>
+                    <div><p class="text-lg font-bold" id="totalP">0g</p><p class="text-[10px] text-gray-400 uppercase tracking-widest">Prot</p></div>
+                    <div><p class="text-lg font-bold" id="totalC">0g</p><p class="text-[10px] text-gray-400 uppercase tracking-widest">Carb</p></div>
+                    <div><p class="text-lg font-bold" id="totalF">0g</p><p class="text-[10px] text-gray-400 uppercase tracking-widest">Gord</p></div>
                 </div>
             </div>
         </section>
 
-        <!-- Lista de Refeições -->
         <section class="space-y-4">
             <h2 class="text-lg font-bold text-gray-800 mb-4">Minhas Refeições</h2>
             
-           <!-- Cards de Refeição -->
             <div class="meal-card bg-white p-4 rounded-2xl flex items-center justify-between shadow-sm border border-gray-100">
                 <div class="flex items-center gap-4">
                     <div class="w-14 h-14 bg-emerald-50 rounded-xl flex items-center justify-center text-emerald-600"><i class="fa-solid fa-coffee"></i></div>
@@ -101,13 +90,11 @@
         </section>
     </main>
 
-    <!-- Menu Inferior (Mobile Only) -->
     <nav class="md:hidden fixed bottom-0 w-full bg-white border-t border-gray-200 flex justify-around py-5">
         <i class="fa-solid fa-house text-emerald-600 text-2xl"></i>
         <i class="fa-solid fa-utensils text-gray-400 text-2xl"></i>
         <i class="fa-solid fa-chart-line text-gray-400 text-2xl"></i>
         <i class="fa-solid fa-user text-gray-400 text-2xl"></i>
     </nav>
-
 </body>
 </html>
