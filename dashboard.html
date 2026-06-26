@@ -1,170 +1,113 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NUTRI+</title>
-    <link rel="stylesheet" href="css/dashboard.css">
+    <title>NUTRI+ Dashboard</title>
+    <!-- Tailwind CSS via CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome para os ícones -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
 </head>
-<body>
-    <div class="app-container">
+<body class="bg-gray-50 min-h-screen flex flex-col md:flex-row">
+
+    <!-- Sidebar (Desktop) -->
+    <aside class="hidden md:flex flex-col w-20 bg-white border-r border-gray-200 items-center py-8 space-y-8 fixed h-full">
+        <div class="text-emerald-600 text-2xl font-bold italic">N+</div>
+        <nav class="flex flex-col space-y-8">
+            <i class="fa-solid fa-house text-emerald-600 text-xl cursor-pointer"></i>
+            <i class="fa-solid fa-utensils text-gray-400 text-xl cursor-pointer hover:text-emerald-600"></i>
+            <i class="fa-solid fa-chart-line text-gray-400 text-xl cursor-pointer hover:text-emerald-600"></i>
+            <i class="fa-solid fa-user text-gray-400 text-xl cursor-pointer hover:text-emerald-600"></i>
+        </nav>
+    </aside>
+
+    <!-- Conteúdo Principal -->
+    <main class="flex-1 p-6 md:ml-20 md:p-10">
         
-        <div class="dashboard-panel">
-            <header class="header">
-                <div class="user-profile">
-                    <img src="https://i.pravatar.cc/150?img=11" alt="Avatar do Usuário" class="avatar">
-                    <div class="user-greeting">
-                        <span class="greeting-name">Bem-vindo, Alex</span>
-                        <span class="greeting-time">Foco no objetivo!</span>
-                    </div>
+        <!-- Header: Perfil -->
+        <header class="flex justify-between items-center mb-8">
+            <div class="flex items-center gap-4">
+                <div class="w-14 h-14 bg-gray-300 rounded-full overflow-hidden border-2 border-emerald-500">
+                    <!-- Insira sua imagem aqui -->
+                    <img src="https://via.placeholder.com/150" alt="Perfil">
                 </div>
-                <button class="notification-btn">🔔</button>
-            </header>
-
-            <h1 class="main-title">Seu Progresso Diário</h1>
-
-            <div class="nutrition-card">
-                <h2 class="meal-name">Resumo da Anamnese</h2>
-                
-                <div class="calories-section">
-                    <div class="calories-text">
-                        <span class="calories-label">Calorias Consumidas</span>
-                        <div class="calories-value">
-                            <strong id="cal-value">0</strong> <span class="kcal">/ <span id="cal-goal">2800</span> kcal</span>
-                        </div>
-                    </div>
-                    <div class="calories-chart" id="cal-chart">
-                        <div class="fire-icon">🔥<br><span class="icon-kcal" id="cal-percent">0%</span></div>
-                    </div>
-                </div>
-
-                <div class="macros-section">
-                    <div class="macro-card">
-                        <div class="macro-circle protein-circle" id="pro-circle"></div>
-                        <span class="macro-percent" id="pro-percent">0%</span>
-                        <span class="macro-grams"><span id="pro-value">0</span> / 180g</span>
-                        <span class="macro-name">Proteína</span>
-                    </div>
-                    <div class="macro-card">
-                        <div class="macro-circle fat-circle" id="fat-circle"></div>
-                        <span class="macro-percent" id="fat-percent">0%</span>
-                        <span class="macro-grams"><span id="fat-value">0</span> / 70g</span>
-                        <span class="macro-name">Gordura</span>
-                    </div>
-                    <div class="macro-card">
-                        <div class="macro-circle carbs-circle" id="car-circle"></div>
-                        <span class="macro-percent" id="car-percent">0%</span>
-                        <span class="macro-grams"><span id="car-value">0</span> / 360g</span>
-                        <span class="macro-name">Carbos</span>
-                    </div>
+                <div>
+                    <p class="text-sm text-gray-500">Bom dia!</p>
+                    <h1 class="font-bold text-xl text-gray-800">Olá, Usuário</h1>
                 </div>
             </div>
+            <i class="fa-solid fa-bell text-gray-400 text-xl"></i>
+        </header>
 
-            <nav class="bottom-nav">
-                <button class="nav-item active">🏠</button>
-                <button class="nav-item">🍱</button>
-                <button class="nav-item">💬</button>
-                <button class="nav-item">👤</button>
-            </nav>
-        </div>
-
-        <main class="main-content">
-            <section class="daily-meals-section">
-                <h3 class="section-title">Refeições de Hoje</h3>
+        <!-- Barra de Busca e Resumo (Dashboard) -->
+        <section class="bg-white p-6 rounded-3xl shadow-sm border border-gray-100 mb-8">
+            <input type="text" id="searchInput" placeholder="Pesquisar alimento..." 
+                   class="w-full p-4 bg-gray-50 rounded-2xl mb-6 border border-gray-100 focus:outline-none focus:ring-2 focus:ring-emerald-500">
+            
+            <div class="flex justify-between items-center">
+                <!-- Indicador Circular (Simulado) -->
+                <div class="flex flex-col items-center">
+                    <div class="w-24 h-24 rounded-full border-8 border-emerald-500 flex items-center justify-center font-bold text-emerald-700">
+                        <span id="totalCalories">0</span> kcal
+                    </div>
+                </div>
                 
-                <div class="meal-list-item">
-                    <label class="meal-checkbox-container">
-                        <input type="checkbox" class="meal-check" data-cal="600" data-pro="40" data-fat="15" data-car="75">
-                        <span class="checkmark"></span>
-                    </label>
-                    <div class="meal-info">
-                        <h4>Café da Manhã</h4>
-                        <ul class="food-items">
-                            <li>Ovos inteiros <span>4 unidades</span></li>
-                            <li>Aveia em flocos <span>100g</span></li>
-                            <li>Banana <span>1 unidade</span></li>
-                        </ul>
-                    </div>
-                    <button class="btn-receita" onclick="openRecipe()">Receita</button>
+                <!-- Resumo Macros -->
+                <div class="flex gap-6 text-center">
+                    <div><p class="text-xl font-bold" id="totalP">0g</p><p class="text-xs text-gray-400 uppercase tracking-widest">Prot</p></div>
+                    <div><p class="text-xl font-bold" id="totalC">0g</p><p class="text-xs text-gray-400 uppercase tracking-widest">Carb</p></div>
+                    <div><p class="text-xl font-bold" id="totalF">0g</p><p class="text-xs text-gray-400 uppercase tracking-widest">Gord</p></div>
                 </div>
-
-                <div class="meal-list-item">
-                    <label class="meal-checkbox-container">
-                        <input type="checkbox" class="meal-check" data-cal="900" data-pro="60" data-fat="20" data-car="120">
-                        <span class="checkmark"></span>
-                    </label>
-                    <div class="meal-info">
-                        <h4>Almoço</h4>
-                        <ul class="food-items">
-                            <li>Peito de Frango <span>200g</span></li>
-                            <li>Arroz Branco <span>300g</span></li>
-                            <li>Azeite de Oliva <span>1 colher</span></li>
-                            <li>Salada <span>À vontade</span></li>
-                        </ul>
-                    </div>
-                    <button class="btn-receita" onclick="openRecipe()">Receita</button>
-                </div>
-
-                <div class="meal-list-item">
-                    <label class="meal-checkbox-container">
-                        <input type="checkbox" class="meal-check" data-cal="400" data-pro="35" data-fat="10" data-car="40">
-                        <span class="checkmark"></span>
-                    </label>
-                    <div class="meal-info">
-                        <h4>Lanche (Pré-treino)</h4>
-                        <ul class="food-items">
-                            <li>Whey Protein <span>40g</span></li>
-                            <li>Pasta de Amendoim <span>15g</span></li>
-                            <li>Pão Integral <span>2 fatias</span></li>
-                        </ul>
-                    </div>
-                    <button class="btn-receita" onclick="openRecipe()">Receita</button>
-                </div>
-
-                <div class="meal-list-item">
-                    <label class="meal-checkbox-container">
-                        <input type="checkbox" class="meal-check" data-cal="900" data-pro="45" data-fat="25" data-car="125">
-                        <span class="checkmark"></span>
-                    </label>
-                    <div class="meal-info">
-                        <h4>Jantar (Pós-treino)</h4>
-                        <ul class="food-items">
-                            <li>Patinho Moído <span>150g</span></li>
-                            <li>Macarrão <span>300g</span></li>
-                        </ul>
-                    </div>
-                    <button class="btn-receita" onclick="openRecipe()">Receita</button>
-                </div>
-            </section>
-            <div class="bottom-spacer"></div>
-        </main>
-    </div>
-
-    <div id="recipeModal" class="modal-overlay hidden">
-        <div class="modal-content">
-            <button class="close-btn" onclick="closeRecipe()">✖</button>
-            <h2 class="recipe-title">Preparo Rápido</h2>
-            <div class="recipe-section">
-                <h3>Modo de Preparo Padrão</h3>
-                <ol class="prep-steps">
-                    <li>Pese todos os alimentos crus/secos antes do preparo para garantir a precisão dos macros.</li>
-                    <li>Utilize o mínimo de óleo/azeite possível nas panelas antiaderentes.</li>
-                    <li>Mantenha a hidratação alta ao longo do dia.</li>
-                </ol>
             </div>
-        </div>
-    </div>
+        </section>
 
-    <div id="congratsModal" class="modal-overlay hidden">
-        <div class="modal-content text-center">
-            <button class="close-btn" onclick="closeCongrats()">✖</button>
-            <div class="congrats-icon">🏆</div>
-            <h2 class="recipe-title" style="padding:0; text-align:center;">Meta Concluída!</h2>
-            <p style="margin-bottom: 20px; color: #666;">Parabéns, Alex! Você bateu 100% da sua meta calórica e de macronutrientes hoje. O shape agradece!</p>
-            <button class="btn-receita" style="width: 100%;" onclick="closeCongrats()">Continuar</button>
-        </div>
-    </div>
-    
-    <script src="js/dashboard.js"></script>
+        <!-- Lista de Refeições -->
+        <section class="space-y-4">
+            <h2 class="text-lg font-bold text-gray-800 mb-4">Minhas Refeições</h2>
+            
+           <!-- Cards de Refeição -->
+            <div class="meal-card bg-white p-4 rounded-2xl flex items-center justify-between shadow-sm border border-gray-100">
+                <div class="flex items-center gap-4">
+                    <div class="w-14 h-14 bg-emerald-50 rounded-xl flex items-center justify-center text-emerald-600"><i class="fa-solid fa-coffee"></i></div>
+                    <div><p class="font-semibold text-gray-800">Café da Manhã</p><p class="text-xs text-gray-500">390 kcal</p></div>
+                </div>
+                <button class="bg-emerald-50 text-emerald-600 px-4 py-2 rounded-lg text-sm font-bold">Ver</button>
+            </div>
+
+            <div class="meal-card bg-white p-4 rounded-2xl flex items-center justify-between shadow-sm border border-gray-100">
+                <div class="flex items-center gap-4">
+                    <div class="w-14 h-14 bg-emerald-50 rounded-xl flex items-center justify-center text-emerald-600"><i class="fa-solid fa-bowl-food"></i></div>
+                    <div><p class="font-semibold text-gray-800">Almoço Funcional</p><p class="text-xs text-gray-500">980 kcal</p></div>
+                </div>
+                <button class="bg-emerald-50 text-emerald-600 px-4 py-2 rounded-lg text-sm font-bold">Ver</button>
+            </div>
+
+            <div class="meal-card bg-white p-4 rounded-2xl flex items-center justify-between shadow-sm border border-gray-100">
+                <div class="flex items-center gap-4">
+                    <div class="w-14 h-14 bg-emerald-50 rounded-xl flex items-center justify-center text-emerald-600"><i class="fa-solid fa-apple-whole"></i></div>
+                    <div><p class="font-semibold text-gray-800">Café da Tarde</p><p class="text-xs text-gray-500">200 kcal</p></div>
+                </div>
+                <button class="bg-emerald-50 text-emerald-600 px-4 py-2 rounded-lg text-sm font-bold">Ver</button>
+            </div>
+
+            <div class="meal-card bg-white p-4 rounded-2xl flex items-center justify-between shadow-sm border border-gray-100">
+                <div class="flex items-center gap-4">
+                    <div class="w-14 h-14 bg-emerald-50 rounded-xl flex items-center justify-center text-emerald-600"><i class="fa-solid fa-utensils"></i></div>
+                    <div><p class="font-semibold text-gray-800">Janta</p><p class="text-xs text-gray-500">600 kcal</p></div>
+                </div>
+                <button class="bg-emerald-50 text-emerald-600 px-4 py-2 rounded-lg text-sm font-bold">Ver</button>
+            </div>
+        </section>
+    </main>
+
+    <!-- Menu Inferior (Mobile Only) -->
+    <nav class="md:hidden fixed bottom-0 w-full bg-white border-t border-gray-200 flex justify-around py-5">
+        <i class="fa-solid fa-house text-emerald-600 text-2xl"></i>
+        <i class="fa-solid fa-utensils text-gray-400 text-2xl"></i>
+        <i class="fa-solid fa-chart-line text-gray-400 text-2xl"></i>
+        <i class="fa-solid fa-user text-gray-400 text-2xl"></i>
+    </nav>
+
 </body>
 </html>
