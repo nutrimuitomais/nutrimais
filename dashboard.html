@@ -1,100 +1,332 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NUTRI+ Dashboard</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-    <link rel="stylesheet" href="style.css">
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Nutri+ Dashboard</title>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon/fonts/remixicon.css">
+
+<link rel="stylesheet" href="css/dashboard.css">
+
 </head>
-<body class="bg-gray-50 min-h-screen flex flex-col md:flex-row">
 
-    <aside class="hidden md:flex flex-col w-20 bg-white border-r border-gray-200 items-center py-8 space-y-8 fixed h-full">
-        <div class="text-emerald-600 text-2xl font-bold italic">N+</div>
-        <nav class="flex flex-col space-y-8">
-            <i class="fa-solid fa-house text-emerald-600 text-xl cursor-pointer"></i>
-            <i class="fa-solid fa-utensils text-gray-400 text-xl cursor-pointer hover:text-emerald-600"></i>
-            <i class="fa-solid fa-chart-line text-gray-400 text-xl cursor-pointer hover:text-emerald-600"></i>
-            <i class="fa-solid fa-user text-gray-400 text-xl cursor-pointer hover:text-emerald-600"></i>
-        </nav>
-    </aside>
+<body>
 
-    <main class="flex-1 p-6 md:ml-20 md:p-10 pb-24">
-        
-        <header class="flex justify-between items-center mb-8">
-            <div class="flex items-center gap-4">
-                <label for="fileInput" class="cursor-pointer">
-                    <div class="w-14 h-14 bg-gray-300 rounded-full overflow-hidden border-2 border-emerald-500 relative shadow-lg">
-                        <img id="profileImage" src="https://via.placeholder.com/150" alt="Perfil" class="w-full h-full object-cover">
-                    </div>
-                </label>
-                <input type="file" id="fileInput" class="hidden" accept="image/*">
-                
-                <div>
-                    <p class="text-sm text-gray-500" id="greeting">Carregando...</p>
-                    <h1 class="font-bold text-xl text-gray-800">Seu Nome</h1>
-                </div>
-            </div>
-            <i class="fa-solid fa-bell text-gray-400 text-xl"></i>
-        </header>
+<div class="background-animation"></div>
 
-        <section class="bg-white p-6 rounded-3xl shadow-sm border border-gray-100 mb-8">
-            <input type="text" id="searchInput" placeholder="Pesquisar alimento..." class="w-full p-4 bg-gray-50 rounded-2xl mb-6 border border-gray-100 focus:outline-none focus:ring-2 focus:ring-emerald-500">
-            <div class="flex justify-between items-center">
-                <div class="w-24 h-24 rounded-full border-8 border-emerald-500 flex flex-col items-center justify-center font-bold text-emerald-700">
-                    <span id="totalCalories">0</span> <span class="text-[10px]">kcal</span>
-                </div>
-                <div class="flex gap-6 text-center">
-                    <div><p class="text-lg font-bold" id="totalP">0g</p><p class="text-[10px] text-gray-400 uppercase tracking-widest">Prot</p></div>
-                    <div><p class="text-lg font-bold" id="totalC">0g</p><p class="text-[10px] text-gray-400 uppercase tracking-widest">Carb</p></div>
-                    <div><p class="text-lg font-bold" id="totalF">0g</p><p class="text-[10px] text-gray-400 uppercase tracking-widest">Gord</p></div>
-                </div>
-            </div>
-        </section>
+<div class="app">
 
-        <section class="space-y-4">
-            <h2 class="text-lg font-bold text-gray-800 mb-4">Minhas Refeições</h2>
-            
-            <div class="meal-card bg-white p-4 rounded-2xl flex items-center justify-between shadow-sm border border-gray-100">
-                <div class="flex items-center gap-4">
-                    <div class="w-14 h-14 bg-emerald-50 rounded-xl flex items-center justify-center text-emerald-600"><i class="fa-solid fa-coffee"></i></div>
-                    <div><p class="font-semibold text-gray-800">Café da Manhã</p><p class="text-xs text-gray-500">390 kcal</p></div>
-                </div>
-                <button class="bg-emerald-50 text-emerald-600 px-4 py-2 rounded-lg text-sm font-bold">Ver</button>
-            </div>
+<!-- SIDEBAR -->
 
-            <div class="meal-card bg-white p-4 rounded-2xl flex items-center justify-between shadow-sm border border-gray-100">
-                <div class="flex items-center gap-4">
-                    <div class="w-14 h-14 bg-emerald-50 rounded-xl flex items-center justify-center text-emerald-600"><i class="fa-solid fa-bowl-food"></i></div>
-                    <div><p class="font-semibold text-gray-800">Almoço Funcional</p><p class="text-xs text-gray-500">980 kcal</p></div>
-                </div>
-                <button class="bg-emerald-50 text-emerald-600 px-4 py-2 rounded-lg text-sm font-bold">Ver</button>
-            </div>
+<aside class="sidebar">
 
-            <div class="meal-card bg-white p-4 rounded-2xl flex items-center justify-between shadow-sm border border-gray-100">
-                <div class="flex items-center gap-4">
-                    <div class="w-14 h-14 bg-emerald-50 rounded-xl flex items-center justify-center text-emerald-600"><i class="fa-solid fa-apple-whole"></i></div>
-                    <div><p class="font-semibold text-gray-800">Café da Tarde</p><p class="text-xs text-gray-500">200 kcal</p></div>
-                </div>
-                <button class="bg-emerald-50 text-emerald-600 px-4 py-2 rounded-lg text-sm font-bold">Ver</button>
-            </div>
+<div class="logo">
 
-            <div class="meal-card bg-white p-4 rounded-2xl flex items-center justify-between shadow-sm border border-gray-100">
-                <div class="flex items-center gap-4">
-                    <div class="w-14 h-14 bg-emerald-50 rounded-xl flex items-center justify-center text-emerald-600"><i class="fa-solid fa-utensils"></i></div>
-                    <div><p class="font-semibold text-gray-800">Janta</p><p class="text-xs text-gray-500">600 kcal</p></div>
-                </div>
-                <button class="bg-emerald-50 text-emerald-600 px-4 py-2 rounded-lg text-sm font-bold">Ver</button>
-            </div>
-        </section>
-    </main>
+<h1>NUTRI<span>+</span></h1>
 
-    <nav class="md:hidden fixed bottom-0 w-full bg-white border-t border-gray-200 flex justify-around py-5">
-        <i class="fa-solid fa-house text-emerald-600 text-2xl"></i>
-        <i class="fa-solid fa-utensils text-gray-400 text-2xl"></i>
-        <i class="fa-solid fa-chart-line text-gray-400 text-2xl"></i>
-        <i class="fa-solid fa-user text-gray-400 text-2xl"></i>
-    </nav>
+</div>
+
+<div class="profile">
+
+<label for="profileUpload">
+
+<img id="profilePhoto" src="https://i.imgur.com/fXQ9Q3A.png">
+
+<input type="file" id="profileUpload" hidden>
+
+</label>
+
+<h2>Vinícius</h2>
+
+<p class="plan">🟢 Nutri Inteligente</p>
+
+</div>
+
+<nav>
+
+<a class="active">
+
+<i class="ri-home-5-fill"></i>
+
+Dashboard
+
+</a>
+
+<a>
+
+<i class="ri-restaurant-2-line"></i>
+
+Refeições
+
+</a>
+
+<a>
+
+<i class="ri-apple-line"></i>
+
+Alimentos
+
+</a>
+
+<a>
+
+<i class="ri-history-line"></i>
+
+Histórico
+
+</a>
+
+<a>
+
+<i class="ri-bar-chart-box-line"></i>
+
+Estatísticas
+
+</a>
+
+<a>
+
+<i class="ri-award-line"></i>
+
+Conquistas
+
+</a>
+
+<a>
+
+<i class="ri-vip-crown-line"></i>
+
+Meu Plano
+
+</a>
+
+<a>
+
+<i class="ri-settings-3-line"></i>
+
+Configurações
+
+</a>
+
+</nav>
+
+</aside>
+
+<!-- CONTEÚDO -->
+
+<main class="content">
+
+<header>
+
+<div class="welcome">
+
+<h3>Bom dia,</h3>
+
+<h1>Vinícius 👋</h1>
+
+</div>
+
+<div class="header-icons">
+
+<div class="streak">
+
+🔥
+
+<span>12</span>
+
+</div>
+
+<div class="notification">
+
+<i class="ri-notification-3-line"></i>
+
+</div>
+
+</div>
+
+</header>
+
+<div class="search">
+
+<i class="ri-search-line"></i>
+
+<input
+type="text"
+placeholder="Pesquisar alimentos...">
+
+<i class="ri-equalizer-line"></i>
+
+</div>
+
+<!-- AQUI VAI O CARD PRINCIPAL NA PARTE 2 -->
+
+</main>
+
+</div>
+
+<!-- MOBILE -->
+
+<nav class="bottom-nav">
+
+<a class="active">
+
+<i class="ri-home-5-fill"></i>
+
+<span>Home</span>
+
+</a>
+
+<a>
+
+<i class="ri-restaurant-line"></i>
+
+<span>Refeições</span>
+
+</a>
+
+<a class="center-button">
+
+<i class="ri-add-line"></i>
+
+</a>
+
+<a>
+
+<i class="ri-history-line"></i>
+
+<span>Histórico</span>
+
+</a>
+
+<a>
+
+<i class="ri-user-line"></i>
+
+<span>Perfil</span>
+
+</a>
+
+</nav>
+
+<script src="js/dashboard.js"></script>
+
 </body>
+
 </html>
+
+<section class="nutrition-card">
+
+    <div class="food-image">
+
+        <img src="https://images.unsplash.com/photo-1546793665-c74683f339c1?w=800"
+            alt="Salada">
+
+    </div>
+
+    <div class="nutrition-content">
+
+        <div class="nutrition-top">
+
+            <div>
+
+                <p class="label">
+                    Total de hoje
+                </p>
+
+                <h2 id="totalCalories">
+                    1840
+                    <span>kcal</span>
+                </h2>
+
+                <div class="daily-progress">
+
+                    <div class="progress-fill"></div>
+
+                </div>
+
+                <p class="progress-text">
+                    73% da meta diária
+                </p>
+
+            </div>
+
+            <div class="goal-circle">
+
+                🔥
+
+                <span>
+                    73%
+                </span>
+
+            </div>
+
+        </div>
+
+        <div class="macros-grid">
+
+            <div class="macro-card">
+
+                <h4>Proteínas</h4>
+
+                <p>128g / 160g</p>
+
+                <div class="mini-progress">
+
+                    <div class="mini-fill protein"></div>
+
+                </div>
+
+                <span class="percentage protein-text">
+                    80%
+                </span>
+
+            </div>
+
+            <div class="macro-card">
+
+                <h4>Carboidratos</h4>
+
+                <p>210g / 280g</p>
+
+                <div class="mini-progress">
+
+                    <div class="mini-fill carb"></div>
+
+                </div>
+
+                <span class="percentage carb-text">
+                    75%
+                </span>
+
+            </div>
+
+            <div class="macro-card">
+
+                <h4>Gorduras</h4>
+
+                <p>58g / 70g</p>
+
+                <div class="mini-progress">
+
+                    <div class="mini-fill fat"></div>
+
+                </div>
+
+                <span class="percentage fat-text">
+                    83%
+                </span>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
