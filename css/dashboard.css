@@ -1,84 +1,659 @@
-/* Importação de fonte moderna */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
+/*======================================================
+  NUTRI+ v1.0
+  DASHBOARD.CSS
+======================================================*/
 
-/* Reset e Base */
-body {
-    font-family: 'Inter', sans-serif;
-    /* Fundo gradiente em movimento lento e suave */
-    background: linear-gradient(-45deg, #f9fafb, #e0f2f1, #d1fae5, #f9fafb);
-    background-size: 400% 400%;
-    animation: gradientShift 15s ease infinite;
-    min-height: 100vh;
-    margin: 0;
+/*======================================================
+01 • GOOGLE FONTS
+======================================================*/
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+
+
+/*======================================================
+02 • DESIGN SYSTEM
+======================================================*/
+
+:root{
+
+    /* CORES */
+
+    --primary:#32D583;
+    --primary-dark:#22C55E;
+    --primary-light:#EAFBF2;
+
+    --secondary:#74E291;
+
+    --background:#F8FBF9;
+
+    --card:#FFFFFF;
+
+    --text:#1F2937;
+
+    --text-light:#6B7280;
+
+    --border:#E5E7EB;
+
+    --black:#111827;
+
+    --success:#10B981;
+
+    --warning:#FBBF24;
+
+    --danger:#EF4444;
+
+
+    /* SOMBRAS */
+
+    --shadow-sm:0 4px 10px rgba(0,0,0,.04);
+
+    --shadow-md:0 10px 25px rgba(0,0,0,.08);
+
+    --shadow-lg:0 20px 40px rgba(0,0,0,.10);
+
+
+    /* BORDAS */
+
+    --radius-xs:10px;
+
+    --radius-sm:16px;
+
+    --radius-md:22px;
+
+    --radius-lg:30px;
+
+    --radius-xl:40px;
+
+
+    /* ANIMAÇÃO */
+
+    --transition:.30s ease;
+
 }
 
-@keyframes gradientShift {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
+
+/*======================================================
+03 • RESET
+======================================================*/
+
+*{
+
+    margin:0;
+
+    padding:0;
+
+    box-sizing:border-box;
+
 }
 
-/* Estilo para os cards com efeito de vidro (Glassmorphism) */
-.meal-card {
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    border: 1px solid rgba(255, 255, 255, 0.5);
-    background-color: rgba(255, 255, 255, 0.7); /* Transparência para ver o fundo */
-    backdrop-filter: blur(10px); /* Efeito de desfoque */
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+html{
+
+    scroll-behavior:smooth;
+
 }
 
-.meal-card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.08);
-    border-color: #10b981;
+body{
+
+    font-family:'Inter',sans-serif;
+
+    background:var(--background);
+
+    color:var(--text);
+
+    overflow-x:hidden;
+
 }
 
-/* Foto de Perfil */
-#profileImage {
-    transition: 0.3s;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+
+/*======================================================
+04 • BACKGROUND ANIMADO
+======================================================*/
+
+.background-animation{
+
+    position:fixed;
+
+    inset:0;
+
+    z-index:-1;
+
+    background:
+
+    radial-gradient(circle at top left,#DFFBEA 0%,transparent 35%),
+
+    radial-gradient(circle at bottom right,#CFF8DF 0%,transparent 40%),
+
+    radial-gradient(circle at center,#F7FFF9 0%,transparent 60%);
+
+    animation:gradientMove 18s ease infinite;
+
+    background-size:200% 200%;
+
 }
 
-#profileImage:hover {
-    filter: brightness(0.8);
-    cursor: pointer;
-}
 
-/* Barra de Busca */
-#searchInput {
-    transition: all 0.3s ease;
-    border: 2px solid #f3f4f6;
-    background-color: rgba(255, 255, 255, 0.8);
-}
+@keyframes gradientMove{
 
-#searchInput:focus {
-    border-color: #059669;
-    box-shadow: 0 0 0 4px rgba(5, 150, 105, 0.1);
-    outline: none;
-}
+    0%{
 
-/* Scrollbar Minimalista */
-::-webkit-scrollbar { width: 6px; }
-::-webkit-scrollbar-thumb {
-    background: #d1d5db;
-    border-radius: 10px;
-}
-::-webkit-scrollbar-thumb:hover { background: #059669; }
+        background-position:0% 50%;
 
-/* Ajustes Responsivos */
-@media (max-width: 768px) {
-    main { 
-        padding-bottom: 5rem; 
     }
+
+    50%{
+
+        background-position:100% 50%;
+
+    }
+
+    100%{
+
+        background-position:0% 50%;
+
+    }
+
 }
 
-/* Elementos auxiliares */
-.text-emerald-700 {
-    color: #065f46;
+
+/*======================================================
+05 • LAYOUT
+======================================================*/
+
+.app{
+
+    display:flex;
+
+    min-height:100vh;
+
 }
 
-.shadow-lg {
-    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+.content{
+
+    flex:1;
+
+    padding:40px;
+
 }
+
+
+/*======================================================
+06 • TIPOGRAFIA
+======================================================*/
+
+h1{
+
+    font-size:2rem;
+
+    font-weight:800;
+
+}
+
+h2{
+
+    font-size:1.35rem;
+
+    font-weight:700;
+
+}
+
+h3{
+
+    font-size:1rem;
+
+    font-weight:600;
+
+}
+
+p{
+
+    color:var(--text-light);
+
+    line-height:1.6;
+
+}
+
+small{
+
+    color:var(--text-light);
+
+}
+
+
+/*======================================================
+07 • LINKS
+======================================================*/
+
+a{
+
+    text-decoration:none;
+
+    color:inherit;
+
+}
+
+
+/*======================================================
+08 • IMAGENS
+======================================================*/
+
+img{
+
+    display:block;
+
+    width:100%;
+
+}
+
+
+/*======================================================
+09 • BOTÕES
+======================================================*/
+
+button{
+
+    border:none;
+
+    outline:none;
+
+    cursor:pointer;
+
+    font-family:inherit;
+
+    transition:var(--transition);
+
+}
+
+
+/*======================================================
+10 • INPUTS
+======================================================*/
+
+input{
+
+    font-family:inherit;
+
+    border:none;
+
+    outline:none;
+
+    background:none;
+
+}
+
+
+/*======================================================
+11 • SCROLLBAR
+======================================================*/
+
+::-webkit-scrollbar{
+
+    width:8px;
+
+}
+
+::-webkit-scrollbar-track{
+
+    background:transparent;
+
+}
+
+::-webkit-scrollbar-thumb{
+
+    background:#C8EFD8;
+
+    border-radius:20px;
+
+}
+
+::-webkit-scrollbar-thumb:hover{
+
+    background:#7BD89B;
+
+}
+
+
+/*======================================================
+12 • CLASSES UTILITÁRIAS
+======================================================*/
+
+.card{
+
+    background:var(--card);
+
+    border-radius:var(--radius-lg);
+
+    box-shadow:var(--shadow-md);
+
+}
+
+.glass{
+
+    backdrop-filter:blur(15px);
+
+    background:rgba(255,255,255,.75);
+
+}
+
+.fade-up{
+
+    animation:fadeUp .6s ease;
+
+}
+
+
+@keyframes fadeUp{
+
+    from{
+
+        opacity:0;
+
+        transform:translateY(25px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:translateY(0);
+
+    }
+
+}
+
+    /*======================================================
+13 • SIDEBAR DESKTOP
+======================================================*/
+
+.sidebar{
+
+    width:290px;
+
+    min-width:290px;
+
+    background:rgba(255,255,255,.78);
+
+    backdrop-filter:blur(18px);
+
+    border-right:1px solid rgba(255,255,255,.65);
+
+    padding:35px 25px;
+
+    display:flex;
+
+    flex-direction:column;
+
+    justify-content:space-between;
+
+    box-shadow:var(--shadow-md);
+
+}
+
+/*======================================================
+14 • LOGO
+======================================================*/
+
+.logo{
+
+    margin-bottom:35px;
+
+}
+
+.logo h1{
+
+    font-size:2rem;
+
+    font-weight:900;
+
+    letter-spacing:1px;
+
+    color:var(--text);
+
+}
+
+.logo span{
+
+    color:var(--primary);
+
+}
+
+/*======================================================
+15 • PERFIL
+======================================================*/
+
+.profile{
+
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:center;
+
+    text-align:center;
+
+    margin-bottom:40px;
+
+}
+
+.profile label{
+
+    cursor:pointer;
+
+}
+
+#profilePhoto{
+
+    width:110px;
+
+    height:110px;
+
+    border-radius:50%;
+
+    object-fit:cover;
+
+    border:4px solid var(--primary);
+
+    box-shadow:0 15px 30px rgba(34,197,94,.18);
+
+    transition:var(--transition);
+
+}
+
+#profilePhoto:hover{
+
+    transform:scale(1.05);
+
+}
+
+.profile h2{
+
+    margin-top:18px;
+
+    margin-bottom:8px;
+
+    font-size:1.25rem;
+
+}
+
+/*======================================================
+16 • PLANO
+======================================================*/
+
+.plan{
+
+    padding:8px 18px;
+
+    border-radius:50px;
+
+    font-size:.86rem;
+
+    font-weight:700;
+
+    display:inline-flex;
+
+    align-items:center;
+
+    gap:8px;
+
+}
+
+.plan.intelligent{
+
+    background:#E8FFF2;
+
+    color:#169C53;
+
+}
+
+.plan.max{
+
+    background:#F2F4F7;
+
+    color:#667085;
+
+}
+
+.plan.super{
+
+    background:#FFF7D8;
+
+    color:#B98900;
+
+}
+
+/*======================================================
+17 • MENU
+======================================================*/
+
+.sidebar-menu{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:10px;
+
+    margin-top:10px;
+
+}
+
+.sidebar-menu a{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:15px;
+
+    padding:15px 18px;
+
+    border-radius:18px;
+
+    color:var(--text-light);
+
+    font-weight:600;
+
+    transition:var(--transition);
+
+}
+
+.sidebar-menu a i{
+
+    font-size:1.3rem;
+
+}
+
+.sidebar-menu a:hover{
+
+    background:var(--primary-light);
+
+    color:var(--primary-dark);
+
+    transform:translateX(5px);
+
+}
+
+.sidebar-menu a.active{
+
+    background:linear-gradient(135deg,#32D583,#6EE7A5);
+
+    color:white;
+
+    box-shadow:0 15px 25px rgba(50,213,131,.25);
+
+}
+
+/*======================================================
+18 • META DIÁRIA
+======================================================*/
+
+.daily-goal{
+
+    margin-top:40px;
+
+    background:linear-gradient(145deg,#32D583,#57D992);
+
+    color:white;
+
+    padding:25px;
+
+    border-radius:28px;
+
+    box-shadow:0 20px 35px rgba(50,213,131,.25);
+
+}
+
+.daily-goal small{
+
+    color:rgba(255,255,255,.9);
+
+    font-size:.80rem;
+
+}
+
+.daily-goal h2{
+
+    margin:12px 0;
+
+    color:white;
+
+    font-size:2rem;
+
+}
+
+.daily-goal p{
+
+    color:rgba(255,255,255,.9);
+
+    font-size:.92rem;
+
+    margin-bottom:20px;
+
+}
+
+.daily-goal button{
+
+    width:100%;
+
+    height:46px;
+
+    border-radius:16px;
+
+    background:white;
+
+    color:var(--primary-dark);
+
+    font-weight:700;
+
+    transition:var(--transition);
+
+}
+
+.daily-goal button:hover{
+
+    transform:translateY(-2px);
+
+    box-shadow:0 10px 25px rgba(255,255,255,.30);
+
+}
+
