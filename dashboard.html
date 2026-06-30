@@ -1,1160 +1,275 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-
 <head>
-
     <meta charset="UTF-8">
-
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0">
-
-    <title>Nutri+ Dashboard</title>
-
-    <!-- Remix Icons -->
-
-    <link
-        href="https://cdn.jsdelivr.net/npm/remixicon/fonts/remixicon.css"
-        rel="stylesheet">
-
-    <!-- Font Awesome -->
-
-    <link
-        rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css">
-
-    <!-- CSS -->
-
-    <link rel="stylesheet"
-          href="css/dashboard.css">
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NUTRI+ | Dashboard</title>
+    <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
-
 <body>
-
-<!--====================================================-->
-<!-- BACKGROUND -->
-<!--====================================================-->
-
-<div class="background-animation"></div>
-
-<div class="app">
-
-<!--====================================================-->
-<!-- 01 • SIDEBAR DESKTOP -->
-<!--====================================================-->
-
-<aside class="sidebar">
-
-    <!-- Logo -->
-
-    <div class="logo">
-
-        <h1>
-
-            NUTRI<span>+</span>
-
-        </h1>
-
-    </div>
-
-    <!-- Perfil -->
-
-    <div class="profile">
-
-        <label for="profileUpload">
-
-            <img
-
-                id="profilePhoto"
-
-                src="assets/img/default-profile.png"
-
-                alt="Foto do usuário">
-
-        </label>
-
-        <input
-
-            id="profileUpload"
-
-            type="file"
-
-            hidden
-
-            accept="image/*">
-
-        <h2 id="userName">
-
-            Vinícius
-
-        </h2>
-
-        <p class="plan intelligent"
-           id="userPlan">
-
-            Nutri Inteligente
-
-        </p>
-
-    </div>
-
-    <!-- Menu -->
-
-    <nav class="sidebar-menu">
-
-        <a class="active">
-
-            <i class="ri-home-5-fill"></i>
-
-            <span>Dashboard</span>
-
-        </a>
-
-        <a>
-
-            <i class="ri-restaurant-line"></i>
-
-            <span>Refeições</span>
-
-        </a>
-
-        <a>
-
-            <i class="ri-apple-line"></i>
-
-            <span>Alimentos</span>
-
-        </a>
-
-        <a>
-
-            <i class="ri-history-line"></i>
-
-            <span>Histórico</span>
-
-        </a>
-
-        <a>
-
-            <i class="ri-bar-chart-box-line"></i>
-
-            <span>Estatísticas</span>
-
-        </a>
-
-        <a>
-
-            <i class="ri-award-line"></i>
-
-            <span>Conquistas</span>
-
-        </a>
-
-        <a>
-
-            <i class="ri-vip-crown-line"></i>
-
-            <span>Meu Plano</span>
-
-        </a>
-
-        <a>
-
-            <i class="ri-article-line"></i>
-
-            <span>Feed</span>
-
-        </a>
-
-        <a>
-
-            <i class="ri-settings-3-line"></i>
-
-            <span>Configurações</span>
-
-        </a>
-
-    </nav>
-
-    <!-- Meta -->
-
-    <div class="daily-goal">
-
-        <small>
-
-            Sua meta diária
-
-        </small>
-
-        <h2 id="goalCalories">
-
-            2500 kcal
-
-        </h2>
-
-        <p>
-
-            Você está no caminho certo!
-
-        </p>
-
-        <button>
-
-            Ver detalhes
-
-        </button>
-
-    </div>
-
-</aside>
-
-<!--====================================================-->
-<!-- 02 • CONTEÚDO -->
-<!--====================================================-->
-
-<main class="content">
-
-<!--====================================================-->
-<!-- 03 • HEADER -->
-<!--====================================================-->
-
-<header class="top-header">
-
-    <div class="welcome">
-
-        <h3>
-
-            Bom dia,
-
-        </h3>
-
-        <h1>
-
-            <span id="headerUserName">
-
-                Vinícius
-
-            </span>
-
-            👋
-
-        </h1>
-
-    </div>
-
-    <div class="header-actions">
-
-        <!-- Notificações -->
-
-        <button
-            class="notification-btn">
-
-            <i class="ri-notification-3-line"></i>
-
-            <span class="notification-dot"></span>
-
-        </button>
-
-        <!-- Sequência -->
-
-        <div class="streak-card">
-
-            🔥
-
-            <strong id="streakDays">
-
-                16
-
-            </strong>
-
-            <span>
-
-                dias
-
-            </span>
-
-        </div>
-
-    </div>
-
-</header>
-
-<!--====================================================-->
-<!-- 04 • PESQUISA -->
-<!--====================================================-->
-
-<section class="search-section">
-
-    <div class="search-box">
-
-        <i class="ri-search-line"></i>
-
-        <input
-
-            id="foodSearch"
-
-            type="text"
-
-            placeholder="Pesquisar alimentos, refeições ou receitas...">
-
-        <button>
-
-            <i class="ri-equalizer-line"></i>
-
-        </button>
-
-    </div>
-
-</section>
-
-<!--====================================================-->
-<!-- 05 • HERO CARD -->
-<!--====================================================-->
-
-<section class="hero-card fade-up">
-
-    <!-- Foto da refeição -->
-
-    <div class="hero-image">
-
-        <img
-            id="heroFoodImage"
-            src="assets/img/salada.png"
-            alt="Refeição">
-
-    </div>
-
-    <!-- Informações -->
-
-    <div class="hero-info">
-
-        <span class="hero-title">
-
-            Seu consumo de hoje
-
-        </span>
-
-        <h1>
-
-            <span id="todayCalories">
-
-                1840
-
-            </span>
-
-            kcal
-
-        </h1>
-
-        <small>
-
-            Meta diária:
-            <strong id="dailyGoal">
-
-                2500 kcal
-
-            </strong>
-
-        </small>
-
-        <!-- Progresso -->
-
-        <div class="progress-group">
-
-            <!-- Calorias -->
-
-            <div class="progress-item">
-
-                <div class="progress-top">
-
-                    <span>Calorias</span>
-
-                    <strong id="progressCalories">
-
-                        73%
-
-                    </strong>
-
+    <div class="app-container">
+        
+        <aside class="sidebar">
+            <div class="logo">
+                <h2>NUTRI <span>+</span></h2>
+            </div>
+            
+            <div class="user-profile-sidebar">
+                <img src="https://i.pravatar.cc/150?img=11" alt="Perfil Vinícius" class="avatar">
+                <div class="user-info">
+                    <p class="greeting">Bom dia,</p>
+                    <h3 class="user-name">Vinícius 👋</h3>
+                    <span class="badge-nutri">Nutri Inteligente</span>
                 </div>
+            </div>
 
-                <div class="progress-bar">
+            <nav class="sidebar-nav">
+                <a href="#" class="active"><i class="fas fa-home"></i> Dashboard</a>
+                <a href="#"><i class="fas fa-utensils"></i> Refeições</a>
+                <a href="#"><i class="fas fa-apple-alt"></i> Alimentos</a>
+                <a href="#"><i class="far fa-clock"></i> Histórico</a>
+                <a href="#"><i class="fas fa-chart-bar"></i> Estatísticas</a>
+                <a href="#"><i class="fas fa-trophy"></i> Conquistas</a>
+                <a href="#"><i class="fas fa-book-open"></i> Meu Plano</a>
+                <a href="#" class="nav-feed"><i class="far fa-comment-alt"></i> Feed <span class="tag-novo">Novo</span></a>
+                <a href="#"><i class="fas fa-cog"></i> Configurações</a>
+            </nav>
 
-                    <div
-                        id="progressCaloriesBar"
-                        class="progress-fill calories">
+            <div class="sidebar-goal">
+                <h4>Sua meta diária</h4>
+                <div class="goal-calories">
+                    <i class="fas fa-fire"></i>
+                    <h2>2500 <span>kcal</span></h2>
+                </div>
+                <p class="goal-msg">Você está no caminho certo!</p>
+                <a href="#" class="btn-details">Ver detalhes</a>
+            </div>
+        </aside>
 
+        <main class="main-content">
+            <header class="top-header">
+                <div class="search-bar">
+                    <i class="fas fa-search"></i>
+                    <input type="text" placeholder="Pesquisar alimentos, refeições ou receitas...">
+                </div>
+                <div class="header-actions">
+                    <div class="notifications">
+                        <i class="far fa-bell"></i>
+                        <span class="notification-dot"></span>
+                    </div>
+                    <div class="streak">
+                        <i class="fas fa-fire" style="color: #f97316;"></i> 16 dias
+                    </div>
+                </div>
+            </header>
+
+            <section class="progress-section">
+                <h2 class="section-title">Seu progresso de hoje</h2>
+                <div class="progress-card">
+                    <img src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&q=80" alt="Prato Saudável" class="progress-img">
+                    
+                    <div class="progress-details">
+                        <div class="calories-main">
+                            <h1>1840 <span>/ 2500 kcal</span></h1>
+                            <div class="progress-bar-container">
+                                <div class="progress-bar-fill" style="width: 73%;"></div>
+                            </div>
+                            <p>73% da meta diária</p>
+                        </div>
+                        
+                        <div class="macros">
+                            <div class="macro-item">
+                                <span class="macro-label">Proteínas</span>
+                                <span class="macro-value">128 <span>/ 160 g</span></span>
+                                <span class="macro-pct text-green">80%</span>
+                            </div>
+                            <div class="macro-item">
+                                <span class="macro-label">Carboidratos</span>
+                                <span class="macro-value">210 <span>/ 280 g</span></span>
+                                <span class="macro-pct text-orange">75%</span>
+                            </div>
+                            <div class="macro-item">
+                                <span class="macro-label">Gorduras</span>
+                                <span class="macro-value">58 <span>/ 70 g</span></span>
+                                <span class="macro-pct text-purple">83%</span>
+                            </div>
+                        </div>
                     </div>
 
+                    <div class="progress-circle-wrap">
+                        <div class="circular-chart">
+                            <i class="fas fa-fire"></i>
+                        </div>
+                        <div class="circle-text">
+                            <h4>Faltam</h4>
+                            <h3>660 kcal</h3>
+                            <p>para sua meta</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="meals-section">
+                <div class="section-header">
+                    <h2 class="section-title">Suas refeições</h2>
+                    <a href="#" class="view-all">Ver todas</a>
                 </div>
 
-            </div>
-
-            <!-- Proteínas -->
-
-            <div class="progress-item">
-
-                <div class="progress-top">
-
-                    <span>
-
-                        Proteínas
-
-                    </span>
-
-                    <strong id="todayProtein">
-
-                        128 / 160 g
-
-                    </strong>
-
-                </div>
-
-                <div class="progress-bar">
-
-                    <div
-                        id="proteinBar"
-                        class="progress-fill protein">
-
+                <div class="meal-list">
+                    <div class="meal-card completed">
+                        <div class="meal-icon bg-green-light">
+                            <i class="fas fa-coffee text-green"></i>
+                        </div>
+                        <div class="meal-info">
+                            <h4>Café da manhã</h4>
+                            <p>07:00</p>
+                        </div>
+                        <div class="meal-calories">
+                            <strong>390 kcal</strong>
+                        </div>
+                        <div class="meal-items">
+                            <ul>
+                                <li>Aveia 40g</li>
+                                <li>Banana 1 unid.</li>
+                                <li>Ovos mexidos 2 unid.</li>
+                                <li>Café sem açúcar 200ml</li>
+                            </ul>
+                        </div>
+                        <div class="meal-status">
+                            <div class="status-badge"><i class="fas fa-check-circle"></i> Concluída</div>
+                            <span class="status-time">07:32</span>
+                        </div>
                     </div>
 
-                </div>
-
-            </div>
-
-            <!-- Carboidratos -->
-
-            <div class="progress-item">
-
-                <div class="progress-top">
-
-                    <span>
-
-                        Carboidratos
-
-                    </span>
-
-                    <strong id="todayCarbs">
-
-                        210 / 280 g
-
-                    </strong>
-
-                </div>
-
-                <div class="progress-bar">
-
-                    <div
-                        id="carbBar"
-                        class="progress-fill carbs">
-
+                    <div class="meal-card completed">
+                        <div class="meal-icon bg-purple-light">
+                            <i class="fas fa-apple-alt text-purple"></i>
+                        </div>
+                        <div class="meal-info">
+                            <h4>Lanche da manhã</h4>
+                            <p>10:00</p>
+                        </div>
+                        <div class="meal-calories">
+                            <strong>200 kcal</strong>
+                        </div>
+                        <div class="meal-items">
+                            <ul>
+                                <li>Maçã 1 unid.</li>
+                                <li>Iogurte natural 170g</li>
+                                <li>Castanhas 15g</li>
+                            </ul>
+                        </div>
+                        <div class="meal-status">
+                            <div class="status-badge"><i class="fas fa-check-circle"></i> Concluída</div>
+                            <span class="status-time">10:12</span>
+                        </div>
                     </div>
-
-                </div>
-
-            </div>
-
-            <!-- Gorduras -->
-
-            <div class="progress-item">
-
-                <div class="progress-top">
-
-                    <span>
-
-                        Gorduras
-
-                    </span>
-
-                    <strong id="todayFat">
-
-                        58 / 70 g
-
-                    </strong>
-
-                </div>
-
-                <div class="progress-bar">
-
-                    <div
-                        id="fatBar"
-                        class="progress-fill fats">
-
+                    
+                    <div class="meal-card completed">
+                        <div class="meal-icon bg-orange-light">
+                            <i class="fas fa-concierge-bell text-orange"></i>
+                        </div>
+                        <div class="meal-info">
+                            <h4>Almoço</h4>
+                            <p>12:30</p>
+                        </div>
+                        <div class="meal-calories">
+                            <strong>720 kcal</strong>
+                        </div>
+                        <div class="meal-items">
+                            <ul>
+                                <li>Frango grelhado 150g</li>
+                                <li>Arroz integral 100g</li>
+                                <li>Batata doce assada 100g</li>
+                                <li>Salada verde à vontade</li>
+                            </ul>
+                        </div>
+                        <div class="meal-status">
+                            <div class="status-badge"><i class="fas fa-check-circle"></i> Concluída</div>
+                            <span class="status-time">13:05</span>
+                        </div>
                     </div>
+                </div>
+            </section>
+        </main>
 
+        <aside class="right-panel">
+            <div class="congrats-card">
+                <h3>🎉 Parabéns, Vinícius!</h3>
+                <p>Você ultrapassou 80% da sua meta diária.</p>
+                <div class="congrats-progress">
+                    <div class="progress-bar-container">
+                        <div class="progress-bar-fill" style="width: 80%;"></div>
+                    </div>
+                    <div class="congrats-labels">
+                        <span>73%</span>
+                        <span>100%</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="achievements-section">
+                <div class="section-header">
+                    <h2 class="section-title">Suas conquistas</h2>
+                    <span class="streak-text">16 dias</span>
+                </div>
+                <div class="badges-grid">
+                    <div class="badge-item"><div class="badge-icon bronze"><i class="fas fa-award"></i></div><p>3 dias</p></div>
+                    <div class="badge-item"><div class="badge-icon bronze"><i class="fas fa-award"></i></div><p>7 dias</p></div>
+                    <div class="badge-item"><div class="badge-icon silver"><i class="fas fa-award"></i></div><p>15 dias</p></div>
+                    <div class="badge-item"><div class="badge-icon gold"><i class="fas fa-medal"></i></div><p>30 dias</p></div>
+                    <div class="badge-item"><div class="badge-icon platinum"><i class="fas fa-crown"></i></div><p>45 dias</p></div>
+                </div>
+            </div>
+
+            <div class="daily-summary">
+                <h2 class="section-title">Resumo do dia</h2>
+                
+                <div class="summary-item">
+                    <div class="summary-label"><i class="fas fa-fire text-orange"></i> Calorias</div>
+                    <div class="summary-bar-wrap">
+                        <span class="summary-value">1840 <small>/ 2500 kcal</small></span>
+                        <div class="progress-bar-container mini"><div class="progress-bar-fill bg-orange" style="width: 73%;"></div></div>
+                    </div>
+                </div>
+                
+                <div class="summary-item">
+                    <div class="summary-label"><i class="fas fa-dumbbell text-green"></i> Proteínas</div>
+                    <div class="summary-bar-wrap">
+                        <span class="summary-value">128 <small>/ 160 g</small></span>
+                        <div class="progress-bar-container mini"><div class="progress-bar-fill bg-green" style="width: 80%;"></div></div>
+                    </div>
                 </div>
 
+                <div class="water-tracker">
+                    <div class="water-header">
+                        <h4>Água</h4>
+                        <span>1.8 / 2.5 L</span>
+                    </div>
+                    <div class="water-drops">
+                        <i class="fas fa-tint active"></i>
+                        <i class="fas fa-tint active"></i>
+                        <i class="fas fa-tint active"></i>
+                        <i class="fas fa-tint active"></i>
+                        <i class="fas fa-tint active"></i>
+                        <i class="fas fa-tint text-gray"></i>
+                        <div class="add-water"><i class="fas fa-plus"></i></div>
+                    </div>
+                </div>
             </div>
+        </aside>
 
-        </div>
-
-    </div>
-
-</section>
-
-<!--====================================================-->
-<!-- 06 • BANNER DE PARABÉNS -->
-<!-- Exibido apenas pelo JavaScript -->
-<!--====================================================-->
-
-<section
-    id="congratulationsBanner"
-    class="banner-success fade-up">
-
-    <div class="banner-icon">
-
-        🎉
+        <nav class="mobile-bottom-nav">
+            <a href="#" class="active"><i class="fas fa-home"></i><span>Home</span></a>
+            <a href="#"><i class="fas fa-utensils"></i><span>Refeições</span></a>
+            <a href="#" class="add-btn"><i class="fas fa-plus"></i></a>
+            <a href="#"><i class="far fa-clock"></i><span>Histórico</span></a>
+            <a href="#"><i class="far fa-user"></i><span>Perfil</span></a>
+        </nav>
 
     </div>
-
-    <div>
-
-        <h3 id="bannerTitle">
-
-            Parabéns!
-
-        </h3>
-
-        <p id="bannerText">
-
-            Você alcançou sua meta diária.
-
-        </p>
-
-    </div>
-
-</section>
-
-<!--====================================================-->
-<!-- 07 • RESUMO DO DIA -->
-<!--====================================================-->
-
-<section class="summary-grid">
-
-    <!-- Sequência -->
-
-    <div class="summary-card">
-
-        <div class="summary-icon">
-
-            🔥
-
-        </div>
-
-        <h3>
-
-            Sequência
-
-        </h3>
-
-        <strong id="summaryStreak">
-
-            16 dias
-
-        </strong>
-
-        <small>
-
-            Continue para desbloquear a próxima medalha.
-
-        </small>
-
-    </div>
-
-    <!-- Próxima medalha -->
-
-    <div class="summary-card">
-
-        <div class="summary-icon">
-
-            🏅
-
-        </div>
-
-        <h3>
-
-            Próxima Medalha
-
-        </h3>
-
-        <strong id="nextMedal">
-
-            Determinado
-
-        </strong>
-
-        <small>
-
-            Faltam 5 dias
-
-        </small>
-
-    </div>
-
-    <!-- Meta -->
-
-    <div class="summary-card">
-
-        <div class="summary-icon">
-
-            🎯
-
-        </div>
-
-        <h3>
-
-            Meta Diária
-
-        </h3>
-
-        <strong id="goalStatus">
-
-            73%
-
-        </strong>
-
-        <small>
-
-            Você está indo muito bem!
-
-        </small>
-
-    </div>
-
-</section>
-
-<!--====================================================-->
-<!-- 08 • REFEIÇÕES -->
-<!--====================================================-->
-<section class="meals-section fade-up">
-
-    <!-- Título -->
-
-    <div class="section-header">
-
-        <h2>Suas refeições</h2>
-
-        <a href="#">Ver todas</a>
-
-    </div>
-
-    <!-- Grid -->
-
-    <div class="meals-grid">
-
-        <!--====================================================-->
-        <!-- CAFÉ DA MANHÃ -->
-        <!--====================================================-->
-
-        <article class="meal-card" id="breakfastCard">
-
-            <img
-                src="assets/img/refeicoes/cafe-manha.jpg"
-                alt="Café da manhã"
-                class="meal-image">
-
-            <div class="meal-body">
-
-                <h3>Café da manhã</h3>
-
-                <p class="meal-calories">
-
-                    390 kcal
-
-                </p>
-
-                <ul class="meal-foods">
-
-                    <li>🥚 Ovos • 2 un.</li>
-
-                    <li>🍌 Banana • 100 g</li>
-
-                    <li>☕ Café • 200 ml</li>
-
-                    <li>🥣 Aveia • 40 g</li>
-
-                </ul>
-
-            </div>
-
-            <button
-                class="meal-check"
-                id="checkBreakfast">
-
-                <i class="ri-check-line"></i>
-
-            </button>
-
-        </article>
-
-        <!--====================================================-->
-        <!-- ALMOÇO -->
-        <!--====================================================-->
-
-        <article class="meal-card" id="lunchCard">
-
-            <img
-                src="assets/img/refeicoes/almoco.jpg"
-                class="meal-image">
-
-            <div class="meal-body">
-
-                <h3>Almoço</h3>
-
-                <p class="meal-calories">
-
-                    820 kcal
-
-                </p>
-
-                <ul class="meal-foods">
-
-                    <li>🍗 Frango • 150 g</li>
-
-                    <li>🍚 Arroz • 120 g</li>
-
-                    <li>🥗 Salada • Livre</li>
-
-                    <li>🥦 Brócolis • 80 g</li>
-
-                </ul>
-
-            </div>
-
-            <button
-                class="meal-check"
-                id="checkLunch">
-
-                <i class="ri-check-line"></i>
-
-            </button>
-
-        </article>
-
-        <!--====================================================-->
-        <!-- LANCHE -->
-        <!--====================================================-->
-
-        <article class="meal-card" id="snackCard">
-
-            <img
-                src="assets/img/refeicoes/lanche-tarde.jpg"
-                class="meal-image">
-
-            <div class="meal-body">
-
-                <h3>Lanche</h3>
-
-                <p class="meal-calories">
-
-                    290 kcal
-
-                </p>
-
-                <ul class="meal-foods">
-
-                    <li>🥪 Pão Integral • 2 fatias</li>
-
-                    <li>🧀 Queijo • 40 g</li>
-
-                    <li>🍎 Maçã • 1 un.</li>
-
-                </ul>
-
-            </div>
-
-            <button
-                class="meal-check"
-                id="checkSnack">
-
-                <i class="ri-check-line"></i>
-
-            </button>
-
-        </article>
-
-        <!--====================================================-->
-        <!-- SUPLEMENTOS -->
-        <!--====================================================-->
-
-        <article class="meal-card" id="supplementCard">
-
-            <img
-                src="assets/img/refeicoes/suplementos.jpg"
-                class="meal-image">
-
-            <div class="meal-body">
-
-                <h3>Suplementos</h3>
-
-                <p class="meal-calories">
-
-                    180 kcal
-
-                </p>
-
-                <ul class="meal-foods">
-
-                    <li>🥤 Whey • 30 g</li>
-
-                    <li>🍌 Banana • 100 g</li>
-
-                    <li>⚡ Creatina • 5 g</li>
-
-                </ul>
-
-            </div>
-
-            <button
-                class="meal-check"
-                id="checkSupplement">
-
-                <i class="ri-check-line"></i>
-
-            </button>
-
-        </article>
-
-        <!--====================================================-->
-        <!-- JANTAR -->
-        <!--====================================================-->
-
-        <article class="meal-card" id="dinnerCard">
-
-            <img
-                src="assets/img/refeicoes/jantar.jpg"
-                class="meal-image">
-
-            <div class="meal-body">
-
-                <h3>Jantar</h3>
-
-                <p class="meal-calories">
-
-                    520 kcal
-
-                </p>
-
-                <ul class="meal-foods">
-
-                    <li>🐟 Tilápia • 180 g</li>
-
-                    <li>🥔 Batata Doce • 150 g</li>
-
-                    <li>🥗 Salada • Livre</li>
-
-                </ul>
-
-            </div>
-
-            <button
-                class="meal-check"
-                id="checkDinner">
-
-                <i class="ri-check-line"></i>
-
-            </button>
-
-        </article>
-
-        <!--====================================================-->
-        <!-- FEED -->
-        <!--====================================================-->
-
-        <article class="meal-card feed-card">
-
-            <div class="feed-content">
-
-                <i class="ri-article-line"></i>
-
-                <h3>Feed</h3>
-
-                <p>
-
-                    Receitas, dicas nutricionais e novidades.
-
-                </p>
-
-                <button>
-
-                    Explorar
-
-                </button>
-
-            </div>
-
-        </article>
-
-    </div>
-
-</section>
-
-    <!--====================================================-->
-<!-- 09 • MENU MOBILE -->
-<!--====================================================-->
-
-    <!--====================================================-->
-<!-- 09 • UPGRADE DE PLANO -->
-<!--====================================================-->
-
-<section class="upgrade-banner fade-up">
-
-    <div class="upgrade-text">
-
-        <span class="badge-upgrade">
-
-            Upgrade
-
-        </span>
-
-        <h2>
-
-            Evolua para o plano
-            <strong>Max Nutri</strong>
-
-        </h2>
-
-        <p>
-
-            Receba planos personalizados, IA Nutri+, gráficos avançados,
-            receitas exclusivas e acompanhamento profissional.
-
-        </p>
-
-    </div>
-
-    <div class="upgrade-action">
-
-        <button id="upgradeButton">
-
-            Conhecer planos
-
-        </button>
-
-    </div>
-
-</section>
-
-<!--====================================================-->
-<!-- 10 • HISTÓRICO RÁPIDO -->
-<!--====================================================-->
-
-<section class="history-preview fade-up">
-
-    <div class="section-header">
-
-        <h2>
-
-            Histórico
-
-        </h2>
-
-        <a href="#">
-
-            Ver completo
-
-        </a>
-
-    </div>
-
-    <div class="history-list">
-
-        <div class="history-item">
-
-            <span>
-
-                Hoje
-
-            </span>
-
-            <strong>
-
-                1840 kcal
-
-            </strong>
-
-            <small>
-
-                73%
-
-            </small>
-
-        </div>
-
-        <div class="history-item">
-
-            <span>
-
-                Ontem
-
-            </span>
-
-            <strong>
-
-                2475 kcal
-
-            </strong>
-
-            <small class="success">
-
-                ✔ 100%
-
-            </small>
-
-        </div>
-
-        <div class="history-item">
-
-            <span>
-
-                Segunda
-
-            </span>
-
-            <strong>
-
-                2510 kcal
-
-            </strong>
-
-            <small class="success">
-
-                ✔ 100%
-
-            </small>
-
-        </div>
-
-    </div>
-
-</section>
-
-<!--====================================================-->
-<!-- 11 • RODAPÉ DO DASHBOARD -->
-<!--====================================================-->
-
-<footer class="dashboard-footer">
-
-    <span>
-
-        Nutri+ © 2026
-
-    </span>
-
-    <small>
-
-        Alimentação inteligente para uma vida melhor.
-
-    </small>
-
-</footer>
-
-</main>
-
-</div>
-
-<!--====================================================-->
-<!-- 12 • MENU MOBILE -->
-<!--====================================================-->
-
-<nav class="bottom-nav">
-
-    <!-- HOME -->
-
-    <a href="#"
-       class="nav-item active">
-
-        <i class="ri-home-5-fill"></i>
-
-        <span>Home</span>
-
-    </a>
-
-    <!-- REFEIÇÕES -->
-
-    <a href="#"
-       class="nav-item">
-
-        <i class="ri-restaurant-2-line"></i>
-
-        <span>Refeições</span>
-
-    </a>
-
-    <!-- FEED -->
-
-    <a href="#"
-       class="nav-item feed-button">
-
-        <i class="ri-article-line"></i>
-
-        <span>Feed</span>
-
-    </a>
-
-    <!-- HISTÓRICO -->
-
-    <a href="#"
-       class="nav-item">
-
-        <i class="ri-history-line"></i>
-
-        <span>Histórico</span>
-
-    </a>
-
-    <!-- PERFIL -->
-
-    <a href="#"
-       class="nav-item">
-
-        <i class="ri-user-3-line"></i>
-
-        <span>Perfil</span>
-
-    </a>
-
-</nav>
-
-<!--====================================================-->
-<!-- 13 • BOTÃO FLUTUANTE (FUTURAS AÇÕES) -->
-<!--====================================================-->
-
-<button
-        id="floatingActionButton"
-        class="floating-button">
-
-    <i class="ri-add-line"></i>
-
-</button>
-
-<!--====================================================-->
-<!-- 14 • MODAIS (FUTURO) -->
-<!--====================================================-->
-
-<!--
-Será utilizado futuramente para:
-
-• Selecionar alimentos
-
-• Adicionar refeições
-
-• Configurações
-
-• Planos
-
-• Receita IA
-
--->
-
-<div id="modalContainer"></div>
-
-<!--====================================================-->
-<!-- 15 • SCRIPTS -->
-<!--====================================================-->
-
-<script src="js/dashboard.js"></script>
-
+    <script src="js/dashboard.js"></script>
 </body>
-
-</html> 
-    
+</html>
