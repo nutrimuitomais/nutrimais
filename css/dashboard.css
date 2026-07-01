@@ -1,37 +1,3420 @@
-:root {
-    --primary: #22c55e;
-    --bg: #f4f7f6;
-    --text: #1e293b;
-    --card-bg: #ffffff;
-    --shadow: 0 10px 20px rgba(0,0,0,0.05);
+/*==========================================================
+                    NUTRI+ DASHBOARD
+==========================================================*/
+
+/*==========================================================
+                    RESET
+==========================================================*/
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
 }
 
-* { margin: 0; padding: 0; box-sizing: border-box; }
-body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); }
+html{
 
-.app-container { display: grid; grid-template-columns: 240px 1fr 300px; min-height: 100vh; gap: 20px; padding: 20px; }
+    scroll-behavior:smooth;
 
-/* Sidebar */
-.sidebar { background: #fff; padding: 30px; border-radius: 20px; display: flex; flex-direction: column; }
-.logo { font-size: 1.5rem; font-weight: 800; color: var(--primary); margin-bottom: 40px; }
-.nav-links a { display: block; padding: 15px; text-decoration: none; color: #64748b; font-weight: 500; border-radius: 10px; margin-bottom: 5px; }
-.nav-links a.active { background: var(--primary); color: white; }
-
-/* Main Content */
-.main-content { display: flex; flex-direction: column; gap: 20px; }
-.stat-card { background: var(--card-bg); padding: 30px; border-radius: 20px; display: flex; justify-content: space-between; align-items: center; box-shadow: var(--shadow); }
-.bar-bg { width: 100%; height: 10px; background: #e2e8f0; border-radius: 5px; margin-top: 10px; }
-.bar-fill { height: 100%; background: var(--primary); border-radius: 5px; width: 0%; transition: width 0.4s ease; }
-
-.meal-list { display: flex; flex-direction: column; gap: 15px; }
-.meal-item { background: white; padding: 20px; border-radius: 15px; display: flex; align-items: center; gap: 15px; box-shadow: 0 4px 6px rgba(0,0,0,0.02); }
-.meal-item.done { opacity: 0.6; border: 1px solid var(--primary); }
-
-/* Right Panel */
-.right-panel { display: flex; flex-direction: column; gap: 20px; }
-.info-card { background: #fff; padding: 20px; border-radius: 15px; box-shadow: var(--shadow); }
-
-@media (max-width: 1024px) {
-    .app-container { grid-template-columns: 1fr; }
-    .sidebar, .right-panel { display: none; }
 }
+
+body{
+
+    font-family:'Poppins',sans-serif;
+
+    overflow-x:hidden;
+
+    background:#F6FFF8;
+
+    color:#1F2937;
+
+}
+
+/*==========================================================
+                    VARIÁVEIS
+==========================================================*/
+
+:root{
+
+    /*==============================
+            CORES PRINCIPAIS
+    ==============================*/
+
+    --np-primary:#1EB980;
+
+    --np-primary-dark:#12956A;
+
+    --np-primary-light:#DFF9EE;
+
+    --np-secondary:#49C78D;
+
+    --np-white:#FFFFFF;
+
+    --np-background:#F6FFF8;
+
+    --np-card:#FFFFFF;
+
+    --np-border:#E8F2EC;
+
+    --np-text:#24343B;
+
+    --np-text-light:#6F7D86;
+
+    /*==============================
+            PLANOS
+    ==============================*/
+
+    --np-plan-inteligente:#00B66D;
+
+    --np-plan-max:#C7CDD4;
+
+    --np-plan-super:#E4B100;
+
+    /*==============================
+            BARRAS
+    ==============================*/
+
+    --np-calories:#16C47F;
+
+    --np-protein:#2D8CFF;
+
+    --np-carbs:#F4B400;
+
+    --np-fat:#A855F7;
+
+    /*==============================
+            SOMBRAS
+    ==============================*/
+
+    --np-shadow-small:
+
+        0 4px 15px rgba(0,0,0,.05);
+
+    --np-shadow-medium:
+
+        0 10px 30px rgba(0,0,0,.08);
+
+    --np-shadow-large:
+
+        0 20px 60px rgba(0,0,0,.12);
+
+    /*==============================
+            RAIOS
+    ==============================*/
+
+    --np-radius-small:12px;
+
+    --np-radius-medium:20px;
+
+    --np-radius-large:32px;
+
+    --np-radius-round:999px;
+
+    /*==============================
+            TRANSIÇÕES
+    ==============================*/
+
+    --np-transition:.35s ease;
+
+}
+
+/*==========================================================
+                    BODY
+==========================================================*/
+
+body{
+
+    min-height:100vh;
+
+    background:var(--np-background);
+
+    position:relative;
+
+}
+
+/*==========================================================
+                    DASHBOARD
+==========================================================*/
+
+#np-dashboard{
+
+    position:relative;
+
+    width:100%;
+
+    min-height:100vh;
+
+    overflow:hidden;
+
+}
+
+/*==========================================================
+                CONTAINER PRINCIPAL
+==========================================================*/
+
+#np-dashboard-container{
+
+    width:min(1450px,92%);
+
+    margin:auto;
+
+    position:relative;
+
+    z-index:10;
+
+    padding-top:35px;
+
+    padding-bottom:80px;
+
+}
+
+/*==========================================================
+                CONTEÚDO
+==========================================================*/
+
+#np-dashboard-content{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:35px;
+
+}
+
+/*==========================================================
+                BOTÕES GERAIS
+==========================================================*/
+
+button{
+
+    font-family:'Poppins',sans-serif;
+
+    border:none;
+
+    outline:none;
+
+    cursor:pointer;
+
+    transition:var(--np-transition);
+
+}
+
+button:hover{
+
+    transform:translateY(-2px);
+
+}
+
+button:active{
+
+    transform:scale(.98);
+
+}
+
+/*==========================================================
+                INPUTS
+==========================================================*/
+
+input,
+select{
+
+    font-family:'Poppins',sans-serif;
+
+    outline:none;
+
+    transition:.25s;
+
+}
+
+input:focus,
+select:focus{
+
+    border-color:var(--np-primary);
+
+}
+
+/*==========================================================
+                IMAGENS
+==========================================================*/
+
+img{
+
+    display:block;
+
+    max-width:100%;
+
+    user-select:none;
+
+}
+
+/*==========================================================
+                LINKS
+==========================================================*/
+
+a{
+
+    text-decoration:none;
+
+    color:inherit;
+
+}
+
+ul{
+
+    list-style:none;
+
+}
+
+/*==========================================================
+                BACKGROUND PREMIUM
+==========================================================*/
+
+#np-dashboard-background{
+
+    position:fixed;
+
+    inset:0;
+
+    overflow:hidden;
+
+    z-index:-1;
+
+    background:
+        linear-gradient(
+            180deg,
+            #F8FFF9 0%,
+            #F4FFF7 35%,
+            #F9FFFB 100%
+        );
+
+}
+
+/*==========================================================
+                OVERLAY SUAVE
+==========================================================*/
+
+.np-bg-overlay{
+
+    position:absolute;
+
+    inset:0;
+
+    background:
+
+        radial-gradient(circle at top left,
+        rgba(30,185,128,.12),
+        transparent 40%),
+
+        radial-gradient(circle at bottom right,
+        rgba(30,185,128,.08),
+        transparent 35%);
+
+}
+
+/*==========================================================
+                GRADIENTE CENTRAL
+==========================================================*/
+
+.np-bg-gradient{
+
+    position:absolute;
+
+    width:1300px;
+
+    height:1300px;
+
+    left:50%;
+
+    top:-500px;
+
+    transform:translateX(-50%);
+
+    border-radius:50%;
+
+    background:
+
+        radial-gradient(
+
+            circle,
+
+            rgba(30,185,128,.14) 0%,
+
+            rgba(30,185,128,.07) 35%,
+
+            rgba(30,185,128,0) 75%
+
+        );
+
+    filter:blur(60px);
+
+    animation:
+
+        npGradientFloat 16s ease-in-out infinite;
+
+}
+
+/*==========================================================
+                CÍRCULOS ORGÂNICOS
+==========================================================*/
+
+.np-bg-circle{
+
+    position:absolute;
+
+    border-radius:50%;
+
+    filter:blur(35px);
+
+    opacity:.75;
+
+}
+
+/*======================
+        CIRCLE 1
+=======================*/
+
+.np-bg-circle-1{
+
+    width:550px;
+
+    height:550px;
+
+    background:
+
+        rgba(46,204,113,.14);
+
+    left:-180px;
+
+    top:120px;
+
+    animation:
+
+        npFloatOne 18s ease-in-out infinite;
+
+}
+
+/*======================
+        CIRCLE 2
+=======================*/
+
+.np-bg-circle-2{
+
+    width:700px;
+
+    height:700px;
+
+    background:
+
+        rgba(30,185,128,.10);
+
+    right:-220px;
+
+    top:320px;
+
+    animation:
+
+        npFloatTwo 22s ease-in-out infinite;
+
+}
+
+/*======================
+        CIRCLE 3
+=======================*/
+
+.np-bg-circle-3{
+
+    width:420px;
+
+    height:420px;
+
+    background:
+
+        rgba(68,214,157,.16);
+
+    left:45%;
+
+    bottom:-140px;
+
+    animation:
+
+        npFloatThree 24s ease-in-out infinite;
+
+}
+
+/*==========================================================
+                EFEITO DE LUZ
+==========================================================*/
+
+#np-dashboard::before{
+
+    content:"";
+
+    position:absolute;
+
+    width:900px;
+
+    height:900px;
+
+    border-radius:50%;
+
+    background:
+
+        radial-gradient(
+
+            circle,
+
+            rgba(255,255,255,.55),
+
+            transparent 70%
+
+        );
+
+    top:-420px;
+
+    left:-220px;
+
+    pointer-events:none;
+
+}
+
+/*==========================================================
+                ANIMAÇÕES
+==========================================================*/
+
+@keyframes npGradientFloat{
+
+    0%{
+
+        transform:
+            translateX(-50%)
+            translateY(0px)
+            scale(1);
+
+    }
+
+    50%{
+
+        transform:
+            translateX(-50%)
+            translateY(40px)
+            scale(1.05);
+
+    }
+
+    100%{
+
+        transform:
+            translateX(-50%)
+            translateY(0px)
+            scale(1);
+
+    }
+
+}
+
+@keyframes npFloatOne{
+
+    0%{
+
+        transform:
+            translate(0,0);
+
+    }
+
+    50%{
+
+        transform:
+            translate(35px,-25px);
+
+    }
+
+    100%{
+
+        transform:
+            translate(0,0);
+
+    }
+
+}
+
+@keyframes npFloatTwo{
+
+    0%{
+
+        transform:
+            translate(0,0);
+
+    }
+
+    50%{
+
+        transform:
+            translate(-45px,30px);
+
+    }
+
+    100%{
+
+        transform:
+            translate(0,0);
+
+    }
+
+}
+
+@keyframes npFloatThree{
+
+    0%{
+
+        transform:
+            translate(0,0);
+
+    }
+
+    50%{
+
+        transform:
+            translate(-25px,-35px);
+
+    }
+
+    100%{
+
+        transform:
+            translate(0,0);
+
+    }
+
+}
+
+/*==========================================================
+                        HEADER
+==========================================================*/
+
+#np-dashboard-header{
+
+    width:100%;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    gap:30px;
+
+    padding:28px 34px;
+
+    border-radius:28px;
+
+    background:rgba(255,255,255,.82);
+
+    backdrop-filter:blur(18px);
+
+    -webkit-backdrop-filter:blur(18px);
+
+    border:1px solid rgba(255,255,255,.65);
+
+    box-shadow:0 12px 35px rgba(0,0,0,.05);
+
+    margin-bottom:25px;
+
+}
+
+/*==========================================================
+                    HEADER ESQUERDO
+==========================================================*/
+
+#np-dashboard-header-left{
+
+    flex:1;
+
+}
+
+#np-user-greeting{
+
+    font-size:2rem;
+
+    font-weight:700;
+
+    color:var(--np-text);
+
+    line-height:1.2;
+
+}
+
+#np-user-name{
+
+    color:var(--np-primary);
+
+}
+
+#np-user-message{
+
+    margin-top:8px;
+
+    font-size:.98rem;
+
+    color:var(--np-text-light);
+
+}
+
+/*==========================================================
+                    HEADER DIREITO
+==========================================================*/
+
+#np-dashboard-header-right{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:18px;
+
+}
+
+/*==========================================================
+                    BOTÕES HEADER
+==========================================================*/
+
+.np-header-button{
+
+    width:50px;
+
+    height:50px;
+
+    border-radius:50%;
+
+    background:#FFF;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    font-size:1.1rem;
+
+    color:var(--np-text);
+
+    box-shadow:var(--np-shadow-small);
+
+    position:relative;
+
+}
+
+.np-header-button:hover{
+
+    background:var(--np-primary-light);
+
+}
+
+/*==========================================================
+                    BADGE NOTIFICAÇÃO
+==========================================================*/
+
+#np-notification-badge{
+
+    position:absolute;
+
+    top:5px;
+
+    right:4px;
+
+    width:18px;
+
+    height:18px;
+
+    border-radius:50%;
+
+    background:#FF4D4F;
+
+    color:#FFF;
+
+    font-size:.65rem;
+
+    font-weight:700;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+}
+
+/*==========================================================
+                    BADGE PLANO
+==========================================================*/
+
+#np-plan-badge{
+
+    padding:10px 18px;
+
+    border-radius:999px;
+
+    font-size:.82rem;
+
+    font-weight:700;
+
+    letter-spacing:.4px;
+
+    color:#FFF;
+
+    white-space:nowrap;
+
+    animation:npPlanGlow 5s linear infinite;
+
+}
+
+/* Nutri Inteligente */
+
+.np-plan-inteligente{
+
+    background:
+
+    linear-gradient(
+        135deg,
+        #00B66D,
+        #27D989,
+        #00B66D
+    );
+
+    background-size:250%;
+
+}
+
+/* Max Nutri */
+
+.np-plan-max{
+
+    background:
+
+    linear-gradient(
+        135deg,
+        #AEB7C1,
+        #ECECEC,
+        #AEB7C1
+    );
+
+    background-size:250%;
+
+    color:#303030!important;
+
+}
+
+/* Super Nutri */
+
+.np-plan-super{
+
+    background:
+
+    linear-gradient(
+        135deg,
+        #D99A00,
+        #FFD54A,
+        #D99A00
+    );
+
+    background-size:250%;
+
+}
+
+/*==========================================================
+                    FOTO PERFIL
+==========================================================*/
+
+#np-profile-button{
+
+    border:none;
+
+    background:none;
+
+}
+
+#np-profile-avatar{
+
+    width:56px;
+
+    height:56px;
+
+    border-radius:50%;
+
+    object-fit:cover;
+
+    border:3px solid #FFF;
+
+    box-shadow:var(--np-shadow-small);
+
+    transition:.3s;
+
+}
+
+#np-profile-avatar:hover{
+
+    transform:scale(1.05);
+
+}
+
+/*==========================================================
+                    ANIMAÇÃO PLANO
+==========================================================*/
+
+@keyframes npPlanGlow{
+
+    0%{
+
+        background-position:0%;
+
+    }
+
+    100%{
+
+        background-position:250%;
+
+    }
+
+}
+
+/*==========================================================
+                MENU PERFIL
+==========================================================*/
+
+#np-dashboard-profile{
+
+    position:relative;
+
+}
+
+/*==========================================================
+                DROPDOWN PERFIL
+==========================================================*/
+
+#np-profile-dropdown{
+
+    position:absolute;
+
+    top:78px;
+
+    right:0;
+
+    width:320px;
+
+    background:rgba(255,255,255,.96);
+
+    backdrop-filter:blur(22px);
+
+    -webkit-backdrop-filter:blur(22px);
+
+    border-radius:24px;
+
+    border:1px solid rgba(255,255,255,.75);
+
+    box-shadow:
+
+        0 20px 60px rgba(0,0,0,.12);
+
+    overflow:hidden;
+
+    opacity:0;
+
+    visibility:hidden;
+
+    transform:translateY(15px);
+
+    transition:.35s;
+
+    z-index:999;
+
+}
+
+/* Classe adicionada pelo JS */
+
+#np-profile-dropdown.active{
+
+    opacity:1;
+
+    visibility:visible;
+
+    transform:translateY(0);
+
+}
+
+/*==========================================================
+                CABEÇALHO
+==========================================================*/
+
+.np-profile-dropdown-header{
+
+    padding:24px;
+
+    background:
+
+        linear-gradient(
+
+            135deg,
+
+            rgba(30,185,128,.10),
+
+            rgba(30,185,128,.02)
+
+        );
+
+    border-bottom:1px solid #E9F4EF;
+
+}
+
+#np-profile-dropdown-name{
+
+    font-size:1.1rem;
+
+    font-weight:700;
+
+    color:var(--np-text);
+
+}
+
+#np-profile-dropdown-email{
+
+    margin-top:4px;
+
+    font-size:.84rem;
+
+    color:var(--np-text-light);
+
+}
+
+/*==========================================================
+                MENU
+==========================================================*/
+
+#np-profile-menu{
+
+    display:flex;
+
+    flex-direction:column;
+
+}
+
+/*==========================================================
+                BOTÕES
+==========================================================*/
+
+#np-profile-menu button{
+
+    width:100%;
+
+    background:transparent;
+
+    display:flex;
+
+    align-items:center;
+
+    gap:15px;
+
+    padding:16px 24px;
+
+    font-size:.93rem;
+
+    color:var(--np-text);
+
+    transition:.25s;
+
+}
+
+#np-profile-menu button i{
+
+    width:20px;
+
+    text-align:center;
+
+    color:var(--np-primary);
+
+    font-size:1rem;
+
+}
+
+#np-profile-menu button:hover{
+
+    background:rgba(30,185,128,.08);
+
+    color:var(--np-primary-dark);
+
+    padding-left:30px;
+
+}
+
+/*==========================================================
+                DIVISÓRIA
+==========================================================*/
+
+.np-menu-divider{
+
+    width:100%;
+
+    height:1px;
+
+    background:#EDF4EF;
+
+    margin:6px 0;
+
+}
+
+/*==========================================================
+                BOTÃO SAIR
+==========================================================*/
+
+#np-menu-logout{
+
+    color:#E53935 !important;
+
+}
+
+#np-menu-logout i{
+
+    color:#E53935 !important;
+
+}
+
+#np-menu-logout:hover{
+
+    background:rgba(229,57,53,.08);
+
+}
+
+/*==========================================================
+                NOTIFICAÇÕES
+==========================================================*/
+
+#np-dashboard-notification{
+
+    position:relative;
+
+}
+
+/*==========================================================
+                DROPDOWN
+==========================================================*/
+
+#np-notification-dropdown{
+
+    position:absolute;
+
+    top:78px;
+
+    right:-10px;
+
+    width:340px;
+
+    background:rgba(255,255,255,.96);
+
+    backdrop-filter:blur(20px);
+
+    -webkit-backdrop-filter:blur(20px);
+
+    border-radius:24px;
+
+    overflow:hidden;
+
+    border:1px solid rgba(255,255,255,.75);
+
+    box-shadow:
+
+        0 20px 60px rgba(0,0,0,.12);
+
+    opacity:0;
+
+    visibility:hidden;
+
+    transform:translateY(15px);
+
+    transition:.35s;
+
+    z-index:999;
+
+}
+
+/* Classe JS */
+
+#np-notification-dropdown.active{
+
+    opacity:1;
+
+    visibility:visible;
+
+    transform:translateY(0);
+
+}
+
+/*==========================================================
+                CABEÇALHO
+==========================================================*/
+
+.np-dropdown-header{
+
+    padding:22px;
+
+    border-bottom:1px solid #EDF3EF;
+
+}
+
+.np-dropdown-header h3{
+
+    font-size:1rem;
+
+    font-weight:700;
+
+}
+
+/*==========================================================
+                LISTA
+==========================================================*/
+
+.np-dropdown-body{
+
+    display:flex;
+
+    flex-direction:column;
+
+}
+
+/*==========================================================
+                ITEM
+==========================================================*/
+
+.np-notification-item{
+
+    display:flex;
+
+    gap:15px;
+
+    align-items:flex-start;
+
+    padding:18px 22px;
+
+    transition:.25s;
+
+}
+
+.np-notification-item:hover{
+
+    background:rgba(30,185,128,.06);
+
+}
+
+.np-notification-item i{
+
+    width:40px;
+
+    height:40px;
+
+    border-radius:50%;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    background:var(--np-primary-light);
+
+    color:var(--np-primary);
+
+    font-size:1rem;
+
+}
+
+.np-notification-item h4{
+
+    font-size:.93rem;
+
+    margin-bottom:5px;
+
+    font-weight:600;
+
+}
+
+.np-notification-item p{
+
+    font-size:.82rem;
+
+    line-height:1.5;
+
+    color:var(--np-text-light);
+
+}
+
+/*==========================================================
+                MODAL MISSÃO DIÁRIA
+==========================================================*/
+
+#np-daily-mission-modal{
+
+    position:fixed;
+
+    inset:0;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    z-index:99999;
+
+    transition:.35s;
+
+}
+
+.np-modal-hidden{
+
+    opacity:0;
+
+    visibility:hidden;
+
+    pointer-events:none;
+
+}
+
+.np-modal-visible{
+
+    opacity:1;
+
+    visibility:visible;
+
+}
+
+/*==========================================================
+                OVERLAY
+==========================================================*/
+
+#np-daily-mission-overlay{
+
+    position:absolute;
+
+    inset:0;
+
+    background:
+
+        rgba(14,25,18,.55);
+
+    backdrop-filter:blur(8px);
+
+    -webkit-backdrop-filter:blur(8px);
+
+}
+
+/*==========================================================
+                CARD
+==========================================================*/
+
+#np-daily-mission-card{
+
+    position:relative;
+
+    width:min(760px,92%);
+
+    background:
+
+        rgba(255,255,255,.97);
+
+    border-radius:32px;
+
+    overflow:hidden;
+
+    box-shadow:
+
+        0 35px 90px rgba(0,0,0,.18);
+
+    border:1px solid rgba(255,255,255,.75);
+
+    animation:
+
+        npMissionShow .45s ease;
+
+}
+
+/*==========================================================
+                FUNDO DO CARD
+==========================================================*/
+
+#np-daily-mission-card::before{
+
+    content:"";
+
+    position:absolute;
+
+    inset:0;
+
+    background:
+
+        radial-gradient(
+
+            circle at top left,
+
+            rgba(30,185,128,.14),
+
+            transparent 45%
+
+        ),
+
+        radial-gradient(
+
+            circle at bottom right,
+
+            rgba(30,185,128,.08),
+
+            transparent 40%
+
+        );
+
+    pointer-events:none;
+
+}
+
+/*==========================================================
+                BOTÃO FECHAR
+==========================================================*/
+
+#np-close-daily-mission{
+
+    position:absolute;
+
+    top:20px;
+
+    right:20px;
+
+    width:46px;
+
+    height:46px;
+
+    border-radius:50%;
+
+    background:#F3F7F4;
+
+    color:#4B5C54;
+
+    font-size:1.2rem;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    z-index:10;
+
+}
+
+#np-close-daily-mission:hover{
+
+    background:#E6F8EE;
+
+    color:var(--np-primary);
+
+}
+
+/*==========================================================
+                CONTEÚDO
+==========================================================*/
+
+#np-daily-mission-content{
+
+    position:relative;
+
+    padding:70px 55px 50px;
+
+    text-align:center;
+
+}
+
+/*==========================================================
+                ÍCONE
+==========================================================*/
+
+#np-daily-mission-icon{
+
+    width:110px;
+
+    height:110px;
+
+    margin:auto;
+
+    border-radius:50%;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    background:
+
+        linear-gradient(
+
+            135deg,
+
+            #18C37A,
+
+            #29D98A
+
+        );
+
+    color:#FFF;
+
+    font-size:3rem;
+
+    box-shadow:
+
+        0 20px 45px rgba(24,195,122,.35);
+
+    animation:
+
+        npFirePulse 2.2s infinite;
+
+}
+
+/*==========================================================
+                TÍTULO
+==========================================================*/
+
+#np-daily-mission-title{
+
+    margin-top:30px;
+
+    font-size:2rem;
+
+    font-weight:700;
+
+    color:var(--np-text);
+
+}
+
+/*==========================================================
+                DESCRIÇÃO
+==========================================================*/
+
+#np-daily-mission-description{
+
+    margin-top:18px;
+
+    color:var(--np-text-light);
+
+    line-height:1.8;
+
+    font-size:1rem;
+
+}
+
+/*==========================================================
+                BENEFÍCIOS
+==========================================================*/
+
+#np-daily-mission-info{
+
+    margin-top:35px;
+
+    display:grid;
+
+    grid-template-columns:repeat(3,1fr);
+
+    gap:18px;
+
+}
+
+.np-mission-info-card{
+
+    background:#F8FFFA;
+
+    border:1px solid #E5F5EB;
+
+    border-radius:20px;
+
+    padding:22px;
+
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:center;
+
+    gap:12px;
+
+}
+
+.np-mission-info-card i{
+
+    font-size:1.8rem;
+
+    color:var(--np-primary);
+
+}
+
+.np-mission-info-card span{
+
+    text-align:center;
+
+    font-size:.88rem;
+
+    color:var(--np-text);
+
+    font-weight:500;
+
+}
+
+/*==========================================================
+                BOTÕES
+==========================================================*/
+
+#np-daily-mission-actions{
+
+    display:flex;
+
+    justify-content:center;
+
+    gap:18px;
+
+    margin-top:38px;
+
+}
+
+#np-open-goals-button{
+
+    padding:15px 34px;
+
+    border-radius:999px;
+
+    background:
+
+        linear-gradient(
+
+            135deg,
+
+            #18C37A,
+
+            #2AD88C
+
+        );
+
+    color:#FFF;
+
+    font-weight:600;
+
+    box-shadow:
+
+        0 14px 35px rgba(24,195,122,.30);
+
+}
+
+#np-open-goals-button:hover{
+
+    transform:translateY(-3px);
+
+}
+
+#np-close-goals-button{
+
+    padding:15px 34px;
+
+    border-radius:999px;
+
+    background:#EEF6F1;
+
+    color:#506158;
+
+    font-weight:600;
+
+}
+
+#np-close-goals-button:hover{
+
+    background:#E3F4EA;
+
+}
+
+/*==========================================================
+                ANIMAÇÕES
+==========================================================*/
+
+@keyframes npMissionShow{
+
+    from{
+
+        opacity:0;
+
+        transform:
+
+            scale(.90)
+
+            translateY(40px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:
+
+            scale(1)
+
+            translateY(0);
+
+    }
+
+}
+
+@keyframes npFirePulse{
+
+    0%{
+
+        transform:scale(1);
+
+    }
+
+    50%{
+
+        transform:scale(1.08);
+
+    }
+
+    100%{
+
+        transform:scale(1);
+
+    }
+
+}
+
+/*==========================================================
+                    SEQUÊNCIA DE METAS
+==========================================================*/
+
+#np-dashboard-streak{
+
+    width:100%;
+
+}
+
+/*==========================================================
+                    CARD PRINCIPAL
+==========================================================*/
+
+#np-streak-card{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    gap:40px;
+
+    padding:35px;
+
+    border-radius:30px;
+
+    background:rgba(255,255,255,.82);
+
+    backdrop-filter:blur(16px);
+
+    border:1px solid rgba(255,255,255,.75);
+
+    box-shadow:0 15px 40px rgba(0,0,0,.06);
+
+}
+
+/*==========================================================
+                    LADO ESQUERDO
+==========================================================*/
+
+#np-streak-left{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:25px;
+
+    flex:1;
+
+}
+
+/*==========================================================
+                    CHAMA
+==========================================================*/
+
+#np-current-flame{
+
+    width:120px;
+
+    height:120px;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    border-radius:50%;
+
+    background:linear-gradient(
+
+        135deg,
+
+        rgba(30,185,128,.08),
+
+        rgba(30,185,128,.02)
+
+    );
+
+}
+
+#np-current-flame-image{
+
+    width:82px;
+
+    animation:npFlameFloat 2.5s ease-in-out infinite;
+
+}
+
+/*==========================================================
+                    TEXTO
+==========================================================*/
+
+#np-streak-information{
+
+    display:flex;
+
+    flex-direction:column;
+
+}
+
+#np-current-flame-title{
+
+    color:var(--np-primary);
+
+    font-weight:700;
+
+    font-size:.95rem;
+
+    letter-spacing:.5px;
+
+    text-transform:uppercase;
+
+}
+
+#np-current-streak-days{
+
+    margin-top:8px;
+
+    font-size:2rem;
+
+    color:var(--np-text);
+
+}
+
+#np-current-streak-description{
+
+    margin-top:12px;
+
+    max-width:500px;
+
+    color:var(--np-text-light);
+
+    line-height:1.8;
+
+}
+
+/*==========================================================
+                    PRÓXIMA CHAMA
+==========================================================*/
+
+#np-next-flame-card{
+
+    width:220px;
+
+    padding:25px;
+
+    border-radius:24px;
+
+    background:#F9FFFB;
+
+    border:1px solid #E4F5EB;
+
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:center;
+
+    text-align:center;
+
+}
+
+#np-next-flame-label{
+
+    font-size:.80rem;
+
+    color:var(--np-text-light);
+
+    text-transform:uppercase;
+
+    letter-spacing:1px;
+
+}
+
+#np-next-flame-preview{
+
+    margin:18px 0;
+
+}
+
+#np-next-flame-image{
+
+    width:55px;
+
+    animation:npNextFlame 3s infinite;
+
+}
+
+#np-next-flame-days{
+
+    font-weight:600;
+
+    color:var(--np-primary);
+
+}
+
+/*==========================================================
+                    BARRA
+==========================================================*/
+
+#np-streak-progress-container{
+
+    margin-top:25px;
+
+    padding:30px;
+
+    border-radius:26px;
+
+    background:rgba(255,255,255,.82);
+
+    backdrop-filter:blur(16px);
+
+    box-shadow:0 12px 35px rgba(0,0,0,.05);
+
+}
+
+#np-streak-progress-header{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    margin-bottom:14px;
+
+}
+
+#np-streak-progress-header span{
+
+    font-weight:600;
+
+}
+
+#np-streak-progress-text{
+
+    color:var(--np-primary);
+
+}
+
+#np-streak-progress-bar{
+
+    width:100%;
+
+    height:14px;
+
+    border-radius:999px;
+
+    overflow:hidden;
+
+    background:#EAF5EF;
+
+}
+
+#np-streak-progress-fill{
+
+    width:45%;
+
+    height:100%;
+
+    border-radius:999px;
+
+    background:linear-gradient(
+
+        90deg,
+
+        #16C47F,
+
+        #42D993
+
+    );
+
+    animation:npProgressMove 3s linear infinite;
+
+}
+
+/*==========================================================
+                    ANIMAÇÕES
+==========================================================*/
+
+@keyframes npFlameFloat{
+
+    0%{
+
+        transform:translateY(0);
+
+    }
+
+    50%{
+
+        transform:translateY(-8px);
+
+    }
+
+    100%{
+
+        transform:translateY(0);
+
+    }
+
+}
+
+@keyframes npNextFlame{
+
+    0%{
+
+        transform:scale(1);
+
+    }
+
+    50%{
+
+        transform:scale(1.08);
+
+    }
+
+    100%{
+
+        transform:scale(1);
+
+    }
+
+}
+
+@keyframes npProgressMove{
+
+    0%{
+
+        filter:brightness(1);
+
+    }
+
+    50%{
+
+        filter:brightness(1.2);
+
+    }
+
+    100%{
+
+        filter:brightness(1);
+
+    }
+
+}
+
+/*==========================================================
+                PROGRESSO NUTRICIONAL
+==========================================================*/
+
+#np-dashboard-progress{
+
+    width:100%;
+
+}
+
+/*==========================================================
+                    HEADER
+==========================================================*/
+
+#np-progress-header{
+
+    margin-bottom:22px;
+
+}
+
+#np-progress-header h2{
+
+    font-size:1.7rem;
+
+    color:var(--np-text);
+
+    font-weight:700;
+
+}
+
+#np-progress-header p{
+
+    margin-top:8px;
+
+    color:var(--np-text-light);
+
+}
+
+/*==========================================================
+                    CARD
+==========================================================*/
+
+#np-progress-card{
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    gap:45px;
+
+    padding:40px;
+
+    border-radius:32px;
+
+    background:rgba(255,255,255,.82);
+
+    backdrop-filter:blur(16px);
+
+    -webkit-backdrop-filter:blur(16px);
+
+    border:1px solid rgba(255,255,255,.75);
+
+    box-shadow:0 18px 45px rgba(0,0,0,.05);
+
+}
+
+/*==========================================================
+                CÍRCULO CENTRAL
+==========================================================*/
+
+#np-progress-circle-area{
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    flex-shrink:0;
+
+}
+
+#np-progress-circle{
+
+    position:relative;
+
+    width:290px;
+
+    height:290px;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    border-radius:50%;
+
+    background:
+
+        radial-gradient(
+
+            circle,
+
+            rgba(30,185,128,.05),
+
+            rgba(30,185,128,.02)
+
+        );
+
+}
+
+/*==========================================================
+                    SALADA
+==========================================================*/
+
+#np-progress-center{
+
+    width:175px;
+
+    height:175px;
+
+    border-radius:50%;
+
+    background:#FFFFFF;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    box-shadow:
+
+        0 15px 35px rgba(0,0,0,.06);
+
+}
+
+#np-salad-image{
+
+    width:110px;
+
+    animation:
+
+        npSaladFloat 4s ease-in-out infinite;
+
+}
+
+/*==========================================================
+                    ARCOS
+==========================================================*/
+
+.np-progress-ring{
+
+    position:absolute;
+
+    inset:0;
+
+    border-radius:50%;
+
+}
+
+/*
+Esses arcos serão desenhados futuramente
+via JavaScript usando SVG.
+A estrutura já está pronta.
+*/
+
+/*==========================================================
+                BARRAS
+==========================================================*/
+
+#np-progress-bars{
+
+    flex:1;
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:24px;
+
+}
+
+/*==========================================================
+                    ITEM
+==========================================================*/
+
+.np-progress-item{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:10px;
+
+}
+
+.np-progress-title{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+}
+
+.np-progress-title span:first-child{
+
+    font-weight:600;
+
+    color:var(--np-text);
+
+}
+
+.np-progress-title span:last-child{
+
+    color:var(--np-text-light);
+
+    font-size:.90rem;
+
+}
+
+/*==========================================================
+                    BARRA
+==========================================================*/
+
+.np-progress-bar{
+
+    width:100%;
+
+    height:14px;
+
+    border-radius:999px;
+
+    overflow:hidden;
+
+    background:#EEF5F1;
+
+}
+
+/*==========================================================
+                    PREENCHIMENTO
+==========================================================*/
+
+.np-progress-bar div{
+
+    width:0%;
+
+    height:100%;
+
+    border-radius:999px;
+
+    transition:.8s ease;
+
+}
+
+/*==========================================================
+                CALORIAS
+==========================================================*/
+
+.np-fill-calories{
+
+    background:
+
+        linear-gradient(
+
+            90deg,
+
+            #14B86F,
+
+            #39D28C
+
+        );
+
+}
+
+/*==========================================================
+                PROTEÍNAS
+==========================================================*/
+
+.np-fill-protein{
+
+    background:
+
+        linear-gradient(
+
+            90deg,
+
+            #3A82F6,
+
+            #5EA2FF
+
+        );
+
+}
+
+/*==========================================================
+                CARBOIDRATOS
+==========================================================*/
+
+.np-fill-carbs{
+
+    background:
+
+        linear-gradient(
+
+            90deg,
+
+            #F2B000,
+
+            #FFD24D
+
+        );
+
+}
+
+/*==========================================================
+                GORDURAS
+==========================================================*/
+
+.np-fill-fat{
+
+    background:
+
+        linear-gradient(
+
+            90deg,
+
+            #8D4CF7,
+
+            #B57BFF
+
+        );
+
+}
+
+/*==========================================================
+                ANIMAÇÃO SALADA
+==========================================================*/
+
+@keyframes npSaladFloat{
+
+    0%{
+
+        transform:
+            translateY(0px);
+
+    }
+
+    50%{
+
+        transform:
+            translateY(-6px);
+
+    }
+
+    100%{
+
+        transform:
+            translateY(0px);
+
+    }
+
+}
+
+/*==========================================================
+                    REFEIÇÕES
+==========================================================*/
+
+#np-dashboard-meals{
+
+    width:100%;
+
+}
+
+/*==========================================================
+                    HEADER
+==========================================================*/
+
+#np-meals-header{
+
+    margin-bottom:25px;
+
+}
+
+#np-meals-header h2{
+
+    font-size:1.7rem;
+
+    color:var(--np-text);
+
+    font-weight:700;
+
+}
+
+#np-meals-header p{
+
+    margin-top:8px;
+
+    color:var(--np-text-light);
+
+    line-height:1.6;
+
+}
+
+/*==========================================================
+                    GRID
+==========================================================*/
+
+#np-meals-grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(2,1fr);
+
+    gap:25px;
+
+}
+
+/*==========================================================
+                    CARD
+==========================================================*/
+
+.np-meal-card{
+
+    background:rgba(255,255,255,.85);
+
+    backdrop-filter:blur(16px);
+
+    -webkit-backdrop-filter:blur(16px);
+
+    border-radius:28px;
+
+    border:1px solid rgba(255,255,255,.75);
+
+    padding:28px;
+
+    box-shadow:0 15px 40px rgba(0,0,0,.05);
+
+    transition:.35s;
+
+}
+
+.np-meal-card:hover{
+
+    transform:translateY(-4px);
+
+    box-shadow:0 22px 55px rgba(0,0,0,.08);
+
+}
+
+/*==========================================================
+                CABEÇALHO
+==========================================================*/
+
+.np-meal-header{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    margin-bottom:22px;
+
+}
+
+.np-meal-title{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:14px;
+
+}
+
+.np-meal-title i{
+
+    width:48px;
+
+    height:48px;
+
+    border-radius:50%;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    background:var(--np-primary-light);
+
+    color:var(--np-primary);
+
+    font-size:1.2rem;
+
+}
+
+.np-meal-title h3{
+
+    font-size:1.15rem;
+
+    font-weight:700;
+
+    color:var(--np-text);
+
+}
+
+/*==========================================================
+                    CHECK
+==========================================================*/
+
+.np-meal-check{
+
+    cursor:pointer;
+
+}
+
+.np-meal-check input{
+
+    display:none;
+
+}
+
+.np-meal-check span{
+
+    width:34px;
+
+    height:34px;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    border-radius:50%;
+
+    border:2px solid #D6EEDF;
+
+    transition:.3s;
+
+    position:relative;
+
+    background:#FFF;
+
+}
+
+.np-meal-check span::after{
+
+    content:"✓";
+
+    font-size:1rem;
+
+    color:#FFF;
+
+    opacity:0;
+
+    transition:.3s;
+
+}
+
+.np-meal-check input:checked + span{
+
+    background:var(--np-primary);
+
+    border-color:var(--np-primary);
+
+}
+
+.np-meal-check input:checked + span::after{
+
+    opacity:1;
+
+}
+
+/*==========================================================
+                LISTA DE ALIMENTOS
+==========================================================*/
+
+.np-meal-foods{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:12px;
+
+    margin-bottom:25px;
+
+    min-height:145px;
+
+}
+
+.np-food-item{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    padding:12px 16px;
+
+    background:#F8FCF9;
+
+    border-radius:14px;
+
+}
+
+.np-food-name{
+
+    font-weight:500;
+
+    color:var(--np-text);
+
+}
+
+.np-food-quantity{
+
+    color:var(--np-text-light);
+
+}
+
+.np-empty-food{
+
+    color:#94A3B8;
+
+    text-align:center;
+
+    margin:auto;
+
+}
+
+/*==========================================================
+                    BOTÃO
+==========================================================*/
+
+.np-view-meal-button{
+
+    width:100%;
+
+    height:52px;
+
+    border-radius:16px;
+
+    background:linear-gradient(
+
+        135deg,
+
+        #18C37A,
+
+        #2CD88D
+
+    );
+
+    color:#FFF;
+
+    font-size:.95rem;
+
+    font-weight:600;
+
+    transition:.35s;
+
+}
+
+.np-view-meal-button:hover{
+
+    transform:translateY(-2px);
+
+    box-shadow:
+
+        0 15px 30px rgba(24,195,122,.25);
+
+}
+
+/*==========================================================
+                EXPANSÃO
+==========================================================*/
+
+.np-meal-card.expanded{
+
+    grid-column:span 2;
+
+}
+
+.np-meal-details{
+
+    display:none;
+
+    margin-top:20px;
+
+}
+
+.np-meal-card.expanded .np-meal-details{
+
+    display:block;
+
+}
+
+/*==========================================================
+                PESQUISA DE ALIMENTOS
+==========================================================*/
+
+#np-dashboard-food-search{
+
+    width:100%;
+
+}
+
+/*==========================================================
+                    HEADER
+==========================================================*/
+
+#np-food-search-header{
+
+    margin-bottom:25px;
+
+}
+
+#np-food-search-header h2{
+
+    font-size:1.7rem;
+
+    font-weight:700;
+
+    color:var(--np-text);
+
+}
+
+#np-food-search-header p{
+
+    margin-top:8px;
+
+    color:var(--np-text-light);
+
+    line-height:1.6;
+
+}
+
+/*==========================================================
+                    CARD
+==========================================================*/
+
+#np-food-search-card{
+
+    background:rgba(255,255,255,.85);
+
+    backdrop-filter:blur(16px);
+
+    -webkit-backdrop-filter:blur(16px);
+
+    border-radius:30px;
+
+    padding:35px;
+
+    border:1px solid rgba(255,255,255,.75);
+
+    box-shadow:0 15px 45px rgba(0,0,0,.05);
+
+}
+
+/*==========================================================
+                INPUT PESQUISA
+==========================================================*/
+
+.np-search-group{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:10px;
+
+    margin-bottom:28px;
+
+}
+
+.np-search-group label{
+
+    font-weight:600;
+
+    color:var(--np-text);
+
+}
+
+.np-search-input{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:15px;
+
+    background:#F8FCF9;
+
+    border:2px solid transparent;
+
+    border-radius:18px;
+
+    padding:0 20px;
+
+    transition:.30s;
+
+}
+
+.np-search-input:focus-within{
+
+    border-color:var(--np-primary);
+
+}
+
+.np-search-input i{
+
+    color:var(--np-primary);
+
+    font-size:1rem;
+
+}
+
+.np-search-input input{
+
+    flex:1;
+
+    border:none;
+
+    background:none;
+
+    height:58px;
+
+    font-size:.95rem;
+
+}
+
+/*==========================================================
+                ALIMENTO
+==========================================================*/
+
+#np-food-selected{
+
+    background:#F8FCF9;
+
+    border-radius:18px;
+
+    padding:22px;
+
+    margin-bottom:25px;
+
+}
+
+#np-food-selected h3{
+
+    font-size:1.2rem;
+
+    color:var(--np-text);
+
+}
+
+#np-food-selected p{
+
+    margin-top:8px;
+
+    color:var(--np-text-light);
+
+}
+
+/*==========================================================
+            VALORES NUTRICIONAIS
+==========================================================*/
+
+#np-food-nutrition{
+
+    display:grid;
+
+    grid-template-columns:repeat(4,1fr);
+
+    gap:18px;
+
+    margin-bottom:30px;
+
+}
+
+.np-nutrition-card{
+
+    background:#F8FCF9;
+
+    border-radius:18px;
+
+    padding:20px;
+
+    text-align:center;
+
+}
+
+.np-nutrition-card span{
+
+    display:block;
+
+    color:var(--np-text-light);
+
+    font-size:.82rem;
+
+}
+
+.np-nutrition-card strong{
+
+    display:block;
+
+    margin-top:10px;
+
+    font-size:1.3rem;
+
+    color:var(--np-primary);
+
+}
+
+/*==========================================================
+            QUANTIDADE
+==========================================================*/
+
+#np-food-measurements{
+
+    display:grid;
+
+    grid-template-columns:1fr 1fr;
+
+    gap:20px;
+
+    margin-bottom:25px;
+
+}
+
+.np-measure-group{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:10px;
+
+}
+
+.np-measure-group label{
+
+    font-weight:600;
+
+}
+
+.np-measure-group input,
+
+.np-measure-group select{
+
+    height:55px;
+
+    padding:0 18px;
+
+    border-radius:16px;
+
+    border:2px solid #EEF4F1;
+
+    background:#FFF;
+
+}
+
+/*==========================================================
+            REFEIÇÃO
+==========================================================*/
+
+#np-food-destination{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:10px;
+
+    margin-bottom:28px;
+
+}
+
+#np-food-destination label{
+
+    font-weight:600;
+
+}
+
+#np-food-meal-select{
+
+    height:55px;
+
+    border-radius:16px;
+
+    padding:0 18px;
+
+    border:2px solid #EEF4F1;
+
+}
+
+/*==========================================================
+                BOTÃO
+==========================================================*/
+
+#np-food-add-button{
+
+    width:100%;
+
+    height:58px;
+
+    border-radius:18px;
+
+    background:linear-gradient(
+
+        135deg,
+
+        #18C37A,
+
+        #2DD98D
+
+    );
+
+    color:#FFF;
+
+    font-size:1rem;
+
+    font-weight:600;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    gap:12px;
+
+    transition:.35s;
+
+}
+
+#np-food-add-button:hover{
+
+    transform:translateY(-3px);
+
+    box-shadow:0 18px 35px rgba(24,195,122,.28);
+
+}
+
+/*==========================================================
+                RESPONSIVIDADE
+==========================================================*/
+
+/*==========================================================
+                NOTEBOOKS
+==========================================================*/
+
+@media (max-width:1400px){
+
+    #np-dashboard{
+
+        padding:30px;
+
+    }
+
+    #np-progress-circle{
+
+        width:250px;
+        height:250px;
+
+    }
+
+    #np-salad-image{
+
+        width:100px;
+
+    }
+
+}
+
+/*==========================================================
+                TABLETS GRANDES
+==========================================================*/
+
+@media (max-width:1200px){
+
+    #np-dashboard-header{
+
+        flex-direction:column;
+        align-items:flex-start;
+        gap:25px;
+
+    }
+
+    #np-dashboard-header-right{
+
+        width:100%;
+        justify-content:flex-end;
+
+    }
+
+    #np-progress-card{
+
+        flex-direction:column;
+
+    }
+
+    #np-progress-circle{
+
+        width:260px;
+        height:260px;
+
+    }
+
+    #np-meals-grid{
+
+        grid-template-columns:1fr;
+
+    }
+
+    .np-meal-card.expanded{
+
+        grid-column:span 1;
+
+    }
+
+}
+
+/*==========================================================
+                TABLETS
+==========================================================*/
+
+@media (max-width:992px){
+
+    #np-dashboard{
+
+        padding:25px;
+
+    }
+
+    #np-dashboard-header{
+
+        padding:25px;
+
+    }
+
+    #np-user-greeting{
+
+        font-size:1.6rem;
+
+    }
+
+    #np-streak-card{
+
+        flex-direction:column;
+        text-align:center;
+
+    }
+
+    #np-streak-left{
+
+        flex-direction:column;
+
+    }
+
+    #np-next-flame-card{
+
+        width:100%;
+
+    }
+
+    #np-food-nutrition{
+
+        grid-template-columns:repeat(2,1fr);
+
+    }
+
+    #np-food-measurements{
+
+        grid-template-columns:1fr;
+
+    }
+
+}
+
+/*==========================================================
+                MOBILE
+==========================================================*/
+
+@media (max-width:768px){
+
+    #np-dashboard{
+
+        padding:18px;
+
+    }
+
+    #np-dashboard-header{
+
+        padding:20px;
+        border-radius:22px;
+
+    }
+
+    #np-dashboard-header-right{
+
+        gap:12px;
+
+    }
+
+    #np-profile-avatar{
+
+        width:48px;
+        height:48px;
+
+    }
+
+    #np-plan-badge{
+
+        font-size:.72rem;
+
+        padding:8px 14px;
+
+    }
+
+    #np-user-greeting{
+
+        font-size:1.35rem;
+
+    }
+
+    #np-user-message{
+
+        font-size:.88rem;
+
+    }
+
+    #np-progress-card{
+
+        padding:25px;
+
+    }
+
+    #np-progress-circle{
+
+        width:210px;
+        height:210px;
+
+    }
+
+    #np-progress-center{
+
+        width:140px;
+        height:140px;
+
+    }
+
+    #np-salad-image{
+
+        width:85px;
+
+    }
+
+    #np-progress-bars{
+
+        width:100%;
+
+    }
+
+    #np-food-nutrition{
+
+        grid-template-columns:1fr;
+
+    }
+
+    #np-daily-mission-content{
+
+        padding:55px 25px 35px;
+
+    }
+
+    #np-daily-mission-info{
+
+        grid-template-columns:1fr;
+
+    }
+
+    #np-daily-mission-actions{
+
+        flex-direction:column;
+
+    }
+
+    #np-profile-dropdown{
+
+        width:100%;
+
+        right:0;
+
+    }
+
+    #np-notification-dropdown{
+
+        width:100%;
+
+        right:0;
+
+    }
+
+}
+
+/*==========================================================
+            CELULARES PEQUENOS
+==========================================================*/
+
+@media (max-width:480px){
+
+    #np-dashboard{
+
+        padding:14px;
+
+    }
+
+    #np-dashboard-header{
+
+        padding:18px;
+
+    }
+
+    #np-user-greeting{
+
+        font-size:1.18rem;
+
+    }
+
+    #np-progress-header h2,
+    #np-meals-header h2,
+    #np-food-search-header h2{
+
+        font-size:1.35rem;
+
+    }
+
+    #np-progress-circle{
+
+        width:180px;
+        height:180px;
+
+    }
+
+    #np-progress-center{
+
+        width:120px;
+        height:120px;
+
+    }
+
+    #np-salad-image{
+
+        width:72px;
+
+    }
+
+    .np-meal-card{
+
+        padding:20px;
+
+    }
+
+    .np-food-item{
+
+        flex-direction:column;
+        align-items:flex-start;
+        gap:5px;
+
+    }
+
+}
+
