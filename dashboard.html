@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html lang="pt-BR">
 
 <head>
@@ -8,1493 +9,1943 @@
     =========================================================== -->
 
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Nutri+ | Dashboard</title>
+    <meta
+        http-equiv="X-UA-Compatible"
+        content="IE=edge"
+    >
 
-    <!-- ==========================================================
-                                FAVICON
-    =========================================================== -->
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
 
-    <link rel="icon" href="assets/images/favicon.png">
+    <meta
+        name="theme-color"
+        content="#18C37A"
+    >
 
-    <!-- ==========================================================
-                                FONTS
-    =========================================================== -->
+    <meta
+        name="description"
+        content="Nutri+ Plataforma Inteligente de Nutrição."
+    >
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-
-    <link rel="preconnect"
-          href="https://fonts.gstatic.com"
-          crossorigin>
-
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
-          rel="stylesheet">
-
-    <!-- ==========================================================
-                                ICONS
-    =========================================================== -->
-
-    <link rel="stylesheet"
-          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <title>Dashboard | Nutri+</title>
 
     <!-- ==========================================================
-                                CSS
+                            GOOGLE FONTS
     =========================================================== -->
 
-    <link rel="stylesheet"
-          href="css/dashboard.css">
+    <link
+        rel="preconnect"
+        href="https://fonts.googleapis.com"
+    >
+
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin
+    >
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet"
+    >
+
+    <!-- ==========================================================
+                        FONT AWESOME
+    =========================================================== -->
+
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+    >
+
+    <!-- ==========================================================
+                            CSS
+    =========================================================== -->
+
+    <link
+        rel="stylesheet"
+        href="css/dashboard.css"
+    >
 
 </head>
 
 <body>
 
-    <!-- ==========================================================
-                    NUTRI+ DASHBOARD
-    =========================================================== -->
+<!-- ==========================================================
+                    BACKGROUND PREMIUM
+========================================================== -->
 
-    <main id="np-dashboard">
+<div id="np-dashboard-background">
 
-        <!-- ======================================================
-                        BACKGROUND PREMIUM
-        ======================================================= -->
+    <div class="np-bg-overlay"></div>
 
-        <div id="np-dashboard-background">
+    <div class="np-bg-gradient"></div>
 
-            <div class="np-bg-circle np-bg-circle-1"></div>
+    <div
+        class="np-bg-circle np-bg-circle-1"
+    ></div>
 
-            <div class="np-bg-circle np-bg-circle-2"></div>
+    <div
+        class="np-bg-circle np-bg-circle-2"
+    ></div>
 
-            <div class="np-bg-circle np-bg-circle-3"></div>
+    <div
+        class="np-bg-circle np-bg-circle-3"
+    ></div>
 
-            <div class="np-bg-gradient"></div>
+</div>
 
-            <div class="np-bg-overlay"></div>
+<!-- ==========================================================
+                    DASHBOARD
+========================================================== -->
+
+<main id="np-dashboard">
+
+    <!-- ======================================================
+                HEADER
+    ======================================================= -->
+
+    <!-- Próxima Parte -->
+
+<!-- ==========================================================
+                        HEADER
+========================================================== -->
+
+<header id="np-dashboard-header">
+
+    <!-- ======================================================
+                    LADO ESQUERDO
+    ======================================================= -->
+
+    <section id="np-dashboard-header-left">
+
+        <h1 id="np-user-greeting">
+
+            <span id="np-greeting-period">
+
+                Bom dia,
+
+            </span>
+
+            <span id="np-user-name">
+
+                Usuário
+
+            </span>
+
+            👋
+
+        </h1>
+
+        <p id="np-user-message">
+
+            Bem-vindo novamente.
+
+        </p>
+
+    </section>
+
+    <!-- ======================================================
+                    LADO DIREITO
+    ======================================================= -->
+
+    <section id="np-dashboard-header-right">
+
+        <!-- ==============================================
+                        SINO
+        =============================================== -->
+
+        <div
+            id="np-dashboard-notification"
+            class="np-dashboard-action"
+        >
+
+            <button
+                id="np-notification-button"
+                class="np-header-button"
+                aria-label="Notificações"
+            >
+
+                <i class="fa-solid fa-bell"></i>
+
+                <span id="np-notification-badge">
+
+                    3
+
+                </span>
+
+            </button>
+
+            <!-- ==========================================
+                    DROPDOWN NOTIFICAÇÕES
+            =========================================== -->
+
+            <div id="np-notification-dropdown">
+
+                <div class="np-dropdown-header">
+
+                    <h3>
+
+                        Notificações
+
+                    </h3>
+
+                </div>
+
+                <div
+                    id="np-notification-list"
+                    class="np-dropdown-body"
+                >
+
+                    <!-- JS -->
+
+                </div>
+
+            </div>
 
         </div>
 
-        <!-- ======================================================
-                        CONTAINER PRINCIPAL
-        ======================================================= -->
+        <!-- ==============================================
+                    BADGE DO PLANO
+        =============================================== -->
 
-        <div id="np-dashboard-container">
+        <div
+            id="np-plan-badge"
+            class="np-plan-inteligente"
+        >
 
-            <!-- ==================================================
-                            HEADER
-            =================================================== -->
+            <span id="np-plan-name">
 
-            <header id="np-dashboard-header">
+                Nutri Inteligente
 
-                <!-- =============================================
-                        HEADER ESQUERDO
-                ============================================== -->
+            </span>
 
-                <section id="np-dashboard-header-left">
+        </div>
 
-                    <div id="np-dashboard-user-greeting">
+        <!-- ==============================================
+                    PERFIL
+        =============================================== -->
 
-                        <h1 id="np-user-greeting">
+        <div id="np-dashboard-profile">
 
-                            Bom dia,
+            <button
+                id="np-profile-button"
+                aria-label="Perfil"
+            >
 
-                            <span id="np-user-name">
+                <img
 
-                                Usuário
+                    id="np-profile-avatar"
 
-                            </span>
+                    src="assets/images/default-profile.png"
 
-                            👋
+                    alt="Foto do usuário"
 
-                        </h1>
+                >
 
-                        <p id="np-user-message">
+            </button>
 
-                            Bem-vindo novamente.
+            <!-- ==========================================
+                    MENU PERFIL
+            =========================================== -->
 
-                        </p>
+            <div id="np-profile-dropdown">
 
-                    </div>
+                <!-- =============================== -->
 
-                </section>
+                <div
+                    class="np-profile-dropdown-header"
+                >
 
-                <!-- =============================================
-                        HEADER DIREITO
-                ============================================== -->
+                    <h3
+                        id="np-profile-dropdown-name"
+                    >
 
-                <section id="np-dashboard-header-right">
+                        Usuário
 
-                                        <!-- =============================================
-                            NOTIFICAÇÕES
-                    ============================================== -->
+                    </h3>
 
-                    <div id="np-dashboard-notification">
+                    <p
+                        id="np-profile-dropdown-email"
+                    >
 
-                        <button
-                            id="np-notification-button"
-                            class="np-header-button"
-                            aria-label="Notificações">
+                        usuario@email.com
 
-                            <i class="fa-regular fa-bell"></i>
+                    </p>
 
-                            <span id="np-notification-badge">
-                                3
-                            </span>
+                </div>
 
-                        </button>
+                <!-- =============================== -->
 
-                        <!--==========================================
-                                DROPDOWN NOTIFICAÇÕES
-                        ===========================================-->
+                <nav id="np-profile-menu">
 
-                        <div id="np-notification-dropdown">
+                    <button id="np-menu-profile">
 
-                            <div class="np-dropdown-header">
+                        <i class="fa-solid fa-user"></i>
 
-                                <h3>Notificações</h3>
-
-                            </div>
-
-                            <div class="np-dropdown-body">
-
-                                <div class="np-notification-item">
-
-                                    <i class="fa-solid fa-fire"></i>
-
-                                    <div>
-
-                                        <h4>
-                                            Continue assim!
-                                        </h4>
-
-                                        <p>
-                                            Você está a apenas
-                                            <strong>2 dias</strong>
-                                            da próxima chama exclusiva.
-                                        </p>
-
-                                    </div>
-
-                                </div>
-
-                                <div class="np-notification-item">
-
-                                    <i class="fa-solid fa-utensils"></i>
-
-                                    <div>
-
-                                        <h4>
-
-                                            Refeição pendente
-
-                                        </h4>
-
-                                        <p>
-
-                                            Não esqueça de registrar
-                                            seu almoço hoje.
-
-                                        </p>
-
-                                    </div>
-
-                                </div>
-
-                                <div class="np-notification-item">
-
-                                    <i class="fa-solid fa-crown"></i>
-
-                                    <div>
-
-                                        <h4>
-
-                                            Plano Premium
-
-                                        </h4>
-
-                                        <p>
-
-                                            Conheça os benefícios do
-                                            Super Nutri.
-
-                                        </p>
-
-                                    </div>
-
-                                </div>
-
-                            </div>
-
-                        </div>
-
-                    </div>
-
-                    <!-- =============================================
-                            BADGE DO PLANO
-                    ============================================== -->
-
-                    <div
-                        id="np-plan-badge"
-                        class="np-plan-super">
-
-                        <span id="np-plan-text">
-
-                            SUPER NUTRI
-
-                        </span>
-
-                    </div>
-
-                    <!-- =============================================
-                            PERFIL
-                    ============================================== -->
-
-                    <div id="np-dashboard-profile">
-
-                        <button
-                            id="np-profile-button">
-
-                            <img
-                                src="assets/images/default-user.png"
-                                alt="Foto do Usuário"
-                                id="np-profile-avatar">
-
-                        </button>
-
-                        <!--==========================================
-                                MENU PERFIL
-                        ===========================================-->
-
-                        <div id="np-profile-dropdown">
-
-                            <!-- Cabeçalho -->
-
-                            <div class="np-profile-dropdown-header">
-
-                                <h3 id="np-profile-dropdown-name">
-
-                                    Usuário
-
-                                </h3>
-
-                                <p id="np-profile-dropdown-email">
-
-                                    usuario@email.com
-
-                                </p>
-
-                            </div>
-
-                            <!-- Opções -->
-
-                            <ul id="np-profile-menu">
-
-                                <li>
-
-                                    <button id="np-menu-profile">
-
-                                        <i class="fa-regular fa-user"></i>
-
-                                        Perfil
-
-                                    </button>
-
-                                </li>
-
-                                <li>
-
-                                    <button id="np-menu-billing">
-
-                                        <i class="fa-regular fa-credit-card"></i>
-
-                                        Faturas
-
-                                    </button>
-
-                                </li>
-
-                                <li>
-
-                                    <button id="np-menu-plan">
-
-                                        <i class="fa-solid fa-gem"></i>
-
-                                        Planos
-
-                                    </button>
-
-                                </li>
-
-                                <li>
-
-                                    <button id="np-menu-history">
-
-                                        <i class="fa-solid fa-chart-line"></i>
-
-                                        Histórico
-
-                                    </button>
-
-                                </li>
-
-                                <li>
-
-                                    <button id="np-menu-nutritionist">
-
-                                        <i class="fa-solid fa-user-doctor"></i>
-
-                                        Consulta Nutricionista
-
-                                    </button>
-
-                                </li>
-
-                                <li>
-
-                                    <button id="np-menu-data">
-
-                                        <i class="fa-solid fa-address-card"></i>
-
-                                        Meus Dados
-
-                                    </button>
-
-                                </li>
-
-                                <li>
-
-                                    <button id="np-menu-light">
-
-                                        <i class="fa-regular fa-sun"></i>
-
-                                        Modo Claro
-
-                                    </button>
-
-                                </li>
-
-                                <li>
-
-                                    <button id="np-menu-dark">
-
-                                        <i class="fa-regular fa-moon"></i>
-
-                                        Modo Escuro
-
-                                    </button>
-
-                                </li>
-
-                                <li class="np-menu-divider"></li>
-
-                                <li>
-
-                                    <button id="np-menu-logout">
-
-                                        <i class="fa-solid fa-right-from-bracket"></i>
-
-                                        Sair
-
-                                    </button>
-
-                                </li>
-
-                            </ul>
-
-                        </div>
-
-                    </div>
-
-                </section>
-
-            </header>
-
-                        <!-- ==================================================
-                        MODAL DE MISSÃO DIÁRIA
-            =================================================== -->
-
-            <section
-                id="np-daily-mission-modal"
-                class="np-modal-hidden">
-
-                <!-- Overlay -->
-
-                <div id="np-daily-mission-overlay"></div>
-
-                <!-- Card -->
-
-                <div id="np-daily-mission-card">
-
-                    <!-- Botão Fechar -->
-
-                    <button
-                        id="np-close-daily-mission"
-                        aria-label="Fechar">
-
-                        <i class="fa-solid fa-xmark"></i>
+                        Perfil
 
                     </button>
 
-                    <!-- Conteúdo -->
+                    <button id="np-menu-my-data">
 
-                    <div id="np-daily-mission-content">
+                        <i class="fa-solid fa-address-card"></i>
 
-                        <!-- Ícone -->
+                        Meus Dados
 
-                        <div id="np-daily-mission-icon">
+                    </button>
 
-                            <i class="fa-solid fa-fire-flame-curved"></i>
+                    <button id="np-menu-billing">
 
-                        </div>
+                        <i class="fa-solid fa-credit-card"></i>
 
-                        <!-- Título -->
+                        Faturas
 
-                        <h2 id="np-daily-mission-title">
+                    </button>
 
-                            Complete sua meta de hoje
+                    <button id="np-menu-plans">
 
-                        </h2>
+                        <i class="fa-solid fa-gem"></i>
 
-                        <!-- Subtítulo -->
+                        Planos
 
-                        <p id="np-daily-mission-description">
+                    </button>
 
-                            Alcance sua meta diária de calorias,
-                            proteínas, carboidratos e gorduras.
+                    <button id="np-menu-history">
 
-                            <br><br>
+                        <i class="fa-solid fa-chart-line"></i>
 
-                            Ao completar sua missão você continuará
-                            sua sequência e poderá desbloquear
-                            uma nova chama exclusiva.
+                        Histórico
 
-                        </p>
+                    </button>
 
-                        <!-- Informações -->
+                    <button id="np-menu-consultation">
 
-                        <div id="np-daily-mission-info">
+                        <i class="fa-solid fa-user-doctor"></i>
 
-                            <div class="np-mission-info-card">
+                        Consulta Nutricionista
 
-                                <i class="fa-solid fa-fire"></i>
+                    </button>
 
-                                <span>
+                    <div class="np-menu-divider"></div>
 
-                                    Continue sua sequência
+                    <button id="np-menu-light">
 
-                                </span>
+                        <i class="fa-solid fa-sun"></i>
 
-                            </div>
+                        Modo Claro
 
-                            <div class="np-mission-info-card">
+                    </button>
 
-                                <i class="fa-solid fa-medal"></i>
+                    <button id="np-menu-dark">
 
-                                <span>
+                        <i class="fa-solid fa-moon"></i>
 
-                                    Ganhe recompensas exclusivas
+                        Modo Escuro
 
-                                </span>
+                    </button>
 
-                            </div>
+                    <div class="np-menu-divider"></div>
 
-                            <div class="np-mission-info-card">
+                    <button id="np-menu-logout">
 
-                                <i class="fa-solid fa-bolt"></i>
+                        <i class="fa-solid fa-right-from-bracket"></i>
 
-                                <span>
+                        Sair
 
-                                    Evolua sua chama
+                    </button>
 
-                                </span>
+                </nav>
 
-                            </div>
+            </div>
 
-                        </div>
+        </div>
 
-                        <!-- Botões -->
+    </section>
 
-                        <div id="np-daily-mission-actions">
+</header>
 
-                            <button
-                                id="np-open-goals-button">
+<!-- ==========================================================
+                    BANNER MISSÃO
+========================================================== -->
 
-                                Ver minhas metas
+<!-- Próxima Parte -->
 
-                            </button>
+    <!-- ==========================================================
+                    MODAL MISSÃO DIÁRIA
+========================================================== -->
 
-                            <button
-                                id="np-close-goals-button">
+<section
+    id="np-daily-mission-modal"
+    class="np-modal-hidden"
+>
 
-                                Agora não
+    <!-- ======================================================
+                        OVERLAY
+    ======================================================= -->
 
-                            </button>
+    <div id="np-daily-mission-overlay"></div>
 
-                        </div>
+    <!-- ======================================================
+                        CARD
+    ======================================================= -->
+
+    <article id="np-daily-mission-card">
+
+        <!-- ==============================================
+                    BOTÃO FECHAR
+        =============================================== -->
+
+        <button
+            id="np-close-daily-mission"
+            aria-label="Fechar"
+        >
+
+            <i class="fa-solid fa-xmark"></i>
+
+        </button>
+
+        <!-- ==============================================
+                    CONTEÚDO
+        =============================================== -->
+
+        <div id="np-daily-mission-content">
+
+            <!-- ==========================================
+                        ÍCONE
+            =========================================== -->
+
+            <div id="np-daily-mission-icon">
+
+                <i class="fa-solid fa-fire-flame-curved"></i>
+
+            </div>
+
+            <!-- ==========================================
+                        TÍTULO
+            =========================================== -->
+
+            <h2 id="np-daily-mission-title">
+
+                Complete sua meta de hoje
+
+            </h2>
+
+            <!-- ==========================================
+                        DESCRIÇÃO
+            =========================================== -->
+
+            <p id="np-daily-mission-description">
+
+                Alcance suas metas nutricionais de hoje para
+                manter sua sequência, desbloquear novas chamas
+                exclusivas e evoluir cada vez mais dentro da
+                plataforma Nutri+.
+
+            </p>
+
+            <!-- ==========================================
+                        BENEFÍCIOS
+            =========================================== -->
+
+            <section id="np-daily-mission-info">
+
+                <article class="np-mission-info-card">
+
+                    <i class="fa-solid fa-fire"></i>
+
+                    <span>
+
+                        Continue sua sequência diária.
+
+                    </span>
+
+                </article>
+
+                <article class="np-mission-info-card">
+
+                    <i class="fa-solid fa-medal"></i>
+
+                    <span>
+
+                        Ganhe medalhas exclusivas.
+
+                    </span>
+
+                </article>
+
+                <article class="np-mission-info-card">
+
+                    <i class="fa-solid fa-chart-line"></i>
+
+                    <span>
+
+                        Evolua sua saúde diariamente.
+
+                    </span>
+
+                </article>
+
+            </section>
+
+            <!-- ==========================================
+                        BOTÕES
+            =========================================== -->
+
+            <div id="np-daily-mission-actions">
+
+                <button id="np-open-goals-button">
+
+                    <i class="fa-solid fa-bullseye"></i>
+
+                    Ver minhas metas
+
+                </button>
+
+                <button id="np-close-goals-button">
+
+                    Agora não
+
+                </button>
+
+            </div>
+
+        </div>
+
+    </article>
+
+</section>
+
+<!-- ==========================================================
+                SEQUÊNCIA DE METAS
+========================================================== -->
+
+<!-- Próxima Parte -->
+
+    <!-- ==========================================================
+                    SEQUÊNCIA DE METAS
+========================================================== -->
+
+<section id="np-dashboard-streak">
+
+    <!-- ======================================================
+                    CARD PRINCIPAL
+    ======================================================= -->
+
+    <article id="np-streak-card">
+
+        <!-- ==================================================
+                        LADO ESQUERDO
+        =================================================== -->
+
+        <section id="np-streak-left">
+
+            <!-- ==============================================
+                        CHAMA ATUAL
+            =============================================== -->
+
+            <div id="np-current-flame">
+
+                <img
+
+                    id="np-current-flame-image"
+
+                    src="assets/images/flames/flame-yellow.png"
+
+                    alt="Chama Atual"
+
+                >
+
+            </div>
+
+            <!-- ==============================================
+                    INFORMAÇÕES
+            =============================================== -->
+
+            <div id="np-streak-information">
+
+                <span id="np-current-flame-title">
+
+                    Chama Atual
+
+                </span>
+
+                <h2 id="np-current-streak-days">
+
+                    0 Dias
+
+                </h2>
+
+                <p id="np-current-streak-description">
+
+                    Complete suas metas diárias para manter sua sequência e desbloquear novas chamas exclusivas.
+
+                </p>
+
+            </div>
+
+        </section>
+
+        <!-- ==================================================
+                    PRÓXIMA CHAMA
+        =================================================== -->
+
+        <aside id="np-next-flame-card">
+
+            <span id="np-next-flame-label">
+
+                Próxima Chama
+
+            </span>
+
+            <div id="np-next-flame-preview">
+
+                <img
+
+                    id="np-next-flame-image"
+
+                    src="assets/images/flames/flame-blue.png"
+
+                    alt="Próxima Chama"
+
+                >
+
+            </div>
+
+            <strong id="np-next-flame-name">
+
+                Chama Azul
+
+            </strong>
+
+            <p id="np-next-flame-days">
+
+                Faltam 7 dias
+
+            </p>
+
+        </aside>
+
+    </article>
+
+    <!-- ======================================================
+                PROGRESSO DA SEQUÊNCIA
+    ======================================================= -->
+
+    <article id="np-streak-progress-container">
+
+        <div id="np-streak-progress-header">
+
+            <span>
+
+                Evolução
+
+            </span>
+
+            <span id="np-streak-progress-text">
+
+                0 / 7 dias
+
+            </span>
+
+        </div>
+
+        <div id="np-streak-progress-bar">
+
+            <div id="np-streak-progress-fill"></div>
+
+        </div>
+
+    </article>
+
+</section>
+
+<!-- ==========================================================
+                PROGRESSO NUTRICIONAL
+========================================================== -->
+
+<!-- Próxima Parte -->
+
+    <!-- ==========================================================
+                    PROGRESSO NUTRICIONAL
+========================================================== -->
+
+<section id="np-dashboard-progress">
+
+    <!-- ===============================================
+                TÍTULO
+    ================================================ -->
+
+    <div id="np-progress-header">
+
+        <div>
+
+            <h2>
+
+                Progresso Nutricional
+
+            </h2>
+
+            <p>
+
+                Acompanhe sua meta diária em tempo real.
+
+            </p>
+
+        </div>
+
+    </div>
+
+    <!-- ===============================================
+                CARD PRINCIPAL
+    ================================================ -->
+
+    <article id="np-progress-card">
+
+        <!-- ===========================================
+                COLUNA ESQUERDA
+        ============================================ -->
+
+        <section id="np-progress-left">
+
+            <!-- CALORIAS -->
+
+            <article class="np-progress-item">
+
+                <div class="np-progress-info">
+
+                    <span class="np-progress-icon calories">
+
+                        🔥
+
+                    </span>
+
+                    <div>
+
+                        <h3>
+
+                            Calorias
+
+                        </h3>
+
+                        <span
+                            id="np-calories-value"
+                        >
+
+                            0 / 2200 kcal
+
+                        </span>
 
                     </div>
 
                 </div>
 
-            </section>
+                <div class="np-progress-bar">
 
-            <!-- ==================================================
-                        SEÇÃO PRINCIPAL
-            =================================================== -->
+                    <div
 
-            <section id="np-dashboard-content">
+                        id="np-progress-calories"
 
-                                <!-- ==================================================
-                            SEQUÊNCIA DE METAS
-                =================================================== -->
+                        class="np-progress-fill calories"
 
-                <section id="np-dashboard-streak">
+                        style="width:0%;"
 
-                    <!-- =============================================
-                            CARD PRINCIPAL
-                    ============================================== -->
+                    ></div>
 
-                    <div id="np-streak-card">
+                </div>
 
-                        <!--==========================================
-                                LADO ESQUERDO
-                        ===========================================-->
+            </article>
 
-                        <div id="np-streak-left">
+            <!-- CARBOIDRATOS -->
 
-                            <!-- Chama -->
+            <article class="np-progress-item">
 
-                            <div id="np-current-flame">
+                <div class="np-progress-info">
 
-                                <img
-                                    src="assets/images/flames/flame-yellow.png"
-                                    alt="Chama Atual"
-                                    id="np-current-flame-image">
+                    <span class="np-progress-icon carbs">
 
-                            </div>
+                        🌾
 
-                            <!-- Informações -->
+                    </span>
 
-                            <div id="np-streak-information">
+                    <div>
 
-                                <span
-                                    id="np-current-flame-title">
+                        <h3>
 
-                                    Chama Inicial
+                            Carboidratos
 
-                                </span>
+                        </h3>
 
-                                <h2 id="np-current-streak-days">
+                        <span
+                            id="np-carbs-value"
+                        >
 
-                                    5 Dias Consecutivos
-
-                                </h2>
-
-                                <p id="np-current-streak-description">
-
-                                    Continue completando sua meta diária
-                                    para desbloquear novas chamas
-                                    exclusivas.
-
-                                </p>
-
-                            </div>
-
-                        </div>
-
-                        <!--==========================================
-                                LADO DIREITO
-                        ===========================================-->
-
-                        <div id="np-streak-right">
-
-                            <div id="np-next-flame-card">
-
-                                <span
-                                    id="np-next-flame-label">
-
-                                    Próxima Chama
-
-                                </span>
-
-                                <div
-                                    id="np-next-flame-preview">
-
-                                    <img
-                                        src="assets/images/flames/flame-blue.png"
-                                        alt="Próxima Chama"
-                                        id="np-next-flame-image">
-
-                                </div>
-
-                                <span
-                                    id="np-next-flame-days">
-
-                                    Faltam 2 dias
-
-                                </span>
-
-                            </div>
-
-                        </div>
-
-                    </div>
-
-                    <!--==============================================
-                            PROGRESSO DA CHAMA
-                    ===============================================-->
-
-                    <div id="np-streak-progress-container">
-
-                        <div
-                            id="np-streak-progress-header">
-
-                            <span>
-
-                                Evolução da Chama
-
-                            </span>
-
-                            <span
-                                id="np-streak-progress-text">
-
-                                5 / 7 Dias
-
-                            </span>
-
-                        </div>
-
-                        <div
-                            id="np-streak-progress-bar">
-
-                            <div
-                                id="np-streak-progress-fill">
-
-                            </div>
-
-                        </div>
-
-                    </div>
-
-                </section>
-
-                                <!-- ==================================================
-                        PROGRESSO NUTRICIONAL
-                =================================================== -->
-
-                <section id="np-dashboard-progress">
-
-                    <!-- Cabeçalho -->
-
-                    <div id="np-progress-header">
-
-                        <div>
-
-                            <h2>
-
-                                Seu progresso de hoje
-
-                            </h2>
-
-                            <p>
-
-                                Complete suas metas nutricionais para
-                                continuar sua sequência diária.
-
-                            </p>
-
-                        </div>
-
-                    </div>
-
-                    <!-- Card Principal -->
-
-                    <div id="np-progress-card">
-
-                        <!-- ==========================================
-                                CÍRCULO CENTRAL
-                        =========================================== -->
-
-                        <div id="np-progress-circle-area">
-
-                            <div id="np-progress-circle">
-
-                                <!-- Calorias -->
-
-                                <div
-                                    class="np-progress-ring np-progress-calories">
-
-                                </div>
-
-                                <!-- Proteínas -->
-
-                                <div
-                                    class="np-progress-ring np-progress-protein">
-
-                                </div>
-
-                                <!-- Carboidratos -->
-
-                                <div
-                                    class="np-progress-ring np-progress-carbs">
-
-                                </div>
-
-                                <!-- Gorduras -->
-
-                                <div
-                                    class="np-progress-ring np-progress-fat">
-
-                                </div>
-
-                                <!-- Salada -->
-
-                                <div id="np-progress-center">
-
-                                    <img
-
-                                        src="assets/images/salad.png"
-
-                                        alt="Salada"
-
-                                        id="np-salad-image">
-
-                                </div>
-
-                            </div>
-
-                        </div>
-
-                        <!-- ==========================================
-                                BARRAS DE PROGRESSO
-                        =========================================== -->
-
-                        <div id="np-progress-bars">
-
-                            <!-- CALORIAS -->
-
-                            <div class="np-progress-item">
-
-                                <div class="np-progress-title">
-
-                                    <span>
-
-                                        Calorias
-
-                                    </span>
-
-                                    <span
-                                        id="np-calories-value">
-
-                                        0 / 2200 kcal
-
-                                    </span>
-
-                                </div>
-
-                                <div class="np-progress-bar">
-
-                                    <div
-
-                                        id="np-calories-fill"
-
-                                        class="np-fill-calories">
-
-                                    </div>
-
-                                </div>
-
-                            </div>
-
-                            <!-- PROTEÍNAS -->
-
-                            <div class="np-progress-item">
-
-                                <div class="np-progress-title">
-
-                                    <span>
-
-                                        Proteínas
-
-                                    </span>
-
-                                    <span
-                                        id="np-protein-value">
-
-                                        0 / 140 g
-
-                                    </span>
-
-                                </div>
-
-                                <div class="np-progress-bar">
-
-                                    <div
-
-                                        id="np-protein-fill"
-
-                                        class="np-fill-protein">
-
-                                    </div>
-
-                                </div>
-
-                            </div>
-
-                            <!-- CARBOIDRATOS -->
-
-                            <div class="np-progress-item">
-
-                                <div class="np-progress-title">
-
-                                    <span>
-
-                                        Carboidratos
-
-                                    </span>
-
-                                    <span
-                                        id="np-carbs-value">
-
-                                        0 / 250 g
-
-                                    </span>
-
-                                </div>
-
-                                <div class="np-progress-bar">
-
-                                    <div
-
-                                        id="np-carbs-fill"
-
-                                        class="np-fill-carbs">
-
-                                    </div>
-
-                                </div>
-
-                            </div>
-
-                            <!-- GORDURAS -->
-
-                            <div class="np-progress-item">
-
-                                <div class="np-progress-title">
-
-                                    <span>
-
-                                        Gorduras
-
-                                    </span>
-
-                                    <span
-                                        id="np-fat-value">
-
-                                        0 / 65 g
-
-                                    </span>
-
-                                </div>
-
-                                <div class="np-progress-bar">
-
-                                    <div
-
-                                        id="np-fat-fill"
-
-                                        class="np-fill-fat">
-
-                                    </div>
-
-                                </div>
-
-                            </div>
-
-                        </div>
-
-                    </div>
-
-                </section>
-
-                                <!-- ==================================================
-                            REFEIÇÕES DO DIA
-                =================================================== -->
-
-                <section id="np-dashboard-meals">
-
-                    <!--==============================================
-                            CABEÇALHO
-                    ===============================================-->
-
-                    <div id="np-meals-header">
-
-                        <div>
-
-                            <h2>
-
-                                Suas refeições de hoje
-
-                            </h2>
-
-                            <p>
-
-                                Seu plano alimentar foi criado automaticamente
-                                conforme seus objetivos e preferências.
-
-                            </p>
-
-                        </div>
-
-                    </div>
-
-                    <!--==============================================
-                            GRID DAS REFEIÇÕES
-                    ===============================================-->
-
-                    <div id="np-meals-grid">
-
-                        <!--==================================================
-                                        CAFÉ DA MANHÃ
-                        ===================================================-->
-
-                        <article
-                            class="np-meal-card"
-                            id="np-breakfast-card">
-
-                            <div class="np-meal-header">
-
-                                <div class="np-meal-title">
-
-                                    <i class="fa-solid fa-mug-hot"></i>
-
-                                    <h3>
-
-                                        Café da Manhã
-
-                                    </h3>
-
-                                </div>
-
-                                <label class="np-meal-check">
-
-                                    <input
-                                        type="checkbox"
-                                        id="np-breakfast-check">
-
-                                    <span></span>
-
-                                </label>
-
-                            </div>
-
-                            <div
-                                class="np-meal-foods"
-                                id="np-breakfast-foods">
-
-                                <!-- JS preencherá automaticamente -->
-
-                                <p class="np-empty-food">
-
-                                    Nenhum alimento carregado.
-
-                                </p>
-
-                            </div>
-
-                            <button
-                                class="np-view-meal-button"
-                                id="np-breakfast-button">
-
-                                Ver refeição completa
-
-                            </button>
-
-                        </article>
-
-                        <!--==================================================
-                                            ALMOÇO
-                        ===================================================-->
-
-                        <article
-                            class="np-meal-card"
-                            id="np-lunch-card">
-
-                            <div class="np-meal-header">
-
-                                <div class="np-meal-title">
-
-                                    <i class="fa-solid fa-bowl-food"></i>
-
-                                    <h3>
-
-                                        Almoço
-
-                                    </h3>
-
-                                </div>
-
-                                <label class="np-meal-check">
-
-                                    <input
-                                        type="checkbox"
-                                        id="np-lunch-check">
-
-                                    <span></span>
-
-                                </label>
-
-                            </div>
-
-                            <div
-                                class="np-meal-foods"
-                                id="np-lunch-foods">
-
-                                <p class="np-empty-food">
-
-                                    Nenhum alimento carregado.
-
-                                </p>
-
-                            </div>
-
-                            <button
-                                class="np-view-meal-button"
-                                id="np-lunch-button">
-
-                                Ver refeição completa
-
-                            </button>
-
-                        </article>
-
-                        <!--==================================================
-                                            LANCHE
-                        ===================================================-->
-
-                        <article
-                            class="np-meal-card"
-                            id="np-snack-card">
-
-                            <div class="np-meal-header">
-
-                                <div class="np-meal-title">
-
-                                    <i class="fa-solid fa-apple-whole"></i>
-
-                                    <h3>
-
-                                        Lanche
-
-                                    </h3>
-
-                                </div>
-
-                                <label class="np-meal-check">
-
-                                    <input
-                                        type="checkbox"
-                                        id="np-snack-check">
-
-                                    <span></span>
-
-                                </label>
-
-                            </div>
-
-                            <div
-                                class="np-meal-foods"
-                                id="np-snack-foods">
-
-                                <p class="np-empty-food">
-
-                                    Nenhum alimento carregado.
-
-                                </p>
-
-                            </div>
-
-                            <button
-                                class="np-view-meal-button"
-                                id="np-snack-button">
-
-                                Ver refeição completa
-
-                            </button>
-
-                        </article>
-
-                        <!--==================================================
-                                            JANTAR
-                        ===================================================-->
-
-                        <article
-                            class="np-meal-card"
-                            id="np-dinner-card">
-
-                            <div class="np-meal-header">
-
-                                <div class="np-meal-title">
-
-                                    <i class="fa-solid fa-utensils"></i>
-
-                                    <h3>
-
-                                        Jantar
-
-                                    </h3>
-
-                                </div>
-
-                                <label class="np-meal-check">
-
-                                    <input
-                                        type="checkbox"
-                                        id="np-dinner-check">
-
-                                    <span></span>
-
-                                </label>
-
-                            </div>
-
-                            <div
-                                class="np-meal-foods"
-                                id="np-dinner-foods">
-
-                                <p class="np-empty-food">
-
-                                    Nenhum alimento carregado.
-
-                                </p>
-
-                            </div>
-
-                            <button
-                                class="np-view-meal-button"
-                                id="np-dinner-button">
-
-                                Ver refeição completa
-
-                            </button>
-
-                        </article>
-
-                    </div>
-
-                </section>
-
-                                <!-- ==================================================
-                        PESQUISA DE ALIMENTOS
-                =================================================== -->
-
-                <section id="np-dashboard-food-search">
-
-                    <!--==============================================
-                            CABEÇALHO
-                    ===============================================-->
-
-                    <div id="np-food-search-header">
-
-                        <div>
-
-                            <h2>
-
-                                Adicionar alimento
-
-                            </h2>
-
-                            <p>
-
-                                Procurou um alimento fora da sua dieta?
-                                Pesquise abaixo e adicione automaticamente
-                                aos seus nutrientes do dia.
-
-                            </p>
-
-                        </div>
-
-                    </div>
-
-                    <!--==============================================
-                            CARD
-                    ===============================================-->
-
-                    <div id="np-food-search-card">
-
-                        <!-- Pesquisa -->
-
-                        <div class="np-search-group">
-
-                            <label for="np-food-search-input">
-
-                                Pesquisar alimento
-
-                            </label>
-
-                            <div class="np-search-input">
-
-                                <i class="fa-solid fa-magnifying-glass"></i>
-
-                                <input
-                                    type="text"
-                                    id="np-food-search-input"
-                                    placeholder="Ex.: Frango grelhado">
-
-                            </div>
-
-                        </div>
-
-                        <!-- Resultado -->
-
-                        <div id="np-food-selected">
-
-                            <h3>
-
-                                Nenhum alimento selecionado
-
-                            </h3>
-
-                            <p>
-
-                                Pesquise um alimento para visualizar os
-                                valores nutricionais.
-
-                            </p>
-
-                        </div>
-
-                        <!-- Valores -->
-
-                        <div id="np-food-nutrition">
-
-                            <div class="np-nutrition-card">
-
-                                <span>Calorias</span>
-
-                                <strong id="np-food-calories">
-
-                                    0 kcal
-
-                                </strong>
-
-                            </div>
-
-                            <div class="np-nutrition-card">
-
-                                <span>Proteínas</span>
-
-                                <strong id="np-food-protein">
-
-                                    0 g
-
-                                </strong>
-
-                            </div>
-
-                            <div class="np-nutrition-card">
-
-                                <span>Carboidratos</span>
-
-                                <strong id="np-food-carbs">
-
-                                    0 g
-
-                                </strong>
-
-                            </div>
-
-                            <div class="np-nutrition-card">
-
-                                <span>Gorduras</span>
-
-                                <strong id="np-food-fat">
-
-                                    0 g
-
-                                </strong>
-
-                            </div>
-
-                        </div>
-
-                        <!-- Quantidade -->
-
-                        <div id="np-food-measurements">
-
-                            <div class="np-measure-group">
-
-                                <label>
-
-                                    Quantidade
-
-                                </label>
-
-                                <input
-                                    type="number"
-                                    id="np-food-quantity"
-                                    min="1"
-                                    value="100">
-
-                            </div>
-
-                            <div class="np-measure-group">
-
-                                <label>
-
-                                    Unidade
-
-                                </label>
-
-                                <select id="np-food-unit">
-
-                                    <option value="g">
-
-                                        Gramas (g)
-
-                                    </option>
-
-                                    <option value="ml">
-
-                                        Mililitros (ml)
-
-                                    </option>
-
-                                    <option value="cup">
-
-                                        Xícara
-
-                                    </option>
-
-                                    <option value="tbsp">
-
-                                        Colher de sopa
-
-                                    </option>
-
-                                    <option value="tsp">
-
-                                        Colher de chá
-
-                                    </option>
-
-                                    <option value="unit">
-
-                                        Unidade
-
-                                    </option>
-
-                                </select>
-
-                            </div>
-
-                        </div>
-
-                        <!-- Refeição -->
-
-                        <div id="np-food-destination">
-
-                            <label>
-
-                                Adicionar em
-
-                            </label>
-
-                            <select id="np-food-meal-select">
-
-                                <option value="breakfast">
-
-                                    Café da manhã
-
-                                </option>
-
-                                <option value="lunch">
-
-                                    Almoço
-
-                                </option>
-
-                                <option value="snack">
-
-                                    Lanche
-
-                                </option>
-
-                                <option value="dinner">
-
-                                    Jantar
-
-                                </option>
-
-                                <option value="extra">
-
-                                    Lanche Extra
-
-                                </option>
-
-                            </select>
-
-                        </div>
-
-                        <!-- Botão -->
-
-                        <button id="np-food-add-button">
-
-                            <i class="fa-solid fa-plus"></i>
-
-                            Adicionar alimento
-
-                        </button>
-
-                    </div>
-
-                </section>
-
-                                <!-- ==================================================
-                        RODAPÉ DA DASHBOARD
-                =================================================== -->
-
-                <footer id="np-dashboard-footer">
-
-                    <div id="np-dashboard-footer-left">
-
-                        <p>
-
-                            © 2026 Nutri+ • Todos os direitos reservados.
-
-                        </p>
-
-                    </div>
-
-                    <div id="np-dashboard-footer-right">
-
-                        <span>
-
-                            Versão
+                            0 / 250 g
 
                         </span>
 
-                        <strong>
+                    </div>
 
-                            1.0.0
+                </div>
 
-                        </strong>
+                <div class="np-progress-bar">
+
+                    <div
+
+                        id="np-progress-carbs"
+
+                        class="np-progress-fill carbs"
+
+                        style="width:0%;"
+
+                    ></div>
+
+                </div>
+
+            </article>
+
+        </section>
+
+        <!-- ===========================================
+                CENTRO
+        ============================================ -->
+
+        <section id="np-progress-center">
+
+            <div id="np-salad-container">
+
+                <img
+
+                    id="np-salad-image"
+
+                    src="assets/images/dashboard/salad.png"
+
+                    alt="Salada"
+
+                >
+
+            </div>
+
+        </section>
+
+        <!-- ===========================================
+                COLUNA DIREITA
+        ============================================ -->
+
+        <section id="np-progress-right">
+
+            <!-- PROTEÍNAS -->
+
+            <article class="np-progress-item">
+
+                <div class="np-progress-info">
+
+                    <span class="np-progress-icon protein">
+
+                        🍗
+
+                    </span>
+
+                    <div>
+
+                        <h3>
+
+                            Proteínas
+
+                        </h3>
+
+                        <span
+                            id="np-protein-value"
+                        >
+
+                            0 / 160 g
+
+                        </span>
 
                     </div>
 
-                </footer>
+                </div>
 
-            </section>
+                <div class="np-progress-bar">
+
+                    <div
+
+                        id="np-progress-protein"
+
+                        class="np-progress-fill protein"
+
+                        style="width:0%;"
+
+                    ></div>
+
+                </div>
+
+            </article>
+
+            <!-- GORDURAS -->
+
+            <article class="np-progress-item">
+
+                <div class="np-progress-info">
+
+                    <span class="np-progress-icon fat">
+
+                        🥑
+
+                    </span>
+
+                    <div>
+
+                        <h3>
+
+                            Gorduras
+
+                        </h3>
+
+                        <span
+                            id="np-fat-value"
+                        >
+
+                            0 / 60 g
+
+                        </span>
+
+                    </div>
+
+                </div>
+
+                <div class="np-progress-bar">
+
+                    <div
+
+                        id="np-progress-fat"
+
+                        class="np-progress-fill fat"
+
+                        style="width:0%;"
+
+                    ></div>
+
+                </div>
+
+            </article>
+
+        </section>
+
+    </article>
+
+</section>
+
+<!-- ==========================================================
+                    REFEIÇÕES DO DIA
+========================================================== -->
+
+<!-- Próxima Parte -->
+<section id="np-dashboard-meals">
+
+    <!-- ======================================================
+                        TÍTULO
+    ======================================================= -->
+
+    <div id="np-meals-header">
+
+        <div>
+
+            <h2>
+
+                Suas Refeições de Hoje
+
+            </h2>
+
+            <p>
+
+                Seu plano alimentar foi calculado automaticamente com base nos seus objetivos.
+
+            </p>
 
         </div>
 
-    </main>
+    </div>
 
-    <!-- ==========================================================
-                        JAVASCRIPT
-    =========================================================== -->
+    <!-- ======================================================
+                        GRID
+    ======================================================= -->
 
-    <script src="js/dashboard.js"></script>
+    <div id="np-meals-grid">
+
+        <!-- ==================================================
+                    CAFÉ DA MANHÃ
+        =================================================== -->
+
+        <article class="np-meal-card" id="np-breakfast-card">
+
+            <div class="np-meal-top">
+
+                <div class="np-meal-title">
+
+                    <span class="np-meal-icon">
+
+                        🍳
+
+                    </span>
+
+                    <div>
+
+                        <h3>
+
+                            Café da Manhã
+
+                        </h3>
+
+                        <small>
+
+                            07:00 às 09:00
+
+                        </small>
+
+                    </div>
+
+                </div>
+
+                <label class="np-meal-check">
+
+                    <input
+                        type="checkbox"
+                        id="np-breakfast-check"
+                    >
+
+                    <span></span>
+
+                </label>
+
+            </div>
+
+            <ul
+                class="np-meal-food-list"
+                id="np-breakfast-foods"
+            >
+
+                <!-- JS -->
+
+            </ul>
+
+            <div class="np-meal-footer">
+
+                <button
+                    class="np-view-meal"
+                    id="np-view-breakfast"
+                >
+
+                    Ver refeição
+
+                </button>
+
+            </div>
+
+        </article>
+
+        <!-- ==================================================
+                        ALMOÇO
+        =================================================== -->
+
+        <article class="np-meal-card" id="np-lunch-card">
+
+            <div class="np-meal-top">
+
+                <div class="np-meal-title">
+
+                    <span class="np-meal-icon">
+
+                        🍛
+
+                    </span>
+
+                    <div>
+
+                        <h3>
+
+                            Almoço
+
+                        </h3>
+
+                        <small>
+
+                            11:30 às 14:00
+
+                        </small>
+
+                    </div>
+
+                </div>
+
+                <label class="np-meal-check">
+
+                    <input
+                        type="checkbox"
+                        id="np-lunch-check"
+                    >
+
+                    <span></span>
+
+                </label>
+
+            </div>
+
+            <ul
+                class="np-meal-food-list"
+                id="np-lunch-foods"
+            >
+
+                <!-- JS -->
+
+            </ul>
+
+            <div class="np-meal-footer">
+
+                <button
+                    class="np-view-meal"
+                    id="np-view-lunch"
+                >
+
+                    Ver refeição
+
+                </button>
+
+            </div>
+
+        </article>
+
+        <!-- ==================================================
+                    CAFÉ DA TARDE
+        =================================================== -->
+
+        <article class="np-meal-card" id="np-snack-card">
+
+            <div class="np-meal-top">
+
+                <div class="np-meal-title">
+
+                    <span class="np-meal-icon">
+
+                        ☕
+
+                    </span>
+
+                    <div>
+
+                        <h3>
+
+                            Café da Tarde
+
+                        </h3>
+
+                        <small>
+
+                            15:00 às 17:00
+
+                        </small>
+
+                    </div>
+
+                </div>
+
+                <label class="np-meal-check">
+
+                    <input
+                        type="checkbox"
+                        id="np-snack-check"
+                    >
+
+                    <span></span>
+
+                </label>
+
+            </div>
+
+            <ul
+                class="np-meal-food-list"
+                id="np-snack-foods"
+            >
+
+                <!-- JS -->
+
+            </ul>
+
+            <div class="np-meal-footer">
+
+                <button
+                    class="np-view-meal"
+                    id="np-view-snack"
+                >
+
+                    Ver refeição
+
+                </button>
+
+            </div>
+
+        </article>
+
+        <!-- ==================================================
+                            JANTAR
+        =================================================== -->
+
+        <article class="np-meal-card" id="np-dinner-card">
+
+            <div class="np-meal-top">
+
+                <div class="np-meal-title">
+
+                    <span class="np-meal-icon">
+
+                        🌙
+
+                    </span>
+
+                    <div>
+
+                        <h3>
+
+                            Jantar
+
+                        </h3>
+
+                        <small>
+
+                            18:30 às 21:00
+
+                        </small>
+
+                    </div>
+
+                </div>
+
+                <label class="np-meal-check">
+
+                    <input
+                        type="checkbox"
+                        id="np-dinner-check"
+                    >
+
+                    <span></span>
+
+                </label>
+
+            </div>
+
+            <ul
+                class="np-meal-food-list"
+                id="np-dinner-foods"
+            >
+
+                <!-- JS -->
+
+            </ul>
+
+            <div class="np-meal-footer">
+
+                <button
+                    class="np-view-meal"
+                    id="np-view-dinner"
+                >
+
+                    Ver refeição
+
+                </button>
+
+            </div>
+
+        </article>
+
+    </div>
+
+</section>
+
+<!-- ==========================================================
+                PESQUISA DE ALIMENTOS
+========================================================== -->
+
+<!-- Próxima Parte -->
+<section id="np-food-search-section">
+
+    <!-- ======================================================
+                        HEADER
+    ======================================================= -->
+
+    <div id="np-food-search-header">
+
+        <div>
+
+            <h2>
+
+                Adicionar Alimento
+
+            </h2>
+
+            <p>
+
+                Consumiu algo diferente? Pesquise e adicione para atualizar suas metas automaticamente.
+
+            </p>
+
+        </div>
+
+    </div>
+
+    <!-- ======================================================
+                        CARD
+    ======================================================= -->
+
+    <article id="np-food-search-card">
+
+        <!-- Campo Pesquisa -->
+
+        <div id="np-food-search-input-area">
+
+            <i class="fa-solid fa-magnifying-glass"></i>
+
+            <input
+
+                type="text"
+
+                id="np-food-search"
+
+                placeholder="Ex.: Banana, Arroz, Frango..."
+
+                autocomplete="off"
+
+            >
+
+        </div>
+
+        <!-- Resultado -->
+
+        <div id="np-food-results">
+
+            <!-- JavaScript -->
+
+        </div>
+
+        <!-- ==================================================
+                    ALIMENTO SELECIONADO
+        =================================================== -->
+
+        <section id="np-selected-food">
+
+            <div id="np-selected-food-info">
+
+                <h3 id="np-selected-food-name">
+
+                    Nenhum alimento selecionado
+
+                </h3>
+
+                <small id="np-selected-food-description">
+
+                    Pesquise um alimento para visualizar suas informações.
+
+                </small>
+
+            </div>
+
+            <!-- =============================== -->
+
+            <div id="np-food-quantity">
+
+                <label>
+
+                    Quantidade
+
+                </label>
+
+                <input
+
+                    type="number"
+
+                    id="np-food-amount"
+
+                    value="100"
+
+                    min="1"
+
+                >
+
+            </div>
+
+            <!-- =============================== -->
+
+            <div id="np-food-unit">
+
+                <label>
+
+                    Unidade
+
+                </label>
+
+                <select id="np-food-measure">
+
+                    <option value="g">
+
+                        Grama (g)
+
+                    </option>
+
+                    <option value="ml">
+
+                        Mililitro (ml)
+
+                    </option>
+
+                    <option value="cup">
+
+                        Xícara
+
+                    </option>
+
+                    <option value="tbsp">
+
+                        Colher
+
+                    </option>
+
+                </select>
+
+            </div>
+
+        </section>
+
+        <!-- ==================================================
+                        MACROS
+        =================================================== -->
+
+        <section id="np-food-macros">
+
+            <article class="np-food-macro">
+
+                <span>
+
+                    🔥 Calorias
+
+                </span>
+
+                <strong id="np-food-calories">
+
+                    0 kcal
+
+                </strong>
+
+            </article>
+
+            <article class="np-food-macro">
+
+                <span>
+
+                    🍗 Proteínas
+
+                </span>
+
+                <strong id="np-food-protein">
+
+                    0 g
+
+                </strong>
+
+            </article>
+
+            <article class="np-food-macro">
+
+                <span>
+
+                    🌾 Carboidratos
+
+                </span>
+
+                <strong id="np-food-carbs">
+
+                    0 g
+
+                </strong>
+
+            </article>
+
+            <article class="np-food-macro">
+
+                <span>
+
+                    🥑 Gorduras
+
+                </span>
+
+                <strong id="np-food-fat">
+
+                    0 g
+
+                </strong>
+
+            </article>
+
+        </section>
+
+        <!-- ==================================================
+                        BOTÃO
+        =================================================== -->
+
+        <div id="np-food-actions">
+
+            <button id="np-add-food-button">
+
+                <i class="fa-solid fa-plus"></i>
+
+                Adicionar à Meta
+
+            </button>
+
+        </div>
+
+    </article>
+
+</section>
+
+<!-- ==========================================================
+                HISTÓRICO DE ALIMENTOS ADICIONADOS
+========================================================== -->
+
+<section id="np-added-foods-section">
+
+    <div id="np-added-foods-header">
+
+        <h2>
+
+            Alimentos Adicionados Hoje
+
+        </h2>
+
+    </div>
+
+    <div id="np-added-foods-list">
+
+        <!-- JavaScript -->
+
+    </div>
+
+</section>
+
+<!-- ==========================================================
+                MODAIS
+========================================================== -->
+
+<!-- Próxima Parte -->
+    <div id="np-modal-overlay"></div>
+
+<!-- ==========================================================
+                    MODAL REFEIÇÃO
+========================================================== -->
+
+<div
+    id="np-meal-modal"
+    class="np-modal"
+>
+
+    <div class="np-modal-container">
+
+        <!-- HEADER -->
+
+        <div class="np-modal-header">
+
+            <h2 id="np-modal-meal-title">
+
+                Refeição
+
+            </h2>
+
+            <button
+                id="np-close-meal-modal"
+            >
+
+                <i class="fa-solid fa-xmark"></i>
+
+            </button>
+
+        </div>
+
+        <!-- BODY -->
+
+        <div
+            id="np-modal-meal-body"
+        >
+
+            <!-- JavaScript -->
+
+        </div>
+
+        <!-- FOOTER -->
+
+        <div class="np-modal-footer">
+
+            <button
+                id="np-save-meal"
+            >
+
+                Salvar
+
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- ==========================================================
+                MODAL DETALHES DO ALIMENTO
+========================================================== -->
+
+<div
+    id="np-food-modal"
+    class="np-modal"
+>
+
+    <div class="np-modal-container">
+
+        <div class="np-modal-header">
+
+            <h2>
+
+                Informações Nutricionais
+
+            </h2>
+
+            <button
+                id="np-close-food-modal"
+            >
+
+                <i class="fa-solid fa-xmark"></i>
+
+            </button>
+
+        </div>
+
+        <div
+            id="np-food-modal-content"
+        >
+
+            <!-- JS -->
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- ==========================================================
+                MODAL NOVA CHAMA
+========================================================== -->
+
+<div
+    id="np-flame-modal"
+    class="np-modal"
+>
+
+    <div class="np-modal-container np-flame-modal">
+
+        <div
+            id="np-flame-animation"
+        >
+
+            <img
+
+                id="np-new-flame-image"
+
+                src=""
+
+                alt="Nova Chama"
+
+            >
+
+        </div>
+
+        <h2
+            id="np-new-flame-title"
+        >
+
+            Nova Chama
+
+        </h2>
+
+        <p
+            id="np-new-flame-description"
+        >
+
+            Você evoluiu!
+
+        </p>
+
+        <button
+            id="np-close-flame-modal"
+        >
+
+            Continuar
+
+        </button>
+
+    </div>
+
+</div>
+
+<!-- ==========================================================
+                MODAL ALTERAÇÃO DE DADOS
+========================================================== -->
+
+<div
+    id="np-user-data-modal"
+    class="np-modal"
+>
+
+    <div class="np-modal-container">
+
+        <div class="np-modal-header">
+
+            <h2>
+
+                Meus Dados
+
+            </h2>
+
+            <button
+                id="np-close-user-data"
+
+            >
+
+                <i class="fa-solid fa-xmark"></i>
+
+            </button>
+
+        </div>
+
+        <div
+            id="np-user-data-content"
+        >
+
+            <!-- JavaScript -->
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- ==========================================================
+            MODAL CONFIRMAÇÃO
+========================================================== -->
+
+<div
+    id="np-confirm-modal"
+    class="np-modal"
+>
+
+    <div class="np-confirm-card">
+
+        <h3>
+
+            Confirmar ação
+
+        </h3>
+
+        <p
+            id="np-confirm-message"
+        >
+
+            Deseja realmente continuar?
+
+        </p>
+
+        <div
+            class="np-confirm-buttons"
+        >
+
+            <button
+                id="np-confirm-no"
+            >
+
+                Cancelar
+
+            </button>
+
+            <button
+                id="np-confirm-yes"
+            >
+
+                Confirmar
+
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- ==========================================================
+                TOASTS
+========================================================== -->
+
+<!-- Próxima Parte -->
+    <section id="np-toast-container">
+
+    <!-- Toast criado dinamicamente pelo JS -->
+
+</section>
+
+<!-- ==========================================================
+                    LOADING GLOBAL
+========================================================== -->
+
+<section id="np-loading-screen">
+
+    <div id="np-loading-content">
+
+        <div id="np-loading-logo">
+
+            <img
+
+                src="assets/images/logo/logo.png"
+
+                alt="Nutri+"
+
+            >
+
+        </div>
+
+        <div id="np-loading-spinner">
+
+            <span></span>
+            <span></span>
+            <span></span>
+
+        </div>
+
+        <h3>
+
+            Carregando seus dados...
+
+        </h3>
+
+    </div>
+
+</section>
+
+<!-- ==========================================================
+                    SKELETON LOADING
+========================================================== -->
+
+<section id="np-dashboard-skeleton">
+
+    <div class="np-skeleton-header"></div>
+
+    <div class="np-skeleton-banner"></div>
+
+    <div class="np-skeleton-progress"></div>
+
+    <div class="np-skeleton-meals">
+
+        <div class="np-skeleton-card"></div>
+
+        <div class="np-skeleton-card"></div>
+
+        <div class="np-skeleton-card"></div>
+
+        <div class="np-skeleton-card"></div>
+
+    </div>
+
+</section>
+
+<!-- ==========================================================
+                BOTÃO VOLTAR AO TOPO
+========================================================== -->
+
+<button
+    id="np-back-to-top"
+    aria-label="Voltar ao topo"
+>
+
+    <i class="fa-solid fa-arrow-up"></i>
+
+</button>
+
+<!-- ==========================================================
+                    MENU FLUTUANTE
+========================================================== -->
+
+<div id="np-floating-actions">
+
+    <button
+
+        id="np-floating-search"
+
+        aria-label="Pesquisar alimentos"
+
+    >
+
+        <i class="fa-solid fa-magnifying-glass"></i>
+
+    </button>
+
+    <button
+
+        id="np-floating-help"
+
+        aria-label="Ajuda"
+
+    >
+
+        <i class="fa-solid fa-circle-question"></i>
+
+    </button>
+
+</div>
+
+<!-- ==========================================================
+                ÁREA DE COMPONENTES DINÂMICOS
+========================================================== -->
+
+<div id="np-dynamic-components">
+
+    <!--
+
+        JavaScript irá criar aqui:
+
+        Toasts
+
+        Popovers
+
+        Tooltips
+
+        Confirmações
+
+        Avisos
+
+        Convites para upgrade
+
+        Mensagens do nutricionista
+
+    -->
+
+</div>
+
+<!-- ==========================================================
+                IMPORTAÇÃO DO JAVASCRIPT
+========================================================== -->
+
+<script src="js/dashboard.js"></script>
+
+</main>
 
 </body>
 
 </html>
+    
+    
