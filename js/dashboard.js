@@ -2671,10 +2671,9 @@ NutriPlus.auth =
                 JSON.parse(json);
 
             Object.assign(
-
-                NutriPlus,
-
-                backup.dashboard
+            NutriPlus,
+            backup.dashboard || {}
+); 
 
             );
 
@@ -4083,6 +4082,10 @@ const History = {
     achievements:[],
 
     add(type,data){
+
+        if(!Array.isArray(this[type])){
+        return;
+    }
 
         this[type].push({
 
@@ -6833,19 +6836,12 @@ async start(){
             const task = this.queue.shift();
 
             try{
-
-                await task();
-
-            }
+            await task();
+}
             catch(error){
+            Logger.error(error);
+}
 
-                Logger.error(error);
-
-            }
-
-        }
-
-    }
     finally{
 
         this.running = false;
