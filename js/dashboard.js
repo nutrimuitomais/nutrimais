@@ -883,6 +883,13 @@ const Theme = {
 
     },
 
+    set(theme) {
+
+      this.current = theme;
+      this.apply();
+      storage.save();
+    },
+
     toggle() {
 
         this.current =
@@ -2485,93 +2492,135 @@ const Storage = {
                 SALVAR
     ========================================== */
 
-    save() {
+   save() {
 
-        const data = {
+    const data = {
+    user: NutriPlus.user,
+    progress: NutriPlus.progress,
+    goals: NutriPlus.goals,
+    meals: NutriPlus.meals,
+    streak: NutriPlus.streak,
+    notifications: NutriPlus.notifications,
+    settings: NutriPlus.settings,
 
-            user: NutriPlus.user,
+    gamification: NutriPlus.gamification,
+    statistics: NutriPlus.statistics,
+    calendar: NutriPlus.calendar,
+    hydration: NutriPlus.hydration,
+    bodyTracker: NutriPlus.bodyTracker,
+    premium: NutriPlus.premium,
+    auth: NutriPlus.auth,
+    goalsList: Goals.list,
+    history: History,
+    progressPhotos: ProgressPhotos.photos,
 
-            progress: NutriPlus.progress,
+    theme: Theme.current
+};
 
-            goals: NutriPlus.goals,
-
-            meals: NutriPlus.meals,
-
-            streak: NutriPlus.streak,
-
-            notifications: NutriPlus.notifications,
-
-            settings: NutriPlus.settings,
-
-            theme: Theme.current
-
-        };
+    try {
 
         localStorage.setItem(
-
             this.key,
-
             JSON.stringify(data)
-
         );
 
-    },
+    } catch (error) {
+
+        Logger.error(error);
+
+        Toast.show(
+            "Erro",
+            "Não foi possível salvar os dados.",
+            "error"
+        );
+
+    }
+
+}
 
     /* ==========================================
                 CARREGAR
     ========================================== */
 
-    load() {
+load() {
 
-        const saved = localStorage.getItem(
+    const saved = localStorage.getItem(
+        this.key
+    );
 
-            this.key
+    if (!saved) return;
 
-        );
-
-        if (!saved) return;
+    try {
 
         const data = JSON.parse(saved);
 
-        NutriPlus.user = data.user || NutriPlus.user;
+        NutriPlus.user =
+            data.user || NutriPlus.user;
 
         NutriPlus.progress =
-
             data.progress || NutriPlus.progress;
 
         NutriPlus.goals =
-
             data.goals || NutriPlus.goals;
 
         NutriPlus.meals =
-
             data.meals || NutriPlus.meals;
 
         NutriPlus.streak =
-
             data.streak || NutriPlus.streak;
 
         NutriPlus.notifications =
-
             data.notifications ||
-
             NutriPlus.notifications;
 
         NutriPlus.settings =
-
             data.settings ||
-
             NutriPlus.settings;
 
-        if(data.theme){
+        NutriPlus.gamification =
+            data.gamification ||
+            NutriPlus.gamification;
 
+        NutriPlus.statistics =
+            data.statistics ||
+            NutriPlus.statistics;
+
+        NutriPlus.calendar =
+    data.calendar ||
+    NutriPlus.calendar;
+
+NutriPlus.hydration =
+    data.hydration ||
+    NutriPlus.hydration;
+
+NutriPlus.bodyTracker =
+    data.bodyTracker ||
+    NutriPlus.bodyTracker;
+
+NutriPlus.premium =
+    data.premium ||
+    NutriPlus.premium;
+
+NutriPlus.auth =
+    data.auth ||
+    NutriPlus.auth;
+
+        if (data.theme) {
             Theme.current = data.theme;
-
             Theme.apply();
-
         }
 
-    },
+    } catch (error) {
+
+        Logger.error(error);
+
+        localStorage.removeItem(
+            this.key
+        );
+
+    }
+
+}
 
         /* ==========================================
                 RESETAR
@@ -3897,9 +3946,13 @@ const Calendar = {
 
             this.completedDays.push(key);
 
-            this.save();
+NutriPlus.calendar = {
+    completedDays: this.completedDays
+};
 
-            this.render();
+this.save();
+
+this.render();
 
         }
 
@@ -4039,14 +4092,19 @@ const History = {
 
         });
 
+      NutriPlus.history = {
+            meals: this.meals,
+            progress: this.progress,
+            weight: this.weight,
+            achievements: this.achievements
+        };
+
         Storage.save();
 
     },
 
     get(type){
-
         return this[type];
-
     }
 
 };
@@ -4387,9 +4445,9 @@ const BodyTracker = {
 
         this.current.weight = Number(weight);
 
-        this.saveRecord();
-
         this.calculateBMI();
+
+        this.saveRecord();
 
         this.render();
 
@@ -4647,6 +4705,9 @@ const ProgressPhotos = {
 
         });
 
+NutriPlus.progressPhotos =
+    this.photos;
+      
         Storage.save();
 
     },
@@ -4661,6 +4722,9 @@ const ProgressPhotos = {
 
             );
 
+NutriPlus.progressPhotos =
+    this.photos;
+      
         Storage.save();
 
     }
@@ -5370,18 +5434,14 @@ const Premium = {
             new Date();
 
         this.enableFeatures();
+this.apply();
+Storage.save();
 
-        Storage.save();
-
-        NotificationService.send(
-
-            "Premium",
-
-            "Plano ativado com sucesso.",
-
-            "success"
-
-        );
+NotificationService.send(
+    "Premium",
+    "Plano ativado com sucesso.",
+    "success"
+);
 
     },
 
@@ -5392,14 +5452,12 @@ const Premium = {
     deactivate(){
 
         this.subscription.active = false;
+this.subscription.plan = "free";
 
-        this.subscription.plan = "free";
+this.disableFeatures();
+this.apply();
 
-        this.disableFeatures();
-
-        Storage.save();
-
-    },
+Storage.save();
 
         /* ==========================================
                 RECURSOS
@@ -5487,35 +5545,47 @@ const Premium = {
 
 const CloudSync = {
 
-    enabled:false,
+    enabled: false,
 
-    lastSync:null,
+    lastSync: null,
 
     async sync(){
 
         if(
-
-            !Premium.has(
-
-                "cloudSync"
-
-            )
-
+            !Premium.has("cloudSync")
         ){
-
             return;
-
         }
 
-        this.lastSync=
+        try{
 
-            new Date();
+            // Aqui futuramente entrará a chamada da API
+            // await ApiService.sync();
 
-        console.log(
+            this.lastSync = new Date();
 
-            "Sincronizando..."
+            Logger.info(
+                "Sincronização concluída."
+            );
 
-        );
+            NotificationService.send(
+                "Cloud Sync",
+                "Dados sincronizados com sucesso.",
+                "success"
+            );
+
+        }
+        catch(error){
+
+            Logger.error(error);
+
+            NotificationService.send(
+                "Cloud Sync",
+                "Falha ao sincronizar os dados.",
+                "error"
+            );
+
+        }
 
     }
 
@@ -6063,7 +6133,7 @@ const Sync={
                 API SERVICE
 ========================================================== */
 
-const ApiService={
+const SyncService={
 
     sync(){
 
@@ -6693,41 +6763,46 @@ const Performance = {
 
     },
 
-        /* ==========================================
-                MEMORY
-    ========================================== */
+    /* ==========================================
+            MEMÓRIA
+========================================== */
+memory() {
 
-    memory(){
+    if (
+        typeof performance !== "undefined" &&
+        "memory" in performance
+    ) {
 
-        if(
+        return {
 
-            performance.memory
+            supported: true,
 
-        ){
+            used:
+                performance.memory.usedJSHeapSize,
 
-            return{
+            total:
+                performance.memory.totalJSHeapSize,
 
-                used:
+            limit:
+                performance.memory.jsHeapSizeLimit
 
-                    performance.memory.usedJSHeapSize,
-
-                total:
-
-                    performance.memory.totalJSHeapSize,
-
-                limit:
-
-                    performance.memory.jsHeapSizeLimit
-
-            };
-
-        }
-
-        return null;
+        };
 
     }
 
-};
+    return {
+
+        supported: false,
+
+        used: null,
+
+        total: null,
+
+        limit: null
+
+    };
+
+}
 
 /* ==========================================================
                 TASK SCHEDULER
@@ -6745,27 +6820,39 @@ const TaskScheduler={
 
     },
 
-    async start(){
+async start(){
 
-        if(this.running) return;
+    if(this.running) return;
 
-        this.running=true;
+    this.running = true;
+
+    try{
 
         while(this.queue.length){
 
-            const task=
+            const task = this.queue.shift();
 
-                this.queue.shift();
+            try{
 
-            await task();
+                await task();
+
+            }
+            catch(error){
+
+                Logger.error(error);
+
+            }
 
         }
 
-        this.running=false;
+    }
+    finally{
+
+        this.running = false;
 
     }
 
-};
+}
 
 /* ==========================================================
                 IDLE TASKS
@@ -6847,45 +6934,26 @@ const Core = {
 
     registerModules(){
 
-        this.modules=[
-
-            NotificationCenter,
-
-            Food,
-
-            Scheduler,
-
-            Storage,
-
-            Services,
-
-            Gamification,
-
-            Statistics,
-
-            Mission,
-
-            Calendar,
-
-            Hydration,
-
-            BodyTracker,
-
-            Analytics,
-
-            Goals,
-
-            Premium,
-
-            Settings,
-
-            Api,
-
-            Auth,
-
-            Performance
-
-        ];
+        this.modules = [
+    { name: "NotificationCenter", module: NotificationCenter },
+    { name: "Food", module: Food },
+    { name: "Scheduler", module: Scheduler },
+    { name: "Storage", module: Storage },
+    { name: "Services", module: Services },
+    { name: "Gamification", module: Gamification },
+    { name: "Statistics", module: Statistics },
+    { name: "Mission", module: Mission },
+    { name: "Calendar", module: Calendar },
+    { name: "Hydration", module: Hydration },
+    { name: "BodyTracker", module: BodyTracker },
+    { name: "Analytics", module: Analytics },
+    { name: "Goals", module: Goals },
+    { name: "Premium", module: Premium },
+    { name: "Settings", module: Settings },
+    { name: "Api", module: Api },
+    { name: "Auth", module: Auth },
+    { name: "Performance", module: Performance }
+];
 
     },
 
@@ -6895,27 +6963,18 @@ const Core = {
 
     initializeModules(){
 
-        this.modules.forEach(
+    this.modules.forEach(item=>{
 
-            module=>{
+        if(
+            typeof item.module.init ===
+            "function"
+        ){
+            item.module.init();
+        }
 
-                if(
+    });
 
-                    typeof module.init ===
-
-                    "function"
-
-                ){
-
-                    module.init();
-
-                }
-
-            }
-
-        );
-
-    },
+},
 
         /* ==========================================
                 EVENTOS
@@ -7003,21 +7062,20 @@ const Logger={
 
     },
 
-    error(message){
+error(error){
+    const message =
+        error instanceof Error
+            ? error.message
+            : String(error);
 
-        this.logs.push({
+    this.logs.push({
+        type: "error",
+        message,
+        date: new Date()
+    });
 
-            type:"error",
-
-            message,
-
-            date:new Date()
-
-        });
-
-        console.error(message);
-
-    },
+    console.error(error);
+}
 
     export(){
 
@@ -7033,14 +7091,18 @@ const Logger={
 
 const ErrorHandler={
 
-    capture(event){
+capture(event){
+
+        if(event.error){
+            Logger.error(event.error);
+            return;
+        }
 
         Logger.error(
-
-            event.message ||
-
-            "Erro desconhecido"
-
+            `${event.message}
+Arquivo: ${event.filename}
+Linha: ${event.lineno}
+Coluna: ${event.colno}`
         );
 
     },
@@ -7095,33 +7157,21 @@ const Diagnostics={
 
     },
 
-    checkModules(){
+checkModules(){
 
-        Core.modules.forEach(
+    Core.modules.forEach(item=>{
 
-            module=>{
+        if(item.module){
 
-                if(
+            Logger.info(
+                `${item.name} carregado`
+            );
 
-                    module
+        }
 
-                ){
+    });
 
-                    Logger.info(
-
-                        `${module.constructor?.name || "Module"} carregado`
-
-                    );
-
-                }
-
-            }
-
-        );
-
-    }
-
-};
+}
 
 /* ==========================================================
                     DEBUG
